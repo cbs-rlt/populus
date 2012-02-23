@@ -1,0 +1,14 @@
+* JNLP launcher/installer
+* Merge onto git repo
+* All LROE TODO in code
+* ImageRaster
+* Help pops up
+* Fix Eclipse project warnings and errors
+* DSAL on Mac
+* CPP: y-axis = "Predator Population (P)" P is in red
+       x-axis = "Prey Population (N)" N is in blue
+* Resource Competition, Tilman: Colors need to match
+* verify saving and loading a model
+* How to sign applet/application
+
+

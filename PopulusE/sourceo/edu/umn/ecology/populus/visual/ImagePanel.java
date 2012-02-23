@@ -1,0 +1,68 @@
+
+//Title:        Populus
+//Version:      
+//Copyright:    Copyright (c) 1998
+//Author:       Lars Roe
+//Company:      University of Minnesota
+//Description:  Populus
+
+package edu.umn.ecology.populus.visual;
+
+import java.awt.*;
+
+public class ImagePanel extends Canvas {
+
+    Container pappy;
+    Image image;
+    Dimension size;
+    int w, h;
+    boolean trueSizeKnown;
+    MediaTracker tracker;
+    public ImagePanel(Image image, Container highestContainer, 
+                       int initialWidth, int initialHeight) {
+        if (image == null) {
+            System.err.println("Canvas got invalid image object!");
+            return;
+        }
+        this.image = image;
+        this.pappy = highestContainer;
+        w = initialWidth;
+        h = initialHeight;
+        tracker = new MediaTracker(this);
+        tracker.addImage(image, 0);
+        size = new Dimension(w,h);
+    }
+    public Dimension getPreferredSize() {
+        return getMinimumSize();
+    }
+    public Dimension getMinimumSize() {
+        return size;
+    }
+    public void paint (Graphics g) {
+        if (image != null) {
+            if (!trueSizeKnown) {
+                int imageWidth = image.getWidth(this);
+                int imageHeight = image.getHeight(this);
+                if (tracker.checkAll(true)) {
+                    trueSizeKnown = true;
+                    if (tracker.isErrorAny()) {
+                        System.err.println("Error loading image: "
+                                           + image);
+                    }
+                }
+                //Component-initiated resizing.
+                if (((imageWidth > 0) && (w != imageWidth)) ||
+                    ((imageHeight > 0) && (h != imageHeight))) {
+                    w = imageWidth;
+                    h = imageHeight;
+                    size = new Dimension(w,h);
+                    setSize(w, h);
+                    pappy.validate();
+                }
+            }
+        }
+        g.drawImage(image, 0, 0, this);
+    }
+}
+
+ 
