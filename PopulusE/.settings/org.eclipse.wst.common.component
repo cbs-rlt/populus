@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="PopulusE">
-        <wb-resource deploy-path="/" source-path="/appClientModule" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/appClientModule"/>
         <wb-resource deploy-path="/" source-path="/source"/>
         <property name="java-output-path" value="/PopulusE/build/classes"/>
     </wb-module>

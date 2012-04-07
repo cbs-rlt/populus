@@ -8,8 +8,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/jcchart401K.jar"/>
-	<classpathentry kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/JBCL.jar"/>
-	<classpathentry kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/acrobat.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/jcchart401K.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/JBCL.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Populus/dev/eclipseproj/PopulusE/res/required libraries/acrobat.jar"/>
+	<classpathentry kind="lib" path="res/required libraries/Jama-1.0.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

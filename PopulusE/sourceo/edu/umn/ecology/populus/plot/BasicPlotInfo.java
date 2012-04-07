@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 import edu.umn.ecology.populus.visual.*;
-import gov.nist.math.javanumerics.jama.EigenvalueDecomposition;
+import Jama.EigenvalueDecomposition;
 
 /**
   * this class is meant to hold all the data necessary for graphing a data set. the vector <code>lines</code>

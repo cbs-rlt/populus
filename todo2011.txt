@@ -2,7 +2,7 @@
 * Merge onto git repo
 * All LROE TODO in code
 * ImageRaster
-* Help pops up
+* Startup error: Can't find help file at gdev\PopulusE\PopulusHelp.pdf
 * Fix Eclipse project warnings and errors
 * DSAL on Mac
 * CPP: y-axis = "Predator Population (P)" P is in red
@@ -10,5 +10,5 @@
 * Resource Competition, Tilman: Colors need to match
 * verify saving and loading a model
 * How to sign applet/application
-
+* Make sure gov.* is there, by running output for DIG
 

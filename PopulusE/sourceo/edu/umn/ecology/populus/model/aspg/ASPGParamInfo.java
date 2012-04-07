@@ -10,7 +10,7 @@ import edu.umn.ecology.populus.poproutines.*;
 import edu.umn.ecology.populus.resultwindow.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.model.aspg.*;
-import gov.nist.math.javanumerics.jama.*;
+import Jama.*;
 /**
  *
  */
