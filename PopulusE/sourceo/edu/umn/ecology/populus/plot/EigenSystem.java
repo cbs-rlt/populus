@@ -1,13 +1,11 @@
 package edu.umn.ecology.populus.plot;
 
 import edu.umn.ecology.populus.resultwindow.*;
-import edu.umn.ecology.populus.visual.*;
 import java.awt.*;
 import javax.swing.*;
-import gov.nist.math.javanumerics.jama.*;
+import Jama.*;
 import javax.swing.event.*;
 import edu.umn.ecology.populus.math.*;
-import edu.umn.ecology.populus.model.ie.TextOutput;
 
 /**
  * <p>Title: Populus</p>

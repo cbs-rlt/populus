@@ -69,7 +69,7 @@ public class ColorScheme {
    };
 
    /**This vector holds all of the open models.*/
-   public static Vector theseModels = new Vector();
+   public static Vector<Model> theseModels = new Vector<Model>();
    public static int schemeIndex = 0;
 
    /**	the last position must be reserved for the custom string
@@ -132,7 +132,7 @@ public class ColorScheme {
      the graph colors for all the open models, get this list and call the same method
      on all of them.*/
 
-   public Vector getModelList() {
+   public Vector<Model> getModelList() {
       return theseModels;
    }
 

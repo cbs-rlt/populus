@@ -1,8 +1,5 @@
 package edu.umn.ecology.populus.model.aspg;
 
-import edu.umn.ecology.populus.math.*;
-import gov.nist.math.javanumerics.jama.*;
-
 /**
  * <p>Title: Populus</p>
  * <p>Description: </p>
