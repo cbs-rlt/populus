@@ -37,10 +37,11 @@ public class HelpUtilities implements ActionListener {
       //find help file
       String path = System.getProperty("user.dir"); //Lars ???
       String separator = System.getProperty("file.separator");
+      //TODO -- can we do something like this to look into JAR?  getClass().getResource("res" + separator + helpFileName)
       f = new File(path+separator+helpFileName);
       if(!f.canRead()){
          errorMessage = "Can't find the help file at \n"+f.getAbsolutePath();
-         JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+         //TODO  do we want this?? JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
          edu.umn.ecology.populus.fileio.Logging.log();
          edu.umn.ecology.populus.fileio.Logging.log("Can't seem to find the help file...");
          edu.umn.ecology.populus.fileio.Logging.log("Supposed to be at "+f.getAbsolutePath());

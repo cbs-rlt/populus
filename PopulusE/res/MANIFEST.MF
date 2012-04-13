@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
-Created-By: 1.4.2 (Sun Microsystems Inc.)
 Main-Class: edu.umn.ecology.populus.core.PopRun
-
+Class-Path: res/reqlibs/jcchart401K.jar 
+ res/reqlibs/acrobat.jar       res/reqlibs/JBCL.jar 
+ res/reqlibs/Jama-1.0.2.jar
