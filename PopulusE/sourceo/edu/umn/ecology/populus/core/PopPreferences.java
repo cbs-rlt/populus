@@ -40,7 +40,8 @@ public final class PopPreferences {
    public static final int DEFAULT_TRIGGER = 211;
    /** Trigger Type */
    public static final int ALL_TRIGGER = 212;
-   private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
+   //TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
+   private static final String DEFAULT_DIRECTORY = "";
    private static final Integer BUTTON_TYPE        = new Integer( 100 );
    private static final Integer DIRECTORY          = new Integer( 101 );
    private static final Integer DELAY_TIME         = new Integer( 102 );
@@ -171,7 +172,12 @@ public final class PopPreferences {
    }
 
    public static String getPreferencesFile() {
-      String s = System.getProperty("user.home") + System.getProperty("file.separator");
+      String s = "";
+      try {
+    	  s = System.getProperty("user.home") + System.getProperty("file.separator");
+      } catch (Exception e) {
+    	  //TODO: log
+      }
       s += "userpref.po";
       return s;
    }
@@ -341,6 +347,7 @@ public final class PopPreferences {
          }
       }
       catch( Exception e ) {
+    	  //TODO: Log exception
          reset(isInit);
       }
    }

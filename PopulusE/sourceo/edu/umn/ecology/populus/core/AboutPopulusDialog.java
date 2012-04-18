@@ -94,7 +94,13 @@ public class AboutPopulusDialog extends JDialog {
    
    //TODO: fix up error handling on this.
    void openURI( String uriString ) {
-
+	   //TODO: Make work for earlier JDK versions.
+	   
+	   //With JNLP 1.5, need JNLP libraries
+	   /*
+	   javax.jnlp.BasicService.showDocument(uriString);
+	   
+	   //For 1.6 and above
        if( !java.awt.Desktop.isDesktopSupported() ) {
            System.err.println( "Desktop is not supported (fatal)" );
            return; //ERROR
@@ -114,6 +120,7 @@ public class AboutPopulusDialog extends JDialog {
        catch ( Exception e ) {
            System.err.println( e.getMessage() );
        }
+       */
    }
 
    void goB_actionPerformed( ActionEvent e ) {

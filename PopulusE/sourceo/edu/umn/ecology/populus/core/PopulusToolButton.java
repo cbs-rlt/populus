@@ -125,7 +125,7 @@ public class PopulusToolButton extends JButton {
    }
 
    public void setValues(String imageFile, String text, String toolTipText) {
-       this.image = new ImageIcon( edu.umn.ecology.populus.core.PopulusToolButton.class.getResource( imageFile ) );
+	   this.image = new ImageIcon(this.getClass().getResource(imageFile));
        this.text = text;
        this.setToolTipText( toolTipText );
        setLook();

@@ -33,8 +33,12 @@ public class MacroLayout extends BorderLayout {
 		}
 		//Set up font size - Can't use BOLD, since it ruins the unicode look
 		String fontString = "Serif";
-		if(System.getProperty("os.name").startsWith("Mac")){
-			fontString = "SansSerif";
+		try {
+			if(System.getProperty("os.name").startsWith("Mac")){
+				fontString = "SansSerif";
+			}
+		} catch (Exception e) {
+			//TODO
 		}
 		
 		smallFont = new Font(fontString, Font.PLAIN, fontsize);

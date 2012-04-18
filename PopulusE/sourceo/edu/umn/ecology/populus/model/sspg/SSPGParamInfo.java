@@ -1,16 +1,12 @@
 package edu.umn.ecology.populus.model.sspg;
 
-import java.util.*;
 import java.awt.Color;
 import javax.swing.JComponent;
 import edu.umn.ecology.populus.visual.HTMLLabel;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.*;
-import edu.umn.ecology.populus.poproutines.*;
 import edu.umn.ecology.populus.resultwindow.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.model.sspg.*;
-import edu.umn.ecology.populus.visual.stagegraph.*;
 import Jama.*;
 
 /**

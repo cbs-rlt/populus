@@ -19,8 +19,8 @@ public class HelpUtilities implements ActionListener {
    private static String errorMessage = "";
    private static File f = null;
    private static String helpFileName = "PopulusHelp.pdf";
-   private static String cmd;
-   private static String app;
+   private static String cmd = "";
+   private static String app = "";
 
    /*in this static block, several things need to be determined. first, we need to make sure the
    help file exists and is in the right place.
@@ -35,44 +35,58 @@ public class HelpUtilities implements ActionListener {
       if (f != null)
          return;
       //find help file
-      String path = System.getProperty("user.dir"); //Lars ???
-      String separator = System.getProperty("file.separator");
-      //TODO -- can we do something like this to look into JAR?  getClass().getResource("res" + separator + helpFileName)
-      f = new File(path+separator+helpFileName);
-      if(!f.canRead()){
-         errorMessage = "Can't find the help file at \n"+f.getAbsolutePath();
-         //TODO  do we want this?? JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
-         edu.umn.ecology.populus.fileio.Logging.log();
-         edu.umn.ecology.populus.fileio.Logging.log("Can't seem to find the help file...");
-         edu.umn.ecology.populus.fileio.Logging.log("Supposed to be at "+f.getAbsolutePath());
+      String path = "", separator = "/";
+      try {
+	      path = System.getProperty("user.dir"); //Lars ???
+	      separator = System.getProperty("file.separator");
+      } catch (Exception e) {
+    	  //TODO
       }
-
-      //find which windows os
-      String os = System.getProperty("os.name");
-      if(os.startsWith("Windows")){
-         if(os.endsWith("NT") || os.endsWith("2000") || os.endsWith("XP")){
-            cmd = "cmd.exe";
-         } else {
-            cmd = "command.com";
-         }
-
-         //find Adobe Reader or Adobe Acrobat
-         Vector result = new Vector();
-         execute(new String[]{cmd,"/c","ftype","AcroExch.Document"},result,true);
-         if(result.size() > 0){
-            if(((String)result.get(0)).toLowerCase().indexOf("acrord32") >= 0){
-               app = "acrord32";
-            } else if(((String)result.get(0)).toLowerCase().indexOf("acrobat") >= 0){
-               app = "acrobat";
-            } else {
-               String message = "You don't seem to have Adobe Reader installed.";
-               app = "";
-               JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Error", JOptionPane.PLAIN_MESSAGE);
-            }
-         } else {
-            app = "";
-            //not sure what do to here... might mean that Adobe Reader is not installed
-         }
+      //TODO -- can we do something like this to look into JAR?  getClass().getResource("res" + separator + helpFileName)
+      try {
+	      f = new File(path+separator+helpFileName);
+	      if(!f.canRead()){
+	         errorMessage = "Can't find the help file at \n"+f.getAbsolutePath();
+	         //TODO  do we want this?? JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, errorMessage, "Error", JOptionPane.PLAIN_MESSAGE);
+	         edu.umn.ecology.populus.fileio.Logging.log();
+	         edu.umn.ecology.populus.fileio.Logging.log("Can't seem to find the help file...");
+	         edu.umn.ecology.populus.fileio.Logging.log("Supposed to be at "+f.getAbsolutePath());
+	      }
+	
+	      //find which windows os
+	      String os = "Windows";
+	      try {
+	    	  os = System.getProperty("os.name");
+	      } catch (Exception e) {
+	    	  //TODO
+	      }
+	      if(os.startsWith("Windows")){
+	         if(os.endsWith("NT") || os.endsWith("2000") || os.endsWith("XP")){
+	            cmd = "cmd.exe";
+	         } else {
+	            cmd = "command.com";
+	         }
+	
+	         //find Adobe Reader or Adobe Acrobat
+	         Vector result = new Vector();
+	         execute(new String[]{cmd,"/c","ftype","AcroExch.Document"},result,true);
+	         if(result.size() > 0){
+	            if(((String)result.get(0)).toLowerCase().indexOf("acrord32") >= 0){
+	               app = "acrord32";
+	            } else if(((String)result.get(0)).toLowerCase().indexOf("acrobat") >= 0){
+	               app = "acrobat";
+	            } else {
+	               String message = "You don't seem to have Adobe Reader installed.";
+	               app = "";
+	               JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Error", JOptionPane.PLAIN_MESSAGE);
+	            }
+	         } else {
+	            app = "";
+	            //not sure what do to here... might mean that Adobe Reader is not installed
+	         }
+	      }
+      } catch (Exception e) {
+    	  //TODO
       }
    }
 
@@ -101,7 +115,12 @@ public class HelpUtilities implements ActionListener {
     * @return
     */
    private static String[] getOpenCommand(boolean isNoSplash, boolean isBackground, boolean isOpenFile){
-      String os = System.getProperty("os.name");
+      String os = "Windows";
+      try {
+    	  System.getProperty("os.name");
+      } catch (Exception e) {
+    	  //TODO
+      }
       Vector command = new Vector();
       if(os.startsWith("Windows")){
          boolean canHaveSpecial = app.length() != 0;

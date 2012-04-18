@@ -21,15 +21,14 @@ public class PopRun {
 
    PopRun() {
       edu.umn.ecology.populus.fileio.Logging.log( res.getString( "Populus_Starting_" ) +" on "+System.getProperty("os.name"));
-      String buildTime = "<Unable to read time file>";
+      String buildTime = "<Unable to find build time>";
       try {
-         //Read timestamp.txt from current directory.
-         String timeFile = "timestamp.txt";
-         java.io.BufferedReader ri = new java.io.BufferedReader(new java.io.FileReader(timeFile));
-         buildTime = ri.readLine();
+          //Read timestamp.txt from current directory.
+          String timeFile = "timestamp.txt";
+          java.io.BufferedReader ri = new java.io.BufferedReader(new java.io.FileReader(timeFile));
+          buildTime = ri.readLine();
       }
-      catch (java.io.FileNotFoundException whateverHappensInMinnesotaStaysInMinnesota) { }
-      catch (java.io.IOException whateverHappensInMinnesotaStaysInMinnesota) { }
+      catch (Exception whateverHappensInMinnesotaStaysInMinnesota) { }
       edu.umn.ecology.populus.fileio.Logging.log( "Populus built " + buildTime + "\n");
       try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
@@ -55,7 +54,7 @@ public class PopRun {
             w.write("Populus built " + buildTime + "\n");
             w.write("Date: " + new Date() + "\n\n");
             e.printStackTrace(w);
-         } catch (java.io.FileNotFoundException fnfe) {
+         } catch (Exception e2) {
             edu.umn.ecology.populus.fileio.Logging.log("Couldn't write error to log file");
          }
       }
