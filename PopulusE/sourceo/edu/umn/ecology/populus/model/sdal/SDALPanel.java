@@ -144,7 +144,7 @@ public class SDALPanel extends BasicPlotInputPanel {
       plotOptionsPanel.setBorder( titledBorder1 );
       plotOptionsPanel.setLayout( verticalFlowLayout1 );
       coefficientsPanel.setBorder( titledBorder2 );
-      coefficientsPanel.setPreferredSize( new Dimension( 163, 183 ) );
+      coefficientsPanel.setPreferredSize( new Dimension(230, 200) );
       flowLayout1.setHgap( 17 ); //this is needed because w/o the title doesn't fit
       coefficientsPanel.setLayout( flowLayout1 );
       initialConditionsPanel.setBorder( titledBorder3 );
@@ -222,12 +222,13 @@ public class SDALPanel extends BasicPlotInputPanel {
       titledBorder2.setTitle( res.getString( "Fitness_Selection" ) );
       jTabbedPane1.setMinimumSize( new Dimension( 200, 114 ) );
       jTabbedPane1.setPreferredSize( new Dimension( 140, 147 ) );
-      this.add( plotOptionsPanel, null );
+      setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+      this.add( plotOptionsPanel );
       plotOptionsPanel.add( pvstButton, null );
       plotOptionsPanel.add( genotypicFrequencyButton, null );
       plotOptionsPanel.add( deltapvspButton, null );
       plotOptionsPanel.add( wbarvspButton, null );
-      this.add( coefficientsPanel, null );
+      this.add( coefficientsPanel );
       coefficientsPanel.add( jTabbedPane1, null );
       fitnessPanel.add( paramwAA, null );
       fitnessPanel.add( paramwAa, null );
@@ -242,7 +243,7 @@ public class SDALPanel extends BasicPlotInputPanel {
             jTabbedPane1_stateChanged( e );
          }
       } );
-      this.add( initialConditionsPanel, null );
+      this.add( initialConditionsPanel );
       initialConditionsPanel.add( oneInitialFrequencyButton, null );
       initialConditionsPanel.add( paramInitialFrequency, null );
       initialConditionsPanel.add( sixInitialFrequenciesButton, null );
@@ -253,7 +254,6 @@ public class SDALPanel extends BasicPlotInputPanel {
       bg1.add( this.genotypicFrequencyButton );
       bg2.add( this.oneInitialFrequencyButton );
       bg2.add( this.sixInitialFrequenciesButton );
-      this.setLayout(new FlowLayout()); //Lars - trying this out to fix Mac OS X bug
       this.registerChildren( this );
    }
 }

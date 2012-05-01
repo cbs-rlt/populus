@@ -1,4 +1,3 @@
-* JNLP launcher/installer
 * Merge onto git repo
 * All LROE TODO in code
 * ImageRaster
@@ -10,5 +9,12 @@
 * Resource Competition, Tilman: Colors need to match
 * verify saving and loading a model
 * How to sign applet/application
-* Make sure gov.* is there, by running output for DIG
+* Make timestamp.txt work in PopRun.java -- see TODO
 
+Sign the Jar file
+http://java.sun.com/developer/Books/javaprogramming/JAR/sign/intro.html
+http://java.sun.com/developer/Books/javaprogramming/JAR/sign/
+http://javadocs.wordpress.com/2010/06/29/automate-jar-signing-in-eclipse-with-apache-ant/
+http://docs.oracle.com/javase/tutorial/deployment/jar/signing.html
+
+http://larsroe.com/pop/
