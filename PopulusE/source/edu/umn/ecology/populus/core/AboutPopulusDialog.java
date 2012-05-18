@@ -138,7 +138,7 @@ public class AboutPopulusDialog extends JDialog {
       button1.addActionListener( new AboutPopulusDialog_button1_actionAdapter( this ) );
       this.addWindowListener( new AboutPopulusDialog_this_windowAdapter( this ) );
       panel1.setLayout( gridBagLayout1 );
-      line1.setText("Populus, Java Version 5.4, Octember 2005" );
+      line1.setText("Populus, Java Version 5.5, May 2012" );
       line2.setText( "url: http://www.cbs.umn.edu/populus/" );
       line3.setText( "email: populus@ecology.umn.edu" );
       line4.setText( "  " );

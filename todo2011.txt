@@ -1,20 +1,27 @@
 * Merge onto git repo
-* All LROE TODO in code
-* ImageRaster
-* Startup error: Can't find help file at gdev\PopulusE\PopulusHelp.pdf
-* Fix Eclipse project warnings and errors
+* All TODO in code
+* Fix Eclipse project warnings
 * DSAL on Mac
 * CPP: y-axis = "Predator Population (P)" P is in red
        x-axis = "Prey Population (N)" N is in blue
 * Resource Competition, Tilman: Colors need to match
+  - Verify exactly what is wanted here, the graph "line" should be a certain color, but the axes are something else?
+
+Test procedures:
 * verify saving and loading a model
+
+Build procedures
 * How to sign applet/application
 * Make timestamp.txt work in PopRun.java -- see TODO
-
 Sign the Jar file
 http://java.sun.com/developer/Books/javaprogramming/JAR/sign/intro.html
 http://java.sun.com/developer/Books/javaprogramming/JAR/sign/
 http://javadocs.wordpress.com/2010/06/29/automate-jar-signing-in-eclipse-with-apache-ant/
 http://docs.oracle.com/javase/tutorial/deployment/jar/signing.html
 
-http://larsroe.com/pop/
+
+* Plan for Help file...
+  Put this in one spot, it's a bit tricky.
+  Have in "install" directory, and look in there. If it's not there, copy it from:
+    (1) Using getResource(), or if that fails...
+    (2) From Web site

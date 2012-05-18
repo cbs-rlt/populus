@@ -47,7 +47,14 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
       { "Parasite_Growth", "Parasite Growth" },
       { "Host_Growth", "Host Growth" },
       { "DAM", "Decoupled Anderson & May" },
-      { "DAM_parasite", "Decoupled A & M" }};
+      { "DAM_parasite", "Decoupled A & M" },
+
+   	  { "CapSpecies1", "Species 1 (" + ColorScheme.getColorString( 0 ) + "<i>N<sub>1</sub></i></font>)"},
+   	  { "CapSpecies2", "Species 2 (" + ColorScheme.getColorString( 1 ) + "<i>N<sub>2</sub></i></font>)"},
+   	  { "CapSpecies3", "Species 3 (" + ColorScheme.getColorString( 2 ) + "<i>N<sub>3</sub></i></font>)"},
+  	  { "CapResource1", "Resource 1 (" + ColorScheme.getColorString( 0 ) + "<i>R<sub>1</sub></i></font>)"},
+   	  { "CapResource2", "Resource 2 (" + ColorScheme.getColorString( 1 ) + "<i>R<sub>2</sub></i></font>)"},
+   	  { "CapResource3", "Resource 3 (" + ColorScheme.getColorString( 2 ) + "<i>R<sub>3</sub></i></font>)"}};
 
 
       public Object[][] getContents() {

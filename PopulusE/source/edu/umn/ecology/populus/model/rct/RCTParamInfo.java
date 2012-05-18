@@ -15,6 +15,7 @@ public class RCTParamInfo implements BasicPlot {
    public static final int rvst= 4;//R vs t
    public static final int nvsn= 5;//N vs N
    public static final int rvsr= 6;//R vs R
+   static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.rct.Res" );
 
    RCTVariableIndex vars = null;
    int plotType, modelType;
@@ -36,13 +37,22 @@ public class RCTParamInfo implements BasicPlot {
    String yCap4 = "<b><i>"+ColorScheme.getColorString( 0 ) + "R<sub>1</>";
    String yCap5 =  "<b><i>"+ColorScheme.getColorString( 0 ) + "R<sub>1</>, <b><i>"+ColorScheme.getColorString( 1 )  +"R<sub>2</>";
    String yCap6 = "<b><i>"+ColorScheme.getColorString( 0 ) + "R<sub>1</>, <b><i>"+ColorScheme.getColorString( 1 )  +"R<sub>2</>, <b><i>"+ColorScheme.getColorString( 2 )  +"R<sub>3</>";
+
+   /*TODO: Need to verify if this is what we want (old code immediately below)
    String n1Caption = "Species 1 (<i>N<sub>1</sub></i>)";
    String n2Caption = "Species 2 (<i>N<sub>2</sub></i>)";
    String n3Caption = "Species 3 (<i>N<sub>3</sub></i>)";
    String r1Caption = "Resource 1 (<i>R<sub>1</sub></i>)";
    String r2Caption = "Resource 2 (<i>R<sub>2</sub></i>)";
    String r3Caption = "Resource 3 (<i>R<sub>3</sub></i>)";
-   static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.rct.Res" );
+   */
+   
+   String n1Caption = res.getString("CapSpecies1");
+   String n2Caption = res.getString("CapSpecies2");
+   String n3Caption = res.getString("CapSpecies3");
+   String r1Caption = res.getString("CapResource1");
+   String r2Caption = res.getString("CapResource2");
+   String r3Caption = res.getString("CapResource3");
 
    public BasicPlotInfo getBasicPlotInfo() {
       BasicPlotInfo bp = null;
