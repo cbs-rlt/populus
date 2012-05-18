@@ -2,6 +2,9 @@ package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.image.Raster;
 import java.awt.image.SinglePixelPackedSampleModel;
+//TODO: We aren't supposed to really have access to sun.awt.image.IntegerComponentRaster
+//We are currently compiling by setting the Java Compiler->Forbidden Reference to "Warning" only.
+import sun.awt.image.IntegerComponentRaster;
 import java.awt.image.WritableRaster;
 import java.awt.image.ColorModel;
 import java.awt.image.DirectColorModel;
@@ -169,10 +172,7 @@ public class GradientPaintContext2 implements PaintContext {
             rast = getColorModel().createCompatibleWritableRaster(w, h);
             saved = rast;
         }
-        /*
-         * LROE TODO: This code should be updated to work with below...
-         * OLD CODE!!!
-         * Also, previously imported sun.awt.image.IntegerComponentRaster;
+
         IntegerComponentRaster irast = (IntegerComponentRaster) rast;
         int off = irast.getDataOffset(0);
         int adjust = irast.getScanlineStride() - w;
@@ -183,13 +183,6 @@ public class GradientPaintContext2 implements PaintContext {
         } else {
             clipFillRaster(pixels, off, adjust, w, h, rowrel, dx, dy);
         }
-        */
-
-        /*
-         * LROE: TODO new code!
-         */
-        //final SinglePixelPackedSampleModel sppsm = (SinglePixelPackedSampleModel)rast.getSampleModel();
-
 
         return rast;
     }

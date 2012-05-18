@@ -27,11 +27,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>source</name>
-			<type>2</type>
-			<location>D:/Populus/gdev/PopulusE/sourceo</location>
-		</link>
-	</linkedResources>
 </projectDescription>

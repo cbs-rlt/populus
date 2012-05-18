@@ -15,13 +15,8 @@ public class IOUtility {
       }
 
       public boolean accept(File f) {
-         String end = f.getName();
-         int idx = end.length() - ext.length();
-         String suffix = end.substring(idx);
-         if (suffix.equals(ext))
-            return true;
-         else
-            return false;
+         String basename = f.getName();
+         return basename.endsWith(ext);
       }
    }
 
@@ -30,7 +25,7 @@ public class IOUtility {
      * @param type Use either FileDialog.SAVE, or FileDialog.LOAD
      */
 
-    //Lars - Need to verify
+    //TODO Lars - Need to verify
 
    public static String getFileName( String baseName, String extension, String title, int type ) {
       //Find first name of form  baseName + int + extension, where int starts with 1 and goes until

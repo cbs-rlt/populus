@@ -18,6 +18,7 @@ import edu.umn.ecology.populus.fileio.Logging;
  */
 
 public class OpenPDF {
+	//TODO - This is bad...
    String kFilename = "C:\\dev\\doc\\developers\\PDFOpenParameters.pdf";
 
    /**

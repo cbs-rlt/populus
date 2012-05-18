@@ -1,8 +1,10 @@
 package edu.umn.ecology.populus.core;
 
 import java.util.*;
+import java.awt.Color;
 import java.io.*;
 import edu.umn.ecology.populus.constants.*;
+import edu.umn.ecology.populus.fileio.Logging;
 
 //Title:        Populus
 //Version:
@@ -40,6 +42,10 @@ public final class PopPreferences {
    public static final int DEFAULT_TRIGGER = 211;
    /** Trigger Type */
    public static final int ALL_TRIGGER = 212;
+   
+   public static final Color DEFAULT_TABLE_EDIT_COLOR = Color.yellow;
+   public static final Color DEFAULT_TABLE_UNEDIT_COLOR = Color.white;
+   
    //TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
    private static final String DEFAULT_DIRECTORY = "";
    private static final Integer BUTTON_TYPE        = new Integer( 100 );
@@ -51,6 +57,8 @@ public final class PopPreferences {
    private static final Integer VALUE_SAVER        = new Integer( 106 );
    private static final Integer BORDER_THICKNESS   = new Integer( 107 );
    private static final Integer TERMINUS_TYPE      = new Integer( 108 );
+   private static final Integer TABLE_EDIT_COLOR   = new Integer( 109 );
+   private static final Integer TABLE_UNEDIT_COLOR = new Integer( 110 );
 
    public static final Integer TOP_PACKETS = new Integer( 7 );
    public static final Integer SINGLE_PACKETS = new Integer( 8 );
@@ -68,11 +76,12 @@ public final class PopPreferences {
    private static PopPreferences singleton = null;
 
    //Instance data
-   private Vector buttons;
-   private Hashtable packetTable, table;
+   private Vector<PopulusToolButton> buttons;
+   private Hashtable<Integer, ModelPacket[]> packetTable; //List of Populus models, arranged in groups
+   private Hashtable<Integer, Object> table; //Miscellaneous preference data
 
    private PopPreferences() {
-      buttons = new Vector();
+      buttons = new Vector<PopulusToolButton>();
       initializeMenuPackets();
       subLoad(true);
    }
@@ -93,6 +102,10 @@ public final class PopPreferences {
    }
 
    // GETTERS
+   //"safe" means that we will use the default value if not found
+   //TODO: Parameterize this?
+   //TODO: catch cast exception
+   //TODO: Log if we use default value, since this shouldn't happen.
    private int safeLookup(Integer key, int defaultValue) {
       Integer i = (Integer) table.get(key);
       return (i == null) ? defaultValue : i.intValue();
@@ -104,6 +117,10 @@ public final class PopPreferences {
    private String safeLookup(Integer key, String defaultValue) {
       String s = (String) table.get(key);
       return (s == null) ? defaultValue : s;
+   }
+   private Color safeLookup(Integer key, Color defaultValue) {
+      Color c = (Color) table.get(key);
+      return (c == null) ? defaultValue : c;
    }
 
    public static int getButtonType() {
@@ -127,6 +144,12 @@ public final class PopPreferences {
 
    public static int getTerminusType() {
       return getSingleton().safeLookup(TERMINUS_TYPE, kDEFAULTTERMINI);
+   }
+   public static Color getTableEditColor() {
+	   return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_EDIT_COLOR);
+   }
+   public static Color getTableUneditColor() {
+	   return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_UNEDIT_COLOR);
    }
 
    //SETTERS
@@ -176,7 +199,7 @@ public final class PopPreferences {
       try {
     	  s = System.getProperty("user.home") + System.getProperty("file.separator");
       } catch (Exception e) {
-    	  //TODO: log
+    	  Logging.log(e);
       }
       s += "userpref.po";
       return s;
@@ -274,7 +297,7 @@ public final class PopPreferences {
          new ModelPacket( edu.umn.ecology.populus.model.sd.SDModel.class ),
       };
 
-      packetTable = new Hashtable();
+      packetTable = new Hashtable<Integer, ModelPacket[]>();
       packetTable.put( TOP_PACKETS, topModels );
       packetTable.put( SINGLE_PACKETS, singleModels );
       packetTable.put( MULTI_PACKETS, multiModels );
@@ -292,7 +315,6 @@ public final class PopPreferences {
    /**
      * Saves the Hashtable to file.
      */
-
    public synchronized void save() {
       table.put( COLOR_SAVER, new ColorSaver() );
       table.put( VALUE_SAVER, new ValuesToSave());
@@ -301,11 +323,8 @@ public final class PopPreferences {
          oos = new ObjectOutputStream( new FileOutputStream(getPreferencesFile()) );
          oos.writeObject( table );
       }
-      catch( FileNotFoundException e ) {
-         e.printStackTrace();
-      }
-      catch( IOException e ) {
-         e.printStackTrace();
+      catch( Exception e ) {
+    	  Logging.log(e);
       }
    }
 
@@ -347,8 +366,8 @@ public final class PopPreferences {
          }
       }
       catch( Exception e ) {
-    	  //TODO: Log exception
-         reset(isInit);
+    	  Logging.log(e);
+          reset(isInit);
       }
    }
 
@@ -359,10 +378,9 @@ public final class PopPreferences {
      */
     public void reset() { reset(false); }
     protected synchronized void reset(boolean isInit) {
-      Hashtable tbl = table;
       int oldButtonType, newButtonType;
       oldButtonType = ( table != null && !isInit ) ? getButtonType() : INVALID;
-      table = new Hashtable( );
+      table = new Hashtable<Integer, Object>( );
       table.put( BUTTON_TYPE, new Integer( DEFAULT_BUTTON_TYPE ) );
       table.put( DIRECTORY, DEFAULT_DIRECTORY );
       table.put( DELAY_TIME, new Long( DEFAULT_DELAY ) );
@@ -373,6 +391,8 @@ public final class PopPreferences {
       table.put( COLOR_SAVER, new ColorSaver() );
       table.put( VALUE_SAVER, new ValuesToSave() );
       table.put( BORDER_THICKNESS , new Integer(5));
+      table.put( TABLE_EDIT_COLOR, Color.yellow );
+      table.put( TABLE_UNEDIT_COLOR, Color.white );
 
       //check if button type changed (if so, tell buttons)
       if (!isInit) {
@@ -385,12 +405,13 @@ public final class PopPreferences {
 
    /**
     * Tells buttons that the look has changed.
-    * Lars - This has a memory leak, since we always
-    * keep a reference of all the buttons -- maybe even when their model is long gone.
+    * TODO efficiency - This has a memory leak, since we always
+    *        keep a reference of all the buttons -- maybe 
+    *        even when their model is long gone.
     */
    private void notifyButtons() {
       PopulusToolButton button;
-      Enumeration e = buttons.elements();
+      Enumeration<PopulusToolButton> e = buttons.elements();
       //edu.umn.ecology.populus.fileio.Logging.log("There are " + buttons.size() + " buttons."); //Lars
       while( e.hasMoreElements() ) {
          button = (PopulusToolButton)e.nextElement();

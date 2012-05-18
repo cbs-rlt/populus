@@ -73,6 +73,9 @@ public class PreferencesDialog
   JButton trickButton = new JButton();
   JComboBox terminusType = new JComboBox();
 
+  /**
+   * @wbp.parser.constructor
+   */
   public PreferencesDialog(Frame frame, String title) {
     this(frame, title, false);
   }
@@ -345,7 +348,7 @@ public class PreferencesDialog
     savePrefButton.setToolTipText("Save Preferences to Disk");
     ownerBorderThickness.setToolTipText("");
     extraPanel.setLayout(gridBagLayout5);
-    directory.setText(PopPreferences.getDirectory());
+    directory.setText(PopPreferences.getDirectory()); //TODO ease of use: We should have a browse button here.
     dirLabel.setToolTipText("Default Directory to Save and Load Models");
     dirLabel.setText("Directory:");
     trickButton.setActionCommand("Trick");

@@ -22,10 +22,10 @@ public class HelpUtilities implements ActionListener {
    private static String cmd = "";
    private static String app = "";
 
-   /*in this static block, several things need to be determined. first, we need to make sure the
-   help file exists and is in the right place.
-   the second thing that needs to be determined is whether the command prompt is cmd or command.
-   then, because we can't be too sure about whether
+   /*in this static block, several things need to be determined.
+    * 1) first, we need to make sure the help file exists and is in the right place.
+    * 2) second thing that needs to be determined is whether the command prompt is cmd or command.
+    * 3) because we can't be too sure about whether
    adobe acrobat or adobe reader are installed, we need to check and find out. I assume that the windows
    command "ftype AcroExch.Document" will always determine this... the whole point here is so that we can pass the
    executable the "don't show the splash screen" parameters... otherwise, we'd only have to use "start thing.pdf"

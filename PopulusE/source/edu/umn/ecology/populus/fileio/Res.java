@@ -8,9 +8,13 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
       },  {
          "Files_of_type_", "Files of type:"
       },  {
-         "picture_jpg", "picture.jpg"
-      },  {
-         "Save_picture_in_JPEG", "Save picture in JPEG format"
+          "picture_jpg", "picture.jpg" //Unused?
+       },  {
+          "Save_picture_in_JPEG", "Save picture in JPEG format" //Unused?
+       },  {
+           "picture_png", "picture.png"
+        },  {
+           "Save_picture_in_PNG", "Save picture in PNG format"
       },  {
          "Error_Saving_File", "Error Saving File"
       },  {
