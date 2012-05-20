@@ -38,15 +38,6 @@ public class RCTParamInfo implements BasicPlot {
    String yCap5 =  "<b><i>"+ColorScheme.getColorString( 0 ) + "R<sub>1</>, <b><i>"+ColorScheme.getColorString( 1 )  +"R<sub>2</>";
    String yCap6 = "<b><i>"+ColorScheme.getColorString( 0 ) + "R<sub>1</>, <b><i>"+ColorScheme.getColorString( 1 )  +"R<sub>2</>, <b><i>"+ColorScheme.getColorString( 2 )  +"R<sub>3</>";
 
-   /*TODO: Need to verify if this is what we want (old code immediately below)
-   String n1Caption = "Species 1 (<i>N<sub>1</sub></i>)";
-   String n2Caption = "Species 2 (<i>N<sub>2</sub></i>)";
-   String n3Caption = "Species 3 (<i>N<sub>3</sub></i>)";
-   String r1Caption = "Resource 1 (<i>R<sub>1</sub></i>)";
-   String r2Caption = "Resource 2 (<i>R<sub>2</sub></i>)";
-   String r3Caption = "Resource 3 (<i>R<sub>3</sub></i>)";
-   */
-   
    String n1Caption = res.getString("CapSpecies1");
    String n2Caption = res.getString("CapSpecies2");
    String n3Caption = res.getString("CapSpecies3");
@@ -166,7 +157,8 @@ public class RCTParamInfo implements BasicPlot {
                      bp.addData(isocline);
                   }
                }
-               bp.swapData(0,vars.getSpecNum());
+               //Move the isoclines to the front
+               bp.moveDataToBack(0);
 
                PlotArrow.addArrow( bp, vars.getSpecNum() );
             }

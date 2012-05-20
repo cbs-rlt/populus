@@ -3,6 +3,8 @@ import com.klg.jclass.chart.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.plotshapes.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
+import edu.umn.ecology.populus.fileio.Logging;
+
 import java.awt.*;
 import java.io.*;
 import java.util.*;
@@ -248,14 +250,52 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
          addData(points[i]);
    }
 
+   /** Swaps chart data of two indices */
    public void swapData( int index1, int index2 ){
       int nSeries = getNumSeries();
-      if(index1 >= nSeries || index2 >= nSeries)
-         return;
+      if(index1 >= nSeries || index2 >= nSeries) {
+    	  Logging.log("Invalid indices passed into swapData");
+          return;
+      }
 
       double[][] tempData = data[index1];
       data[index1] = data[index2];
       data[index2] = tempData;
+   }
+   /**Similar to swapData, but move one index to the front, and
+    * shifts everything else back.
+    */
+   public void moveDataToFront( int index ) {
+	   int nSeries = getNumSeries();
+	   if(index >= nSeries || index < 0) {
+		   Logging.log("Invalid index (" + index + "to moveDataToFront");
+		   return;
+	   }
+	   
+	   double[][] tempData = data[index];
+	   for (int i=index; i>0; --i) {
+		   data[i] = data[i-1];
+	   }
+	   data[0] = tempData;
+   }
+   
+   /**Similar to swapData, but move one index to the back, and
+    * shifts everything else forward.
+    */
+   public void moveDataToBack( int index ) {
+	   int nSeries = getNumSeries();
+	   if(index >= nSeries || index < 0) {
+		   Logging.log("Invalid index (" + index + "to moveDataToFront");
+		   return;
+	   }
+	   
+	   double[][] tempData = data[index];
+	   for (int i=index; i<data.length-1; ++i) {
+		   Logging.log("data[" + index + "] = data[" + (index+1) + "]");
+		   data[i] = data[i+1];
+	   }
+	   data[data.length-1] = tempData;
+	   Logging.log("data[" + (data.length-1) + "] = data[" + index + "]");
    }
 
    public int addData( double[][] newLine ){

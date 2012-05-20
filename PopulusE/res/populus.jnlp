@@ -2,13 +2,13 @@
 <!-- JNLP File for Populus -->
 <jnlp
   spec="1.0+"
-  codebase="http://larsroe.com/pop"
+  codebase="http://www.cbs.umn.edu/populus"
   href="populus.jnlp"
   version="5.5.0">
   <information>
     <title>Populus</title>
     <vendor>Don Alstad, University of Minnesota</vendor>
-    <homepage href="larsroe.com/pop/index.html"/>
+    <homepage href="www.cbs.umn.edu/populus"/>
     <description>Populus</description>
     <description kind="one-line">The Populus software contains a set of simulations that we use to teach population biology and evolutionary ecology at the University of Minnesota.</description>
     <offline-allowed/>

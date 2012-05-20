@@ -49,12 +49,23 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
       { "DAM", "Decoupled Anderson & May" },
       { "DAM_parasite", "Decoupled A & M" },
 
+      /*
+	  //TODO: Do we want this colored version instead of what is below?
    	  { "CapSpecies1", "Species 1 (" + ColorScheme.getColorString( 0 ) + "<i>N<sub>1</sub></i></font>)"},
    	  { "CapSpecies2", "Species 2 (" + ColorScheme.getColorString( 1 ) + "<i>N<sub>2</sub></i></font>)"},
    	  { "CapSpecies3", "Species 3 (" + ColorScheme.getColorString( 2 ) + "<i>N<sub>3</sub></i></font>)"},
   	  { "CapResource1", "Resource 1 (" + ColorScheme.getColorString( 0 ) + "<i>R<sub>1</sub></i></font>)"},
    	  { "CapResource2", "Resource 2 (" + ColorScheme.getColorString( 1 ) + "<i>R<sub>2</sub></i></font>)"},
-   	  { "CapResource3", "Resource 3 (" + ColorScheme.getColorString( 2 ) + "<i>R<sub>3</sub></i></font>)"}};
+   	  { "CapResource3", "Resource 3 (" + ColorScheme.getColorString( 2 ) + "<i>R<sub>3</sub></i></font>)"},
+   	  */
+   	  
+   	  { "CapSpecies1", "Species 1 (<i>N<sub>1</sub></i>)"},
+   	  { "CapSpecies2", "Species 2 (<i>N<sub>2</sub></i>)"},
+   	  { "CapSpecies3", "Species 3 (<i>N<sub>3</sub></i>)"},
+  	  { "CapResource1", "Resource 1 (<i>R<sub>1</sub></i>)"},
+   	  { "CapResource2", "Resource 2 (<i>R<sub>2</sub></i>)"},
+   	  { "CapResource3", "Resource 3 (<i>R<sub>3</sub></i>)"},
+   	  };
 
 
       public Object[][] getContents() {

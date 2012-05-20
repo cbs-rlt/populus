@@ -2,13 +2,21 @@
 * All TODO in code
 * Fix Eclipse project warnings
 * DSAL on Mac
-* CPP: y-axis = "Predator Population (P)" P is in red
-       x-axis = "Prey Population (N)" N is in blue
-* Resource Competition, Tilman: Colors need to match
-  - Verify exactly what is wanted here, the graph "line" should be a certain color, but the axes are something else?
 
 Test procedures:
 * verify saving and loading a model
+
+* Can we load model saved on a different machine? We should be able to.
+* Update to 5.5 in several spots:
+  * flash screen
+  * other stuff
+
+* We should have a debug console window.  What normally happens to stdout? Can we bring that up easily?
+* Add buildjar.xml file in project
+
+* Updating is not automatic - we need to do more than just put up a new jar file.
+
+* Font for disabled buttons is still dark.
 
 Build procedures
 * How to sign applet/application
