@@ -20,9 +20,7 @@
   </security>
   <resources>
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
-    <!-- TODO: Why does installer get run multiple times?
     <extension href="installer.jnlp"/>
-    -->
     <jar href="Populus.jar"/>
     <jar href="acrobat.jar"/>
     <jar href="Jama-1.0.2.jar"/>

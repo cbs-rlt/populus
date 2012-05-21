@@ -15,6 +15,8 @@ Test procedures:
 * Add buildjar.xml file in project
 
 * Updating is not automatic - we need to do more than just put up a new jar file.
+  This seems strange, because the updater should just check the server time stamp on the jar file.
+
 
 * Font for disabled buttons is still dark.
 
@@ -33,3 +35,15 @@ http://docs.oracle.com/javase/tutorial/deployment/jar/signing.html
   Have in "install" directory, and look in there. If it's not there, copy it from:
     (1) Using getResource(), or if that fails...
     (2) From Web site
+
+
+Installer issues
+
+* Why didn't it get the new version of the JAR file we installed?
+http://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/avoidingUnnecessaryUpdateChecks.html
+
+* Test that if the client does not have Java installed, it should automatically download it. It *should* work:
+    http://www.oracle.com/technetwork/java/javase/overview-137531.html#2
+* Create shortcuts if requested
+* flash screen
+    In JNLP file: <icon href="mysplash.jpg" kind="splash"/> 
