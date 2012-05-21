@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project PopulusE with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+	<echo>Creating out directory</echo>
+        <delete dir="D:/Populus/gdev/PopulusE/out"/>
+        <mkdir dir="D:/Populus/gdev/PopulusE/out"/>
+        <jar destfile="D:/Populus/gdev/PopulusE/out/Populus.jar">
+            <manifest>
+                <attribute name="Main-Class" value="edu.umn.ecology.populus.core.PopRun"/>
+                <attribute name="Class-Path" value=". acrobat.jar Jama-1.0.2.jar JBCL.jar jcchart401K.jar"/>
+		<attribute name="Trusted-Library" value="True"/>
+            </manifest>
+            <fileset dir="D:/Populus/gdev/PopulusE/build/classes"/>
+        </jar>
+        <copy file="D:/Populus/gdev/PopulusE/res/reqlibs/acrobat.jar" todir="D:/Populus/gdev/PopulusE/out"/>
+        <copy file="D:/Populus/gdev/PopulusE/res/reqlibs/Jama-1.0.2.jar" todir="D:/Populus/gdev/PopulusE/out"/>
+        <copy file="D:/Populus/gdev/PopulusE/res/reqlibs/JBCL.jar" todir="D:/Populus/gdev/PopulusE/out"/>
+        <copy file="D:/Populus/gdev/PopulusE/res/reqlibs/jcchart401K.jar" todir="D:/Populus/gdev/PopulusE/out"/>
+        <copy file="D:/Populus/gdev/PopulusE/res/populus.jnlp" todir="D:/Populus/gdev/PopulusE/out"/>
+	<copy file="D:/Populus/gdev/PopulusE/source/edu/umn/ecology/populus/core/Populus5.5SplashScreen.png" todir="D:/Populus/gdev/PopulusE/out"/>
+	<copy file="D:/Populus/gdev/PopulusE/res/installer.jnlp" todir="D:/Populus/gdev/PopulusE/out"/>
+	<!-- clean cache
+		javaws -uninstall
+	-->
+
+	<echo>Signing JAR files</echo>
+
+        <genkey keystore="popkeystore" alias="Lars" storepass="somethingpass" 
+          dname="CN=Lars Roe, OU=University of Minnesota, O=biosci, L=St. Paul, ST=Minnesota, C=US"/> 
+
+        <signjar keystore="popkeystore" alias="Lars" storepass="somethingpass">
+            <fileset file="${web.dir}/${jar.name}" />
+            <fileset dir="${lib.dir}">
+                <include name="*.jar"/>
+            </fileset>  
+        </signjar>
+    </target>
+
+</project>

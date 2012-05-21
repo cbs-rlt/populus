@@ -89,7 +89,7 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
       },  {
          "_Output", ": Output"
       },  {
-         "Populus_Starting_", "Populus 5.4 Starting"
+         "Populus_Starting_", "Populus 5.5 Starting"
       },  {
          "Populus_Started", "Populus Started"
       },  {

@@ -24,7 +24,7 @@ import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 
 /**
-  * Logistic Population Growth panel
+  * Logistic Population Growth panel (aka Density Dependent)
   *
   *
   *

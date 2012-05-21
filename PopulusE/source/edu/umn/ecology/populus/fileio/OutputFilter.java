@@ -3,6 +3,7 @@ import java.io.*;
 
 /**
   * This type was created in VisualAge.
+  * TODO: Is this used? Looks worthless...
   */
 
 public class OutputFilter implements java.io.FilenameFilter {

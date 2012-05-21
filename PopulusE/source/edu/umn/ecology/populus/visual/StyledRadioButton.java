@@ -7,9 +7,8 @@
 //with Populus
 package edu.umn.ecology.populus.visual;
 
-import java.awt.*;
+import java.awt.Color;
 import javax.swing.*;
-import java.util.Vector;
 
 /** This class implements the HTMLLabel utility for formatting the text
  * for radio buttons. */
@@ -42,6 +41,16 @@ public class StyledRadioButton extends JRadioButton {
 
     public String getFormattedText() {
         return formattedText;
+    }
+    
+    public void setEnabled(boolean b) {
+    	super.setEnabled(b);
+    	//This should make the font look disabled, similar to HTMLLabel
+    	Color currentColor = Color.gray;
+    	if( b ) {
+    		currentColor = (Color)UIManager.get( "Label.foreground" );
+    	}
+    	this.setForeground(currentColor);
     }
 
     /**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- JNLP File for Populus -->
+<!-- JNLP File for Populus Installer -->
 <jnlp
   spec="1.0+"
   codebase="file:/D:/Populus/gdev/PopulusE/out"
@@ -12,22 +12,15 @@
     <description>Populus</description>
     <description kind="one-line">The Populus software contains a set of simulations that we use to teach population biology and evolutionary ecology at the University of Minnesota.</description>
     <offline-allowed/>
-    <icon href="Populus5.5SplashScreen.png" kind="splash"/> 
+    <icon href="PopulusSplashScreen.gif" kind="splash"/> 
   </information>
   <update check="background" policy="prompt-update"/>
   <security>
-    <all-permissions/>
+    <!-- Not yet   <all-permissions/> -->
   </security>
   <resources>
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
-    <!-- TODO: Why does installer get run multiple times?
-    <extension href="installer.jnlp"/>
-    -->
     <jar href="Populus.jar"/>
-    <jar href="acrobat.jar"/>
-    <jar href="Jama-1.0.2.jar"/>
-    <jar href="JBCL.jar"/>
-    <jar href="jcchart401K.jar"/>
   </resources>
-  <application-desc main-class="edu.umn.ecology.populus.core.PopRun"/>
+  <installer-desc main-class="edu.umn.ecology.populus.install.Installer"/>
 </jnlp> 

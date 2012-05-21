@@ -37,8 +37,7 @@ import javax.swing.*;
  */
 public class DesktopWindow extends JFrame implements ModelListener {
    public static DesktopWindow defaultWindow;
-   //public static final String BACKGROUND_IMAGE_FILE = "PopulusTitlePage.gif";
-   public static final String BACKGROUND_IMAGE_FILE = "PopulusSplashScreen.gif";
+   public static final String BACKGROUND_IMAGE_FILE = "Populus5.5SplashScreen.png";
    BorderLayout borderLayout1 = new BorderLayout();
 
    /**

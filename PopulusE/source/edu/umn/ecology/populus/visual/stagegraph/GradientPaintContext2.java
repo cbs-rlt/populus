@@ -14,6 +14,8 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.PaintContext;
 import java.awt.Color;
 
+import edu.umn.ecology.populus.fileio.Logging;
+
 /**
  * the big deal about this file is that one line was changed (and most the comments deleted).
  * all that was changed was the little bit of code at the end of the constructor. the modification causes
@@ -172,16 +174,27 @@ public class GradientPaintContext2 implements PaintContext {
             rast = getColorModel().createCompatibleWritableRaster(w, h);
             saved = rast;
         }
-
-        IntegerComponentRaster irast = (IntegerComponentRaster) rast;
-        int off = irast.getDataOffset(0);
-        int adjust = irast.getScanlineStride() - w;
-        int[] pixels = irast.getDataStorage();
         
-        if (cyclic) {
-            cycleFillRaster(pixels, off, adjust, w, h, rowrel, dx, dy);
-        } else {
-            clipFillRaster(pixels, off, adjust, w, h, rowrel, dx, dy);
+
+        //TODO: If this throws, it's probably because it can't do the gradient "flowing".
+        // Once we figure out a way not to use com.sun.*, we can fix this.
+        try {
+	        IntegerComponentRaster irast = (IntegerComponentRaster) rast;
+	        int off = irast.getDataOffset(0);
+	        int adjust = irast.getScanlineStride() - w;
+	        int[] pixels = irast.getDataStorage();
+	        
+	        //Log it...
+	        Logging.log("In getRaster(" + x + "," + y + "," + w + "," + h + "),"
+	        		+ " off=" + off + ", adjust=" + adjust + ", pixels.len=" + pixels.length);
+	        
+	        if (cyclic) {
+	            cycleFillRaster(pixels, off, adjust, w, h, rowrel, dx, dy);
+	        } else {
+	            clipFillRaster(pixels, off, adjust, w, h, rowrel, dx, dy);
+	        }
+        } catch (Exception e) {
+        	//Logging.log(e);
         }
 
         return rast;

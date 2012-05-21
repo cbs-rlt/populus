@@ -146,7 +146,7 @@ public final class PopPreferences {
       return getSingleton().safeLookup(TERMINUS_TYPE, kDEFAULTTERMINI);
    }
    public static Color getTableEditColor() {
-	   return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_EDIT_COLOR);
+	   return getSingleton().safeLookup(TABLE_EDIT_COLOR, DEFAULT_TABLE_EDIT_COLOR);
    }
    public static Color getTableUneditColor() {
 	   return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_UNEDIT_COLOR);
@@ -194,11 +194,14 @@ public final class PopPreferences {
       return ( (Boolean)getSingleton().table.get( USE_AWT_FILEDIALOG ) ).booleanValue();
    }
 
-   public static String getPreferencesFile() {
+   //TODO: Use javax.jnlp.FileSaveService:
+   // http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
+   private static String getPreferencesFile() {
       String s = "";
       try {
     	  s = System.getProperty("user.home") + System.getProperty("file.separator");
       } catch (Exception e) {
+    	  Logging.log("Could not load preferences");
     	  Logging.log(e);
       }
       s += "userpref.po";
@@ -338,6 +341,9 @@ public final class PopPreferences {
      * Loads the Hashtable from file, called by load().
      * @param isInit When true, we don't compare with the existing data to see if we need to update
      *  anything, e.g. the button look.
+     *  
+     *  TODO: use javax.jnlp.FileOpenService here or javax.jnlp.PersistenceService
+     *    http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileOpenService.html
      */
    private void subLoad(boolean isInit) {
       try {
@@ -347,7 +353,7 @@ public final class PopPreferences {
             oldButtonType = ( table != null ) ? getButtonType() : INVALID;
          }
          ois = new ObjectInputStream( new FileInputStream(getPreferencesFile()) );
-         table = (Hashtable)ois.readObject();
+         table = (Hashtable<Integer, Object>)ois.readObject();
 
          if (!isInit) {
             //check if button type changed (if so, tell buttons)
@@ -366,6 +372,7 @@ public final class PopPreferences {
          }
       }
       catch( Exception e ) {
+    	  Logging.log("Failed to get Populus Preferences, will use default values.");
     	  Logging.log(e);
           reset(isInit);
       }
@@ -393,7 +400,7 @@ public final class PopPreferences {
       table.put( BORDER_THICKNESS , new Integer(5));
       table.put( TABLE_EDIT_COLOR, Color.yellow );
       table.put( TABLE_UNEDIT_COLOR, Color.white );
-
+      
       //check if button type changed (if so, tell buttons)
       if (!isInit) {
          newButtonType = getButtonType();

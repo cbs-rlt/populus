@@ -10,7 +10,7 @@ import java.util.*;
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe
- * @version 5.4
+ * @version 5.5
  */
 
 public class PopResourceBundle {
