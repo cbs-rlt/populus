@@ -221,49 +221,37 @@ public static final int kDNNDTVSN = 3;
       modelType = continuous.isSelected() ? LPGParamInfo.CONTINUOUS : discrete.isSelected() ? LPGParamInfo.DISCRETE : LPGParamInfo.LAGGED;
       plotType = nvstButton.isSelected() ? kNVST : lnnvstButton.isSelected() ? kLNNVST : dNdtButton.isSelected() ? kDNDTVSN : dNNdtButton.isSelected() ? kDNNDTVSN : kLNNTP1VSLNNT;
 
-      /*
-      return new LPGParamInfo(modelType, paramN0.getCurrentValue(), paramK.getCurrentValue(),
-      paramr.getCurrentValue(), paramT.getCurrentValue(),
-      paramTime.getInt(), plotType);
-
-      LPGData[] myData = new LPGData[4];
-      myData[0] = new LPGData(modelType, paramN0.getCurrentValue(), paramK.getCurrentValue(),
-      paramr.getCurrentValue(), paramT.getCurrentValue(),
-      paramTime.getInt(), plotType);
-      myData[1] = new LPGData(modelType, 20, 500, 1.14, 1.1, paramTime.getInt(), plotType);
-      return new LPGParamInfo(myData, 2);
-      */
       myData = new LPGData[4];
       int numToGraph = 0;
       if( one.isSelected() ) {
-         myData[0] = new LPGData( modelType, paramN0.getCurrentValue(), paramK.getCurrentValue(), paramr.getCurrentValue(), paramT.getCurrentValue(), paramTime.getInt(), plotType );
+         myData[0] = new LPGData(paramN0.getCurrentValue(), paramK.getCurrentValue(), paramr.getCurrentValue(), paramT.getCurrentValue());
          numToGraph++;
       }
       else {
          myData[0] = null;
       }
       if( two.isSelected() ) {
-         myData[1] = new LPGData( modelType, paramN1.getCurrentValue(), paramK1.getCurrentValue(), paramr1.getCurrentValue(), paramT1.getCurrentValue(), paramTime.getInt(), plotType );
+         myData[1] = new LPGData(paramN1.getCurrentValue(), paramK1.getCurrentValue(), paramr1.getCurrentValue(), paramT1.getCurrentValue());
          numToGraph++;
       }
       else {
          myData[1] = null;
       }
       if( three.isSelected() ) {
-         myData[2] = new LPGData( modelType, paramN2.getCurrentValue(), paramK2.getCurrentValue(), paramr2.getCurrentValue(), paramT2.getCurrentValue(), paramTime.getInt(), plotType );
+         myData[2] = new LPGData(paramN2.getCurrentValue(), paramK2.getCurrentValue(), paramr2.getCurrentValue(), paramT2.getCurrentValue());
          numToGraph++;
       }
       else {
          myData[2] = null;
       }
       if( four.isSelected() ) {
-         myData[3] = new LPGData( modelType, paramN3.getCurrentValue(), paramK3.getCurrentValue(), paramr3.getCurrentValue(), paramT3.getCurrentValue(), paramTime.getInt(), plotType );
+         myData[3] = new LPGData(paramN3.getCurrentValue(), paramK3.getCurrentValue(), paramr3.getCurrentValue(), paramT3.getCurrentValue());
          numToGraph++;
       }
       else {
          myData[3] = null;
       }
-      return new LPGParamInfo( myData, numToGraph );
+      return new LPGParamInfo( myData, numToGraph, modelType, plotType, paramTime.getInt());
    }
 
    private void jbInit() throws Exception {

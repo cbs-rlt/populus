@@ -136,7 +136,7 @@ public class LPGParamInfo implements BasicPlot {
       return returnValue;
    }
 
-   public LPGParamInfo( LPGData[] myData, int numGraphs ) {
+   public LPGParamInfo( LPGData[] myData, int numGraphs, int modelType, int plotType, int time ) {
       BasicPlotInfo temp = null;
 
       /*
@@ -144,7 +144,7 @@ public class LPGParamInfo implements BasicPlot {
       returnValue is overwritten every loop.
       */
       BasicPlotInfo toKeep = new BasicPlotInfo();
-      double[][][] tempDoub, keepDoub = null;
+      double[][][] keepDoub = null;
       if( numGraphs == 0 ) {
          return ;
       }
@@ -152,15 +152,15 @@ public class LPGParamInfo implements BasicPlot {
       while( myData[j] == null ) {
          j++;
       }
-      modelType = LPGData.modelType;
-      plotType = LPGData.plotType;
+      this.modelType = modelType;
+      this.plotType = plotType;
+      this.generations = time;
       j = 0;
       returnValue = new BasicPlotInfo();
       keepDoub = new double[numGraphs][][];
       for( int i = 0;i < numGraphs;i++ ) {
          while( myData[j] == null ) j++;
          lag = (int)myData[j].T;
-         generations = LPGData.time;
          this.k = (int)myData[j].K;
          this.r = myData[j].r;
          this.n0 = myData[j].N;
@@ -182,7 +182,6 @@ public class LPGParamInfo implements BasicPlot {
    }
 
    private void DiscreteGraph() {
-      int i, j;
       double oldN;
       maxy = k;
       if( plotType == LPGPanel.kLNNTP1VSLNNT ) {
@@ -195,7 +194,7 @@ public class LPGParamInfo implements BasicPlot {
       points[0][1][0] = n0;
       tempN = n0;
       oldN = n0;
-      for( i = 1;i <= generations;i++ ) {
+      for( int i = 1; i <= generations; i++ ) {
          tempN *= Math.exp( r * ( 1 - tempN / k ) );
          maxy = Math.max( maxy, tempN );
          if( plotType == LPGPanel.kLNNTP1VSLNNT ) {
@@ -246,11 +245,9 @@ public class LPGParamInfo implements BasicPlot {
       kNumPoints = generations*20;
       double dt = generations / kNumPoints;
       double kcounter = 0.0;
-      Vector lagVector = new Vector( lagLagIters + 1 );
+      Vector<Double> lagVector = new Vector<Double>( lagLagIters + 1 );
       double[][][] points = new double[1][2][(int)kNumPoints];
-      double[] temp2 = new double[2];
       double nx = 0.0, y = n0;
-      int maxx = generations;
       maxy = n0;
       int i = 0;
 
@@ -285,7 +282,7 @@ public class LPGParamInfo implements BasicPlot {
    }
 
    private void ContinuousGraph() {
-      int i, j;
+      int i;
       if( ( plotType == LPGPanel.kDNDTVSN ) || ( plotType == LPGPanel.kDNNDTVSN ) ) {
          points = new double[1][2][generations];
       }
