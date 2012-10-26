@@ -1,12 +1,15 @@
 package edu.umn.ecology.populus.model.soamal;
 import java.util.*;
-import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
 import edu.umn.ecology.populus.math.NumberMath;
 
 public class SOAMALTable extends AbstractTableModel {
-   int dimension=0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6320760428782955706L;
+int dimension=0;
    Vector[] table;
 
    /**

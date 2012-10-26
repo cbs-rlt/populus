@@ -17,7 +17,11 @@ import edu.umn.ecology.populus.math.*;
  */
 
 public class EigenSystem extends OutputPanel {
-   double[][] eigenvectors;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7689433644030491113L;
+double[][] eigenvectors;
    double[] re, ie;
    String[] text;
    private JList eigenValueList = new JList();

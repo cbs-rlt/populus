@@ -6,7 +6,12 @@ import java.lang.Exception;
 
 public class IEException extends Exception {
    
-   public IEException( String message ) {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3719610138118809274L;
+
+public IEException( String message ) {
       super( message );
    }
 }

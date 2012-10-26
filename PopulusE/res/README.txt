@@ -13,6 +13,10 @@ Instructions
 Windows:  Populus is found in your start menu.
 
 Version History
+5.5 October 2012
+Major work on installer, works on all platform with JAR distribution.
+Minor fixes to existing models.
+
 5.4 November 2005
 
 
@@ -31,7 +35,7 @@ For this version, we have finally included all of the models from the 3.42 Dos v
 5.1 August 2001
 
 Feedback
-If you find bugs, irregularities, places for improvement, or have other comments, please send an email to populus@ecology.umn.edu.
+If you find bugs, irregularities, places for improvement, or have other comments, please send an email to cbs-populus@umn.edu.
 
 Language Support
 Spanish translations of some of the more basic models are provided. We would be interested in corresponding with people who would be able to help with other translations.  Please send an email to populus@ecology.umn.edu.

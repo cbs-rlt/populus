@@ -7,14 +7,14 @@
 //Company:
 //Description:
 package edu.umn.ecology.populus.core;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import java.util.*;
 
 public class SaveDialog extends JPanel {
-   public static final int MODEL_SETTINGS = 0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3434462412812793131L;
+public static final int MODEL_SETTINGS = 0;
    public static final int OUTPUT_TEXT = 1;
    public static final int OUTPUT_JPEG = 2;
    public static final int INPUT_JPEG = 3;

@@ -6,7 +6,6 @@ package edu.umn.ecology.populus.plot.threedgrapher;
 
 import java.awt.*;
 import java.util.*;
-import java.awt.geom.Rectangle2D;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.visual.HTMLFreeLabel;
 import edu.umn.ecology.populus.math.NumberMath;

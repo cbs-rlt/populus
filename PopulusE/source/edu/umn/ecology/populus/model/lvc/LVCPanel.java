@@ -1,17 +1,19 @@
 package edu.umn.ecology.populus.model.lvc;
 import java.awt.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import com.borland.jbcl.layout.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class LVCPanel extends BasicPlotInputPanel {
-   Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2873141916877977257L;
+Border border1;
    TitledBorder titledBorder1;
    StyledRadioButton nvstButton = new StyledRadioButton();
    PopulusParameterField paramr1 = new PopulusParameterField();

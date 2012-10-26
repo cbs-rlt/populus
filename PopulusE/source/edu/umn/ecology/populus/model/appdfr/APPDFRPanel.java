@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class APPDFRPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4146293368343423055L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );
    JPanel initialConditionsPanel = new JPanel();
    Border border1;
    JPanel paramsPanel = new JPanel();

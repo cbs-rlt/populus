@@ -4,11 +4,15 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
-import edu.umn.ecology.populus.math.NumberMath;
 
 //Lars - when is this class ever used?!?!?
 public class SSPGTable extends AbstractTableModel{
-   int dimension=0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3842707077834095589L;
+
+int dimension=0;
 
    /*each element of the array refers to a column, each element in the vector
    refers to the row values*/

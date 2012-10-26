@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.sdal;
 import java.awt.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
@@ -19,7 +18,11 @@ import java.util.*;
   */
 
 public class SDALPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sdal.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 104781528256778392L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sdal.Res" );
    JPanel coefficientsPanel = new JPanel();
    JPanel initialConditionsPanel = new JPanel();
    VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();

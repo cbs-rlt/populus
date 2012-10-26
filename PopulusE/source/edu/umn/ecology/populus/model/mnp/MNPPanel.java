@@ -1,19 +1,20 @@
 package edu.umn.ecology.populus.model.mnp;
 import java.awt.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.table.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class MNPPanel extends BasicPlotInputPanel {
-   private GridBagLayout gridBagLayout1 = new GridBagLayout();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3575124733108402223L;
+private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JScrollPane dataTableSP = new JScrollPane();
    private JTable table;
    private MNPTable st = new MNPTable();
@@ -170,7 +171,11 @@ public class MNPPanel extends BasicPlotInputPanel {
    }
 
    static class TableHeaderRenderer extends HTMLLabel implements TableCellRenderer {
-      public TableHeaderRenderer() {
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3007138809051313770L;
+	public TableHeaderRenderer() {
          super();
       }
       public Component getTableCellRendererComponent(JTable table, Object value,

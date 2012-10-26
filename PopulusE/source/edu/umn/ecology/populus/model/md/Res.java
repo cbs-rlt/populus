@@ -1,10 +1,12 @@
 package edu.umn.ecology.populus.model.md;
-import java.util.*;
 import java.io.Serializable;
-import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7152285069030704938L;
+static final Object[][] contents = new String[][]{
 	{ "Infectious", "Macroparasitic Infections" },
 	{ "Infective_Stage_W_", "Free-living Infective Stages (<i>W</i>)" },
 	{ "Arrested_Parasite_", "Arrested Parasites (<i>A</i>)" },

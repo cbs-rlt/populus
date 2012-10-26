@@ -3,7 +3,6 @@ package edu.umn.ecology.populus.model.nbss;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.core.Model;
 import edu.umn.ecology.populus.plot.coloredcells.CellController;
-import java.util.*;
 
 public class NBSSModel extends Model {
    NBSSPanel nbssp = new NBSSPanel();

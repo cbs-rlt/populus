@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.plot;
 
-import edu.umn.ecology.populus.model.aspg.*;
 import edu.umn.ecology.populus.constants.OutputTypes;
 import edu.umn.ecology.populus.resultwindow.*;
 import edu.umn.ecology.populus.visual.*;
@@ -17,7 +16,11 @@ import javax.swing.*;
  * @version 5.2
  */
 public class TableOutput extends OutputPanel {
-   TableInterface info;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1964107062861738333L;
+TableInterface info;
    JScrollPane scrollPane = new JScrollPane();
    JPanel jPanel1 = new JPanel();
    BorderLayout borderLayout2 = new BorderLayout();

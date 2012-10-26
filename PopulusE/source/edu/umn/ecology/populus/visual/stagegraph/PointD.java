@@ -1,10 +1,5 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.awt.geom.*;
-
 /**
  * a double type implementation of a coordinate point. i guess i could have used
  * a class already written, but the deed is done

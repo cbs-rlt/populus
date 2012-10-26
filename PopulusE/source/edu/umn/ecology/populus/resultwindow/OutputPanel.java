@@ -1,7 +1,4 @@
 package edu.umn.ecology.populus.resultwindow;
-import edu.umn.ecology.populus.plot.*;
-import java.awt.print.*;
-import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
@@ -13,7 +10,11 @@ import javax.swing.*;
   */
 
 public class OutputPanel extends JPanel {
-   protected transient Vector listeners = new Vector( 1, 1 );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5766971437163627959L;
+protected transient Vector listeners = new Vector( 1, 1 );
    int type = 0;
 
    /** @see edu.umn.ecology.populus.constants.OutputTypes

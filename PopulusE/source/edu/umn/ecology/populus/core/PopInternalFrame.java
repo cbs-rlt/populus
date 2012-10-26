@@ -5,7 +5,11 @@ import edu.umn.ecology.populus.visual.*;
 import javax.swing.border.Border;
 
 public class PopInternalFrame extends JInternalFrame {
-   protected JToolBar toolBar = new JToolBar();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 608794057839649107L;
+protected JToolBar toolBar = new JToolBar();
 
    public void setVisible( boolean vis ) {
       super.setVisible( vis );

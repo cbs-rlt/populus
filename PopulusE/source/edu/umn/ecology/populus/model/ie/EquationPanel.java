@@ -1,13 +1,16 @@
 package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.event.*;
 import java.awt.event.*;
 import com.borland.jbcl.layout.*;
 import java.util.StringTokenizer;
 
 public class EquationPanel extends JPanel {
-   JPanel labelHolder = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5235310299666499109L;
+JPanel labelHolder = new JPanel();
    JScrollPane scroller = new JScrollPane();
    JLabel useL = new JLabel();
    JLabel numEqL = new JLabel();

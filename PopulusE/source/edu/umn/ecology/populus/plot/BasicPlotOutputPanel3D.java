@@ -1,19 +1,17 @@
 package edu.umn.ecology.populus.plot;
 
 import edu.umn.ecology.populus.resultwindow.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.threedgrapher.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.constants.*;
-import edu.umn.ecology.populus.core.PreferencesDialog;
 
 /* The OutputPanel for 3D graphs.*/
 public class BasicPlotOutputPanel3D extends OutputPanel {
-   ThreeD td;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8686546235450404726L;
+ThreeD td;
    GridBagLayout gridBagLayout1 = new GridBagLayout();
 
    public BasicPlotOutputPanel3D(BasicPlotInfo info){

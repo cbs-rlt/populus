@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: edu.umn.ecology.populus.core.PopRun
+
+Name: com/klg/jclass/chart/beans/SimpleChart.class
+Java-Bean: True
+
+Name: com/klg/jclass/chart/beans/MultiChart.class
+Java-Bean: True
+
+Name: com/klg/jclass/chart/
+Implementation-Vendor: KL Group Inc. 
+Implementation-Title: com.klg.jclass.chart 
+Specification-Title: JClass Chart
+Implementation-Version: 4.0.1 
+Specification-Version: 4.0 
+Specification-Vendor: KL Group Inc. 
+

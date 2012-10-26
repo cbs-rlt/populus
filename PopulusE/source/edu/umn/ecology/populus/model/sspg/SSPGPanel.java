@@ -1,17 +1,13 @@
 package edu.umn.ecology.populus.model.sspg;
 
 import java.awt.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
-import java.util.*;
 import edu.umn.ecology.populus.visual.stagegraph.*;
 import edu.umn.ecology.populus.visual.matrixtable.*;
 import edu.umn.ecology.populus.fileio.Logging;
@@ -65,7 +61,12 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
    private transient StageStructuredPane sp = new StageStructuredPane(StageStructuredPane.kSSPG);
    private MatrixTableModel tableModel = new MatrixTableModel(false);
    private JTable projectionTable = new JTable() {
-     // Override this method so that it returns the preferred
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -405372220740247365L;
+
+	// Override this method so that it returns the preferred
      // size of the JTable instead of the default fixed size
      public Dimension getPreferredScrollableViewportSize() {
          return getPreferredSize();
@@ -125,21 +126,21 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
       int type;
 
       if(lambdavstRB.isSelected()){
-         type = this.kLambda;
+         type = SSPGPanel.kLambda;
       } else if(snxRB.isSelected()){
-         type = this.kSNX;
+         type = SSPGPanel.kSNX;
       } else if(nxsnxvstRB.isSelected()){
-         type = this.kNXSNXT;
+         type = SSPGPanel.kNXSNXT;
       } else if(nxsnxvsxRB.isSelected()){
-         type = this.kNXSNXX;
+         type = SSPGPanel.kNXSNXX;
       } else if(xvsnxsnxtRB.isSelected()){
-         type = this.kXSNXT;
+         type = SSPGPanel.kXSNXT;
       } else if(xvsnxtRB.isSelected()){
-         type = this.kXNXT;
+         type = SSPGPanel.kXNXT;
       } else if(eigenRB.isSelected()){
-         type = this.kEIGEN;
+         type = SSPGPanel.kEIGEN;
       } else {
-         type = this.kTABOUT;
+         type = SSPGPanel.kTABOUT;
       }
 
       return type;

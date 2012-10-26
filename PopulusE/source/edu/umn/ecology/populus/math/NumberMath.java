@@ -1,5 +1,4 @@
 package edu.umn.ecology.populus.math;
-import java.util.Random;
 import edu.umn.ecology.populus.model.ie.TextOutput;
 /**
   Primarily used for formatting i/o

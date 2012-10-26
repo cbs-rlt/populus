@@ -2,7 +2,12 @@ package edu.umn.ecology.populus.fileio;
 
 public class CancelledSave extends Exception {
    
-   public CancelledSave( String s ) {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6223522664382154521L;
+
+public CancelledSave( String s ) {
       super( "Cancelled Save: " + s );
    }
    

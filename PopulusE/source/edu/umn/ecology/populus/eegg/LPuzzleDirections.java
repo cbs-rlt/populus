@@ -1,8 +1,5 @@
 package edu.umn.ecology.populus.eegg;
 
-import javax.swing.*;
-import java.awt.*;
-
 public interface LPuzzleDirections {
 	public static final int kN = 0;
 	public static final int kW = 1;

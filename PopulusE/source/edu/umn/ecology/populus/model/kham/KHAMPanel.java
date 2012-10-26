@@ -1,18 +1,17 @@
 package edu.umn.ecology.populus.model.kham;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class KHAMPanel extends BasicPlotInputPanel {
-   JPanel modParamP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9042335499740405956L;
+JPanel modParamP = new JPanel();
    PopulusParameterField p2PPF = new PopulusParameterField();
    private JPanel plotTypeP = new JPanel();
    private JRadioButton Dvst2p2RB = new StyledRadioButton();

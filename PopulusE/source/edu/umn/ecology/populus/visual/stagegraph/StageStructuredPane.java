@@ -4,12 +4,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import java.awt.geom.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import java.io.*;
 
 public class StageStructuredPane extends JPanel implements Serializable {
-   DrawingPane drawingPanel;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7507895596014905385L;
+DrawingPane drawingPanel;
    JPanel controlPanel = new JPanel();
    JToggleButton addStage = new JToggleButton();
    GridBagLayout gridBagLayout2 = new GridBagLayout();
@@ -168,7 +171,11 @@ public class StageStructuredPane extends JPanel implements Serializable {
 
 
    class DrawingPane extends JPanel implements MouseListener, MouseMotionListener, ActionListener{
-      //Color background = Color.green;
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2149768979816767741L;
+	//Color background = Color.green;
       Color background = new Color( 170, 170, 170 );
       JToggleButton stageTB = null;
       JToggleButton transTB = null;

@@ -4,10 +4,13 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
-import edu.umn.ecology.populus.math.NumberMath;
 
 public class ASPGProjectionTable extends AbstractTableModel{
-   int dimension=0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5783523138285798405L;
+int dimension=0;
    int indexShift = -1;
    boolean lastCanHaveStarts = false;
    /*each element of the array refers to a column, each element in the vector

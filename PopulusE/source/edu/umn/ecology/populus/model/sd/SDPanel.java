@@ -1,19 +1,20 @@
 package edu.umn.ecology.populus.model.sd;
 
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.plot.coloredcells.CellController;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.StyledRadioButton;
 import javax.swing.*;
 import com.borland.jbcl.layout.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.event.*;
 
 
 public class SDPanel extends ModelPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 16352175806661664L;
 	public static final int kPD = 0;
 	public static final int kHD = 1;
 

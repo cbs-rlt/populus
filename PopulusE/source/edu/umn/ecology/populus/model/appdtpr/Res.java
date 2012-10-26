@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.appdtpr;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8027322160426817937L;
+static final Object[][] contents = new String[][] {
        {
          "Threshold_Predator", "Threshold Predator Reproduction"
       },  {

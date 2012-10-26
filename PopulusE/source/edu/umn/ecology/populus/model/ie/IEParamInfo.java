@@ -4,8 +4,6 @@ import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
-import java.awt.Color;
-import java.io.*;
 
 
 public class IEParamInfo implements BasicPlot {

@@ -20,14 +20,23 @@ import edu.umn.ecology.populus.visual.*;
  * @version 1.0
  */
 public class SuperFun extends JDialog {
-    JPanel panel1 = new JPanel();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5823526538834551269L;
+	JPanel panel1 = new JPanel();
     BorderLayout borderLayout1 = new BorderLayout();
     RotatablePanel rp = new RotatablePanel();
     JLabel label = new JLabel();
     JPanel jPanel1 = new JPanel();
     JButton jButton1 = new JButton();
     JRadioButton jRadioButton1 = new JRadioButton() {
-        public void paint(Graphics g) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 6902665182242017479L;
+
+		public void paint(Graphics g) {
             super.paint(g);
         }
     };

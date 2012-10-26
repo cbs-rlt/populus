@@ -15,7 +15,11 @@ import javax.swing.border.*;
  */
 
 public class AIDSTInterval extends JPanel {
-   private Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9182934658867998210L;
+private Border border1;
    private TitledBorder titledBorder1;
    private GridBagLayout gridBagLayout7 = new GridBagLayout();
    private PopulusParameterField paramt2 = new PopulusParameterField();

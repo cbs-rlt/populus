@@ -1,11 +1,6 @@
 package edu.umn.ecology.populus.plot;
 
-import edu.umn.ecology.populus.resultwindow.OutputPanel;
-import edu.umn.ecology.populus.constants.*;
 import java.awt.event.*;
-import java.lang.Thread;
-import java.awt.*;
-import javax.swing.*;
 
 /**
  * the LiveGraph class enables a graph that implements the Stepper interface to

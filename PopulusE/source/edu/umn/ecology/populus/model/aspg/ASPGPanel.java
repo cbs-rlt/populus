@@ -15,6 +15,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.visual.stagegraph.*;
 import edu.umn.ecology.populus.visual.matrixtable.*;
+import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
 import edu.umn.ecology.populus.fileio.Logging;
 
 /**
@@ -86,7 +87,12 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    private JScrollBar jsbv = new JScrollBar();
    //Note:  Table will contain
    private JTable projectionTable = new JTable(){
-        // Override this method so that it returns the preferred
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6913265565342644634L;
+
+		// Override this method so that it returns the preferred
         // size of the JTable instead of the default fixed size
         public Dimension getPreferredScrollableViewportSize() {
             return getPreferredSize();
@@ -488,7 +494,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
 
    void viewAllAgesBox_itemStateChanged(ItemEvent e) {
       ageClassToViewPPF.setEnabled(!viewAllAgesBox.isSelected());
-      fireModelPanelEvent(this.CHANGE_PLOT);
+      fireModelPanelEvent(ModelPanelEventTypes.CHANGE_PLOT);
    }
 
    public int getModelType(){
@@ -614,7 +620,11 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    }
 
    static class TableHeaderRenderer extends HTMLLabel implements TableCellRenderer {
-      public TableHeaderRenderer() {
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6280875623848463047L;
+	public TableHeaderRenderer() {
          super();
       }
       public Component getTableCellRendererComponent(JTable table, Object value,
@@ -629,29 +639,29 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
       int ot;
 
       if (lambdaVsTButton.isSelected()) {
-         ot = this.kLAMBDAVST;
+         ot = ASPGPanel.kLAMBDAVST;
       } else if (sigmaNxVsTButton.isSelected()) {
-         ot = this.kSIGMANXVST;
+         ot = ASPGPanel.kSIGMANXVST;
       } else if (nxsnxvstButton.isSelected()) {
-         ot = this.kNXSIGMANXVST;
+         ot = ASPGPanel.kNXSIGMANXVST;
       } else if (vxvsxButton.isSelected()) {
-         ot = this.kVXVSX;
+         ot = ASPGPanel.kVXVSX;
       } else if (tabularOutputButton.isSelected()) {
-         ot = this.kTABULAROUTPUT;
+         ot = ASPGPanel.kTABULAROUTPUT;
       } else if (xvsnxsnxtButton.isSelected()) { //3d
-         ot = this.kXVSNXSIGMANXT;
+         ot = ASPGPanel.kXVSNXSIGMANXT;
       } else if (nxsnxvsxButton.isSelected()) {
-         ot = this.kNXSIGMANXVSX;
+         ot = ASPGPanel.kNXSIGMANXVSX;
       } else if (xvsnxtButton.isSelected()) {  //3d
-         ot = this.kXVSNXT;
+         ot = ASPGPanel.kXVSNXT;
       } else if (mxVsXButton.isSelected()) {
-         ot = this.kMXVSX;
+         ot = ASPGPanel.kMXVSX;
       } else if (lxVsXButton.isSelected()) {
-         ot = this.kLXVSX;
+         ot = ASPGPanel.kLXVSX;
       } else if (leslieMatrixButton.isSelected()) {
-         ot = this.kLESLIEMATRIX;
+         ot = ASPGPanel.kLESLIEMATRIX;
       } else if(eigenButton.isSelected()){
-         ot = this.kEIGEN;
+         ot = ASPGPanel.kEIGEN;
       } else{
          //ERROR! no button is selected
          edu.umn.ecology.populus.fileio.Logging.log("ASPGPanel.getPlotParamInfo button is not selected in output type");

@@ -5,7 +5,12 @@ import edu.umn.ecology.populus.plot.*;
 
 public abstract class PPPlotInfo extends BasicPlotInfo {
    
-   public BasicPlotInfo getBasicPlotInfo() {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4236948640811328005L;
+
+public BasicPlotInfo getBasicPlotInfo() {
       BasicPlotInfo bp = null;
       return bp;
    }

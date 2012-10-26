@@ -12,7 +12,11 @@ import javax.swing.*;
   */
 
 public class WoozleWindow extends OutputPanel implements Runnable,ActionListener {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5036237593784372454L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
    JToggleButton pauseButton = new JToggleButton();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    JLabel generationLabel = new JLabel();
@@ -83,7 +87,7 @@ public class WoozleWindow extends OutputPanel implements Runnable,ActionListener
 
          //Pause
          try {
-            runner.sleep( edu.umn.ecology.populus.core.PopPreferences.getDelayTime() );
+            Thread.sleep( edu.umn.ecology.populus.core.PopPreferences.getDelayTime() );
          }
          catch( InterruptedException e ) {
 

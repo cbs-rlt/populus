@@ -15,7 +15,11 @@ import java.awt.geom.*;
   * Currently we rotate by 90-degree turns, counterclockwise
   */
 public class RotatablePanel extends JComponent {
-   private int turns = 0; //90 degree turns counterclockwise
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1818310346143966701L;
+private int turns = 0; //90 degree turns counterclockwise
    private Component content = null;
 
    public RotatablePanel( Component c ) {

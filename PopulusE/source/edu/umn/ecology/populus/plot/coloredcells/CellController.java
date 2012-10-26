@@ -9,6 +9,10 @@ import javax.swing.*;
 
 /**	This class will display a picture of tiles*/
 public class CellController extends OutputPanel implements Runnable, KeyListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3862996446929889045L;
 	Thread cellUpdater;
 	CellPanel cellPanel;
 	boolean isDone = false,isSuspended = false;
@@ -67,9 +71,9 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		while(!isDone){
 			try{
 				if(saveTime<pauseTime)
-					cellUpdater.sleep(pauseTime-saveTime);
+					Thread.sleep(pauseTime-saveTime);
 				else
-					cellUpdater.sleep(0);
+					Thread.sleep(0);
 			} catch (InterruptedException e) {}
 			saveTime=System.currentTimeMillis();
 			if(!valuesSet && !isSuspended){

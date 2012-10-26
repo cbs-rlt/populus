@@ -1,10 +1,6 @@
 package edu.umn.ecology.populus.model.sotl;
-import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
-import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
 
 public class SOTLParamInfo implements BasicPlot {
    protected static final int Pvst    = 0;

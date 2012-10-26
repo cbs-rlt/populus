@@ -5,7 +5,11 @@ import edu.umn.ecology.populus.plot.ParamInfo;
 import java.util.Random;
 
 class NBSSCellParamInfo extends ParamInfo implements CellFunction{
-   public Random myRand = new Random(System.currentTimeMillis());
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8413398310438128499L;
+public Random myRand = new Random(System.currentTimeMillis());
    NBSSProc v;
    int s, type, border, runInterval, currentGeneration=0;
    double[][][] oldData, popTotals, values;
@@ -59,7 +63,7 @@ class NBSSCellParamInfo extends ParamInfo implements CellFunction{
 
    void increment(){
       if(values[0].length != s){
-         System.out.print("ta created ");
+         //Logging.log("ta created ");
          values = new double[2][s][s];
       }
       double[] t;

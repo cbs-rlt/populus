@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.dig;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5403700502564890346L;
+static final Object[][] contents = new String[][] {
        {
          "Density_Independent", "Density-Independent Growth"
       },  {

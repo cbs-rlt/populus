@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.dig;
 import java.io.Serializable;
-import java.util.*;
 
 class DIGData extends Object implements Serializable {
-   public static int selection;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2469088803649153178L;
+public static int selection;
    public static double gensPF;
    public static boolean isContinuous;
    protected double rPF;

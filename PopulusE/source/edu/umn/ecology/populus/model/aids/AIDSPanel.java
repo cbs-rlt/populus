@@ -1,18 +1,19 @@
 package edu.umn.ecology.populus.model.aids;
 
 import java.awt.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.border.*;
 import java.util.*;
 
 public class AIDSPanel extends BasicPlotInputPanel {
-   PopulusParameterField v0PPF = new PopulusParameterField();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8378090699643554212L;
+PopulusParameterField v0PPF = new PopulusParameterField();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    PopulusParameterField uPPF = new PopulusParameterField();
    JPanel virusesPanel = new JPanel();

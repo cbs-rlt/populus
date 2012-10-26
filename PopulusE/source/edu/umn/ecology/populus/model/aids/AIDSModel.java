@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.aids;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class AIDSModel extends BasicPlotModel {
    public String getThisModelInputName() {

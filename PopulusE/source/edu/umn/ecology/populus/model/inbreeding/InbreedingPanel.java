@@ -1,15 +1,15 @@
 package edu.umn.ecology.populus.model.inbreeding;
 
 import java.awt.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.visual.*;
-import javax.swing.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class InbreedingPanel extends BasicPlotInputPanel {
-   GridBagLayout gridBagLayout1 = new GridBagLayout();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9153822050325863983L;
+GridBagLayout gridBagLayout1 = new GridBagLayout();
    PopulusParameterField populationPPF = new PopulusParameterField();
    PopulusParameterField frequencyPPF = new PopulusParameterField();
    PopulusParameterField gensPPF = new PopulusParameterField();

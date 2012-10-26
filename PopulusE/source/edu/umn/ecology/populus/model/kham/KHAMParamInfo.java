@@ -2,12 +2,7 @@ package edu.umn.ecology.populus.model.kham;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.plot.plotshapes.*;
-import edu.umn.ecology.populus.visual.*;
-import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
-import javax.swing.JOptionPane;
-import edu.umn.ecology.populus.core.DesktopWindow;
 
 public class KHAMParamInfo implements BasicPlot {
    public static final int t2vsp2   = 0;

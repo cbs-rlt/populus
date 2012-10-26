@@ -5,11 +5,8 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.poproutines.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
-import java.lang.Math;
 import javax.swing.JOptionPane;
 import edu.umn.ecology.populus.core.DesktopWindow;
-import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class PSParamInfo implements BasicPlot {
    final int loci;

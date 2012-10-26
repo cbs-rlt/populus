@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class PPPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.pp.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4286136553156042563L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.pp.Res" );
    JPanel initialConditionsPanel = new JPanel();
    Border border1;
    PopulusParameterField mPF = new PopulusParameterField();

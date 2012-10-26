@@ -4,7 +4,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
-import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.fileio.Logging;
 
 public class MatrixTableModel extends AbstractTableModel implements java.io.Externalizable {

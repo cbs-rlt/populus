@@ -1,10 +1,8 @@
 package edu.umn.ecology.populus.visual.ppfield;
-import java.util.Vector;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.math.NumberMath;
-import java.io.*;
 
 /**
   * Will soon be a more robust component
@@ -13,7 +11,11 @@ import java.io.*;
   */
 
 public class NumberField extends JTextField {
-   public boolean integersOnly = false;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4708524697027027818L;
+public boolean integersOnly = false;
 
    public NumberField( double def ) {
       this( def, 8 );

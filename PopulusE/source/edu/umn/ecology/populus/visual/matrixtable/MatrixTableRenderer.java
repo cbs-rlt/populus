@@ -17,7 +17,12 @@ import edu.umn.ecology.populus.visual.SpecialLineBorder;
  */
 
 public class MatrixTableRenderer extends DefaultTableCellRenderer {
-   public MatrixTableRenderer(){
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5435376239339922955L;
+
+public MatrixTableRenderer(){
       super();
    }
 

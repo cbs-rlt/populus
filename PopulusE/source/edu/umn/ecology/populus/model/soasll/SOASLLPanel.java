@@ -1,18 +1,16 @@
 package edu.umn.ecology.populus.model.soasll;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class SOASLLPanel extends BasicPlotInputPanel {
-  private JPanel fitnessesP = new JPanel();
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5796264770398871761L;
+private JPanel fitnessesP = new JPanel();
   private JPanel pP = new JPanel();
   private PopulusParameterField wxYPPF = new PopulusParameterField();
   private PopulusParameterField wXYPPF = new PopulusParameterField();

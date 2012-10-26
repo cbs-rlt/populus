@@ -1,5 +1,4 @@
 package edu.umn.ecology.populus.model.lvc;
-import java.util.*;
 import java.io.Serializable;
 
 /*
@@ -22,7 +21,11 @@ return contents;
 //Spanish
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4231606753494024999L;
+static final Object[][] contents = new String[][] {
        {
          "Lotka_Volterra", "Lotka-Volterra Competition"
       },  {

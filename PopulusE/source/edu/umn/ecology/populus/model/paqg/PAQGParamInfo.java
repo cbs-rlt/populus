@@ -1,10 +1,6 @@
 package edu.umn.ecology.populus.model.paqg;
-import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
-import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
 
 public class PAQGParamInfo implements BasicPlot {
    protected static final int Pvst     = 0;

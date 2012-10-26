@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.model.ps;
 
 import java.awt.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
@@ -10,7 +9,6 @@ import javax.swing.*;
 import javax.swing.border.*;
 import com.borland.jbcl.layout.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
 import javax.swing.event.*;
 
 /**
@@ -18,7 +16,12 @@ import javax.swing.event.*;
   *
   */
 public class PSPanel extends BasicPlotInputPanel {
-   public static final int MAX_LOCI = 10;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3520322824910734120L;
+
+public static final int MAX_LOCI = 10;
 
    Border border1 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
    TitledBorder titledBorder1 = new TitledBorder("Model Parameters");

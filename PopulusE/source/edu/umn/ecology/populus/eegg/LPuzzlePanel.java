@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class LPuzzlePanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4655145490229909283L;
 	LPuzzleModel model = null;
 	int hoverPiece = -1;
 	Color midColor = Color.black;

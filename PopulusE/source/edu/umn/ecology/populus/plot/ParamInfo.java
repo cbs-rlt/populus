@@ -4,6 +4,11 @@ import java.io.Serializable;
 public class ParamInfo extends Object implements Serializable {
    
    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4846503651986984099L;
+
+/**
      * Dumps all of the information. Includes date, data, and other information. For
      *  a less descriptive dump, and only the data, use dumpDataOnly()
      */

@@ -1,18 +1,17 @@
 package edu.umn.ecology.populus.model.herit;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class HERITPanel extends BasicPlotInputPanel {
-   private JPanel plotTypeP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1308377477081368096L;
+private JPanel plotTypeP = new JPanel();
    private JRadioButton mcRB = new JRadioButton();
    private JRadioButton theoreticalRB = new JRadioButton();
    private GridBagLayout gridBagLayout1 = new GridBagLayout();

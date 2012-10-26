@@ -2,6 +2,10 @@ package edu.umn.ecology.populus.fileio;
 import java.io.*;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8617428124830706803L;
 	static final Object[][] contents = new String[][] {
 		{
 			"No_description", "No description"

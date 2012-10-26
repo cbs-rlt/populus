@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.image.Raster;
-import java.awt.image.SinglePixelPackedSampleModel;
 //TODO: We aren't supposed to really have access to sun.awt.image.IntegerComponentRaster
 //We are currently compiling by setting the Java Compiler->Forbidden Reference to "Warning" only.
 import sun.awt.image.IntegerComponentRaster;

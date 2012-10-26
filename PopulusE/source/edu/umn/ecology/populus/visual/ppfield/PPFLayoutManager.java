@@ -6,7 +6,11 @@ import java.awt.*;
   */
 
 public class PPFLayoutManager extends FlowLayout {
-   PopulusParameterField ref;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -886584094839158031L;
+PopulusParameterField ref;
    
    public void layoutContainer( Container target ) {
       synchronized( target.getTreeLock() ) {

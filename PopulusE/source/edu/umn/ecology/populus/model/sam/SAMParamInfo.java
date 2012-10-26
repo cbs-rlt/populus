@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.model.sam;
 import edu.umn.ecology.populus.constants.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.NumberMath;
-import java.awt.*;
 
 public class SAMParamInfo implements BasicPlot {
    public static final int numFreqs  = 100;

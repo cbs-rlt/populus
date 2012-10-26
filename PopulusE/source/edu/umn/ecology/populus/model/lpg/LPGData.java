@@ -2,7 +2,11 @@ package edu.umn.ecology.populus.model.lpg;
 import java.io.Serializable;
 
 class LPGData extends Object implements Serializable {
-   public double r;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8248674235327098587L;
+public double r;
    public double K;
    
    /*
@@ -27,9 +31,9 @@ class LPGData extends Object implements Serializable {
    public static int plotType;
    
    LPGData( int modelType, double paramNO, double paramK, double paramR, double paramT, int paramTime, int plotType ) {
-      this.modelType = modelType;
-      this.plotType = plotType;
-      this.time = paramTime;
+      LPGData.modelType = modelType;
+      LPGData.plotType = plotType;
+      LPGData.time = paramTime;
       this.N = paramNO;
       this.K = paramK;
       this.r = paramR;

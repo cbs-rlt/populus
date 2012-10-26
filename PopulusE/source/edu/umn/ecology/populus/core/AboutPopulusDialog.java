@@ -17,9 +17,13 @@
 package edu.umn.ecology.populus.core;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Method;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import com.borland.jbcl.layout.*;
+
+import edu.umn.ecology.populus.fileio.Logging;
 
 public class AboutPopulusDialog extends JDialog {
    /**
@@ -29,9 +33,8 @@ public class AboutPopulusDialog extends JDialog {
    JButton button1 = new JButton();
    Border border1;
    JPanel jPanel1 = new JPanel();
-   JLabel line3 = new JLabel();
+   JTextField line3 = new JTextField();
    JLabel line1 = new JLabel();
-   XYLayout xYLayout1 = new XYLayout();
    JLabel line7 = new JLabel();
    JPanel panel1 = new JPanel();
    VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
@@ -51,10 +54,18 @@ public class AboutPopulusDialog extends JDialog {
    JLabel line10 = new JLabel();
    JLabel line9 = new JLabel();
    JLabel line5 = new JLabel();
+   private final JPanel panel3rdParty = new JPanel();
+   private final JTextPane txtpnDependsOnThe = new JTextPane();
+   private final JPanel jPanelEmail = new JPanel();
+   private JButton emailButton = new JButton("Email");
+   private final JPanel panel = new JPanel();
     public AboutPopulusDialog( JFrame frame, String title ) {
       this( frame, title, false );
    }
 
+   /**
+    * @wbp.parser.constructor
+    */
    public AboutPopulusDialog( JFrame frame ) {
       this( frame, "", false );
    }
@@ -93,34 +104,64 @@ public class AboutPopulusDialog extends JDialog {
    }
    
    //TODO: fix up error handling on this.
-   void openURI( String uriString ) {
-	   //TODO: Make work for earlier JDK versions.
-	   
+   //Returns True if successful
+   static public boolean openURI( String uriString ) {
+	   //TODO: Should switch on PopPreferences...
+	   return openURIDesktop( uriString );
+	   //return openURIJNLP( uriString );
+   }
+
+   /** Use java.awt.Desktop to open uriString.
+    * Only supports Java 1.6 and above.
+    * @param uriString - URI to open, may include #name
+    * @return true if successful.
+    */
+   static public boolean openURIDesktop( String uriString ) {
+	   //Use java.awt.Desktop, new in Java 1.6
+	   Logging.log("Trying to open with Desktop: " + uriString);
+	   try {
+		   Class<?> desktopClass = Class.forName("java.awt.Desktop");
+		   Method m = desktopClass.getMethod("isDesktopSupported");
+		   Logging.log("invoking isDesktopSupported...");
+		   Logging.log(m.invoke(null).toString()); //TODO - verify it returns true!
+		   //TODO - should we check for this?
+		   // if( !desktop.isSupported( java.awt.Desktop.Action.BROWSE ) ) {
+		   // ... ??
+		   Method getDeskMeth = desktopClass.getMethod("getDesktop");
+		   Object desktop = getDeskMeth.invoke(null);
+		   Method openURI = desktopClass.getMethod("browse", java.net.URI.class);
+		   java.net.URI uri = new java.net.URI(uriString);
+		   openURI.invoke(desktop, uri);
+		   return true;
+
+	   } catch (Exception e) {
+		   Logging.log("Could not open URI " + uriString);
+		   Logging.log(e);
+		   return false;
+	   }
+   }
+   
+   /** Use java.awt.Desktop to open uriString.
+    * Only supports Java 1.6 and above.
+    * @param uriString - URI to open, may include #name
+    * @return true if successful.
+    */
+   static public boolean openURIJNLP( String uriString ) {
 	   //With JNLP 1.5, need JNLP libraries
-	   /*
-	   javax.jnlp.BasicService.showDocument(uriString);
-	   
-	   //For 1.6 and above
-       if( !java.awt.Desktop.isDesktopSupported() ) {
-           System.err.println( "Desktop is not supported (fatal)" );
-           return; //ERROR
-       }
-
-       java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
-
-       if( !desktop.isSupported( java.awt.Desktop.Action.BROWSE ) ) {
-
-           System.err.println( "Desktop doesn't support the browse action (fatal)" );
-           return; //ERROR
-       }
-       try {
-           java.net.URI uri = new java.net.URI( uriString );
-           desktop.browse( uri );
-       }
-       catch ( Exception e ) {
-           System.err.println( e.getMessage() );
-       }
-       */
+	   //javax.jnlp.BasicService.showDocument(uriString);
+	   //Use java.awt.Desktop, new in Java 1.6
+	   Logging.log("Trying to open with JNLP's BasicService: " + uriString);
+	   try {
+		   java.net.URL url = new java.net.URL(uriString);
+		   Method lookupMeth = Class.forName("javax.jnlp.ServiceManager").getMethod("lookup", String.class);
+           Object basicService = lookupMeth.invoke(null, "javax.jnlp.BasicService");
+		   Method showDocMeth = Class.forName("javax.jnlp.BasicService").getMethod("showDocument", java.net.URL.class);
+		   showDocMeth.invoke(basicService, url);
+		   return true;
+	   } catch (Exception e) {
+		   Logging.log(e);
+		   return false;
+	   }
    }
 
    void goB_actionPerformed( ActionEvent e ) {
@@ -137,72 +178,133 @@ public class AboutPopulusDialog extends JDialog {
       button1.setText( "OK" );
       button1.addActionListener( new AboutPopulusDialog_button1_actionAdapter( this ) );
       this.addWindowListener( new AboutPopulusDialog_this_windowAdapter( this ) );
+      gridBagLayout1.rowWeights = new double[]{0.0, 1.0};
+      gridBagLayout1.columnWeights = new double[]{0.0};
       panel1.setLayout( gridBagLayout1 );
-      line1.setText("Populus, Java Version 5.5, May 2012" );
-      line2.setText( "url: http://www.cbs.umn.edu/populus/" );
-      line3.setText( "email: populus@ecology.umn.edu" );
+      line1.setText("Populus, Java Version 5.5, June 2012" );
       line4.setText( "  " );
       line5.setText( "Populus Programmers:" );
+      line7.setText( "Lars Roe (1997-present, Java Version)" );
       line6.setText( "Amos Anderson (2001-2003, Java Version)" );
-      line13.setText( "Sharareh Noorbaloochi (2001-present, Java Version)" );
-      line7.setText( "Lars Roe (1997-2001, Java Version)" );
+      line13.setText( "Sharareh Noorbaloochi (2001-2002, Java Version)" );
       line8.setText( "Chris Bratteli (1989-1993, Pascal Version)" );
       line9.setText( "  " );
       line10.setText( "Don Alstad" );
       line11.setText( "Department of Ecology, Evolution & Behavior" );
       line12.setText( "University of Minnesota" );
-      Color a = new Color( 103, 1, 0 );
+      Color maroon = new Color( 103, 1, 0 );
 
-      //Color b = new Color(236,196,62);
-      Color b = new Color( 236, 210, 62 );
-      jPanel1.setBackground( a );
-      jPanel2.setBackground( a );
-      jPanel3.setBackground( a );
-      jPanel3.setLayout( xYLayout1 );
-      goB.setBackground( b );
-      goB.setBorder( border1 );
-      goB.setFocusPainted( false );
-      button1.setBackground( b );
+      Color gold = new Color( 236, 210, 62 );
+      jPanel1.setBackground( maroon );
+      jPanel2.setBackground( maroon );
+      jPanel3.setBackground( maroon );
+      button1.setBackground( gold );
       button1.setBorder( border1 );
       button1.setPreferredSize( new Dimension( 50, 25 ) );
-      line1.setForeground( b );
-      line2.setForeground( b );
-      line3.setForeground( b );
-      line4.setForeground( b );
-      line5.setForeground( b );
-      line6.setForeground( b );
-      line7.setForeground( b );
-      line8.setForeground( b );
-      line9.setForeground( b );
-      line10.setForeground( b );
-      line11.setForeground( b );
-      line12.setForeground( b );
-      line13.setForeground( b );
-      goB.setText( "go!" );
-      goB.addActionListener(new AboutPopulusDialog_goB_actionAdapter(this));
+      panel1.setBackground(maroon);
+      panel1.setForeground(gold);
+      line1.setForeground( gold );
+      line4.setForeground( gold );
+      line5.setForeground( gold );
+      line6.setForeground( gold );
+      line7.setForeground( gold );
+      line8.setForeground( gold );
+      line9.setForeground( gold );
+      line10.setForeground( gold );
+      line11.setForeground( gold );
+      line12.setForeground( gold );
+      line13.setForeground( gold );
       panel1.add(jPanel1,
-                 new GridBagConstraints(0, 0, 2, 1, 1.0, 1.0,
+                 new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0,
                                         GridBagConstraints.CENTER,
                                         GridBagConstraints.BOTH,
-                                        new Insets(0, 0, 0, 0), 0, 0));
+                                        new Insets(0, 0, 5, 0), 0, 0));
       jPanel1.add(line1, null);
-      jPanel3.add(goB, new XYConstraints(265, 5, -1, -1));
-      jPanel3.add( line2, new XYConstraints( 0, 7, -1, -1 ) );
+      GridBagLayout gbl_jPanel3 = new GridBagLayout();
+      gbl_jPanel3.columnWeights = new double[]{1.0, 0.0};
+      gbl_jPanel3.rowWeights = new double[]{0.0};
+      jPanel3.setLayout(gbl_jPanel3);
+      goB.setAlignmentX(Component.RIGHT_ALIGNMENT);
+      goB.setHorizontalAlignment(SwingConstants.RIGHT);
+      goB.setToolTipText("Go to Web site");
+      goB.setBackground( gold );
+      goB.setBorder( border1 );
+      goB.setFocusPainted( false );
+      goB.setText( "Go" );
+      goB.addActionListener(new AboutPopulusDialog_goB_actionAdapter(this));
+      line2.setText( "url: http://www.cbs.umn.edu/populus/" );
+      line2.setForeground( gold );
+      GridBagConstraints gbc_line2 = new GridBagConstraints();
+      gbc_line2.anchor = GridBagConstraints.WEST;
+      gbc_line2.insets = new Insets(0, 0, 5, 5);
+      gbc_line2.gridx = 0;
+      gbc_line2.gridy = 0;
+      jPanel3.add( line2, gbc_line2 );
+      GridBagConstraints gbc_goB = new GridBagConstraints();
+      gbc_goB.insets = new Insets(0, 0, 5, 0);
+      gbc_goB.anchor = GridBagConstraints.EAST;
+      gbc_goB.gridx = 1;
+      gbc_goB.gridy = 0;
+      jPanel3.add(goB, gbc_goB);
       jPanel1.add( line10, null );
       jPanel1.add( line11, null );
       jPanel1.add( line12, null );
       jPanel1.add( line4, null );
       jPanel1.add( jPanel3, null );
-      jPanel1.add( line3, null );
+      
+      GridBagConstraints gbc_panel = new GridBagConstraints();
+      gbc_panel.insets = new Insets(0, 0, 0, 5);
+      gbc_panel.fill = GridBagConstraints.BOTH;
+      gbc_panel.gridx = 1;
+      gbc_panel.gridy = 0;
+      jPanel3.add(panel, gbc_panel);
+      
+      jPanel1.add(jPanelEmail);
+      GridBagLayout gbl_jPanelEmail = new GridBagLayout();
+      gbl_jPanelEmail.columnWeights = new double[]{0.0, 0.0};
+      gbl_jPanelEmail.rowWeights = new double[]{0.0};
+      jPanelEmail.setLayout(gbl_jPanelEmail);
+      GridBagConstraints gbc_line3 = new GridBagConstraints();
+      gbc_line3.insets = new Insets(0, 0, 0, 5);
+      gbc_line3.anchor = GridBagConstraints.WEST;
+      gbc_line3.gridx = 0;
+      gbc_line3.gridy = 0;
+      line3.setHorizontalAlignment(SwingConstants.LEFT);
+      jPanelEmail.add(line3, gbc_line3);
+      line3.setText( "email: cbs-populus@umn.edu" );
+      line3.setForeground( gold );
+      
+      emailButton.setHorizontalAlignment(SwingConstants.RIGHT);
+      emailButton.setToolTipText("Send Email");
+      emailButton.setBackground( gold );
+      //goB.setBorder( border1 );
+      emailButton.setFocusPainted( false );
+      emailButton.setText( "Email" );      
+      
+      jPanelEmail.add(emailButton);
       jPanel1.add( line9, null );
       jPanel1.add( line5, null );
+      jPanel1.add( line7, null );
       jPanel1.add( line6, null );
       jPanel1.add( line13, null );
-      jPanel1.add( line7, null );
       jPanel1.add( line8, null );
-      panel1.add( jPanel2, new GridBagConstraints( 0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 ) );
+      panel1.add( jPanel2, new GridBagConstraints( 0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0 ) );
       jPanel2.add( button1, null );
       getContentPane().add( panel1 );
+      
+      GridBagConstraints gbc_panel3rdParty = new GridBagConstraints();
+      gbc_panel3rdParty.fill = GridBagConstraints.BOTH;
+      gbc_panel3rdParty.gridx = 0;
+      gbc_panel3rdParty.gridy = 1;
+      panel3rdParty.setBackground(maroon);
+      panel3rdParty.setForeground(gold);
+      panel1.add(panel3rdParty, gbc_panel3rdParty);
+      panel3rdParty.setLayout(new BorderLayout(0, 0));
+      txtpnDependsOnThe.setText("Depends on the distributable libraries:\r\n* Jama Javanumerics (http://math.nist.gov/javanumerics/jama/)\r\n* Borland's JBCL\r\n* KLGroup's JClass charts");
+      txtpnDependsOnThe.setBackground(maroon);
+      txtpnDependsOnThe.setForeground(gold);
+      
+      panel3rdParty.add(txtpnDependsOnThe);
     }
 }
 

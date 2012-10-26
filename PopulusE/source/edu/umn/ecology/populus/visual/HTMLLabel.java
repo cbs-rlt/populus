@@ -13,14 +13,10 @@
 
 //with Populus
 package edu.umn.ecology.populus.visual;
-import com.borland.jbcl.layout.VerticalFlowLayout;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
 import java.util.*;
 import java.io.*;
-import java.beans.*;
 
 /**
   * Homemade class to imitate html-like formatting commands. The following tags
@@ -46,7 +42,11 @@ import java.beans.*;
   **/
 
 public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
-   private Color defaultColor;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3706000911036148584L;
+private Color defaultColor;
    private Color currentColor;
    private int supLevel = 0; //1 == superscript, -1 == subscript
    private int nextChar;

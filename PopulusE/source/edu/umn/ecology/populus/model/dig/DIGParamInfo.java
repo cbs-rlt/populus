@@ -1,9 +1,7 @@
 package edu.umn.ecology.populus.model.dig;
-import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
-import java.awt.Color;
 
 public class DIGParamInfo implements BasicPlot {
    public static final int kNUM_DIVISIONS = 100;
@@ -36,7 +34,7 @@ public class DIGParamInfo implements BasicPlot {
       while( myData[j] == null )
          j++;
 
-      this.continuous = myData[j].isContinuous;
+      this.continuous = DIGData.isContinuous;
       if( continuous ) {
          if (numGraphs == 1)
             thisInfo.setMainCaption( mCCap + ", <i>r</i> = " + myData[j].rPF );
@@ -52,9 +50,9 @@ public class DIGParamInfo implements BasicPlot {
       keepDoub = new double[numGraphs][][];
       for( int i = 0;i < numGraphs;i++ ) {
          while( myData[j] == null ) j++;
-         this.plottype = myData[j].selection;
-         this.continuous = myData[j].isContinuous;
-         this.gens = myData[j].gensPF;
+         this.plottype = DIGData.selection;
+         this.continuous = DIGData.isContinuous;
+         this.gens = DIGData.gensPF;
          this.p0 = myData[j].nOPF;
          this.lambda = myData[j].lambdaPF;
          this.r = myData[j].rPF;

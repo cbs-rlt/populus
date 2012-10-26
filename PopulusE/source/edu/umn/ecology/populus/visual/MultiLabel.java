@@ -14,6 +14,11 @@ import com.borland.jbcl.layout.VerticalFlowLayout;
 public class MultiLabel extends JPanel {
 
    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6019089739089743371L;
+
+/**
      * lines is an array where each element is either a Component, or a String
      * (in which case it will be converted into a JLabel). If the element is neither,
      * nothing is added, and it continues to try to add successive elements (no error).

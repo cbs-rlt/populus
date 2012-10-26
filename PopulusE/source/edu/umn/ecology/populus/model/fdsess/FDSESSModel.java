@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.fdsess;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class FDSESSModel extends BasicPlotModel {
 

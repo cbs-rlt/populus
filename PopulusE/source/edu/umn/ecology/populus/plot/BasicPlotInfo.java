@@ -8,7 +8,6 @@ import edu.umn.ecology.populus.fileio.Logging;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
-import edu.umn.ecology.populus.visual.*;
 import Jama.EigenvalueDecomposition;
 
 /**
@@ -21,7 +20,12 @@ import Jama.EigenvalueDecomposition;
   * be enforced.
   */
 public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartListener {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -882044708806321402L;
+
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
 
    public static final int k2D = 0;
    public static final int k3D = 1;

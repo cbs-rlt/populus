@@ -24,7 +24,11 @@ import java.io.*;
 /** Panel for use with models that require a run-time parameter.*/
 
 public class RunningTimePanel extends JPanel implements Serializable {
-   public static final double STEADYSTATE = -1.3;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4226071707631879578L;
+public static final double STEADYSTATE = -1.3;
    VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
    PopulusParameterField paramTime = new PopulusParameterField();
    JRadioButton steadyStateButton = new JRadioButton();

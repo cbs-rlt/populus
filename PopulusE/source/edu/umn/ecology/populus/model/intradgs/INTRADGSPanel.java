@@ -1,18 +1,16 @@
 package edu.umn.ecology.populus.model.intradgs;
 import java.awt.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class INTRADGSPanel extends BasicPlotInputPanel {
-   JPanel paramsP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7758086403816220837L;
+JPanel paramsP = new JPanel();
    PopulusParameterField sPPF = new PopulusParameterField();
    private PopulusParameterField GPPF = new PopulusParameterField();
    private PopulusParameterField bPPF = new PopulusParameterField();

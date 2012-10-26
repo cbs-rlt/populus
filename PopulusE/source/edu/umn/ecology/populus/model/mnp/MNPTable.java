@@ -1,12 +1,16 @@
 package edu.umn.ecology.populus.model.mnp;
 import java.util.*;
-import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
 import edu.umn.ecology.populus.math.*;
 
 public class MNPTable extends AbstractTableModel {
-   int numRows=0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4666061719715462195L;
+
+int numRows=0;
 
    /**
     * each vector represents a row, each array index represents

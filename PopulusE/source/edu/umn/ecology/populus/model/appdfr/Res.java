@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.appdfr;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1013893664028647666L;
+static final Object[][] contents = new String[][]{
 	{ "Functional_Responses", "Functional Responses" },
 	{ "Discrete_Predator", "Discrete Predator-Prey (Functional Responses)" },
 	{ "Model_Type", "Model Type" },

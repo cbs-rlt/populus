@@ -1,6 +1,4 @@
 package edu.umn.ecology.populus.plot.plotshapes;
-import java.awt.geom.AffineTransform;
-import com.klg.jclass.chart.JCShape;
 
 /**
  * <p>Title: Populus</p>

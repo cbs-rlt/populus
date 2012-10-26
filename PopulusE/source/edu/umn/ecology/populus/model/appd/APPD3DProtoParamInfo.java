@@ -1,8 +1,6 @@
 package edu.umn.ecology.populus.model.appd;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
-import java.awt.Color;
 
 /**
   * Subclasses must do the following in initializing:

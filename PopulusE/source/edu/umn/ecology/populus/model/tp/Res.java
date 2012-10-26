@@ -1,10 +1,13 @@
 package edu.umn.ecology.populus.model.tp;
-import java.util.*;
 import java.io.Serializable;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7450474430134898360L;
+static final Object[][] contents = new String[][] {
       {
       "Bacterial", "Temperate Phage"
       },  {

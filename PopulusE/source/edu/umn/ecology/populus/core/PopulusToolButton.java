@@ -13,13 +13,16 @@
 
 //with Populus
 package edu.umn.ecology.populus.core;
-import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
 public class PopulusToolButton extends JButton {
 
-    static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8546615415111250769L;
+	static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
    //Button Strings
    public static final String CLOSE = res.getString( "Close" );
    public static final String SAVE = res.getString( "Save" );

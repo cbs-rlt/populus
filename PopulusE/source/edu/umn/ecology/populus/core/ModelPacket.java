@@ -2,7 +2,11 @@ package edu.umn.ecology.populus.core;
 import java.lang.reflect.*;
 
 public final class ModelPacket implements java.io.Serializable {
-   private String modelName;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6919970167290967332L;
+private String modelName;
    private Class modelClass;
    
    public Class getModelClass() {

@@ -15,7 +15,6 @@ import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import com.borland.jbcl.layout.*;
 import javax.swing.border.*;
@@ -31,7 +30,11 @@ import java.util.*;
   */
 
 public class LPGPanel extends BasicPlotInputPanel {
-   public static final int kDNNDTVSN = 3;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2691060861159865609L;
+public static final int kDNNDTVSN = 3;
    public static final int kDNDTVSN = 2;
    public static final int kLNNVST = 1;
    public static final int kNVST = 0;

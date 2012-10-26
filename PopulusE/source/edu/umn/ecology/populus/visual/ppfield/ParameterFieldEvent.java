@@ -21,7 +21,11 @@ import java.util.*;
   */
 
 public class ParameterFieldEvent extends EventObject {
-   /** Increment */
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8285642595516017902L;
+/** Increment */
    public static final int INC = 1;
    /** Decrement */
    public static final int DEC = 2;

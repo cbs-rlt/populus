@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.gdamcm;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2944411142021926632L;
+static final Object[][] contents = new String[][] {
        {
          "Genetic_Drift", "Genetic Drift (Monte Carlo)"
       },  {

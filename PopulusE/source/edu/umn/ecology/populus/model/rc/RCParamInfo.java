@@ -1,10 +1,8 @@
 package edu.umn.ecology.populus.model.rc;
-import java.awt.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
 import java.util.*;
 
 public class RCParamInfo implements BasicPlot {

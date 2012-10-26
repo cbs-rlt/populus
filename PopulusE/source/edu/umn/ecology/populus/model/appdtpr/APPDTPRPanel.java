@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class APPDTPRPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdtpr.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6188249316261413210L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdtpr.Res" );
    Border border1;
    TitledBorder titledBorder1;
    PopulusParameterField aPF = new PopulusParameterField();

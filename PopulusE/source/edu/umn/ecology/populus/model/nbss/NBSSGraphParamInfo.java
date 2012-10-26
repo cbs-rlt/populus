@@ -4,6 +4,10 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6979872204518008120L;
 	NBSSCellParamInfo cpi;
 	boolean avg, isup;
 	public static final String kMainCap = "Spatial-Structure Populations";

@@ -1,8 +1,6 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.awt.geom.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.visual.HTMLFreeLabel;
@@ -22,7 +20,11 @@ import java.io.*;
  * @version 1.0
  */
 public class Label extends Rectangle2D implements StageShape, Serializable {
-   Color c = Color.black;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6111331350917097525L;
+Color c = Color.black;
    Color ac = Color.green;
    public double x;
    public double y;

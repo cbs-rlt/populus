@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class APPDNRSPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdnrs.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1613010581333897609L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdnrs.Res" );
    JPanel modelTypePanel = new JPanel();
    JPanel initialConditionsPanel = new JPanel();
    GridBagLayout gridBagLayout1 = new GridBagLayout();

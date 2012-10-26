@@ -3,11 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import com.borland.jbcl.layout.*;
-import edu.umn.ecology.populus.visual.HTMLLabel;
 
 public class Constant extends JPanel {
-   JButton closeButton = new JButton();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7232261105799052347L;
+JButton closeButton = new JButton();
    String name;
    PopulusParameterField constantPPF = new PopulusParameterField();
    

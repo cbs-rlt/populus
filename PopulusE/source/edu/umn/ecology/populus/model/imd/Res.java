@@ -1,10 +1,13 @@
 package edu.umn.ecology.populus.model.imd;
-import java.util.*;
 import java.io.Serializable;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3468201954476115932L;
+static final Object[][] contents = new String[][] {
        {
          "Infectious", "Infectious Microparasitic Diseases"
       },  {

@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.model.aidsbasic;
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class AIDSBASICModel extends BasicPlotModel {
   // static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.aidsbasic.Res" );

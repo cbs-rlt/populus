@@ -1,8 +1,5 @@
 package edu.umn.ecology.populus.model.hph;
-import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.model.appd.APPD3DProtoParamInfo;
-import edu.umn.ecology.populus.math.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 
 public class HPH3DParamInfo extends APPD3DProtoParamInfo {

@@ -21,6 +21,11 @@ import edu.umn.ecology.populus.edwin.*;
 public class BasicPlotInputPanel extends ModelPanel {
 
    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3085139371708191553L;
+
+/**
      * The only reason this is not abstract is to use the visual designer
      */
 

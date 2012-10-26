@@ -6,7 +6,11 @@ import com.borland.jbcl.layout.*;
 import java.util.Hashtable;
 
 public class ConstantPanel extends JPanel {
-   JPanel conHolder = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5089773599005699384L;
+JPanel conHolder = new JPanel();
    JButton addConstant = new JButton();
    JPanel addConstantPanel = new JPanel();
    JTextField newConstantName = new JTextField();

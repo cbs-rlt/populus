@@ -1,16 +1,18 @@
 package edu.umn.ecology.populus.model.aidst;
 import java.awt.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import com.borland.jbcl.layout.*;
 
 public class AIDSTPanel extends BasicPlotInputPanel {
-   Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3027326745486113765L;
+Border border1;
    TitledBorder titledBorder1;
    StyledRadioButton xyvtButton = new StyledRadioButton();
    Border border8;

@@ -3,10 +3,13 @@ package edu.umn.ecology.populus.plot.coloredcells;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.constants.RungeKuttaDefaults;
 import edu.umn.ecology.populus.core.DesktopWindow;
 
 public class CellPreferences extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6730692691382426455L;
 	static CellPreferences keepOnlyOneOpen;
 	JPanel mainPanel = new JPanel();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();

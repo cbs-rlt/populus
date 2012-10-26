@@ -1,14 +1,17 @@
 package edu.umn.ecology.populus.visual;
 import javax.swing.*;
 import java.awt.*;
-import com.borland.jbcl.layout.*;
 import edu.umn.ecology.populus.model.ie.TextOutput;
 import edu.umn.ecology.populus.math.NumberMath;
 
 /** Use this class for displaying matricies. Used by ASPG and SSPG*/
 
 public class Matrix extends JPanel {
-   GridBagLayout gridBagLayout1 = new GridBagLayout();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2911537167756373181L;
+GridBagLayout gridBagLayout1 = new GridBagLayout();
    JPanel matrixPanel = new JPanel();
    JPanel topLabelsPanel = new JPanel();
    Bracket leftBracket = new Bracket( SwingConstants.LEFT );

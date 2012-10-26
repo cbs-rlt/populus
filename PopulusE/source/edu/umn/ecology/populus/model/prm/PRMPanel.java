@@ -2,17 +2,18 @@ package edu.umn.ecology.populus.model.prm;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
+import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.visual.*;
 import java.util.*;
 public class PRMPanel extends BasicPlotInputPanel {
-   static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.prm.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8558460283140767054L;
+static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.prm.Res" );
    Border border5;
    Border border7;
    Border border8;
@@ -150,23 +151,23 @@ public class PRMPanel extends BasicPlotInputPanel {
    void AlstadAndowButton_actionPerformed( ActionEvent e ) {
       this.modelSpecificParamsTabbedPane.setSelectedComponent( alstadAndowParams );
 
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void CominsButton_actionPerformed( ActionEvent e ) {
         this.modelSpecificParamsTabbedPane.setSelectedComponent( cominsParams );
 
-        fireModelPanelEvent( this.CHANGE_PLOT );
+        fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void cominsParams_componentShown( ComponentEvent e ) {
       this.CominsButton.setSelected( true );
 
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
 
    }
 
    void alstadAndowParams_componentShown( ComponentEvent e ) {
       this.AlstadAndowButton.setSelected( true );
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
 
    }
 

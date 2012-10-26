@@ -1,12 +1,9 @@
 package edu.umn.ecology.populus.core;
 
-import java.io.*;
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.constants.*;
 import edu.umn.ecology.populus.plot.coloredcells.CellPreferences;
 import java.util.*;
@@ -17,7 +14,11 @@ import java.util.*;
   */
 
 public class ModelOutputFrame extends PopInternalFrame {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5467950895300033315L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
    BorderLayout mainBorderLayout = new BorderLayout();
    JButton closeButton = PopulusToolButton.createCloseButton();
    transient Model model;
@@ -110,56 +111,101 @@ public class ModelOutputFrame extends PopInternalFrame {
       toolBar.add( closeButton, null );
       popupMenu1.add( new AbstractAction( res.getString( "Courser_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "CourserGrid.gif" )) )  { //menu 0
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1426050157067073191L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kCourserGrid );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Finer_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "FinerGrid2.gif" )) )  { //menu 1
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 2014811406137600764L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kFinerGrid );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Clear_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "ClearGrid.gif" )) )  { //menu 2
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = -1508833670814269844L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kClearGrid );
          }
       } );
       popupMenu1.add( new AbstractAction( "Increase Size", new ImageIcon(ModelOutputFrame.class.getResource( "MagnifyPlus.gif" )))  { //menu 3
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 6804542152933324952L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kZoomIn );
          }
       } );
       popupMenu1.add( new AbstractAction( "Decrease Size", new ImageIcon(ModelOutputFrame.class.getResource( "MagnifyMinus.gif" )))  { //menu 4
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 5069074713837250864L;
+
+		public void actionPerformed( ActionEvent e ) {
 
             model.getOptions( MenuOptions.kZoomOut );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Reset_Graph" ), new ImageIcon(ModelOutputFrame.class.getResource( "Reset.gif" )) )  { //menu 5
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 4971301659510072258L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kReset );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Display_Chart_Option" ), new ImageIcon(ModelOutputFrame.class.getResource( "Frame.gif" )) )  { //menu 6
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1167248552186198939L;
+
+		public void actionPerformed( ActionEvent e ) {
             model.getOptions( MenuOptions.kOptionScreen );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Edit_Color_Scheme" ), new ImageIcon(ModelOutputFrame.class.getResource( "Paint.gif" )) )  { //menu 7
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = -2158595495950248352L;
+
+		public void actionPerformed( ActionEvent e ) {
             ColorChooser.bringUpColorDialog();
          }
       } );
       popupMenu1.add( new AbstractAction( "Cell Settings", new ImageIcon(ModelOutputFrame.class.getResource( "Sheet.gif" )) )  { //menu 8
 
-         public void actionPerformed( ActionEvent e ) {
+         /**
+		 * 
+		 */
+		private static final long serialVersionUID = -8142252449979647774L;
+
+		public void actionPerformed( ActionEvent e ) {
             CellPreferences.bringUpCellPreferences();
          }
       } );

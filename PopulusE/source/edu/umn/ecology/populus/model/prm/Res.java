@@ -1,10 +1,13 @@
 package edu.umn.ecology.populus.model.prm;
-import java.util.*;
 import java.io.Serializable;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7485846963486364494L;
+static final Object[][] contents = new String[][]{
 	{ "PRM", "Insect Resistance Management" },
         { "One", "<b><i>" +ColorScheme.getColorString(0) + "x </font></i></b>, <b><i>" +
         ColorScheme.getColorString(1) + "y/G </font></i></b>, <b><i>"+ColorScheme.getColorString(2) + "p </font></i></b>, <b><i>" +

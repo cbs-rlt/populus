@@ -3,20 +3,23 @@ import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.event.*;
 import com.borland.jbcl.layout.*;
 
 //import com.borland.jbcl.control.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.visual.*;
+import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
+
 import java.util.*;
 
 public class LVPPTLPanel extends BasicPlotInputPanel {
-   static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.lvpptl.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1619767776006811454L;
+static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.lvpptl.Res" );
    public static final String TYPE1 = res.getString( "Type_1" );
    public static final String TYPE2 = res.getString( "Type_2" );
    public static final String TYPE3 = res.getString( "Type_3" );
@@ -138,7 +141,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 
       paramA.setEnabled( this.type2Box.isSelected() );
       paramTh.setEnabled( this.type2Box.isSelected() );
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
    void ddPreyBox_actionPerformed( ActionEvent e ) {
@@ -149,7 +152,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
       }
 
       paramPreyK.setEnabled( ddPreyBox.isSelected() );
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
    void setLVParamsEnabled( boolean b) {

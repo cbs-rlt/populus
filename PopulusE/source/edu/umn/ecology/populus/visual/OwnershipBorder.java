@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.visual;
 
 import java.awt.*;
 import javax.swing.border.*;
-import javax.swing.*;
 import edu.umn.ecology.populus.core.PopPreferences;
 
 

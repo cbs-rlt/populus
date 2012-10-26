@@ -1,8 +1,6 @@
 package edu.umn.ecology.populus.model.rct;
-import java.awt.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
 import java.util.*;
@@ -177,7 +175,7 @@ public class RCTParamInfo implements BasicPlot {
       /*Placing these here means that users will not be able to change
       these through the preferences panel*/
       ig.record.h = 0.1;
-      ig.record.mode = ig.record.RK4;
+      ig.record.mode = RungeKuttaRec.RK4;
       //ig.record.ssErr = 10;
 
       this.modelType = modelType;

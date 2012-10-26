@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.plot.plotshapes;
 
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 import edu.umn.ecology.populus.core.PopPreferences;
-import edu.umn.ecology.populus.constants.ColorScheme;
 
 /**
  * Contains methods for adding arrows and/or fletching to BasicPlotInfo lines.

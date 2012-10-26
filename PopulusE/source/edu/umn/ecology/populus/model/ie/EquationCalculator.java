@@ -32,7 +32,11 @@ import edu.umn.ecology.populus.math.Routines;
   */
 
 public class EquationCalculator implements Serializable {
-   private String[] eqs;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1638244995998903324L;
+private String[] eqs;
    private Vector[] v;
    private Stack[] s;
    private double[] initial, calculated;

@@ -2,8 +2,6 @@ package edu.umn.ecology.populus.visual;
 
 import javax.swing.border.LineBorder;
 import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.Color;
 import java.awt.Component;
 
@@ -21,7 +19,11 @@ import java.awt.Component;
  * @version 5.2
  */
 public class SpecialLineBorder extends LineBorder {
-   private boolean drawTop    = true;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1188750465958177508L;
+private boolean drawTop    = true;
    private boolean drawBottom = true;
    private boolean drawLeft   = true;
    private boolean drawRight  = true;

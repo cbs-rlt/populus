@@ -1,20 +1,17 @@
 package edu.umn.ecology.populus.plot;
 
 import edu.umn.ecology.populus.resultwindow.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.definetti.*;
-import java.awt.event.*;
 import edu.umn.ecology.populus.constants.*;
-import java.lang.Thread;
-import edu.umn.ecology.populus.core.PreferencesDialog;
 
 /* The OutputPanel for 3D graphs.*/
 public class BasicPlotDeFinettiPanel extends OutputPanel {
-   DeFinettiGraph dfg;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6099639899121220530L;
+DeFinettiGraph dfg;
    GridBagLayout gridBagLayout1 = new GridBagLayout();
 
    public BasicPlotDeFinettiPanel(BasicPlotInfo info){

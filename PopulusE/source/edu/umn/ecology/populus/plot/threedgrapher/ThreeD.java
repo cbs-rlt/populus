@@ -6,12 +6,10 @@ package edu.umn.ecology.populus.plot.threedgrapher;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.*;
 import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.visual.HTMLFreeLabel;
 import edu.umn.ecology.populus.plot.Stepper;
-import java.util.*;
 
 /**Class to handle the drawing and user interface of Populus 3D models.
  * There is a lot more functionality that probably should be a part of 3D graphing models,
@@ -25,7 +23,11 @@ import java.util.*;
  *    manually
  */
 public class ThreeD extends JPanel implements Stepper, MouseListener, MouseMotionListener, KeyListener {
-   public Model3D md = null;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 768912425772549700L;
+public Model3D md = null;
    boolean painted = true;
    boolean needsRefresh = true;
    float scalefudge = 1.3f;

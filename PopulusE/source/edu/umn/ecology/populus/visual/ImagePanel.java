@@ -12,7 +12,11 @@ import java.awt.*;
 
 public class ImagePanel extends Canvas {
 
-    Container pappy;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7735576242903205864L;
+	Container pappy;
     Image image;
     Dimension size;
     int w, h;

@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.sdal;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8689433770326039777L;
+static final Object[][] contents = new String[][] {
        {
          "Autosomal_Selection", "Selection on a Diallelic Autosomal Locus"
       },  {

@@ -14,7 +14,11 @@ import javax.swing.*;
  * for radio buttons. */
 
 public class StyledRadioButton extends JRadioButton {
-    //Vector v;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4655637662372692469L;
+	//Vector v;
     private String formattedText = "";
 
     public StyledRadioButton() {

@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.plot;
 
 import edu.umn.ecology.populus.core.*;
 import java.io.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.math.NumberMath;
 import java.util.*;
 

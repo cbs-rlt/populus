@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.inbreeding;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class InbreedingModel extends BasicPlotModel {
 

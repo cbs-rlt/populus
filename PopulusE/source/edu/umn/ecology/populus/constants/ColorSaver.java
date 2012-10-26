@@ -8,7 +8,11 @@ import java.io.Serializable;
   */
 
 public class ColorSaver implements Serializable {
-   Color bGToSave;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2730125349195960295L;
+Color bGToSave;
    int[] currentIndexToSave;
    int scheme = 0;
    Color[] colorsToSave;

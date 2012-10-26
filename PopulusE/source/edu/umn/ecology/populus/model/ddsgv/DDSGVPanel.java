@@ -1,18 +1,16 @@
 package edu.umn.ecology.populus.model.ddsgv;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
-import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class DDSGVPanel extends BasicPlotInputPanel {
-   JPanel modParamP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5726820884292076983L;
+JPanel modParamP = new JPanel();
    PopulusParameterField rAaPPF = new PopulusParameterField();
    private PopulusParameterField raaPPF = new PopulusParameterField();
    private PopulusParameterField NPPF = new PopulusParameterField();

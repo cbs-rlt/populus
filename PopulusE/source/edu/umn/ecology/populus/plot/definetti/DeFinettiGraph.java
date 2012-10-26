@@ -6,7 +6,6 @@ import edu.umn.ecology.populus.visual.HTMLFreeLabel;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.lang.Thread;
 import java.awt.image.*;
 import java.awt.event.*;
 
@@ -20,7 +19,11 @@ import java.awt.event.*;
  * @version 5.2
  */
 public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, MouseMotionListener, KeyListener {
-   /** change this angle for changing the angles of the base of the triangle*/
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5692947888221877327L;
+/** change this angle for changing the angles of the base of the triangle*/
    double sqrt3div2 = Math.sin(Math.PI*40.0d/180.0d);
    private int[][][] data;
    private double[][][] points;

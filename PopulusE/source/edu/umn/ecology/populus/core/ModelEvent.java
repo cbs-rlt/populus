@@ -5,7 +5,11 @@ package edu.umn.ecology.populus.core;
   */
 
 public class ModelEvent extends java.util.EventObject {
-   public static final int ACTIVATED = 2;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 845986705466540150L;
+public static final int ACTIVATED = 2;
    public static final int OUTPUT_UPDATE_BEGIN = 4;
    public static final int OUTPUT_UPDATE_END = 8;
    public static final int KILL = 1;

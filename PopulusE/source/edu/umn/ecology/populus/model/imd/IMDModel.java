@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.imd;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.core.PopResourceBundle;
-import java.util.*;
 
 public class IMDModel extends BasicPlotModel {
    static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.imd.Res" );

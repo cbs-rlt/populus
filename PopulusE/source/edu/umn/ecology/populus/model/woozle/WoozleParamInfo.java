@@ -12,7 +12,11 @@ import java.util.*;
   */
 
 public class WoozleParamInfo extends ParamInfo {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -476360965163357223L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
    private int phraseLength;
    private char[] targetPhrase =  {
       'M', 'E', 'T', 'H', 'I', 'N', 'K', 'S', ' ', 'I', 'T',

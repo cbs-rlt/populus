@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.ihpi;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2907224542515811379L;
+static final Object[][] contents = new String[][]{
 	{ "Host_Parasitoid_with", "Host-Parasitoid with Insecticide" },
 	{ "Discrete_Predator", "Discrete Predator-Prey (Host-Parasitoid with Insecticide)" },
 	{ "Model_Type", "Model Type" },

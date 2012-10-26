@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.model.ps;
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class PSModel extends BasicPlotModel {
    PSPanel psp;

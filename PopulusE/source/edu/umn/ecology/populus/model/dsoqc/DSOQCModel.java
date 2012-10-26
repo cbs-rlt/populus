@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.dsoqc;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class DSOQCModel extends BasicPlotModel {
    DSOQCPanel dp;

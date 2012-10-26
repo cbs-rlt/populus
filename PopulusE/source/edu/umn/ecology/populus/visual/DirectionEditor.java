@@ -1,5 +1,4 @@
 package edu.umn.ecology.populus.visual;
-import java.beans.*;
 import com.borland.jbcl.editors.IntegerTagEditor;
 
 /** Use to define the direction the HTMLLabel will point.*/

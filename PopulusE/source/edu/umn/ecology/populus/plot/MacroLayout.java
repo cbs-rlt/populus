@@ -8,6 +8,11 @@ import java.awt.*;
  */
 public class MacroLayout extends BorderLayout {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 673990963046959401L;
+
 	public MacroLayout() {
 	}
 

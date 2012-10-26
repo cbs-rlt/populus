@@ -1,18 +1,17 @@
 package edu.umn.ecology.populus.model.dsoqc;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class DSOQCPanel extends BasicPlotInputPanel {
-   JPanel wPanel = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2759769583551935323L;
+JPanel wPanel = new JPanel();
    private JPanel plotTypeP = new JPanel();
    private JRadioButton MPvsTRB = new StyledRadioButton();
    private JRadioButton IvsPRB = new JRadioButton();

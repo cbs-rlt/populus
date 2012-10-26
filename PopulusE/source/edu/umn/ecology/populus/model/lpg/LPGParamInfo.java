@@ -5,9 +5,6 @@
 package edu.umn.ecology.populus.model.lpg;
 import java.util.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.math.*;
-import edu.umn.ecology.populus.poproutines.*;
-import edu.umn.ecology.populus.resultwindow.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.model.lpg.LPGData;
 
@@ -70,7 +67,7 @@ public class LPGParamInfo implements BasicPlot {
       this.k = (int)k;
       this.r = r;
       this.n0 = n0;
-      if( modelType == this.LAGGED ) {
+      if( modelType == LPGParamInfo.LAGGED ) {
          if( lag == 0 ) {
             modelType = CONTINUOUS;
          }
@@ -155,15 +152,15 @@ public class LPGParamInfo implements BasicPlot {
       while( myData[j] == null ) {
          j++;
       }
-      modelType = myData[j].modelType;
-      plotType = myData[j].plotType;
+      modelType = LPGData.modelType;
+      plotType = LPGData.plotType;
       j = 0;
       returnValue = new BasicPlotInfo();
       keepDoub = new double[numGraphs][][];
       for( int i = 0;i < numGraphs;i++ ) {
          while( myData[j] == null ) j++;
          lag = (int)myData[j].T;
-         generations = myData[j].time;
+         generations = LPGData.time;
          this.k = (int)myData[j].K;
          this.r = myData[j].r;
          this.n0 = myData[j].N;

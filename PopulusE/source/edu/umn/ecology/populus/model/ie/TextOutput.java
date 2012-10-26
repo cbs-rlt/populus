@@ -1,10 +1,8 @@
 package edu.umn.ecology.populus.model.ie;
 
 import java.io.*;
-import edu.umn.ecology.populus.plot.BasicPlotInfo;
 import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.core.DesktopWindow;
-import edu.umn.ecology.populus.fileio.*;
 import javax.swing.*;
 import java.awt.*;
 

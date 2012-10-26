@@ -3,12 +3,15 @@ package edu.umn.ecology.populus.plot;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.constants.OutputTypes;
 import edu.umn.ecology.populus.resultwindow.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 
 public class BasicPlotOutputPanel extends OutputPanel {
 
-   //Package access for BasicPlotModel to access.
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1467334882548355207L;
+//Package access for BasicPlotModel to access.
    BasicPlotCanvas bpc;
 
    public BasicPlotCanvas getBPC() {

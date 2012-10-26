@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.soamal;
 import java.awt.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
@@ -9,12 +8,13 @@ import edu.umn.ecology.populus.core.DesktopWindow;
 import javax.swing.table.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class SOAMALPanel extends BasicPlotInputPanel {
-   private GridBagLayout gridBagLayout1 = new GridBagLayout();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8894866035921281037L;
+private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JScrollPane dataTableSP = new JScrollPane();
    private JTable table;
    private SOAMALTable st = new SOAMALTable();
@@ -131,7 +131,11 @@ public class SOAMALPanel extends BasicPlotInputPanel {
    }
 
    static class ShadedTableCellRenderer extends DefaultTableCellRenderer{
-      Color unselectedBackground;
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4705486194689980035L;
+	Color unselectedBackground;
 
       ShadedTableCellRenderer(){
          super();
@@ -187,7 +191,11 @@ public class SOAMALPanel extends BasicPlotInputPanel {
    }
 
    static class ShadedBooleanRenderer extends JCheckBox implements TableCellRenderer {
-      Color unselectedBackground = Color.lightGray;
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7466831463565916643L;
+	Color unselectedBackground = Color.lightGray;
 
       public ShadedBooleanRenderer() {
          super();

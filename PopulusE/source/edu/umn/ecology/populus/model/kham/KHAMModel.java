@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.kham;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class KHAMModel extends BasicPlotModel {
 

@@ -1,16 +1,7 @@
 package edu.umn.ecology.populus.model.gdamcm;
-//Title:        Populus
-//Version:
-//Copyright:    Copyright (c) 1998
-//Author:       Lars Roe
-//Company:      University of Minnesota
-//Description:  Populus
-//Stolen from Alstad's "SixLocusDrift.pas"
-import java.awt.Color;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.poproutines.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 import java.lang.Math;
 import javax.swing.JOptionPane;

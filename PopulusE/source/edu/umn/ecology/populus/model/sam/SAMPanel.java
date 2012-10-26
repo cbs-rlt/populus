@@ -1,18 +1,18 @@
 package edu.umn.ecology.populus.model.sam;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class SAMPanel extends BasicPlotInputPanel {
-   JPanel initialConditionsPanel = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -684318254985115235L;
+JPanel initialConditionsPanel = new JPanel();
    PopulusParameterField muPPF = new PopulusParameterField();
    PopulusParameterField gensPPF = new PopulusParameterField();
    private JPanel plotTypeP = new JPanel();

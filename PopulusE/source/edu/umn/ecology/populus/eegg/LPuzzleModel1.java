@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.eegg;
 
-import javax.swing.*;
 import java.awt.*;
 
 /** Add up positions of yellow pieces for winning piece */

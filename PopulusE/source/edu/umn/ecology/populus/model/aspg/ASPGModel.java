@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.model.aspg;
 
-import edu.umn.ecology.populus.core.*;
 import edu.umn.ecology.populus.plot.*;
 import java.util.*;
 

@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class APPDIPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdi.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8408782555799642209L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdi.Res" );
    JPanel initialConditionsPanel = new JPanel();
    Border border1;
    ButtonGroup vs = new ButtonGroup();

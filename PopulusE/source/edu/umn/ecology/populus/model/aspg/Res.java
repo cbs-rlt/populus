@@ -1,11 +1,14 @@
 package edu.umn.ecology.populus.model.aspg;
 
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle
          implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1583074720739231999L;
+static final Object[][] contents = new String[][]{
 	{ "Age_Structured", "Age-Structured Growth" },
 	{ "Output_Type", "Output Type" },
 	{ "Output_Parameters", "Output Parameters" },

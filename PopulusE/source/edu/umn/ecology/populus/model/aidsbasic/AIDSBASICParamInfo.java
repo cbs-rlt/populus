@@ -1,12 +1,7 @@
 package edu.umn.ecology.populus.model.aidsbasic;
-import java.awt.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
-import java.util.*;
 
 public class AIDSBASICParamInfo implements BasicPlot {
 

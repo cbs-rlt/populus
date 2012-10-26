@@ -2,15 +2,18 @@ package edu.umn.ecology.populus.model.eov;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
+import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 
 public class EOVPanel extends BasicPlotInputPanel {
-   Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1741663304487845921L;
+Border border1;
    TitledBorder titledBorder1;
    Border border8;
    ButtonGroup bg1 = new ButtonGroup(), bg2 = new ButtonGroup(), bg3 = new ButtonGroup();
@@ -325,21 +328,21 @@ public class EOVPanel extends BasicPlotInputPanel {
    }
    void alternatingModelButton_actionPerformed( ActionEvent e ) {
    modelTypeChanged( true );
-   fireModelPanelEvent( this.CHANGE_PLOT );
+   fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
    void coupledModelButton_actionPerformed( ActionEvent e ) {
       modelTypeChanged( false );
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void ebvstButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void hivstButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void HIStarButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
 /*

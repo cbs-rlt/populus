@@ -139,7 +139,7 @@ public class RungeKuttaRec {
 
    public RungeKuttaRec( double tf, double sw, double sh, boolean SS, double sserr, double ssDur, double stoptime ) {
       int i;
-      if( this.mode == this.RK4QC ) {
+      if( this.mode == RungeKuttaRec.RK4QC ) {
          this.scale[0] = sw / 1000.0;
          this.scale[1] = sh / 1000.0;
 

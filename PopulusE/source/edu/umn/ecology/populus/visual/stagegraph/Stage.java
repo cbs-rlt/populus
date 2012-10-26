@@ -1,11 +1,9 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.awt.geom.*;
 import java.util.Vector;
-import java.awt.image.*;
 import java.io.*;
 
 /**
@@ -20,7 +18,11 @@ import java.io.*;
  * @version 1.0
  */
 public class Stage extends Ellipse2D implements StageShape, Serializable {
-   //Color c = new Color(40,84,40);
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5077369746978999456L;
+//Color c = new Color(40,84,40);
    Color c = Color.black;
    //Color ac = new Color(161,210,88);
    Color ac = Color.green;

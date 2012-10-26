@@ -16,7 +16,12 @@ import javax.swing.*;
   */
 
 public class BasicPlotCanvas extends JPanel {
-   //HTMLLabel mainCaption, xCaption, yCaption;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9029148726700689019L;
+
+//HTMLLabel mainCaption, xCaption, yCaption;
    HTMLMultiLabel mainCaption, xCaption, yCaption;
 
    //double xScale, yScale;

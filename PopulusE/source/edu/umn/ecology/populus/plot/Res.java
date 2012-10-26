@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.plot;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 833561965141554797L;
+static final Object[][] contents = new String[][] {
        {
          "Output_of", "Output of "
       },  {

@@ -31,7 +31,11 @@ import java.util.*;
   */
 
 public class GDPanel extends BasicPlotInputPanel {
-   public static final int MAX_LOCI = 10;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4626298159196888528L;
+public static final int MAX_LOCI = 10;
    Border border1;
    TitledBorder titledBorder1;
    Border border2;

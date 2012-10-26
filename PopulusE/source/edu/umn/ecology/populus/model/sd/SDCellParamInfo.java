@@ -5,6 +5,10 @@ import edu.umn.ecology.populus.plot.ParamInfo;
 import java.util.Random;
 
 class SDCellParamInfo extends ParamInfo implements CellFunction{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9038939798762684050L;
 	static final int kC 	= 0;
 	static final int kCD 	= 1;
 	static final int kD 	=	2;

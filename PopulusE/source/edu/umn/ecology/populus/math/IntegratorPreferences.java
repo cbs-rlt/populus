@@ -6,7 +6,11 @@ import edu.umn.ecology.populus.constants.RungeKuttaDefaults;
 import edu.umn.ecology.populus.core.DesktopWindow;
 
 public class IntegratorPreferences extends JDialog {
-   JPanel mainPanel = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 959285401462290615L;
+JPanel mainPanel = new JPanel();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    JTextField epsSetting = new JTextField();
    JLabel jLabel4 = new JLabel();

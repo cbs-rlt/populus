@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.nbss;
 
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.plot.coloredcells.CellController;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.StyledRadioButton;
@@ -14,7 +13,11 @@ import javax.swing.event.*;
 
 
 public class NBSSPanel extends ModelPanel {
-   public static final int kPeriodic = 0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6744116625324757882L;
+public static final int kPeriodic = 0;
    public static final int kAbsorbing = 1;
    public static final int kReflexive = 2;
 

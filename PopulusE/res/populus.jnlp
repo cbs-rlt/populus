@@ -22,7 +22,6 @@
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
     <extension href="installer.jnlp"/>
     <jar href="Populus.jar"/>
-    <jar href="acrobat.jar"/>
     <jar href="Jama-1.0.2.jar"/>
     <jar href="JBCL.jar"/>
     <jar href="jcchart401K.jar"/>

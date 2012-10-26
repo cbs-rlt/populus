@@ -1,9 +1,6 @@
 package edu.umn.ecology.populus.model.lvpptl;
-import java.awt.Color;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
 import java.util.*;

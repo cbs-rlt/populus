@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.lvpptl;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4693535159377470572L;
+static final Object[][] contents = new String[][]{
 	{ "Continuous_Predator", "Continuous Predator-Prey Models" },
 	{ "Type_1", "Type 1" },
 	{ "Type_2", "Type 2" },

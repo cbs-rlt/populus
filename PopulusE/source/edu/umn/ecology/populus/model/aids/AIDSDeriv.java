@@ -1,10 +1,7 @@
 package edu.umn.ecology.populus.model.aids;
 
-import javax.swing.JOptionPane;
-import edu.umn.ecology.populus.core.DesktopWindow;
 import edu.umn.ecology.populus.math.*;
 import java.util.Random;
-import java.util.*;
 
 /**
  * the unique thing about this model is that the number of variables to be integrated

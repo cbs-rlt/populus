@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.hhap;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class HHAPModel extends BasicPlotModel {
    public Object getModelHelpText() {

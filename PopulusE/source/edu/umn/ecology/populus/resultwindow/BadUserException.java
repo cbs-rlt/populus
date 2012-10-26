@@ -5,6 +5,11 @@ package edu.umn.ecology.populus.resultwindow;
 public class BadUserException extends Error {
    
    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5974327217039117069L;
+
+/**
      * BadUserException constructor comment.
      * @param s java.lang.String
      */

@@ -4,6 +4,10 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class SDGraphParamInfo extends ParamInfo implements BasicPlot{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2814532574960933881L;
 	SDCellParamInfo cpi;
 	public static final String kMainCap = "Spatial Dilemmas Frequency Time Trajectory";
 	public static final String kXCap = "Generation";

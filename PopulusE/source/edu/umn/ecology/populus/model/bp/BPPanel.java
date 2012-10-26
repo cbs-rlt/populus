@@ -2,15 +2,18 @@ package edu.umn.ecology.populus.model.bp;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
+import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 
 public class BPPanel extends BasicPlotInputPanel {
-   Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6869900954843752994L;
+Border border1;
    TitledBorder titledBorder1;
    Border border8;
    ButtonGroup bg1 = new ButtonGroup(), bg2 = new ButtonGroup(), bg3 = new ButtonGroup();
@@ -428,29 +431,29 @@ public class BPPanel extends BasicPlotInputPanel {
       bg3.add(fvstButton);
    }
    void constantaugammaButton_actionPerformed( ActionEvent e ) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
    void variabletaugammaButton_actionPerformed( ActionEvent e ) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void nstarvsnButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void npvsnButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void fvstButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void NvstButton_actionPerformed(ActionEvent e) {
-       fireModelPanelEvent( this.CHANGE_PLOT );
+       fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void seasonalModelButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
    void equableModelButton_actionPerformed(ActionEvent e) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
 /*

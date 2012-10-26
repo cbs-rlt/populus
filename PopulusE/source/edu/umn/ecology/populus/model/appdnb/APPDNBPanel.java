@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class APPDNBPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdnb.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5423494175501386639L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdnb.Res" );
    JPanel modelDIParametersPanel = new JPanel();
    JPanel initialConditionsPanel = new JPanel();
    JRadioButton densityIndependentButton = new JRadioButton();

@@ -9,7 +9,11 @@ import java.io.Serializable;
   */
 
 public class Population implements Serializable {
-   public static final int a = 1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6282214892616261592L;
+public static final int a = 1;
    public static final int A = 0;
    private int popSize;
    private int[][] popArray;

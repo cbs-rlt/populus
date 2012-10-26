@@ -5,13 +5,15 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 
 public class RCTPanel extends BasicPlotInputPanel {
-   int numVars;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4719308612366020192L;
+int numVars;
    Border border1;
    TitledBorder titledBorder1;
    Border border8;

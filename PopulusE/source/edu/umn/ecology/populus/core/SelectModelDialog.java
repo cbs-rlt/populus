@@ -19,10 +19,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
 
 public class SelectModelDialog extends JDialog {
-   JPanel panel2 = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3297379445707828175L;
+JPanel panel2 = new JPanel();
    JButton button1 = new JButton();
    JButton button2 = new JButton();
    Border border1;

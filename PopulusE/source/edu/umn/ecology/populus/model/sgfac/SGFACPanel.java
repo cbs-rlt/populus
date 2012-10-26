@@ -1,18 +1,17 @@
 package edu.umn.ecology.populus.model.sgfac;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
-import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class SGFACPanel extends BasicPlotInputPanel {
-   private JPanel fitnessesP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3113318822291660775L;
+private JPanel fitnessesP = new JPanel();
    private JPanel pP = new JPanel();
    private PopulusParameterField sPPF = new PopulusParameterField();
    private PopulusParameterField h2PPF = new PopulusParameterField();

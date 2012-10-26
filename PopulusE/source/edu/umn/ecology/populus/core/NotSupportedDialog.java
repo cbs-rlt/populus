@@ -19,10 +19,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 
 public class NotSupportedDialog extends JDialog {
-   JPanel panel2 = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9143334206721753109L;
+JPanel panel2 = new JPanel();
    JButton button1 = new JButton();
    JButton button2 = new JButton();
    BorderLayout borderLayout1 = new BorderLayout();

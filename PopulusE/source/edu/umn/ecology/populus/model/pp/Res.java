@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.pp;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 729482635029562574L;
+static final Object[][] contents = new String[][]{
 	{ "Discrete_Predator", "Discrete Predator-Prey (Polyphagous Predators)" },
 	{ "Polyphagous_Predators", "Polyphagous Predators" },
 	{ "Model_Type", "Model Type" },

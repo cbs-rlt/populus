@@ -1,5 +1,4 @@
 package edu.umn.ecology.populus.resultwindow;
-import edu.umn.ecology.populus.plot.*;
 import java.util.*;
 import java.awt.*;
 
@@ -10,7 +9,11 @@ import java.awt.*;
   */
 
 public class OutputPanelEvent extends EventObject {
-   public static final int RESIZED = 2;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7682406453406166585L;
+public static final int RESIZED = 2;
    public static final int SWITCH_OUTPUT = 4;
    public static final int COPY_WINDOW = 8;
    public static final int KILL = 16;

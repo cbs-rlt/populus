@@ -1,11 +1,17 @@
 package edu.umn.ecology.populus.plot.coloredcells;
 
 import javax.swing.*;
+
+import edu.umn.ecology.populus.core.DesktopWindow;
+
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
 
 class CellEditPanel extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3124911840409603685L;
 	JLabel curL = new JLabel();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
 	JLabel curvalL = new JLabel();
@@ -18,8 +24,7 @@ class CellEditPanel extends JFrame{
 	int r,c;
 
 	public CellEditPanel(CellPanel reference,int r, int c, double curVal) {
-		ImageIcon ii = new ImageIcon("picon.gif");
-		setIconImage(ii.getImage());
+		setIconImage(Toolkit.getDefaultToolkit().getImage( DesktopWindow.class.getResource( "picon.gif" ) ));
 		setTitle("Edit Cell:");
 		this.r = r;
 		this.c = c;

@@ -1,10 +1,13 @@
 package edu.umn.ecology.populus.model.bp;
-import java.util.*;
 import java.io.Serializable;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2757977223968045762L;
+static final Object[][] contents = new String[][]{
       { "Bacterial", "Population Biology of Bacterial Plasmids" },
       { "N_t_", "Population Density" + "\n<b><i>"+ColorScheme.getColorString( 0 ) + "  n<sub>+</sub> </font></i></b>, <b><i>" + ColorScheme.getColorString( 1 ) + "n<sub>*</sub> </font></i></b>, <b><i>" + ColorScheme.getColorString( 2 ) + " n </font></i></b>, <b><i>" + ColorScheme.getColorString( 3 ) + "n<sub>+</sub> + n<sub>*</sub> + n </font></i></b>" },
       {"frequency", "Frequency of Plasmid" + "<b><i>"+ColorScheme.getColorString( 0 ) +" (n<sub>+</sub> / N) <b><i>" +ColorScheme.getColorString( 1 ) +" (n<sub>*</sub> / N)"},

@@ -2,8 +2,6 @@ package edu.umn.ecology.populus.model.aidst;
 
 import javax.swing.*;
 import java.awt.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.visual.*; //Lars - hack
 import edu.umn.ecology.populus.edwin.ModelPanel;
 import javax.swing.border.*;
 import java.awt.event.*;
@@ -21,7 +19,11 @@ import com.borland.jbcl.layout.*;
  */
 
 public class AIDSTIntervalArray extends JPanel {
-   private Border border1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3245040664068263100L;
+private Border border1;
    private TitledBorder titledBorder1;
    private JScrollPane scrollPane = new JScrollPane();
    private JButton delButton = new JButton();

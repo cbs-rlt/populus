@@ -1,8 +1,6 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.awt.geom.*;
 import java.io.*;
 
@@ -19,7 +17,11 @@ import java.io.*;
  * @version 1.0
  */
 public class Transition extends CubicCurve2D implements StageShape, Serializable {
-   Color ac = Color.blue;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9207297956088366512L;
+Color ac = Color.blue;
    double x1=0;
    double y1=0;
    double ctrlx1=0;

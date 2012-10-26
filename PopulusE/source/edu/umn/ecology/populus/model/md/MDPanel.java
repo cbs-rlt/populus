@@ -4,16 +4,17 @@ import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import edu.umn.ecology.populus.visual.*;
 import java.util.*;
 
 public class MDPanel extends BasicPlotInputPanel {
-   static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.md.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 938030400034384251L;
+static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.md.Res" );
    Border border5;
    Border border7;
    Border border8;

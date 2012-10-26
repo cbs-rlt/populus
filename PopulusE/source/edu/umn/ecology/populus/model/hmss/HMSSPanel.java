@@ -1,19 +1,19 @@
 package edu.umn.ecology.populus.model.hmss;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import edu.umn.ecology.populus.math.Routines;
 import javax.swing.event.*;
-import java.util.*;
 
 public class HMSSPanel extends BasicPlotInputPanel {
-   JPanel modParamP = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -865593510989217294L;
+JPanel modParamP = new JPanel();
    PopulusParameterField bPPF = new PopulusParameterField();
    private JPanel plotTypeP = new JPanel();
    private JRadioButton rqDBCRB = new StyledRadioButton();

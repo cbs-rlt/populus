@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.plot.plotshapes;
 
-import com.klg.jclass.chart.*;
 import java.awt.geom.AffineTransform;
 
 

@@ -1,18 +1,17 @@
 package edu.umn.ecology.populus.model.sotl;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.event.*;
-import java.util.*;
 
 public class SOTLPanel extends BasicPlotInputPanel {
-   JPanel wPanel = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3563042864719360505L;
+JPanel wPanel = new JPanel();
    private JPanel plotTypeP = new JPanel();
    private JRadioButton WBARvstRB = new StyledRadioButton();
    private JRadioButton DvstRB = new StyledRadioButton();

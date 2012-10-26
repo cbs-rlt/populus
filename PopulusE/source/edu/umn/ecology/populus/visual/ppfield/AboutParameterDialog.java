@@ -15,16 +15,19 @@
 
 //Description:
 package edu.umn.ecology.populus.visual.ppfield;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.*;
 
 public class AboutParameterDialog extends JDialog {
    
    // Cancel
    
-   public void actionPerformed( ActionEvent e ) {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5668063915314383991L;
+
+public void actionPerformed( ActionEvent e ) {
       dispose();
    }
    

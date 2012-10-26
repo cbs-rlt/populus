@@ -1,9 +1,8 @@
 package edu.umn.ecology.populus.constants;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.border.*;
-import java.awt.color.*;
 import java.util.*;
 import edu.umn.ecology.populus.core.DesktopWindow;
 import edu.umn.ecology.populus.core.Model;
@@ -16,7 +15,11 @@ import edu.umn.ecology.populus.core.Model;
   besides, unraveled loops are faster :)*/
 
 public class ColorChooser extends JDialog {
-   JPanel jPanel3 = new JPanel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5763100029469797725L;
+JPanel jPanel3 = new JPanel();
    JPanel panel1 = new JPanel();
    JComboBox jComboBox1 = new JComboBox();
    FlowLayout flowLayout1 = new FlowLayout();
@@ -131,7 +134,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[8] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[8] );
          if( temp != null ) {
             currentColor[8] = temp;
          }
@@ -163,7 +166,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[0] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[0] );
          if( temp != null ) {
             currentColor[0] = temp;
          }
@@ -184,7 +187,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[2] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[2] );
          if( temp != null ) {
             currentColor[2] = temp;
          }
@@ -205,7 +208,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[4] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[4] );
          if( temp != null ) {
             currentColor[4] = temp;
          }
@@ -226,7 +229,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[6] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[6] );
          if( temp != null ) {
             currentColor[6] = temp;
          }
@@ -328,7 +331,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[1] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[1] );
          if( temp != null ) {
             currentColor[1] = temp;
          }
@@ -363,7 +366,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[3] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[3] );
          if( temp != null ) {
             currentColor[3] = temp;
          }
@@ -390,7 +393,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[5] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[5] );
          if( temp != null ) {
             currentColor[5] = temp;
          }
@@ -438,7 +441,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[7] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[7] );
          if( temp != null ) {
             currentColor[7] = temp;
          }
@@ -459,7 +462,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom" ), currentBackground );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom" ), currentBackground );
          if( temp != null ) {
             currentBackground = temp;
          }
@@ -480,7 +483,7 @@ public class ColorChooser extends JDialog {
          JDialog what = new JDialog( this );
          Color temp;
          javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
-         temp = jcc.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[9] );
+         temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[9] );
          if( temp != null ) {
             currentColor[9] = temp;
          }

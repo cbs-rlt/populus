@@ -1,7 +1,8 @@
 package edu.umn.ecology.populus.install;
 
+import java.lang.reflect.Method;
+
 import edu.umn.ecology.populus.fileio.Logging;
-import javax.jnlp.*;  //From javaws.jar
 import javax.swing.JOptionPane;
 
 //TODO: License agreement
@@ -11,6 +12,7 @@ public class Installer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Logging.init();
 		Logging.log("In Installer main");
 		if (args.length > 0) {
 			if (args[0].equals("install")) {
@@ -34,30 +36,41 @@ public class Installer {
 	 * @return true if successful
 	 */
 	public static synchronized boolean install(boolean install) {
-		IntegrationService is = null;
 		try {
-			is = (IntegrationService) ServiceManager.lookup("javax.jnlp.IntegrationService");
-		} catch(UnavailableServiceException use){
+			Method hasMenuShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("hasMenuShortcut");
+			Method hasDesktopShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("hasDesktopShortcut");
+			   
+			boolean result = true;
+			// javax.jnlp.IntegrationService is = javax.jnlp.ServiceManager.lookup("javax.jnlp.IntegrationService");
+			Method findISMeth = Class.forName("javax.jnlp.ServiceManager").getMethod("lookup", String.class);
+			Object is = findISMeth.invoke(null, "javax.jnlp.IntegrationService");
+			if (install) {
+				// creates a desktop and system menu shortcut; returns true if the shortcuts 
+				// were created successfully
+				Method reqShortMeth = Class.forName("javax.jnlp.IntegrationService")
+						.getMethod("requestShortcut", boolean.class, boolean.class, String.class);
+				result = (Boolean) reqShortMeth.invoke(is, true, true, null);
+
+				// checks to see if there are shortcuts for the application
+				//result = result && is.hasMenuShortcut() && is.hasDesktopShortcut();
+				result = result && (Boolean) hasMenuShortMeth.invoke(is)
+						        && (Boolean) hasDesktopShortMeth.invoke(is);
+			} else {
+				//removes all shortcuts for application
+				Method remShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("removeShortcuts");
+				result = (Boolean) remShortMeth.invoke(is);
+
+				// checks to see if there are shortcuts for the application
+				result = result && ! (Boolean) hasMenuShortMeth.invoke(is)
+				        && ! (Boolean) hasDesktopShortMeth.invoke(is);
+			}
+		} catch(Exception unavailableServiceException){
 			Logging.log("Unable to get IntegrationService to install:");
-			Logging.log(use);
+			Logging.log(unavailableServiceException);
 			return false;
 		}
-		boolean result = true;
+		return true;
 
-		if (install) {
-			// creates a desktop and system menu shortcut; returns true if the shortcuts 
-			// were created successfully
-			result = is.requestShortcut(true, true, null);
-
-			// checks to see if there are shortcuts for the application
-			result = is.hasMenuShortcut() && is.hasDesktopShortcut();
-		} else {	
-			//removes all shortcuts for application
-			result = is.removeShortcuts();
-
-			// checks to see if there are shortcuts for the application
-			result = ! is.hasMenuShortcut() && ! is.hasDesktopShortcut();
-		}
 
 		//Mime association with .po files?
 		/*
@@ -75,8 +88,6 @@ public class Installer {
 		}
 		*/
 
-
-		return result;
 	}
 
 }

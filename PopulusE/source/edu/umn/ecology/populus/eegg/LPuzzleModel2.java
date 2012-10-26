@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.eegg;
 
-import javax.swing.*;
 import java.awt.*;
 
 /** Winning piece is inner yellow, then outer yellow, inner, outer... */

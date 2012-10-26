@@ -1,5 +1,4 @@
 package edu.umn.ecology.populus.plot.plotshapes;
-import com.klg.jclass.chart.JCShape;
 
 /**
  * this is used for a better discrete plot -- the dots are bigger

@@ -21,7 +21,11 @@ import java.awt.event.*;
 import java.util.*;
 
 public class UpDownArrowSet extends JPanel implements Serializable,ActionListener {
-   public static final String DOWN = "Down";
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7060966603979549125L;
+public static final String DOWN = "Down";
    public static final String UP = "Up";
    BasicArrowButton downButton = new BasicArrowButton( BasicArrowButton.SOUTH );
    BasicArrowButton upButton = new BasicArrowButton( BasicArrowButton.NORTH );

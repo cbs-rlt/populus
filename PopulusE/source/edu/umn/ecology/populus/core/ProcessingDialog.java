@@ -17,7 +17,11 @@ import java.awt.*;
 import javax.swing.*;
 
 public class ProcessingDialog extends JDialog {
-   JButton cancelButton = new JButton();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2891643239222105852L;
+JButton cancelButton = new JButton();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    JLabel thinkingLabel = new JLabel();
    JProgressBar jProgressBar1 = new JProgressBar();

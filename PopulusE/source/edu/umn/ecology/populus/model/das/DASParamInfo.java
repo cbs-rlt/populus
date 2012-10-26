@@ -2,11 +2,7 @@ package edu.umn.ecology.populus.model.das;
 
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.visual.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
-import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
 
 public class DASParamInfo implements BasicPlot {
    static String xCap = "Generations ( <i>t</i> )";

@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.model.ie;
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class IEModel extends BasicPlotModel {
 

@@ -3,7 +3,6 @@ package edu.umn.ecology.populus.model.sd;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.core.Model;
 import edu.umn.ecology.populus.plot.coloredcells.CellController;
-import java.util.*;
 
 public class SDModel extends Model {
 	SDPanel sdp = new SDPanel();

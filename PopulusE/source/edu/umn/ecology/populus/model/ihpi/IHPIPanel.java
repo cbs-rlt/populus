@@ -12,7 +12,11 @@ import javax.swing.event.*;
 import java.util.*;
 
 public class IHPIPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ihpi.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -104726416224982985L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ihpi.Res" );
    JPanel initialConditionsPanel = new JPanel();
    Border border1;
    JPanel paramsPanel = new JPanel();

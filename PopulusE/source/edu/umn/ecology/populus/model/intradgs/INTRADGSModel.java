@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.intradgs;
 
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class INTRADGSModel extends BasicPlotModel {
 

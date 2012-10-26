@@ -9,7 +9,11 @@ import javax.swing.border.*;
 import edu.umn.ecology.populus.plot.*;
 
 public class IEPanel extends BasicPlotInputPanel {
-   EquationCalculator ss;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2656336723261477979L;
+EquationCalculator ss;
    Hashtable constants = new Hashtable();
    EquationPanel ep;
    JRadioButton textB = new JRadioButton();

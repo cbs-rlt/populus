@@ -6,7 +6,11 @@ import java.io.Serializable;
   */
 
 class Token implements Serializable {
-   public int tokenType;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5744460858336585474L;
+public int tokenType;
    public double value;
    public final static int kMaximum = 2;
    public final static int kRandom = 3;

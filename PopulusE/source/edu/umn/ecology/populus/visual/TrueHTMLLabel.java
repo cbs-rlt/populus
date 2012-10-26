@@ -16,7 +16,11 @@ import java.awt.Font;
  */
 
 public class TrueHTMLLabel extends JLabel implements HTMLConstants {
-   private int turns = 0;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5293871811495683773L;
+private int turns = 0;
 
    public TrueHTMLLabel() {
    }

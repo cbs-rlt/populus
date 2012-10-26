@@ -14,7 +14,11 @@ import javax.swing.border.*;
 /** A panel showing agreements/generations matches */
 
 public class WoozleAGPanel extends JScrollPane {
-   public static final int DEFAULT_INCREMENT = 1;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4036338922218170237L;
+public static final int DEFAULT_INCREMENT = 1;
    int bestMatch = 0;
    int mod;
    ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
@@ -30,8 +34,8 @@ public class WoozleAGPanel extends JScrollPane {
       this.mod = mod;
       mainPanel = new MainPanel();
       this.getViewport().add( mainPanel, null );
-      this.setHorizontalScrollBarPolicy( this.HORIZONTAL_SCROLLBAR_ALWAYS );
-      this.setVerticalScrollBarPolicy( this.VERTICAL_SCROLLBAR_NEVER );
+      this.setHorizontalScrollBarPolicy( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS );
+      this.setVerticalScrollBarPolicy( ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER );
    //this.setLayout(new FlowLayout());
    //Necessary?
    //this.repaint();
@@ -69,7 +73,12 @@ public class WoozleAGPanel extends JScrollPane {
    }
    private class AGPair extends WSGPanel {
 
-      AGPair( int m, int g ) {
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1139102889901023831L;
+
+	AGPair( int m, int g ) {
          super();
          JLabel matchNum = new JLabel( String.valueOf( m ) );
          JLabel genNum = new JLabel( String.valueOf( g ) );
@@ -78,7 +87,11 @@ public class WoozleAGPanel extends JScrollPane {
       }
    }
    private class AGLabels extends WSGPanel {
-      JLabel genLabel = new JLabel( res.getString( "Generation_" ) );
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5134266153816859136L;
+	JLabel genLabel = new JLabel( res.getString( "Generation_" ) );
       JLabel matchLabel = new JLabel( res.getString( "Agreements_" ) );
 
       AGLabels() {
@@ -89,7 +102,12 @@ public class WoozleAGPanel extends JScrollPane {
    }
    private class MainPanel extends JPanel {
 
-      MainPanel() {
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = 969713433316174784L;
+
+	MainPanel() {
          super();
          setLayout( new FlowLayout() );
          add( new AGLabels() );
@@ -97,7 +115,12 @@ public class WoozleAGPanel extends JScrollPane {
    }
    private class WSGPanel extends JPanel {
 
-      WSGPanel() {
+      /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3705059437821772649L;
+
+	WSGPanel() {
          setLayout( new GridLayout( 2, 1 ) );
          this.setBorder( lineBorder );
       }
@@ -106,7 +129,12 @@ public class WoozleAGPanel extends JScrollPane {
 
 class LineThroughMiddleBorder extends LineBorder {
 
-   public void paintBorder( Component c, Graphics g, int x, int y, int width, int height ) {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7029930001956337257L;
+
+public void paintBorder( Component c, Graphics g, int x, int y, int width, int height ) {
       super.paintBorder( c, g, x, y, width, height );
       g.drawLine( x, y + height / 2, x + width - 1, y + height / 2 );
    }

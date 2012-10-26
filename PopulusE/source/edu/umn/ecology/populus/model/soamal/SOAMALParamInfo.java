@@ -1,11 +1,6 @@
 package edu.umn.ecology.populus.model.soamal;
-import edu.umn.ecology.populus.math.NumberMath;
 import edu.umn.ecology.populus.plot.*;
-import edu.umn.ecology.populus.plot.plotshapes.*;
-import edu.umn.ecology.populus.visual.*;
-import java.awt.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import java.util.*;
 
 public class SOAMALParamInfo implements BasicPlot {
    public static final int PvsT = 1;

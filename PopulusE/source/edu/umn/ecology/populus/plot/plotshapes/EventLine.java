@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.plot.plotshapes;
 
 import edu.umn.ecology.populus.plot.*;
-import java.awt.Color;
 
 /**
  * <p>Title: Makes a mark in the graph where a specific event occurs.</p>
@@ -29,9 +28,7 @@ public class EventLine {
       double ymax = bpi.getMaxYVal();
       double[][] newLine = new double[][] { {x, x}, {ymin, ymax} };
 
-      int line = bpi.addData(newLine);
-      //bpi.setColor(c, line);
-
+      bpi.addData(newLine);
    }
    public static void addEventMark(BasicPlotInfo bpi,
                                    int lineToAddTo, /* ignored ? */

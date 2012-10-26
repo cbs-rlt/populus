@@ -2,9 +2,6 @@ package edu.umn.ecology.populus.model.aidsbasic;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.model.appd.APPD3DProtoParamInfo;
 import edu.umn.ecology.populus.math.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
-import java.awt.Color;
-import java.util.*;
 
 public class AIDSBASIC3DParamInfo extends APPD3DProtoParamInfo {
    public static final int NvsT = 1;

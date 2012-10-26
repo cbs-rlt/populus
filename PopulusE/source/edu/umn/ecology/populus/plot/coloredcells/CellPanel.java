@@ -6,6 +6,10 @@ import java.awt.image.*;
 import java.awt.event.*;
 
 public class CellPanel extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4834704545375034048L;
 	int numDivisions;
 	String[] labels;
 	int[] blockStarts;

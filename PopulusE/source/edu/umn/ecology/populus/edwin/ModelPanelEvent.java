@@ -10,8 +10,6 @@ package edu.umn.ecology.populus.edwin;
 
 //Company:      University of Minnesota
 
-//Description:  Populus
-import java.awt.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 
 /**
@@ -19,7 +17,11 @@ import edu.umn.ecology.populus.visual.ppfield.*;
   */
 
 public class ModelPanelEvent extends java.util.EventObject implements ModelPanelEventTypes {
-   private ParameterFieldEvent parameterFieldEvent = null;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8802443706867959580L;
+private ParameterFieldEvent parameterFieldEvent = null;
    private int type;
    
    public ModelPanelEvent( Object source, int type, ParameterFieldEvent e ) {

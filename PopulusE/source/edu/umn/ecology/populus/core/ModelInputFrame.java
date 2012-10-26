@@ -11,15 +11,17 @@
 
 //Description:
 package edu.umn.ecology.populus.core;
-import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import edu.umn.ecology.populus.visual.ppfield.*;
 import java.util.*;
 
 public class ModelInputFrame extends PopInternalFrame {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8093208225694956317L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
    BorderLayout mainBorderLayout = new BorderLayout();
    transient Model model;
    int whichSelected = 1;

@@ -1,13 +1,15 @@
 package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
 import java.awt.*;
 import javax.swing.event.*;
 import edu.umn.ecology.populus.visual.HTMLLabel;
-import java.awt.event.*;
 
 public class Equation extends JPanel {
-   JCheckBox isPlottedCB = new JCheckBox();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6600287433471621366L;
+JCheckBox isPlottedCB = new JCheckBox();
    JTextField equationTF = new JTextField();
    HTMLLabel dNdT = new HTMLLabel();
    HTMLLabel N0TF = new HTMLLabel();

@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.model.appdfr;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.core.PopResourceBundle;
-import java.util.*;
 
 public class APPDFRModel extends BasicPlotModel {
    static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );

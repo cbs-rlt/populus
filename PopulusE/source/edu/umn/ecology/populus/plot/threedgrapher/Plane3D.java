@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.plot.threedgrapher;
 
 import java.awt.*;
-import java.util.*;
 import edu.umn.ecology.populus.math.NumberMath;
 
 

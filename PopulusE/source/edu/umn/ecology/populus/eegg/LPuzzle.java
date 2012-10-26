@@ -5,6 +5,10 @@ import java.awt.*;
 import edu.umn.ecology.populus.fileio.Logging;
 
 public class LPuzzle extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2340957324111912141L;
 	private boolean isApplet=true;
 
    public LPuzzle(Frame owner) {

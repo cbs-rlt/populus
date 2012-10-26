@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.core;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][] {
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2946426438952951442L;
+static final Object[][] contents = new String[][] {
        {
          "PopulusSplashJPEG_jpg", "PopulusSplashJPEG.jpg"
       },  {

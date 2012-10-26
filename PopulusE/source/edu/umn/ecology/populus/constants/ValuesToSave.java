@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.constants;
 
-import java.awt.Color;
 import edu.umn.ecology.populus.plot.coloredcells.CellDefaults;
 import java.io.Serializable;
 
@@ -14,7 +13,11 @@ import java.io.Serializable;
  * @version 5.2
  */
 public class ValuesToSave implements Serializable {
-   int widthForCells;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 342451521705294304L;
+int widthForCells;
    int heightForCells;
 
    public ValuesToSave(){

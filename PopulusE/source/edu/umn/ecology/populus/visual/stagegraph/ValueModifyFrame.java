@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.core.DesktopWindow;
 /**
@@ -15,7 +14,11 @@ import edu.umn.ecology.populus.core.DesktopWindow;
  */
 
 public class ValueModifyFrame extends JDialog {
-   private JLabel nameL = new JLabel();
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3663970312045684506L;
+private JLabel nameL = new JLabel();
    private JLabel valueL = new JLabel();
    private JTextField valueTF = new JTextField();
    private GridBagLayout gridBagLayout1 = new GridBagLayout();

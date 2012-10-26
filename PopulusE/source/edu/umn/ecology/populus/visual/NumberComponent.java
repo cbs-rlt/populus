@@ -8,7 +8,11 @@ import java.awt.*;
   */
 
 public class NumberComponent extends TextField {
-   double maxVal = Double.POSITIVE_INFINITY;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1818193465390545826L;
+double maxVal = Double.POSITIVE_INFINITY;
    double minVal = 0.0;
    
    public NumberComponent( String def, int columns, double min, double max ) {

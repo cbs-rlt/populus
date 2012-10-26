@@ -1,9 +1,12 @@
 package edu.umn.ecology.populus.model.appdnrs;
-import java.util.*;
 import java.io.Serializable;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9015154110862092606L;
+static final Object[][] contents = new String[][]{
 	{ "Non_Random_Searching", "Non-Random Searching" },
 	{ "Discrete_Predator", "Discrete Predator-Prey (Non-Random Searching)" },
 	{ "Model_Type", "Model Type" },

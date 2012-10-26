@@ -1,8 +1,6 @@
 package edu.umn.ecology.populus.model.sspg;
 
-import edu.umn.ecology.populus.core.*;
 import edu.umn.ecology.populus.plot.*;
-import java.util.*;
 
 public class SSPGModel extends BasicPlotModel {
    public SSPGModel() {

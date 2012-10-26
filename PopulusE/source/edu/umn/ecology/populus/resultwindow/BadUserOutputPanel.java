@@ -15,13 +15,16 @@
 package edu.umn.ecology.populus.resultwindow;
 import java.awt.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
 
 /** This class extends OutputPanel to put an error message on the output
   screen instead of the usual graph when there is an error in the output.*/
 
 public class BadUserOutputPanel extends OutputPanel {
-   JLabel errorMessage;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3164580227786601659L;
+JLabel errorMessage;
    BadUserException bue = null;
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    JLabel mainMessage;

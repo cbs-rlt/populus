@@ -11,7 +11,11 @@ import javax.swing.border.*;
 import java.util.*;
 
 public class CPPanel extends BasicPlotInputPanel {
-   ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.cp.Res" );
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2681157339951149355L;
+ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.cp.Res" );
    Border border1;
    TitledBorder titledBorder1;
    JPanel initialConditionsPanel = new JPanel();

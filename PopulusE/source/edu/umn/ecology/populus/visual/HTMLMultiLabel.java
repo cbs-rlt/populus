@@ -1,7 +1,6 @@
 package edu.umn.ecology.populus.visual;
 import java.awt.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
 
 /**
  * <p>Title: Populus</p>
@@ -14,7 +13,11 @@ import com.borland.jbcl.layout.VerticalFlowLayout;
  */
 
 public class HTMLMultiLabel extends JPanel implements HTMLConstants {
-   private static final boolean kUseTrueHTML = false;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4078264764755231151L;
+private static final boolean kUseTrueHTML = false;
    private static final String kDefaultString = "*LABEL*";
 
    private int direction;

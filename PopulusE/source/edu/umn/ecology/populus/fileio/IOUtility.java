@@ -2,6 +2,8 @@ package edu.umn.ecology.populus.fileio;
 import edu.umn.ecology.populus.core.*;
 import java.awt.*;
 import java.io.*;
+import java.net.URI;
+
 import javax.swing.*;
 
 public class IOUtility {
@@ -24,9 +26,7 @@ public class IOUtility {
      * returns a String with the file name, or null if cancelled
      * @param type Use either FileDialog.SAVE, or FileDialog.LOAD
      */
-
     //TODO Lars - Need to verify
-
    public static String getFileName( String baseName, String extension, String title, int type ) {
       //Find first name of form  baseName + int + extension, where int starts with 1 and goes until
       // we don't have a file like that.
@@ -52,11 +52,11 @@ public class IOUtility {
       }
       return getFileName(fullName, title, type);
    }
+   
    /**
     * returns a String with the file name, or null if cancelled
     * @param type Use either FileDialog.SAVE, or FileDialog.LOAD
     */
-
    public static String getFileName( String defaultName, String title, int type ) {
       String filename = null;
       if( PopPreferences.isUseAWTFileDialog() ) {
@@ -106,14 +106,25 @@ public class IOUtility {
       }
       return filename;
    }
-
-/*
-public HTMLDocument getHTMLFromString(String source) {
-HTMLDocument doc = new HTMLDocument();
-JEditorPane pane = new JEditorPane(
-AbstractDocument.Content = new AbstractDocument.Content
-HTMLDocument specificDocument = new HTMLDocument(Contentc, StyleSheetstyles);
-Content c = new Content(
-}
-*/
+   
+   /** Converts File to URI.  Returns defaultStr if error. */
+   public static String convertPathToURI(String fileStr, String defaultStr) {
+		try {
+			String uriText = new File(fileStr).toURI().toString();
+			return uriText;
+		} catch (Exception e) {
+			Logging.log("Cannot convert " + fileStr + " to URI");
+			return defaultStr;
+		}	   
+   }
+   /** Converts URI to File.  Returns defaultStr if error. */
+   public static String convertURIToPath(String uriStr, String defaultStr) {
+		try {
+			String pathText = new File(new URI(uriStr)).getAbsolutePath();
+			return pathText;
+		} catch (Exception e) {
+			Logging.log("Cannot convert " + uriStr + " to file");
+			return defaultStr;
+		}
+   }
 }

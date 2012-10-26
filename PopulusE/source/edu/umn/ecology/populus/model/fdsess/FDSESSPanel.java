@@ -1,18 +1,18 @@
 package edu.umn.ecology.populus.model.fdsess;
 import java.awt.*;
-import java.awt.event.*;
-import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
 import javax.swing.event.*;
-import java.util.*;
 
 public class FDSESSPanel extends BasicPlotInputPanel {
-   private TitledBorder titledBorder2;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1770251003333213328L;
+private TitledBorder titledBorder2;
    private TitledBorder titledBorder3;
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private ButtonGroup invaderBG = new ButtonGroup();

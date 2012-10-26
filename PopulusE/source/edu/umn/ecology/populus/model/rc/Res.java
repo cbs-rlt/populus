@@ -1,10 +1,13 @@
 package edu.umn.ecology.populus.model.rc;
-import java.util.*;
 import java.io.Serializable;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
-   static final Object[][] contents = new String[][]{
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1340857718783727241L;
+static final Object[][] contents = new String[][]{
       {"Resource_competition", "Resource Competition (Stewart & Levin)"},
       {"Resource", "Stewart & Levin" },
       {"ResourceS", "Resources"},

@@ -460,7 +460,7 @@ public final class Routines {
                   }
                   data = newData;
                } else {
-                  System.out.print("The value of j: "+j+"\n");
+                  //Logging.log("The value of j: "+j+"\n");
                   //Truncate the series up to the infinite value
                   double[][] newDataSeries = new double[2][j];
                   System.arraycopy( data[i][0], 0, newDataSeries[0], 0, j );

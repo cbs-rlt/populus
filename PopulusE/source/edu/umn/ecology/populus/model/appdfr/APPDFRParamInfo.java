@@ -1,7 +1,5 @@
 package edu.umn.ecology.populus.model.appdfr;
-import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.model.appd.APPDProtoParamInfo;
-import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 

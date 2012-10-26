@@ -20,8 +20,6 @@ import javax.swing.*;
 import java.io.*;
 import java.util.*;
 import java.awt.event.*;
-import edu.umn.ecology.populus.constants.ColorScheme;
-import com.borland.jbcl.layout.*;
 
 public class PopulusParameterField extends JPanel implements Externalizable {
    NumberField numberField = new NumberField();

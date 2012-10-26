@@ -2,12 +2,10 @@ package edu.umn.ecology.populus.edwin;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.print.*;
 import javax.swing.*;
 import java.util.*;
 import edu.umn.ecology.populus.plot.ParamInfo;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.core.PopPreferences;
 
 /**
   ModelPanel serves as a root for all other models in the 'edwin' directory
@@ -26,7 +24,11 @@ import edu.umn.ecology.populus.core.PopPreferences;
   */
 
 public class ModelPanel extends JPanel implements ModelPanelEventTypes,ParameterFieldListener,ActionListener,Serializable {
-   protected transient Vector listeners;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7758198745066741486L;
+protected transient Vector<ModelPanelListener> listeners;
 
    public ParamInfo getParamInfo() {
       return null;
@@ -41,11 +43,8 @@ public class ModelPanel extends JPanel implements ModelPanelEventTypes,Parameter
    }
 
    //////////
-
    // EVENT
-
    // METHODS
-
    //////////
 
    public void parameterFieldChanged( ParameterFieldEvent e ) {
@@ -86,7 +85,7 @@ public class ModelPanel extends JPanel implements ModelPanelEventTypes,Parameter
    public void willIterate(boolean isIterate){}
 
    public void actionPerformed( ActionEvent e ) {
-      fireModelPanelEvent( this.CHANGE_PLOT );
+      fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
    }
 
    public void registerChildren( Component c ) {
@@ -148,7 +147,7 @@ public class ModelPanel extends JPanel implements ModelPanelEventTypes,Parameter
 
    protected void processEvent( ParameterFieldEvent pfEvent ) {
       ModelPanelEvent mpEvent = new ModelPanelEvent( this, pfEvent );
-      Enumeration enm = listeners.elements();
+      Enumeration<ModelPanelListener> enm = listeners.elements();
       while( enm.hasMoreElements() ) {
          ( (ModelPanelListener)enm.nextElement() ).modelPanelChanged( mpEvent );
       }
@@ -160,14 +159,14 @@ public class ModelPanel extends JPanel implements ModelPanelEventTypes,Parameter
 
    protected void fireModelPanelEvent( int type ) {
       ModelPanelEvent event = new ModelPanelEvent( this, type );
-      Enumeration e = listeners.elements();
+      Enumeration<ModelPanelListener> e = listeners.elements();
       while( e.hasMoreElements() ) {
          ( (ModelPanelListener)e.nextElement() ).modelPanelChanged( event );
       }
    }
 
    private void basicInitializer() {
-      listeners = new Vector( 1, 1 );
+      listeners = new Vector<ModelPanelListener>( 1, 1 );
 
       //add all listeners to model panel.  This should be done by subclasses.
       //registerChildren( this );
