@@ -18,7 +18,6 @@ public class KHAMParamInfo implements BasicPlot {
    public BasicPlotInfo getBasicPlotInfo() {
       BasicPlotInfo bpi = null;
       Integrator ig = new Integrator( dp );
-      int size, equations = ic.length;
       double[][][] points;
       double[][] ylists;
       double[] xlist;
@@ -30,7 +29,7 @@ public class KHAMParamInfo implements BasicPlot {
       ig.integrate( ic, 0.0, gens );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
+      int size = xlist.length;
 
       switch(plotType){
          case t2vsp2:
