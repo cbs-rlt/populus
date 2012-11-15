@@ -57,6 +57,7 @@ public final class PopPreferences {
 
 	//TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
 	private static final String DEFAULT_DIRECTORY = "";
+	
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
 	private static final Integer DELAY_TIME         = new Integer( 102 );

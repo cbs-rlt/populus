@@ -57,7 +57,7 @@ public class HelpConfigPanel extends JPanel {
 	public HelpConfigPanel() {
 		setLayout(new BorderLayout(0, 0));
 
-		String loc = PDFHelpFileMgr.getHelpFileAsFileName();
+		String loc = PDFHelpFileMgr.getHelpFileAsFileName(false);
 		if (loc.equals(PopPreferences.DEFAULT_HELP_FILE)) {
 			try {
 				String storeDir = System.getProperty( "user.home", "." );
@@ -324,7 +324,7 @@ public class HelpConfigPanel extends JPanel {
 
 	private boolean isFilenameValid() {
 		boolean okay = false;
-		if (0 == fileOrURLBox.getSelectedIndex()) {
+		if (isFileMode()) {
 			String s = filePathField.getText();
 			java.io.File f = new java.io.File(s);
 			okay = f.canRead();
@@ -357,6 +357,7 @@ public class HelpConfigPanel extends JPanel {
 		}
 	}
 
+	
 	private String getURIString() {
 		String fileStr = filePathField.getText();
 		String uriText = "";
@@ -401,6 +402,8 @@ public class HelpConfigPanel extends JPanel {
 			Logging.log(e);
 		}
 	}
+	
+	
 	public void doConfirmAction() {
 		PopPreferences.setHelpFileLocation(this.getURIString());
 		PopPreferences.setHelpLanguage(this.getLanguageSelected());

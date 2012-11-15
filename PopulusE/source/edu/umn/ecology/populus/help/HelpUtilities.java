@@ -194,7 +194,7 @@ public class HelpUtilities  {
 			return AboutPopulusDialog.openURIJNLP(location);
 		} else { //if (OpenPDFMethod.DESKTOP == opm.getOpenMethod()) {
 			String command = opm.getExecStr();
-			String filename = PDFHelpFileMgr.getHelpFileAsFileName();
+			String filename = PDFHelpFileMgr.getHelpFileAsFileName(true);
 			command = command.replaceAll("%1", baseLoc);
 			command = command.replaceAll("%2", id);
 			command = command.replaceAll("%3", filename);

@@ -33,12 +33,12 @@ public class AboutPopulusDialog extends JDialog {
    JButton button1 = new JButton();
    Border border1;
    JPanel jPanel1 = new JPanel();
-   JTextField line3 = new JTextField();
+   JTextPane line3 = new JTextPane();
    JLabel line1 = new JLabel();
    JLabel line7 = new JLabel();
    JPanel panel1 = new JPanel();
    VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
-   JPanel jPanel3 = new JPanel();
+   JPanel urlPanel = new JPanel();
    JPanel jPanel2 = new JPanel();
    JLabel line8 = new JLabel();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
@@ -46,7 +46,7 @@ public class AboutPopulusDialog extends JDialog {
    ImageIcon populusImage;
    JLabel line4 = new JLabel();
    JLabel line13 = new JLabel();
-   JLabel line2 = new JLabel();
+   JTextPane line2 = new JTextPane();
    JLabel line12 = new JLabel();
    TitledBorder titledBorder1;
    JLabel line11 = new JLabel();
@@ -56,9 +56,8 @@ public class AboutPopulusDialog extends JDialog {
    JLabel line5 = new JLabel();
    private final JPanel panel3rdParty = new JPanel();
    private final JTextPane txtpnDependsOnThe = new JTextPane();
-   private final JPanel jPanelEmail = new JPanel();
+   private final JPanel emailPanel = new JPanel();
    private JButton emailButton = new JButton("Email");
-   private final JPanel panel = new JPanel();
     public AboutPopulusDialog( JFrame frame, String title ) {
       this( frame, title, false );
    }
@@ -121,12 +120,6 @@ public class AboutPopulusDialog extends JDialog {
 	   Logging.log("Trying to open with Desktop: " + uriString);
 	   try {
 		   Class<?> desktopClass = Class.forName("java.awt.Desktop");
-		   Method m = desktopClass.getMethod("isDesktopSupported");
-		   Logging.log("invoking isDesktopSupported...");
-		   Logging.log(m.invoke(null).toString()); //TODO - verify it returns true!
-		   //TODO - should we check for this?
-		   // if( !desktop.isSupported( java.awt.Desktop.Action.BROWSE ) ) {
-		   // ... ??
 		   Method getDeskMeth = desktopClass.getMethod("getDesktop");
 		   Object desktop = getDeskMeth.invoke(null);
 		   Method openURI = desktopClass.getMethod("browse", java.net.URI.class);
@@ -159,13 +152,29 @@ public class AboutPopulusDialog extends JDialog {
 		   showDocMeth.invoke(basicService, url);
 		   return true;
 	   } catch (Exception e) {
-		   Logging.log(e);
+		   Logging.log(e, "Could not use JNLP to open URI " + uriString);
 		   return false;
 	   }
    }
 
    void goB_actionPerformed( ActionEvent e ) {
 	   openURI( "http://www.cbs.umn.edu/populus/" );
+   }
+   boolean sendEmail(String emailAddress) {
+	   try {
+		   Class<?> desktopClass = Class.forName("java.awt.Desktop");
+		   Method getDeskMeth = desktopClass.getMethod("getDesktop");
+		   Object desktop = getDeskMeth.invoke(null);
+		   Method openURI = desktopClass.getMethod("mail", java.net.URI.class);
+		   java.net.URI uri = new java.net.URI("mailto:" + emailAddress);
+		   openURI.invoke(desktop, uri);
+		   return true;
+	   } catch (Exception e) {
+		   Logging.log("Could not open email to " + emailAddress);
+		   Logging.log(e);
+		   return false;
+	   }
+ 
    }
 
    private void jbInit() throws Exception {
@@ -197,7 +206,8 @@ public class AboutPopulusDialog extends JDialog {
       Color gold = new Color( 236, 210, 62 );
       jPanel1.setBackground( maroon );
       jPanel2.setBackground( maroon );
-      jPanel3.setBackground( maroon );
+      urlPanel.setForeground(gold);
+      urlPanel.setBackground( maroon );
       button1.setBackground( gold );
       button1.setBorder( border1 );
       button1.setPreferredSize( new Dimension( 50, 25 ) );
@@ -220,10 +230,10 @@ public class AboutPopulusDialog extends JDialog {
                                         GridBagConstraints.BOTH,
                                         new Insets(0, 0, 5, 0), 0, 0));
       jPanel1.add(line1, null);
-      GridBagLayout gbl_jPanel3 = new GridBagLayout();
-      gbl_jPanel3.columnWeights = new double[]{1.0, 0.0};
-      gbl_jPanel3.rowWeights = new double[]{0.0};
-      jPanel3.setLayout(gbl_jPanel3);
+      GridBagLayout gbl_urlPanel = new GridBagLayout();
+      gbl_urlPanel.columnWeights = new double[]{1.0, 0.0};
+      gbl_urlPanel.rowWeights = new double[]{0.0};
+      urlPanel.setLayout(gbl_urlPanel);
       goB.setAlignmentX(Component.RIGHT_ALIGNMENT);
       goB.setHorizontalAlignment(SwingConstants.RIGHT);
       goB.setToolTipText("Go to Web site");
@@ -232,56 +242,60 @@ public class AboutPopulusDialog extends JDialog {
       goB.setFocusPainted( false );
       goB.setText( "Go" );
       goB.addActionListener(new AboutPopulusDialog_goB_actionAdapter(this));
-      line2.setText( "url: http://www.cbs.umn.edu/populus/" );
+      line2.setBackground(maroon);
+      line2.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+      line2.setText( " url: http://www.cbs.umn.edu/populus/" );
       line2.setForeground( gold );
       GridBagConstraints gbc_line2 = new GridBagConstraints();
       gbc_line2.anchor = GridBagConstraints.WEST;
-      gbc_line2.insets = new Insets(0, 0, 5, 5);
+      gbc_line2.insets = new Insets(0, 5, 0, 5);
       gbc_line2.gridx = 0;
       gbc_line2.gridy = 0;
-      jPanel3.add( line2, gbc_line2 );
+      urlPanel.add( line2, gbc_line2 );
       GridBagConstraints gbc_goB = new GridBagConstraints();
       gbc_goB.insets = new Insets(0, 0, 5, 0);
       gbc_goB.anchor = GridBagConstraints.EAST;
       gbc_goB.gridx = 1;
       gbc_goB.gridy = 0;
-      jPanel3.add(goB, gbc_goB);
+      urlPanel.add(goB, gbc_goB);
       jPanel1.add( line10, null );
       jPanel1.add( line11, null );
       jPanel1.add( line12, null );
       jPanel1.add( line4, null );
-      jPanel1.add( jPanel3, null );
+      jPanel1.add( urlPanel, null );
+      emailPanel.setForeground(gold);
+      emailPanel.setBackground(maroon);
       
-      GridBagConstraints gbc_panel = new GridBagConstraints();
-      gbc_panel.insets = new Insets(0, 0, 0, 5);
-      gbc_panel.fill = GridBagConstraints.BOTH;
-      gbc_panel.gridx = 1;
-      gbc_panel.gridy = 0;
-      jPanel3.add(panel, gbc_panel);
-      
-      jPanel1.add(jPanelEmail);
-      GridBagLayout gbl_jPanelEmail = new GridBagLayout();
-      gbl_jPanelEmail.columnWeights = new double[]{0.0, 0.0};
-      gbl_jPanelEmail.rowWeights = new double[]{0.0};
-      jPanelEmail.setLayout(gbl_jPanelEmail);
+      jPanel1.add(emailPanel);
+      GridBagLayout gbl_emailPanel = new GridBagLayout();
+      gbl_emailPanel.columnWeights = new double[]{1.0, 0.0};
+      gbl_emailPanel.rowWeights = new double[]{0.0};
+      emailPanel.setLayout(gbl_emailPanel);
       GridBagConstraints gbc_line3 = new GridBagConstraints();
-      gbc_line3.insets = new Insets(0, 0, 0, 5);
+      gbc_line3.insets = new Insets(0, 5, 0, 5);
       gbc_line3.anchor = GridBagConstraints.WEST;
       gbc_line3.gridx = 0;
       gbc_line3.gridy = 0;
-      line3.setHorizontalAlignment(SwingConstants.LEFT);
-      jPanelEmail.add(line3, gbc_line3);
-      line3.setText( "email: cbs-populus@umn.edu" );
+      line3.setBackground(maroon);
       line3.setForeground( gold );
+      line3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+      emailPanel.add(line3, gbc_line3);
+      line3.setText( " email: populus@umn.edu" );
+      emailButton.addActionListener(new ActionListener() {
+      	public void actionPerformed(ActionEvent arg0) {
+      		sendEmail("populus@umn.edu");
+      	}
+      });
       
+      emailButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
       emailButton.setHorizontalAlignment(SwingConstants.RIGHT);
       emailButton.setToolTipText("Send Email");
       emailButton.setBackground( gold );
-      //goB.setBorder( border1 );
+      emailButton.setBorder( border1 );
       emailButton.setFocusPainted( false );
       emailButton.setText( "Email" );      
       
-      jPanelEmail.add(emailButton);
+      emailPanel.add(emailButton);
       jPanel1.add( line9, null );
       jPanel1.add( line5, null );
       jPanel1.add( line7, null );

@@ -3,6 +3,9 @@ import edu.umn.ecology.populus.core.DesktopWindow;
 import edu.umn.ecology.populus.fileio.Logging;
 
 import javax.swing.UIManager;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class PopRun {
@@ -29,8 +32,9 @@ public class PopRun {
 		String buildTime = "<Unable to find build time>";
 		try {
 			//Read timestamp.txt from current directory.
-			String timeFile = "timestamp.txt";
-			java.io.BufferedReader ri = new java.io.BufferedReader(new java.io.FileReader(timeFile));
+			InputStream is = PopRun.class.getResourceAsStream("timestamp.txt");
+			InputStreamReader isr = new InputStreamReader(is);
+			java.io.BufferedReader ri = new java.io.BufferedReader(isr);
 			buildTime = ri.readLine();
 		}
 		catch (Exception whateverHappensInMinnesotaStaysInMinnesota) { }

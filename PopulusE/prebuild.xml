@@ -5,6 +5,6 @@
     	<tstamp>
     	    <format property="STARTTIME" pattern="d-MMMM-yyyy hh:mm aa"/>
     	</tstamp>
-    	<echo file="res/timestamp.txt" append="false" message="${STARTTIME}" />
+    	<echo file="build/classes/edu/umn/ecology/populus/core/timestamp.txt" append="false" message="${STARTTIME}" />
     </target>
 </project>

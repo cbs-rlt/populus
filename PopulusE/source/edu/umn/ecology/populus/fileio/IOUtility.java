@@ -111,6 +111,12 @@ public class IOUtility {
    public static String convertPathToURI(String fileStr, String defaultStr) {
 		try {
 			String uriText = new File(fileStr).toURI().toString();
+			//Hack - convert file:/blah to file:///blah
+			//See http://stackoverflow.com/questions/1131273/java-file-touri-tourl-on-windows-file
+			if (uriText.startsWith("file:/") && !uriText.startsWith("file://")) {
+				uriText = uriText.replaceFirst("file:", "file://");
+			}
+			Logging.log("File " + fileStr + " converted to URI " + uriText);
 			return uriText;
 		} catch (Exception e) {
 			Logging.log("Cannot convert " + fileStr + " to URI");
@@ -121,6 +127,7 @@ public class IOUtility {
    public static String convertURIToPath(String uriStr, String defaultStr) {
 		try {
 			String pathText = new File(new URI(uriStr)).getAbsolutePath();
+			Logging.log("URI " + uriStr + " converted to File " + pathText);
 			return pathText;
 		} catch (Exception e) {
 			Logging.log("Cannot convert " + uriStr + " to file");

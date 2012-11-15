@@ -13,12 +13,13 @@ import edu.umn.ecology.populus.fileio.Logging;
 public class PDFHelpFileMgr {
 	/** Return location of help file outside of JAR, and copy the file out if needed
 	 * 
+	 * @param forceAlwaysUpdate - If true, it will always prompt the user to set up the file.
 	 * @return name of file
 	 */
 	private static void setupHelpFileFirst(boolean forceAlwaysUpdate) {
 		boolean shouldRun = forceAlwaysUpdate;
 		if (!shouldRun && isLocalFile()) {
-			File f = new File(getHelpFileAsFileName());
+			File f = new File(getHelpFileAsFileName(false));
 			if(null != f && (!f.canRead() || f.length() < 100)){
 				Logging.log("Can't read file " + f + ", will attempt to set up.");
 				shouldRun = true;
@@ -31,16 +32,17 @@ public class PDFHelpFileMgr {
 	}
 
 
-	private static String getHelpFileLocation() {
-		setupHelpFileFirst(false);
+	private static String getHelpFileLocation(boolean setupIfNeeded) {
+		if (setupIfNeeded)
+			setupHelpFileFirst(false);
 		return PopPreferences.getHelpFileLocation();
 	}
 	public static String getHelpFileLocationURI() {
-		return PDFHelpFileMgr.getHelpFileLocation();
+		return PDFHelpFileMgr.getHelpFileLocation(true);
 	}
 
-	public static String getHelpFileAsFileName() {
-		String str = PDFHelpFileMgr.getHelpFileLocation();
+	public static String getHelpFileAsFileName(boolean setupIfNeeded) {
+		String str = PDFHelpFileMgr.getHelpFileLocation(setupIfNeeded);
 		try {
 			return new File(new URI(str)).getAbsolutePath();
 		} catch (Exception e) {
@@ -50,7 +52,7 @@ public class PDFHelpFileMgr {
 	}
 	private static boolean isLocalFile() {
 		String str = PopPreferences.getHelpFileLocation();
-		return (str.startsWith("file:///"));
+		return (str.startsWith("file://") || str.isEmpty());
 	}
 	public static String getHelpLang() {
 		return PopPreferences.getHelpLang();
