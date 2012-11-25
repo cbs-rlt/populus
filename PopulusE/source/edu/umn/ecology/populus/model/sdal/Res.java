@@ -26,7 +26,7 @@ static final Object[][] contents = new String[][] {
       },  {
          "Generations", "Generations"
       },  {
-         "Fitness_Selection", "Fitness/Selection Coeffs"
+         "Fitness_Selection", "Fitness/Selection Coeffs."
       },  {
          "Fitness", "Fitness"
       },  {

@@ -104,8 +104,9 @@ public class AboutPopulusDialog extends JDialog {
    
    //TODO: fix up error handling on this.
    //Returns True if successful
+   //Note: this isn't used directly by Help, only when user clicks on a URI.
    static public boolean openURI( String uriString ) {
-	   //TODO: Should switch on PopPreferences...
+	   //TODO: Should switch on PopPreferences, like context help does.
 	   return openURIDesktop( uriString );
 	   //return openURIJNLP( uriString );
    }

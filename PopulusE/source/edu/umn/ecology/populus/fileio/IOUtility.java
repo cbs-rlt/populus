@@ -112,6 +112,7 @@ public class IOUtility {
 		try {
 			String uriText = new File(fileStr).toURI().toString();
 			//Hack - convert file:/blah to file:///blah
+			//This is because Desktop API on Mac and Windows doesn't like the single slash.
 			//See http://stackoverflow.com/questions/1131273/java-file-touri-tourl-on-windows-file
 			if (uriText.startsWith("file:/") && !uriText.startsWith("file://")) {
 				uriText = uriText.replaceFirst("file:", "file://");

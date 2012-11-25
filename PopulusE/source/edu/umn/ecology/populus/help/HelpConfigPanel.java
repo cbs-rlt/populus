@@ -361,10 +361,10 @@ public class HelpConfigPanel extends JPanel {
 	private String getURIString() {
 		String fileStr = filePathField.getText();
 		String uriText = "";
-		if (0 == fileOrURLBox.getSelectedIndex()) {
+		if (isFileMode()) {
 			//If it's a file, we need to convert it to URI
 			try {
-				uriText = new File(fileStr).toURI().toString();
+				uriText = IOUtility.convertPathToURI(fileStr, fileStr);
 			} catch (Exception e) {
 				Logging.log("Cannot convert " + fileStr + " to URI");
 			}
@@ -378,10 +378,13 @@ public class HelpConfigPanel extends JPanel {
 		//Copy file from resource to local directory
 		//if file is not there already...
 		try {
-			File newf = new File(getURIString());
+			String uriString = getURIString();
+			String fname = IOUtility.convertURIToPath(uriString, uriString);
+			File newf = new File(fname);
 			if(force || !newf.canRead())
 			{
-				Logging.log("Copying source file from " + PDFHelpFileMgr.getHelpLangSourceFile());
+				Logging.log("Copying source file from " + PDFHelpFileMgr.getHelpLangSourceFile()
+						+ " to " + newf.toString());
 				PopPreferences.setHelpLanguage(getLanguageSelected());
 				InputStream is = HelpUtilities.class.getResourceAsStream(PDFHelpFileMgr.getHelpLangSourceFile());
 				OutputStream os = new FileOutputStream(newf);

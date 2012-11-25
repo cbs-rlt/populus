@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
+import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -29,7 +30,6 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
    PopulusParameterField paramwAa = new PopulusParameterField();
    VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
    JRadioButton sixInitialFrequenciesButton = new JRadioButton();
-   FlowLayout flowLayout1 = new FlowLayout();
    Border border1;
    PopulusParameterField paramh = new PopulusParameterField();
    TitledBorder titledBorder1;
@@ -144,14 +144,38 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       titledBorder2 = new TitledBorder( border2, res.getString( "Fitness_or_Selection" ) );
       border3 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder3 = new TitledBorder( border3, res.getString( "Initial_Conditions" ) );
-      plotOptionsPanel.setBorder( titledBorder1 );
-      plotOptionsPanel.setLayout( verticalFlowLayout1 );
-      coefficientsPanel.setBorder( titledBorder2 );
-      coefficientsPanel.setPreferredSize( new Dimension(230, 200) );
-      flowLayout1.setHgap( 17 ); //this is needed because w/o the title doesn't fit
-      coefficientsPanel.setLayout( flowLayout1 );
+      titledBorder2.setTitle( res.getString( "Fitness_Selection" ) );
+      GridBagLayout gridBagLayout = new GridBagLayout();
+      gridBagLayout.columnWidths = new int[]{81, 193, 128, 0};
+      gridBagLayout.rowHeights = new int[]{168, 0};
+      gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+      gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+      setLayout(gridBagLayout);
       initialConditionsPanel.setBorder( titledBorder3 );
       initialConditionsPanel.setLayout( verticalFlowLayout4 );
+      oneInitialFrequencyButton.setSelected( true );
+      oneInitialFrequencyButton.setText( res.getString( "One_Initial_Frequency" ) );
+      oneInitialFrequencyButton.addActionListener( new java.awt.event.ActionListener()  {
+
+         public void actionPerformed( ActionEvent e ) {
+            oneInitialFrequencyButton_actionPerformed( e );
+         }
+      } );
+      paramInitialFrequency.setCurrentValue( 0.1 );
+      paramInitialFrequency.setDefaultValue( 0.1 );
+      paramInitialFrequency.setIncrementAmount( 0.05 );
+      paramInitialFrequency.setMaxValue( 1.0 );
+      paramInitialFrequency.setParameterName( res.getString( "Initial_Frequency" ) );
+      paramInitialFrequency.setHelpText("Starting Frequency");
+      sixInitialFrequenciesButton.setText( res.getString( "Six_Initial" ) );
+      sixInitialFrequenciesButton.addActionListener( new java.awt.event.ActionListener()  {
+
+         public void actionPerformed( ActionEvent e ) {
+            sixInitialFrequenciesButton_actionPerformed( e );
+         }
+      } );
+      plotOptionsPanel.setBorder( titledBorder1 );
+      plotOptionsPanel.setLayout( verticalFlowLayout1 );
       pvstButton.setSelected( true );
       pvstButton.setText( "<i>p</i> vs <i>t</>" );
       pvstButton.setFocusPainted( false );
@@ -159,8 +183,26 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       genotypicFrequencyButton.setFocusPainted( false );
       deltapvspButton.setText( "<i>\u0394p</> vs <i>p</i>" );
       deltapvspButton.setFocusPainted( false );
+      //Unicode 0305 is the combining overline character.
+      //For some reason, Mac and Linux like to add a newline
+      //when we use it.  I can't find anything I'm doing wrong.
       wbarvspButton.setText( "<i>w\u0305</i> vs <i>p</i>" );
       wbarvspButton.setFocusPainted( false );
+      GridBagConstraints gbc_plotOptionsPanel = new GridBagConstraints();
+      gbc_plotOptionsPanel.anchor = GridBagConstraints.WEST;
+      gbc_plotOptionsPanel.insets = new Insets(0, 0, 0, 5);
+      gbc_plotOptionsPanel.gridx = 0;
+      gbc_plotOptionsPanel.gridy = 0;
+      this.add( plotOptionsPanel, gbc_plotOptionsPanel );
+      plotOptionsPanel.add( pvstButton, null );
+      plotOptionsPanel.add( genotypicFrequencyButton, null );
+      plotOptionsPanel.add( deltapvspButton, null );
+      plotOptionsPanel.add( wbarvspButton, null );
+      bg1.add( this.deltapvspButton );
+      bg1.add( this.wbarvspButton );
+      bg1.add( this.pvstButton );
+      bg1.add( this.genotypicFrequencyButton );
+      coefficientsPanel.setBorder( titledBorder2 );
       fitnessPanel.setLayout( verticalFlowLayout2 );
       paramwAA.setCurrentValue( 1.0 );
       paramwAA.setDefaultValue( 1.0 );
@@ -193,46 +235,15 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       params.setMaxValue( 1.0 );
       params.setParameterName( "<i>s</i>" );
       params.setHelpText("Selection Coefficient");
-      oneInitialFrequencyButton.setSelected( true );
-      oneInitialFrequencyButton.setText( res.getString( "One_Initial_Frequency" ) );
-      oneInitialFrequencyButton.addActionListener( new java.awt.event.ActionListener()  {
-
-         public void actionPerformed( ActionEvent e ) {
-            oneInitialFrequencyButton_actionPerformed( e );
-         }
-      } );
-      paramInitialFrequency.setCurrentValue( 0.1 );
-      paramInitialFrequency.setDefaultValue( 0.1 );
-      paramInitialFrequency.setIncrementAmount( 0.05 );
-      paramInitialFrequency.setMaxValue( 1.0 );
-      paramInitialFrequency.setParameterName( res.getString( "Initial_Frequency" ) );
-      paramInitialFrequency.setHelpText("Starting Frequency");
-      sixInitialFrequenciesButton.setText( res.getString( "Six_Initial" ) );
-      sixInitialFrequenciesButton.addActionListener( new java.awt.event.ActionListener()  {
-
-         public void actionPerformed( ActionEvent e ) {
-            sixInitialFrequenciesButton_actionPerformed( e );
-         }
-      } );
-      paramGens.setCurrentValue(130.0 );
-      paramGens.setDefaultValue(130.0 );
-      paramGens.setIncrementAmount( 10.0 );
-      paramGens.setIntegersOnly(true);
-      paramGens.setMaxValue( 1000.0 );
-      paramGens.setMinValue( 1.0 );
-      paramGens.setParameterName( res.getString( "Generations" ) );
-      paramGens.setHelpText("Number of Generations to be Simulated");
-      titledBorder2.setTitle( res.getString( "Fitness_Selection" ) );
-      jTabbedPane1.setMinimumSize( new Dimension( 200, 114 ) );
-      jTabbedPane1.setPreferredSize( new Dimension( 140, 147 ) );
-      setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-      this.add( plotOptionsPanel );
-      plotOptionsPanel.add( pvstButton, null );
-      plotOptionsPanel.add( genotypicFrequencyButton, null );
-      plotOptionsPanel.add( deltapvspButton, null );
-      plotOptionsPanel.add( wbarvspButton, null );
-      this.add( coefficientsPanel );
-      coefficientsPanel.add( jTabbedPane1, null );
+      GridBagConstraints gbc_coefficientsPanel = new GridBagConstraints();
+      gbc_coefficientsPanel.fill = GridBagConstraints.HORIZONTAL;
+      gbc_coefficientsPanel.anchor = GridBagConstraints.NORTHWEST;
+      gbc_coefficientsPanel.insets = new Insets(0, 0, 0, 5);
+      gbc_coefficientsPanel.gridx = 1;
+      gbc_coefficientsPanel.gridy = 0;
+      this.add( coefficientsPanel, gbc_coefficientsPanel );
+      coefficientsPanel.setLayout(new BorderLayout(0, 0));
+      coefficientsPanel.add( jTabbedPane1 );
       fitnessPanel.add( paramwAA, null );
       fitnessPanel.add( paramwAa, null );
       fitnessPanel.add( paramwaa, null );
@@ -246,15 +257,23 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
             jTabbedPane1_stateChanged( e );
          }
       } );
-      this.add( initialConditionsPanel );
+      paramGens.setCurrentValue(130.0 );
+      paramGens.setDefaultValue(130.0 );
+      paramGens.setIncrementAmount( 10.0 );
+      paramGens.setIntegersOnly(true);
+      paramGens.setMaxValue( 1000.0 );
+      paramGens.setMinValue( 1.0 );
+      paramGens.setParameterName( res.getString( "Generations" ) );
+      paramGens.setHelpText("Number of Generations to be Simulated");
+      GridBagConstraints gbc_initialConditionsPanel = new GridBagConstraints();
+      gbc_initialConditionsPanel.anchor = GridBagConstraints.WEST;
+      gbc_initialConditionsPanel.gridx = 2;
+      gbc_initialConditionsPanel.gridy = 0;
+      this.add( initialConditionsPanel, gbc_initialConditionsPanel );
       initialConditionsPanel.add( oneInitialFrequencyButton, null );
       initialConditionsPanel.add( paramInitialFrequency, null );
       initialConditionsPanel.add( sixInitialFrequenciesButton, null );
       initialConditionsPanel.add( paramGens, null );
-      bg1.add( this.deltapvspButton );
-      bg1.add( this.wbarvspButton );
-      bg1.add( this.pvstButton );
-      bg1.add( this.genotypicFrequencyButton );
       bg2.add( this.oneInitialFrequencyButton );
       bg2.add( this.sixInitialFrequenciesButton );
       this.registerChildren( this );

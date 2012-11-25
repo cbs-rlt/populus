@@ -8,19 +8,11 @@ Test procedures:
 
 * Can we load model saved on a different machine? We should be able to.
 
-* We should have a debug console window.  What normally happens to stdout? Can we bring that up easily?
-
 * Updating is not automatic - we need to do more than just put up a new jar file.
   This seems strange, because the updater should just check the server time stamp on the jar file.
 
- * Why is log showing True?
  * Can we send the log file in email?
  * Put version number in About menu?
- * Fix About screen.  Maybe add blank panels in the middle that soak up space?
- * Fix link to email, use Desktop's API
-Ant -
- * Create timestamp.txt (done)
- * Check that timestamp.txt goes into build
  * Check that it runs correctly in both locally and from JAR.
 
 

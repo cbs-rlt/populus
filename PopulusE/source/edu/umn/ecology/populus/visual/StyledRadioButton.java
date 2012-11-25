@@ -34,13 +34,6 @@ public class StyledRadioButton extends JRadioButton {
     //Try using a clear method instead of 'new'ing the StringBuffer
     public void setText(String text) {
         super.setText(Utilities.PopHTMLToSwingHTML(text));
-        /*
-               this.formattedText = text;
-               StringBuffer buf = new StringBuffer( text );
-
-               v = Utilities.parseHTML( buf );
-               super.setText( buf.toString() );
-         */
     }
 
     public String getFormattedText() {

@@ -452,18 +452,6 @@ public class Utilities extends java.lang.Object {
    public static String PopHTMLToSwingHTML(String s) {
        StringBuffer ns = new StringBuffer("<html>");
        ns.append(s);
-       /*
-       HTMLState state = new HTMLState();
-       Vector v = parseHTML(s);
-       Enumeration e = v.elements();
-       while (e.hasMoreElements()) {
-           ns.append(e.nextElement().toString());
-           if (e.hasMoreElements()) {
-               HTMLTag t = (HTMLTag) e.nextElement();
-               ns.append(state.updateState(t));
-           }
-       }
-       */
        ns.append("</html>");
        return ns.toString();
    }

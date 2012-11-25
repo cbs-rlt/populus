@@ -52,7 +52,7 @@ public class PDFHelpFileMgr {
 	}
 	private static boolean isLocalFile() {
 		String str = PopPreferences.getHelpFileLocation();
-		return (str.startsWith("file://") || str.isEmpty());
+		return (str.startsWith("file:/") || str.isEmpty());
 	}
 	public static String getHelpLang() {
 		return PopPreferences.getHelpLang();
