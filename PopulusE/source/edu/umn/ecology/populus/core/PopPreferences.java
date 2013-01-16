@@ -268,7 +268,8 @@ public final class PopPreferences {
 	}
 
 	/**
-	 * Initializes the menus, or packetTable
+	 * Initializes the menus, or packetTable.
+	 * You need to modify this to add or remove a model from the menus.
 	 */
 	private void initializeMenuPackets() {
 		ModelPacket[] topModels, singleModels, multiModels, rcModels,
