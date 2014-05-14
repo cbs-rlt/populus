@@ -90,8 +90,8 @@ public class PPProc extends DiscreteProc implements edu.umn.ecology.populus.mode
  aX[2]:= Pm[aYp]; {aY}
  g[1] := Pm[gp];  {g}
  g[2] := Pm[gpp]; {g prime}
- a[1] := Pm[ap];  {à}
- a[2] := Pm[bp];  {á}
+ a[1] := Pm[ap];
+ a[2] := Pm[bp];
  m    := Pm[mp];
  X[1] := y[Xy];   {X}
  X[2] := y[Yy];   {Y}

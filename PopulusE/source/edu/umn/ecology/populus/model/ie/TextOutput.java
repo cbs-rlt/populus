@@ -12,17 +12,18 @@ public class TextOutput {
       int len;
       final int columnWidth = 20;
       try {
-         OutputStreamWriter osw;
-         String filename = edu.umn.ecology.populus.fileio.IOUtility.getFileName( "IEData.dat", "Save Data", FileDialog.SAVE );
-         if( filename != null ) {
-            osw = new OutputStreamWriter( new FileOutputStream( filename ) );
-         } else return;
+    	  if( data == null )
+    		  throw new IOException("Data is null.");
 
-         if( data == null )
-            throw new IOException("Data is null.");
+    	  if(labels.length != data.length)
+    		  throw new IOException("Arrays don't match.");
 
-         if(labels.length != data.length)
-            throw new IOException("Arrays don't match.");
+    	  OutputStreamWriter osw;
+    	  String filename = edu.umn.ecology.populus.fileio.IOUtility.getFileName( "IEData.dat", "Save Data", FileDialog.SAVE );
+    	  if( filename != null ) {
+    		  osw = new OutputStreamWriter( new FileOutputStream( filename ) );
+    	  } else return;
+
 
          osw.write( headers[0] + "\n\n" );
          osw.write( "The differential equations are:\n");

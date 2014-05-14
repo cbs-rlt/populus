@@ -53,7 +53,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    PopulusParameterField paramr2 = new PopulusParameterField();
    GridLayout gridLayout7 = new GridLayout();
    PopulusParameterField paramLVP0 = new PopulusParameterField();
-   ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel( new String[] {
+   ComboBoxModel<String> typeComboBoxModel = new DefaultComboBoxModel<String>( new String[] {
       TYPE1, TYPE2, TYPE3
    } );
    Border border2;
@@ -86,7 +86,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    JPanel thetaLogisticParams = new JPanel();
    GridLayout gridLayout2 = new GridLayout();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
-   JComboBox typeComboBox = new JComboBox();
+   JComboBox<String> typeComboBox = new JComboBox<String>();
    GridBagLayout gridBagLayout5 = new GridBagLayout();
    JPanel preyGrowthPanel = new JPanel();
    PopulusParameterField paramK = new PopulusParameterField();

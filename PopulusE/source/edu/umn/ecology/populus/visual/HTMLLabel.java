@@ -52,9 +52,6 @@ private Color defaultColor;
    private int nextChar;
    private Object tagExtra;
    private Font currentFont;
-   private int currentRow = 0;
-   private final static int kMaxRows = 10;
-   private JPanel currentRowPanel = null;
 
    /** If it needs to be parsed or not */
    private boolean formatted;
@@ -65,7 +62,7 @@ private Color defaultColor;
    private int direction = NORMAL;
    private String text = "";
    private Font defaultFont;
-   private Stack componentStack = new Stack();
+   private Stack<StackContainer> componentStack = new Stack<StackContainer>();
    private boolean hasHTMLLabels = true;
 
    public void setHasHTMLLabels(boolean newB){
@@ -312,12 +309,9 @@ private Color defaultColor;
          return ;
       }
       int len = text.length();
-      int index = 0;
       StringBuffer tempText = new StringBuffer();
       this.removeAll();
       supLevel = 0;
-      currentRow = 0;
-      currentRowPanel = null;
 
       /*
       if (isRotate()) {

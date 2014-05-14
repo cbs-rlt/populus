@@ -24,7 +24,7 @@ public class EigenSystem extends OutputPanel {
 double[][] eigenvectors;
    double[] re, ie;
    String[] text;
-   private JList eigenValueList = new JList();
+   private JList<String> eigenValueList = new JList<String>();
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JScrollPane eigenVectorPane = new JScrollPane();
    private JPanel eigenVectorPanel = new JPanel();

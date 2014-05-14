@@ -25,7 +25,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 	 */
 	private static final long serialVersionUID = -882044708806321402L;
 
-ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
+	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
 
    public static final int k2D = 0;
    public static final int k3D = 1;
@@ -51,7 +51,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
    public static final int FLETCHING = -3;
 
    /*these 2 objects are for turning a plot line into an arrow*/
-   protected Vector plotTerminusList = new Vector();
+   protected Vector<PlotTerminus> plotTerminusList = new Vector<PlotTerminus>();
 
    /*Line Styles*/
    public static final int CONTINUOUS  = JCLineStyle.SOLID;
@@ -65,10 +65,9 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
    double[][][] data;
 
    /*lines give styling info about the same lines in data*/
-   private Vector lines = new Vector();
+   private Vector<JCChartStyle> lines = new Vector<JCChartStyle>();
 
    /*these are a collection of flags*/
-   private boolean data3D         = false;
    private boolean hasIso         = false;
    private boolean isDiscrete     = false;
    private boolean labelT         = true;
@@ -87,7 +86,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
    private String[] xCaption, yCaption, mainCaption;
    private String zCaption; //Still need to make Free MultiLine Label
    /* List of InnerLabel objects for inside labels */
-   private Vector innerLabels = new Vector();
+   private Vector<InnerLabel> innerLabels = new Vector<InnerLabel>();
    private double xMin, xMax;
    private double yMin, yMax;
    private double zMin, zMax;
@@ -181,7 +180,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
       }
 
       chart.getChartLabelManager().removeAllChartLabels();
-      Enumeration e = innerLabels.elements();
+      Enumeration<InnerLabel> e = innerLabels.elements();
       while (e.hasMoreElements()) {
          InnerLabel lab = (InnerLabel) e.nextElement();
          JCChartLabel cl = new JCChartLabel(lab.caption);
@@ -343,9 +342,9 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
       double chartMod = (double)jc.getChartArea().getHeight()/(double)jc.getChartArea().getWidth();
       double dataMod = (v.getMax()-v.getMin())/(h.getMax()-h.getMin());
       boolean needUpdate = false;
-      Enumeration e = plotTerminusList.elements();
-      while (e .hasMoreElements()) {
-         PlotTerminus term = (PlotTerminus) e.nextElement();
+      Enumeration<PlotTerminus> e = plotTerminusList.elements();
+      while (e.hasMoreElements()) {
+         PlotTerminus term = e.nextElement();
          needUpdate |= term.updateAdjustment(chartMod/dataMod);
       }
       if(needUpdate)
@@ -661,7 +660,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res
    * Serialization and data storage stuff *
    ***************************************/
    public void dump( PrintWriter pw ) {
-      java.util.Enumeration e;
+      java.util.Enumeration<JCChartStyle> e;
       int inc = 1;
       pw.println( res.getString( "Output_of" ) + mainCaption );
       pw.println( xCaption + res.getString( "vs_" ) + yCaption );

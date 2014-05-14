@@ -14,7 +14,7 @@ public class OutputPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 5766971437163627959L;
-protected transient Vector listeners = new Vector( 1, 1 );
+	protected transient Vector<OutputPanelListener> listeners = new Vector<OutputPanelListener>( 1, 1 );
    int type = 0;
 
    /** @see edu.umn.ecology.populus.constants.OutputTypes
@@ -74,7 +74,7 @@ protected transient Vector listeners = new Vector( 1, 1 );
 
    protected void fireOutputPanelEvent( int type ) {
       OutputPanelEvent event = new OutputPanelEvent( this, type );
-      Enumeration e = listeners.elements();
+      Enumeration<OutputPanelListener> e = listeners.elements();
       while( e.hasMoreElements() ) {
          ( (OutputPanelListener)e.nextElement() ).outputChangeRequested( event );
       }

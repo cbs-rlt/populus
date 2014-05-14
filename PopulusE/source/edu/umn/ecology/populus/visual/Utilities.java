@@ -108,7 +108,7 @@ public class Utilities extends java.lang.Object {
      * <BR> Please improve on this. Especially sub/super-scripts
      */
 
-   public static final void drawHTML( Graphics g, Enumeration e, int c, int x, int y ) {
+   public static final void drawHTML( Graphics g, Enumeration<String> e, int c, int x, int y ) {
 
       //Enumeration e = v.elements();
 

@@ -17,14 +17,12 @@ public class BPDeriv extends Derivative {
    final private double alpha, rho, c, r0, P, Q_, d, e;
    double gamma, tau;
 
-   private int i;
    public void doDerivative( double t, double[] N, double[] dN ) {
       double psi, psistar, estar, temp, oma = 1.0 - alpha;
       double n1 = N[kX];
       double n2 = N[kY];
       double n3 = N[kZ];
       double r = N[kR];
-      boolean invalidSize = false;
 
       if (r != 0) {
          psi = P / (Q_ / r + 1 );

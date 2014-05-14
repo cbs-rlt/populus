@@ -38,7 +38,6 @@ public class BPParamInfo implements BasicPlot {
       double[] totalPop;
       double[] f1;
       double[] f2;
-      double [] xseason, yseason, zseason;
       double[][] ylists;
       double[] initialConditions = new double[4];
       double[] seasonalCond = new double[4];
@@ -60,15 +59,13 @@ public class BPParamInfo implements BasicPlot {
       } else {
          seasonalCond = initialConditions;
          double count = (double)time / tI;
-         int arraysize = (int)count * tI;
-         double[] xlist2 = new double[arraysize + 1];
-         int size2 = xlist2.length;
-         ArrayList newlist = new ArrayList();
-         ArrayList[] newYlist = new ArrayList[4];
-         newYlist[0] = new ArrayList();
-         newYlist[1] = new ArrayList();
-         newYlist[2] = new ArrayList();
-         newYlist[3] = new ArrayList();
+         ArrayList<Double> newlist = new ArrayList<Double>();
+         ArrayList<ArrayList<Double> > newYlist = new ArrayList<ArrayList<Double> >();
+         newYlist.add(new ArrayList<Double>()); //0
+         newYlist.add(new ArrayList<Double>()); //1
+         newYlist.add(new ArrayList<Double>()); //2
+         newYlist.add(new ArrayList<Double>()); //3
+         
          tlast = 0;
          for (int num=0; num < count; num++){
             ig.doIntegration( seasonalCond, 0, tI );
@@ -77,13 +74,13 @@ public class BPParamInfo implements BasicPlot {
             ylists = ig.getY();
             // ig.reset();
             seasonalCond[0]=ylists[0][ylists[0].length - 1]*d;
-            seasonalCond[1]=ylists[1][ylists[1].length  -1 ]*d;
-            seasonalCond[2]=ylists[2][ylists[2].length  -1 ]*d;
+            seasonalCond[1]=ylists[1][ylists[1].length - 1]*d;
+            seasonalCond[2]=ylists[2][ylists[2].length - 1]*d;
             seasonalCond[3]=w;
             for( int j =0; j < xlist.length; j++){
-               newlist.add(new Double(xlist[j]+ num*tI));
+               newlist.add(new Double(xlist[j] + num*tI));
                for(int i=0; i<4; i++)
-                  newYlist[i].add(new Double(ylists[i][j]));
+                  newYlist.get(i).add(new Double(ylists[i][j]));
             }
             tlast = tlast + tI;
          }
@@ -92,7 +89,7 @@ public class BPParamInfo implements BasicPlot {
          for( int j =0; j < newlist.size(); j++){
             xlist[j] = ((Double)newlist.get(j)).doubleValue();
             for(int i=0; i<4; i++)
-               ylists[i][j] = ((Double)newYlist[i].get(j)).doubleValue();
+               ylists[i][j] = ((Double)newYlist.get(i).get(j)).doubleValue();
          }
 
       }
@@ -152,7 +149,9 @@ public class BPParamInfo implements BasicPlot {
       return bp;
    }
 
-   public BPParamInfo( int modelType, int plotType, int varType, double time, /*time < 0 for steady state*/ double X, double Y, double Z,  double r, double alpha, double gamma, double tau, double rho, double c, double p, double q, double e, double d, int tI ) {
+   public BPParamInfo( int modelType, int plotType, int varType, double time, /*time < 0 for steady state*/
+		   double X, double Y, double Z,  double r, double alpha, double gamma, double tau, double rho,
+		   double c, double p, double q, double e, double d, int tI ) {
       der = new BPDeriv( modelType, varType, time, alpha, gamma, tau, rho, c, r, p, q, e, d, tI);
       ig = new Integrator( der );
       this.x = X;

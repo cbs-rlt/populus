@@ -50,9 +50,6 @@ public boolean integersOnly = false;
          return false;
       }
       text = new StringBuffer( getText() );
-      if( text == null ) {
-         return false;
-      }
       if( getSelectedText() == null ) /*something funny is going on here. if too many decimals, then doesn't really work*/ {
          return false;
       }

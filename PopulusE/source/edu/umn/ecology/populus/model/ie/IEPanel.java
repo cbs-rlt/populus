@@ -2,7 +2,6 @@ package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Hashtable;
 import edu.umn.ecology.populus.visual.*;
 import com.borland.jbcl.layout.*;
 import javax.swing.border.*;
@@ -13,26 +12,25 @@ public class IEPanel extends BasicPlotInputPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 2656336723261477979L;
-EquationCalculator ss;
-   Hashtable constants = new Hashtable();
-   EquationPanel ep;
-   JRadioButton textB = new JRadioButton();
-   JPanel integrationType = new JPanel();
-   JRadioButton discreteB = new JRadioButton();
-   TitledBorder titledBorder1;
-   ButtonGroup bgPlot = new ButtonGroup();
-   ConstantPanel cp = new ConstantPanel( 3 );
-   JRadioButton continuousB = new JRadioButton();
-   RunningTimePanel runTime = new RunningTimePanel();
-   GridBagLayout gridBagLayout1 = new GridBagLayout();
-   JPanel plotType = new JPanel();
-   TitledBorder titledBorder2;
-   StyledRadioButton nvsnB = new StyledRadioButton();
-   ButtonGroup bgInte = new ButtonGroup();
-   StyledRadioButton nvstB = new StyledRadioButton();
-   Border border1, border2;
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
+	EquationCalculator ss;
+	EquationPanel ep;
+	JRadioButton textB = new JRadioButton();
+	JPanel integrationType = new JPanel();
+	JRadioButton discreteB = new JRadioButton();
+	TitledBorder titledBorder1;
+	ButtonGroup bgPlot = new ButtonGroup();
+	ConstantPanel cp = new ConstantPanel(3);
+	JRadioButton continuousB = new JRadioButton();
+	RunningTimePanel runTime = new RunningTimePanel();
+	GridBagLayout gridBagLayout1 = new GridBagLayout();
+	JPanel plotType = new JPanel();
+	TitledBorder titledBorder2;
+	StyledRadioButton nvsnB = new StyledRadioButton();
+	ButtonGroup bgInte = new ButtonGroup();
+	StyledRadioButton nvstB = new StyledRadioButton();
+	Border border1, border2;
+	VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+	VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
 
    public BasicPlot getPlotParamInfo() {
       double[] initial = new double[0];
@@ -40,10 +38,6 @@ EquationCalculator ss;
       double run = (int)runTime.getTime();
       try {
          ss = new EquationCalculator( ep.getStrings(true), ep.getUsed(), cp.getConstantHashTable(), discreteB.isSelected() );
-         if( textB.isSelected() && false) {
-            doTextOutput( ss, initial, run );
-            return null;
-         }
          return new IEParamInfo( ss, initial, ep.getUsed(), ep.getPlotted(), run,
             discreteB.isSelected(), nvstB.isSelected(), textB.isSelected(), ep.getStrings(true),
             ep.getParamNames(false) );
