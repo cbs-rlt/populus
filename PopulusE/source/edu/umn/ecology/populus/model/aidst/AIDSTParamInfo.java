@@ -27,10 +27,8 @@ public class AIDSTParamInfo implements BasicPlot {
       BasicPlotInfo bp = null;
       double[][][] points;
       double[] xlist;
-      double[] totalPop;
       double[][] ylists;
       double[] initialConditions = new double[4];
-      int size;
       initialConditions[0] = x;
       initialConditions[1] = y;
       initialConditions[2] = w;
@@ -43,7 +41,6 @@ public class AIDSTParamInfo implements BasicPlot {
       ig.doIntegration( initialConditions, 0.0, time );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       String[] yCaptions;
       switch(plotType){
          case vsT:
@@ -132,12 +129,6 @@ public class AIDSTParamInfo implements BasicPlot {
       this.w = W;
       this.z=Z;
       this.time = time;
-      this.t1= t1;
-      this.t2= t2;
-      this.t3= t3;
-      this.t4=t4;
-      this.t5=t5;
-      this.t6=t6;
       this.plotType = plotType;
       numVars=4;
          }

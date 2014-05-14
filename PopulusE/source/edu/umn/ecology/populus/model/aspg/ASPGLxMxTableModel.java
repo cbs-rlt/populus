@@ -20,7 +20,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 4778650848890791005L;
-static final int kCOLUMNS = 5;
+	static final int kCOLUMNS = 5;
    int rows = 0;
    Stack[] data;
    int type = ASPGPanel.kPOSTBREEDING;
@@ -67,7 +67,7 @@ static final int kCOLUMNS = 5;
    /**
     *  Returns Object.class by default
     */
-   public Class getColumnClass(int columnIndex) {
+   public Class<?> getColumnClass(int columnIndex) {
       if(columnIndex == 0) return Integer.class;
       return Double.class;
    }

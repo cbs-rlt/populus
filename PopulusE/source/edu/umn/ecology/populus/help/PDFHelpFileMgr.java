@@ -2,11 +2,6 @@ package edu.umn.ecology.populus.help;
 
 import java.io.File;
 import java.net.URI;
-import java.net.URISyntaxException;
-
-import javax.swing.JOptionPane;
-
-import edu.umn.ecology.populus.core.DesktopWindow;
 import edu.umn.ecology.populus.core.PopPreferences;
 import edu.umn.ecology.populus.fileio.Logging;
 

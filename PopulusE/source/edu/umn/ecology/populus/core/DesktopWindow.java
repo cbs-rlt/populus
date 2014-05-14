@@ -21,11 +21,10 @@ import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.help.HelpUtilities;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.lang.reflect.*;
-import java.net.URI;
 import java.util.*;
 import javax.swing.*;
+import edu.umn.ecology.populus.fileio.Logging;
 
 /**
  * this class is quite messy, but possibly justifiably so because it is difficult
@@ -328,7 +327,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		for( int i = 0;i < mps.length;i++ ) {
 			if( mps[i].getModelName() == command ) {
 				loadModel( mps[i].getModelClass() );
-				return ;
+				return;
 
 				//break;
 			}
@@ -378,11 +377,9 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		}
 	}
 
-	private void loadModel( Class c ) {
+	private void loadModel( Class<Model> c ) {
 		try {
-			java.lang.reflect.Constructor cxr;
-			cxr = (java.lang.reflect.Constructor)c.getConstructor( null );
-			Model m = (Model)c.getConstructor( null ).newInstance( null );
+			Model m = c.getConstructor( null ).newInstance( null );
 			ColorScheme.addModel( m );
 			newModelFromModelChooser( m );
 		}
@@ -437,9 +434,9 @@ abstract class MenuAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 5106840855809036163L;
-	final Class model;
+	final Class<Model> model;
 
-	MenuAction( String text, Class modelToRun ) {
+	MenuAction( String text, Class<Model> modelToRun ) {
 		super( text );
 		model = modelToRun;
 	}

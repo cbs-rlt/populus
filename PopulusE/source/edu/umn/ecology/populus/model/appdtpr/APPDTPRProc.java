@@ -54,7 +54,7 @@ public class APPDTPRProc extends DiscreteProc implements edu.umn.ecology.populus
  r := Pm[rp];
  a := Pm[ap];
  c := Pm[cp];
- b := Pm[bp]; {á}
+ b := Pm[bp];
  
  N := y[Ny];
  P := y[Py];

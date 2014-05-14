@@ -19,33 +19,33 @@ public class ColorChooser extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 5763100029469797725L;
-JPanel jPanel3 = new JPanel();
+	JPanel jPanel3 = new JPanel();
    JPanel panel1 = new JPanel();
-   JComboBox jComboBox1 = new JComboBox();
+   JComboBox<String> jComboBox1 = new JComboBox<String>();
    FlowLayout flowLayout1 = new FlowLayout();
    JPanel mainpanel = new JPanel();
    JLabel jLabel11 = new JLabel();
    GridBagLayout gridBagLayout3 = new GridBagLayout();
    JButton jButton3 = new JButton();
-   JComboBox jComboBox2 = new JComboBox();
+   JComboBox<String> jComboBox2 = new JComboBox<String>();
    JLabel jLabel12 = new JLabel();
-   JComboBox jComboBox3 = new JComboBox();
+   JComboBox<String> jComboBox3 = new JComboBox<String>();
    GridBagLayout gridBagLayout2 = new GridBagLayout();
-   JComboBox jComboBox4 = new JComboBox();
+   JComboBox<String> jComboBox4 = new JComboBox<String>();
    JButton jButton1 = new JButton();
-   JComboBox jComboBox5 = new JComboBox();
+   JComboBox<String> jComboBox5 = new JComboBox<String>();
    JButton jButton5 = new JButton();
-   JComboBox jComboBox6 = new JComboBox();
+   JComboBox<String> jComboBox6 = new JComboBox<String>();
    Color[] currentColor = (Color[])ColorScheme.colors.clone();
-   JComboBox jComboBox7 = new JComboBox();
+   JComboBox<String> jComboBox7 = new JComboBox<String>();
    Color currentBackground = ColorScheme.bG;
-   JComboBox jComboBox8 = new JComboBox();
+   JComboBox<String> jComboBox8 = new JComboBox<String>();
    JLabel jLabel10 = new JLabel();
-   JComboBox jComboBox9 = new JComboBox();
+   JComboBox<String> jComboBox9 = new JComboBox<String>();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
-   JComboBox jComboBox10 = new JComboBox();
+   JComboBox<String> jComboBox10 = new JComboBox<String>();
    JLabel jTextArea1 = new JLabel();
-   JComboBox jComboBox11 = new JComboBox();
+   JComboBox<String> jComboBox11 = new JComboBox<String>();
    JPanel jPanel1 = new JPanel();
    JLabel jLabel1 = new JLabel();
    JButton jButton2 = new JButton();
@@ -60,7 +60,7 @@ JPanel jPanel3 = new JPanel();
    JLabel jLabel6 = new JLabel();
    Color keepBack = ColorScheme.bG;
    JLabel jLabel7 = new JLabel();
-   JComboBox jComboBox12 = new JComboBox();
+   JComboBox<String> jComboBox12 = new JComboBox<String>();
    JLabel jLabel8 = new JLabel();
    JLabel jLabel9 = new JLabel();
    int[] keepIndex = (int[])ColorScheme.currentIndex.clone();
@@ -120,7 +120,7 @@ JPanel jPanel3 = new JPanel();
    }
 
    void updateGraphs() {
-      Vector v = ColorScheme.theseModels;
+      Vector<Model> v = ColorScheme.theseModels;
       Model m = null;
       for( int i = 0;i < v.size();i++ ) {
          m = (Model)v.get( i );
@@ -133,7 +133,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox9.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[8] );
          if( temp != null ) {
             currentColor[8] = temp;
@@ -165,7 +164,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox1.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[0] );
          if( temp != null ) {
             currentColor[0] = temp;
@@ -186,7 +184,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox3.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[2] );
          if( temp != null ) {
             currentColor[2] = temp;
@@ -207,7 +204,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox5.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[4] );
          if( temp != null ) {
             currentColor[4] = temp;
@@ -228,7 +224,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox7.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[6] );
          if( temp != null ) {
             currentColor[6] = temp;
@@ -330,7 +325,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox2.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[1] );
          if( temp != null ) {
             currentColor[1] = temp;
@@ -365,7 +359,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox4.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[3] );
          if( temp != null ) {
             currentColor[3] = temp;
@@ -392,7 +385,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox6.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[5] );
          if( temp != null ) {
             currentColor[5] = temp;
@@ -440,7 +432,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox8.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[7] );
          if( temp != null ) {
             currentColor[7] = temp;
@@ -461,7 +452,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox11.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom" ), currentBackground );
          if( temp != null ) {
             currentBackground = temp;
@@ -482,7 +472,6 @@ JPanel jPanel3 = new JPanel();
       if( jComboBox10.getSelectedIndex() == ColorScheme.colorStrings2.length - 1 ) {
          JDialog what = new JDialog( this );
          Color temp;
-         javax.swing.JColorChooser jcc = new javax.swing.JColorChooser();
          temp = JColorChooser.showDialog( what, res.getString( "Choose_a_custom_color" ), currentColor[9] );
          if( temp != null ) {
             currentColor[9] = temp;

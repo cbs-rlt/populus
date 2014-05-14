@@ -37,7 +37,7 @@ extends JDialog {
 	JButton okButton = new JButton();
 	JLabel TriggerLabel = new JLabel();
 	JButton colorChooserButton = new JButton();
-	ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel(new String[] {
+	ComboBoxModel<String> typeComboBoxModel = new DefaultComboBoxModel<String>(new String[] {
 			/* res.getString( "None" ), - Let's not allow blank buttons */
 			res.getString("Images"),
 			res.getString("Text"), res.getString("Text_and_Images")
@@ -49,19 +49,19 @@ extends JDialog {
 
 	JButton cancelButton = new JButton();
 	Border border1;
-	ComboBoxModel triggerComboBoxModel = new DefaultComboBoxModel(new String[] {
+	ComboBoxModel<String> triggerComboBoxModel = new DefaultComboBoxModel<String>(new String[] {
 			res.getString("None"), res.getString("Default"),
 			res.getString("Always")
 	});
 	JPanel okPanel = new JPanel();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
 	JPanel actionsPanel = new JPanel();
-	JComboBox triggerComboBox = new JComboBox();
+	JComboBox<String> triggerComboBox = new JComboBox<String>();
 	GridBagLayout gridBagLayout2 = new GridBagLayout();
 	JPanel panel1 = new JPanel();
 	JLabel buttonTypeLabel = new JLabel();
 	JButton integratorPreferencesB = new JButton();
-	JComboBox buttonTypeComboBox = new JComboBox();
+	JComboBox<String> buttonTypeComboBox = new JComboBox<String>();
 	static ResourceBundle res = ResourceBundle.getBundle(
 			"edu.umn.ecology.populus.core.Res");
 	GridBagLayout gridBagLayout3 = new GridBagLayout();
@@ -76,7 +76,7 @@ extends JDialog {
 	JLabel dirLabel = new JLabel();
 	GridBagLayout gridBagLayout5 = new GridBagLayout();
 	JButton trickButton = new JButton();
-	JComboBox terminusType = new JComboBox();
+	JComboBox<String> terminusType = new JComboBox<String>();
 	private final JButton btnHelp = new JButton("Help Settings");
 
 	/**
@@ -131,7 +131,7 @@ extends JDialog {
 		JFrame coolthing = new JFrame();
 		coolthing.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				DesktopWindow.class.getResource("picon.gif")));
-		AboutPopulusDialog apd = new AboutPopulusDialog(coolthing,
+		new AboutPopulusDialog(coolthing,
 				res.getString("Populus_Is_"), false);
 	}
 
