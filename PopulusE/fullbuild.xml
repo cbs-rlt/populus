@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE project>
+<project default="run_jar" name="Populus">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+	<property environment="env"/>
+    <property name="src" location="source"/> <!-- java source folder        -->
+    <property name="build" location="build/classes"/> <!-- intermediate build products, needs to be in sync with Properties >> Java Build Path >> Default Output Path  -->
+    <property name="lib" location="res"/> <!-- local libraries linked against -->
+    <property name="out" location="out"/> <!-- build product location -->
+	<property name="jarfile" location="out/PopulusAll.jar"/>
+    <property name="resources" location="resources"/> <!-- location of general java resources -->
+    <property name="compile.debug" value="true"/>
+    <!-- OS X specific -->
+	<taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"   
+             classpath="res/appbundler-1.0.jar" />
+
+    <!-- Initialization target, for any prelimary setup needed to build -->
+    <target name="init" description="Preparation">
+            <mkdir dir="${build}"/>
+            <mkdir dir="${out}"/>
+    </target>
+    <target name="compile" depends="init" description="Compile code">
+        <javac deprecation="true" srcdir="${src}" destdir="${build}"
+                   classpathref="lib.path"
+        		   includeAntRuntime="no"
+                   debug="${compile.debug}" >
+        </javac>
+    </target>
+	<target name="copyres" depends="init" description="Copy images">
+		<copy todir="${build}" verbose="true">
+			<fileset dir="${src}" includes="**/*.gif,**/*.png" />
+		</copy>
+	</target>
+	<target name="clean" description="Remove build and dist directories">
+            <delete dir="${build}"/>
+            <delete dir="${out}"/>
+	</target>
+	<target name="rebuild" depends="clean,create_run_jar" description="Clean and build">
+	</target>
+	<!--Create timestamp file-->
+    <target name="buildinfofile" description="Create timestamp.txt file">
+    	<tstamp>
+    	    <format property="STARTTIME" pattern="dd-MMMM-yyyy hh:mm aa z" timezone="UTC" />
+    	</tstamp>
+    	<echo file="${build}/edu/umn/ecology/populus/core/timestamp.txt" append="false" message="${STARTTIME}" />
+    </target>
+
+    <!--Create Main JAR file-->
+    <target name="create_run_jar" depends="buildinfofile,compile,copyres" description="Create main JAR file">
+    	<echo message="Building JAR file" level="info"/>
+        <jar destfile="${jarfile}" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="edu.umn.ecology.populus.core.PopRun"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${build}"/>
+            <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/Jama-1.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/JBCL.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/jcchart401K.jar"/>
+        </jar>
+    </target>
+	
+    <target name="run_jar" depends="create_run_jar" description="Runs JAR file with Java">
+    	<echo message="Running Jar..." level="info"/>
+        <java jar="${jarfile}" classpath="${out}" fork="true"/>
+    </target>
+
+	
+    <!--Mac Bundle App-->
+    <!--TODO: Verify these fields-->
+    <target name="bundle_populus" depends="create_run_jar" description="Builds OS X binary">
+    	<echo message="Building Bundle App for OS X" level="info"/>
+    	
+    	<!-- AppBundler or bundleapp, for creating OS X binary.
+    	  More documentation is here: http://docs.oracle.com/javase/7/docs/technotes/guides/jweb/packagingAppsForMac.html
+    	
+    	  In the end, we should expect an overall layout like this:
+    	  Populus.app
+    	  +- Contents
+    	     +- MacOS
+    	        +- JavaAppLauncher
+    	            This is a simple binary that runs a Java Application.  (JavaApplicationStub is old)
+    	            Seems to be automatically copied from
+    	             /System/Library/Frameworks/JavaVM:Framework/Versions/Current/Resources/MacOS/...
+    	     +- PkgInfo
+    	         This is a simple text file with "APPL????".  The ???? may be replaced with a signature later.
+    	     +- PlugIns
+    	         This directory should contain a Java Runtime Environment to install if needed.
+    	     +- Resources
+    	        +- Java
+    	           +- PopulusAll.jar
+    	        +- picon.icns
+    	     +- Info.plist
+    	         XML file that provides meta information about the application and the contents of the bundle.
+    	            
+    	  Information about appbundler:
+    	  https://java.net/projects/appbundler
+    	  
+    	  The meat of the source is at
+    	    https://java.net/projects/appbundler/sources/svn/content/appbundler/src/com/oracle/appbundler/AppBundlerTask.java?rev=34
+    	  
+    	  A forked version with more features and fixes for things I don't think we need is here:
+    	     https://bitbucket.org/infinitekind/appbundler/overview
+    	     -->
+        <bundleapp outputdirectory="out"
+            name="PopulusBundle"
+            displayname="Populus 5.5.1"
+            identifier="edu.umn.ecology.populus"
+        	copyright="Don Alstad, University of Minnesota"
+        	shortversion="5.5.1"
+            mainclassname="edu.umn.ecology.populus.core.PopRun"
+        	icon="${lib}/picon.icns"
+        	applicationCategory="public.app-category.education"
+    		>
+        	<!--
+        	TODO:
+        	This is where we get the default Java Runtime to include on OS X when
+        	a user is missing it.  But env.JAVA_HOME only makes sense when the build
+        	environment itself is OS X.
+        	It would be nice to include a full directory in the lib so that we can
+        	build this anywhere.  This should be a directory with the Info.plist etc.
+            <runtime dir="${env.JAVA_HOME}" />
+            -->
+            <classpath file="out/PopulusAll.jar" />
+        	<!-- Put the Swing menu in the OS X menu bar -->
+            <option value="-Dapple.laf.useScreenMenuBar=true" />
+        </bundleapp>
+    </target>
+	
+
+</project>
+
