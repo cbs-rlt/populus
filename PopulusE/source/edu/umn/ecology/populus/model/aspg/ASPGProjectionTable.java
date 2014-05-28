@@ -5,12 +5,13 @@ import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
 
+/** @TODO - Is this class even used??? */
 public class ASPGProjectionTable extends AbstractTableModel{
    /**
 	 * 
 	 */
 	private static final long serialVersionUID = -5783523138285798405L;
-int dimension=0;
+	int dimension=0;
    int indexShift = -1;
    boolean lastCanHaveStarts = false;
    /*each element of the array refers to a column, each element in the vector
@@ -74,7 +75,7 @@ int dimension=0;
       return null;
    }
 
-   public Class getColumnClass(int c) {
+   public Class<?> getColumnClass(int c) {
       return getValueAt(0, c).getClass();
    }
 

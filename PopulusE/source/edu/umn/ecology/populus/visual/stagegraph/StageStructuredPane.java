@@ -375,7 +375,6 @@ DrawingPane drawingPanel;
 
          setStageDefaultPositions();
 
-         Graphics2D g2d = (Graphics2D)g;
          Rectangle r = getBounds();
          g.setColor(background);
          g.fillRect(r.x,r.y,r.width,r.height);

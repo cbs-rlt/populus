@@ -34,11 +34,9 @@ public class APPD3DProtoParamInfo implements BasicPlot {
    public BasicPlotInfo getBasicPlotInfo() {
       BasicPlotInfo bp;
       Integrator ig;
-      int equations = initialConditions.length;
       double[][][] points = new double[1][3][];
       double[] xlist;
       double[][] ylists;
-      int size, i;
       ig = new Integrator( discProc );
       if( gens < 0 ) {
          ig.record.ss = true;
@@ -47,7 +45,6 @@ public class APPD3DProtoParamInfo implements BasicPlot {
       ig.integrate( initialConditions, 0.0, gens );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       points[0][0] = ylists[2]; //predator 2
       points[0][1] = ylists[0]; //prey
       points[0][2] = ylists[1]; //predator 1

@@ -26,7 +26,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
    int type = ASPGPanel.kPOSTBREEDING;
 
    public ASPGLxMxTableModel(int rows) {
-      int i, j;
+      int i;
 
       data = new Stack[kCOLUMNS];
       for (i = 0; i < kCOLUMNS; i++) {
@@ -125,7 +125,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
          // Generate notification
          fireTableRowsDeleted(getRowCount(), oldNumRows-1);
       } else {
-         int columnCount = getColumnCount();
+         getColumnCount();
          // We are adding rows to the model
          while(getRowCount() < newSize) {
             for (i = 0; i < kCOLUMNS; i++) {

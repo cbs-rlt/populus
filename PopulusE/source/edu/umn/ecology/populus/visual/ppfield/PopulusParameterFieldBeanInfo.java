@@ -19,7 +19,7 @@ public class PopulusParameterFieldBeanInfo extends SimpleBeanInfo {
    String iconColor16x16Filename = "clr16pf.gif";
    String iconColor32x32Filename = "clr32pf.gif";
    String iconMono16x16Filename = "mono16pf.gif";
-   Class beanClass = PopulusParameterField.class;
+   Class<?> beanClass = PopulusParameterField.class;
    String iconMono32x32Filename = "mono32pf.gif";
    
    public PropertyDescriptor[] getPropertyDescriptors() {
@@ -96,7 +96,7 @@ public class PopulusParameterFieldBeanInfo extends SimpleBeanInfo {
    }
    
    public BeanInfo[] getAdditionalBeanInfo() {
-      Class superclass = beanClass.getSuperclass();
+      Class<?> superclass = beanClass.getSuperclass();
       try {
          BeanInfo superBeanInfo = Introspector.getBeanInfo( superclass );
          return new BeanInfo[] {

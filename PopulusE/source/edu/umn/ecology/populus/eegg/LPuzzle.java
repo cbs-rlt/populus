@@ -9,9 +9,7 @@ public class LPuzzle extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -2340957324111912141L;
-	private boolean isApplet=true;
-
-   public LPuzzle(Frame owner) {
+	public LPuzzle(Frame owner) {
       super(owner, "puzzle", true);
       try {
          setDefaultCloseOperation(DISPOSE_ON_CLOSE);

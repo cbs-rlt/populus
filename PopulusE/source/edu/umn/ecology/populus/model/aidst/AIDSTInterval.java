@@ -19,9 +19,7 @@ public class AIDSTInterval extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -9182934658867998210L;
-private Border border1;
-   private TitledBorder titledBorder1;
-   private GridBagLayout gridBagLayout7 = new GridBagLayout();
+private GridBagLayout gridBagLayout7 = new GridBagLayout();
    private PopulusParameterField paramt2 = new PopulusParameterField();
    private PopulusParameterField paramt1 = new PopulusParameterField();
    private Border border2;

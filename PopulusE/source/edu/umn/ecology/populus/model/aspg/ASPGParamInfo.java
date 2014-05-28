@@ -199,8 +199,7 @@ public class ASPGParamInfo implements BasicPlot, TableInterface {
             returnValue = new BasicPlotInfo(points, kMainCaption, kMXVSXXCAPTION, kMXVSXYCAPTION);
             break;
          case ASPGPanel.kXVSNXT://3d
-            String k3DMain = "Population Logistics (x,S<sub>x</sub>,t)";
-            points = new double[numClasses][3][runTime+1];
+		points = new double[numClasses][3][runTime+1];
             for(int j = 0; j < numClasses; j++){
                for(int i = 0; i <= runTime; i++){
                   points[j][0][i] = j+shift;
@@ -214,8 +213,7 @@ public class ASPGParamInfo implements BasicPlot, TableInterface {
             returnValue.setLabelsT(false);
             break;
          case ASPGPanel.kXVSNXSIGMANXT://3d
-            String k3DMain2 = "Population Logistics (x,S<sub>x</sub>/\u03a3S<sub>x</sub>,t)";
-            points = new double[numClasses][3][runTime+1];
+		points = new double[numClasses][3][runTime+1];
             for(int j = 0; j < numClasses; j++){
                for(int i = 0; i <= runTime; i++){
                   points[j][0][i] = j+shift;
@@ -315,7 +313,7 @@ public class ASPGParamInfo implements BasicPlot, TableInterface {
       //Braces are used to section this off so that variables are more local
       double temp; //r0=0, r=0, g=0,va ;
       double rhigh, rlow, rlast;
-      int xi, i;
+      int xi;
       int numClasses = data.getNumClasses();
       //refer to lines 343-433 of ASPG.pas
       //NOTE: qm1 = numClasses in NEW VERSION ONLY!!!

@@ -24,7 +24,6 @@ public class LVCParamInfo implements BasicPlot {
       double[] xlist;
       double[][] ylists;
       double[] initialConditions = new double[2];
-      int size;
       initialConditions[0] = n1;
       initialConditions[1] = n2;
       if( time < 0 ) {
@@ -34,7 +33,6 @@ public class LVCParamInfo implements BasicPlot {
       ig.doIntegration( initialConditions, 0.0, time );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       if( vsTime ) {
          points = new double[2][2][];
          points[0][0] = xlist;

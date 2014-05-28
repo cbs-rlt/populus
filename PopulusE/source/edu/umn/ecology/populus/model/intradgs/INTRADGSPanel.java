@@ -24,8 +24,6 @@ JPanel paramsP = new JPanel();
 
    public BasicPlot getPlotParamInfo() {
       double Afreq = AfreqPPF.getDouble();
-      double[] freqs = new double[numGroupsPPF.getInt()];
-
       if(singleMutationCB.isSelected())
          Afreq = (0.5/NPPF.getInt())/numGroupsPPF.getInt();
 

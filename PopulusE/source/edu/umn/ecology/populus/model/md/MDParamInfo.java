@@ -35,7 +35,6 @@ public class MDParamInfo implements BasicPlot {
       //double[] totalPop;
       double[][] ylists;
       double[] initialConditions = new double[numVars];
-      int size;
       initialConditions[0] = x;
       initialConditions[1] = y;
       if( numVars == 3 ) {
@@ -50,7 +49,6 @@ public class MDParamInfo implements BasicPlot {
       ig.doIntegration( initialConditions, 0.0, time );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       /*totalPop = new double[size];
       for(int i=0; i<totalPop.length; i++)
          for(int j=0; j<ylists.length; j++)

@@ -23,12 +23,10 @@ import java.awt.print.*;
   */
 
 public class PrintUtilities implements Printable {
-   private Frame parentFrame;
    private Component componentToBePrinted;
    
    public PrintUtilities( Component componentToBePrinted, Frame f ) {
       this.componentToBePrinted = componentToBePrinted;
-      parentFrame = f;
    }
    
    public void print() {

@@ -20,7 +20,7 @@ public class HTMLLabelBeanInfo extends SimpleBeanInfo {
    String iconColor32x32Filename = "clr32hl.gif";
    String iconMono16x16Filename = "mono16hl.gif";
    String iconMono32x32Filename = "mono32hl.gif";
-   Class beanClass = HTMLLabel.class;
+   Class<HTMLLabel> beanClass = HTMLLabel.class;
    
    public PropertyDescriptor[] getPropertyDescriptors() {
       try {

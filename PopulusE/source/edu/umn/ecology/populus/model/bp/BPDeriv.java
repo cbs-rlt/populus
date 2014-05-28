@@ -14,7 +14,7 @@ public class BPDeriv extends Derivative {
    public static final int kR = 3;//R
    final private int modeltype, vartype;
    final private double kTau, kGamma;
-   final private double alpha, rho, c, r0, P, Q_, d, e;
+   final private double alpha, rho, c, P, Q_, e;
    double gamma, tau;
 
    public void doDerivative( double t, double[] N, double[] dN ) {
@@ -83,10 +83,8 @@ public class BPDeriv extends Derivative {
       this.rho = rho;
       this.c = c;
       this.e = e;
-      this.r0 = r0;
       this.P = p;
       this.Q_ = q;
-      this.d = d;
       this.numVariables = 4;
    }
 }

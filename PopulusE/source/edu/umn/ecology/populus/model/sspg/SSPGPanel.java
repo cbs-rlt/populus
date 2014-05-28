@@ -307,8 +307,6 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
       tableModel.setNumRows(dim);
 
       whichStagePPF.setMaxValue(dim);
-      int numStages = dim;
-
       projectionScroller.getViewport().setExtentSize(new Dimension(1000,1000));
       for(int i=0; i<projectionTable.getColumnCount(); i++){
          projectionTable.getColumnModel().getColumn(i).setMinWidth(40);

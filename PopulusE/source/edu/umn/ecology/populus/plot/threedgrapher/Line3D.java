@@ -61,7 +61,6 @@ public class Line3D {
          return;
 
       transform();
-      int lg = 0;
       int lim = ncon;
       int c[] = con;
       int v[] = tvert;

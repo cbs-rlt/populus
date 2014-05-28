@@ -23,7 +23,6 @@ public class MacroLayout extends BorderLayout {
 		}
 		chart = (edu.umn.ecology.populus.plot.BasicPlotCanvas) c;
 		int yy, ymargins, fontsize;
-		double xscale, xscale2, xstep, x, yscale, ystep, y, v, sv, yspan;
 		Font smallFont, bigFont;
 		if (chart == null || chart.info == null)
 			return;
@@ -58,8 +57,6 @@ public class MacroLayout extends BorderLayout {
 			int left = insets.left;
 			int right = c.getWidth() - insets.right;
 			int leftIndent = 0;
-
-			boolean ltr = c.getComponentOrientation().isLeftToRight();
 			Component comp = null;
 
 			if ((comp=chart.yCaption) != null) {

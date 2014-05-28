@@ -409,7 +409,6 @@ class ControlPointsStroke implements Stroke {
         float[] coords = new float[6];
         for(PathIterator i=shape.getPathIterator(null); !i.isDone();i.next()) {
             int type = i.currentSegment(coords);
-            Shape s = null, s2 = null, s3 = null;
             switch(type) {
             case PathIterator.SEG_CUBICTO:
                 markPoint(strokedShape, coords[4], coords[5]); // falls through

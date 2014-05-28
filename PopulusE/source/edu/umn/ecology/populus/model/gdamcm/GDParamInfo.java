@@ -23,8 +23,6 @@ public class GDParamInfo implements BasicPlot {
    private boolean isMarkov = false;
    private boolean is3D = false;
    private boolean selfing;
-   private int A = 1; //dominant
-   private int a = 0; //recessive
    private double[] lociFreqs;
    private int numAGenes, popSize;
    private int gens, N, loci;

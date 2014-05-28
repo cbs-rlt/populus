@@ -29,7 +29,6 @@ public class EOVParamInfo implements BasicPlot {
       BasicPlotInfo bp = null;
       double[][][] points;
       double[] xlist;
-      double[] totalPop;
       double[] eopt,bopt;
       double[] hstar,istar, histar, bstar;
       double[][] ylists;

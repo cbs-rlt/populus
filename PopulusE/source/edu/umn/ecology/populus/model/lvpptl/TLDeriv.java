@@ -2,7 +2,7 @@ package edu.umn.ecology.populus.model.lvpptl;
 import edu.umn.ecology.populus.math.*;
 
 public class TLDeriv extends Derivative {
-   private final double r, k, theta, c, h, d, s, n, p;
+   private final double r, k, theta, c, h, d, s;
    private final int type;
 
    public void doDerivative( double t, double[] N, double[] dN ) {
@@ -20,8 +20,6 @@ public class TLDeriv extends Derivative {
       this.h = h;
       this.d = d;
       this.s = s;
-      this.n = n;
-      this.p = p;
       this.numVariables = 2;
    }
 

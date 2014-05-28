@@ -12,7 +12,7 @@ public class AIDSBASICPanel extends BasicPlotInputPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4342213882379052054L;
-Border border1;
+	Border border1;
    TitledBorder titledBorder1;
    StyledRadioButton xyvtButton = new StyledRadioButton();
    Border border8;

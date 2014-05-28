@@ -96,7 +96,7 @@ int dimension=0;
     *  Returns Object.class by default
     *
     */
-   public Class getColumnClass(int c) {
+   public Class<?> getColumnClass(int c) {
       return getValueAt(0, c).getClass();
    }
    /**

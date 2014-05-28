@@ -17,8 +17,6 @@ public class TPDeriv extends Derivative {
       double r = N[kr];
       double V, S, R;
       double psiL, psiR, psiS;
-      boolean invalidSize = false;
-
       psiL = p* r /( q + r);
       psiS = psiL * ( 1 - alphaS);
       psiR = psiL * ( 1 - alphaR);
@@ -67,7 +65,6 @@ public class TPDeriv extends Derivative {
             dN[kS] = S*(psiS - sigmaT*T - sigmaV*V - rho) + tau*L;
             dN[kR] = R*(psiR - rho);
             dN[kV] = V*((S + L)*betaV*sigmaV - rho);
-            int i=0;
             break;
       }
       return ;

@@ -12,14 +12,11 @@ public class PRMParamInfo implements BasicPlot {
 
 
    static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.prm.Res" );
-   private double[][] points;
    private int plotType, modelType;
    private double[][][] points2;
    private double [][][] points1;
-   private double[][][] points2temp;
    private double [][][] points3;
    private double[][][] points4;
-   private double [][][] points1tempx;
    private static final String mCap = res.getString("PRM");
    private static final String xCap1 = res.getString( "Generations_b_i_t_" );
    private static final String yCap1 = res.getString( "One" );
@@ -273,7 +270,7 @@ public class PRMParamInfo implements BasicPlot {
 
 
    double[] migrate(double x, double y, double p, double w, double b) {
-      double p0, w0, x0, y0,x1mr, y1mrdG, rydG, rx;
+      double p0, x0, y0,x1mr, y1mrdG, rydG, rx;
 
       double[] output = new double[4];
       if (( g > 0) && ( y > 0 ))
@@ -283,7 +280,6 @@ public class PRMParamInfo implements BasicPlot {
       p0 = p;
       x0 = x;
       y0 = y;
-      w0 = w;
       x1mr = ( 1- r) * x0;
       if ( g != 0 ){
          y1mrdG = (1 - r/g) * y0;

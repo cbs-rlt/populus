@@ -10,7 +10,7 @@ public class SOASLLParamInfo implements BasicPlot {
    private String yCap = "Allelic Frequency (  "+ColorScheme.getColorString(0)+"<i>p<sub>m</>, "+ColorScheme.getColorString(1)+"<i>p<sub>f</> )    ";
 
    public BasicPlotInfo getBasicPlotInfo() {
-      double U,V,W,X,Y,qF,qM,c;
+      double U,V,W,X,Y,qF,qM;
       boolean mDied = false, fDied = false;
       double[][][] points = new double[2][2][gens+1];
 

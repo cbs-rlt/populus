@@ -10,16 +10,12 @@ public class RCDeriv extends Derivative {
    final private double v, w, c1, c2, e11, e22, e21, e12;
    final private double a11, a21, a12, a22, b11, b22, b12, b21;
 
-   private int i;
    public void doDerivative( double t, double[] N, double[] dN ) {
       double phi11, phi21, phi12,rho, phi22;
       double r1 = N[kR1];
       double n1 = N[kN1];
       double n2;
       double r2;
-      boolean invalidSize = false;
-      //i = 1, j = 1
-
       if ((r1+ b11) != 0) {
          phi11= a11 * r1/(r1 + b11);
        } else {

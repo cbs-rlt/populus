@@ -1,7 +1,9 @@
 package edu.umn.ecology.populus.model.mnp;
 import java.util.*;
+
 import javax.swing.table.*;
 import javax.swing.event.*;
+
 import edu.umn.ecology.populus.math.*;
 
 public class MNPTable extends AbstractTableModel {
@@ -10,13 +12,14 @@ public class MNPTable extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = -4666061719715462195L;
 
-int numRows=0;
+	int numRows=0;
 
    /**
     * each vector represents a row, each array index represents
     * the column
     */
-   Vector[] table = new Vector[0];
+   @SuppressWarnings("unchecked")
+   Vector<Object>[] table = new Vector[0];
 
    public MNPTable() {
 
@@ -28,14 +31,15 @@ int numRows=0;
 
    public void addRow(double percent, double[] w){
       numRows++;
-      Vector newRow = new Vector();
+      Vector<Object> newRow = new Vector<Object>();
       newRow.add(new Integer(numRows));
       newRow.add(new Double(percent));
       newRow.add(new Double(w[0]));
       newRow.add(new Double(w[1]));
       newRow.add(new Double(w[2]));
 
-      Vector[] temp = new Vector[numRows];
+      @SuppressWarnings("unchecked")
+	  Vector<Object>[] temp = new Vector[numRows];
       for(int i=0; i<table.length; i++)
          temp[i] = table[i];
       temp[table.length] = newRow;
@@ -70,7 +74,7 @@ int numRows=0;
       }
    }
 
-   public Class getColumnClass(int c) {
+   public Class<?> getColumnClass(int c) {
       return getValueAt(0, c).getClass();
    }
 

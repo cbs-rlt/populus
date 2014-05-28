@@ -80,9 +80,7 @@ Border border1;
 
    public BasicPlot getPlotParamInfo() {
       double time = runningTimePanel.getTime();
-      int plotType;
       if( vstButton.isSelected()){
-         plotType = TPParamInfo.vsT;
       }
       int modelType;
       if(oneButton.isSelected()){

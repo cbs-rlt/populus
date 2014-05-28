@@ -19,7 +19,6 @@ public class SAMParamInfo implements BasicPlot {
       String xCap ="";
       double[][][] points = null;
       double[][] p;
-      double pt, qt;
       if(plotType == PvsT || plotType == GenovsT){
        p = new double[gens+1][freqs.length];
          for(int i=0; i<=gens; i++){

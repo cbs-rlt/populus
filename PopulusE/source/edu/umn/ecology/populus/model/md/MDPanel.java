@@ -81,11 +81,9 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    private PopulusParameterField paramA = new PopulusParameterField();
    private PopulusParameterField paramP1 = new PopulusParameterField();
    private JPanel DensitiesPanel = new JPanel();
-   private TitledBorder titledBorder12;
    private PopulusParameterField paramlambda1 = new PopulusParameterField();
    private PopulusParameterField paramk1 = new PopulusParameterField();
    private PopulusParameterField paramgamma1 = new PopulusParameterField();
-   private TitledBorder titledBorder13;
    private PopulusParameterField parambeta1 = new PopulusParameterField();
    private PopulusParameterField paramalpha1 = new PopulusParameterField();
    private PopulusParameterField paramsigma = new PopulusParameterField();

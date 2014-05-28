@@ -96,7 +96,6 @@ public class INTERDGSParamInfo implements BasicPlot {
       double[][][] points = new double[1][2][gens+1];
       double[][] data = new double[runs][];
       double[] variance = new double[gens+1];
-      double temp;
       int fix=0, die=0;
       BasicPlotInfo bpi = new BasicPlotInfo();
 

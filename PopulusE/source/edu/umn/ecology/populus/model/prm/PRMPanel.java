@@ -62,8 +62,6 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    private PopulusParameterField paramy0 = new PopulusParameterField();
    private PopulusParameterField paramw0 = new PopulusParameterField();
    private JPanel hostDensitiesPanel = new JPanel();
-   private TitledBorder titledBorder12;
-   private TitledBorder titledBorder13;
    private JRadioButton fourvstButton = new StyledRadioButton();
    private JRadioButton threevstButton = new StyledRadioButton();
    private PopulusParameterField paramx0 = new PopulusParameterField();

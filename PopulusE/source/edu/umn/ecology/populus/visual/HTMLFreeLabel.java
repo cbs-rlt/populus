@@ -38,16 +38,12 @@ public class HTMLFreeLabel {
    public static void paintHTML( Graphics g, String s, int x, int y ) {
       StringTokenizer st;
       String temp; //to store the next token in
-      String seg = ""; //to store the displayable text in
       st = new StringTokenizer( s, "<>", true );
-      Font f;
       Color c = g.getColor();
       int type = g.getFont().getStyle();
       int size = g.getFont().getSize();
       final int ftype = type;
       final int fsize = size;
-      final Color fc = c;
-      final int fx = x;
       final int fy = y;
       boolean inTag = false;
       while( st.hasMoreTokens() ) {

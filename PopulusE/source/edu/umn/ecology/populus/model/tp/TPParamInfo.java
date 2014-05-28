@@ -34,8 +34,6 @@ public class TPParamInfo implements BasicPlot {
       //double[] totalPop;
       double[][] ylists;
       double[] initialConditions = new double[numVars +1 ];
-      int size;
-
       initialConditions[0] = r;
       initialConditions[1] = l;
       initialConditions[2] = temp;
@@ -59,7 +57,6 @@ public class TPParamInfo implements BasicPlot {
       ig.doIntegration(initialConditions, 0.0, time);
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       points = new double[numVars - 1][2][];
 
 

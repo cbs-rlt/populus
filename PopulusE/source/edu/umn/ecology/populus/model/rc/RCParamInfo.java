@@ -46,19 +46,15 @@ public class RCParamInfo implements BasicPlot {
           capConc2, capConc3, capConc4;
 
    public BasicPlotInfo getBasicPlotInfo() {
-      String xCaption, yCaption;
+      String yCaption;
       BasicPlotInfo bp = null;
       double[][][] points;
       double[] xlist;
-      double[] totalPop;
-      double[] f1;
-      double[] f2, f1temp, f2temp;
       double[] rlist, r2list;
       double[] phi11, phi12, phi21, phi22;
-      double [] xseason, yseason, zseason;
       double[][] ylists;
       double[] initialConditions = new double[numVars];
-      int size,sizeR1,sizeR2;
+      int sizeR1,sizeR2;
       initialConditions[0] = n1;
       initialConditions[1] = r1;
       if (numVars >= 3) {
@@ -73,7 +69,6 @@ public class RCParamInfo implements BasicPlot {
          ig.record.interval = false;
       }
 
-      double count = (double)time / tI;
       if ((modelType == RCParamInfo.equable_11) || (modelType == RCParamInfo.equable_21) || (modelType == RCParamInfo.equable_22)){
          ig.doIntegration( initialConditions, 0.0, time );
          xlist = ig.getX();
@@ -141,8 +136,6 @@ public class RCParamInfo implements BasicPlot {
             cumIdx += curArr.length;
          }
       }
-
-      size = xlist.length;
 
       switch(plotType){
          case phivsR:
@@ -262,7 +255,6 @@ public class RCParamInfo implements BasicPlot {
             break;
          case n2vsn1:
          {
-            int i;
             points = new double[1][2][];
             points[0][0] = ylists[0];
             points[0][1] = ylists[2];

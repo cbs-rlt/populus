@@ -35,13 +35,11 @@ public class AIDSParamInfo implements BasicPlot {
    //private final String yCap5 = ColorScheme.getColorString(0)+ "Cross-Reactive</>"+" and"+ColorScheme.getColorString(1)+" S</>"+ColorScheme.getColorString(2)+"t</>"+ColorScheme.getColorString(3)+"r</>"+ColorScheme.getColorString(4)+"a</>"+ColorScheme.getColorString(5)+"i</>"+ColorScheme.getColorString(6)+"n</>"+ColorScheme.getColorString(7)+"-</>"+ColorScheme.getColorString(8)+"S</>"+ColorScheme.getColorString(9)+"p</>"+ColorScheme.getColorString(10)+"e</>"+ColorScheme.getColorString(11)+"c</>"+ColorScheme.getColorString(12)+"i</>"+ColorScheme.getColorString(13)+"f</>"+ColorScheme.getColorString(14)+"i</>"+ColorScheme.getColorString(15)+"c</>"+ " Cell Densities";
    //private final String yCap5= ColorScheme.getColorString(0)+ "Cross-Reactive</>"+" and Strain-Specific Cell Densities    ";
    private final String yCap5= ColorScheme.getColorString(0)+ "<i><b>z</>"+" and <i><b>x<sub>i</> Cell Densities    ";
-   private final String yCapRun = "Run";
    private final String capTotalVirusDensity = "Total Virus Density   ";
 
    protected void generateNewValues() {
       Integrator ig;
-      int equations = initialConditions.length;
-      int size, last;
+      int size;
 
       ig = new Integrator( der );
       ig.record.usePostDerivative = true;

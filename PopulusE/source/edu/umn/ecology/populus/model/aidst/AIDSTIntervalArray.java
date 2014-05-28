@@ -32,7 +32,6 @@ private Border border1;
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JButton addButton = new JButton();
    private Stack intervals = new Stack();
-   private ModelPanel mp;
    private int enabledIntervals = 0;
    public static final int kMaxIntervals = 3;
    public static final int kMinIntervals = 0;
@@ -141,7 +140,6 @@ private Border border1;
    }
 
    void setModelPanel(ModelPanel c) {
-      this.mp = c;
    }
 
 }

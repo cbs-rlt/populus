@@ -25,7 +25,6 @@ import edu.umn.ecology.populus.fileio.Logging;
  */
 public class HelpUtilities  {
 	public static HelpUtilities hu;
-	private static String errorMessage = "";
 	private static File f = null;
 	private static String cmd = "";
 	private static String app = "";

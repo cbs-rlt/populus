@@ -77,9 +77,7 @@ public class MatrixTableModel extends AbstractTableModel implements java.io.Exte
       return null;
    }
 
-   public Class getColumnClass(int c) {
-      //Double d = new Double(0);
-      //return d.getClass();
+   public Class<?> getColumnClass(int c) {
       return getValueAt(0,c).getClass();
    }
 

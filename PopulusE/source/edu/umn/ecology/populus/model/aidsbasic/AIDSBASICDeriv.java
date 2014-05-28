@@ -5,7 +5,6 @@ public class AIDSBASICDeriv extends Derivative {
    public static final int kY = 1;
    public static final int kV = 2;
    public static final int kX = 0;
-   private int type;
    private double lambda,d,beta,a,k,u;
 
    public void doDerivative( double t, double[] N, double[] dN ) {
@@ -13,7 +12,6 @@ public class AIDSBASICDeriv extends Derivative {
       double y = N[kY];
       double v = N[kV];
       double n;
-      boolean invalidSize = false;
       n = x + y + v;
 
      dN[kX] = lambda- d*x - beta*x*v;

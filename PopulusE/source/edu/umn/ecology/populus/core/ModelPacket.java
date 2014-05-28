@@ -6,10 +6,10 @@ public final class ModelPacket implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6919970167290967332L;
-private String modelName;
-   private Class modelClass;
+   private String modelName;
+   private Class<?> modelClass;
    
-   public Class getModelClass() {
+   public Class<?> getModelClass() {
       return modelClass;
    }
    
@@ -17,7 +17,7 @@ private String modelName;
       return modelName;
    }
    
-   public ModelPacket( Class modelClass ) {
+   public ModelPacket( Class<?> modelClass ) {
       this.modelClass = modelClass;
       
       //Extract model name using class

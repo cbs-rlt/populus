@@ -31,6 +31,7 @@ public class IMDDeriv extends Derivative {
          //Worry about |n| < 10^-6 ?
          if( Math.abs( n ) < 1e-6 ) {
             bsi = 0;
+            //@TODO:  Why aren't we using invalidSize later??
             invalidSize = true;
          }
          else {

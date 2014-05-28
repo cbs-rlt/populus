@@ -20,7 +20,7 @@ public class RunningTimePanelBeanInfo extends SimpleBeanInfo {
    String iconColor32x32Filename = "runningTimePanel32c.jpg";
    String iconMono16x16Filename;
    String iconMono32x32Filename;
-   Class beanClass = RunningTimePanel.class;
+   Class<RunningTimePanel> beanClass = RunningTimePanel.class;
    
    public PropertyDescriptor[] getPropertyDescriptors() {
       try {

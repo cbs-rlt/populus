@@ -12,7 +12,7 @@ public class PPProc extends DiscreteProc implements edu.umn.ecology.populus.mode
       double[] X =  {
          y[Xy], y[Yy]
       };
-      double P = y[Py], N, P1m, E;
+      double P = y[Py], P1m, E;
       this.aX = (double[])kaX.clone();
       if( P > 0 ) {
          P1m = Math.log( P ) * ( 1 - m );

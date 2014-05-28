@@ -275,7 +275,6 @@ public class Utilities extends java.lang.Object {
 
    public static final Vector parseHTML( StringBuffer buf ) {
       Vector v = new Vector();
-      StringBuffer currBuff = new StringBuffer();
 
       while (buf.length() > 0) {
           int ind;
@@ -330,16 +329,11 @@ public class Utilities extends java.lang.Object {
 
       //Enumeration e = v.elements();
 
-      //BasicGraphicsUtils.drawString(g,s,c, x, y);
-      int x = 0, y = 0;
       boolean tag = true;
       String s;
       int style = Font.PLAIN;
       int supLevel = 0;
-      int tempSize;
-      int dy = 0, regHeight = -1;
-      boolean topBar = false;
-
+      int regHeight = -1;
       //Font defaultFont;
       FontMetrics fm;
       Font f = g.getFont();
@@ -398,7 +392,6 @@ public class Utilities extends java.lang.Object {
                    //f = defaultFont;
                    style = Font.PLAIN;
                    supLevel = 0;
-                   topBar = false;
                    updateFont = true;
                    break;
 
@@ -418,7 +411,6 @@ public class Utilities extends java.lang.Object {
             if( s.length() == 0 ) {
                continue;
             }
-            dy = 0;
             if( supLevel != 0 ) {
                g.setFont( new Font( f.getFontName(), style, ( (int)( 0.5f + HTMLConstants.SCRIPT_SHRINKAGE * ( (float)f.getSize() * Math.abs( supLevel ) ) ) ) ) );
             }
@@ -433,12 +425,12 @@ public class Utilities extends java.lang.Object {
             updateFont = false;
             fm = g.getFontMetrics();
             if( supLevel != 0 ) { //subscript or subscript
-               dy = regHeight - fm.getHeight() - 1;
+               regHeight - fm.getHeight() - 1;
                if( supLevel > 0 ) { //superscript
-                  dy *= -1;
+                  
                }
             }
-            x += fm.stringWidth( s );
+            fm.stringWidth( s );
          }
       }
       return null;

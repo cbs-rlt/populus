@@ -7,7 +7,6 @@ public class AIDSTDeriv extends Derivative {
    //public static final int kV = 2;
    public static final int kW = 2;
    public static final int kZ = 3;
-   private int type;
    private double lambda,d,beta,a,c,q,h,b,s, p;
    private double[][] intervals;
    private double s_new;
@@ -19,9 +18,6 @@ public class AIDSTDeriv extends Derivative {
       //double v = N[kV];
       double w = N[kW];
       double z = N[kZ];
-      double n;
-      boolean invalidSize = false;
-
       //s_new is 1 outside of an interval, and s within an interval
       s_new = 1;
       for (int cnt = 0; cnt < intervals.length; cnt++)

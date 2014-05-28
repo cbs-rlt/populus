@@ -20,13 +20,11 @@ public class DIGParamInfo implements BasicPlot {
    String mDCap = res.getString( "Discrete_Geometric" );
    private int plottype;
    private double p0, gens, lambda, r;
-   private double xMax, xMin = 0, yMax, yMin = 0;
    private boolean continuous;
 
    public DIGParamInfo( DIGData[] myData, int numGraphs ) {
       BasicPlotInfo temp = null;
       thisInfo = new BasicPlotInfo();
-      double[][][] tempDoub = null;
       double[][][] keepDoub;
       double maxR=0, minR=0;
       if( numGraphs == 0 ) return;

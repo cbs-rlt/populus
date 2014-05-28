@@ -24,11 +24,9 @@ public class AIDST3DParamInfo extends APPD3DProtoParamInfo {
       initialConditions[0] = x;
       initialConditions[1] = y;
       initialConditions[2] = z;
-      int equations = initialConditions.length;
       double[][][] points = new double[1][3][];
       double[] xlist;
       double[][] ylists;
-      int size, i;
       if( gens < 0 ) {
          ig.record.ss = true;
          ig.record.interval = false;
@@ -36,7 +34,6 @@ public class AIDST3DParamInfo extends APPD3DProtoParamInfo {
       ig.integrate( initialConditions, 0.0, time );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       points[0][0] = ylists[2];
       points[0][1] = ylists[0];
       points[0][2] = ylists[1];

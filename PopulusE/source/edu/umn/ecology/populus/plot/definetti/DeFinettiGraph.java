@@ -114,8 +114,6 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
     */
    public int[][][] transformData(double[][][] lhs){
       int[][][] rhs = new int[lhs.length][2][];
-      double x, y;
-
       for(int i=0; i<rhs.length; i++){
          rhs[i][0] = new int[lhs[i][0].length];
          rhs[i][1] = new int[lhs[i][1].length];
@@ -297,7 +295,6 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
 
       /*major tic marks with their labels*/
       g.setFont(new Font("Dialog",Font.PLAIN,lSize));
-      int mLen = g.getFontMetrics().stringWidth(""+0.6);
       for(double i=0; i<=numMajor; i++){
          mark = ""+NumberMath.roundSig(majorLength*i,4,0);
 
@@ -328,7 +325,6 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
 
       g.setFont(new Font("Dialog",Font.PLAIN,smallSize));
       int fLen = g.getFontMetrics().stringWidth(HTMLFreeLabel.getPlainText(firstCap,false))+5;
-      int sLen = g.getFontMetrics().stringWidth(HTMLFreeLabel.getPlainText(secondCap,false))+5;
       int tLen = g.getFontMetrics().stringWidth(HTMLFreeLabel.getPlainText(thirdCap,false))+5;
       HTMLFreeLabel.paintHTML(g,firstCap,rightX-fLen,rightY+smallSize+15);
       HTMLFreeLabel.paintHTML(g,secondCap,topX+bigSize+15,topY+smallSize-5);

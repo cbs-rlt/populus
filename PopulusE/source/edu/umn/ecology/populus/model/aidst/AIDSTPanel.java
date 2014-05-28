@@ -87,7 +87,7 @@ Border border1;
    public BasicPlot getPlotParamInfo() {
       double time= runningTimePanel1.getTime();
       double[][] intTimes = intervalArray.getIntervals();
-      double s = paramS.getDouble();
+      paramS.getDouble();
       int plotType;
       if( xyvtButton.isSelected())
          plotType = AIDSTParamInfo.vsT;

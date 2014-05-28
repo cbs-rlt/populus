@@ -26,10 +26,8 @@ public class AIDSBASICParamInfo implements BasicPlot {
       BasicPlotInfo bp = null;
       double[][][] points;
       double[] xlist;
-      double[] totalPop;
       double[][] ylists;
       double[] initialConditions = new double[3];
-      int size;
       initialConditions[0] = x;
       initialConditions[1] = y;
       initialConditions[2]= v;
@@ -40,8 +38,7 @@ public class AIDSBASICParamInfo implements BasicPlot {
       ig.doIntegration( initialConditions, 0.0, time );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
-     /*totalPop = new double[size];
+      /*totalPop = new double[size];
       for(int i=0; i<totalPop.length; i++)
          for(int j=0; j<ylists.length; j++)
             totalPop[i] += ylists[j][i];

@@ -73,7 +73,6 @@ JPanel labelHolder = new JPanel();
          eqsStrings[i] = ( (Equation)eqHolder.getComponent( i ) ).getEquation();
       }
       if(inStandard){
-         String[] s = mapEquations(eqsStrings,getParamNames(false),getParamNames(true));
          return mapEquations(eqsStrings,getParamNames(false),getParamNames(true));
       } else {
          return eqsStrings;

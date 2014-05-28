@@ -9,7 +9,6 @@ import java.awt.*;
 public class TextOutput {
    /** This method handles the writing of the model's data to a text file.*/
    public static void saveInteractionEngineText( double[][] data, String[] headers, String[] labels, boolean isDiscrete ){
-      int len;
       final int columnWidth = 20;
       try {
     	  if( data == null )

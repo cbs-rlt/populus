@@ -7,8 +7,6 @@ public class RCTDeriv extends Derivative {
    final private double[] a;
    final private double[] m, s, r;
    final private double[][] k, c;
-   private int i;
-
    public void doDerivative( double t, double[] N, double[] dN ) {
       double e, curre;
       int jex = 0;

@@ -46,12 +46,6 @@ public class HMSSParamInfo implements BasicPlot {
    private static final int dBC = 1;
    private static final int dAC = 2;
 
-   /**
-    * these are for when a male and a female genotype are represented in the same byte;
-    * the female genotype starts at bit <code>femaleBit</code> and the male genotype starts
-    * at <code>maleBit</code>. because female bit is set to zero, it might not ever be needed.
-    */
-   private static final byte femaleBit   = 0;
    private static final byte maleBit = 3;
 
    /**

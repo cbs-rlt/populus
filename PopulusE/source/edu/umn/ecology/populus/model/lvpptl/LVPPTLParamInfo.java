@@ -71,7 +71,6 @@ public class LVPPTLParamInfo implements BasicPlot {
       double[] xlist;
       double[][] ylists;
       double[] initialConditions = new double[2];
-      int size;
       initialConditions[0] = n0;
       initialConditions[1] = p0;
       if( gens < 0 ) {
@@ -96,7 +95,6 @@ public class LVPPTLParamInfo implements BasicPlot {
             maxX = ylists[0][i];
          }
       }
-      size = xlist.length;
       final double exCoeff = 1.2; //this is for how far beyond the max point the isoclines should extend
       double N = 0;
       if( vsTime ) {

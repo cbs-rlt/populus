@@ -9,9 +9,6 @@ public class LVDeriv extends Derivative {
    private boolean isType2;
    private boolean isDD;
 
-   /** If k == SETNK, then not density-dependent. */
-   private static final double SENTK = -1.3;
-
    public LVDeriv( double r1, double c1, double r2, double c2,
                    boolean isDD, double k,
                    boolean isType2, double a, double Th ) {

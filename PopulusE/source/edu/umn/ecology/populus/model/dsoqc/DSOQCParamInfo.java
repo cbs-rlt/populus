@@ -21,7 +21,6 @@ public class DSOQCParamInfo implements BasicPlot {
       int nump = 0;
       int[][] selected = new int[2][repopSize];
       double[][] pheno = new double[2][popSize];
-      double lastp;
       double avg = 0;
 
       for(int i=0; i<popSize; i++){
@@ -33,7 +32,6 @@ public class DSOQCParamInfo implements BasicPlot {
          pheno[0][i] = i;
       }
 
-      lastp = 1.0 - 0.5*nump/popSize;
       line = Routines.buildDistributionCurve(pheno[1],10);
 
       for(int i=0; i<pheno[1].length; i++){

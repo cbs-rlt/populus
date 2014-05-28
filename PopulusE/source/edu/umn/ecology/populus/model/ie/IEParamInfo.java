@@ -13,7 +13,7 @@ public class IEParamInfo implements BasicPlot {
    public static final int NvsN = 2;
 
    protected double[] initial = null;
-   private boolean[] used, plotted;
+   private boolean[] plotted;
    protected double runTime;
    protected String mainCaption = null;
    protected String xCaption = null;
@@ -31,7 +31,6 @@ public class IEParamInfo implements BasicPlot {
             String[] names) throws IEException{
       this.isDiscrete = isDiscrete;
       this.runTime = runTime;
-      this.used = used;
       this.plotted = plotted;
       this.isText = textOutput;
       this.eqs = eqs;
@@ -64,8 +63,6 @@ public class IEParamInfo implements BasicPlot {
       double[][][] points;
       double[] xlist;
       double[][] ylists;
-      int size;
-
       if (runTime < 0) {
          ig.record.ss = true;
          ig.record.interval = false;
@@ -98,7 +95,6 @@ public class IEParamInfo implements BasicPlot {
          TextOutput.saveInteractionEngineText(dataToWrite,headers,labels,isDiscrete);
       }
 
-      size = xlist.length;
       if(plotType == NvsT) {
          points = new double[getPlotCount()][2][];
          int lc=0;

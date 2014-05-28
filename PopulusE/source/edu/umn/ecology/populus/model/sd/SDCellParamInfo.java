@@ -140,7 +140,6 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 						if(!is8 && m!=i && n!=j)
 							continue;
 						int tM=m, tN=n;
-						double[] v;
 						switch(border){
 							case SDPanel.kAbsorbing:
 								if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;

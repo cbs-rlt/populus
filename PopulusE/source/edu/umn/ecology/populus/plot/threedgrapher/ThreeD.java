@@ -304,7 +304,6 @@ public Model3D md = null;
       run();
       g.setColor(md.backColor);
       g.fillRect(0,0,getSize().width,getSize().height);
-      int[] e = md.getEdges();
 
       if (md != null) {
          md.mat.unit();

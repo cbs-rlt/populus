@@ -57,8 +57,6 @@ PopulusParameterField v0PPF = new PopulusParameterField();
 
    public BasicPlot getPlotParamInfo() {
       int plotType;
-      double[][][] temp;
-
       if(ZXvsTRB.isSelected())
          plotType = AIDSParamInfo.ZXIvsT;
       else if(VvsTRB.isSelected())

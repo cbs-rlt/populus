@@ -271,7 +271,7 @@ public class IsoclineAnalysis {
       int numEqs = points.length;
       int numVars = points[0].length;
       int numPoints3D = (int)( Math.sqrt( numPointsToAdd ) * 1.5 );
-      double maxValue1, maxValue2, maxValue3, guessValue;
+      double maxValue1, maxValue2;
       Vector[][] v = new Vector[numEqs][numVars];
       if( numVars == 2 ) {
          for( int i = 0;i < numEqs;i++ ) {

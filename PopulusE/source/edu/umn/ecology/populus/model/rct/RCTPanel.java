@@ -184,7 +184,6 @@ int numVars;
       C[0][2] = paramC31.getDouble();
       C[1][2] = paramC32.getDouble();
       C[2][2] = paramC33.getDouble();
-      double speciesNum = paramSpeciesNum.getDouble();
       return new RCTParamInfo( modelType, plotType, time, paramSpeciesNum.getInt(), paramRNum.getInt(), paramN01.getDouble(), paramN02.getDouble(), paramN03.getDouble(), a, r, paramR10.getDouble(), paramR20.getDouble(), paramR30.getDouble(), m, K, C, s );
    }
 

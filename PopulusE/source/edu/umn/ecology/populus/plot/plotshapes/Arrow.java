@@ -19,7 +19,6 @@ public class Arrow extends DirectionalPlotTerminus {
       int numPoints = 2;
       float f = size / 1.0f;
       float[] pc = new float[2 * ( numPoints + 2 )];
-      float[] pf = new float[2 * ( numPoints + 2 )];
       for( int i = 0;i < ( numPoints / 2 );i++ ) {
          pc[i] = ( -3 + i ) * f;
          pc[i + 1] = f;

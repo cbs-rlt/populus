@@ -38,7 +38,7 @@ public class APPDProtoParamInfo implements BasicPlot {
       double[][][] points;
       double[] xlist;
       double[][] ylists;
-      int size, i;
+      int i;
       ig = new Integrator( discProc );
       if( gens < 0 ) {
          ig.record.ss = true;
@@ -47,7 +47,6 @@ public class APPDProtoParamInfo implements BasicPlot {
       ig.integrate( initialConditions, 0.0, gens );
       xlist = ig.getX();
       ylists = ig.getY();
-      size = xlist.length;
       if( ( plotType & NvsT ) != 0 ) {
          points = new double[equations][2][];
          for( i = 0;i < equations;i++ ) {
