@@ -5,7 +5,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 
 public class AIDSBASICPanel extends BasicPlotInputPanel {
    /**

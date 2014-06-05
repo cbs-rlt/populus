@@ -5,7 +5,7 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.ModelPanel;
 import edu.umn.ecology.populus.visual.StyledRadioButton;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;

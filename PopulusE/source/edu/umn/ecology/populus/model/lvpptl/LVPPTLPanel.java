@@ -6,9 +6,8 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 
-//import com.borland.jbcl.control.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
 

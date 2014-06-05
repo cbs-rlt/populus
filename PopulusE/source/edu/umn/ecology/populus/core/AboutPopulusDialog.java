@@ -21,9 +21,11 @@ import java.lang.reflect.Method;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
+
+import com.borland.jbcl.layout.VerticalFlowLayout;
 
 import edu.umn.ecology.populus.fileio.Logging;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 public class AboutPopulusDialog extends JDialog {
    /**
@@ -37,7 +39,7 @@ public class AboutPopulusDialog extends JDialog {
    JLabel line1 = new JLabel();
    JLabel line7 = new JLabel();
    JPanel panel1 = new JPanel();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout verticalFlowLayout1 = new SimpleVFlowLayout();
    JPanel urlPanel = new JPanel();
    JPanel jPanel2 = new JPanel();
    JLabel line8 = new JLabel();

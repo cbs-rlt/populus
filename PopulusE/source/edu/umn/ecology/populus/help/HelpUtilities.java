@@ -49,7 +49,7 @@ public class HelpUtilities  {
 				//TODO
 			}
 			if(os.startsWith("Windows")){
-				//TODO!!!! This is not going to work because the command should have the full path of the executable to run
+				//Try to find external program that views pdf files.
 
 				//There used to be some code so that cmd *might* be command.com, but that is for ancient compatibility
 				cmd = "cmd.exe";

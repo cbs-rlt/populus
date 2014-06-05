@@ -331,6 +331,15 @@ public class HelpConfigPanel extends JPanel {
 		}
 		return okay;
 	}
+	
+	private void updateFileStatusLabel() {
+		boolean okay = isFilenameValid();
+		if (okay) {
+			fileStatusLabel.setText("");
+		} else {
+			fileStatusLabel.setText("Will copy file over since it doesn't exist.");
+		}	
+	}
 
 	//Possibly update the filename if needed.
 	private void filenameChanged() {
@@ -346,13 +355,7 @@ public class HelpConfigPanel extends JPanel {
 			filePathField.setText(IOUtility.convertPathToURI(fileStr, fileStr));
 			browseButton.setEnabled(false);
 		}
-
-		boolean okay = isFilenameValid();
-		if (okay) {
-			fileStatusLabel.setText("");
-		} else {
-			fileStatusLabel.setText("Will copy file over since it doesn't exist.");
-		}
+		updateFileStatusLabel();
 	}
 
 	
@@ -402,6 +405,7 @@ public class HelpConfigPanel extends JPanel {
 			Logging.log("Could not save help file out to local disk:");
 			Logging.log(e);
 		}
+		updateFileStatusLabel();
 	}
 	
 	

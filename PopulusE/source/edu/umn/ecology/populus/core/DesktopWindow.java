@@ -19,11 +19,14 @@ package edu.umn.ecology.populus.core;
 import edu.umn.ecology.populus.constants.*;
 import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.help.HelpUtilities;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.lang.reflect.*;
 import java.util.*;
+
 import javax.swing.*;
+
 import edu.umn.ecology.populus.fileio.Logging;
 
 /**
@@ -114,16 +117,13 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		backgroundPanel.add( imagePanel, new GridBagConstraints( 0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 ) );
 		switcherPanel.add( desktopPane, "desktopPane" );
 		this.setIconImage( Toolkit.getDefaultToolkit().getImage( DesktopWindow.class.getResource( "picon.gif" ) ) );
-
-		MenuAction ma;
+		
+		// Creates the top-level models, which right now is only Interaction Engine.
+		// The code is basically identical to loadMenu, but that method only accepts JMenu, not JPopupMenu
 		mps = PopPreferences.getModelPackets(PopPreferences.TOP_PACKETS);
-		for( int i = 0;i < mps.length;i++ ) {
-			ma = new MenuAction( mps[i].getModelName(), mps[i].getModelClass() )  {
-
-				/**
-				 * 
-				 */
-				private static final long serialVersionUID = -2658804970844768852L;
+		for(ModelPacket mp : mps) {
+			MenuAction ma = new MenuAction( mp.getModelName(), mp.getModelClass() )  {
+				private static final long serialVersionUID = 6448584135280919807L;
 
 				public void actionPerformed( ActionEvent e ) {
 					loadModel( model );
@@ -134,7 +134,6 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 		JMenuItem jmi = topLevelMenu.add( res.getString( "Load_Model_From_File_" ) );
 		jmi.addActionListener( new java.awt.event.ActionListener()  {
-
 			public void actionPerformed( ActionEvent e ) {
 				newModelFromModelChooser( Model.load() );
 			}
@@ -279,7 +278,6 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		MenuAction ma;
 		for( int i = 0;i < mp.length;i++ ) {
 			ma = new MenuAction( mp[i].getModelName(), mp[i].getModelClass() )  {
-
 				/**
 				 * 
 				 */
@@ -322,21 +320,6 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		genericSetModel( model );
 	}
 
-	void topLevel_actionPerformed( ActionEvent e ) {
-		String command = e.getActionCommand();
-		for( int i = 0;i < mps.length;i++ ) {
-			if( mps[i].getModelName() == command ) {
-				loadModel( mps[i].getModelClass() );
-				return;
-
-				//break;
-			}
-		}
-		if( command == res.getString( "Load_Model_From_File_" ) ) {
-			newModelFromModelChooser( Model.load() );
-		}
-	}
-
 	/**
 	 * Checkbox is clicked so that title screen should be removed.
 	 */
@@ -377,9 +360,9 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		}
 	}
 
-	private void loadModel( Class<Model> c ) {
+	private void loadModel( Class<? extends Model> model ) {
 		try {
-			Model m = c.getConstructor( null ).newInstance( null );
+			Model m = model.getConstructor( null ).newInstance( null );
 			ColorScheme.addModel( m );
 			newModelFromModelChooser( m );
 		}
@@ -434,9 +417,9 @@ abstract class MenuAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 5106840855809036163L;
-	final Class<Model> model;
+	final Class<? extends Model> model;
 
-	MenuAction( String text, Class<Model> modelToRun ) {
+	MenuAction( String text, Class<? extends Model> modelToRun ) {
 		super( text );
 		model = modelToRun;
 	}

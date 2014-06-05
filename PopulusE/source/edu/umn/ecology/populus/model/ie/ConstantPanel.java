@@ -2,7 +2,7 @@ package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import java.util.Hashtable;
 
 public class ConstantPanel extends JPanel {

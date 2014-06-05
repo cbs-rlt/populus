@@ -19,7 +19,7 @@ public class WoozlePanel extends ModelPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8112260482356402009L;
-ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
+    ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.woozle.Res" );
    PopulusParameterField broodSize = new PopulusParameterField();
    JPanel targetPhrasePanel = new JPanel();
    JCheckBox showEvolveBox = new JCheckBox();

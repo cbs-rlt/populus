@@ -6,7 +6,7 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -9184615047198726431L;
-static final Object[][] contents = new String[][] {
+	static final Object[][] contents = new String[][] {
        {
          "Agreements_", "Agreements:"
       },  {

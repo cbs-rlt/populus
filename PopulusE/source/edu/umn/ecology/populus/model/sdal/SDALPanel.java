@@ -7,7 +7,7 @@ import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import javax.swing.event.*;
 import java.util.*;
 

@@ -19,7 +19,7 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 

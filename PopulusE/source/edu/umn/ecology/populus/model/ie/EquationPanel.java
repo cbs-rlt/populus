@@ -1,8 +1,13 @@
 package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
-import com.borland.jbcl.layout.*;
+
+import com.borland.jbcl.layout.VerticalFlowLayout;
+import com.borland.jbcl.layout.XYConstraints;
+import com.borland.jbcl.layout.XYLayout;
+
 import java.util.StringTokenizer;
 
 public class EquationPanel extends JPanel {
@@ -10,7 +15,7 @@ public class EquationPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -5235310299666499109L;
-JPanel labelHolder = new JPanel();
+	JPanel labelHolder = new JPanel();
    JScrollPane scroller = new JScrollPane();
    JLabel useL = new JLabel();
    JLabel numEqL = new JLabel();

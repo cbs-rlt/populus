@@ -7,9 +7,9 @@ public final class ModelPacket implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -6919970167290967332L;
    private String modelName;
-   private Class<?> modelClass;
+   private Class<? extends Model> modelClass;
    
-   public Class<?> getModelClass() {
+   public Class<? extends Model> getModelClass() {
       return modelClass;
    }
    
@@ -17,7 +17,7 @@ public final class ModelPacket implements java.io.Serializable {
       return modelName;
    }
    
-   public ModelPacket( Class<?> modelClass ) {
+   public ModelPacket( Class<? extends Model> modelClass ) {
       this.modelClass = modelClass;
       
       //Extract model name using class

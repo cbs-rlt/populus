@@ -31,7 +31,7 @@ public class EventLine {
       bpi.addData(newLine);
    }
    public static void addEventMark(BasicPlotInfo bpi,
-                                   int lineToAddTo, /* ignored ? */
+                                   int lineToAddTo,
                                    double x,
                                    double y
                                    //Color c

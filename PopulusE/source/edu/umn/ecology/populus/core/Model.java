@@ -354,9 +354,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 	}
 
 	//
-
 	//The next methods are all loading methods
-
 	//
 
 	/**
@@ -411,7 +409,6 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 	 * does all of the other stuff to get ready for the actual output).
 	 * NOTE: Should this be declared abstract, to force the inherited models to override?
 	 */
-
 	protected void simpleUpdateOutput() {
 
 	}

@@ -238,7 +238,6 @@ public final class NumberMath extends Object {
    public static final String formatNumber( double n ) {
       int maxLength;
       String value;
-      StringBuffer buffer;
       boolean negative = false;
       if( n < 0 ) {
          n *= -1;
@@ -332,13 +331,11 @@ public final class NumberMath extends Object {
    }
 
    public static void printMatrix(double[][] a, String name, boolean reverse){
-      double sum=0;
       edu.umn.ecology.populus.fileio.Logging.log("\n"+name+": ");
       if(reverse){
          for(int i=0; i<a.length; i++){
             for(int j=0; j<a[i].length; j++){
                System.out.print(TextOutput.NumToStr(a[i][j],20,10,false));
-               sum += a[i][j];
             }
             System.out.print("\n");
          }
@@ -346,7 +343,6 @@ public final class NumberMath extends Object {
          for(int i=0; i<a[0].length; i++){
             for(int j=0; j<a.length; j++){
                System.out.print(TextOutput.NumToStr(a[j][i],20,10,false));
-               sum += a[j][i];
             }
             System.out.print("\n");
          }

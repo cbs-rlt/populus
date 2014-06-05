@@ -17,7 +17,7 @@ import java.awt.*;
 import javax.swing.border.*;
 import javax.swing.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import java.awt.event.*;
 import java.io.*;
 

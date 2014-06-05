@@ -4,7 +4,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.ModelPanel;
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import javax.swing.border.*;
 import java.awt.*;
 import javax.swing.event.*;

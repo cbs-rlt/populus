@@ -9,7 +9,7 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;

@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.edwin.ModelPanel;
 import javax.swing.border.*;
 import java.awt.event.*;
 import java.util.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 
 
 /**

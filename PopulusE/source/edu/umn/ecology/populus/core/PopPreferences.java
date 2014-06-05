@@ -164,6 +164,10 @@ public final class PopPreferences {
 	public static Color getTableUneditColor() {
 		return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_UNEDIT_COLOR);
 	}
+	/** True - use JFreeClass; False - use KLG Chart */
+	public static boolean useJFreeClass() {
+		return false;
+	}
 
 	/* HELP PREFERENCES */
 	public static String getHelpFileLocation() {

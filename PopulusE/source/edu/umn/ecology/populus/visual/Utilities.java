@@ -324,7 +324,7 @@ public class Utilities extends java.lang.Object {
      * e = Enumeration of String
      * <BR>NOTE: does not do Mnemonics yet, but shouldn't be too hard to add.
      */
-
+   //@TODO - this looks unused now...
    public static final Dimension getSize( Graphics g, Enumeration e ) {
 
       //Enumeration e = v.elements();
@@ -423,14 +423,6 @@ public class Utilities extends java.lang.Object {
                }
             }
             updateFont = false;
-            fm = g.getFontMetrics();
-            if( supLevel != 0 ) { //subscript or subscript
-               regHeight - fm.getHeight() - 1;
-               if( supLevel > 0 ) { //superscript
-                  
-               }
-            }
-            fm.stringWidth( s );
          }
       }
       return null;

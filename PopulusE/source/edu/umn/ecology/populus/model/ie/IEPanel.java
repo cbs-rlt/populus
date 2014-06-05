@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
-import com.borland.jbcl.layout.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
 import javax.swing.border.*;
 import edu.umn.ecology.populus.plot.*;
 
