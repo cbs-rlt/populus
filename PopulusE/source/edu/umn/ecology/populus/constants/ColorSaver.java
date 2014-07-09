@@ -12,7 +12,7 @@ public class ColorSaver implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2730125349195960295L;
-Color bGToSave;
+	Color bGToSave;
    int[] currentIndexToSave;
    int scheme = 0;
    Color[] colorsToSave;

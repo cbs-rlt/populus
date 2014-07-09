@@ -162,7 +162,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	}
 
 	/** Size the window to full size, making sure to account for the insets */
-	private static void sizeScreen(JFrame frame) {
+	private void sizeScreen(JFrame frame) {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		GraphicsConfiguration config = frame.getGraphicsConfiguration();
@@ -235,6 +235,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 	void exit() {
 		//TODO - this should be cleaner...
+		Logging.log("CLOSING POPULUS WINDOW " + this.getSize() + " & " + this.getLocation());
 		PopPreferences.getSingleton().save();
 		Logging.cleanup();
 		System.exit( 0 );

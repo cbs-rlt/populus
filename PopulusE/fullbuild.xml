@@ -12,9 +12,11 @@
     <property name="resources" location="resources"/> <!-- location of general java resources -->
     <property name="compile.debug" value="true"/>
     <!-- OS X specific -->
+	<!--
 	<taskdef name="bundleapp"
              classname="com.oracle.appbundler.AppBundlerTask"   
              classpath="res/appbundler-1.0.jar" />
+	-->
 
     <!-- Initialization target, for any prelimary setup needed to build -->
     <target name="init" description="Preparation">

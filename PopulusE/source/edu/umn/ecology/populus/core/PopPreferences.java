@@ -57,6 +57,7 @@ public final class PopPreferences {
 
 	//TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
 	private static final String DEFAULT_DIRECTORY = "";
+	private static final boolean DEFAULT_RESTORE_DESKTOP = false;
 	
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
@@ -73,7 +74,9 @@ public final class PopPreferences {
 	private static final Integer HELP_FILE_LANGUAGE = new Integer( 112 );
 	private static final Integer OPEN_PDF_METHOD    = new Integer( 113 );
 	private static final Integer OPEN_PDF_COMMAND   = new Integer( 114 );
-
+	private static final Integer RESTORE_DESKTOP    = new Integer( 115 );
+	private static final Integer DESKTOP_SIZE       = new Integer( 116 );
+	private static final Integer DESKTOP_LOCATION   = new Integer( 117 );
 
 	public static final Integer TOP_PACKETS = new Integer( 7 );
 	public static final Integer SINGLE_PACKETS = new Integer( 8 );
@@ -99,6 +102,7 @@ public final class PopPreferences {
 	private PopPreferences() {
 		buttons = new Vector<PopulusToolButton>();
 		initializeMenuPackets();
+		reset(true);
 		subLoad(true);
 	}
 
@@ -186,6 +190,7 @@ public final class PopPreferences {
 	public static OpenPDFMethod getOpenPDFObject() {
 		return new OpenPDFMethod(getOpenPDFMethod(), getOpenPDFCommand());
 	}
+	/** This is for saving a MODEL, not the global preferences file */
 	public static boolean getUseXMLSave() {
 		//TODO: Actually make this an exposed feature that is saved in the table.
 		//TODO - XML loading doesn't seem to work. The values seem to be getting saved
@@ -253,7 +258,7 @@ public final class PopPreferences {
 	}
 
 	//TODO: Use javax.jnlp.FileSaveService:
-		// http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
+	// http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
 	public static String getPreferencesFile() {
 		if (null == preferencesFile) {
 			try {
@@ -382,30 +387,33 @@ public final class PopPreferences {
 	 * Saves the Hashtable to file.
 	 */
 	public synchronized void save() {
+		//TODO:  How does ColorSaver and ValueSaver work?  It looks like we just save default
+		//values here and the user's real color preferences do not get saved (or loaded).
+		//But this isn't high priority to fix.
 		table.put( COLOR_SAVER, new ColorSaver() );
 		table.put( VALUE_SAVER, new ValuesToSave());
 
 		try {
-			Logging.log("Trying to save file to " + getPreferencesFile());
 			XMLEncoder e = new XMLEncoder(
 					new BufferedOutputStream(
 							new FileOutputStream(getPreferencesFile())));
+			//Write a simple string header so that someone looking at the file could make sense of it.
+			e.writeObject("This is a configuration file for Populus.");
+			//Write all of the values.
 			e.writeObject(table);
 			e.flush();
 			e.close();
-
-			//Old method for saving table using binary.
-			//ObjectOutputStream oos;
-			//oos = new ObjectOutputStream( new FileOutputStream(getPreferencesFile()) );
-			//oos.writeObject(table);
+			Logging.log("Saved preferences to " + getPreferencesFile());
 		}
 		catch( Exception e ) {
-			Logging.log(e);
+			Logging.log("Unable to save file to " + getPreferencesFile() + ": " + e);
 		}
 	}
 
 	/**
 	 * Loads the Hashtable from file
+	 * 
+	 * @TODO:  Does this get called??
 	 */
 	public synchronized void load() {
 		subLoad(false);
@@ -417,6 +425,7 @@ public final class PopPreferences {
 	 *  
 	 *  TODO: use javax.jnlp.FileOpenService here or javax.jnlp.PersistenceService
 	 *    http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileOpenService.html
+	 *    
 	 */
 	private void subLoad(boolean isInit) {
 		try {
@@ -425,21 +434,44 @@ public final class PopPreferences {
 				oldButtonType = ( table != null ) ? getButtonType() : INVALID;
 			}
 
+			Hashtable<Integer, Object> tableOverrides; //Override values that we loaded
 			try {
 				//Try to use XML first
 				Logging.log("Trying to use XML to read preferences");
 				XMLDecoder d = new XMLDecoder(new BufferedInputStream(
 						new FileInputStream(getPreferencesFile())));
-				table = (Hashtable<Integer, Object>)d.readObject();
+				Object o = d.readObject();
+				if (o instanceof String) {
+					//Ignore description String of file, if it exists.
+					o = d.readObject();
+				}
+				tableOverrides = (Hashtable<Integer, Object>)o;
 				d.close();
 				Logging.log("Got preferences using XML format");
 			} catch (Exception e) {
 				//XML read failed, now try binary.
 				Logging.log("Trying to use XML to read preferences, as XML failed");
 				ObjectInputStream ois = new ObjectInputStream( new FileInputStream(getPreferencesFile()) );
-				table = (Hashtable<Integer, Object>)ois.readObject();
+				tableOverrides = (Hashtable<Integer, Object>)ois.readObject();
 				ois.close();
-				Logging.log("Got preferences using binary format");
+				Logging.log("Loaded preferences using binary format");
+			}
+			Iterator<Map.Entry<Integer, Object>> it = tableOverrides.entrySet().iterator();
+			while (it.hasNext()) {
+				//For each override element, only replace if the key is in the original table and the values are the same type
+				while (it.hasNext()) {
+					Map.Entry<Integer,Object> pair = (Map.Entry<Integer,Object>)it.next(); 
+					int k = pair.getKey();
+					Object v = pair.getValue();
+					if (table.containsKey(k)) {
+						if (table.get(k).getClass().equals(v.getClass())) {
+							Logging.log("Preferences: Overriding key " + k + " from " + table.get(k) + " to " + v, Logging.kInfo);
+							table.put(k, v);
+						} else {
+							Logging.log("Preferences: Ignoring mismatched type of key " + k + " :  " + table.get(k).getClass() + " != " + v.getClass(), Logging.kInfo);
+						}
+					}
+				}
 			}
 
 			if (!isInit) {
@@ -491,6 +523,9 @@ public final class PopPreferences {
 		table.put( HELP_FILE_LANGUAGE, DEFAULT_HELP_LANG );
 		table.put( OPEN_PDF_METHOD, OpenPDFMethod.DEFAULT_METHOD.getOpenMethod());
 		table.put( OPEN_PDF_COMMAND, OpenPDFMethod.DEFAULT_METHOD.getExecStr());
+		table.put( RESTORE_DESKTOP, DEFAULT_RESTORE_DESKTOP );
+		table.put( DESKTOP_SIZE, new Integer[]{0,0} );
+		table.put( DESKTOP_LOCATION, new Integer[]{0,0} );
 
 		//check if button type changed (if so, tell buttons)
 		if (!isInit) {
