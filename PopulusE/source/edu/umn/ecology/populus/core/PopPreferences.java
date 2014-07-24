@@ -2,9 +2,16 @@ package edu.umn.ecology.populus.core;
 
 import java.util.*;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsConfiguration;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+
+import javax.swing.JFrame;
 
 import edu.umn.ecology.populus.constants.*;
 import edu.umn.ecology.populus.fileio.Logging;
@@ -130,7 +137,8 @@ public final class PopPreferences {
 		T val = (T) table.get(key);
 		return (null == val) ? defaultValue : val;
 	}
-	//TODO - can we put this into the above function?
+	//TODO - can we put this into the above function?  This should be automatic with unboxing in Java 1.5
+	/*
 	private int safeLookup(Integer key, int defaultValue) {
 		Integer i = (Integer) table.get(key);
 		return (i == null) ? defaultValue : i.intValue();
@@ -139,6 +147,7 @@ public final class PopPreferences {
 		Long l = (Long) table.get(key);
 		return (l == null) ? defaultValue : l.longValue();
 	}
+	*/
 
 	public static int getButtonType() {
 		return getSingleton().safeLookup(BUTTON_TYPE, DEFAULT_BUTTON_TYPE);
@@ -168,8 +177,9 @@ public final class PopPreferences {
 	public static Color getTableUneditColor() {
 		return getSingleton().safeLookup(TABLE_UNEDIT_COLOR, DEFAULT_TABLE_UNEDIT_COLOR);
 	}
+
 	/** True - use JFreeClass; False - use KLG Chart */
-	public static boolean useJFreeClass() {
+	public static boolean isUseJFreeClass() {
 		return false;
 	}
 
@@ -199,6 +209,78 @@ public final class PopPreferences {
 		//		loading a model from another operating system.
 		return false;
 	}
+	
+	public static ModelPacket[] getModelPackets(Integer i) {
+		return ( (ModelPacket[])getSingleton().packetTable.get( i ) );
+	}
+
+	public static boolean isUseAWTFileDialog() {
+		return ( (Boolean)getSingleton().table.get( USE_AWT_FILEDIALOG ) ).booleanValue();
+	}
+	
+	public static boolean isRestoreDesktop () {
+		return ((Boolean) getSingleton().table.get( RESTORE_DESKTOP ) ).booleanValue();
+	}
+	
+	public static Dimension getDesktopScreenSize(JFrame frame) {
+		Dimension screenSize;
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		screenSize = kit.getScreenSize();
+		GraphicsConfiguration config = frame.getGraphicsConfiguration();
+		Insets insets = kit.getScreenInsets(config);
+		screenSize.width -= (insets.left + insets.right);
+		screenSize.height -= (insets.top + insets.bottom);
+
+		if (isRestoreDesktop()) {
+			try {
+				Integer dims[] = (Integer[]) getSingleton().table.get(DESKTOP_SIZE);
+				if (dims[0] > 0 && dims[1] > 0) {
+					screenSize = new Dimension(dims[0], dims[1]);
+				}
+			} catch (Exception e) {
+				Logging.log("Couldn't get desktop screen size: " + e);
+			}
+		}
+		
+		return screenSize;
+	}
+	
+	public static Point getDesktopLocation(JFrame frame) {
+		Point location;
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		GraphicsConfiguration config = frame.getGraphicsConfiguration();
+		Insets insets = kit.getScreenInsets(config);
+		location = new Point(insets.left, insets.top);
+
+		if (isRestoreDesktop()) {
+			Logging.log("Saving the desktop dims");
+			try {
+				Integer dims[] = (Integer[]) getSingleton().table.get(DESKTOP_LOCATION);
+				if (dims[0] != 0 || dims[1] != 0) {
+					location = new Point(dims[0], dims[1]);
+				}
+			} catch (Exception e) {
+				Logging.log("Couldn't get desktop location: " + e);
+			}
+		}
+		return location;
+	}
+
+	//TODO: Use javax.jnlp.FileSaveService:
+	// http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
+	public static String getPreferencesFile() {
+		if (null == preferencesFile) {
+			try {
+				preferencesFile = System.getProperty("user.home") + System.getProperty("file.separator");
+			} catch (Exception e) {
+				Logging.log("Could not load preferences");
+				Logging.log(e);
+			}
+			preferencesFile += "userpref.po";
+		}
+		return preferencesFile;
+	}
+
 
 	//SETTERS
 	public static void setButtonType( int newType ) {
@@ -249,28 +331,6 @@ public final class PopPreferences {
 		setOpenPDFCommand(opm.getExecStr());	   
 	}
 
-	public static ModelPacket[] getModelPackets(Integer i) {
-		return ( (ModelPacket[])getSingleton().packetTable.get( i ) );
-	}
-
-	public static boolean isUseAWTFileDialog() {
-		return ( (Boolean)getSingleton().table.get( USE_AWT_FILEDIALOG ) ).booleanValue();
-	}
-
-	//TODO: Use javax.jnlp.FileSaveService:
-	// http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
-	public static String getPreferencesFile() {
-		if (null == preferencesFile) {
-			try {
-				preferencesFile = System.getProperty("user.home") + System.getProperty("file.separator");
-			} catch (Exception e) {
-				Logging.log("Could not load preferences");
-				Logging.log(e);
-			}
-			preferencesFile += "userpref.po";
-		}
-		return preferencesFile;
-	}
 	
 	public static void setPreferencesFile(String filename) {
 		preferencesFile = filename;
@@ -392,6 +452,13 @@ public final class PopPreferences {
 		//But this isn't high priority to fix.
 		table.put( COLOR_SAVER, new ColorSaver() );
 		table.put( VALUE_SAVER, new ValuesToSave());
+		
+		if (isRestoreDesktop()) {
+			Dimension dSize = DesktopWindow.defaultWindow.getSize();
+			Point pLocation = DesktopWindow.defaultWindow.getLocation();
+			table.put(DESKTOP_SIZE, new Integer[] {dSize.width, dSize.height});
+			table.put(DESKTOP_LOCATION, new Integer[] {pLocation.x, pLocation.y});
+		}
 
 		try {
 			XMLEncoder e = new XMLEncoder(
@@ -465,8 +532,23 @@ public final class PopPreferences {
 					Object v = pair.getValue();
 					if (table.containsKey(k)) {
 						if (table.get(k).getClass().equals(v.getClass())) {
-							Logging.log("Preferences: Overriding key " + k + " from " + table.get(k) + " to " + v, Logging.kInfo);
-							table.put(k, v);
+							String oldVal = table.get(k).toString();
+							String newVal = v.toString();
+							boolean isSameVal = table.get(k).equals(v);
+							if (v instanceof Object[]) {
+								//Arrays are annoying in Java, need to do special actions since the default toString() and equals() suck.
+								isSameVal = Arrays.equals((Object[]) v, (Object[]) table.get(k));
+								oldVal = Arrays.deepToString((Object[]) table.get(k));
+								newVal = Arrays.deepToString((Object[]) v);
+							}
+							
+						    if (isSameVal) {
+						    	//Same value, no need to override...
+						    	Logging.log("Preferences: Preserving key " + k + " with value " + oldVal, Logging.kInfo);
+						    } else {
+								Logging.log("Preferences: Overriding key " + k + " from " + oldVal + " to " + newVal, Logging.kInfo);
+								table.put(k, v);
+						    }
 						} else {
 							Logging.log("Preferences: Ignoring mismatched type of key " + k + " :  " + table.get(k).getClass() + " != " + v.getClass(), Logging.kInfo);
 						}

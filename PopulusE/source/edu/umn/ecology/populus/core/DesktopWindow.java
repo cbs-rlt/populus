@@ -45,7 +45,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	 * 
 	 */
 	private static final long serialVersionUID = -1729866105545816729L;
-	public static DesktopWindow defaultWindow;
+	public static DesktopWindow defaultWindow; //TODO - this should be private, and we'd have a public getter
 	public static final String BACKGROUND_IMAGE_FILE = "Populus5.5SplashScreen.png";
 	BorderLayout borderLayout1 = new BorderLayout();
 
@@ -163,14 +163,8 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 	/** Size the window to full size, making sure to account for the insets */
 	private void sizeScreen(JFrame frame) {
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		GraphicsConfiguration config = frame.getGraphicsConfiguration();
-		Insets insets = kit.getScreenInsets(config);
-		screenSize.width -= (insets.left + insets.right);
-		screenSize.height -= (insets.top + insets.bottom);
-		frame.setSize(screenSize);
-		frame.setLocation(insets.left, insets.top);
+		frame.setSize(PopPreferences.getDesktopScreenSize(frame));
+		frame.setLocation(PopPreferences.getDesktopLocation(frame));
 	}
 
 	public DesktopWindow() {
