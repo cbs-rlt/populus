@@ -114,7 +114,7 @@ You really just need a Mac for this.  The UofM computer team have testers to hel
 \part{Setting Up New Development Machine}
 \section{Development Software}
 \subsection{Java Development Kit}
-Download and install Java SE (Standard Edition) from oracle.com.  I like to use JDK 1.7 (aka 7) and 1.6 (aka 6) for backwards compatibility.
+Download and install Java SE (Standard Edition) from oracle.com.  Please use JDK 1.7.
 
 \subsection{Git}
 Git on the command line should be default for OS X and Linux.  You don't have to install more, but http://git-scm.com/downloads/guis has some nice GUIs.  I used GitX-dev (rowanj) for OS X, which seems good.
@@ -132,12 +132,19 @@ Use Photoshop to make the pictures for, say, the Web page.  There are saved \ver
 
 \section{Populus-specific Setup}
 \subsection{Files}
+Make a directory for your workspace:
+\verb  mkdir ~/Documents/code
+\verb cd ~/Documents/code
 Everything used is in Git now.  To get the source, run:
 \verb git clone .git pop
+or \verb git clone file:///C:/TEMP/pop.git pop
 where \verb pop is the directory you want the source to go into.
+
 
 \subsection{Running Eclipse}
 Now run Eclipse.  For the workspace, choose the \verb pop directory, or whatever you used to extract the files from git.
+
+Be sure that you are using an installed JDK for the workspace (Windows >> Preferences >> Java >> Installed JREs)
 
 Go to File >> New >> Java Project
 
@@ -149,6 +156,10 @@ Click the green run button.  You want to run this as a Java Application.  The ma
 You'll want to install the WindowBuilder plugin to Eclipse if you plan to edit any of the screens.  Go to http://www.eclipse.org/windowbuilder/download.php for instructions.
 
 To use WindowBuilder, right click on a Panel file in the Package Explorer, then choose Open With... and select WindowBuilder Editor.
+
+
+Most special build steps are specified in the Ant file (fullbuild.xml). Right-click the file, and select Run As >> Ant Build... and select the bundle_populus option, and run it.
+
 
 \end{document}
 

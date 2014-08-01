@@ -2,8 +2,10 @@ package edu.umn.ecology.populus.help;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
@@ -13,6 +15,7 @@ import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
@@ -40,8 +43,8 @@ import javax.swing.event.ChangeEvent;
 public class HelpConfigPanel extends JPanel {
 	private static final long serialVersionUID = 687468888728886427L;
 	private JTextField filePathField = new JTextField();
-	private JComboBox fileOrURLBox = new JComboBox();
-	private JComboBox languageBox = new JComboBox();
+	private JComboBox<String> fileOrURLBox = new JComboBox<String>();
+	private JComboBox<String> languageBox = new JComboBox<String>();
 	private JLabel fileStatusLabel = new JLabel("");
 	private JTextField txtCustomExecStr = new JTextField();
 	private String[] langStrings = new String[] {"English", "Spanish", "Portuguese"};
@@ -99,8 +102,8 @@ public class HelpConfigPanel extends JPanel {
 			}
 		});
 
-		fileOrURLBox.setToolTipText("Select whether resource is local file or remote URI (e..g, http)");
-		fileOrURLBox.setModel(new DefaultComboBoxModel(new String[] {"file", "URI"}));
+		fileOrURLBox.setToolTipText("Select whether resource is local file or remote URI (e.g., http)");
+		fileOrURLBox.setModel(new DefaultComboBoxModel<String>(new String[] {"file", "URI"}));
 		fileOrURLBox.setSelectedIndex(0);
 		GridBagConstraints gbc_fileOrURLBox = new GridBagConstraints();
 		gbc_fileOrURLBox.insets = new Insets(0, 0, 5, 5);
@@ -137,14 +140,7 @@ public class HelpConfigPanel extends JPanel {
 					//Switched from URI to file
 					String fileStr = filePathField.getText();
 					File f = new File(fileStr);
-					//TODO - is this parent part needed???
-					//TODO - what if f is empty?
-					String parent = f.getParent();
-					if( null == parent ) {
-						fc = new JFileChooser();
-					} else {
-						fc = new JFileChooser( parent );
-					}
+					fc = new JFileChooser( f.getParent() );
 					
 					fc.setSelectedFile( f );
 					fc.setFileFilter( new BasicFilenameFilter( "pdf" ) );
@@ -152,8 +148,10 @@ public class HelpConfigPanel extends JPanel {
 					//get user input
 					int state = fc.showSaveDialog( DesktopWindow.defaultWindow );
 					if( state == JFileChooser.APPROVE_OPTION ) {
-						String filename = fc.getSelectedFile().getAbsolutePath();
-						//TODO : set filename
+						String filename;
+						filename = fc.getSelectedFile().getAbsolutePath();
+						filePathField.setText(filename);
+						filenameChanged();
 					}
 				} else {
 					Logging.log("We shouldn't be allowed to click browse button in URI mode.");
@@ -189,7 +187,7 @@ public class HelpConfigPanel extends JPanel {
 		JLabel languageLabel = new JLabel("Language:");
 		languagePanel.add(languageLabel);
 
-		languageBox.setModel(new DefaultComboBoxModel(langStrings));
+		languageBox.setModel(new DefaultComboBoxModel<String>(langStrings));
 		languagePanel.add(languageBox);
 
 		JButton btnCopyHelpTo = new JButton("Copy help file to local disk now");

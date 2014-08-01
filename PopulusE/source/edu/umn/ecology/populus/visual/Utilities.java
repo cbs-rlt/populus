@@ -334,8 +334,6 @@ public class Utilities extends java.lang.Object {
       int style = Font.PLAIN;
       int supLevel = 0;
       int regHeight = -1;
-      //Font defaultFont;
-      FontMetrics fm;
       Font f = g.getFont();
       HTMLTag tempTag = new HTMLTag();
       boolean updateFont = false;

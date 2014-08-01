@@ -107,18 +107,14 @@ class Matrix3D {
       float Nxx = (float) (xx * ct + zx * st);
       float Nxy = (float) (xy * ct + zy * st);
       float Nxz = (float) (xz * ct + zz * st);
-      float Nxo = (float) (xo * ct + zo * st);
 
       float Nzx = (float) (zx * ct - xx * st);
       float Nzy = (float) (zy * ct - xy * st);
       float Nzz = (float) (zz * ct - xz * st);
-      float Nzo = (float) (zo * ct - xo * st);
 
-      //xo = Nxo;
       xx = Nxx;
       xy = Nxy;
       xz = Nxz;
-      //zo = Nzo;
       zx = Nzx;
       zy = Nzy;
       zz = Nzz;

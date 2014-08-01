@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE project>
-<project default="run_jar" name="Populus">
+<project default="create_run_jar" name="Populus">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
 	<property environment="env"/>
-	<!--
-	Uncomment this to show properties
-		<echoproperties/>
-	-->
     <property name="src" location="source"/> <!-- java source folder        -->
     <property name="build" location="build/classes"/> <!-- intermediate build products, needs to be in sync with Properties >> Java Build Path >> Default Output Path  -->
     <property name="lib" location="res"/> <!-- local libraries linked against -->
@@ -113,10 +109,10 @@
     	     -->
         <bundleapp outputdirectory="out"
             name="PopulusBundle"
-            displayname="Populus 5.5.1"
+            displayname="Populus 5.5.2"
             identifier="edu.umn.ecology.populus"
         	copyright="Don Alstad, University of Minnesota"
-        	shortversion="5.5.1"
+        	shortversion="5.5.2"
             mainclassname="edu.umn.ecology.populus.core.PopRun"
         	icon="${lib}/picon.icns"
         	applicationCategory="public.app-category.education"
@@ -135,6 +131,10 @@
             <option value="-Dapple.laf.useScreenMenuBar=true" />
         </bundleapp>
     </target>
+	
+	<target name="show_debug_info" description="prints Ant properties to console">
+			<echoproperties/>
+	</target>
 	
 
 </project>

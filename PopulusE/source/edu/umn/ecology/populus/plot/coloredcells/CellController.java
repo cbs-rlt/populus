@@ -22,7 +22,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 	JToggleButton pauseButton = new JToggleButton();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
 	JPanel jPanel1 = new JPanel();
-	JComboBox typeChangeCB = new JComboBox();
+	JComboBox<String> typeChangeCB = new JComboBox<String>();
 	GridBagLayout gridBagLayout2 = new GridBagLayout();
 	JLabel gensL = new JLabel();
 	int numRuns;
@@ -52,7 +52,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		cf = evaluator;
 		numRuns=0;
 		cellPanel = new CellPanel(this,cf.initialF(),cf.getStrings(),cf.getDemarcations(), cf.getColorPalette());
-		typeChangeCB.setSelectedItem((String)cf.getCurrentType());
+		typeChangeCB.setSelectedItem(cf.getCurrentType());
 		add(cellPanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
 				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		isSuspended = isDone = false;
@@ -107,7 +107,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 			for(int i=0; i<a.length; i++){
 				typeChangeCB.addItem(a[i]);
 			}
-			typeChangeCB.setSelectedItem((String)cf.getCurrentType());
+			typeChangeCB.setSelectedItem(cf.getCurrentType());
 		}
 		pauseButton.addActionListener(new java.awt.event.ActionListener() {
 
@@ -168,7 +168,8 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 	}
 
 	void typeChangeCB_actionPerformed(ActionEvent e) {
-		double[][] v = cf.changeType((String)typeChangeCB.getSelectedItem());
+		//Get value from backing model, not current (and unchecked) input
+		double[][] v = cf.changeType(typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
 		if(v==null) return;
 		cellPanel.setValues(v, cf.getStrings(), cf.getDemarcations());
 	}

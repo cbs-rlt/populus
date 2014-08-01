@@ -113,7 +113,7 @@ public class InbreedingParamInfo implements BasicPlot {
       is empty.
    */
    private double[][] getFf(int N, double ifreq, int gens){
-      LinkedList population = new LinkedList();
+      LinkedList<Double> population = new LinkedList<Double>();
       double[][] plot = new double[2][gens+1];
       double[][] parents = new double[2][N];
       double[][] offspring = new double[2][N];
@@ -152,7 +152,7 @@ public class InbreedingParamInfo implements BasicPlot {
          while(!population.isEmpty()){
             count = 1;
             while(index < population.size()){
-               if( ((Double)population.getFirst()).equals(population.get(index)) ){
+               if( population.getFirst().equals(population.get(index)) ){
                   count++;
                   population.remove(index);
                } else {

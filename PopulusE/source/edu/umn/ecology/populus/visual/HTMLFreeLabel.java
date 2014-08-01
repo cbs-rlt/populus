@@ -39,7 +39,6 @@ public class HTMLFreeLabel {
       StringTokenizer st;
       String temp; //to store the next token in
       st = new StringTokenizer( s, "<>", true );
-      Color c = g.getColor();
       int type = g.getFont().getStyle();
       int size = g.getFont().getSize();
       final int ftype = type;

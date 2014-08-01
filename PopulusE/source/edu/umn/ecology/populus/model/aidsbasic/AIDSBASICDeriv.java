@@ -11,12 +11,10 @@ public class AIDSBASICDeriv extends Derivative {
       double x = N[kX];
       double y = N[kY];
       double v = N[kV];
-      double n;
-      n = x + y + v;
 
-     dN[kX] = lambda- d*x - beta*x*v;
-     dN[kY] = beta*x*v-a*y;
-     dN[kV] = k*y-u*v;
+      dN[kX] = lambda- d*x - beta*x*v;
+      dN[kY] = beta*x*v-a*y;
+      dN[kV] = k*y-u*v;
 
    }
     public double[] postDerivative(double[] v, double t){ return v; }
