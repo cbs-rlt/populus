@@ -4,6 +4,10 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
 	<property environment="env"/>
+	<!--
+	Uncomment this to show properties
+		<echoproperties/>
+	-->
     <property name="src" location="source"/> <!-- java source folder        -->
     <property name="build" location="build/classes"/> <!-- intermediate build products, needs to be in sync with Properties >> Java Build Path >> Default Output Path  -->
     <property name="lib" location="res"/> <!-- local libraries linked against -->
@@ -11,10 +15,9 @@
 	<property name="jarfile" location="out/PopulusAll.jar"/>
     <property name="resources" location="resources"/> <!-- location of general java resources -->
     <property name="compile.debug" value="true"/>
-    <!-- OS X specific -->
-	<taskdef name="bundleapp"
-             classname="com.oracle.appbundler.AppBundlerTask"   
-             classpath="res/appbundler-1.0.jar" />
+	<condition property="isMac">
+	  <os family="mac" />
+	</condition>
 
     <!-- Initialization target, for any prelimary setup needed to build -->
     <target name="init" description="Preparation">
@@ -70,8 +73,12 @@
 	
     <!--Mac Bundle App-->
     <!--TODO: Verify these fields-->
-    <target name="bundle_populus" depends="create_run_jar" description="Builds OS X binary">
+    <target name="bundle_populus" if="isMac" depends="create_run_jar" description="Builds OS X binary">
     	<echo message="Building Bundle App for OS X" level="info"/>
+        <!-- OS X specific -->
+    	<taskdef name="bundleapp"
+                 classname="com.oracle.appbundler.AppBundlerTask"   
+                 classpath="res/appbundler-1.0.jar" />
     	
     	<!-- AppBundler or bundleapp, for creating OS X binary.
     	  More documentation is here: http://docs.oracle.com/javase/7/docs/technotes/guides/jweb/packagingAppsForMac.html
