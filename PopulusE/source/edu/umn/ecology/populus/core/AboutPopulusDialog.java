@@ -193,7 +193,7 @@ public class AboutPopulusDialog extends JDialog {
       gridBagLayout1.rowWeights = new double[]{0.0, 1.0};
       gridBagLayout1.columnWeights = new double[]{0.0};
       panel1.setLayout( gridBagLayout1 );
-      line1.setText("Populus, Java Version 5.5, June 2012" );
+      line1.setText("Populus, Java Version 5.5.2, Aug 2014" );
       line4.setText( "  " );
       line5.setText( "Populus Programmers:" );
       line7.setText( "Lars Roe (1997-present, Java Version)" );

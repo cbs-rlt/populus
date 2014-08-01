@@ -92,7 +92,7 @@ static final Object[][] contents = new String[][] {
       },  {
          "_Output", ": Output"
       },  {
-         "Populus_Starting_", "Populus 5.5 Starting"
+         "Populus_Starting_", "Populus 5.5.2 Starting"
       },  {
          "Populus_Started", "Populus Started"
       },  {
