@@ -17,35 +17,37 @@
 \section{Models}
 
 \subsection{Files}
-By convention, each end model (not meant to be inherited from) should be in the package \verb edu.umn.ecology.populus.model. \textit{ModelName}.
+By convention, each end model (not meant to be inherited from) should be in the package \texttt{edu.umn.ecology.populus.model.\textit{ModelName}}.
 
 \subsubsection{Model}
-A \verb Model  holds together the basic parts of a model.
+A \texttt{Model} holds together the basic parts of a model.
 
 \subsubsection{ModelPacket}
-A \verb ModelPacket  is a simple wrapper for a model so we can refer to one class at a time, and used in making the menus.  The menus are created in \verb initializeMenuPackets() , and this is manually updated to add or remove models.
+A \texttt{ModelPacket}  is a simple wrapper for a model so we can refer to one class at a time, and used in making the menus.  The menus are created in \texttt{initializeMenuPackets()}, and this is manually updated to add or remove models.
 
 
 \subsubsection{ModelPanel}
-The \verb ModelPanel  (input window) base files are in \verb edu.umn.ecology.populus.edwin  (short for editor window, from the Pascal DOS program's naming conventions).
+The \texttt{ModelPanel}  (input window) base files are in \texttt{edu.umn.ecology.populus.edwin}  (short for editor window, from the Pascal DOS program's naming conventions).
 
-\verb registerChildren()  looks at all of the components, and sets event listeners where appropriate.  Read Events for more information.
+\texttt{registerChildren()} looks at all of the components, and sets event listeners where appropriate.  Read Events for more information.
 
 \subsubsection{ModelOutputPanel}
-The \verb OutputPanel  (output window) base files are in edu.umn.ecology.populus.resultwindow
+The \texttt{OutputPanel}  (output window) base files are in edu.umn.ecology.populus.resultwindow
 
 \subsection{Events}
 
 When changes in the input panel occur, events - or messages - are sent to the output.
-The \verb ModelPanel  will call \verb fireModelPanelEvent()  whenever a change occurs, with a constant such as \verb CHANGE_PLOT .  If this warrants a new output, \verb ModelPanel  will be queried for, in the case of Basic Plot, new plot info.
-Do not assume that \verb getPlotInfo()  will be called whenever you call \verb fireModelPanelEvent .  For example, if changing the value of a radio button should disable another parameter, that should be done separately from \verb getPlotInfo() .  See the method \verb modelPanelChanged()  to see which events are ignored and which events create a new plot.
+The \texttt{ModelPanel}  will call \texttt{fireModelPanelEvent()}  whenever a change occurs, with a constant such as \texttt{CHANGE_PLOT}.  If this warrants a new output, \texttt{ModelPanel}  will be queried for, in the case of Basic Plot, new plot info.
+Do not assume that \texttt{getPlotInfo()} will be called whenever you call \verb fireModelPanelEvent .  For example, if changing the value of a radio button should disable another parameter, that should be done separately from \texttt{getPlotInfo()}.  See the method \texttt{modelPanelChanged()} to see which events are ignored and which events create a new plot.
 
-Inherited models should not have to worry about when to show the output screen.  \verb registerChildren()  is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the User Settings so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.
+Inherited models should not have to worry about when to show the output screen.  \texttt{registerChildren()} is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the User Settings so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.
 
 \subsection{Adding a Model to the Menus}
-To add a model to the menu, add a ModelPacket in Preferences.
+To add a model to the menu, add a ModelPacket in PopPreferences.
 
-Lars - it appears this is done in two different spots, hard-coded.  I wanted the ability to be able to dynamically determine files.
+I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
+
+
 What is SelectModelDialog??
 
 \subsection{Basic Model}
@@ -69,7 +71,7 @@ The help system was changed dramatically in 5.5, by modifying the local help fil
 
 The file for keeping state is stored as \verb userpref.po  in the user's home directory (as of Populus 5.4).  It is loaded during initialization.  By default, it is in the user's home directory -- not in Populus's -- because we aren't guaranteed write permission for all systems.  This can be overrided by the startup command - see README.config.
 
-\section{GUI Widgets}
+\subsection{GUI Widgets}
 
 \subsubsection{ParameterField}
 The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.
@@ -160,6 +162,90 @@ To use WindowBuilder, right click on a Panel file in the Package Explorer, then 
 
 Most special build steps are specified in the Ant file (fullbuild.xml). Right-click the file, and select Run As >> Ant Build... and select the bundle_populus option, and run it.
 
+\part{How to add a new model}
+\section{Example of a new model: Fibonacci rabbits}
+
+We'll look at a simple model idea and the steps needed to incorporate it into a model.
+
+\subsection{Description of the model}
+Fibonacci once posed the following question:
+
+Suppose a newly-born pair of rabbits, one male, one female, are put in a field. Rabbits are able to mate at the age of one month so that at the end of its second month a female can produce another pair of rabbits. Suppose that our rabbits never die and that the female always produces one new pair (one male, one female) every month from the second month on. How many pairs will there be in one year?  (from http://fibonacci.uni-bayreuth.de/project/fibonacci-and-the-rabbits/the-story.html)
+
+Now, let's code!
+
+\subsection{Create package}
+File >> New >> Package
+Use "edu.umn.ecology.populus.model.fibrabbits" for the package.  By convention, models are in a package/directory just under edu.umn.ecology.populus.model.
+
+\subsection{FRParamInfo}
+I think it's easier to think of what data will be taken from input screen.  In this case, we just need the number of months, or generations, to run.
+
+Right-click on the new package and select New >> Class.
+Type in \verb FRInfo for the name
+Add in the Interface \verb edu.umn.ecology.populus.plot.BasicPlot
+Press Finish
+
+Create a constructor that takes as input the number of generations.  
+
+If you are creating a more-complicated model, you will want to create a FRData class that aggregates the data that you need to pass from the panel.
+
+
+\subsection{FRPanel}
+This is the input screen.
+Right-click on the new package and select New >> Class.
+Type in \verb FRPanel for the name
+Type in \verb edu.umn.ecology.populus.plot.BasicPlotInputPanel for the Superclass (or use the browse button)
+Press Finish
+
+Close the tab, then re-open it with WindowBuilder.  You don't have to use WindowBuilder, but it definitely makes it easier.
+Click on the \verb Design tab to see the WYSIWYG of the window.
+We'll want to use a PopulusParameterField here for selecting values.  If it is not yet in the WindowBuilder field, right-click on your menu of choice in the Palette and select \verb Add Component...  Choose a name of your choice (I use PPField) and use edu.umn.ecology.populus.visual.ppfield.PopulusParameterField for the Component.
+
+Now click on the PPField in the Palette then click into the Panel to insert it there.
+  
+In the properties window, set the currentValue and defaultValue to 10.0.  Set helpText to a long description, like "Total number of months for rabbits to grow" (this is the hover text).  Set integersOnly to true, since we only want to allow an integer value (even though the underlying model uses floating point).  Set parameterName to months.  Set minValue and maxValue to something reasonable like 1.0 and 200.0, respectively.
+
+Now switch back to the Source view tab.
+
+At the end of the constructor, add the following line so that user inpuut events will trigger plot updates:
+    \verb this.registerChildren(this);
+
+Now implement getPlotParamInfo(), which should return an object of type FRInfo.
+
+Implement getOutputGraphName(), which will return a string for the main title of the output window.
+
+\subsection{FRModel}
+Now create FRModel.  Its Superclass is edu.umn.ecology.populus.plot.BasicPlotModel.
+
+Implement FRModel() to set the modelInput to a new FRPanel.
+
+Implement getModelName() to return the model name.
+
+Don't worry about implementing getModelHelpText() and getHelpId() at this stage.  These functions are so that users looking for help will go to the context-specific section of the help pdf.
+
+package edu.umn.ecology.populus.model.fibrabbits;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+public class FRModel extends BasicPlotModel {
+	public FRModel() {
+		this.setModelInput(new FRPanel());
+	}
+
+	public static String getModelName() {
+		return ("Fibonacci Rabbits");
+	}
+}
+
+\subsection{Res}
+You may want to create a Res file that should be used for storing all of the String resources.  See how other models use it.
+
+\subsection{Add model to the menu}
+If you can shoehorn this into an existing menu group, it's quite easy.  Just go to PopPreferences::initializeMenuPackets() and add a single line with the new ModelPacket accordingly.
++	new ModelPacket( edu.umn.ecology.populus.model.fibrabbits.FRModel.class ),
+
+
+If you have to create a new ModelPacket array, you'll need to also add code to DesktopWindow.
 
 \end{document}
 
