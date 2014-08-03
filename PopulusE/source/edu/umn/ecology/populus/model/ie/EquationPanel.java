@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
-import com.borland.jbcl.layout.XYConstraints;
-import com.borland.jbcl.layout.XYLayout;
 
 import java.util.StringTokenizer;
 
@@ -25,10 +23,12 @@ public class EquationPanel extends JPanel {
    JTextField numEQTF = new JTextField();
    JLabel plotL = new JLabel();
    JPanel eqHolder = new JPanel();
-   XYLayout xYLayout1 = new XYLayout();
    boolean isDiscrete = false;
    String[] paramNames;
    private JButton renameB = new JButton();
+   private final JSeparator separator = new JSeparator();
+   private final JSeparator separator_1 = new JSeparator();
+   private final JSeparator separator_2 = new JSeparator();
 
    public EquationPanel( int num, boolean isdis ) {
       this();
@@ -159,24 +159,10 @@ public class EquationPanel extends JPanel {
 
    private void jbInit() throws Exception {
       this.setLayout( gridBagLayout1 );
-      labelHolder.setLayout( xYLayout1 );
-      useL.setText( "Use" );
-      plotL.setText( "Plot" );
       JScrollBar jsb = scroller.getVerticalScrollBar();
       scroller.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
       scroller.setBorder( BorderFactory.createLineBorder( Color.black ) );
       eqHolder.setLayout( simpleVFlowLayout2 );
-      numEQTF.setMaximumSize( new Dimension( 30, 30 ) );
-      numEQTF.setPreferredSize( new Dimension( 25, 21 ) );
-      numEQTF.setToolTipText( "Enter the number of equations you want in the table." );
-      numEqL.setText( "Number of Equations:" );
-      numEQTF.setHorizontalAlignment( JTextField.RIGHT );
-      numEQTF.addActionListener( new java.awt.event.ActionListener()  {
-
-         public void actionPerformed( ActionEvent e ) {
-            numEQTF_actionPerformed( e );
-         }
-      } );
       jsb.addAdjustmentListener( new java.awt.event.AdjustmentListener()  {
 
          public void adjustmentValueChanged( AdjustmentEvent e ) {
@@ -184,20 +170,86 @@ public class EquationPanel extends JPanel {
          }
       } );
       jsb.setUnitIncrement( 10 );
+      this.add( labelHolder, new GridBagConstraints( 0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets( 5, 0, 5, 0 ), 0, 0 ) );
+      GridBagLayout gbl_labelHolder = new GridBagLayout();
+      gbl_labelHolder.rowHeights = new int[]{23, 0};
+      gbl_labelHolder.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+      gbl_labelHolder.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+      labelHolder.setLayout(gbl_labelHolder);
+      useL.setText( "Use" );
+      GridBagConstraints gbc_useL = new GridBagConstraints();
+      gbc_useL.insets = new Insets(5, 5, 0, 5);
+      gbc_useL.fill = GridBagConstraints.HORIZONTAL;
+      gbc_useL.anchor = GridBagConstraints.NORTHWEST;
+      gbc_useL.gridx = 0;
+      gbc_useL.gridy = 0;
+      labelHolder.add( useL, gbc_useL );
+      
+      GridBagConstraints gbc_separator = new GridBagConstraints();
+      gbc_separator.insets = new Insets(0, 0, 0, 5);
+      gbc_separator.gridx = 1;
+      gbc_separator.gridy = 0;
+      labelHolder.add(separator, gbc_separator);
+      plotL.setText( "Plot" );
+      GridBagConstraints gbc_plotL = new GridBagConstraints();
+      gbc_plotL.insets = new Insets(5, 5, 0, 5);
+      gbc_plotL.fill = GridBagConstraints.HORIZONTAL;
+      gbc_plotL.anchor = GridBagConstraints.NORTHWEST;
+      gbc_plotL.gridx = 2;
+      gbc_plotL.gridy = 0;
+      labelHolder.add( plotL, gbc_plotL );
+      
+      GridBagConstraints gbc_separator_1 = new GridBagConstraints();
+      gbc_separator_1.insets = new Insets(0, 0, 0, 5);
+      gbc_separator_1.gridx = 3;
+      gbc_separator_1.gridy = 0;
+      labelHolder.add(separator_1, gbc_separator_1);
+      numEqL.setText( "Number of Equations:" );
+      GridBagConstraints gbc_numEqL = new GridBagConstraints();
+      gbc_numEqL.insets = new Insets(5, 5, 0, 5);
+      gbc_numEqL.fill = GridBagConstraints.HORIZONTAL;
+      gbc_numEqL.anchor = GridBagConstraints.NORTHWEST;
+      gbc_numEqL.gridx = 4;
+      gbc_numEqL.gridy = 0;
+      labelHolder.add( numEqL, gbc_numEqL );
       renameB.setText("Rename");
       renameB.addActionListener(new java.awt.event.ActionListener() {
          public void actionPerformed(ActionEvent e) {
             renameB_actionPerformed(e);
          }
       });
-      this.add( labelHolder, new GridBagConstraints( 0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets( 5, 0, 5, 0 ), 0, 0 ) );
-      labelHolder.add( useL, new XYConstraints( 5, 0, -1, -1 ) );
-      labelHolder.add( plotL, new XYConstraints( 35, 0, -1, -1 ) );
-      labelHolder.add( numEQTF, new XYConstraints( 230, 0, -1, -1 ) );
-      labelHolder.add( numEqL, new XYConstraints( 100, 0, -1, -1 ) );
-      labelHolder.add( renameB,  new XYConstraints(300, 0, -1, -1));
+      numEQTF.setMaximumSize( new Dimension( 30, 30 ) );
+      numEQTF.setPreferredSize( new Dimension( 25, 21 ) );
+      numEQTF.setToolTipText( "Enter the number of equations you want in the table." );
+      numEQTF.setHorizontalAlignment( JTextField.RIGHT );
+      numEQTF.addActionListener( new java.awt.event.ActionListener()  {
+
+         public void actionPerformed( ActionEvent e ) {
+            numEQTF_actionPerformed( e );
+         }
+      } );
+      GridBagConstraints gbc_numEQTF = new GridBagConstraints();
+      gbc_numEQTF.insets = new Insets(5, 5, 0, 5);
+      gbc_numEQTF.fill = GridBagConstraints.HORIZONTAL;
+      gbc_numEQTF.anchor = GridBagConstraints.NORTHWEST;
+      gbc_numEQTF.gridx = 5;
+      gbc_numEQTF.gridy = 0;
+      labelHolder.add( numEQTF, gbc_numEQTF );
+      
+      GridBagConstraints gbc_separator_2 = new GridBagConstraints();
+      gbc_separator_2.insets = new Insets(0, 0, 0, 5);
+      gbc_separator_2.gridx = 6;
+      gbc_separator_2.gridy = 0;
+      labelHolder.add(separator_2, gbc_separator_2);
+      GridBagConstraints gbc_renameB = new GridBagConstraints();
+      gbc_renameB.insets = new Insets(5, 5, 5, 5);
+      gbc_renameB.fill = GridBagConstraints.HORIZONTAL;
+      gbc_renameB.anchor = GridBagConstraints.NORTHWEST;
+      gbc_renameB.gridx = 7;
+      gbc_renameB.gridy = 0;
+      labelHolder.add( renameB, gbc_renameB);
       this.add( scroller, new GridBagConstraints( 0, 1, 2, 1, 1.0, 5.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 ) );
-      scroller.getViewport().add( eqHolder, null );
+      scroller.setViewportView(eqHolder);
 
       //jsb.setUnitIncrement(36);
    }
