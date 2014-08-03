@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /** Simple Vertical Layout with no frills.
  * 

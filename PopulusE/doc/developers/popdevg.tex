@@ -12,109 +12,8 @@
 \newpage
 
 \part{Overview}
+This document was written as a primer for anyone interested in developing or modifying the Populus source code.  This file is written in roughly in the order that you would want to understand the code, but feel free to jump around as needed.
 
-\part{Java Source Code}
-
-\section{Models}
-
-\subsection{Files}
-By convention, each end model (not meant to be inherited from) should be in the package \texttt{edu.umn.ecology.populus.model.\textit{ModelName}}.
-
-\subsubsection{Model}
-A \texttt{Model} holds together the basic parts of a model.
-
-\subsubsection{ModelPacket}
-A \texttt{ModelPacket}  is a simple wrapper for a model so we can refer to one class at a time, and used in making the menus.  The menus are created in \texttt{initializeMenuPackets()}, and this is manually updated to add or remove models.
-
-
-\subsubsection{ModelPanel}
-The \texttt{ModelPanel}  (input window) base files are in \texttt{edu.umn.ecology.populus.edwin}  (short for editor window, from the Pascal DOS program's naming conventions).
-
-\texttt{registerChildren()} looks at all of the components, and sets event listeners where appropriate.  Read Events for more information.
-
-\subsubsection{ModelOutputPanel}
-The \texttt{OutputPanel}  (output window) base files are in \texttt{edu.umn.ecology.populus.resultwindow}
-
-\subsection{Events}
-
-When changes in the input panel occur, events - or messages - are sent to the output.
-The \texttt{ModelPanel}  will call \texttt{fireModelPanelEvent()}  whenever a change occurs, with a constant such as \texttt{CHANGE\_PLOT}.  If this warrants a new output, \texttt{ModelPanel}  will be queried for, in the case of Basic Plot, new plot info.
-
-Do not assume that \texttt{getPlotInfo()} will be called whenever you call \texttt{fireModelPanelEvent}.  For example, if changing the value of a radio button should disable another parameter, that should be done separately from \texttt{getPlotInfo()}.  See the method \texttt{modelPanelChanged()} to see which events are ignored and which events create a new plot.
-
-Inherited models should not have to worry about when to show the output screen.  \texttt{registerChildren()} is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the User Settings so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.
-
-\subsection{Adding a Model to the Menus}
-To add a model to the menu, add a ModelPacket in PopPreferences.
-
-I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
-
-\subsection{Basic Model}
-Most models will derive from \texttt{BasicPlotModel}, in the plot directory.
-
-\subsection{Common Variants}
-Most models extend from \verb edu.umn.ecology.populus.plot.BasicPlotModel , which does basic graphing.  But you don't have to do this.  See \verb Woozleology  for an example of one that does not extend from this.
-
-\section{Main}
-\texttt{main}  is found in \texttt{edu.umn.ecology.populus.core.PopRun}.  The \texttt{DesktopWindow} is the primary GUI background to the application.
-
-\section{Help}
-When we click the Help button on a model or the main DesktopWindow, we call \texttt{HelpUtilities::displayHelp()}.
-
-When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.  Named Destinations are like HTML anchors, except that a lot of PDF viewers ignore them.
-
-The help system was changed dramatically in 5.5, by modifying the local help file to use the language specified by the user's configuration.
-
-TODO - I suspect that getModelHelpText() doesn't really do anything these days.  Maybe we can gut that.
-
-\section{Preferences}
-
-\subsection{PreferencesFile}
-
-The file for keeping state is stored as \verb userpref.po  in the user's home directory (as of Populus 5.4).  It is loaded during initialization.  By default, it is in the user's home directory -- not in Populus's -- because we aren't guaranteed write permission for all systems.  This can be overrided by the startup command - see README.config.
-
-Almost all of the code is in \texttt{PopPreferences}.
-
-\section{GUI Widgets}
-
-\subsection{ParameterField}
-The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details later).
-
-\subsection{JClass}
-JClass includes the chart software for Java that we use.  The Manifest file in the JAR file they included has some bogus \verb dependson  lines that give warnings when you try to run.  I manually deleted these, and just keep this new version around.
-JClass keeps switching companies.  We have an old version of their product, and I don't have any reason for upgrading.
-
-
-\section{Javadoc}
-
-I wish the code were better documented.  But you can still use \texttt{javadoc} to generate documentation for the files.
-
-\part{Installer}
-Populus Splash Screen. We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it \verb PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
-
-\part{Web Page}
-
-This should all be handled by the UMN Web team these days. They now use Drupal (a content management system).  For 5.5, I just gave them a new JAR file.
-
-\part{Test and Verification}
-\section{Release Checklist}
-
-Check that help works on all different platforms.
-
-
-current issues for troubleshooting help file:
-on mac os x:
-the populus parameter field arrows are dim
-screen resolution can cause windows to be smaller than they should be - just resize
-on pc:
-
-
-\section{Platform}
-It's a good idea to test on different platforms.
-\subsection{Linux}
-LiveCD SLAX can boot up Linux on an otherwise Windows computer.  There are other options now too.
-\subsection{MacOS}
-You really just need a Mac for this.  The UofM computer team have testers to help with this.
 
 \part{Setting Up New Development Machine}
 \section{Development Software}
@@ -133,7 +32,7 @@ Download the Eclipse Standard from \url{https://www.eclipse.org/downloads/}.  (Y
 We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.
 
 \subsection{Photoshop}
-Use Photoshop to make the pictures for, say, the Web page.  There are saved \texttt{.psd} files around that contain the source image to work from with its Layers.
+Use Photoshop to make the pictures for, say, the Web page.  There are saved \texttt{.psd} files around that contain the source image to work from with its Layers.  You don't really need to use it as a developer.  In the past, Don created this.
 
 \section{Populus-specific Setup}
 \subsection{Files}
@@ -341,6 +240,145 @@ new ModelPacket( edu.umn.ecology.populus.model.fibrabbits.FRModel.class ),
 \end{verbatim}
 
 If you have to create a new \texttt{ModelPacket} array, you'll need to also add code to \texttt{DesktopWindow}.
+
+\part{Java Source Code}
+
+\section{Models}
+
+\subsection{Files}
+By convention, each end model (not meant to be inherited from) should be in the package \texttt{edu.umn.ecology.populus.model.\textit{ModelName}}.
+
+\subsubsection{Model}
+A \texttt{Model} holds together the basic parts of a model.
+
+\subsubsection{ModelPacket}
+A \texttt{ModelPacket}  is a simple wrapper for a model so we can refer to one class at a time, and used in making the menus.  The menus are created in \texttt{initializeMenuPackets()}, and this is manually updated to add or remove models.
+
+
+\subsubsection{ModelPanel}
+The \texttt{ModelPanel}  (input window) base files are in \texttt{edu.umn.ecology.populus.edwin}  (short for editor window, from the Pascal DOS program's naming conventions).
+
+\texttt{registerChildren()} looks at all of the components, and sets event listeners where appropriate.  Read Events for more information.
+
+\subsubsection{ModelOutputPanel}
+The \texttt{OutputPanel}  (output window) base files are in \texttt{edu.umn.ecology.populus.resultwindow}
+
+\subsection{Events}
+
+When changes in the input panel occur, events - or messages - are sent to the output.
+The \texttt{ModelPanel}  will call \texttt{fireModelPanelEvent()}  whenever a change occurs, with a constant such as \texttt{CHANGE\_PLOT}.  If this warrants a new output, \texttt{ModelPanel}  will be queried for, in the case of Basic Plot, new plot info.
+
+Do not assume that \texttt{getPlotInfo()} will be called whenever you call \texttt{fireModelPanelEvent}.  For example, if changing the value of a radio button should disable another parameter, that should be done separately from \texttt{getPlotInfo()}.  See the method \texttt{modelPanelChanged()} to see which events are ignored and which events create a new plot.
+
+Inherited models should not have to worry about when to show the output screen.  \texttt{registerChildren()} is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the Preferences so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.  See the Preferences note for this.
+
+\subsection{Adding a Model to the Menus}
+To add a model to the menu, add a ModelPacket in PopPreferences.
+
+I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
+
+\subsection{Basic Model}
+Most models will derive from \texttt{BasicPlotModel}, in the plot directory.
+
+\subsection{Common Variants}
+Most models extend from \verb edu.umn.ecology.populus.plot.BasicPlotModel , which does basic graphing.  But you don't have to do this.  See \texttt{Woozleology} for an example of one that does not extend from this.
+
+\section{Main}
+\texttt{main} is found in \texttt{edu.umn.ecology.populus.core.PopRun}.  This is where the application starts.  The \texttt{DesktopWindow} is the primary GUI background to the application.
+
+\section{Help}
+When we click the Help button on a model or the main DesktopWindow, we call \texttt{HelpUtilities::displayHelp()}.
+
+When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.  Named Destinations are like HTML anchors, except that a lot of PDF viewers ignore them.
+
+The help system was changed dramatically in 5.5, by modifying the local help file to use the language specified by the user's configuration.
+
+TODO - I suspect that getModelHelpText() doesn't really do anything these days.  Maybe we can gut that.
+
+\section{Logging}
+Logging normally goes both to stderr and a file in the user's home directory.
+
+Logging should be handled by \texttt{Logging.java}. On the TODO list are changing references to \texttt{System.out.println} and \texttt{System.err.println} to use \texttt{Logging} instead; add a preferences option to change the logging level for stderr and the output file; and use Java's standard logging system.
+
+\section{Preferences}
+
+\subsection{PreferencesFile}
+
+The file for keeping state is stored as \verb userpref.po  in the user's home directory (as of Populus 5.4).  It is loaded during initialization.  By default, it is in the user's home directory -- not in Populus's -- because we aren't guaranteed write permission for all systems.  This can be overrided by the startup command - see \texttt{README.config}.
+
+Almost all of the code is in \texttt{PopPreferences.java}.
+
+\subsection{Preferences GUI}
+The GUI behind it is in \texttt{PreferencesDialog.java}. 
+
+\section{Installer}
+\texttt{Installer.java} was meant to be used with JNLP install, but never made it to full production.
+
+\section{GUI Widgets}
+
+\subsection{ParameterField}
+The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details later).
+
+\subsection{HTMLLabel}
+This widget was created in the day when Java didn't have good options for HTML-like tags, especially superscript and subscript.  It's basically a JLabel that knows about some HTML, and can also rotate text.  Nowadays we don't use too much of it, but there is a bean so you can use it in WindowBuilder.
+
+\subsection{JClass}
+JClass includes the chart software for Java that we use.  The Manifest file in the JAR file they included has some bogus \verb dependson  lines that give warnings when you try to run.  I manually deleted these, and just keep this new version around.
+JClass keeps switching companies.  We have an old version of their product, and I don't have any reason for upgrading.
+
+Note that there are distribution licenses associated with this.  University of Minnesota has a license to redistribute the libraries as part of Populus.
+
+We could maybe replace this with JFreeChart some day, but haven't done that.  Although I've added a switch now in \texttt{PopPreferences}
+
+\section{Javadoc}
+
+I wish the code were better documented.  But you can still use \texttt{javadoc} to generate documentation for the files.
+
+\part{Installer}
+Mostly, we just distribute the \texttt{PopulusAll.jar}. (The "All" part of the name means that it includes its dependent libraries with it.)  The Ant task to run this is \texttt{create\_run\_jar}.
+ 
+\section{Populus Splash Screen}
+We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it \verb PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
+
+\section{JNLP}
+For a while, we considered using JNLP (aka Java Web Start) so that we could install via the Web.  Most of the files still exist as a proof of concept, but you may need to do some polishing to get it to work.
+
+\part{Web Page}
+
+This should all be handled by the UMN Web team these days. They now use Drupal (a content management system).  For 5.5, I just gave them a new JAR file.
+
+\part{Test and Verification}
+\section{Release Checklist}
+
+Test that the output for each model agrees with what is in the PDF.  Math is cross-platform, so I don't see much of a problem testing this on all of the platforms.
+
+\section{Platform}
+It's a good idea to test on different platforms.  They will look different from platform to platform, and that's fine.
+
+It is necessary to test that you test the following on each platform:
+
+\begin{enumerate}
+	\item Populus installs and launches.
+	\item You can open a basic model.
+	\item When you click Help for a model, the PDF should open, hopefully on the correct location for the model.  Opening to the correct Named Destination is a fickle beast (see Help section), so might not be a new bug by itself.
+	\item Preferences are stored correctly between successive launches of Populus.  Make a change in Preferences, save it, then exit and restart Populus to see if the change was saved correctly.
+	\item Save and load models, especially between a restart.  It would be nice to save a model on one platform and have it open correctly on another platform, but we aren't there yet.
+\end{enumerate}
+
+
+\subsection{Linux}
+LiveCD SLAX can boot up Linux on an otherwise Windows computer.  There are other options now too.  I personally use Ubuntu.
+\subsection{Mac OS X}
+You really just need a Mac for this.  The UofM computer team have testers to help with this.
+
+We've had a lot of sizing bugs on Mac.  It's best to open several models (mainly the input windows) and make sure the screen's layout looks okay.
+
+Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.
+
+Permissions are a bit trickier now, too, such as Gatekeeper...
+
+\part{Conclusion}
+If anything is confusing in this document, please update or expand it as needed.
 
 \end{document}
 

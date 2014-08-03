@@ -3,8 +3,11 @@ package edu.umn.ecology.populus.visual;
 import java.beans.PropertyEditorSupport;
 import java.util.ArrayList;
 
-/** Use to define the direction the HTMLLabel will point. */
-
+/**
+ * Use to define the direction the HTMLLabel will point. 
+ * This was made for the editor, and isn't exposed.  To be honest, I don't know if it's still used...
+ * If it <em>doesn't</em> work, the worst thing that will happen will only affect developers.
+ */
 public class DirectionEditor extends PropertyEditorSupport {
 	private ArrayList<Integer> values;
 	private ArrayList<String> names;
