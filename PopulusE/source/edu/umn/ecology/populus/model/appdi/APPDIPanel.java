@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import java.util.*;
 
@@ -25,7 +25,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
    PopulusParameterField T_PF = new PopulusParameterField();
    TitledBorder titledBorder1;
    PopulusParameterField aPF = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    GridBagLayout gridBagLayout2 = new GridBagLayout();
    Border border2;
    PopulusParameterField cPF = new PopulusParameterField();
@@ -105,7 +105,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       border4 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder4 = new TitledBorder( border4, res.getString( "Plot_Type" ) );
       modelTypePanel.setBorder( titledBorder1 );
-      modelTypePanel.setLayout( verticalFlowLayout1 );
+      modelTypePanel.setLayout( simpleVFlowLayout1 );
       initialConditionsPanel.setBorder( titledBorder3 );
       initialConditionsPanel.setLayout( gridBagLayout2 );
       n0PF.setCurrentValue( 25.0 );

@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;
@@ -92,7 +92,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    private PopulusParameterField paramTh = new PopulusParameterField();
    private PopulusParameterField paramA = new PopulusParameterField();
    private JPanel lvParamsPanel = new JPanel();
-   private VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    private GridLayout gridLayout3 = new GridLayout();
    private JCheckBox ddPreyBox = new JCheckBox();
    private JCheckBox type2Box = new JCheckBox();
@@ -262,7 +262,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
       paramC2.setHelpText("Constant defining the conversion efficiency of prey into predators");
       titledBorder1.setTitle( res.getString( "Graph_Type" ) );
       modelType.setBorder( titledBorder4 );
-      modelType.setLayout(verticalFlowLayout1 );
+      modelType.setLayout(simpleVFlowLayout1 );
       this.setLayout( gridBagLayout1 );
       lotkaVolterraButton.setSelected( true );
       lotkaVolterraButton.setText( res.getString( "Lotka_Volterra" ) );

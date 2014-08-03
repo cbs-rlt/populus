@@ -315,7 +315,7 @@ private Color defaultColor;
 
       /*
       if (isRotate()) {
-      this.setLayout(new VerticalFlowLayout(VerticalFlowLayout.MIDDLE, 0, 0, false, false));
+      this.setLayout(new SimpleVFlowLayout(SimpleVFlowLayout.MIDDLE, 0, 0, false, false));
       } else {
       this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
       }

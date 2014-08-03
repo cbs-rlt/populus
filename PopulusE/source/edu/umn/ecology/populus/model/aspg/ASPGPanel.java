@@ -9,7 +9,7 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
@@ -51,14 +51,14 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    private TitledBorder titledBorder1;
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JPanel outputParameterPanel = new JPanel();
-   private VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    private Border border2;
    private TitledBorder titledBorder2;
    private JTabbedPane inputPane = new JTabbedPane();
    private JScrollPane lxmxScroller = new JScrollPane();
    private JPanel ageClassToViewPanel = new JPanel();
    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-   private VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    private JPanel birthPanel = new JPanel();
    private GridLayout gridLayout3 = new GridLayout();
    private JPanel censusTypePanel = new JPanel();
@@ -236,7 +236,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
       eigenButton.setFocusPainted(false);
       lambdaVsTButton.addActionListener(this);
       tabularOutputButton.setLayout(gridBagLayout1);
-      outputParameterPanel.setLayout(verticalFlowLayout1);
+      outputParameterPanel.setLayout(simpleVFlowLayout1);
       ageClassToViewPPF.setCurrentValue(1.0);
       ageClassToViewPPF.setDefaultValue(1.0);
       ageClassToViewPPF.setEnabled(false);
@@ -269,8 +269,8 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
             viewAllAgesBox_itemStateChanged(e);
          }
       });
-      ageClassToViewPanel.setLayout(verticalFlowLayout2);
-      verticalFlowLayout2.setHgap(0);
+      ageClassToViewPanel.setLayout(simpleVFlowLayout2);
+      simpleVFlowLayout2.setHgap(0);
       birthFlowButton.setText(res.getString("Birth_Flow"));
       birthFlowButton.setFocusPainted(false);
       birthPulseButton.setSelected(true);

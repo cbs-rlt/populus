@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
@@ -32,7 +32,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 	Box box18;
 	JCheckBox three = new JCheckBox();
 	PopulusParameterField rPF3 = new PopulusParameterField();
-	VerticalFlowLayout verticalFlowLayout7 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout7 = new SimpleVFlowLayout();
 	PopulusParameterField n0PF2 = new PopulusParameterField();
 	JPanel graph3 = new JPanel();
 	Box box17;
@@ -47,7 +47,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 	PopulusParameterField lambdaPF2 = new PopulusParameterField();
 	GridBagLayout gridBagLayout6 = new GridBagLayout();
 	JPanel modelParametersPanel2 = new JPanel();
-	VerticalFlowLayout verticalFlowLayout5 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout5 = new SimpleVFlowLayout();
 	DIGData[] myData;
 	PopulusParameterField rPF1 = new PopulusParameterField();
 	JPanel modelTypePanel = new JPanel();
@@ -56,7 +56,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 	JPanel modelParametersPanel4 = new JPanel();
 	TitledBorder titledBorder1;
 	Box box12;
-	VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
 	Box box14;
 	Border border2;
 	Box box16;
@@ -69,7 +69,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 	PopulusParameterField gensPF = new PopulusParameterField();
 	PopulusParameterField n0PF = new PopulusParameterField();
 	JRadioButton continuousButton = new JRadioButton();
-	VerticalFlowLayout verticalFlowLayout4 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
 	JRadioButton discreteButton = new JRadioButton();
 	JPanel modelParametersPanel1 = new JPanel();
 	ButtonGroup bg = new ButtonGroup();
@@ -78,8 +78,8 @@ public class DIGPanel extends BasicPlotInputPanel {
 	Box box5;
 	JPanel plotTypePanel = new JPanel();
 	PopulusParameterField lambdaPF1 = new PopulusParameterField();
-	VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
-	VerticalFlowLayout verticalFlowLayout6 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout6 = new SimpleVFlowLayout();
 	Border border4;
 	JPanel modelParametersPanel3 = new JPanel();
 	Border border5;
@@ -276,7 +276,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		box17 = Box.createVerticalBox();
 		box18 = Box.createHorizontalBox();
 		modelTypePanel.setBorder( titledBorder1 );
-		modelTypePanel.setLayout( verticalFlowLayout1 );
+		modelTypePanel.setLayout( simpleVFlowLayout1 );
 		continuousButton.setSelected( true );
 		continuousButton.setText( res.getString( "Continuous" ) );
 		continuousButton.setFocusPainted( false );
@@ -291,7 +291,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		gensPF.setMaxValue( 999.0 );
 		gensPF.setMinValue( 1.0 );
 		gensPF.setParameterName( res.getString( "Run_Time" ) );
-		plotTypePanel.setLayout( verticalFlowLayout3 );
+		plotTypePanel.setLayout( simpleVFlowLayout3 );
 		plotTypePanel.setBorder( titledBorder4 );
 		dNNdtButton.setText( str24 );
 		nvstButton.setSelected( true );
@@ -314,7 +314,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		rPF3.setHelpText( res.getString( "Rate_of_population1" ) + res.getString( "is_e_r_t_initial" ) );
 		rPF3.setDefaultValue( 0.1 );
 		rPF3.setCurrentValue( 0.1 );
-		modelParametersPanel1.setLayout( verticalFlowLayout4 );
+		modelParametersPanel1.setLayout( simpleVFlowLayout4 );
 		modelParametersPanel1.setBorder( titledBorder2 );
 		lambdaPF2.setParameterName( "\u03BB" );
 		lambdaPF2.setMaxValue( 10.0 );
@@ -330,7 +330,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		rPF2.setHelpText( res.getString( "Rate_of_population3" ) + res.getString( "is_e_r_t_initial" ) );
 		rPF2.setDefaultValue( 0.1 );
 		rPF2.setCurrentValue( 0.1 );
-		modelParametersPanel2.setLayout( verticalFlowLayout5 );
+		modelParametersPanel2.setLayout( simpleVFlowLayout5 );
 		modelParametersPanel2.setBorder( titledBorder2 );
 		lambdaPF1.setParameterName( "\u03BB" );
 		lambdaPF1.setMaxValue( 10.0 );
@@ -346,7 +346,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		rPF1.setHelpText( res.getString( "Rate_of_population5" ) + res.getString( "is_e_r_t_initial" ) );
 		rPF1.setDefaultValue( 0.1 );
 		rPF1.setCurrentValue( 0.1 );
-		modelParametersPanel3.setLayout( verticalFlowLayout6 );
+		modelParametersPanel3.setLayout( simpleVFlowLayout6 );
 		modelParametersPanel3.setBorder( titledBorder2 );
 		lambdaPF.setParameterName( "\u03BB" );
 		lambdaPF.setMaxValue( 10.0 );
@@ -362,7 +362,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		rPF.setHelpText( res.getString( "Rate_of_population7" ) + "is e^(r * t) * initial population" );
 		rPF.setDefaultValue( 0.1 );
 		rPF.setCurrentValue( 0.1 );
-		modelParametersPanel4.setLayout( verticalFlowLayout7 );
+		modelParametersPanel4.setLayout( simpleVFlowLayout7 );
 		modelParametersPanel4.setBorder( titledBorder2 );
 		initialConditionsPanel2.setBorder( titledBorder3 );
 		n0PF3.setCurrentValue( 10.0 );

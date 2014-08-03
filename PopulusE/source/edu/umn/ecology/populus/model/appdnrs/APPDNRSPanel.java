@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import java.util.*;
 
@@ -24,10 +24,10 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
    JPanel plotTypePanel = new JPanel();
    JRadioButton densityIndependentButton = new JRadioButton();
    Border border1;
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
    TitledBorder titledBorder1;
    PopulusParameterField kPF = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    JRadioButton densityDependentButton = new JRadioButton();
    Border border2;
    ButtonGroup bg = new ButtonGroup();
@@ -117,7 +117,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       border4 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder4 = new TitledBorder( border3, res.getString( "Plot_Type" ) );
       modelTypePanel.setBorder( titledBorder1 );
-      modelTypePanel.setLayout( verticalFlowLayout1 );
+      modelTypePanel.setLayout( simpleVFlowLayout1 );
       initialConditionsPanel.setBorder( titledBorder3 );
       initialConditionsPanel.setLayout( gridBagLayout2 );
       n0PF.setCurrentValue( 25.0 );
@@ -162,7 +162,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       p0PF.setHelpText( res.getString( "Initial_Population" ) );
       p0PF.setDefaultValue( 10.0 );
       p0PF.setCurrentValue( 10.0 );
-      modeDDParametersPanel.setLayout( verticalFlowLayout3 );
+      modeDDParametersPanel.setLayout( simpleVFlowLayout3 );
 
       //rPF.setHelpText("Rate of population growth.\nPopulation at time n + 1 is equal to " +
 

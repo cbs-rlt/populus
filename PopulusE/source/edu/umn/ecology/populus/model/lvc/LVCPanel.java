@@ -5,7 +5,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class LVCPanel extends BasicPlotInputPanel {
@@ -22,8 +22,8 @@ Border border1;
    TitledBorder titledBorder5;
    PopulusParameterField parambeta = new PopulusParameterField();
    StyledRadioButton n1vsn2Button = new StyledRadioButton();
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    RunningTimePanel runningTimePanel1 = new RunningTimePanel();
    JPanel modelParametersPanel = new JPanel();
    PopulusParameterField paramK2 = new PopulusParameterField();
@@ -41,7 +41,7 @@ Border border1;
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    PopulusParameterField paramr2 = new PopulusParameterField();
    Border border5;
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    PopulusParameterField paramN01 = new PopulusParameterField();
    
    public LVCPanel() {
@@ -83,13 +83,13 @@ Border border1;
       //titledBorder5 = new TitledBorder(border5,"Species #1");
       titledBorder5 = new TitledBorder( border5, "Species #1", TitledBorder.LEFT, TitledBorder.TOP, new Font( "Dialog", Font.PLAIN, 12 ), ColorScheme.colors[0] );
       plotTypePanel.setBorder( titledBorder1 );
-      plotTypePanel.setLayout( verticalFlowLayout1 );
+      plotTypePanel.setLayout( simpleVFlowLayout1 );
       nvstButton.setSelected( true );
       nvstButton.setText( "<i>N</i> vs <i>t</i>" );
       n1vsn2Button.setText( "<i>N</i><sub>2</sub> vs <i>N</i><sub>1</sub>" );
       modelParametersPanel.setBorder( titledBorder2 );
       species2Panel.setBorder( titledBorder3 );
-      species2Panel.setLayout( verticalFlowLayout2 );
+      species2Panel.setLayout( simpleVFlowLayout2 );
       paramN02.setCurrentValue( 20.0 );
       paramN02.setDefaultValue( 20.0 );
       paramN02.setHelpText( "Initial population size of species #2" );
@@ -140,7 +140,7 @@ Border border1;
       paramalpha.setDefaultValue( 0.6 );
       paramalpha.setHelpText( "Competition coefficient for species #1" );
       paramalpha.setCurrentValue( 0.6 );
-      species1Panel.setLayout( verticalFlowLayout3 );
+      species1Panel.setLayout( simpleVFlowLayout3 );
       species1Panel.setBorder( titledBorder5 );
       
       //titledBorder3.setTitle("Species #2");

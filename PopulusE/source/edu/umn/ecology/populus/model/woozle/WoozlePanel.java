@@ -153,9 +153,9 @@ public class WoozlePanel extends ModelPanel {
       /*
       FlowLayout myLay = new FlowLayout();
       myLay.setVgap(5);
-      VerticalFlowLayout myVLay = new VerticalFlowLayout();
+      SimpleVFlowLayout myVLay = new SimpleVFlowLayout();
 
-      myLay.setAlignment(VerticalFlowLayout.MIDDLE);
+      myLay.setAlignment(SimpleVFlowLayout.MIDDLE);
       this.setLayout(myLay);
       this.add(broodSize,null);
       this.add(mutationRate,null);

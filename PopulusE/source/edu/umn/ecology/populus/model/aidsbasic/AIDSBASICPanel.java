@@ -5,7 +5,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 public class AIDSBASICPanel extends BasicPlotInputPanel {
    /**
@@ -23,7 +23,7 @@ public class AIDSBASICPanel extends BasicPlotInputPanel {
    Border border9;
    StyledRadioButton vvstButton = new StyledRadioButton();
    StyledRadioButton xvsyvsvButton = new StyledRadioButton();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    PopulusParameterField paramK = new PopulusParameterField();
    JPanel modelParametersPanel = new JPanel();
    Border border6;
@@ -109,7 +109,7 @@ public class AIDSBASICPanel extends BasicPlotInputPanel {
       border9 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder9 = new TitledBorder( border9, "Initial Densities" );
       plotTypePanel.setBorder( titledBorder1 );
-      plotTypePanel.setLayout( verticalFlowLayout1 );
+      plotTypePanel.setLayout( simpleVFlowLayout1 );
       xyvtButton.setSelected( true );
       //x,y,v vs t
       xyvtButton.setText( "<i>x, y, v</i>  vs <i>t</i>" );

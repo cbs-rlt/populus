@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import java.util.*;
 
@@ -22,7 +22,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
    JPanel modelTypePanel = new JPanel();
    JRadioButton type2Button = new JRadioButton();
    TitledBorder titledBorder4;
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    TitledBorder titledBorder1;
    PopulusParameterField bPF = new PopulusParameterField();
    Border border2;
@@ -44,7 +44,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
    ButtonGroup bg = new ButtonGroup();
    StyledRadioButton pvsnButton = new StyledRadioButton();
    ButtonGroup plotGroup = new ButtonGroup();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    PopulusParameterField p0PF = new PopulusParameterField();
    PopulusParameterField cPF = new PopulusParameterField();
@@ -116,7 +116,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       modelTypePanel.setBorder( titledBorder1 );
       modelTypePanel.setLayout( flowLayout1 );
       initialConditionsPanel.setBorder( titledBorder3 );
-      initialConditionsPanel.setLayout( verticalFlowLayout2 );
+      initialConditionsPanel.setLayout( simpleVFlowLayout2 );
       n0PF.setCurrentValue( 25.0 );
       n0PF.setDefaultValue( 25.0 );
       n0PF.setHelpText( res.getString( "Initial_Population" ) );
@@ -173,7 +173,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       gensPF.setMaxValue( 999.0 );
       gensPF.setMinValue( 1.0 );
       gensPF.setParameterName( res.getString( "Generations_" ) );
-      paramsPanel.setLayout( verticalFlowLayout1 );
+      paramsPanel.setLayout( simpleVFlowLayout1 );
       apPF.setCurrentValue( 0.1 );
       apPF.setDefaultValue( 0.1 );
       apPF.setMaxValue( 1.0 );

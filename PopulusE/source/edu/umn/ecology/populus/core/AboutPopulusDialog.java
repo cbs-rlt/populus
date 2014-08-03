@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
@@ -39,7 +39,7 @@ public class AboutPopulusDialog extends JDialog {
    JLabel line1 = new JLabel();
    JLabel line7 = new JLabel();
    JPanel panel1 = new JPanel();
-   SimpleVFlowLayout verticalFlowLayout1 = new SimpleVFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    JPanel urlPanel = new JPanel();
    JPanel jPanel2 = new JPanel();
    JLabel line8 = new JLabel();
@@ -186,7 +186,7 @@ public class AboutPopulusDialog extends JDialog {
       button1.setActionCommand( "" );
       button1.setFocusPainted( false );
       button1.setRolloverEnabled( true );
-      jPanel1.setLayout( verticalFlowLayout1 );
+      jPanel1.setLayout( simpleVFlowLayout1 );
       button1.setText( "OK" );
       button1.addActionListener( new AboutPopulusDialog_button1_actionAdapter( this ) );
       this.addWindowListener( new AboutPopulusDialog_this_windowAdapter( this ) );

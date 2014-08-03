@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.edwin.ModelPanel;
 import javax.swing.border.*;
 import java.awt.event.*;
 import java.util.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 
 /**
@@ -36,7 +36,7 @@ private Border border1;
    public static final int kMaxIntervals = 3;
    public static final int kMinIntervals = 0;
    private GridLayout gridLayout2 = new GridLayout();
-   private VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
 
    public AIDSTIntervalArray() {
       try {
@@ -64,7 +64,7 @@ private Border border1;
             addButton_actionPerformed(e);
          }
       });
-      intervalsPane.setLayout(verticalFlowLayout1);
+      intervalsPane.setLayout(simpleVFlowLayout1);
       this.setLayout(gridLayout2);
       gridLayout2.setColumns(1);
       this.add(scrollPane, null);

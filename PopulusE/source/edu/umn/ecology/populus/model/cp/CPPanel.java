@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import java.util.*;
 
@@ -42,7 +42,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.cp
    PopulusParameterField lambdaPF = new PopulusParameterField();
    PopulusParameterField n0PF = new PopulusParameterField();
    ButtonGroup bg = new ButtonGroup();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    ButtonGroup vs = new ButtonGroup();
    PopulusParameterField a2PF = new PopulusParameterField();
 
@@ -153,7 +153,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.cp
       npqvstButton.setText( "<i>N</i>, <i>P</i>, <i>Q</i>  vs <i>t</i>" );
       npqvstButton.setFocusPainted( false );
       plotTypePanel.setBorder( titledBorder4 );
-      plotTypePanel.setLayout( verticalFlowLayout1 );
+      plotTypePanel.setLayout( simpleVFlowLayout1 );
       k2PF.setParameterName("<i>k</i><sub>2</sub>" );
       k2PF.setMinValue( 0.0 );
       k2PF.setMaxValue( 999.0 );

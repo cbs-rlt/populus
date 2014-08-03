@@ -2,7 +2,7 @@ package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import java.util.Hashtable;
 
 public class ConstantPanel extends JPanel {
@@ -14,7 +14,7 @@ JPanel conHolder = new JPanel();
    JButton addConstant = new JButton();
    JPanel addConstantPanel = new JPanel();
    JTextField newConstantName = new JTextField();
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    JScrollBar jsb;
    JScrollPane scroller = new JScrollPane();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
@@ -118,7 +118,7 @@ JPanel conHolder = new JPanel();
       } );
       newConstantName.setPreferredSize( new Dimension( 30, 21 ) );
       newConstantName.setToolTipText( "Name for new constant" );
-      conHolder.setLayout( verticalFlowLayout2 );
+      conHolder.setLayout( simpleVFlowLayout2 );
       jsb.addAdjustmentListener( new java.awt.event.AdjustmentListener()  {
 
          public void adjustmentValueChanged( AdjustmentEvent e ) {

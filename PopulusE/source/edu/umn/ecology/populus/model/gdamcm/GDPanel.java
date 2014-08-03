@@ -19,7 +19,7 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import java.util.*;
 
@@ -62,23 +62,23 @@ public static final int MAX_LOCI = 10;
    GridBagLayout gridBagLayout3 = new GridBagLayout();
    JPanel runtimePanel = new JPanel();
    JPanel scrollPaneInside = new JPanel();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    JScrollPane jScrollPane1 = new JScrollPane();
    PopulusParameterField paramN = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout5 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout5 = new SimpleVFlowLayout();
    PopulusParameterField numAGenesPPF = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout4 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
    PopulusParameterField popSizePPF = new PopulusParameterField();
    JPanel individualFreqPanel = new JPanel();
    PopulusParameterField paramInitFreq = new PopulusParameterField();
    PopulusParameterField gensToViewPPF = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
    GridBagLayout gridBagLayout5 = new GridBagLayout();
    JRadioButton individualFrequencyButton = new JRadioButton();
    StyledRadioButton gensButton = new StyledRadioButton();
    ButtonGroup goBG = new ButtonGroup();
    ButtonGroup siBG = new ButtonGroup();
-   VerticalFlowLayout verticalFlowLayout7 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout7 = new SimpleVFlowLayout();
 
    //these are saved so we can use the same last calculated frequencies
    //for the next iteration
@@ -225,7 +225,7 @@ public static final int MAX_LOCI = 10;
       goBG.add(gensButton);
       otherButton.setFocusPainted( false );
       otherButton.setText( res.getString( "Other_" ) );
-      runtimePanel.setLayout( verticalFlowLayout1 );
+      runtimePanel.setLayout( simpleVFlowLayout1 );
       runtimePanel.setBorder( titledBorder3 );
       gensButton.setText( res.getString( "3i_N_i_Generations" ) );
       gensButton.setSelected( true );
@@ -241,11 +241,11 @@ public static final int MAX_LOCI = 10;
       selfingBox.setFocusPainted( false );
       this.setLayout( gridBagLayout1 );
       montecarloP.setLayout( gridBagLayout3 );
-      scrollPaneInside.setLayout(verticalFlowLayout7 );
+      scrollPaneInside.setLayout(simpleVFlowLayout7 );
       jScrollPane1.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
       jScrollPane1.setPreferredSize( new Dimension( 150, 100 ) );
       individualFreqPanel.setBorder( BorderFactory.createLineBorder( Color.black ) );
-      individualFreqPanel.setLayout( verticalFlowLayout4 );
+      individualFreqPanel.setLayout( simpleVFlowLayout4 );
       paramInitFreq.setHelpText( res.getString( "Initial_frequency_of" ) );
       paramInitFreq.setCurrentValue( 0.5 );
       paramInitFreq.setDefaultValue( 0.5 );
@@ -266,9 +266,9 @@ public static final int MAX_LOCI = 10;
       paramNumLoci.setParameterName( res.getString( "Number_of_Loci" ) );
       paramNumLoci.addParameterFieldListener( new NumLociListener() );
       initialConditionsPanel.setBorder( titledBorder2 );
-      initialConditionsPanel.setLayout( verticalFlowLayout3 );
+      initialConditionsPanel.setLayout( simpleVFlowLayout3 );
       singleFreqPanel.setBorder( BorderFactory.createLineBorder( Color.black ) );
-      singleFreqPanel.setLayout( verticalFlowLayout5 ); //won't auto update after 30
+      singleFreqPanel.setLayout( simpleVFlowLayout5 ); //won't auto update after 30
       for( int i = 0;i < MAX_LOCI;i++ ) {
          lociFrequencies[i].setMaxValue( 1.0 );
          lociFrequencies[i].setIncrementAmount( 1 / 16 );

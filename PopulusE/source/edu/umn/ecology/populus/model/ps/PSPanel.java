@@ -7,7 +7,7 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import javax.swing.event.*;
 
@@ -32,9 +32,9 @@ public static final int MAX_LOCI = 10;
    ButtonGroup goBG = new ButtonGroup();
    private JPanel demicPanel = new JPanel();
    private JScrollPane lociScroller = new JScrollPane();
-   private VerticalFlowLayout verticalFlowLayout7 = new VerticalFlowLayout();
-   private VerticalFlowLayout verticalFlowLayout5 = new VerticalFlowLayout();
-   private VerticalFlowLayout verticalFlowLayout4 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout7 = new SimpleVFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout5 = new SimpleVFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
    private JPanel individualFreqPanel = new JPanel();
    private PopulusParameterField paramInitFreq = new PopulusParameterField();
    private JRadioButton individualFrequencyButton = new JRadioButton();
@@ -49,7 +49,7 @@ public static final int MAX_LOCI = 10;
    private PopulusParameterField migrationPPF = new PopulusParameterField();
    private PopulusParameterField demeSizePPF = new PopulusParameterField();
    PopulusParameterField[] demicPPFArray = new PopulusParameterField[MAX_LOCI];
-   private VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
 
    //these are saved so we can use the same last calculated frequencies
    //for the next iteration
@@ -132,11 +132,11 @@ public static final int MAX_LOCI = 10;
       modelP.setLayout(gridBagLayout2);
       selfingCB.setFocusPainted(false);
       selfingCB.setText("Permit selfing?");
-      demicPanel.setLayout(verticalFlowLayout7);
+      demicPanel.setLayout(simpleVFlowLayout7);
       lociScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
       lociScroller.setPreferredSize(new Dimension( 150, 100 ));
       individualFreqPanel.setBorder(BorderFactory.createLineBorder( Color.black ));
-      individualFreqPanel.setLayout(verticalFlowLayout4);
+      individualFreqPanel.setLayout(simpleVFlowLayout4);
       paramInitFreq.setCurrentValue(0.5);
       paramInitFreq.setDefaultValue(0.5);
       paramInitFreq.setIncrementAmount(0.1);
@@ -158,9 +158,9 @@ public static final int MAX_LOCI = 10;
       paramNumDemes.setMinValue(1.0);
       paramNumDemes.setParameterName("Number of Demes");
       paramNumDemes.setHelpText("Number of subpopulations in the total population");
-      lociFreqP.setLayout(verticalFlowLayout1);
+      lociFreqP.setLayout(simpleVFlowLayout1);
       singleFreqPanel.setBorder(BorderFactory.createLineBorder( Color.black ));
-      singleFreqPanel.setLayout(verticalFlowLayout5);
+      singleFreqPanel.setLayout(simpleVFlowLayout5);
       this.setLayout( gridBagLayout1 );//won't auto update after 30
       for( int i = 0;i < MAX_LOCI;i++ ) {
          demicPPFArray[i].setMaxValue( 1.0 );

@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 public class IMDPanel extends BasicPlotInputPanel {
    /**
@@ -24,7 +24,7 @@ Border border1;
    StyledRadioButton phaseButton = new StyledRadioButton();
    Border border9;
    StyledRadioButton ivsnButton = new StyledRadioButton();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    PopulusParameterField paramalpha = new PopulusParameterField();
    JPanel modelParametersPanel = new JPanel();
    Border border6;
@@ -160,7 +160,7 @@ Border border1;
       border9 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder9 = new TitledBorder( border9, "Initial Host Densities" );
       plotTypePanel.setBorder( titledBorder1 );
-      plotTypePanel.setLayout( verticalFlowLayout1 );
+      plotTypePanel.setLayout( simpleVFlowLayout1 );
       nvstButton.setSelected( true );
       nvstButton.setText( "<i>S, I, N</i>  vs <i>t</i>" );
       phaseButton.setText( "<i>I</i>  vs <i>S</i>" );

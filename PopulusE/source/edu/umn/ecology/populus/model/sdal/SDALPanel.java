@@ -7,7 +7,7 @@ import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.event.*;
 import java.util.*;
 
@@ -26,9 +26,9 @@ public class SDALPanel extends BasicPlotInputPanel {
 ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sdal.Res" );
    JPanel coefficientsPanel = new JPanel();
    JPanel initialConditionsPanel = new JPanel();
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    PopulusParameterField paramwAa = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
    JRadioButton sixInitialFrequenciesButton = new JRadioButton();
    Border border1;
    PopulusParameterField paramh = new PopulusParameterField();
@@ -44,10 +44,10 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
    PopulusParameterField paramwAA = new PopulusParameterField();
    JRadioButton pvstButton = new StyledRadioButton();
    PopulusParameterField params = new PopulusParameterField();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    JRadioButton oneInitialFrequencyButton = new JRadioButton();
    JRadioButton genotypicFrequencyButton = new StyledRadioButton();
-   VerticalFlowLayout verticalFlowLayout4 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
    JRadioButton deltapvspButton = new StyledRadioButton();
    PopulusParameterField paramGens = new PopulusParameterField();
    JRadioButton wbarvspButton = new StyledRadioButton();
@@ -152,7 +152,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
       setLayout(gridBagLayout);
       initialConditionsPanel.setBorder( titledBorder3 );
-      initialConditionsPanel.setLayout( verticalFlowLayout4 );
+      initialConditionsPanel.setLayout( simpleVFlowLayout4 );
       oneInitialFrequencyButton.setSelected( true );
       oneInitialFrequencyButton.setText( res.getString( "One_Initial_Frequency" ) );
       oneInitialFrequencyButton.addActionListener( new java.awt.event.ActionListener()  {
@@ -175,7 +175,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
          }
       } );
       plotOptionsPanel.setBorder( titledBorder1 );
-      plotOptionsPanel.setLayout( verticalFlowLayout1 );
+      plotOptionsPanel.setLayout( simpleVFlowLayout1 );
       pvstButton.setSelected( true );
       pvstButton.setText( "<i>p</i> vs <i>t</>" );
       pvstButton.setFocusPainted( false );
@@ -203,7 +203,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       bg1.add( this.pvstButton );
       bg1.add( this.genotypicFrequencyButton );
       coefficientsPanel.setBorder( titledBorder2 );
-      fitnessPanel.setLayout( verticalFlowLayout2 );
+      fitnessPanel.setLayout( simpleVFlowLayout2 );
       paramwAA.setCurrentValue( 1.0 );
       paramwAA.setDefaultValue( 1.0 );
       paramwAA.setIncrementAmount( 0.05 );
@@ -222,7 +222,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       paramwaa.setMaxValue( 1.0 );
       paramwaa.setParameterName( "<i>w<sub>aa</sub></i>" );
       paramwaa.setHelpText("Relative Fitness of aa Genotypes");
-      selectionPanel.setLayout( verticalFlowLayout3 );
+      selectionPanel.setLayout( simpleVFlowLayout3 );
       paramh.setCurrentValue( 0.5 );
       paramh.setDefaultValue( 0.5 );
       paramh.setIncrementAmount( 0.05 );

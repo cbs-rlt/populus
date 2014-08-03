@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import java.util.*;
 
@@ -26,10 +26,10 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
    Border border1;
    JPanel modelTypePanel = new JPanel();
    TitledBorder titledBorder1;
-   VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    CardLayout cardLayout1 = new CardLayout();
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    StyledRadioButton npvstButton = new StyledRadioButton();
    Border border2;
    ButtonGroup bg = new ButtonGroup();
@@ -126,8 +126,8 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       border4 = BorderFactory.createLineBorder( SystemColor.controlText, 1 );
       titledBorder4 = new TitledBorder( border4, res.getString( "Plot_Type" ) );
       modelTypePanel.setBorder( titledBorder1 );
-      modelTypePanel.setLayout( verticalFlowLayout1 );
-      modelDIParametersPanel.setLayout( verticalFlowLayout2 );
+      modelTypePanel.setLayout( simpleVFlowLayout1 );
+      modelDIParametersPanel.setLayout( simpleVFlowLayout2 );
       initialConditionsPanel.setBorder( titledBorder3 );
       initialConditionsPanel.setLayout( gridBagLayout2 );
       n0PF.setCurrentValue( 25.0 );
@@ -176,7 +176,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ap
       p0PF.setHelpText( res.getString( "Initial_Population" ) );
       p0PF.setDefaultValue( 10.0 );
       p0PF.setCurrentValue( 10.0 );
-      modeDDParametersPanel.setLayout( verticalFlowLayout3 );
+      modeDDParametersPanel.setLayout( simpleVFlowLayout3 );
       rPF.setCurrentValue( 0.693 );
       rPF.setDefaultValue( 0.693 );
       rPF.setHelpText("The intrinsic growth rate of the prey.");

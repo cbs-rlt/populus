@@ -6,7 +6,7 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import javax.swing.event.*;
 import java.util.*;
@@ -29,7 +29,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ih
    Border border2;
    Border border4;
    TitledBorder titledBorder2;
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    Border border3;
    PopulusParameterField IPPF = new PopulusParameterField();
    TitledBorder titledBorder3;
@@ -45,7 +45,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ih
    ButtonGroup bg = new ButtonGroup();
    JRadioButton npvstButton = new StyledRadioButton();
    ButtonGroup plotGroup = new ButtonGroup();
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    GridBagLayout gridBagLayout2 = new GridBagLayout();
    PopulusParameterField p0PF = new PopulusParameterField();
@@ -147,7 +147,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ih
       modelTypePanel.setBorder( titledBorder1 );
       modelTypePanel.setLayout( gridBagLayout2 );
       initialConditionsPanel.setBorder( titledBorder3 );
-      initialConditionsPanel.setLayout( verticalFlowLayout2 );
+      initialConditionsPanel.setLayout( simpleVFlowLayout2 );
       n0PF.setCurrentValue( 25.0 );
       n0PF.setDefaultValue( 25.0 );
       n0PF.setHelpText( res.getString( "Initial_Population" ) );
@@ -197,7 +197,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.ih
       gensPF.setMaxValue( 999.0 );
       gensPF.setMinValue( 1.0 );
       gensPF.setParameterName( res.getString( "Generations_" ) );
-      paramsPanel.setLayout( verticalFlowLayout1 );
+      paramsPanel.setLayout( simpleVFlowLayout1 );
       kPF.setCurrentValue( 0.6 );
       kPF.setDefaultValue( 0.6 );
       kPF.setMaxValue( 999.0 );

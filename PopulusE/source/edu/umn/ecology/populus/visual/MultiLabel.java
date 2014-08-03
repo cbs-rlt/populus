@@ -1,7 +1,7 @@
 package edu.umn.ecology.populus.visual;
 import javax.swing.*;
 import java.awt.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 //Title:        Populus
 //Version:
@@ -26,7 +26,7 @@ public class MultiLabel extends JPanel {
 
    public MultiLabel( Object[] lines, Font f, int horizSpace, int vertSpace, int alignment ) {
       Component label;
-      this.setLayout( new VerticalFlowLayout() );
+      this.setLayout( new SimpleVFlowLayout() );
       for( int i = 0;i < lines.length;i++ ) {
          if( lines[i] instanceof String ) {
             label = new JLabel( (String)lines[i], alignment );

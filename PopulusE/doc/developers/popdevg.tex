@@ -49,9 +49,6 @@ To add a model to the menu, add a ModelPacket in PopPreferences.
 
 I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
 
-
-TODO - What is SelectModelDialog??
-
 \subsection{Basic Model}
 Most models will derive from \texttt{BasicPlotModel}, in the plot directory.
 
@@ -64,7 +61,7 @@ Most models extend from \verb edu.umn.ecology.populus.plot.BasicPlotModel , whic
 \section{Help}
 When we click the Help button on a model or the main DesktopWindow, we call \texttt{HelpUtilities::displayHelp()}.
 
-When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.
+When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.  Named Destinations are like HTML anchors, except that a lot of PDF viewers ignore them.
 
 The help system was changed dramatically in 5.5, by modifying the local help file to use the language specified by the user's configuration.
 
@@ -140,22 +137,17 @@ Use Photoshop to make the pictures for, say, the Web page.  There are saved \tex
 
 \section{Populus-specific Setup}
 \subsection{Files}
-TODO - format this
 
-Make a directory for your workspace:
+Here's how you can check out the files from git.  Assume that the \texttt{.git} directory is at \texttt{C:/TEMP/pop.git} and you want to put the code into \texttt{workspace/pop} relative to your current directory.
 
-\verb  mkdir ~/Documents/code
-
-\verb cd ~/Documents/code
-Everything used is in Git now.  To get the source, run:
-\verb git clone .git pop
-
-or \verb git clone file:///C:/TEMP/pop.git pop
-
-where \texttt{pop} is the directory you want the source to go into.
+\begin{verbatim}
+  mkdir workspace
+  cd workspace
+  git clone file:///C:/TEMP/pop.git pop
+\end{verbatim}
 
 \subsection{Running Eclipse}
-Now run Eclipse.  For the workspace, choose the \verb pop directory, or whatever you used to extract the files from git.
+Now run Eclipse.  For the workspace, choose the \texttt{pop} directory, or whatever you used to extract the files from git in the previous step.
 
 Be sure that you are using an installed JDK for the workspace (\texttt{Windows $\Rightarrow$ Preferences $\Rightarrow$ Java $\Rightarrow$ Installed JREs})
 

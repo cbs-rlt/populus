@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import com.borland.jbcl.layout.XYConstraints;
 import com.borland.jbcl.layout.XYLayout;
 
@@ -21,7 +21,7 @@ public class EquationPanel extends JPanel {
    JLabel numEqL = new JLabel();
    GridBagLayout gridBagLayout1 = new GridBagLayout();
    int numEqs;
-   VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
    JTextField numEQTF = new JTextField();
    JLabel plotL = new JLabel();
    JPanel eqHolder = new JPanel();
@@ -165,7 +165,7 @@ public class EquationPanel extends JPanel {
       JScrollBar jsb = scroller.getVerticalScrollBar();
       scroller.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS );
       scroller.setBorder( BorderFactory.createLineBorder( Color.black ) );
-      eqHolder.setLayout( verticalFlowLayout2 );
+      eqHolder.setLayout( simpleVFlowLayout2 );
       numEQTF.setMaximumSize( new Dimension( 30, 30 ) );
       numEQTF.setPreferredSize( new Dimension( 25, 21 ) );
       numEQTF.setToolTipText( "Enter the number of equations you want in the table." );

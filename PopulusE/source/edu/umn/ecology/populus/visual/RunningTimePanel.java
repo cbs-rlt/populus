@@ -17,7 +17,7 @@ import java.awt.*;
 import javax.swing.border.*;
 import javax.swing.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import java.awt.event.*;
 import java.io.*;
 
@@ -29,7 +29,7 @@ public class RunningTimePanel extends JPanel implements Serializable {
 	 */
 	private static final long serialVersionUID = -4226071707631879578L;
 public static final double STEADYSTATE = -1.3;
-   VerticalFlowLayout verticalFlowLayout1 = new VerticalFlowLayout();
+   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
    PopulusParameterField paramTime = new PopulusParameterField();
    JRadioButton steadyStateButton = new JRadioButton();
    Border border1;
@@ -154,7 +154,7 @@ public static final double STEADYSTATE = -1.3;
       } );
       titledBorder1.setBorder( BorderFactory.createLineBorder( Color.black ) );
       this.setBorder( titledBorder1 );
-      this.setLayout( verticalFlowLayout1 );
+      this.setLayout( simpleVFlowLayout1 );
       steadyStateButton.setText( "Run until steady state" );
       steadyStateButton.setFocusPainted( false );
       steadyStateButton.addActionListener( new java.awt.event.ActionListener()  {

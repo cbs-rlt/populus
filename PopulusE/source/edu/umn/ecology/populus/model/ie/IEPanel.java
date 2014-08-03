@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
-import com.borland.jbcl.layout.VerticalFlowLayout;
+import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import edu.umn.ecology.populus.plot.*;
 
@@ -29,8 +29,8 @@ public class IEPanel extends BasicPlotInputPanel {
 	ButtonGroup bgInte = new ButtonGroup();
 	StyledRadioButton nvstB = new StyledRadioButton();
 	Border border1, border2;
-	VerticalFlowLayout verticalFlowLayout2 = new VerticalFlowLayout();
-	VerticalFlowLayout verticalFlowLayout3 = new VerticalFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+	SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
 
    public BasicPlot getPlotParamInfo() {
       double[] initial = new double[0];
@@ -88,7 +88,7 @@ public class IEPanel extends BasicPlotInputPanel {
       nvsnB.setText( "<i><b>N</> vs <i><b>N</>" );
       nvsnB.setSelected( true );
       nvstB.setText( "<i><b>N</> vs <i>t</i>" );
-      plotType.setLayout( verticalFlowLayout2 );
+      plotType.setLayout( simpleVFlowLayout2 );
       plotType.setBorder( titledBorder1 );
       continuousB.setSelected( true );
       continuousB.setText( "Continuous" );
@@ -102,7 +102,7 @@ public class IEPanel extends BasicPlotInputPanel {
          }
       } );
       ep = new EquationPanel( 3, discreteB.isSelected() );
-      integrationType.setLayout( verticalFlowLayout3 );
+      integrationType.setLayout( simpleVFlowLayout3 );
       integrationType.setBorder( titledBorder2 );
       textB.setToolTipText("Send output a file." );
       textB.setText("File" );
