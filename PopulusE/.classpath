@@ -8,7 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="res/reqlibs/Jama-1.0.2.jar"/>
-	<classpathentry kind="lib" path="res/reqlibs/JBCL.jar"/>
 	<classpathentry kind="lib" path="res/reqlibs/jcchart401K.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -287,13 +287,19 @@ Most models extend from \verb edu.umn.ecology.populus.plot.BasicPlotModel , whic
 \texttt{main} is found in \texttt{edu.umn.ecology.populus.core.PopRun}.  This is where the application starts.  The \texttt{DesktopWindow} is the primary GUI background to the application.
 
 \section{Help}
+\subsection{How Help Events are Triggered}
 When we click the Help button on a model or the main DesktopWindow, we call \texttt{HelpUtilities::displayHelp()}.
 
 When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.  Named Destinations are like HTML anchors, except that a lot of PDF viewers ignore them.
 
-The help system was changed dramatically in 5.5, by modifying the local help file to use the language specified by the user's configuration.
-
 TODO - I suspect that getModelHelpText() doesn't really do anything these days.  Maybe we can gut that.
+
+\subsection{Displaying help}
+The help system was changed dramatically in 5.5.  There are several options for how we will invoke a PDF reader, either internal APIs (via JNLP) or by using the system's "open" command, or a custom call that users can set.  Look at \texttt{displayHelp} for the list of ways.
+
+In addition, languages by modifying the local help file to use the language specified by the user's configuration.  It's hard to tell the external PDF viewer to look at a file in an archive, so we extract the help file PDF into the user's home directory before invoking the PDF viewer.
+
+Look at the README file for more information.
 
 \section{Logging}
 Logging normally goes both to stderr and a file in the user's home directory.
@@ -309,36 +315,56 @@ The file for keeping state is stored as \verb userpref.po  in the user's home di
 Almost all of the code is in \texttt{PopPreferences.java}.
 
 \subsection{Preferences GUI}
-The GUI behind it is in \texttt{PreferencesDialog.java}. 
+The GUI behind it is in \texttt{PreferencesDialog.java}.
+
+A lot is also explained in the README section following here.
+
+\section{README}
+
+There is a file in the doc directory, \texttt{README.config.txt} that is distributed with Populus.  The target audience is for people in charge of installing or administering Populus.
 
 \section{Installer}
 \texttt{Installer.java} was meant to be used with JNLP install, but never made it to full production.
 
-\section{GUI Widgets}
+\section{Custom GUI Widgets}
 
 \subsection{ParameterField}
-The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details later).
+The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details about this in the section on creating a new model).
 
 \subsection{HTMLLabel}
 This widget was created in the day when Java didn't have good options for HTML-like tags, especially superscript and subscript.  It's basically a JLabel that knows about some HTML, and can also rotate text.  Nowadays we don't use too much of it, but there is a bean so you can use it in WindowBuilder.
 
-\subsection{JClass}
-JClass includes the chart software for Java that we use.  The Manifest file in the JAR file they included has some bogus \verb dependson  lines that give warnings when you try to run.  I manually deleted these, and just keep this new version around.
-JClass keeps switching companies.  We have an old version of their product, and I don't have any reason for upgrading.
-
-Note that there are distribution licenses associated with this.  University of Minnesota has a license to redistribute the libraries as part of Populus.
-
-We could maybe replace this with JFreeChart some day, but haven't done that.  Although I've added a switch now in \texttt{PopPreferences}
+See Library dependencies for third-party dependencies.
 
 \section{Javadoc}
 
 I wish the code were better documented.  But you can still use \texttt{javadoc} to generate documentation for the files.
+
+\section{Library dependencies}
+Populus relies on several libraries (JAR files).  These are packaged into \texttt{PopulusAll.jar} in the build.
+
+Modifications to the dependencies will require changes to \texttt{fullbuild.xml} (and anything else to get it to run) as well as \texttt{AboutPopulusDialog.java}.
+
+\subsection{Jama}
+Jama is an free-to-distribute library for Java math.  We use it in the structured population growth models for eigenvalue decomposition.  See http://math.nist.gov/javanumerics/jama for details.
+
+\subsection{JClass}
+JClass includes the chart software for Java that we use.  The Manifest file in the JAR file they included has some bogus \texttt{dependson}  lines that give warnings when you try to run.  I manually deleted these, and just keep this new version around.
+
+JClass keeps switching companies.  We have an old version of their product, and I don't have any reason for upgrading.  We may update to something more common today, like JFreeChart.
+
+\subsection{acrobat}
+The acrobat JAR was added as a PDF viewer that's built into Populus.  It didn't work as well as hoped, and Adobe doesn't seem to support it anyway, so it was dropped.  If the need to use it again arises, look at \texttt{OpenPDFWithAdobeBean.java}.
+
 
 \part{Installer}
 Mostly, we just distribute the \texttt{PopulusAll.jar}. (The "All" part of the name means that it includes its dependent libraries with it.)  The Ant task to run this is \texttt{create\_run\_jar}.
  
 \section{Populus Splash Screen}
 We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it \verb PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
+
+\section{README}
+See the previous section of the README.  This is currently separate from the install, but put on the install page.
 
 \section{JNLP}
 For a while, we considered using JNLP (aka Java Web Start) so that we could install via the Web.  Most of the files still exist as a proof of concept, but you may need to do some polishing to get it to work.

@@ -56,7 +56,6 @@
             </manifest>
             <fileset dir="${build}"/>
             <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/Jama-1.0.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/JBCL.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="res/reqlibs/jcchart401K.jar"/>
         </jar>
     </target>

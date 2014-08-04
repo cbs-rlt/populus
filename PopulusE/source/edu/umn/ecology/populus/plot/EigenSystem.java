@@ -3,7 +3,7 @@ package edu.umn.ecology.populus.plot;
 import edu.umn.ecology.populus.resultwindow.*;
 import java.awt.*;
 import javax.swing.*;
-import Jama.*;
+import Jama.EigenvalueDecomposition;
 import javax.swing.event.*;
 import edu.umn.ecology.populus.math.*;
 

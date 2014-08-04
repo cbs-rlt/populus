@@ -7,7 +7,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.resultwindow.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
-import Jama.*;
+import Jama.EigenvalueDecomposition;
 
 /**
  *

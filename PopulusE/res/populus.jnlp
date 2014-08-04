@@ -23,7 +23,6 @@
     <extension href="installer.jnlp"/>
     <jar href="Populus.jar"/>
     <jar href="Jama-1.0.2.jar"/>
-    <jar href="JBCL.jar"/>
     <jar href="jcchart401K.jar"/>
   </resources>
   <application-desc main-class="edu.umn.ecology.populus.core.PopRun"/>
