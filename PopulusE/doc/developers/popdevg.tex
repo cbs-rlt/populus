@@ -45,6 +45,8 @@ Here's how you can check out the files from git.  Assume that the \texttt{.git} 
   git clone file:///C:/TEMP/pop.git pop
 \end{verbatim}
 
+The "\texttt{pop.git}" directory I'm using as an example should be a directory that contains the \texttt{.git} directory.  I assume we'll have a real central repository soon, and then this guide can be updated to that location.
+
 \subsection{Running Eclipse}
 Now run Eclipse.  For the workspace, choose the \texttt{pop} directory, or whatever you used to extract the files from git in the previous step.
 
@@ -61,9 +63,6 @@ Click the green run button.  You want to run this as a Java Application.  The ma
 You'll want to install the WindowBuilder plugin to Eclipse if you plan to edit any of the screens.  Go to \url{http://www.eclipse.org/windowbuilder/download.php} for instructions.
 
 To use WindowBuilder, right click on a Panel file in the Package Explorer, then choose Open With... and select WindowBuilder Editor.
-
-
-Most special build steps are specified in the Ant file (\texttt{fullbuild.xml}). Right-click the file, and select \texttt{Run As $\Rightarrow$ Ant Build...} and select the \texttt{bundle\_populus} option, and run it.
 
 \part{How to add a new model}
 \section{Example of a new model: Fibonacci rabbits}
@@ -328,6 +327,8 @@ There is a file in the doc directory, \texttt{README.config.txt} that is distrib
 
 \section{Custom GUI Widgets}
 
+Custom widgets are in the \texttt{edu.umn.ecology.populus.visual} package (or underneath it).
+
 \subsection{ParameterField}
 The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details about this in the section on creating a new model).
 
@@ -366,8 +367,13 @@ We have a file called Populus*.*.psd which is a photoshop file describing the ti
 \section{README}
 See the previous section of the README.  This is currently separate from the install, but put on the install page.
 
-\section{JNLP}
+\section{OS X Build}
+For OS X, please run the \texttt{bundle\_populus} option.  This will create an OS X package in the \texttt{out} directory.  Manually run iDMG to turn it into a \texttt{.dmg} file for easy transportation.  (Using iDMG is simple: Just drag the application file into it, and it will create the .dmg file in the same directory.)
+
+\section{JNLP (Obsolete?)}
 For a while, we considered using JNLP (aka Java Web Start) so that we could install via the Web.  Most of the files still exist as a proof of concept, but you may need to do some polishing to get it to work.
+
+There are a few references to using JNLP in the code, namely in the Help.  This does not imply that Populus is run via JNLP;  It just uses the JNLP library.
 
 \part{Web Page}
 
@@ -397,11 +403,13 @@ LiveCD SLAX can boot up Linux on an otherwise Windows computer.  There are other
 \subsection{Mac OS X}
 You really just need a Mac for this.  The UofM computer team have testers to help with this.
 
+I don't really know of anyone that uses Linux, but I like to make sure this works just on principle.
+
 We've had a lot of sizing bugs on Mac.  It's best to open several models (mainly the input windows) and make sure the screen's layout looks okay.
 
-Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.
+Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.  This is not yet implemented.  See the note in \texttt{fullbuild.txt}
 
-Permissions are a bit trickier now, too, such as Gatekeeper...
+Permissions are a bit trickier now, with the addition of Gatekeeper.  We still haven't figured out the best way to do this, but make sure that we can still run it as a 
 
 \part{Conclusion}
 If anything is confusing in this document, please update or expand it as needed.
