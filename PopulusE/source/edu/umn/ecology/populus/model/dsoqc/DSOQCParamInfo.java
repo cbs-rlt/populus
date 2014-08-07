@@ -18,7 +18,6 @@ public class DSOQCParamInfo implements BasicPlot {
    }
 
    public void doGeneration(){
-      int nump = 0;
       int[][] selected = new int[2][repopSize];
       double[][] pheno = new double[2][popSize];
       double avg = 0;
@@ -26,8 +25,8 @@ public class DSOQCParamInfo implements BasicPlot {
       for(int i=0; i<popSize; i++){
          switch(parent[0][i] + parent[1][i]){
             case 0: pheno[1][i] = Routines.nextGaussian(gaa,ve,rand);            break;
-            case 1: pheno[1][i] = Routines.nextGaussian(gAa,ve,rand); nump++;    break;
-            case 2: pheno[1][i] = Routines.nextGaussian(gAA,ve,rand); nump += 2; break;
+            case 1: pheno[1][i] = Routines.nextGaussian(gAa,ve,rand); break;
+            case 2: pheno[1][i] = Routines.nextGaussian(gAA,ve,rand); break;
          }
          pheno[0][i] = i;
       }

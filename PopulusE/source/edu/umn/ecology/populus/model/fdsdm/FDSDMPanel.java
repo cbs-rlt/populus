@@ -10,9 +10,8 @@ public class FDSDMPanel extends BasicPlotInputPanel {
    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -3378363432434260696L;
-private TitledBorder titledBorder2;
-   private TitledBorder titledBorder3;
+   private static final long serialVersionUID = -3378363432434260696L;
+   private TitledBorder titledBorder2;
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private ButtonGroup plotTypeBG = new ButtonGroup();
    private JLabel AAL = new JLabel("A");
@@ -69,7 +68,6 @@ private TitledBorder titledBorder2;
 
    private void jbInit() throws Exception {
       titledBorder2 = new TitledBorder("Individual Coefficients");
-      titledBorder3 = new TitledBorder("Plot Type");
       w4PPF.setParameterName("<i>w<sub>4</>");
       w4PPF.setIncrementAmount(0.1);
       w4PPF.setDefaultValue(1.0);

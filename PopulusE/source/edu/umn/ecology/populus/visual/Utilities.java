@@ -333,7 +333,6 @@ public class Utilities extends java.lang.Object {
       String s;
       int style = Font.PLAIN;
       int supLevel = 0;
-      int regHeight = -1;
       Font f = g.getFont();
       HTMLTag tempTag = new HTMLTag();
       boolean updateFont = false;
@@ -342,7 +341,6 @@ public class Utilities extends java.lang.Object {
       if( f == null ) {
          f = (Font)UIManager.get( "Label.font" );
       }
-      regHeight = g.getFontMetrics().getHeight();
 
       //defaultFont = f;
       //Go through e, writing text and applying tags

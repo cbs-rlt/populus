@@ -66,23 +66,7 @@ Border border1;
    GridBagLayout gridBagLayout2 = new GridBagLayout();
    private PopulusParameterField paramlambda = new PopulusParameterField();
    private PopulusParameterField paramd = new PopulusParameterField();
-   private GridBagLayout gridBagLayout6 = new GridBagLayout();
-   //private JPanel intervalPanel = new JPanel();
-   private GridBagLayout gridBagLayout7 = new GridBagLayout();
-   //private JPanel intervalPanel1 = new JPanel();
-   //private PopulusParameterField paramt2 = new PopulusParameterField();
-   //private PopulusParameterField paramt1 = new PopulusParameterField();
-   //private GridBagLayout gridBagLayout8 = new GridBagLayout();
-   //private JPanel intervalPanel2 = new JPanel();
-   //private PopulusParameterField paramt4 = new PopulusParameterField();
-  /// private PopulusParameterField paramt3 = new PopulusParameterField();
- //  private GridBagLayout gridBagLayout9 = new GridBagLayout();
- //  private JPanel intervalPanel3 = new JPanel();
- //  private PopulusParameterField paramt5 = new PopulusParameterField();
- //  private PopulusParameterField paramt6 = new PopulusParameterField();
    private AIDSTIntervalArray intervalArray = new AIDSTIntervalArray();
-
-
 
    public BasicPlot getPlotParamInfo() {
       double time= runningTimePanel1.getTime();

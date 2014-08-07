@@ -63,7 +63,6 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    private GridLayout gridLayout3 = new GridLayout();
    private JPanel censusTypePanel = new JPanel();
    private Border border3;
-   private TitledBorder titledBorder3;
    private Border border4;
    private TitledBorder titledBorder4;
    private Border border6;
@@ -78,7 +77,6 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    private GridLayout gridLayout1 = new GridLayout();
    private GridLayout gridLayout2 = new GridLayout();
    private JPanel l1P = new JPanel();
-   private TitledBorder titledBorder5;
    private TitledBorder titledBorder7;
    private GridBagLayout gridBagLayout5 = new GridBagLayout();
    private GridBagLayout gridBagLayout6 = new GridBagLayout();
@@ -185,12 +183,10 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
       border2 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder2 = new TitledBorder(border2,res.getString("Output_Parameters"));
       border3 = BorderFactory.createEmptyBorder();
-      titledBorder3 = new TitledBorder(border3,res.getString("Birthing"));
       border4 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder4 = new TitledBorder(border4,res.getString("Birth_Pattern"));
       border6 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder6 = new TitledBorder(border6,res.getString("Census_Timing"));
-      titledBorder5 = new TitledBorder("");
       titledBorder7 = new TitledBorder("");
       numClassesPPF.setCurrentValue(3.0);
       numClassesPPF.setDefaultValue(3.0);

@@ -11,7 +11,7 @@ public class TPParamInfo implements BasicPlot {
    public static final int FIVE = 5;
    public static final int vsT = 0; //S,I,R,N vs T or S,I,N vs T
    String mCapNvsT = res.getString("Bacterial");
-   int plotType, modelType;
+   int modelType;
    int numVars;
    static ResourceBundle res = ResourceBundle.getBundle(
          "edu.umn.ecology.populus.model.tp.Res");
@@ -153,7 +153,6 @@ public class TPParamInfo implements BasicPlot {
       this.l = L;
       this.r= r;
       this.time = time;
-      this.plotType = plotType;
       this.modelType = modelType;
       if (modelType == ONE)
          numVars = 3;

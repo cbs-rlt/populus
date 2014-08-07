@@ -1,1 +1,1 @@
-java -noverify -cp JBCL.jar;jcchart401K.jar;Populus.jar edu.umn.ecology.populus.core.PopRun 
+java -noverify -cp PopulusAll.jar edu.umn.ecology.populus.core.PopRun 

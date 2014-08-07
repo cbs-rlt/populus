@@ -91,14 +91,11 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
    private JRadioButton onevstButton = new StyledRadioButton();
    private PopulusParameterField paramTime1 = new PopulusParameterField();
    private PopulusParameterField paramTime2 = new PopulusParameterField();
-   private Border border12;
    private TitledBorder titledBorder10;
-   private Border border13;
    private TitledBorder titledBorder14;
    private GridBagLayout gridBagLayout5 = new GridBagLayout();
    private GridBagLayout gridBagLayout7 = new GridBagLayout();
    private PopulusParameterField paramGenperYr = new PopulusParameterField();
-   private TitledBorder titledBorder15;
 
    public BasicPlot getPlotParamInfo() {
 
@@ -183,11 +180,8 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
       titledBorder6 = new TitledBorder( border6,  "Generations/Year" );
 
 
-      border12 = BorderFactory.createEmptyBorder();
       titledBorder10 = new TitledBorder(BorderFactory.createLineBorder(Color.darkGray,1),"Initial Densities");
-      border13 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder14 = new TitledBorder(BorderFactory.createLineBorder(SystemColor.controlText,1),"Termination Condition");
-      titledBorder15 = new TitledBorder("");
       graphTypePanel.setLayout( gridLayout1 );
       gridLayout1.setColumns( 1 );
       gridLayout1.setRows(4 );
