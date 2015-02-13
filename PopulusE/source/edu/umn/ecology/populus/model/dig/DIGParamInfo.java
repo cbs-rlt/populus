@@ -178,6 +178,4 @@ public class DIGParamInfo implements BasicPlot {
       thisInfo = getResults();
    }
 
-   private void setColors() {
-   }
 }

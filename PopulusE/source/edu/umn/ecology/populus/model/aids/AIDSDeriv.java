@@ -1,6 +1,8 @@
 package edu.umn.ecology.populus.model.aids;
 
+import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.math.*;
+
 import java.util.Random;
 
 /**
@@ -80,7 +82,7 @@ public class AIDSDeriv extends Derivative {
       if(v <= kTooSmall) {
          message = "Virus eliminated (v = "+v+") when t = "+t;
          //JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Message", JOptionPane.PLAIN_MESSAGE);
-         edu.umn.ecology.populus.fileio.Logging.log(message+"\n");
+         edu.umn.ecology.populus.fileio.Logging.log(message+"\n", Logging.kInfo);
          virusElimTime = t;
          virusElimVal = v;
          return null;
@@ -88,7 +90,7 @@ public class AIDSDeriv extends Derivative {
       if(N[kY] <= kTooSmall) {
          message = "CD4+ cells are dead (y = "+N[kY]+") when t = "+t;
          //JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Message", JOptionPane.PLAIN_MESSAGE);
-         edu.umn.ecology.populus.fileio.Logging.log(message+"\n");
+         edu.umn.ecology.populus.fileio.Logging.log(message+"\n", Logging.kInfo);
          cd4ElimTime = t;
          cd4ElimVal = N[kY];
          return null;
@@ -97,7 +99,7 @@ public class AIDSDeriv extends Derivative {
          if(n >= kMaxStrains){
             message = "Max number of strains, "+kMaxStrains+" when t = "+t;
             //JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Message", JOptionPane.PLAIN_MESSAGE);
-            edu.umn.ecology.populus.fileio.Logging.log(message);
+            edu.umn.ecology.populus.fileio.Logging.log(message, Logging.kInfo);
             maxStrains = true;
             maxStrainsTime = t;
             maxStrainsVal = kMaxStrains;

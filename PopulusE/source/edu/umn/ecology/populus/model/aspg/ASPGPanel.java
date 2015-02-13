@@ -62,7 +62,6 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
    private JPanel birthPanel = new JPanel();
    private GridLayout gridLayout3 = new GridLayout();
    private JPanel censusTypePanel = new JPanel();
-   private Border border3;
    private Border border4;
    private TitledBorder titledBorder4;
    private Border border6;
@@ -182,7 +181,6 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
       titledBorder1 = new TitledBorder(border1,res.getString("Output_Type"));
       border2 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder2 = new TitledBorder(border2,res.getString("Output_Parameters"));
-      border3 = BorderFactory.createEmptyBorder();
       border4 = BorderFactory.createLineBorder(SystemColor.controlText,1);
       titledBorder4 = new TitledBorder(border4,res.getString("Birth_Pattern"));
       border6 = BorderFactory.createLineBorder(SystemColor.controlText,1);

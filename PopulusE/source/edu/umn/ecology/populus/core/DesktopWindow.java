@@ -27,8 +27,6 @@ import java.util.*;
 
 import javax.swing.*;
 
-import edu.umn.ecology.populus.fileio.Logging;
-
 /**
  * this class is quite messy, but possibly justifiably so because it is difficult
  * to permanently delete something that could very easily become useful, either as
@@ -84,7 +82,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	public void jbInit() throws Exception, Error {
 		defaultWindow = this;
 		this.getContentPane().setLayout( borderLayout1 );
-		System.out.print( "." );
+		System.err.print( "." );
 		desktopPane.putClientProperty( "JDesktopPane.dragMode", "outline" );
 		newButton = PopulusToolButton.createNewButton();
 		helpButton = PopulusToolButton.createMainHelpButton();
@@ -100,7 +98,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 				optionsButton_actionPerformed( e );
 			}
 		} );
-		System.out.print( "." );
+		System.err.print( "." );
 
 		backgroundPanel.setLayout( gridBagLayout1 );
 		setPopulusBackground();
@@ -155,7 +153,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.QUANT_PACKETS),"Quantitative-Genetic Models:"),4);
 		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SPATIAL_PACKETS),"Spatial Models:"),5);
 
-		System.out.print( ".\n" );
+		System.err.print( ".\n" );
 		sizeScreen(this);
 		this.setTitle( res.getString( "Populus" ) );
 		this.setVisible( true );

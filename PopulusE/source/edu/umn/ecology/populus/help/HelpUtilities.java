@@ -94,55 +94,6 @@ public class HelpUtilities  {
 		staticInit();
 	}
 
-	/**
-	 * the interesting problem here is getting acrobat to open just as we please. i guess i'm not sure,
-	 * but i had thought it was a good idea to look for the filetype "AcroExch.Document", but apparently about
-	 * .3% of populus users reported an error with that. the error was found in that the ftype command (above) would
-	 * return nothing. so, now it checks for a return of nothing, and if it does that, then we just stick with
-	 * the start command. but getting the start command to work is a little tricky. the command form is:
-	 * start /D"directory path" filename and this seems to be working. i discovered later that maybe i should have gone with
-	 * using the "assoc" command to find the parameter to use with "ftype", but i'm just guessing here, so
-	 * i don't really know what i'm "supposed to do". i think this should work fine though.
-	 * @param isNoSplash
-	 * @param isBackground
-	 * @param isOpenFile
-	 * @return
-	 */
-	private static String[] getOpenCommand(boolean isNoSplash, boolean isBackground, boolean isOpenFile){
-		String os = "Windows";
-		try {
-			System.getProperty("os.name");
-		} catch (Exception e) {
-			//TODO
-		}
-		Vector<String> command = new Vector<String>();
-		if(os.startsWith("Windows")){
-			boolean canHaveSpecial = app.length() != 0;
-			command.add(cmd);
-			command.add("/c");
-			command.add("start");
-			command.add(app);
-			if(canHaveSpecial){
-				if(isNoSplash) command.add("/s");
-				if(isBackground) command.add("/h");
-			} else {
-				if(isOpenFile) command.add("/D");
-				else command.clear();
-			}
-		} else if(os.startsWith("Mac")){
-			//i can't figure out how to get the same options using adobe reader on osx. they may not exist...
-			//i can't even find a command line executable. i can use 'open /Applications/"Adobe Reader 6.0.app"', but nowhere
-			//in that line are arguments allowed for adobe...
-			command.add("open");
-		} else {
-			//based on my research, this should work. it seems that *NIX don't need path names to run acroread...
-			command.add("acroread");
-		}
-		if(isOpenFile)
-			command.add(f.getAbsolutePath());
-		String[] a = new String[] {};
-		return (String[]) command.toArray(a);
-	}
 
 	/** Register a component's Help button with an ID.
 	 * 

@@ -26,26 +26,18 @@ public class Logging {
 	private static Logging singleLog;
 
 	private Vector<PrintStream> ps;
-	private static PrintStream getLogFile() {
+	private static PrintStream getLogFileAsStream(String filename) {
 		try {
-			String fileout = "";
-			fileout = System.getProperty("user.home") + System.getProperty("file.separator");
-			fileout += "populus.log.txt";
-			return new PrintStream(fileout);
+			return new PrintStream(filename);
 		} catch (Exception e) {
-			System.err.println("Could not get log file:");
-			System.err.println(e);
+			Logging.log(e, "Could not get log file:");
 		}
 		return null;
 	}
-	
+
 	private Logging() {
 		ps = new Vector<PrintStream>();
 		ps.add(System.err);
-		PrintStream fstrm = getLogFile();
-		if (fstrm != null) {
-			ps.add(fstrm);
-		}
 	}
 	private void log1(String msg, int severity) {
 		for (PrintStream s : ps) {
@@ -56,12 +48,29 @@ public class Logging {
 		for (PrintStream s : ps) {
 			e.printStackTrace(s);
 		}
-	}	
+	}
 	
+	/** Returns true if able to add to it */
+	public static synchronized boolean addFileLog(String filename) {
+		PrintStream fstrm = getLogFileAsStream(filename);
+		if (fstrm != null) {
+			singleLog.ps.add(fstrm);
+			return true;
+		}
+		return false;
+	}
 	
-	public static void init() {
+	public static String getDefaultLogFile() {
+		String fileout = "";
+		fileout = System.getProperty("user.home") + System.getProperty("file.separator");
+		fileout += "populus.log.txt";
+		return fileout;
+	}
+	static {
 		if (null == singleLog) {
 			singleLog = new Logging();
+		} else {
+			Logging.log(new Exception("Stack trace"), "Why init logging twice?");
 		}
 	}
 	public static void cleanup() {

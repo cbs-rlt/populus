@@ -317,7 +317,7 @@ public class AboutPopulusDialog extends JDialog {
       panel3rdParty.setForeground(gold);
       panel1.add(panel3rdParty, gbc_panel3rdParty);
       panel3rdParty.setLayout(new BorderLayout(0, 0));
-      txtpnDependsOnThe.setText("Depends on the distributable libraries:\r\n* Jama Javanumerics (http://math.nist.gov/javanumerics/jama/)\r\n* Borland's JBCL\r\n* KLGroup's JClass charts");
+      txtpnDependsOnThe.setText("Depends on the distributable libraries:\r\n* Jama Javanumerics (http://math.nist.gov/javanumerics/jama/)\r\n* KLGroup's JClass charts");
       txtpnDependsOnThe.setBackground(maroon);
       txtpnDependsOnThe.setForeground(gold);
       

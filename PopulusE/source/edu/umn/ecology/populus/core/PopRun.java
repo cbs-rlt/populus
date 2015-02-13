@@ -11,10 +11,10 @@ import java.util.*;
 public class PopRun {
 	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
 	boolean packFrame = false;
-	private DesktopWindow dw;
 
+	/** Theoretically, we could add a way to change the log file here.  Then we'd hook up getopt or something. */
 	public static void main( String argv[] ) {
-		Logging.init();
+		Logging.addFileLog(Logging.getDefaultLogFile());
 		//Allow users to specify the Preferences File on the command line
 		if ((argv.length > 1) && argv[0].equals("-p")) {
 			Logging.log("Using preferences file at " + argv[1]);
@@ -50,7 +50,7 @@ public class PopRun {
 			};
 			System.out.print( "." );
 			UIManager.getLookAndFeelDefaults().putDefaults( localUIDefaults2 );
-			dw = new DesktopWindow();
+			new DesktopWindow();
 		}
 		catch( Exception e ) {
 			e.printStackTrace();

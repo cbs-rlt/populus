@@ -12,7 +12,6 @@ public class Installer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Logging.init();
 		Logging.log("In Installer main");
 		if (args.length > 0) {
 			if (args[0].equals("install")) {

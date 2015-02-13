@@ -159,13 +159,6 @@ public static final int a = 1;
    }
 
    /**
-     * @param newValue int[][]
-     */
-   private void setPopArray( int[][] newValue ) {
-      this.popArray = newValue;
-   }
-
-   /**
      * @param popSize int
      * @param domFreq double
      */
