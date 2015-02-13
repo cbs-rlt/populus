@@ -78,7 +78,7 @@ static final Object[][] contents = new String[][] {
       },  {
          "Options", "Options"//this is used for the output model... "Preferences" instead?
       },  {
-         "Courser_Grid", "Coarser Grid"
+         "Coarser_Grid", "Coarser Grid"
       },  {
          "Finer_Grid", "Finer Grid"
       },  {

@@ -67,7 +67,7 @@ ThreeD td;
          the graph. go to edu.umn.ecology.populus.core.ModelOutputFrame for modifying the actual menu*/
    public void showOptions(int whatOption){
       switch (whatOption) {
-         case MenuOptions.kCourserGrid:
+         case MenuOptions.kCoarserGrid:
                      td.setGridVisible(true);
                      td.setNumGridLines(td.getNumGridLines()/2);
                      break;

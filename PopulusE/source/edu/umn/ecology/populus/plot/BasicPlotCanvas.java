@@ -70,8 +70,8 @@ public class BasicPlotCanvas extends JPanel {
       JCAxis h = chart.getChartArea().getHorizActionAxis();
       JCAxis v = chart.getChartArea().getVertActionAxis();
       switch( whatOption ) {
-         case MenuOptions.kCourserGrid:
-            courserGrid();
+         case MenuOptions.kCoarserGrid:
+            coarserGrid();
             break;
 
          case MenuOptions.kFinerGrid:
@@ -112,7 +112,7 @@ public class BasicPlotCanvas extends JPanel {
       }
    }
 
-   void courserGrid(){
+   void coarserGrid(){
       JCAxis h = chart.getChartArea().getHorizActionAxis();
       JCAxis v = chart.getChartArea().getVertActionAxis();
 

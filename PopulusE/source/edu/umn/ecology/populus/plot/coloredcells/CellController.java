@@ -200,7 +200,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 
 	public void showOptions(int whatOption){
 		switch (whatOption) {
-			case MenuOptions.kCourserGrid:
+			case MenuOptions.kCoarserGrid:
             break;
          case MenuOptions.kFinerGrid:
             break;

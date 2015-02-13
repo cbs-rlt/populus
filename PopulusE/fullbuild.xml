@@ -53,7 +53,7 @@
 
 
 	<target name="checkforchanges">
-		<uptodate property="nochanges">
+		<uptodate property="nochanges" targetfile="${jarfile}">
 			<srcfiles dir="${build}" includes="**/*.class" />
 		</uptodate>
 	</target>

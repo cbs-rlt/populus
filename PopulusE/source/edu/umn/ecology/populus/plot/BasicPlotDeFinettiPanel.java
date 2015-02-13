@@ -51,7 +51,7 @@ DeFinettiGraph dfg;
     the graph. go to edu.umn.ecology.populus.core.ModelOutputFrame for modifying the actual menu*/
    public void showOptions(int whatOption){
       switch (whatOption) {
-         case MenuOptions.kCourserGrid:
+         case MenuOptions.kCoarserGrid:
             if(dfg.getGridVisible())
                dfg.setGridFactor(dfg.getGridFactor()/2.0);
             else

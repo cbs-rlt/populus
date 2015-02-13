@@ -109,7 +109,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res
          toolBar.add( switchButton, null );
       }
       toolBar.add( closeButton, null );
-      popupMenu1.add( new AbstractAction( res.getString( "Courser_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "CourserGrid.gif" )) )  { //menu 0
+      popupMenu1.add( new AbstractAction( res.getString( "Coarser_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "CoarserGrid.gif" )) )  { //menu 0
 
          /**
 		 * 
@@ -117,7 +117,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res
 		private static final long serialVersionUID = 1426050157067073191L;
 
 		public void actionPerformed( ActionEvent e ) {
-            model.getOptions( MenuOptions.kCourserGrid );
+            model.getOptions( MenuOptions.kCoarserGrid );
          }
       } );
       popupMenu1.add( new AbstractAction( res.getString( "Finer_Grid" ), new ImageIcon(ModelOutputFrame.class.getResource( "FinerGrid2.gif" )) )  { //menu 1

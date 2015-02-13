@@ -22,8 +22,6 @@ import java.lang.reflect.Method;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
-
 import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
@@ -39,7 +37,7 @@ public class AboutPopulusDialog extends JDialog {
    JLabel line1 = new JLabel();
    JLabel line7 = new JLabel();
    JPanel panel1 = new JPanel();
-   SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+   SimpleVFlowLayout verticalFlowLayout1 = new SimpleVFlowLayout();
    JPanel urlPanel = new JPanel();
    JPanel jPanel2 = new JPanel();
    JLabel line8 = new JLabel();
@@ -186,7 +184,7 @@ public class AboutPopulusDialog extends JDialog {
       button1.setActionCommand( "" );
       button1.setFocusPainted( false );
       button1.setRolloverEnabled( true );
-      jPanel1.setLayout( simpleVFlowLayout1 );
+      jPanel1.setLayout( verticalFlowLayout1 );
       button1.setText( "OK" );
       button1.addActionListener( new AboutPopulusDialog_button1_actionAdapter( this ) );
       this.addWindowListener( new AboutPopulusDialog_this_windowAdapter( this ) );
@@ -317,7 +315,7 @@ public class AboutPopulusDialog extends JDialog {
       panel3rdParty.setForeground(gold);
       panel1.add(panel3rdParty, gbc_panel3rdParty);
       panel3rdParty.setLayout(new BorderLayout(0, 0));
-      txtpnDependsOnThe.setText("Depends on the distributable libraries:\r\n* Jama Javanumerics (http://math.nist.gov/javanumerics/jama/)\r\n* KLGroup's JClass charts");
+      txtpnDependsOnThe.setText("Depends on the distributable libraries:\r\n* Jama Javanumerics (http://math.nist.gov/javanumerics/jama/)\r\n* Borland's JBCL\r\n* KLGroup's JClass charts");
       txtpnDependsOnThe.setBackground(maroon);
       txtpnDependsOnThe.setForeground(gold);
       
