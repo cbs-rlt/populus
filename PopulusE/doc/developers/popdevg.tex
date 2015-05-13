@@ -271,6 +271,25 @@ Do not assume that \texttt{getPlotInfo()} will be called whenever you call \text
 
 Inherited models should not have to worry about when to show the output screen.  \texttt{registerChildren()} is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the Preferences so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.  See the Preferences note for this.
 
+\subsubsection{Events: An Example}
+
+Let's imagine a case where a user loads a simple model, namely Density Independent Growth, and then changes the \texttt{r} parameter.
+
+\textbf{When Populus starts}, a \texttt{DesktopWindow::MenuAction} menu item, which has a reference to the class \texttt{DIGModel}, is loaded in \texttt{DesktopWindow::loadMenu()}.
+
+\textbf{When the user selects Density Independent Growth in the menu}, we call \texttt{DesktopWindow::loadModel()}, where it creates a new instance of a \texttt{DIGModel}.  (We know that it is a \texttt{DIGModel} from the \texttt{MenuAction} object.)
+
+In the \texttt{DIGModel} constructor, it creates a \texttt{DIGPanel} object, and calls \texttt{registerChildren()} to set up events from the input panel.  Then it calls \texttt{setModelInput()}, which creates the model input frame and starts listening to \texttt{ModelPanelEvents} with \texttt{modelPanelChanged()}.
+
+In \texttt{ModelPanel::registerChildren()}, we add listeners to all of the UI components.  These will call \texttt{Model::modelPanelChanged(ModelPanelEvent e)} when they receive events.
+
+\textbf{Now the user changes the \texttt{r} value}.  The UI component fires an event to \texttt{ModelPanel}, which calls \texttt{Model::modelPanelChanged()}. In \texttt{modelPanelChanged}, it sees that this is worthy of an update, and so calls \texttt{BasicPlotModel::simpleUpdateOutput()} via \texttt{Model::updateOutput()}.
+
+In \texttt{BasicPlotModel::simpleUpdateOutput()}, it takes a \texttt{DIGData} object from the input using \texttt{DIGModel::getPlotParamInfo()}, and passes it to the output.  Since we haven't already, we will also create a \texttt{ModelOutputFrame}, which contains a \texttt{BasicPlotOutputPanel}, which contains a \texttt{BasicPlotCanvas}.  Most of the real code for output is in \texttt{BasicPlotCanvas}, although that code is really the same for all 2D graphs.
+
+\textbf{On subsequent changes to \texttt{r}}, the code path is similar, except we don't need to create some of the output objects again.  Instead, we just call \texttt{BasicPlotCanvas::setBPI()}.
+
+
 \subsection{Adding a Model to the Menus}
 To add a model to the menu, add a ModelPacket in PopPreferences.
 

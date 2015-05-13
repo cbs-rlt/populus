@@ -37,3 +37,14 @@ The help configuration can be changed at a later time in the "More" tab of the P
 
 Help configuration is stored in the User Preferences file, keys 111-114.
 
+* SOME SELECTED CONFIGURATION KEYS *
+
+100:      Button look
+101:      Save/load Directory
+102-103:  Model update actions
+104-110:  Visual preferences
+111-114:  Help configuration
+115-117:  Default bounds of the main window
+
+
+
