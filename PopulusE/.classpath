@@ -9,5 +9,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="res/reqlibs/Jama-1.0.2.jar"/>
 	<classpathentry kind="lib" path="res/reqlibs/jcchart401K.jar"/>
+	<classpathentry kind="lib" path="res/jdtCompilerAdapter.jar"/>
+	<classpathentry kind="lib" path="res/org.eclipse.jdt.core_3.10.0.v20140902-0626.jar"/>
+	<classpathentry kind="lib" path="res/reqlibs/jcommon-1.0.21.jar"/>
+	<classpathentry kind="lib" path="res/reqlibs/jfreechart-1.0.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

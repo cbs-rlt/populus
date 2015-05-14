@@ -6,7 +6,7 @@
 	<property environment="env"/>
 	<property name="src" location="source"/>
 	<!-- java source folder        -->
-	<property name="build" location="build/classes"/>
+	<property name="builddir" location="build/classes"/>
 	<!-- intermediate build products, needs to be in sync with Properties >> Java Build Path >> Default Output Path  -->
 	<property name="lib" location="res"/>
 	<!-- local libraries linked against -->
@@ -16,29 +16,37 @@
 	<property name="resources" location="resources"/>
 	<!-- location of general java resources -->
 	<property name="compile.debug" value="true"/>
+	<!--
+	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+	-->
+	
 	<condition property="isMac">
 		<os family="mac" />
 	</condition>
 
 	<!-- Initialization target, for any prelimary setup needed to build -->
 	<target name="init" description="Preparation">
-		<mkdir dir="${build}"/>
+		<mkdir dir="${builddir}"/>
 		<mkdir dir="${out}"/>
 	</target>
-	<target name="compile" depends="init" description="Compile code">
-		<javac deprecation="true" srcdir="${src}" destdir="${build}"
-                   classpathref="lib.path"
-        		   includeAntRuntime="no"
-                   debug="${compile.debug}" >
+	<target name="compile" depends="init" description="Compile code" unless="nochanges">
+		<javac srcdir="${src}" destdir="${builddir}" debug="${compile.debug}"
+		        nowarn="on" extdirs="${res}" source="1.7" includeantruntime="false">
+			<classpath>
+				<pathelement location="${basedir}/../org.eclipse.jdt.core/bin"/>
+			
+			</classpath>
 		</javac>
 	</target>
+		
+	
 	<target name="copyres" depends="init" description="Copy images">
-		<copy todir="${build}" verbose="true">
+		<copy todir="${builddir}" verbose="true">
 			<fileset dir="${src}" includes="**/*.gif,**/*.png" />
 		</copy>
 	</target>
 	<target name="clean" description="Remove build and dist directories">
-		<delete dir="${build}"/>
+		<delete dir="${builddir}"/>
 		<delete dir="${out}"/>
 	</target>
 	<target name="rebuild" depends="clean,create_run_jar" description="Clean and build">
@@ -48,13 +56,13 @@
 		<tstamp>
 			<format property="STARTTIME" pattern="dd-MMMM-yyyy hh:mm aa z" timezone="UTC" />
 		</tstamp>
-		<echo file="${build}/edu/umn/ecology/populus/core/timestamp.txt" append="false" message="${STARTTIME}" />
+		<echo file="${builddir}/edu/umn/ecology/populus/core/timestamp.txt" append="false" message="${STARTTIME}" />
 	</target>
 
 
 	<target name="checkforchanges">
 		<uptodate property="nochanges" targetfile="${jarfile}">
-			<srcfiles dir="${build}" includes="**/*.class" />
+			<srcfiles dir="${builddir}" includes="**/*.class" />
 		</uptodate>
 	</target>
 
@@ -66,9 +74,11 @@
 				<attribute name="Main-Class" value="edu.umn.ecology.populus.core.PopRun"/>
 				<attribute name="Class-Path" value="."/>
 			</manifest>
-			<fileset dir="${build}"/>
+			<fileset dir="${builddir}"/>
 			<zipfileset excludes="META-INF/*.SF" src="res/reqlibs/Jama-1.0.2.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="res/reqlibs/jcchart401K.jar"/>
+			<zipfileset excludes="META-INF/*.SF" src="res/reqlibs/jcommon-1.0.21.jar"/>
+			<zipfileset excludes="META-INF/*.SF" src="res/reqlibs/jfreechart-1.0.17.jar"/>
 		</jar>
 	</target>
 
