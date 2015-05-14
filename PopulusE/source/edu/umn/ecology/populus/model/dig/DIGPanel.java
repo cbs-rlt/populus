@@ -5,6 +5,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
+import edu.umn.ecology.populus.fileio.Logging;
 import javax.swing.*;
 import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
@@ -155,8 +156,6 @@ public class DIGPanel extends BasicPlotInputPanel {
 			myData[3] = null;
 		}
 		return new DIGParamInfo( myData, numToGraph );
-
-		//*/
 	}
 
 	public DIGPanel() {

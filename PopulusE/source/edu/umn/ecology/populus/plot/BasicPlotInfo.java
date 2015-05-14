@@ -1,5 +1,6 @@
 package edu.umn.ecology.populus.plot;
 import com.klg.jclass.chart.*;
+
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.plot.plotshapes.*;
 import edu.umn.ecology.populus.constants.ColorScheme;
@@ -8,6 +9,38 @@ import edu.umn.ecology.populus.fileio.Logging;
 import java.awt.*;
 import java.io.*;
 import java.util.*;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.DomainOrder;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DatasetChangeListener;
+import org.jfree.data.general.DatasetGroup;
+import org.jfree.data.xy.AbstractXYDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.ui.RectangleAnchor;
+import org.jfree.ui.TextAnchor;
+import org.jfree.chart.annotations.XYAnnotation;
+import org.jfree.chart.annotations.XYPointerAnnotation;
+import org.jfree.chart.annotations.XYTextAnnotation;
+import org.jfree.chart.axis.LogarithmicAxis;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.Plot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.ValueMarker;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
+import org.jfree.chart.renderer.xy.AbstractXYItemRenderer;
+import org.jfree.chart.renderer.xy.StandardXYBarPainter;
+import org.jfree.chart.renderer.xy.XYBarRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+
 import Jama.EigenvalueDecomposition;
 
 /**
@@ -20,9 +53,6 @@ import Jama.EigenvalueDecomposition;
   * be enforced.
   */
 public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartListener {
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = -882044708806321402L;
 
 	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
@@ -45,26 +75,38 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 
    /*Symbol Styles*/
    public static final int NONE      = JCSymbolStyle.NONE;
-   public static final int SQUARE    = JCSymbolStyle.BOX;
+   //public static final int SQUARE    = JCSymbolStyle.BOX;
    public static final int DOTS      = -1;
    public static final int ARROW     = -2;
    public static final int FLETCHING = -3;
 
-   /*these 2 objects are for turning a plot line into an arrow*/
+   /*these objects are for turning a plot line into an arrow*/
    protected Vector<PlotTerminus> plotTerminusList = new Vector<PlotTerminus>();
 
    /*Line Styles*/
-   public static final int CONTINUOUS  = JCLineStyle.SOLID;
-   public static final int DISCRETE    = JCLineStyle.SHORT_DASH;
-   public static final int DASHED      = JCLineStyle.LONG_DASH;
-   public static final int LSL_DASH    = JCLineStyle.LSL_DASH;
-   public static final int DASH_DOT    = JCLineStyle.DASH_DOT;
-   public static final int NO_LINE     = JCLineStyle.NONE;
+   public static final int CONTINUOUS  = JCLineStyle.SOLID;        // 1
+   public static final int DISCRETE    = JCLineStyle.SHORT_DASH;   // 3        5x 10o 
+   public static final int DASHED      = JCLineStyle.LONG_DASH;    // 2       10x 10o
+   public static final int LSL_DASH    = JCLineStyle.LSL_DASH;     // 4       10x 10o  5x 10o
+   public static final int DASH_DOT    = JCLineStyle.DASH_DOT;     // 5       10x 10o  1x 10o
+   public static final int NO_LINE     = JCLineStyle.NONE;         // 0
 
    /*Usage: data[lineNo][0 for x, 1 for y, 2 for z][point number]*/
    double[][][] data;
 
-   /*lines give styling info about the same lines in data*/
+   /** 
+    * lines give styling info about the same lines in data.
+    * 
+    * TODO - if we want to remove dependencies to JCChart, we will need to create a class that
+    *  functions as JCChartStyle here, and contains:
+    *      LineStyle  (e.g., CONTINUOUS)
+    *      LineWidth
+    *      LineColor
+    *      SymbolShape
+    *      SymbolSize
+    *      SymbolColor
+    *      
+    */
    private Vector<JCChartStyle> lines = new Vector<JCChartStyle>();
 
    /*these are a collection of flags*/
@@ -104,6 +146,42 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    regardless of what xMin, xMax have been set to*/
    //public boolean hasXMax = false, hasYMax = false, hasZMax = false;
 
+   
+   	private class JFCXYAdapter extends AbstractXYDataset {
+	   private static final long serialVersionUID = -1226686444066513897L;
+
+		@Override
+		public int getItemCount(int series) {
+			//Logging.log("In getItemCount " + series);
+			return data[series][0].length;
+		}
+	
+		@Override
+		public Number getX(int series, int item) {
+			//Logging.log("In getX " + series + ", " + item + " = " + data[series][0][item]);
+			return data[series][0][item];
+		}
+	
+		@Override
+		public Number getY(int series, int item) {
+			//Logging.log("In getY " + series + ", " + item + " = " + data[series][1][item]);
+			return data[series][1][item];
+		}
+	
+		@Override
+		public int getSeriesCount() {
+			//Logging.log("In getSeriesCount " + data.length);
+			return data.length;
+		}
+
+		@Override
+		public String getSeriesKey(int arg0) {
+			//TODO - I think this is the name of the series, will this implementation suffice?
+			return "" + arg0;
+		}
+   }
+   	
+   
    /***************
    * CONSTRUCTORS *
    ***************/
@@ -152,13 +230,187 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
       outputType = k3D;
       setData( dataPoints );
    }
+   
+   private static float[] getDashArray(int type) {
+	   final float[][] ttable = {
+		   { 0.0f,  1.0f},   			//NONE   0
+		   null,           				//SOLID  1
+		   {10.0f, 10.0f},				//LONG   2
+		   { 5.0f, 10.0f},				//SHORT  3
+		   {10.0f, 10.0f, 5.0f, 10.0f},	//LSL    4
+		   {10.0f, 10.0f, 1.0f, 10.0f}, //DASH.  5
+	   };
+	   
+	   return ttable[type];
+   }
 
+   public void styleJFree( ChartPanel chart ) {
+	   
+//	   if (!this.isBarChart) {
+//			JFreeChart jfc = ChartFactory.createXYLineChart(null, null, null,
+//				null,
+//				PlotOrientation.VERTICAL, // orientation
+//				false, // include legend
+//				true, // tooltips
+//				false // urls
+//			);
+//			chart.setChart(jfc);
+	   
+	   
+	   JFCXYAdapter jfca = new JFCXYAdapter();
+	   XYPlot plot = chart.getChart().getXYPlot();
+	   plot.setDataset(jfca);
+
+	   if (isLogPlot) {
+		   plot.setRangeAxis(new LogarithmicAxis(""));
+	   }
+	   if (isFrequencies) {
+		   ValueAxis va = plot.getRangeAxis();
+		   if (va instanceof NumberAxis) {
+			   NumberAxis na = (NumberAxis) va;
+			   na.setTickUnit(new NumberTickUnit(0.1));
+		   } else {
+			   Logging.log("Range Axis is not NumberAxis, why?", Logging.kWarn);
+		   }
+	   }
+
+	   if(xMinSet) plot.getDomainAxis().setLowerBound(xAxisMin);
+	   if(xMaxSet) plot.getDomainAxis().setUpperBound(xAxisMax);
+	   if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
+	   if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
+
+	   XYItemRenderer r = plot.getRenderer();
+	   //		   AbstractXYItemRenderer r = plot.getRenderer();
+	   if (r instanceof XYLineAndShapeRenderer) {
+		   XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) r;
+		   for( int i = 0;i < getNumSeries();i++ ) {
+			   //				   renderer.setUseFillPaint(true);
+			   //				   renderer.setUseOutlinePaint(true);
+			   JCChartStyle jccs = getChartStyle(i);
+
+			   //Set Line
+			   renderer.setSeriesPaint(i, jccs.getLineColor());
+			   Stroke s = new BasicStroke((float) jccs.getLineWidth(),
+					   BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f,
+					   getDashArray(jccs.getLinePattern()), 0.0f);
+			   renderer.setSeriesStroke(i, s);
+
+			   //Set Symbol
+			   renderer.setSeriesFillPaint(i, jccs.getSymbolColor());
+			   renderer.setSeriesOutlinePaint(i, jccs.getSymbolColor());
+
+
+			   jccs.getSymbolShape();
+
+
+
+			   jccs.setSymbolCustomShape(new CircleTerminus(true));
+			   Logging.log("val1 is " + jccs.getSymbolStyle());
+			   Logging.log("val2 is " + jccs.getSymbolCustomShape().getClass());
+			   //jccs.getSymbolStyle()
+			   //jccs.getSymbolSize()
+			   //			   renderer.setBaseShapesVisible(true);
+			   //			   renderer.setBaseShapesFilled(true);
+			   Shape shape = new Rectangle(-5, -5, 10, 10);
+			   //			   renderer.setSeries
+
+			   //renderer.setSeriesShape(i, shape);
+			   //renderer.setSeriesShapesVisible(i, true);
+			   //renderer.setser
+
+		   }
+	   } else if (r instanceof XYBarRenderer) {
+		   XYBarRenderer barRenderer = (XYBarRenderer) r;
+		   barRenderer.setBarPainter(new StandardXYBarPainter());
+		   
+		   //TODO - we need the 
+	   } else {
+		   Logging.log("Unknown renderer type: " + r.getClass(), Logging.kWarn);
+	   }
+
+	   //inner labels, used in AIDS: Therapy
+	   plot.clearAnnotations();
+	   Enumeration<InnerLabel> e = innerLabels.elements();
+	   while (e.hasMoreElements()) {
+		   InnerLabel lab = (InnerLabel) e.nextElement();
+		   Logging.log("Adding " + lab.caption + " at " + lab.x + ", " + lab.y);
+
+		   XYTextAnnotation annotation = new XYTextAnnotation(lab.caption, lab.x, lab.y);
+		   annotation.setTextAnchor(TextAnchor.BOTTOM_CENTER);
+		   annotation.setOutlineVisible(true);
+		   plot.addAnnotation(annotation);
+
+
+		   //I actually think that annotation is ugly.  We can use one of these instead in the future, maybe...
+		   /*PointerAnnotation may look cool...
+		    * That 2.0 is the angle, randomly picked
+		    * XYPointerAnnotation annotation = new XYPointerAnnotation(lab.caption, lab.x, lab.y, 2.0); 
+		    */
+
+		   /*
+		   ValueMarker marker = new ValueMarker(lab.x);
+		   marker.setLabel(lab.caption);
+		   marker.setLabelAnchor(RectangleAnchor.BOTTOM_LEFT);
+		   plot.addDomainMarker(marker);
+		    */
+
+	   }
+
+	   //This is set for GD: AMCM
+	   if (startGridded) {
+		   plot.setDomainGridlinesVisible(true);
+		   plot.setDomainGridlinePaint(Color.BLACK);
+		   plot.setRangeGridlinesVisible(true);
+		   plot.setRangeGridlinePaint(Color.BLACK);
+	   }
+
+		   /*
+	   } else { //isBarChart
+		   //Used by Genetic Drift: A Monte Carlo Method, Markov version
+		   DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+		   //TODO - we should make "private class JFCCatAdapter extends DefaultCategoryDataset" and plug that in.
+		   for (int lineno=0; lineno<data.length; ++lineno) {
+			   double[][] line = data[lineno];
+			   String linestr = Integer.toString(lineno);
+			   for (int i=0; i<line[0].length; ++i) {
+				   dataset.addValue(line[1][i],  linestr, new Double(line[0][i]));
+			   }
+		   }
+		   JFreeChart jfc = ChartFactory.createBarChart(
+			   null, // chart title
+			   null, // domain axis label
+			   null, // range axis label
+			   dataset, // data
+			   PlotOrientation.VERTICAL, // orientation
+			   false, // include legend
+			   true, // tooltips
+			   false // URLs?
+		   );
+		   chart.setChart(jfc);
+		   if (jfc.getPlot() instanceof CategoryPlot) {
+			   CategoryPlot plot = (CategoryPlot) jfc.getPlot();
+			   ((BarRenderer) plot.getRenderer()).setBarPainter(new StandardBarPainter());
+			   if (xMinSet || xMaxSet) {
+				   Logging.log("Why would xmax or xmin be set for bar chart?");
+			   }
+			   if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
+			   if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
+		   }
+	   }
+	   */
+
+	   //TODO:  Data Listeners???
+	   //chart.getChart().setBackgroundPaint(Color.GREEN);
+
+   }
+   
    /************************
    * JCChart Communicators *
    ************************/
    /** This modifies the chart argument for the look and data wanted */
    public void styleJC( JCChart chart ) {
-      findBounds();
+      findBounds(); //compute xMin, xMax, yMin, yMax, zMin, zMax
       for( int i = 0;i < getNumSeries();i++ )
          chart.getDataView( 0 ).setChartStyle( i, getChartStyle(i) );
 
@@ -235,7 +487,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
     * @param n
     * @return
     */
-   public JCChartStyle getChartStyle( int n ) {
+   private JCChartStyle getChartStyle( int n ) {
       while(lines.size() <= n) lines.add( getDefaultStyle() );
       return ( (JCChartStyle)lines.elementAt( n ) );
    }
@@ -316,6 +568,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 
    /**
     * to change what a line would look like by default, change the settings in this method
+    * 
     * @return
     */
    private JCChartStyle getDefaultStyle(){
@@ -333,6 +586,8 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
     * one of the methods that make this class a JCChartListener. this method is called when the
     * chart is finally drawn so that the aspect of the plot window can be taken into account when
     * calculating the angle of the plot arrow and fletching.
+    * 
+    *  TODO - will we need to dynamically check for JFreeChart when resized, or will it automagically work out?
     * @param jc
     */
    public void paintChart(JCChart jc){
@@ -354,7 +609,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    /**
     * this method is called when one of the axes is changed, e.g. when a zoom is performed. if the graph
     * is a frequency graph, then we want to force the y-axis to have a spacing of 0.1, but if zoomed in, then
-    * the 0.1 spacing isn't any good anymore, and we should let the axis choose it's own spacing.
+    * the 0.1 spacing isn't any good anymore, and we should let the axis choose its own spacing.
     * @param jce
     */
    public void changeChart(JCChartEvent jce){
@@ -425,7 +680,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    public void setTerminus(int whichLine, double[][] newLine, PlotTerminus term) {
       int terminusLine = getData().length;
       addData(newLine);
-      getChartStyle(terminusLine).getSymbolStyle().setCustomShape(term);
+      getChartStyle(terminusLine).getSymbolStyle().setCustomShape(term.getJCShape());
       Color c = ColorScheme.colors[whichLine%ColorScheme.colors.length];
       setColor(c, terminusLine);
       plotTerminusList.add(term);
@@ -433,15 +688,18 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 
    public void setSymbolStyle( int whichLine, int style) {
       if(style >= 0){
+    	 if(style>0){
+    		 edu.umn.ecology.populus.fileio.Logging.log("Why set symbolstyle to " + style, Logging.kWarn);
+    	 }
          getChartStyle(whichLine).getSymbolStyle().setShape(style);
       } else {
          switch(style){
             case DOTS:
-               getChartStyle(whichLine).getSymbolStyle().setCustomShape( new Circle() );
+               getChartStyle(whichLine).getSymbolStyle().setCustomShape( new Circle().getJCShape() );
                break;
             case ARROW:
             case FLETCHING:
-               edu.umn.ecology.populus.fileio.Logging.log("Should use setTerminus");
+               edu.umn.ecology.populus.fileio.Logging.log("Should use setTerminus", Logging.kWarn);
                break;
          }
       }
@@ -647,7 +905,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
       if(b){
          setLineStyle( BasicPlotInfo.DASHED );
          for( int j = 0;j < getNumSeries();j++ ) {
-            setLineColor( j, Color.black );
+            setLineColor( j, Color.black ); //TODO = why set to black?
             setSymbolStyle( j, BasicPlotInfo.DOTS);
          }
       } else {
@@ -655,6 +913,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
          setLineStyle( BasicPlotInfo.CONTINUOUS );
       }
    }
+   
 
    /***************************************
    * Serialization and data storage stuff *
@@ -669,6 +928,8 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
          pw.println( res.getString( "Line_" ) + inc++ );
       }
    }
+
+
 }
 
 class InnerLabel {

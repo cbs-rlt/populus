@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 
 /**
+ * Circle that goes at the beginning or end of a line.
+ * 
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
  * <p>Copyright: Copyright (c) 2005</p>
@@ -19,7 +21,7 @@ public class CircleTerminus extends PlotTerminus {
    }
 
    protected void resize(int size) {
-      this.size = size; //Lars - is this really necessary?
+      this.size = size;
    }
 
    public void draw(Graphics gc,
@@ -35,6 +37,10 @@ public class CircleTerminus extends PlotTerminus {
          gc.fillOval(xi, yi, d, d);
    }
 
+   
+   //TODO - what about the draw with floating point args? Can that ever be called?
+   
+   //TODO - does this ever really get called???
    protected float[] getArray(int size) {
       int steps = 20;
       float[] pc = new float[steps * 2];

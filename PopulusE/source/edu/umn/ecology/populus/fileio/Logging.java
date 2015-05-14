@@ -19,7 +19,7 @@ public class Logging {
 	/* Normal log */
 	public static final int kInfo = 0;
 	/* Not clear why this happened, but should be recoverable */
-	public static final int kHuh = 10;
+	public static final int kWarn = 10;
 	/* Potentially very serious */
 	public static final int kErr = 20;
 	

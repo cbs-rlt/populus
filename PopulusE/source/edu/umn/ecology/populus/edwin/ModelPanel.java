@@ -91,25 +91,19 @@ protected transient Vector<ModelPanelListener> listeners;
    public void registerChildren( Component c ) {
       if( c instanceof PopulusParameterField ) {
          ( (PopulusParameterField)c ).addParameterFieldListener( this );
-      } else {
-         if( c instanceof JButton ) {
-            ( (JButton)c ).addActionListener( this );
-         } else {
-            if( c instanceof JRadioButton ) {
-               ( (JRadioButton)c ).addActionListener( this );
-            } else {
-               if( c instanceof Container ) {
-                  int i;
-                  Container cont;
-                  Component[] temp;
-                  cont = (Container)c;
-                  temp = cont.getComponents();
-                  for( i = 0;i < temp.length;i++ ) {
-                     registerChildren( temp[i] );
-                  }
-               }
-            }
-         }
+      } else if( c instanceof JButton ) {
+    	  ( (JButton)c ).addActionListener( this );
+      } else if( c instanceof JRadioButton ) {
+    	  ( (JRadioButton)c ).addActionListener( this );
+      } else if( c instanceof Container ) {
+    	  int i;
+    	  Container cont;
+    	  Component[] temp;
+    	  cont = (Container)c;
+    	  temp = cont.getComponents();
+    	  for( i = 0;i < temp.length;i++ ) {
+    		  registerChildren( temp[i] );
+    	  }
       }
    }
 

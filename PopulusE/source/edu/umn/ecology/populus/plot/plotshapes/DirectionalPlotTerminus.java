@@ -4,6 +4,8 @@ import java.awt.geom.AffineTransform;
 
 
 /**
+ * Directional means that it needs to know the direction of the line, such as an arrow.
+ * 
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
  * <p>Copyright: Copyright (c) 2005</p>
@@ -21,13 +23,25 @@ abstract public class DirectionalPlotTerminus extends PlotTerminus {
       super(isStart);
    }
 
+   /**
+    *  So we know the angle from the last two points
+    */
    public void setDeltas(double dy, double dx) {
       this.dy = dy;
       this.dx = dx;
    }
 
+   /**
+    * @param size
+    * @return an array of points in the form (x0,y0, x1,y1, x2,y2, ...) for the shape
+    *         assuming a given size, and directed to the right.
+    */
    protected abstract float[] getArray(int size);
 
+   /**
+    *  From JCShape, recompute x and y arrays based on the new size and direction
+    */
+   @Override
    protected void resize( int size ) {
       AffineTransform at = new AffineTransform();
       at.rotate( getAngle() );
@@ -50,7 +64,7 @@ abstract public class DirectionalPlotTerminus extends PlotTerminus {
     * so why change it now?
     * @return
     */
-   public double getAngle(){
+   protected double getAngle(){
       double angle;
       if( dx != 0 ) {
          angle = Math.atan( adjustment*dy/dx );

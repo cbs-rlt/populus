@@ -11,7 +11,7 @@ public class BasicPlotOutputPanel3D extends OutputPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8686546235450404726L;
-ThreeD td;
+	ThreeD td;
    GridBagLayout gridBagLayout1 = new GridBagLayout();
 
    public BasicPlotOutputPanel3D(BasicPlotInfo info){

@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.event.*;
 
-/** @TODO - Is this class even used??? */
+/** TODO - Is this class even used??? */
 public class ASPGProjectionTable extends AbstractTableModel{
    /**
 	 * 

@@ -2,6 +2,9 @@ package edu.umn.ecology.populus.plot.plotshapes;
 
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.fileio.Logging;
+
+//TODO - It seems like this should belong in BasicPlotInfo?
 
 /**
  * Contains methods for adding arrows and/or fletching to BasicPlotInfo lines.
@@ -17,7 +20,10 @@ public class PlotArrow {
 
    /**
     * just call this method and it will add an arrow to the end of
-    * the line in the bpi indicated by <code>tolineNumber</code>
+    * the line in the bpi indicated by <code>tolineNumber</code>.
+    * 
+    * It does this by simply creating a new line that duplicates the end/beginning
+    * of the existing line and uses this for a symbol.
     * @see edu.umn.ecology.populus.plot.plotshapes.Fletching
     * @param bpi the BasicPlotInfo with the line
     * @param toLineNumber which line to put the arrow on
@@ -26,7 +32,7 @@ public class PlotArrow {
       double[][][] data = bpi.getData();
       double xf = 0, yf = 0, xi = 0, yi = 0;
       if( toLineNumber >= data.length ) {
-         edu.umn.ecology.populus.fileio.Logging.log( "Error: no such line to add arrow." );
+         edu.umn.ecology.populus.fileio.Logging.log( "Error: no such line to add arrow.", Logging.kWarn );
          return;
       }
 

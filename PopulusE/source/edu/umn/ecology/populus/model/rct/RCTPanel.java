@@ -685,7 +685,7 @@ int numVars;
                nvsnButton.setEnabled(true);
                break;
             default:
-               Logging.log("Invalid speciesNum " + paramSpeciesNum.getInt(), Logging.kHuh);
+               Logging.log("Invalid speciesNum " + paramSpeciesNum.getInt(), Logging.kWarn);
             case 3:
                paramN02.setEnabled(true);
                paramN03.setEnabled(true);
@@ -723,7 +723,7 @@ int numVars;
                rvsrButton.setEnabled(true);
                break;
             default:
-               Logging.log("Invalid paramRNum " + paramRNum.getInt(), Logging.kHuh);
+               Logging.log("Invalid paramRNum " + paramRNum.getInt(), Logging.kWarn);
             case 3:
                paramA2.setEnabled(true);
                paramA3.setEnabled(true);

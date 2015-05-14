@@ -35,7 +35,7 @@ public class GDPanel extends BasicPlotInputPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4626298159196888528L;
-public static final int MAX_LOCI = 10;
+   public static final int MAX_LOCI = 10;
    Border border1;
    TitledBorder titledBorder1;
    Border border2;
@@ -51,7 +51,7 @@ public static final int MAX_LOCI = 10;
    JPanel breedingPanel = new JPanel();
    PopulusParameterField[] lociFrequencies = new PopulusParameterField[MAX_LOCI];
    GridBagLayout gridBagLayout1 = new GridBagLayout();
-   JRadioButton viewGens3DCB = new JRadioButton();
+   JCheckBox viewGens3DCB = new JCheckBox();
    JTabbedPane switcherTP = new JTabbedPane();
    PopulusParameterField paramNumLoci = new PopulusParameterField();
    JPanel montecarloP = new JPanel();

@@ -5,6 +5,9 @@ import java.awt.*;
 /**
  * This Layout is used to layout a chart along with it's main title and x/y titles.
  * Assumes that the container to lay out is a BasicPlotCanvas component. 
+ * 
+ * This adds onto BorderLayout and changes the fonts of the captions dynamically.
+ * We really need to be smarter about using the SOUTH, NORTH, WEST, CENTER, etc.
  */
 public class MacroLayout extends BorderLayout {
 
@@ -77,8 +80,11 @@ public class MacroLayout extends BorderLayout {
 				comp.setBounds(left, bottom - d.height, right - left, d.height);
 				bottom -= d.height;
 			}
-			chart.yCaption.setBounds(left - leftIndent, top, chart.yCaption.getPreferredSize().width, bottom - top);
-			if ((comp=chart.chart) != null) {
+			if ((comp=chart.yCaption) != null) {
+				//needed prior bottom and top calculations, hence not in the prior structure.
+				chart.yCaption.setBounds(left - leftIndent, top, chart.yCaption.getPreferredSize().width, bottom - top);
+			}
+			if ((comp=getLayoutComponent(c, CENTER)) != null) {
 				comp.setBounds(left, top, right - left, bottom - top);
 			}
 		}

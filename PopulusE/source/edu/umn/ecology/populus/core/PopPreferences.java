@@ -65,6 +65,7 @@ public final class PopPreferences {
 	//TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
 	private static final String DEFAULT_DIRECTORY = "";
 	private static final boolean DEFAULT_RESTORE_DESKTOP = false;
+	private static final boolean DEFAULT_USE_JFREECHART = false;
 	
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
@@ -84,6 +85,7 @@ public final class PopPreferences {
 	private static final Integer RESTORE_DESKTOP    = new Integer( 115 );
 	private static final Integer DESKTOP_SIZE       = new Integer( 116 );
 	private static final Integer DESKTOP_LOCATION   = new Integer( 117 );
+	private static final Integer USE_JFREECHART     = new Integer( 118 );
 
 	public static final Integer TOP_PACKETS = new Integer( 7 );
 	public static final Integer SINGLE_PACKETS = new Integer( 8 );
@@ -180,7 +182,7 @@ public final class PopPreferences {
 
 	/** True - use JFreeClass; False - use KLG Chart */
 	public static boolean isUseJFreeClass() {
-		return false;
+		return getSingleton().safeLookup(USE_JFREECHART, DEFAULT_USE_JFREECHART);
 	}
 
 	/* HELP PREFERENCES */
@@ -335,6 +337,10 @@ public final class PopPreferences {
 	public static void setPreferencesFile(String filename) {
 		preferencesFile = filename;
 	}
+	
+	public static void setUseJFreeClass(boolean newVal) {
+		getSingleton().table.put( USE_JFREECHART, new Boolean( newVal ) );
+	}
 
 	/**
 	 * Initializes the menus, or packetTable.
@@ -480,7 +486,7 @@ public final class PopPreferences {
 	/**
 	 * Loads the Hashtable from file
 	 * 
-	 * @TODO:  Does this get called??
+	 * TODO:  Does this get called??
 	 */
 	public synchronized void load() {
 		subLoad(false);
@@ -608,6 +614,7 @@ public final class PopPreferences {
 		table.put( RESTORE_DESKTOP, DEFAULT_RESTORE_DESKTOP );
 		table.put( DESKTOP_SIZE, new Integer[]{0,0} );
 		table.put( DESKTOP_LOCATION, new Integer[]{0,0} );
+		table.put( USE_JFREECHART, DEFAULT_USE_JFREECHART );
 
 		//check if button type changed (if so, tell buttons)
 		if (!isInit) {

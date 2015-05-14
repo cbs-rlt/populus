@@ -3,6 +3,7 @@ package edu.umn.ecology.populus.plot;
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.constants.OutputTypes;
 import edu.umn.ecology.populus.resultwindow.*;
+
 import java.awt.*;
 
 public class BasicPlotOutputPanel extends OutputPanel {
@@ -15,8 +16,8 @@ public class BasicPlotOutputPanel extends OutputPanel {
    BasicPlotCanvas bpc;
 
    public BasicPlotCanvas getBPC() {
-
       //used in simpleUpdateOutput, so we want to update the colors in the process
+      //This is also required since it refreshes the captions
       bpc.setBackground( ColorScheme.bG );
       this.setBackground( ColorScheme.bG );
       return bpc;

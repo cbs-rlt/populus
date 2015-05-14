@@ -194,7 +194,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
       try {
          d = (double[][]) o;
          if (d.length != kCOLUMNS) {
-            Logging.log("length doesn't match "+d.length, Logging.kHuh);
+            Logging.log("length doesn't match "+d.length, Logging.kWarn);
             return;
          }
          int nr = d[0].length;

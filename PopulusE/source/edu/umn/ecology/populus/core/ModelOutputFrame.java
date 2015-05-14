@@ -18,7 +18,7 @@ public class ModelOutputFrame extends PopInternalFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -5467950895300033315L;
-ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
+	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
    BorderLayout mainBorderLayout = new BorderLayout();
    JButton closeButton = PopulusToolButton.createCloseButton();
    transient Model model;

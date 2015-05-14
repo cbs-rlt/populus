@@ -153,6 +153,20 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.QUANT_PACKETS),"Quantitative-Genetic Models:"),4);
 		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SPATIAL_PACKETS),"Spatial Models:"),5);
 
+		/*
+        Alternate look -- JMenuBar
+		JMenuBar jmbar = new JMenuBar();
+		JMenu jm1 = new JMenu("File");
+		JMenuItem jm1a = new JMenuItem("New...");
+		JMenuItem jm1b = new JMenuItem("Open...");
+		jm1.add(jm1a);
+		jm1.add(jm1b);
+		jmbar.add(jm1);
+		jmbar.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SINGLE_PACKETS),"Single-Species Dynamics:"),1);
+		this.setJMenuBar(jmbar);
+		*/
+		
+		
 		System.err.print( ".\n" );
 		sizeScreen(this);
 		this.setTitle( res.getString( "Populus" ) );

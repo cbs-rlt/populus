@@ -38,18 +38,16 @@ public class PopRun {
 			buildTime = ri.readLine();
 		}
 		catch (Exception whateverHappensInMinnesotaStaysInMinnesota) { }
-		edu.umn.ecology.populus.fileio.Logging.log( "Populus built " + buildTime + "\n");
+		Logging.log( "Populus built " + buildTime + "\n");
 		try {
+			Logging.log("Using " + UIManager.getSystemLookAndFeelClassName());
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
-			Object[] localUIDefaults1 = new String[] {
-					"StyledRadioButtonUI", "edu.umn.ecology.populus.visual.StyledRadioButtonUI"
-			};
-			UIManager.getLookAndFeelDefaults().putDefaults( localUIDefaults1 );
-			Object[] localUIDefaults2 = new String[] {
+			Object[] localUIDefaults = new String[] {
+					"StyledRadioButtonUI", "edu.umn.ecology.populus.visual.StyledRadioButtonUI",
 					"BracketUI", "edu.umn.ecology.populus.visual.BracketUI"
 			};
+			UIManager.getLookAndFeelDefaults().putDefaults( localUIDefaults );
 			System.out.print( "." );
-			UIManager.getLookAndFeelDefaults().putDefaults( localUIDefaults2 );
 			new DesktopWindow();
 		}
 		catch( Exception e ) {

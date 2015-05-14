@@ -1,6 +1,11 @@
 package edu.umn.ecology.populus.plot.plotshapes;
 
 /**
+ * Fletching, like the feathers on an arrow:
+ *  _____
+ *  \    \
+ *  /____/
+ *
  * <p>Title: Populus</p>
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2002</p>
