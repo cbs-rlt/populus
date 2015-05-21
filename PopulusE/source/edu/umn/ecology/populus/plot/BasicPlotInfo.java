@@ -12,12 +12,14 @@ import java.util.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartTheme;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.DomainOrder;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DatasetChangeListener;
 import org.jfree.data.general.DatasetGroup;
 import org.jfree.data.xy.AbstractXYDataset;
+import org.jfree.data.xy.IntervalXYDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.RectangleAnchor;
 import org.jfree.ui.TextAnchor;
@@ -147,9 +149,22 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    //public boolean hasXMax = false, hasYMax = false, hasZMax = false;
 
    
-   	private class JFCXYAdapter extends AbstractXYDataset {
-	   private static final long serialVersionUID = -1226686444066513897L;
+   	private class JFCXYAdapter extends AbstractXYDataset implements IntervalXYDataset {
+	    private static final long serialVersionUID = -1226686444066513897L;
+	    private double barWidth = 0.1;
+	    
+	    public JFCXYAdapter() {
+	    	updateBarWidth(0);
+	    }
 
+	    public void updateBarWidth(int series) {
+	    	if (data[series][0].length > 1) {
+	    		double dx = data[series][0][1] - data[series][0][0];
+	    		Logging.log("updateBarWidth dx is " +  dx);
+	    		this.barWidth = 3.0 * dx / 4.0;
+	    	}
+	    }
+	    
 		@Override
 		public int getItemCount(int series) {
 			//Logging.log("In getItemCount " + series);
@@ -178,6 +193,46 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 		public String getSeriesKey(int arg0) {
 			//TODO - I think this is the name of the series, will this implementation suffice?
 			return "" + arg0;
+		}
+
+		@Override
+		public Number getStartX(int series, int item) {
+			return getXValue(series, item) - barWidth / 2.0;
+		}
+
+		@Override
+		public double getStartXValue(int series, int item) {
+			return getStartX(series, item).doubleValue();
+		}
+
+		@Override
+		public Number getEndX(int series, int item) {
+			return getXValue(series, item) + barWidth / 2.0;
+		}
+
+		@Override
+		public double getEndXValue(int series, int item) {
+			return getEndX(series, item).doubleValue();
+		}
+
+		@Override
+		public Number getStartY(int series, int item) {
+			return getY(series, item);
+		}
+
+		@Override
+		public double getStartYValue(int series, int item) {
+			return getY(series, item).doubleValue();
+		}
+
+		@Override
+		public Number getEndY(int series, int item) {
+			return getY(series, item);
+		}
+
+		@Override
+		public double getEndYValue(int series, int item) {
+			return getY(series, item).doubleValue();
 		}
    }
    	
@@ -244,165 +299,121 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 	   return ttable[type];
    }
 
-   public void styleJFree( ChartPanel chart ) {
-	   
-//	   if (!this.isBarChart) {
-//			JFreeChart jfc = ChartFactory.createXYLineChart(null, null, null,
-//				null,
-//				PlotOrientation.VERTICAL, // orientation
-//				false, // include legend
-//				true, // tooltips
-//				false // urls
-//			);
-//			chart.setChart(jfc);
-	   
-	   
-	   JFCXYAdapter jfca = new JFCXYAdapter();
-	   XYPlot plot = chart.getChart().getXYPlot();
-	   plot.setDataset(jfca);
+   public ChartTheme getJFreeChartTheme() {
+	   class PopChartTheme implements ChartTheme {
+		   public void apply(JFreeChart chart) {
+			   JFCXYAdapter jfca = new JFCXYAdapter();
+			   XYPlot plot = chart.getXYPlot();
+			   plot.setDataset(jfca);
 
-	   if (isLogPlot) {
-		   plot.setRangeAxis(new LogarithmicAxis(""));
-	   }
-	   if (isFrequencies) {
-		   ValueAxis va = plot.getRangeAxis();
-		   if (va instanceof NumberAxis) {
-			   NumberAxis na = (NumberAxis) va;
-			   na.setTickUnit(new NumberTickUnit(0.1));
-		   } else {
-			   Logging.log("Range Axis is not NumberAxis, why?", Logging.kWarn);
-		   }
-	   }
-
-	   if(xMinSet) plot.getDomainAxis().setLowerBound(xAxisMin);
-	   if(xMaxSet) plot.getDomainAxis().setUpperBound(xAxisMax);
-	   if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
-	   if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
-
-	   XYItemRenderer r = plot.getRenderer();
-	   //		   AbstractXYItemRenderer r = plot.getRenderer();
-	   if (r instanceof XYLineAndShapeRenderer) {
-		   XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) r;
-		   for( int i = 0;i < getNumSeries();i++ ) {
-			   //				   renderer.setUseFillPaint(true);
-			   //				   renderer.setUseOutlinePaint(true);
-			   JCChartStyle jccs = getChartStyle(i);
-
-			   //Set Line
-			   renderer.setSeriesPaint(i, jccs.getLineColor());
-			   Stroke s = new BasicStroke((float) jccs.getLineWidth(),
-					   BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f,
-					   getDashArray(jccs.getLinePattern()), 0.0f);
-			   renderer.setSeriesStroke(i, s);
-
-			   //Set Symbol
-			   renderer.setSeriesFillPaint(i, jccs.getSymbolColor());
-			   renderer.setSeriesOutlinePaint(i, jccs.getSymbolColor());
-
-
-			   jccs.getSymbolShape();
-
-
-
-			   jccs.setSymbolCustomShape(new CircleTerminus(true));
-			   Logging.log("val1 is " + jccs.getSymbolStyle());
-			   Logging.log("val2 is " + jccs.getSymbolCustomShape().getClass());
-			   //jccs.getSymbolStyle()
-			   //jccs.getSymbolSize()
-			   //			   renderer.setBaseShapesVisible(true);
-			   //			   renderer.setBaseShapesFilled(true);
-			   Shape shape = new Rectangle(-5, -5, 10, 10);
-			   //			   renderer.setSeries
-
-			   //renderer.setSeriesShape(i, shape);
-			   //renderer.setSeriesShapesVisible(i, true);
-			   //renderer.setser
-
-		   }
-	   } else if (r instanceof XYBarRenderer) {
-		   XYBarRenderer barRenderer = (XYBarRenderer) r;
-		   barRenderer.setBarPainter(new StandardXYBarPainter());
-		   
-		   //TODO - we need the 
-	   } else {
-		   Logging.log("Unknown renderer type: " + r.getClass(), Logging.kWarn);
-	   }
-
-	   //inner labels, used in AIDS: Therapy
-	   plot.clearAnnotations();
-	   Enumeration<InnerLabel> e = innerLabels.elements();
-	   while (e.hasMoreElements()) {
-		   InnerLabel lab = (InnerLabel) e.nextElement();
-		   Logging.log("Adding " + lab.caption + " at " + lab.x + ", " + lab.y);
-
-		   XYTextAnnotation annotation = new XYTextAnnotation(lab.caption, lab.x, lab.y);
-		   annotation.setTextAnchor(TextAnchor.BOTTOM_CENTER);
-		   annotation.setOutlineVisible(true);
-		   plot.addAnnotation(annotation);
-
-
-		   //I actually think that annotation is ugly.  We can use one of these instead in the future, maybe...
-		   /*PointerAnnotation may look cool...
-		    * That 2.0 is the angle, randomly picked
-		    * XYPointerAnnotation annotation = new XYPointerAnnotation(lab.caption, lab.x, lab.y, 2.0); 
-		    */
-
-		   /*
-		   ValueMarker marker = new ValueMarker(lab.x);
-		   marker.setLabel(lab.caption);
-		   marker.setLabelAnchor(RectangleAnchor.BOTTOM_LEFT);
-		   plot.addDomainMarker(marker);
-		    */
-
-	   }
-
-	   //This is set for GD: AMCM
-	   if (startGridded) {
-		   plot.setDomainGridlinesVisible(true);
-		   plot.setDomainGridlinePaint(Color.BLACK);
-		   plot.setRangeGridlinesVisible(true);
-		   plot.setRangeGridlinePaint(Color.BLACK);
-	   }
-
-		   /*
-	   } else { //isBarChart
-		   //Used by Genetic Drift: A Monte Carlo Method, Markov version
-		   DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-		   //TODO - we should make "private class JFCCatAdapter extends DefaultCategoryDataset" and plug that in.
-		   for (int lineno=0; lineno<data.length; ++lineno) {
-			   double[][] line = data[lineno];
-			   String linestr = Integer.toString(lineno);
-			   for (int i=0; i<line[0].length; ++i) {
-				   dataset.addValue(line[1][i],  linestr, new Double(line[0][i]));
+			   if (isLogPlot) {
+				   plot.setRangeAxis(new LogarithmicAxis(""));
 			   }
-		   }
-		   JFreeChart jfc = ChartFactory.createBarChart(
-			   null, // chart title
-			   null, // domain axis label
-			   null, // range axis label
-			   dataset, // data
-			   PlotOrientation.VERTICAL, // orientation
-			   false, // include legend
-			   true, // tooltips
-			   false // URLs?
-		   );
-		   chart.setChart(jfc);
-		   if (jfc.getPlot() instanceof CategoryPlot) {
-			   CategoryPlot plot = (CategoryPlot) jfc.getPlot();
-			   ((BarRenderer) plot.getRenderer()).setBarPainter(new StandardBarPainter());
-			   if (xMinSet || xMaxSet) {
-				   Logging.log("Why would xmax or xmin be set for bar chart?");
+			   if (isFrequencies) {
+				   ValueAxis va = plot.getRangeAxis();
+				   if (va instanceof NumberAxis) {
+					   NumberAxis na = (NumberAxis) va;
+					   na.setTickUnit(new NumberTickUnit(0.1));
+				   } else {
+					   Logging.log("Range Axis is not NumberAxis, why?", Logging.kWarn);
+				   }
 			   }
+
+			   if(xMinSet) plot.getDomainAxis().setLowerBound(xAxisMin);
+			   if(xMaxSet) plot.getDomainAxis().setUpperBound(xAxisMax);
 			   if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
 			   if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
+
+			   XYItemRenderer r = plot.getRenderer();
+			   //		   AbstractXYItemRenderer r = plot.getRenderer();
+			   if (r instanceof XYLineAndShapeRenderer) {
+				   XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) r;
+				   for( int i = 0;i < getNumSeries();i++ ) {
+					   //				   renderer.setUseFillPaint(true);
+					   //				   renderer.setUseOutlinePaint(true);
+					   JCChartStyle jccs = getChartStyle(i);
+
+					   //Set Line
+					   renderer.setSeriesPaint(i, jccs.getLineColor());
+					   Stroke s = new BasicStroke((float) jccs.getLineWidth(),
+							   BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f,
+							   getDashArray(jccs.getLinePattern()), 0.0f);
+					   renderer.setSeriesStroke(i, s);
+
+					   //Set Symbol
+					   renderer.setSeriesFillPaint(i, jccs.getSymbolColor());
+					   renderer.setSeriesOutlinePaint(i, jccs.getSymbolColor());
+
+
+					   jccs.getSymbolShape();
+
+
+
+					   jccs.setSymbolCustomShape(new CircleTerminus(true));
+					   //jccs.getSymbolStyle()
+					   //jccs.getSymbolSize()
+					   //			   renderer.setBaseShapesVisible(true);
+					   //			   renderer.setBaseShapesFilled(true);
+					   Shape shape = new Rectangle(-5, -5, 10, 10);
+					   //			   renderer.setSeries
+
+					   //renderer.setSeriesShape(i, shape);
+					   //renderer.setSeriesShapesVisible(i, true);
+					   //renderer.setser
+
+				   }
+			   } else if (r instanceof XYBarRenderer) {
+				   XYBarRenderer barRenderer = (XYBarRenderer) r;
+				   barRenderer.setBarPainter(new StandardXYBarPainter());
+				   
+				   //TODO - we need the 
+			   } else {
+				   Logging.log("Unknown renderer type: " + r.getClass(), Logging.kWarn);
+			   }
+
+			   //inner labels, used in AIDS: Therapy
+			   plot.clearAnnotations();
+			   Enumeration<InnerLabel> e = innerLabels.elements();
+			   while (e.hasMoreElements()) {
+				   InnerLabel lab = (InnerLabel) e.nextElement();
+				   Logging.log("Adding " + lab.caption + " at " + lab.x + ", " + lab.y);
+
+				   XYTextAnnotation annotation = new XYTextAnnotation(lab.caption, lab.x, lab.y);
+				   annotation.setTextAnchor(TextAnchor.BOTTOM_CENTER);
+				   annotation.setOutlineVisible(true);
+				   plot.addAnnotation(annotation);
+
+
+				   //I actually think that annotation is ugly.  We can use one of these instead in the future, maybe...
+				   /*PointerAnnotation may look cool...
+				    * That 2.0 is the angle, randomly picked
+				    * XYPointerAnnotation annotation = new XYPointerAnnotation(lab.caption, lab.x, lab.y, 2.0); 
+				    */
+
+				   /*
+				   ValueMarker marker = new ValueMarker(lab.x);
+				   marker.setLabel(lab.caption);
+				   marker.setLabelAnchor(RectangleAnchor.BOTTOM_LEFT);
+				   plot.addDomainMarker(marker);
+				    */
+
+			   }
+
+			   //This is set for GD: AMCM
+			   if (startGridded) {
+				   plot.setDomainGridlinesVisible(true);
+				   plot.setDomainGridlinePaint(Color.BLACK);
+				   plot.setRangeGridlinesVisible(true);
+				   plot.setRangeGridlinePaint(Color.BLACK);
+			   }
+			   
 		   }
 	   }
-	   */
-
-	   //TODO:  Data Listeners???
-	   //chart.getChart().setBackgroundPaint(Color.GREEN);
-
+	   return new PopChartTheme();
+   }
+   
+   public void styleJFree( JFreeChart chart ) {
+	   getJFreeChartTheme().apply(chart);
    }
    
    /************************

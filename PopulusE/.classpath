@@ -12,6 +12,6 @@
 	<classpathentry kind="lib" path="res/jdtCompilerAdapter.jar"/>
 	<classpathentry kind="lib" path="res/org.eclipse.jdt.core_3.10.0.v20140902-0626.jar"/>
 	<classpathentry kind="lib" path="res/reqlibs/jcommon-1.0.21.jar"/>
-	<classpathentry kind="lib" path="res/reqlibs/jfreechart-1.0.17.jar"/>
+	<classpathentry kind="lib" path="res/reqlibs/jfreechart-1.0.17.jar" sourcepath="res/JFreeChart.source"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

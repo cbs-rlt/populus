@@ -78,8 +78,9 @@ extends JDialog {
 	JButton trickButton = new JButton();
 	JComboBox<String> terminusType = new JComboBox<String>();
 	private final JButton btnHelp = new JButton("Help Settings");
-	private final JPanel panel = new JPanel();
-	private final JCheckBox chckbxUseNewChart = new JCheckBox("Use New Chart");
+	private final JPanel newFeaturesPanel = new JPanel();
+	private final JCheckBox chckbxUseNewChart = new JCheckBox("Use JFreeChart library");
+	private final JCheckBox chckbxSaveWindowPosition = new JCheckBox("Save window position");
 
 	/**
 	 * @wbp.parser.constructor
@@ -194,6 +195,7 @@ extends JDialog {
 		PopPreferences.setDirectory(directory.getText());
 		PopPreferences.setOwnershipBorderThickness(ownerBorderThickness.getInt());
 		PopPreferences.setUseJFreeClass(chckbxUseNewChart.isSelected());
+		PopPreferences.setRestoreDesktop(chckbxSaveWindowPosition.isSelected());
 	}
 
 	void loadButton_actionPerformed(ActionEvent e) {
@@ -247,6 +249,7 @@ extends JDialog {
 		ownerBorderThickness.setCurrentValue(PopPreferences.
 				getOwnershipBorderThickness());
 		chckbxUseNewChart.setSelected(PopPreferences.isUseJFreeClass());
+		chckbxSaveWindowPosition.setSelected(PopPreferences.isRestoreDesktop());
 	}
 
 	void colorChooserButton_actionPerformed(ActionEvent e) {
@@ -460,19 +463,25 @@ extends JDialog {
 				, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL,
 				new Insets(0, 0, 0, 0), 0, 0));
 		
-		tabbedPane.addTab("Chart", null, panel, null);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		tabbedPane.addTab("New", null, newFeaturesPanel, null);
+		GridBagLayout gbl_newFeaturesPanel = new GridBagLayout();
+		gbl_newFeaturesPanel.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_newFeaturesPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gbl_newFeaturesPanel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_newFeaturesPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		newFeaturesPanel.setLayout(gbl_newFeaturesPanel);
 		
 		GridBagConstraints gbc_chckbxUseNewChart = new GridBagConstraints();
 		gbc_chckbxUseNewChart.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxUseNewChart.gridx = 0;
 		gbc_chckbxUseNewChart.gridy = 0;
-		panel.add(chckbxUseNewChart, gbc_chckbxUseNewChart);
+		newFeaturesPanel.add(chckbxUseNewChart, gbc_chckbxUseNewChart);
+		
+		GridBagConstraints gbc_chckbxSaveWindowPosition = new GridBagConstraints();
+		gbc_chckbxSaveWindowPosition.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxSaveWindowPosition.gridx = 0;
+		gbc_chckbxSaveWindowPosition.gridy = 1;
+		newFeaturesPanel.add(chckbxSaveWindowPosition, gbc_chckbxSaveWindowPosition);
 	}
 
 	public void trickButton_actionPerformed(ActionEvent e) {

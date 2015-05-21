@@ -68,7 +68,7 @@ public class BasicPlotCanvas extends JPanel {
 		if( newInfo != null ) {
 			info = newInfo;
 			if (PopPreferences.isUseJFreeClass()) {
-				info.styleJFree(jfchartpanel);
+				info.styleJFree(jfchartpanel.getChart());
 			} else {
 				info.styleJC( chart );
 			}
@@ -258,12 +258,13 @@ public class BasicPlotCanvas extends JPanel {
 			
 			XYPlot plot = new XYPlot(null, xAxis, yAxis, renderer);
 			plot.setOrientation(PlotOrientation.VERTICAL);
-			
+
 			JFreeChart jfchart = new JFreeChart(null, null, plot, false);
 			jfchartpanel = new ChartPanel(jfchart);
-			info.styleJFree(jfchartpanel);
+			plot.setBackgroundPaint(ColorScheme.bG);
+			
+			info.styleJFree(jfchart);
 			add( jfchartpanel, MacroLayout.CENTER );
-			info.styleJFree(jfchartpanel);
 		} else {
 			chart = new JCChart( JCChart.PLOT );
 			info.styleJC( chart );
