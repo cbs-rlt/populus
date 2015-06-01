@@ -2,7 +2,7 @@
 <!-- JNLP File for Populus -->
 <jnlp
   spec="1.0+"
-  codebase="file:/D:/Populus/gdev/PopulusE/out"
+  codebase="www.cbs.umn.edu/populus"
   href="populus.jnlp"
   version="5.5.0">
   <information>
@@ -21,9 +21,7 @@
   <resources>
     <j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/>
     <extension href="installer.jnlp"/>
-    <jar href="Populus.jar"/>
-    <jar href="Jama-1.0.2.jar"/>
-    <jar href="jcchart401K.jar"/>
+    <jar href="PopulusAll.jar"/>
   </resources>
   <application-desc main-class="edu.umn.ecology.populus.core.PopRun"/>
 </jnlp> 
