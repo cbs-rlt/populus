@@ -25,7 +25,7 @@ JPanel mainPanel = new JPanel();
    static IntegratorPreferences keepOnlyOneOpen;
    JTextField hSetting = new JTextField();
    JLabel jLabel5 = new JLabel();
-   JComboBox intMethodCB = new JComboBox();
+   JComboBox<String> intMethodCB = new JComboBox<String>();
    JLabel jLabel6 = new JLabel();
 
    public IntegratorPreferences( Frame frame, String title, boolean b ) {

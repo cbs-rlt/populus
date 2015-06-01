@@ -333,11 +333,16 @@ public final class Routines {
       return bnl;
    }
 
+   /**
+    *
+    * @param number, an integer to factorize
+    * @return int[] prime factors, in ascending order.  A prime p with multiplicity m will repeat p m times.
+    */
    public static final int[] primeFactorize( int number ) {
       int sqrnum = (int)Math.sqrt( (double)number );
       int a;
       int[] retVal;
-      java.util.Vector nums = new java.util.Vector();
+      java.util.Vector<Integer> nums = new java.util.Vector<Integer>();
       for( a = 2;a <= sqrnum;a++ ) {
          if( number % a == 0 ) {
             number /= a;
@@ -351,7 +356,7 @@ public final class Routines {
       }
       retVal = new int[nums.size()];
       for( a = 0;a < retVal.length;a++ ) {
-         retVal[a] = ( (Integer)nums.elementAt( a ) ).intValue();
+         retVal[a] = nums.elementAt( a );
       }
       return retVal;
    }

@@ -18,7 +18,7 @@ public class ValueModifyFrame extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -3663970312045684506L;
-private JLabel nameL = new JLabel();
+	private JLabel nameL = new JLabel();
    private JLabel valueL = new JLabel();
    private JTextField valueTF = new JTextField();
    private GridBagLayout gridBagLayout1 = new GridBagLayout();

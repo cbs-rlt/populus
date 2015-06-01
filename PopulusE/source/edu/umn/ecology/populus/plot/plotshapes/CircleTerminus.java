@@ -16,42 +16,52 @@ import java.awt.Graphics;
 
 public class CircleTerminus extends PlotTerminus {
 
-   public CircleTerminus(boolean isStart) {
-      super(isStart);
-   }
+	public CircleTerminus(boolean isStart) {
+		super(isStart);
+	}
+	public CircleTerminus() {
+		this(false);
+	}
+	
+	@Override
+	public boolean isOpaque() {
+		return !this.isStart();
+	}
 
-   protected void resize(int size) {
-      this.size = size;
-   }
+	protected void resize(int size) {
+		this.size = size;
+		x = new int[72];
+		y = new int[72];
+		int index = 0;
+		double temp;
+		for( double i = 0;i < 360;i += 5 ) {
+			temp = Math.cos( degToRad( i ) );
+			temp *= size;
+			x[index] = (int)temp;
+			temp = Math.sin( degToRad( i ) );
+			temp *= size;
+			y[index] = (int)temp;
+			index++;
+		}
+	}
 
-   public void draw(Graphics gc,
-                    int xorg,
-                    int yorg) {
-      int xi, yi, d;
-      xi = xorg - size;
-      yi = yorg - size;
-      d = size * 2;
-      if (this.isStart())
-         gc.drawOval(xi, yi, d, d);
-      else
-         gc.fillOval(xi, yi, d, d);
-   }
+	double degToRad( double degrees ) {
+		return Math.PI / 180 * degrees;
+	}
 
-   
-   //TODO - what about the draw with floating point args? Can that ever be called?
-   
-   //TODO - does this ever really get called???
-   protected float[] getArray(int size) {
-      int steps = 20;
-      float[] pc = new float[steps * 2];
-      double s = (double) size;
 
-      for (int i = 0; i < steps; i++) {
-         double angle = (2.0 * Math.PI * i) / ((double) steps);
-         pc[2*i] = (float) (Math.cos(angle) * s);
-         pc[2*i + 1] = (float) (Math.sin(angle) * s);
-      }
-      return pc;
-   }
+	public void draw(Graphics gc,
+			int xorg,
+			int yorg) {
+		int xi, yi, d;
+		xi = xorg - size;
+		yi = yorg - size;
+		d = size * 2;
+		if (this.isStart())
+			gc.drawOval(xi, yi, d, d);
+		else
+			gc.fillOval(xi, yi, d, d);
+	}
+
 }
 

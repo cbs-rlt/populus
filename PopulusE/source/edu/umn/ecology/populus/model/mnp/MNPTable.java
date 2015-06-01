@@ -17,6 +17,8 @@ public class MNPTable extends AbstractTableModel {
    /**
     * each vector represents a row, each array index represents
     * the column
+    * 
+    * TODO - we should be able to fix this warning suppression.
     */
    @SuppressWarnings("unchecked")
    Vector<Object>[] table = new Vector[0];

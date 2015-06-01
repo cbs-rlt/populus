@@ -42,7 +42,7 @@ DeFinettiGraph dfg;
 
       /*all we have to do is create the LiveGraph class, and it will handle the painting*/
       if(bpi.isLive()){
-         new LiveGraph(dfg,10,(int) edu.umn.ecology.populus.core.PopPreferences.getDelayTime());
+         new LiveGraph(dfg,10,(int) edu.umn.ecology.populus.core.PopPreferencesStorage.getDelayTime());
       } else
          repaint();
    }

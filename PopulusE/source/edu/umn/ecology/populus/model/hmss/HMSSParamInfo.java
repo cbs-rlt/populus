@@ -65,24 +65,6 @@ public class HMSSParamInfo implements BasicPlot {
     */
    final int numGenotypes = 8;
 
-   /**
-    * if ever needed, this method will return a string representation of the genotype.
-    * @param id
-    * @return
-    */
-   private String ItoS(int id){
-      switch(id){
-         case 0:     return "abc";
-         case A:     return "Abc";
-         case B:     return "aBc";
-         case A|B:   return "ABc";
-         case C:     return "abC";
-         case A|C:   return "AbC";
-         case B|C:   return "aBC";
-         case A|B|C: return "ABC";
-      }
-      return "id not recognized";
-   }
 
    /**
     * this returns the linkage disequilibrium between<br>

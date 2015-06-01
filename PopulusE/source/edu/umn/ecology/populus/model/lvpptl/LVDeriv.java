@@ -40,6 +40,4 @@ public class LVDeriv extends Derivative {
       return;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
 }

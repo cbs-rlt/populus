@@ -14,6 +14,8 @@
 \part{Overview}
 This document was written as a primer for anyone interested in developing or modifying the Populus source code.  This file is written in roughly in the order that you would want to understand the code, but feel free to jump around as needed.
 
+Note that much of the development started in Java 1.1-1.2 era, where AWT was still popular and Swing was new.  A lot of newer classes and APIs now exist that are better than what is currently used.  PopulusParamField predates JSpinner, we should get rid of a lot of Vector uses, etc.  Don't be afraid to make improvements to the code!
+
 
 \part{Setting Up New Development Machine}
 \section{Development Software}
@@ -29,7 +31,7 @@ For Windows, I like git for Windows:  \url{http://msysgit.github.io/}, which inc
 Download the Eclipse Standard from \url{https://www.eclipse.org/downloads/}.  (You can actually install any version that has Java support.)  The "installer" is just a zip file that you extract somewhere.  You'll run it by running the executable in there.
 
 \subsection{TeX}
-We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.
+We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX (now bundled with TeXworks) for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.  Only update the TEX file, and do NOT edit this PDF file directly.
 
 \subsection{Photoshop}
 Use Photoshop to make the pictures for, say, the Web page.  There are saved \texttt{.psd} files around that contain the source image to work from with its Layers.  You don't really need to use it as a developer.  In the past, Don created this.
@@ -115,7 +117,8 @@ public class FRInfo implements BasicPlot {
         bpi.setIsDiscrete(true);
 		
         //Generate Data
-        double data[][][] = new double[1][2][maxGens+1]; //1 line with 2 variables and (maxGens+1) # of points
+        //data is 1 line with 2 variables and (maxGens+1) # of points
+        double data[][][] = new double[1][2][maxGens+1]; 
         double newbornPairs = 1.0;
         double maturePairs = 0.0;
         for(int gen = 0; gen <= maxGens; gen++) {
@@ -137,9 +140,13 @@ public class FRInfo implements BasicPlot {
 
 \subsection{FRPanel}
 This is the input screen.
+
 Right-click on the new package and select \texttt{New $\Rightarrow$ Class}.
-Type in \texttt{FRPanel} for the name
+
+Type in \texttt{FRPanel} for the name.
+
 Type in \texttt{edu.umn.ecology.populus.plot.BasicPlotInputPanel} for the Superclass (or use the browse button)
+
 Press \texttt{Finish}
 
 Close the tab, then re-open it with WindowBuilder.  You don't have to use WindowBuilder, but it definitely makes it easier.
@@ -232,7 +239,7 @@ public class FRModel extends BasicPlotModel {
 You may want to create a Res file that should be used for storing all of the String resources.  See how other models use it.
 
 \subsection{Add model to the menu}
-If you can shoehorn this into an existing menu group, it's quite easy.  Just go to \texttt{PopPreferences::initializeMenuPackets()} and add a single line with the new \texttt{ModelPacket} accordingly.  If you wanted this near in the single-species dynamics menu, add this in the initialization list of \texttt{singleModels}:
+If you can shoehorn this into an existing menu group, it's quite easy.  Just go to \texttt{PopPreferencesStorage::initializeMenuPackets()} and add a single line with the new \texttt{ModelPacket} accordingly.  If you wanted this near in the single-species dynamics menu, add this in the initialization list of \texttt{singleModels}:
 
 \begin{verbatim}
 new ModelPacket( edu.umn.ecology.populus.model.fibrabbits.FRModel.class ),
@@ -291,7 +298,7 @@ In \texttt{BasicPlotModel::simpleUpdateOutput()}, it takes a \texttt{DIGData} ob
 
 
 \subsection{Adding a Model to the Menus}
-To add a model to the menu, add a ModelPacket in PopPreferences.
+To add a model to the menu, add a ModelPacket in PopPreferencesStorage.
 
 I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
 
@@ -319,6 +326,11 @@ In addition, languages by modifying the local help file to use the language spec
 
 Look at the README file for more information.
 
+\section{Threading and synchronization}
+
+Don't trust any code having to do with synchronization.  A lot all of the code with \texttt{synchronized} is guaranteed to be called from a single thread (e.g., Event Dispatch Thread) so
+it's redundant. TODO: We should move all of the code to run under SwingUtilities.invokeLater().
+
 \section{Logging}
 Logging normally goes both to stderr and a file in the user's home directory.
 
@@ -330,7 +342,7 @@ Logging should be handled by \texttt{Logging.java}. On the TODO list are changin
 
 The file for keeping state is stored as \verb userpref.po  in the user's home directory (as of Populus 5.4).  It is loaded during initialization.  By default, it is in the user's home directory -- not in Populus's -- because we aren't guaranteed write permission for all systems.  This can be overrided by the startup command - see \texttt{README.config}.
 
-Almost all of the code is in \texttt{PopPreferences.java}.
+Almost all of the code is in \texttt{PopPreferencesStorage.java}.
 
 \subsection{Preferences GUI}
 The GUI behind it is in \texttt{PreferencesDialog.java}.

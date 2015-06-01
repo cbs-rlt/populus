@@ -137,16 +137,16 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 			inputFrame.pack();
 		}
 		else {
-			switch (PopPreferences.getTriggerType()) {
-			case PopPreferences.ALL_TRIGGER:
+			switch (PopPreferencesStorage.getTriggerType()) {
+			case PopPreferencesStorage.ALL_TRIGGER:
 				updateOutput();
 				break;
-			case PopPreferences.DEFAULT_TRIGGER:
+			case PopPreferencesStorage.DEFAULT_TRIGGER:
 				if( e.isMandatory() || ( ( e.getType() & ( (ModelPanel)e.getSource() ).getTriggers() ) != 0 ) ) {
 					updateOutput();
 				}
 				break;
-			case PopPreferences.NO_TRIGGER:
+			case PopPreferencesStorage.NO_TRIGGER:
 				break;
 			}
 		}
@@ -368,7 +368,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		try {
 			String filename = edu.umn.ecology.populus.fileio.IOUtility.getFileName( "model1.po", "Load Model", FileDialog.LOAD );
 			if( filename != null ) {
-				if (PopPreferences.getUseXMLSave()) {
+				if (PopPreferencesStorage.getUseXMLSave()) {
 					XMLDecoder d = new XMLDecoder(new BufferedInputStream(
 							new FileInputStream(filename)));
 					retValue = (Model)d.readObject();
@@ -643,7 +643,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 			String filename = edu.umn.ecology.populus.fileio.IOUtility.getFileName( "model", ".po", "Save Model", FileDialog.SAVE );
 			if( filename != null ) {
 				
-				if (PopPreferences.getUseXMLSave()) {
+				if (PopPreferencesStorage.getUseXMLSave()) {
 					XMLEncoder e = new XMLEncoder(
 		                          	new BufferedOutputStream(
 		                              new FileOutputStream(filename)));
@@ -709,13 +709,6 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		//            //HelpUtilities.setSize((int)(r.width*0.85d),(int)(r.height*0.85d));
 		//            //updateInputHelpId();
 		//      }});
-	}
-
-	/**
-      Call this method to update which file opens to a help button action.
-	 */
-	private void updateInputHelpId(){
-		HelpUtilities.hu.installComponentHelp(inputFrame.getHelpComponent(), getHelpId());
 	}
 
 	/** Tries to place new models in available space */

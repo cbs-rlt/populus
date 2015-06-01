@@ -69,9 +69,6 @@ public class RCTDeriv extends Derivative {
       }
    }
 
-
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public RCTDeriv(int modelType, int speciesNum, int resourceNum, double[] a, double[] r,
                    double[] m, double[][] k, double[][] c, double[] s, boolean is3D) {
       this.modeltype = modelType;

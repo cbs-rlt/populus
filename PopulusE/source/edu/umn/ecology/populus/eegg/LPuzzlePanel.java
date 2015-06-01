@@ -171,14 +171,6 @@ public class LPuzzlePanel extends JPanel {
 				}
 		});
 	}
-	private void removeMouseHandler() {
-		MouseListener[] l = this.getMouseListeners();
-		for (int i=0; i<l.length; i++)
-			this.removeMouseListener(l[i]);
-		MouseMotionListener[] ml = this.getMouseMotionListeners();
-		for (int i=0; i<ml.length; i++)
-			this.removeMouseMotionListener(ml[i]);
-	}
 	private void userClicked(int where) {
 		if (where == -1)
 			return; //invalid click

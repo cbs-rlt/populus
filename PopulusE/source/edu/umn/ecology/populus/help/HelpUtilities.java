@@ -1,6 +1,5 @@
 package edu.umn.ecology.populus.help;
 
-import java.io.File;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,8 +9,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import edu.umn.ecology.populus.core.AboutPopulusDialog;
-import edu.umn.ecology.populus.core.DesktopWindow;
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.fileio.Logging;
 
 
@@ -25,61 +23,6 @@ import edu.umn.ecology.populus.fileio.Logging;
  */
 public class HelpUtilities  {
 	public static HelpUtilities hu;
-	private static String cmd = "";
-	private static String app = "";
-
-	/*in this static block, several things need to be determined.
-	 * 1) first, we need to make sure the help file exists and is in the right place.
-	 * 2) second thing that needs to be determined is whether the command prompt is cmd or command.
-	 * 3) because we can't be too sure about whether
-   adobe acrobat or adobe reader are installed, we need to check and find out. I assume that the windows
-   command "ftype AcroExch.Document" will always determine this... the whole point here is so that we can pass the
-   executable the "don't show the splash screen" parameters... otherwise, we'd only have to use "start thing.pdf"
-
-	 */
-	private static synchronized void staticInit() {
-		try {
-
-			//find which windows os
-			String os = "Windows";
-			try {
-				os = System.getProperty("os.name");
-			} catch (Exception e) {
-				//TODO
-			}
-			if(os.startsWith("Windows")){
-				//Try to find external program that views pdf files.
-
-				//There used to be some code so that cmd *might* be command.com, but that is for ancient compatibility
-				cmd = "cmd.exe";
-
-				//find Adobe Reader or Adobe Acrobat
-				Vector result = new Vector();
-				execute(new String[]{cmd,"/c","ftype","AcroExch.Document"},result,true);
-				// expect something like:
-				//    AcroExch.Document="C:\Program Files (x86)\Adobe\Reader 8.0\Reader\AcroRd32.exe" "%1"
-				if(result.size() > 0){
-					if(((String)result.get(0)).toLowerCase().indexOf("acrord32") >= 0){
-						app = "acrord32";
-					} else if(((String)result.get(0)).toLowerCase().indexOf("acrord64") >= 0){
-						app = "acrord64";
-					} else if(((String)result.get(0)).toLowerCase().indexOf("acrobat") >= 0){
-						app = "acrobat";
-					} else {
-						String message = "You don't seem to have Adobe Reader installed.";
-						app = "";
-						JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Error", JOptionPane.PLAIN_MESSAGE);
-					}
-				} else {
-					app = "";
-					//not sure what do to here... might mean that Adobe Reader is not installed
-				}
-			}
-		} catch (Exception e) {
-			//TODO
-		}
-
-	}
 
 	public static synchronized HelpUtilities createHelp() {
 		if( hu == null ) {
@@ -90,7 +33,6 @@ public class HelpUtilities  {
 	
 
 	private HelpUtilities() {
-		staticInit();
 	}
 
 
@@ -121,7 +63,7 @@ public class HelpUtilities  {
 
 		//execute(getOpenCommand(true,true,true),null,false);
 		try {
-			displayHelp(id, PopPreferences.getOpenPDFObject(), null);
+			displayHelp(id, PopPreferencesStorage.getOpenPDFObject(), null);
 		} catch (Exception e) {
 			Logging.log("Unable to open Java help");
 			Logging.log(e);

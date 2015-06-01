@@ -87,7 +87,7 @@ public class PopulusToolButton extends JButton {
        }
    }
    private void jbInit() throws Exception {
-      PopPreferences.addButton(this);
+      PopPreferencesStorage.addButton(this);
    }
    /**
     * Call this when you're done with it.
@@ -96,17 +96,17 @@ public class PopulusToolButton extends JButton {
     * to fix this the right way.
     */
    public void dispose() {
-      PopPreferences.removeButton(this);
+      PopPreferencesStorage.removeButton(this);
    }
    /**
      this function is for the preference of whether or not to display icons with the
      text on the buttons
      */
    void setLook() {
-      int type = PopPreferences.getButtonType();
+      int type = PopPreferencesStorage.getButtonType();
 
       //set icon
-      if( ( type & PopPreferences.IMAGES ) != 0 ) {
+      if( ( type & PopPreferencesStorage.IMAGES ) != 0 ) {
          this.setIcon( image );
       }
       else {
@@ -114,7 +114,7 @@ public class PopulusToolButton extends JButton {
       }
 
       //set text
-      if( ( type & PopPreferences.TEXT ) != 0 ) {
+      if( ( type & PopPreferencesStorage.TEXT ) != 0 ) {
          this.setText( text );
       }
       else {

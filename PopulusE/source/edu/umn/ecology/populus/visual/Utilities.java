@@ -438,10 +438,10 @@ public class Utilities extends java.lang.Object {
 
    static class HTMLState {
        //int bold=0, ital=0, bar=0, font=0, sup=0, sub=0;
-       Stack v;
+       Stack<String> v;
 
        HTMLState() {
-           v = new Stack();
+           v = new Stack<String>();
        }
 
        private String verifyPop(String s) {

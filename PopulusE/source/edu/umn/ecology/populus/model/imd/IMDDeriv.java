@@ -52,8 +52,6 @@ public class IMDDeriv extends Derivative {
       return ;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public IMDDeriv( int modelType, double a, double b, double alpha, double beta, double nu, double gamma ) {
       this.type = modelType;
       if( ( modelType == IMDParamInfo.SIRDD ) || ( modelType == IMDParamInfo.SIRFD ) ) {

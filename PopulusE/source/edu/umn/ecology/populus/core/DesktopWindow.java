@@ -118,7 +118,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		
 		// Creates the top-level models, which right now is only Interaction Engine.
 		// The code is basically identical to loadMenu, but that method only accepts JMenu, not JPopupMenu
-		mps = PopPreferences.getModelPackets(PopPreferences.TOP_PACKETS);
+		mps = PopPreferencesStorage.getModelPackets(PopPreferencesStorage.TOP_PACKETS);
 		for(ModelPacket mp : mps) {
 			MenuAction ma = new MenuAction( mp.getModelName(), mp.getModelClass() )  {
 				private static final long serialVersionUID = 6448584135280919807L;
@@ -137,21 +137,21 @@ public class DesktopWindow extends JFrame implements ModelListener {
 			}
 		} );
 
-		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SINGLE_PACKETS),"Single-Species Dynamics:"),0);
+		topLevelMenu.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.SINGLE_PACKETS),"Single-Species Dynamics:"),0);
 
-		JMenu jm = loadMenu(PopPreferences.getModelPackets(PopPreferences.MULTI_PACKETS),"Multi-Species Dynamics:");
-		jm.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.RC_PACKETS),"Resource Competition:"),1);
-		jm.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.DISCRETE_PACKETS),"Discrete Predator-Prey Models:"),2);
+		JMenu jm = loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.MULTI_PACKETS),"Multi-Species Dynamics:");
+		jm.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.RC_PACKETS),"Resource Competition:"),1);
+		jm.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.DISCRETE_PACKETS),"Discrete Predator-Prey Models:"),2);
 		//just added 7/20 3->4
 		//jm.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.HOST_PACKETS),"Host-Parasite Models:"),3);
-		JMenu aid = loadMenu(PopPreferences.getModelPackets(PopPreferences.HOST_PACKETS),"Host-Parasite Models:");
-		aid.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.AIDS_PACKETS),"AIDS Models:"),6);
+		JMenu aid = loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.HOST_PACKETS),"Host-Parasite Models:");
+		aid.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.AIDS_PACKETS),"AIDS Models:"),6);
 		topLevelMenu.add( jm, 1 );
 		jm.add(aid,1);
-		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.MENDEL_PACKETS),"Mendelian Genetics:"),2);
-		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SELECTION_PACKETS),"Natural Selection:"), 3 );
-		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.QUANT_PACKETS),"Quantitative-Genetic Models:"),4);
-		topLevelMenu.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SPATIAL_PACKETS),"Spatial Models:"),5);
+		topLevelMenu.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.MENDEL_PACKETS),"Mendelian Genetics:"),2);
+		topLevelMenu.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.SELECTION_PACKETS),"Natural Selection:"), 3 );
+		topLevelMenu.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.QUANT_PACKETS),"Quantitative-Genetic Models:"),4);
+		topLevelMenu.add(loadMenu(PopPreferencesStorage.getModelPackets(PopPreferencesStorage.SPATIAL_PACKETS),"Spatial Models:"),5);
 
 		/*
         Alternate look -- JMenuBar
@@ -175,12 +175,11 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 	/** Size the window to full size, making sure to account for the insets */
 	private void sizeScreen(JFrame frame) {
-		frame.setSize(PopPreferences.getDesktopScreenSize(frame));
-		frame.setLocation(PopPreferences.getDesktopLocation(frame));
+		frame.setSize(PopPreferencesStorage.getDesktopScreenSize(frame));
+		frame.setLocation(PopPreferencesStorage.getDesktopLocation(frame));
 	}
 
 	public DesktopWindow() {
-		//enableEvents(AWTEvent.WINDOW_EVENT_MASK);
 		enableEvents( AWTEvent.WINDOW_EVENT_MASK & AWTEvent.ACTION_EVENT_MASK );
 
 		try {
@@ -242,7 +241,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	void exit() {
 		//TODO - this should be cleaner...
 		Logging.log("CLOSING POPULUS WINDOW " + this.getSize() + " & " + this.getLocation());
-		PopPreferences.getSingleton().save();
+		PopPreferencesStorage.getSingleton().save();
 		Logging.cleanup();
 		System.exit( 0 );
 	}
@@ -305,7 +304,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	}
 
 	void imagesAndText() {
-		PopPreferences.setButtonType( PopPreferences.TEXT | PopPreferences.IMAGES );
+		PopPreferencesStorage.setButtonType( PopPreferencesStorage.TEXT | PopPreferencesStorage.IMAGES );
 	}
 
 	void aboutMenuItem_actionPerformed() {
@@ -339,15 +338,15 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	}
 
 	void blankToolbar() {
-		PopPreferences.setButtonType( 0 );
+		PopPreferencesStorage.setButtonType( 0 );
 	}
 
 	void optionsButton_actionPerformed( ActionEvent e ) {
-		PreferencesDialog.bringUpDialog( this );
+		PopPreferencesDialog.bringUpDialog( this );
 	}
 
 	void imagesOnly() {
-		PopPreferences.setButtonType( PopPreferences.IMAGES );
+		PopPreferencesStorage.setButtonType( PopPreferencesStorage.IMAGES );
 	}
 
 	/**

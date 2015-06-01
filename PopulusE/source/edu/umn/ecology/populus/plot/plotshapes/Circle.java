@@ -10,7 +10,7 @@ package edu.umn.ecology.populus.plot.plotshapes;
  * @author Amos Anderson
  * @version 5.2
  */
-public class Circle extends PlotTerminus { //JCShape {
+public class Circle extends PlotTerminus {
 
    protected void resize( int size ) {
       x = new int[72];

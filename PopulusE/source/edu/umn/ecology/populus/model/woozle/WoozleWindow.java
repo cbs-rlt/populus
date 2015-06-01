@@ -87,7 +87,7 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.wo
 
          //Pause
          try {
-            Thread.sleep( edu.umn.ecology.populus.core.PopPreferences.getDelayTime() );
+            Thread.sleep( edu.umn.ecology.populus.core.PopPreferencesStorage.getDelayTime() );
          }
          catch( InterruptedException e ) {
 

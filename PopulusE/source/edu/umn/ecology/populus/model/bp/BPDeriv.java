@@ -71,8 +71,6 @@ public class BPDeriv extends Derivative {
       gamma = kGamma;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public BPDeriv( int modelType, int varType, double time, double alpha, double gamma, double tau,
                    double rho, double c, double r0, double p, double q, double e, double d, double tI) {
       this.modeltype = modelType;

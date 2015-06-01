@@ -32,7 +32,7 @@ public class IOUtility {
       // we don't have a file like that.
       String fullName = baseName + "1" + extension;
       {
-         File dir = new File(PopPreferences.getDirectory());
+         File dir = new File(PopPreferencesStorage.getDirectory());
          if (dir.isDirectory()) {
             File[] files = dir.listFiles(new ExtensionFileFilter(extension));
             int index = 0;
@@ -59,12 +59,12 @@ public class IOUtility {
     */
    public static String getFileName( String defaultName, String title, int type ) {
       String filename = null;
-      if( PopPreferences.isUseAWTFileDialog() ) {
+      if( PopPreferencesStorage.isUseAWTFileDialog() ) {
          FileDialog fd;
 
          //get filename
          fd = new FileDialog( DesktopWindow.defaultWindow, title, type );
-         fd.setDirectory( PopPreferences.getDirectory() );
+         fd.setDirectory( PopPreferencesStorage.getDirectory() );
          fd.setFile( defaultName );
 
          //get user input
@@ -88,7 +88,7 @@ public class IOUtility {
          int state;
 
          //get filename
-         fc = new JFileChooser( PopPreferences.getDirectory() );
+         fc = new JFileChooser( PopPreferencesStorage.getDirectory() );
          fc.setSelectedFile( new File( fc.getCurrentDirectory(), defaultName ) );
          fc.setFileFilter( new BasicFilenameFilter( defaultName.substring( 1 + defaultName.indexOf( '.' ) ) ) );
 
@@ -101,7 +101,7 @@ public class IOUtility {
          }
          if( state == JFileChooser.APPROVE_OPTION ) {
             filename = fc.getSelectedFile().toString();
-            PopPreferences.setDirectory( fc.getCurrentDirectory().toString() );
+            PopPreferencesStorage.setDirectory( fc.getCurrentDirectory().toString() );
          }
       }
       return filename;

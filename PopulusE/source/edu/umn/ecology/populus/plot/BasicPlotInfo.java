@@ -7,37 +7,24 @@ import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.fileio.Logging;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.io.*;
 import java.util.*;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartTheme;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.DomainOrder;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DatasetChangeListener;
-import org.jfree.data.general.DatasetGroup;
+import org.jfree.data.Range;
 import org.jfree.data.xy.AbstractXYDataset;
 import org.jfree.data.xy.IntervalXYDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.ui.RectangleAnchor;
 import org.jfree.ui.TextAnchor;
-import org.jfree.chart.annotations.XYAnnotation;
-import org.jfree.chart.annotations.XYPointerAnnotation;
 import org.jfree.chart.annotations.XYTextAnnotation;
 import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.Plot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.ValueMarker;
+import org.jfree.chart.event.ChartChangeEvent;
+import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.chart.renderer.category.StandardBarPainter;
-import org.jfree.chart.renderer.xy.AbstractXYItemRenderer;
 import org.jfree.chart.renderer.xy.StandardXYBarPainter;
 import org.jfree.chart.renderer.xy.XYBarRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
@@ -54,7 +41,10 @@ import Jama.EigenvalueDecomposition;
   * usually best to let it just handle the bounds. however some plots, like frequency plots, have bounds that should
   * be enforced.
   */
-public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartListener {
+public class BasicPlotInfo extends ParamInfo
+	implements ChartDataModel, //getNumSeries, getYSeries, getXSeries
+	JCChartListener  //changeChart, paintChart
+{
 	private static final long serialVersionUID = -882044708806321402L;
 
 	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.plot.Res" );
@@ -160,7 +150,6 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 	    public void updateBarWidth(int series) {
 	    	if (data[series][0].length > 1) {
 	    		double dx = data[series][0][1] - data[series][0][0];
-	    		Logging.log("updateBarWidth dx is " +  dx);
 	    		this.barWidth = 3.0 * dx / 4.0;
 	    	}
 	    }
@@ -301,6 +290,10 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 
    public ChartTheme getJFreeChartTheme() {
 	   class PopChartTheme implements ChartTheme {
+		   private BasicPlotInfo bpiRef;
+		   public PopChartTheme(BasicPlotInfo bpi) {
+			   this.bpiRef = bpi;
+		   }
 		   public void apply(JFreeChart chart) {
 			   JFCXYAdapter jfca = new JFCXYAdapter();
 			   XYPlot plot = chart.getXYPlot();
@@ -324,49 +317,36 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 			   if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
 			   if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
 
+			   //TODO - just use this renderer
+			   plot.setRenderer(new ChartRendererWithOrientatedShapes(bpiRef));
+			   
 			   XYItemRenderer r = plot.getRenderer();
 			   //		   AbstractXYItemRenderer r = plot.getRenderer();
 			   if (r instanceof XYLineAndShapeRenderer) {
 				   XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) r;
 				   for( int i = 0;i < getNumSeries();i++ ) {
-					   //				   renderer.setUseFillPaint(true);
-					   //				   renderer.setUseOutlinePaint(true);
-					   JCChartStyle jccs = getChartStyle(i);
-
 					   //Set Line
-					   renderer.setSeriesPaint(i, jccs.getLineColor());
-					   Stroke s = new BasicStroke((float) jccs.getLineWidth(),
-							   BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f,
-							   getDashArray(jccs.getLinePattern()), 0.0f);
-					   renderer.setSeriesStroke(i, s);
+					   renderer.setSeriesPaint(i, getLineColor(i));
+					   renderer.setSeriesStroke(i, getLineStroke(i));
 
 					   //Set Symbol
-					   renderer.setSeriesFillPaint(i, jccs.getSymbolColor());
-					   renderer.setSeriesOutlinePaint(i, jccs.getSymbolColor());
+					   Color c = getSymbolColor(i);
+					   Logging.log("Using color of " + c);
+					   renderer.setSeriesFillPaint(i, getSymbolColor(i));
+					   renderer.setSeriesOutlinePaint(i, getSymbolColor(i));
 
-
-					   jccs.getSymbolShape();
-
-
-
-					   jccs.setSymbolCustomShape(new CircleTerminus(true));
-					   //jccs.getSymbolStyle()
-					   //jccs.getSymbolSize()
-					   //			   renderer.setBaseShapesVisible(true);
-					   //			   renderer.setBaseShapesFilled(true);
-					   Shape shape = new Rectangle(-5, -5, 10, 10);
-					   //			   renderer.setSeries
-
-					   //renderer.setSeriesShape(i, shape);
-					   //renderer.setSeriesShapesVisible(i, true);
-					   //renderer.setser
-
+					   Shape shape = getSymbolShape(i);
+					   if (shape != null) {
+						   renderer.setSeriesShape(i, shape);
+						   renderer.setSeriesShapesFilled(i, isSymbolOpaque(i));
+						   renderer.setUseFillPaint(true);
+						   renderer.setUseOutlinePaint(true);
+						   renderer.setSeriesShapesVisible(i, true);
+					   }
 				   }
 			   } else if (r instanceof XYBarRenderer) {
 				   XYBarRenderer barRenderer = (XYBarRenderer) r;
 				   barRenderer.setBarPainter(new StandardXYBarPainter());
-				   
-				   //TODO - we need the 
 			   } else {
 				   Logging.log("Unknown renderer type: " + r.getClass(), Logging.kWarn);
 			   }
@@ -384,7 +364,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 				   plot.addAnnotation(annotation);
 
 
-				   //I actually think that annotation is ugly.  We can use one of these instead in the future, maybe...
+				   //I actually think the annotation above is ugly.  We can use one of these instead in the future, maybe...
 				   /*PointerAnnotation may look cool...
 				    * That 2.0 is the angle, randomly picked
 				    * XYPointerAnnotation annotation = new XYPointerAnnotation(lab.caption, lab.x, lab.y, 2.0); 
@@ -409,7 +389,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
 			   
 		   }
 	   }
-	   return new PopChartTheme();
+	   return new PopChartTheme(this);
    }
    
    public void styleJFree( JFreeChart chart ) {
@@ -501,6 +481,63 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    private JCChartStyle getChartStyle( int n ) {
       while(lines.size() <= n) lines.add( getDefaultStyle() );
       return ( (JCChartStyle)lines.elementAt( n ) );
+   }
+      
+   
+   private Stroke getLineStroke(int n) {
+	   JCChartStyle jccs = getChartStyle(n);
+	   return new BasicStroke((float) jccs.getLineWidth(),
+			   BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f,
+			   getDashArray(jccs.getLinePattern()), 0.0f);
+   }
+   private Color getLineColor(int n) {
+	   return getChartStyle(n).getLineColor();
+   }
+   /**
+    * 
+    * @param n Line index
+    * @return shape of the symbol on the line.  May be null if no symbol.
+    */
+   private Shape getSymbolShape(int n) {
+	   JCSymbolStyle jcss = getChartStyle(n).getSymbolStyle();
+	   if(jcss.getCustomShape() != null) {
+		   //TODO -- this should ALWAYS be a PlotTerminus if it's customized.  We should force it in the compile.
+		   try {
+			   PlotTerminus pt = (PlotTerminus) jcss.getCustomShape();
+			   return pt.getShape();
+		   } catch (ClassCastException e) {
+			   Logging.log("Why is custom shape not PlotTerminus??", Logging.kWarn);
+			   Logging.log(e);
+			   return null;
+		   }
+	   }
+	   switch (jcss.getShape()) {
+	   case DOTS:
+		   double sz = 6.0; //TODO ??
+		   return new Ellipse2D.Double(sz/2.0, sz/2.0, sz, sz);
+	   default:
+	   case NONE:
+		   return null;
+	   }
+   }
+   private boolean isSymbolOpaque(int n) {
+	   JCSymbolStyle jcss = getChartStyle(n).getSymbolStyle();
+	   if(jcss.getCustomShape() != null) {
+		   //TODO -- this should ALWAYS be a PlotTerminus if it's customized.  We should force it in the compile.
+		   try {
+			   PlotTerminus pt = (PlotTerminus) jcss.getCustomShape();
+			   return pt.isOpaque();
+		   } catch (ClassCastException e) {
+			   Logging.log("Why is custom shape not PlotTerminus??", Logging.kWarn);
+			   Logging.log(e);
+			   return true;
+		   }
+	   }
+	   //default is true
+	   return true;
+   }
+   private Color getSymbolColor(int n) {
+	   return getChartStyle(n).getSymbolColor();
    }
 
    /***********************
@@ -594,7 +631,9 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
    }
 
    /**
-    * one of the methods that make this class a JCChartListener. this method is called when the
+    * Required for JCChartListener, called after a paint event.
+    * 
+    * One of the methods that make this class a JCChartListener. This method is called when the
     * chart is finally drawn so that the aspect of the plot window can be taken into account when
     * calculating the angle of the plot arrow and fletching.
     * 
@@ -607,18 +646,40 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
       JCAxis v = jc.getChartArea().getVertActionAxis();
       double chartMod = (double)jc.getChartArea().getHeight()/(double)jc.getChartArea().getWidth();
       double dataMod = (v.getMax()-v.getMin())/(h.getMax()-h.getMin());
+      boolean needUpdate = updateDirectedSymbols(chartMod/dataMod);
+      if(needUpdate)
+         jc.update();
+   }
+   
+   /**
+    * This will tell the directed shapes (PlotTerminus) that they need to update their direction
+    * 
+    * @param ratio  (comp height/comp width) / (y value range / x value range)
+    * @return true if values changed
+    */
+   public boolean updateDirectedSymbols(double ratio) {
       boolean needUpdate = false;
       Enumeration<PlotTerminus> e = plotTerminusList.elements();
       while (e.hasMoreElements()) {
          PlotTerminus term = e.nextElement();
-         needUpdate |= term.updateAdjustment(chartMod/dataMod);
+         needUpdate |= term.updateAdjustment(ratio);
       }
-      if(needUpdate)
-         jc.update();
+      return needUpdate;
+   }
+   
+   public void updateDirectedSymbolsJFC(ChartRendererWithOrientatedShapes r, double ratio) {
+      boolean needUpdate = updateDirectedSymbols(ratio);
+      if (needUpdate) {
+    	  for (int i=0; i<getNumSeries(); i++) {
+    		  r.setSeriesShape(i, getSymbolShape(i));
+    	  }
+      }
    }
 
    /**
-    * this method is called when one of the axes is changed, e.g. when a zoom is performed. if the graph
+    * Required for JCChartListener
+    * 
+    * This method is called when one of the axes is changed, e.g. when a zoom is performed. if the graph
     * is a frequency graph, then we want to force the y-axis to have a spacing of 0.1, but if zoomed in, then
     * the 0.1 spacing isn't any good anymore, and we should let the axis choose its own spacing.
     * @param jce
@@ -706,7 +767,7 @@ public class BasicPlotInfo extends ParamInfo implements ChartDataModel, JCChartL
       } else {
          switch(style){
             case DOTS:
-               getChartStyle(whichLine).getSymbolStyle().setCustomShape( new Circle().getJCShape() );
+               getChartStyle(whichLine).getSymbolStyle().setCustomShape( new CircleTerminus(false).getJCShape() );
                break;
             case ARROW:
             case FLETCHING:

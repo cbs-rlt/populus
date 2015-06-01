@@ -11,8 +11,6 @@ public class LVCDeriv extends Derivative {
       return ;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public LVCDeriv( double r1, double K1, double alpha, double r2, double K2, double beta ) {
       this.r1 = r1;
       this.K1 = K1;

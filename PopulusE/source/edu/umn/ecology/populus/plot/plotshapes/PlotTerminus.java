@@ -19,6 +19,10 @@ import com.klg.jclass.chart.*;
 abstract public class PlotTerminus extends JCShape {
    private boolean isStart;
    protected double adjustment = 1.0;
+   
+   public boolean isOpaque() {
+	   return true;
+   }
 
    /**
     * @param newAdjustment ratio of the data's aspect ratio to the chart area's aspect ratio
@@ -36,6 +40,7 @@ abstract public class PlotTerminus extends JCShape {
       this(true);
    }
    public PlotTerminus(boolean isStart) {
+	  this.size = 6;
       this.isStart = isStart;
    }
    public boolean isStart() {
@@ -45,6 +50,7 @@ abstract public class PlotTerminus extends JCShape {
    //For JFreeChart
    //  TODO - what about fill? Fill is handled in the class here by JClass, but not JFreeChart.
    public java.awt.Shape getShape() {
+	   resize(this.size);
 	   return new Polygon(x, y, x.length);
    }
    

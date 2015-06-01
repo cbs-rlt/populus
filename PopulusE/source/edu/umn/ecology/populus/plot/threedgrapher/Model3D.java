@@ -23,13 +23,13 @@ class Model3D{
     * this Vector will be used to hold all the 2D surfaces that get put on the plot -- including
     * the griding panes
     */
-   Vector planes = new Vector(0);
+   Vector<Plane3D> planes = new Vector<Plane3D> (0);
 
    /**
     * this Vector will be used to hold all the Lines that get put on the plot. however,
     * because it holds Line3D objects, it could hold more than just "lines"...
     */
-   Vector lines = new Vector(0);
+   Vector<Line3D> lines = new Vector<Line3D>(0);
 
    int numLines;
    float xmin, xmax, ymin, ymax, zmin, zmax;
@@ -148,8 +148,8 @@ class Model3D{
       planes.set(0,new Plane3D(xy, Plane3D.isXY));
       planes.set(1,new Plane3D(xz, Plane3D.isXZ));//this needs to remain at pos 1
       planes.set(2,new Plane3D(yz, Plane3D.isYZ));
-      ((Plane3D)planes.get(1)).setZIsDiscrete(zIsDiscrete);
-      ((Plane3D)planes.get(0)).setXIsDiscrete(xIsDiscrete);
+      planes.get(1).setZIsDiscrete(zIsDiscrete);
+      planes.get(0).setXIsDiscrete(xIsDiscrete);
    }
 
    /** Method to intercept the output of a double to the screen. This formats it
@@ -170,9 +170,9 @@ class Model3D{
 
    /** Draws the 3 axis lines and the labels associated with each.*/
    void drawAxis(Graphics g){
-      Plane3D xyp = (Plane3D)planes.get(0);
-      Plane3D xzp = (Plane3D)planes.get(1);
-      Plane3D yzp = (Plane3D)planes.get(2);
+      Plane3D xyp = planes.get(0);
+      Plane3D xzp = planes.get(1);
+      Plane3D yzp = planes.get(2);
       xyp.transform(mat);
       xzp.transform(mat);
       yzp.transform(mat);
@@ -198,14 +198,14 @@ class Model3D{
 
    public void drawBackground(Graphics2D g){
       for(int i=0; i<planes.size(); i++)
-         ((Plane3D)planes.get(i)).paint(g,mat);
+         planes.get(i).paint(g,mat);
       drawAxis(g);
    }
 
    public void drawData(Graphics2D g, int numPointsToDraw){
       for(int i=0; i<lines.size(); i++){
-         if( ((Line3D)lines.get(i)).isDrawable() )
-            ((Line3D)lines.get(i)).paint(g, mat, numPointsToDraw);
+         if( lines.get(i).isDrawable() )
+            lines.get(i).paint(g, mat, numPointsToDraw);
       }
    }
 
@@ -238,7 +238,7 @@ class Model3D{
       String message;
 
       for(int i=0; i<lines.size(); i++){
-         highestZ = ((Line3D)lines.get(i)).matchPoint(x,y);
+         highestZ = lines.get(i).matchPoint(x,y);
          if(highestZ != null)
             break;
       }
@@ -263,7 +263,7 @@ class Model3D{
    void findBB() {
       float[] max;
       for(int i=0; i<lines.size(); i++){
-         max = ((Line3D)lines.get(i)).findBB();
+         max = lines.get(i).findBB();
          if(max != null){
             xmax = Math.max(xmax,max[0]);
             xmin = Math.max(xmin,max[1]);
@@ -279,14 +279,11 @@ class Model3D{
       This method returns the 3 values of the axes furthest away from the center
    */
    int[] getEdges(){
-      int last = ((Plane3D)planes.get(0)).last;
+      int last = planes.get(0).last;
       int[] e = new int[3];
-      //e[0] = (int)((Point3D)xy[xy.length-1][0]).x();
-      //e[1] = (int)((Point3D)yz[yz.length-1][0]).y();
-      //e[2] = (int)((Point3D)xz[0][xz[0].length-1]).z();
-      e[0] = (int)(((Plane3D)planes.get(0)).getPoint(last,0)).x();
-      e[1] = (int)(((Plane3D)planes.get(2)).getPoint(last,0)).y();
-      e[2] = (int)(((Plane3D)planes.get(1)).getPoint(0,last)).z();
+      e[0] = (int)(planes.get(0).getPoint(last,0)).x();
+      e[1] = (int)(planes.get(2).getPoint(last,0)).y();
+      e[2] = (int)(planes.get(1).getPoint(0,last)).z();
       return e;
    }
    /**
@@ -296,14 +293,13 @@ class Model3D{
       graphColors = newColors;
       for(int i=0; i<lines.size(); i++){
          if(multiColored)
-            ((Line3D)lines.get(i)).setColors(plotColors[i%plotColors.length],graphColors[8]);
-            //((Line3D)lines.get(i)).setColors(graphColors[i],graphColors[8]);
-         else
-            ((Line3D)lines.get(i)).setColors(graphColors[4],graphColors[8]);
+            lines.get(i).setColors(plotColors[i%plotColors.length],graphColors[8]);
+          else
+            lines.get(i).setColors(graphColors[4],graphColors[8]);
       }
-      ((Plane3D)planes.get(0)).setPlaneColor(graphColors[0]);
-      ((Plane3D)planes.get(1)).setPlaneColor(graphColors[5]);
-      ((Plane3D)planes.get(2)).setPlaneColor(graphColors[1]);
+      planes.get(0).setPlaneColor(graphColors[0]);
+      planes.get(1).setPlaneColor(graphColors[5]);
+      planes.get(2).setPlaneColor(graphColors[1]);
    }
    /**
     * Set the background color.
@@ -312,18 +308,18 @@ class Model3D{
       backColor = graphBack;
       this.textColor = textColor;
       for(int i=0; i<planes.size(); i++)
-         ((Plane3D)planes.get(i)).setBackground(backColor);
+         planes.get(i).setBackground(backColor);
    }
 
    public void setLabelT(boolean b){
       for(int i=0; i<lines.size(); i++){
-         ((Line3D)lines.get(i)).setLabelT(b);
+         lines.get(i).setLabelT(b);
       }
    }
 
    public void setIsDiscrete(boolean b){
       for(int i=0; i<lines.size(); i++){
-         ((Line3D)lines.get(i)).setIsDiscrete(b);
+         lines.get(i).setIsDiscrete(b);
       }
    }
 
@@ -337,16 +333,16 @@ class Model3D{
 
    public void setSqueezeLabels(boolean b){
       for(int i=0; i<planes.size(); i++)
-         ((Plane3D)planes.get(i)).setDontSqueeze(b);
+         planes.get(i).setDontSqueeze(b);
    }
 
    public boolean getSqueezeLabels(){
-      return ((Plane3D)planes.get(0)).dontSqueezeNumbers;
+      return planes.get(0).dontSqueezeNumbers;
    }
 
    public void setTransformed(boolean b){
       for(int i=0; i<lines.size(); i++){
-         ((Line3D)lines.get(i)).transformed = b;
+         lines.get(i).transformed = b;
       }
    }
 
@@ -355,10 +351,10 @@ class Model3D{
       multiColored = b;
       for(int i=0; i<lines.size(); i++){
          if(multiColored){
-            ((Line3D)lines.get(i)).setColors(plotColors[i%plotColors.length],graphColors[8]);
-            ((Line3D)lines.get(i)).setDrawLeading(true);
+            lines.get(i).setColors(plotColors[i%plotColors.length],graphColors[8]);
+            lines.get(i).setDrawLeading(true);
          } else
-            ((Line3D)lines.get(i)).setColors(graphColors[4],graphColors[8]);
+            lines.get(i).setColors(graphColors[4],graphColors[8]);
       }
    }
 }

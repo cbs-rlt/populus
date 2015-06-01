@@ -5,7 +5,6 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
-import edu.umn.ecology.populus.fileio.Logging;
 import javax.swing.*;
 import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;

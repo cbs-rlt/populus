@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
-import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;

@@ -31,7 +31,6 @@ public class AIDSTDeriv extends Derivative {
       dN[kZ] = c*q*y*w - h*z;
 
    }
-   public double[] postDerivative(double[] v, double t){ return v; }
    public AIDSTDeriv( double lambda, double d, double a, double beta, double b, double c, double q,
                       double h, double s,double p, double[][] intervals) {
       this.lambda = lambda;

@@ -2,7 +2,7 @@ package edu.umn.ecology.populus.help;
 
 import java.io.File;
 import java.net.URI;
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.fileio.Logging;
 
 public class PDFHelpFileMgr {
@@ -30,7 +30,7 @@ public class PDFHelpFileMgr {
 	private static String getHelpFileLocation(boolean setupIfNeeded) {
 		if (setupIfNeeded)
 			setupHelpFileFirst(false);
-		return PopPreferences.getHelpFileLocation();
+		return PopPreferencesStorage.getHelpFileLocation();
 	}
 	public static String getHelpFileLocationURI() {
 		return PDFHelpFileMgr.getHelpFileLocation(true);
@@ -46,11 +46,11 @@ public class PDFHelpFileMgr {
 		return "";
 	}
 	private static boolean isLocalFile() {
-		String str = PopPreferences.getHelpFileLocation();
+		String str = PopPreferencesStorage.getHelpFileLocation();
 		return (str.startsWith("file:/") || str.isEmpty());
 	}
 	public static String getHelpLang() {
-		return PopPreferences.getHelpLang();
+		return PopPreferencesStorage.getHelpLang();
 	}
 	public static String getHelpLangSourceFile() {
 		String lang = getHelpLang();

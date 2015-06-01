@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.visual.SpecialLineBorder;
 
 /**
@@ -30,9 +30,9 @@ public MatrixTableRenderer(){
          boolean isSelected, boolean hasFocus, int row, int column) {
 	   TableModel model = table.getModel();
 	   if (model.isCellEditable(row, column))
-		   setBackground(PopPreferences.getTableEditColor());
+		   setBackground(PopPreferencesStorage.getTableEditColor());
 	   else
-		   setBackground(PopPreferences.getTableUneditColor());
+		   setBackground(PopPreferencesStorage.getTableUneditColor());
       setFont(table.getFont());
 
       if (hasFocus) {

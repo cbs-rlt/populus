@@ -70,8 +70,6 @@ public class TPDeriv extends Derivative {
       return ;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public TPDeriv(int modelType, double e, double sigmaV, double sigmaT, double betaV, double betaT, double lambda,
                   double induction, double tau, double c, double rho, double p, double q, double alphaS, double alphaR){
 

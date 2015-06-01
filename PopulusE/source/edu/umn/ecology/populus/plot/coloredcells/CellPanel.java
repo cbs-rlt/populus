@@ -72,17 +72,7 @@ public class CellPanel extends JPanel{
 		if(r>=cells.length||c>cells[0].length||r<0||c<0) return -1d;
 		return cells[r][c].getValue();
 	}
-
-	private double getValueAt(int x, int y){
-		int dw = getWidth();
-		dw -= CellDefaults.kWidth*cells.length;
-		dw /= 2;
-		x -= dw;
-		int r = x/CellDefaults.kWidth;
-		int c = y/CellDefaults.kHeight;
-		return getValue(r,c);
-	}
-
+	
 	void updateImageSize(){
 		iw = CellDefaults.kWidth*cells.length;
 		ih = CellDefaults.kHeight*cells[0].length+legH;

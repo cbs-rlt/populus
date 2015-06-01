@@ -2,8 +2,7 @@ package edu.umn.ecology.populus.plot;
 import com.klg.jclass.chart.*;
 
 import edu.umn.ecology.populus.constants.*;
-import edu.umn.ecology.populus.core.PopPreferences;
-import edu.umn.ecology.populus.fileio.Logging;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.visual.*;
 
 import java.awt.*;
@@ -11,27 +10,14 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.labels.ItemLabelAnchor;
-import org.jfree.chart.labels.ItemLabelPosition;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.xy.AbstractXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYBarRenderer;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.ui.TextAnchor;
 
 /**
  * A GUI Panel that displays a chart. Currently, it displays a JCChart in the Center,
@@ -67,7 +53,7 @@ public class BasicPlotCanvas extends JPanel {
 	public void setBPI( BasicPlotInfo newInfo ) {
 		if( newInfo != null ) {
 			info = newInfo;
-			if (PopPreferences.isUseJFreeClass()) {
+			if (PopPreferencesStorage.isUseJFreeClass()) {
 				info.styleJFree(jfchartpanel.getChart());
 			} else {
 				info.styleJC( chart );
@@ -98,7 +84,7 @@ public class BasicPlotCanvas extends JPanel {
      for easier modification.*/
 
 	public void displayChartOptionScreen( int whatOption ) {
-		if (PopPreferences.isUseJFreeClass()) {
+		if (PopPreferencesStorage.isUseJFreeClass()) {
 			//TODO
 			
 		} else {
@@ -200,7 +186,6 @@ public class BasicPlotCanvas extends JPanel {
 		}
 		if (jfchartpanel != null) {
 			jfchartpanel.setBackground( bgcolor );
-			jfchartpanel.setBackground( Color.YELLOW );
 			//TODO: Need to understand this versus chart bg color
 			jfchartpanel.getChart().setBackgroundPaint(bgcolor);
 		}
@@ -244,7 +229,7 @@ public class BasicPlotCanvas extends JPanel {
 			yCaption.setDirection( HTMLLabel.DOWN_TO_UP );
 		}
 		setLayout( borderLayout1 );
-		if (PopPreferences.isUseJFreeClass()) {
+		if (PopPreferencesStorage.isUseJFreeClass()) {
 			NumberAxis yAxis = new NumberAxis(null);
 			NumberAxis xAxis = new NumberAxis(null);
 			xAxis.setAutoRangeIncludesZero(false);

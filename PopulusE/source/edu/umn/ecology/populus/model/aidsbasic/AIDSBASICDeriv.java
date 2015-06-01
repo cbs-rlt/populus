@@ -17,7 +17,6 @@ public class AIDSBASICDeriv extends Derivative {
       dN[kV] = k*y-u*v;
 
    }
-    public double[] postDerivative(double[] v, double t){ return v; }
    public AIDSBASICDeriv( double lambda, double d, double k, double a, double beta, double u ) {
       this.lambda = lambda;
       this.d = d;

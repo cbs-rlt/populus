@@ -58,7 +58,7 @@ public class BasicPlotOutputPanel3D extends OutputPanel {
       /*all we have to do is create the LiveGraph class, and it will handle the painting*/
       if(bpi.isLive()){
          td.setMultiColored(true);
-         new LiveGraph(td,20,(int) edu.umn.ecology.populus.core.PopPreferences.getDelayTime());
+         new LiveGraph(td,20,(int) edu.umn.ecology.populus.core.PopPreferencesStorage.getDelayTime());
       } else
          repaint();
    }

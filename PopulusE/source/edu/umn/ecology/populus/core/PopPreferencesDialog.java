@@ -26,7 +26,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.util.*;
 
-public class PreferencesDialog
+public class PopPreferencesDialog
 extends JDialog {
 	/**
 	 * 
@@ -85,15 +85,15 @@ extends JDialog {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public PreferencesDialog(Frame frame, String title) {
+	public PopPreferencesDialog(Frame frame, String title) {
 		this(frame, title, false);
 	}
 
-	public PreferencesDialog(Frame frame) {
+	public PopPreferencesDialog(Frame frame) {
 		this(frame, res.getString("Preferences"), false);
 	}
 
-	public PreferencesDialog(Frame frame, String title, boolean modal) {
+	public PopPreferencesDialog(Frame frame, String title, boolean modal) {
 		super(frame, title, modal);
 		try {
 			jbInit();
@@ -121,13 +121,13 @@ extends JDialog {
 	}
 
 	void defaultsButton_actionPerformed(ActionEvent e) {
-		PopPreferences.getSingleton().reset();
+		PopPreferencesStorage.getSingleton().reset();
 		updateValues();
 	}
 
 	void saveRequested() {
 		updatePreferences();
-		PopPreferences.getSingleton().save();
+		PopPreferencesStorage.getSingleton().save();
 	}
 
 	void aboutButton_actionPerformed(ActionEvent e) {
@@ -161,95 +161,95 @@ extends JDialog {
 		 */
 
 		case 0:
-			PopPreferences.setButtonType(PopPreferences.IMAGES);
+			PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES);
 			break;
 
 		case 1:
-			PopPreferences.setButtonType(PopPreferences.TEXT);
+			PopPreferencesStorage.setButtonType(PopPreferencesStorage.TEXT);
 			break;
 
 		default:
-			PopPreferences.setButtonType(PopPreferences.IMAGES +
-					PopPreferences.TEXT);
+			PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES +
+					PopPreferencesStorage.TEXT);
 			break;
 		}
 		switch (this.triggerComboBox.getSelectedIndex()) {
 		case 0:
-			PopPreferences.setTriggerType(PopPreferences.NO_TRIGGER);
+			PopPreferencesStorage.setTriggerType(PopPreferencesStorage.NO_TRIGGER);
 			break;
 
 		case 1:
-			PopPreferences.setTriggerType(PopPreferences.DEFAULT_TRIGGER);
+			PopPreferencesStorage.setTriggerType(PopPreferencesStorage.DEFAULT_TRIGGER);
 			break;
 
 		default:
-			PopPreferences.setButtonType(PopPreferences.ALL_TRIGGER);
+			PopPreferencesStorage.setButtonType(PopPreferencesStorage.ALL_TRIGGER);
 			break;
 		}
 		if (terminusType.getSelectedItem().equals("Arrow")) {
-			PopPreferences.setTerminusType(PopPreferences.kARROWTERMINI);
+			PopPreferencesStorage.setTerminusType(PopPreferencesStorage.kARROWTERMINI);
 		} else {
-			PopPreferences.setTerminusType(PopPreferences.kCIRCLETERMINI);
+			PopPreferencesStorage.setTerminusType(PopPreferencesStorage.kCIRCLETERMINI);
 		}
-		PopPreferences.setDelayTime(this.throttlePPF.getInt());
-		PopPreferences.setDirectory(directory.getText());
-		PopPreferences.setOwnershipBorderThickness(ownerBorderThickness.getInt());
-		PopPreferences.setUseJFreeClass(chckbxUseNewChart.isSelected());
-		PopPreferences.setRestoreDesktop(chckbxSaveWindowPosition.isSelected());
+		PopPreferencesStorage.setDelayTime(this.throttlePPF.getInt());
+		PopPreferencesStorage.setDirectory(directory.getText());
+		PopPreferencesStorage.setOwnershipBorderThickness(ownerBorderThickness.getInt());
+		PopPreferencesStorage.setUseJFreeClass(chckbxUseNewChart.isSelected());
+		PopPreferencesStorage.setRestoreDesktop(chckbxSaveWindowPosition.isSelected());
 	}
 
 	void loadButton_actionPerformed(ActionEvent e) {
-		PopPreferences.getSingleton().load();
+		PopPreferencesStorage.getSingleton().load();
 		updateValues();
 	}
 
 	/** Load values */
 	void updateValues() {
-		switch (PopPreferences.getButtonType()) {
+		switch (PopPreferencesStorage.getButtonType()) {
 		/*
          case 0:
        typeComboBoxModel.setSelectedItem( typeComboBoxModel.getElementAt( 0 ) );
              break;
 		 */
 
-		case PopPreferences.IMAGES:
+		case PopPreferencesStorage.IMAGES:
 			typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(0));
 			break;
 
-		case PopPreferences.TEXT:
+		case PopPreferencesStorage.TEXT:
 			typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(1));
 			break;
 
 		default: //(IMAGES + TEXT)
 			typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(2));
 		}
-		if (PopPreferences.getTerminusType() == PopPreferences.kARROWTERMINI) {
+		if (PopPreferencesStorage.getTerminusType() == PopPreferencesStorage.kARROWTERMINI) {
 			terminusType.setSelectedItem("Arrow");
 		} else {
 			terminusType.setSelectedItem("Dot");
 		}
-		if (PopPreferences.getTriggerType() == PopPreferences.ALL_TRIGGER) {
+		if (PopPreferencesStorage.getTriggerType() == PopPreferencesStorage.ALL_TRIGGER) {
 			triggerComboBoxModel.setSelectedItem(triggerComboBoxModel.
 					getElementAt(2));
 		}
 		else {
-			if (PopPreferences.getTriggerType() == PopPreferences.DEFAULT_TRIGGER) {
+			if (PopPreferencesStorage.getTriggerType() == PopPreferencesStorage.DEFAULT_TRIGGER) {
 				triggerComboBoxModel.setSelectedItem(triggerComboBoxModel.
 						getElementAt(1));
 			}
 			else {
-				if (PopPreferences.getTriggerType() == PopPreferences.NO_TRIGGER) {
+				if (PopPreferencesStorage.getTriggerType() == PopPreferencesStorage.NO_TRIGGER) {
 					triggerComboBoxModel.setSelectedItem(triggerComboBoxModel.
 							getElementAt(0));
 				}
 			}
 		}
-		throttlePPF.setCurrentValue(PopPreferences.getDelayTime());
-		directory.setText(PopPreferences.getDirectory());
-		ownerBorderThickness.setCurrentValue(PopPreferences.
+		throttlePPF.setCurrentValue(PopPreferencesStorage.getDelayTime());
+		directory.setText(PopPreferencesStorage.getDirectory());
+		ownerBorderThickness.setCurrentValue(PopPreferencesStorage.
 				getOwnershipBorderThickness());
-		chckbxUseNewChart.setSelected(PopPreferences.isUseJFreeClass());
-		chckbxSaveWindowPosition.setSelected(PopPreferences.isRestoreDesktop());
+		chckbxUseNewChart.setSelected(PopPreferencesStorage.isUseJFreeClass());
+		chckbxSaveWindowPosition.setSelected(PopPreferencesStorage.isRestoreDesktop());
 	}
 
 	void colorChooserButton_actionPerformed(ActionEvent e) {
@@ -276,7 +276,7 @@ extends JDialog {
 	}
 
 	static void bringUpDialog(Frame parent) {
-		PreferencesDialog dialog = new PreferencesDialog(parent);
+		PopPreferencesDialog dialog = new PopPreferencesDialog(parent);
 		dialog.setVisible(true);
 	}
 
@@ -362,7 +362,7 @@ extends JDialog {
 		savePrefButton.setToolTipText("Save Preferences to Disk");
 		ownerBorderThickness.setToolTipText("");
 		extraPanel.setLayout(gridBagLayout5);
-		directory.setText(PopPreferences.getDirectory()); //TODO ease of use: We should have a browse button here.
+		directory.setText(PopPreferencesStorage.getDirectory()); //TODO ease of use: We should have a browse button here.
 		dirLabel.setToolTipText("Default Directory to Save and Load Models");
 		dirLabel.setText("Directory:");
 		trickButton.setActionCommand("Trick");
@@ -505,8 +505,8 @@ extends JDialog {
 
 class PreferencesDialog_trickButton_actionAdapter
 implements ActionListener {
-	private PreferencesDialog adaptee;
-	PreferencesDialog_trickButton_actionAdapter(PreferencesDialog adaptee) {
+	private PopPreferencesDialog adaptee;
+	PreferencesDialog_trickButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 
@@ -517,39 +517,39 @@ implements ActionListener {
 
 class StandardDialog1_okButton_actionAdapter
 implements ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.okButton_actionPerformed(e);
 	}
 
-	StandardDialog1_okButton_actionAdapter(PreferencesDialog adaptee) {
+	StandardDialog1_okButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
 
 class StandardDialog1_cancelButton_actionAdapter
 implements ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cancelButton_actionPerformed(e);
 	}
 
-	StandardDialog1_cancelButton_actionAdapter(PreferencesDialog adaptee) {
+	StandardDialog1_cancelButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
 
 class StandardDialog1_this_windowAdapter
 extends WindowAdapter {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void windowClosing(WindowEvent e) {
 		adaptee.this_windowClosing(e);
 	}
 
-	StandardDialog1_this_windowAdapter(PreferencesDialog adaptee) {
+	StandardDialog1_this_windowAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
@@ -557,13 +557,13 @@ extends WindowAdapter {
 class PreferencesDialog_defaultsButton_actionAdapter
 implements java.awt.event.
 ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.defaultsButton_actionPerformed(e);
 	}
 
-	PreferencesDialog_defaultsButton_actionAdapter(PreferencesDialog adaptee) {
+	PreferencesDialog_defaultsButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
@@ -571,13 +571,13 @@ ActionListener {
 class PreferencesDialog_loadButton_actionAdapter
 implements java.awt.event.
 ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.loadButton_actionPerformed(e);
 	}
 
-	PreferencesDialog_loadButton_actionAdapter(PreferencesDialog adaptee) {
+	PreferencesDialog_loadButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
@@ -585,13 +585,13 @@ ActionListener {
 class PreferencesDialog_saveButton_actionAdapter
 implements java.awt.event.
 ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.saveRequested();
 	}
 
-	PreferencesDialog_saveButton_actionAdapter(PreferencesDialog adaptee) {
+	PreferencesDialog_saveButton_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }
@@ -599,13 +599,13 @@ ActionListener {
 class PreferencesDialog_integratorPreferencesB_actionAdapter
 implements java.
 awt.event.ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.integratorPreferencesB_actionPerformed(e);
 	}
 
-	PreferencesDialog_integratorPreferencesB_actionAdapter(PreferencesDialog
+	PreferencesDialog_integratorPreferencesB_actionAdapter(PopPreferencesDialog
 			adaptee) {
 		this.adaptee = adaptee;
 	}
@@ -614,13 +614,13 @@ awt.event.ActionListener {
 class PreferencesDialog_cellprefB_actionAdapter
 implements java.awt.event.
 ActionListener {
-	PreferencesDialog adaptee;
+	PopPreferencesDialog adaptee;
 
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cellprefB_actionPerformed(e);
 	}
 
-	PreferencesDialog_cellprefB_actionAdapter(PreferencesDialog adaptee) {
+	PreferencesDialog_cellprefB_actionAdapter(PopPreferencesDialog adaptee) {
 		this.adaptee = adaptee;
 	}
 }

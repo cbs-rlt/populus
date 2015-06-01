@@ -2,7 +2,7 @@ package edu.umn.ecology.populus.visual;
 
 import java.awt.*;
 import javax.swing.border.*;
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 
 
 public class OwnershipBorder implements Border { //, java.io.Serializable {
@@ -11,7 +11,7 @@ public class OwnershipBorder implements Border { //, java.io.Serializable {
 
 	public OwnershipBorder(Color borderColor) {
 		this.color = borderColor;
-                thickness = PopPreferences.getOwnershipBorderThickness();
+                thickness = PopPreferencesStorage.getOwnershipBorderThickness();
 	}
 	public OwnershipBorder(Color borderColor, int thickness) {
 		this.color = borderColor;

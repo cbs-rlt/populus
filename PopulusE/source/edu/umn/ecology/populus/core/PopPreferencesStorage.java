@@ -3,7 +3,10 @@ package edu.umn.ecology.populus.core;
 import java.util.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.DisplayMode;
 import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -16,7 +19,6 @@ import javax.swing.JFrame;
 import edu.umn.ecology.populus.constants.*;
 import edu.umn.ecology.populus.fileio.Logging;
 import edu.umn.ecology.populus.help.OpenPDFMethod;
-import edu.umn.ecology.populus.help.PDFHelpFileMgr;
 
 //Title:        Populus
 //Version:
@@ -26,7 +28,7 @@ import edu.umn.ecology.populus.help.PDFHelpFileMgr;
 //Description:  Populus
 
 
-public final class PopPreferences {
+public final class PopPreferencesStorage {
 	///////////////////////
 	// CONSTANTS DEFINED //
 	///////////////////////
@@ -65,7 +67,7 @@ public final class PopPreferences {
 	//TODO SAFE private static final String DEFAULT_DIRECTORY = System.getProperty( "user.home", "." );
 	private static final String DEFAULT_DIRECTORY = "";
 	private static final boolean DEFAULT_RESTORE_DESKTOP = false;
-	private static final boolean DEFAULT_USE_JFREECHART = false;
+	private static final boolean DEFAULT_USE_JFREECHART = true;
 	
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
@@ -100,7 +102,7 @@ public final class PopPreferences {
 	public static final Integer AIDS_PACKETS = new Integer( 17 );
 
 	//Reference to singleton
-	private static PopPreferences singleton = null;
+	private static PopPreferencesStorage singleton = null;
 
 	//Instance data
 	private Vector<PopulusToolButton> buttons;
@@ -108,7 +110,7 @@ public final class PopPreferences {
 	private Hashtable<Integer, Object> table; //Miscellaneous preference data
 	private static String preferencesFile = null;
 
-	private PopPreferences() {
+	private PopPreferencesStorage() {
 		buttons = new Vector<PopulusToolButton>();
 		initializeMenuPackets();
 		reset(true);
@@ -119,9 +121,17 @@ public final class PopPreferences {
 		getSingleton().buttons.removeElement( b );
 	}
 
-	public synchronized static PopPreferences getSingleton() {
+	/**
+	 * Get the singleton instance of PopPreferences.
+	 * Note that we assume that make sure to only create one singleton if it
+	 *  doesn't already exist, but there isn't any other synchronization code 
+	 *  elsewhere when we modify it, since we assume it's all done in one
+	 *  thread.
+	 * @return PopPreferences
+	 */
+	public synchronized static PopPreferencesStorage getSingleton() {
 		if (singleton == null)
-			singleton = new PopPreferences();
+			singleton = new PopPreferencesStorage();
 		return singleton;
 	}
 
@@ -254,8 +264,25 @@ public final class PopPreferences {
 		Insets insets = kit.getScreenInsets(config);
 		location = new Point(insets.left, insets.top);
 
+		
+		//LOGGING ONLY!
+		{
+			//Look at multiple monitors here.
+			// Test if each monitor will support my app's window
+			// Iterate through each monitor and see what size each is
+			GraphicsEnvironment ge      = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			GraphicsDevice[]    gs      = ge.getScreenDevices();
+			ge.getDefaultScreenDevice();
+			for (int i = 0; i < gs.length; i++)
+			{
+			    DisplayMode dm = gs[i].getDisplayMode();
+			    Logging.log("Display Mode #" + i + "= " + dm.getWidth() + " x " + dm.getHeight() + " name=" + gs[i].getIDstring());
+			}
+			
+		}
+		
 		if (isRestoreDesktop()) {
-			Logging.log("Saving the desktop dims");
+			Logging.log("Retrieving the window coordinates from last session");
 			try {
 				Integer dims[] = (Integer[]) getSingleton().table.get(DESKTOP_LOCATION);
 				if (dims[0] != 0 || dims[1] != 0) {
@@ -340,6 +367,9 @@ public final class PopPreferences {
 	
 	public static void setUseJFreeClass(boolean newVal) {
 		getSingleton().table.put( USE_JFREECHART, new Boolean( newVal ) );
+	}
+	public static void setRestoreDesktop (boolean newVal) {
+		getSingleton().table.put( RESTORE_DESKTOP, new Boolean( newVal ) );
 	}
 
 	/**
@@ -607,6 +637,7 @@ public final class PopPreferences {
 		table.put( BORDER_THICKNESS , new Integer(5));
 		table.put( TABLE_EDIT_COLOR, Color.yellow );
 		table.put( TABLE_UNEDIT_COLOR, Color.white );
+		table.put( TERMINUS_TYPE, kDEFAULTTERMINI);
 		table.put( HELP_FILE_LOCATION, DEFAULT_HELP_FILE );
 		table.put( HELP_FILE_LANGUAGE, DEFAULT_HELP_LANG );
 		table.put( OPEN_PDF_METHOD, OpenPDFMethod.DEFAULT_METHOD.getOpenMethod());

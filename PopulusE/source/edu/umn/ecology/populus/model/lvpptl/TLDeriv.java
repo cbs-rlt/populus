@@ -23,8 +23,6 @@ public class TLDeriv extends Derivative {
       this.numVariables = 2;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    protected double getfn( double N ) {
       switch( type ) {
          case 1:

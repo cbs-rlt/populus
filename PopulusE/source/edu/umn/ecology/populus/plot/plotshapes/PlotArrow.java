@@ -1,7 +1,7 @@
 package edu.umn.ecology.populus.plot.plotshapes;
 
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.fileio.Logging;
 
 //TODO - It seems like this should belong in BasicPlotInfo?
@@ -46,7 +46,7 @@ public class PlotArrow {
       double[][] newLine = new double[][] { {xf}, {yf} };
 
       PlotTerminus p;
-      if (PopPreferences.getTerminusType() == PopPreferences.kARROWTERMINI)
+      if (PopPreferencesStorage.getTerminusType() == PopPreferencesStorage.kARROWTERMINI)
          p = new Arrow(yf-yi,xf-xi);
       else
          p = new CircleTerminus(false);
@@ -78,7 +78,7 @@ public class PlotArrow {
       double[][] newLine = new double[][] { {xi}, {yi} };
 
       PlotTerminus p;
-      if (PopPreferences.getTerminusType() == PopPreferences.kARROWTERMINI)
+      if (PopPreferencesStorage.getTerminusType() == PopPreferencesStorage.kARROWTERMINI)
          p = new Fletching(yf-yi,xf-xi);
       else
          p = new CircleTerminus(true);

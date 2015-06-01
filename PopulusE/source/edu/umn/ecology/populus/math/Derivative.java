@@ -29,7 +29,7 @@ public abstract class Derivative {
       holder that will never get called.
       a double array is returned so that the length of v can be modified.
    */
-   public abstract double[] postDerivative( double[] v, double t);
+   public double[] postDerivative( double[] v, double t) { return v; }
 
    /********************/
 

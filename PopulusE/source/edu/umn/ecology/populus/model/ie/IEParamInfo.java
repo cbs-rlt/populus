@@ -128,10 +128,10 @@ public class IEParamInfo implements BasicPlot {
          }
 
          if(!isDiscrete && getPlotCount()<3){
-            bp = new BasicPlotInfo(IsoclineAnalysis.addIsoclines(p,xlist,ig.getDerivative(),true));
-            bp.setHasIsoclines(true);
+        	 bp = new BasicPlotInfo(IsoclineAnalysis.addIsoclines(p,xlist,ig.getDerivative(),true));
+        	 bp.setHasIsoclines(true);
          } else {
-            bp = new BasicPlotInfo(p);
+        	 bp = new BasicPlotInfo(p);
          }
 
          if(points[0].length == 3){

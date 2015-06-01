@@ -31,7 +31,7 @@ private Border border1;
    private JPanel intervalsPane = new JPanel();
    private GridBagLayout gridBagLayout1 = new GridBagLayout();
    private JButton addButton = new JButton();
-   private Stack intervals = new Stack();
+   private Stack<AIDSTInterval> intervals = new Stack<AIDSTInterval>();
    private int enabledIntervals = 0;
    public static final int kMaxIntervals = 3;
    public static final int kMinIntervals = 0;
@@ -84,7 +84,7 @@ private Border border1;
    void addButton_actionPerformed(ActionEvent e) {
       double start, finish;
       if (!intervals.isEmpty()) {
-         AIDSTInterval interval = (AIDSTInterval) intervals.lastElement();
+         AIDSTInterval interval = intervals.lastElement();
          start = interval.getValues()[1] + 20.0;
          finish = start + 20.0;
       }
@@ -109,13 +109,13 @@ private Border border1;
 
 /*
    void enableInterval() {
-      AIDSTInterval interval = (AIDSTInterval) intervals.elementAt(++lastInterval);
+      AIDSTInterval interval = intervals.elementAt(++lastInterval);
       interval.enable();
    }
 */
 
    void removeInterval() {
-      AIDSTInterval interval = (AIDSTInterval) intervals.pop();
+      AIDSTInterval interval = intervals.pop();
       intervalsPane.remove(interval);
       enabledIntervals--;
       this.addButton.setEnabled(true);
@@ -133,7 +133,7 @@ private Border border1;
       int size = intervals.size();
       double[][] vals = new double[intervals.size()][];
       for (int cnt = 0; cnt < size; cnt++) {
-         AIDSTInterval interval = (AIDSTInterval) intervals.elementAt(cnt);
+         AIDSTInterval interval = intervals.elementAt(cnt);
          vals[cnt] = interval.getValues();
       }
       return vals;

@@ -34,9 +34,9 @@ public class Stage extends Ellipse2D implements StageShape, Serializable {
    boolean isActive = false;
    Label l;
    AffineTransform at = new AffineTransform();
-   Vector starts = new Vector(0);
-   Vector stops = new Vector(0);
-   Vector allStages, queue;
+   Vector<Transition> starts = new Vector<Transition>(0);
+   Vector<Transition> stops = new Vector<Transition>(0);
+   Vector<Stage> allStages, queue;
    String name = "Stage #%n";
    Component comp;
    int indexshift = 0;
@@ -53,7 +53,7 @@ public class Stage extends Ellipse2D implements StageShape, Serializable {
     * @param queue the vector for stages who haven't been located yet
     * @param comp the ImageObserver object for drawing the stages images
     */
-   Stage(int x, int y, double pop, int type, Vector allStages, Vector queue, Component comp){
+   Stage(int x, int y, double pop, int type, Vector<Stage> allStages, Vector<Stage> queue, Component comp){
       this.allStages = allStages;
       this.queue = queue;
       this.type = type;
@@ -254,13 +254,13 @@ public class Stage extends Ellipse2D implements StageShape, Serializable {
    }
 
 
-   public void removeStarts(Vector trans){
+   public void removeStarts(Vector<Transition> trans){
       for(int i=0; i<starts.size(); i++)
          trans.remove(starts.get(i));
       starts.clear();
    }
 
-   public void removeStops(Vector trans){
+   public void removeStops(Vector<Transition> trans){
       for(int i=0; i<stops.size(); i++)
          trans.remove(stops.get(i));
       stops.clear();
@@ -272,7 +272,7 @@ public class Stage extends Ellipse2D implements StageShape, Serializable {
     * that certain stages can't have starts
     * @param trans
     */
-   public void removeStage(Vector trans){
+   public void removeStage(Vector<Transition> trans){
       removeStarts(trans);
       removeStops(trans);
    }

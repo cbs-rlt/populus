@@ -76,8 +76,8 @@ public class RCParamInfo implements BasicPlot {
       }
       else{ //seasonal
          double curX = 0.0;
-         Vector vecX = new Vector();
-         Vector vecY = new Vector();
+         Vector<double[]> vecX = new Vector<double[]>();
+         Vector<double[][]> vecY = new Vector<double[][]>();
 
          do {
             //Use steady state
@@ -109,10 +109,10 @@ public class RCParamInfo implements BasicPlot {
          int totalElts, cumIdx, idx, idx2, arrElts, cutOffIdx;
          arrElts = vecX.size();
          idx = arrElts - 1;
-         cutOffIdx = Routines.binarySearchD((double[]) vecX.elementAt(idx), time);
+         cutOffIdx = Routines.binarySearchD(vecX.elementAt(idx), time);
          totalElts = 1 + cutOffIdx;
          for (idx--; idx >= 0 ; idx--) {
-            totalElts += ((double[]) vecX.elementAt(idx)).length;
+            totalElts += vecX.elementAt(idx).length;
          }
 
          xlist = new double[totalElts];
@@ -122,13 +122,13 @@ public class RCParamInfo implements BasicPlot {
          cumIdx = 0;
          for (idx = 0; idx < arrElts; idx++) {
             for (idx2 = 0; idx2 < numVars; idx2++) {
-               curArr = ((double[][]) vecY.elementAt(idx))[idx2];
+               curArr = vecY.elementAt(idx)[idx2];
                if (idx == arrElts - 1)
                   System.arraycopy(curArr, 0, ylists[idx2], cumIdx, cutOffIdx + 1);
                else
                   System.arraycopy(curArr, 0, ylists[idx2], cumIdx, curArr.length);
             }
-            curArr = (double[]) vecX.elementAt(idx);
+            curArr = vecX.elementAt(idx);
             if (idx == arrElts - 1)
                System.arraycopy(curArr, 0, xlist, cumIdx, cutOffIdx + 1);
             else

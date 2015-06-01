@@ -12,7 +12,7 @@ public class StageStructuredPane extends JPanel implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -7507895596014905385L;
-DrawingPane drawingPanel;
+   DrawingPane drawingPanel;
    JPanel controlPanel = new JPanel();
    JToggleButton addStage = new JToggleButton();
    GridBagLayout gridBagLayout2 = new GridBagLayout();
@@ -180,9 +180,9 @@ DrawingPane drawingPanel;
       JToggleButton stageTB = null;
       JToggleButton transTB = null;
       JToggleButton removeTB = null;
-      Vector stages = new Vector(0);
-      Vector queue = new Vector(0);
-      Vector trans = new Vector(0);
+      Vector<Stage> stages = new Vector<Stage>(0);
+      Vector<Stage> queue = new Vector<Stage>(0);
+      Vector<Transition> trans = new Vector<Transition>(0);
       int prevx, prevy;
       Stage firstTrans = null;
       int timeIndex = 0;

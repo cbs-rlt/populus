@@ -36,8 +36,6 @@ public class IEDeriv extends Derivative {
       return list;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public IEDeriv( EquationCalculator ss, boolean[] plot ) {
       plotted = plot;
       calc = ss;

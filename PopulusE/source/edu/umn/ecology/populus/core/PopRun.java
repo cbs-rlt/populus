@@ -18,7 +18,7 @@ public class PopRun {
 		//Allow users to specify the Preferences File on the command line
 		if ((argv.length > 1) && argv[0].equals("-p")) {
 			Logging.log("Using preferences file at " + argv[1]);
-			PopPreferences.setPreferencesFile(argv[1]);
+			PopPreferencesStorage.setPreferencesFile(argv[1]);
 		}
 		new PopRun();
 	}

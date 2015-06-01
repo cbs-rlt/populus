@@ -429,14 +429,6 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.wo
       return result;
    }
 
-   /**
-     * This method was created in VisualAge.
-     * @param newValue boolean
-     */
-
-   private void setShowCrossover( boolean newValue ) {
-      this.showCrossover = newValue;
-   }
 
    /**
      * This method was created in VisualAge.
@@ -453,14 +445,5 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.wo
 
    private boolean isMutate() {
       return ( myRand.nextDouble() < mutationRate );
-   }
-
-   /**
-     * This method was created in VisualAge.
-     * @param newValue boolean
-     */
-
-   private void setCrossoverEnabled( boolean newValue ) {
-      this.crossoverEnabled = newValue;
    }
 }

@@ -34,8 +34,6 @@ public class EOVDeriv extends Derivative {
       return ;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public EOVDeriv( int modelType, double a0, double a1, double b, double d, double p, double e, double c1, double c2, double c3 ) {
       this.type = modelType;
       this.numVariables = 2;

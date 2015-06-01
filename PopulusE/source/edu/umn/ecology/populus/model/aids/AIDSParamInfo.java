@@ -23,7 +23,7 @@ public class AIDSParamInfo implements BasicPlot {
    protected int plotType = YVvsT;
    protected double dt;
    protected String[] vsTimeChars;
-   protected Vector VvsTSaved;
+   protected Vector<double[][]> VvsTSaved;
    protected double[] xlist;
    protected double[][] ylists;
    protected double[] vt, xt, r, R, D;
@@ -208,7 +208,7 @@ public class AIDSParamInfo implements BasicPlot {
 
    public AIDSParamInfo(double v0, double vi0, double u, double ri, double rip, double Q, double y0,
           double K, double d, double kp, double k, double si, double pi, double dt, double runtime,
-          int maxStrains, int plotType, long randSeed, Vector VvsTSaved) {
+          int maxStrains, int plotType, long randSeed, Vector<double[][]> VvsTSaved) {
       der = new AIDSDeriv(v0, vi0,u,ri,rip,Q,K,d,kp,k,si,pi,dt,randSeed,maxStrains);
       initialConditions = new double[4];
       initialConditions[AIDSDeriv.kY] = y0;

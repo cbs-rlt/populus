@@ -51,8 +51,6 @@ public class MDDeriv extends Derivative {
       return ;
    }
 
-   public double[] postDerivative(double[] v, double t){ return v; }
-
    public MDDeriv( int modelType, double a, double b, double alpha, double beta, double muA,
                    double muP, double lambda, double k, double gamma, double sigma, double theta) {
       this.type = modelType;

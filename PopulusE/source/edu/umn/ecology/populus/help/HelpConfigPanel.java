@@ -23,7 +23,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
 import edu.umn.ecology.populus.core.DesktopWindow;
-import edu.umn.ecology.populus.core.PopPreferences;
+import edu.umn.ecology.populus.core.PopPreferencesStorage;
 import edu.umn.ecology.populus.fileio.BasicFilenameFilter;
 import edu.umn.ecology.populus.fileio.IOUtility;
 import edu.umn.ecology.populus.fileio.Logging;
@@ -59,7 +59,7 @@ public class HelpConfigPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 
 		String loc = PDFHelpFileMgr.getHelpFileAsFileName(false);
-		if (loc.equals(PopPreferences.DEFAULT_HELP_FILE)) {
+		if (loc.equals(PopPreferencesStorage.DEFAULT_HELP_FILE)) {
 			try {
 				String storeDir = System.getProperty( "user.home", "." );
 				loc = storeDir + File.separator + "PopulusHelp5.5.pdf";
@@ -299,11 +299,11 @@ public class HelpConfigPanel extends JPanel {
 	}
 
 	private void loadState() {
-		languageBox.setSelectedItem(PopPreferences.getHelpLang());
-		rdbtnDesktopApi.setSelected(OpenPDFMethod.DESKTOP == PopPreferences.getOpenPDFMethod());
-		rdbtnJnlpApi.setSelected(OpenPDFMethod.JNLP == PopPreferences.getOpenPDFMethod());
-		rdbtnCustomCommand.setSelected(OpenPDFMethod.CUSTOM_EXEC == PopPreferences.getOpenPDFMethod());
-		txtCustomExecStr.setText(PopPreferences.getOpenPDFCommand());
+		languageBox.setSelectedItem(PopPreferencesStorage.getHelpLang());
+		rdbtnDesktopApi.setSelected(OpenPDFMethod.DESKTOP == PopPreferencesStorage.getOpenPDFMethod());
+		rdbtnJnlpApi.setSelected(OpenPDFMethod.JNLP == PopPreferencesStorage.getOpenPDFMethod());
+		rdbtnCustomCommand.setSelected(OpenPDFMethod.CUSTOM_EXEC == PopPreferencesStorage.getOpenPDFMethod());
+		txtCustomExecStr.setText(PopPreferencesStorage.getOpenPDFCommand());
 
 		openMethodChanged();
 		filenameChanged();
@@ -384,7 +384,7 @@ public class HelpConfigPanel extends JPanel {
 			{
 				Logging.log("Copying source file from " + PDFHelpFileMgr.getHelpLangSourceFile()
 						+ " to " + newf.toString());
-				PopPreferences.setHelpLanguage(getLanguageSelected());
+				PopPreferencesStorage.setHelpLanguage(getLanguageSelected());
 				InputStream is = HelpUtilities.class.getResourceAsStream(PDFHelpFileMgr.getHelpLangSourceFile());
 				OutputStream os = new FileOutputStream(newf);
 
@@ -408,12 +408,12 @@ public class HelpConfigPanel extends JPanel {
 	
 	
 	public void doConfirmAction() {
-		PopPreferences.setHelpFileLocation(this.getURIString());
-		PopPreferences.setHelpLanguage(this.getLanguageSelected());
+		PopPreferencesStorage.setHelpFileLocation(this.getURIString());
+		PopPreferencesStorage.setHelpLanguage(this.getLanguageSelected());
 		if(!this.isFilenameValid()) {
 			this.copyHelpFileOut(false); //Will not copy out by default
 		}
-		PopPreferences.setOpenPDFObject(getOpenPDFMethod());
+		PopPreferencesStorage.setOpenPDFObject(getOpenPDFMethod());
 	}
 
 	private OpenPDFMethod getOpenPDFMethod() {
