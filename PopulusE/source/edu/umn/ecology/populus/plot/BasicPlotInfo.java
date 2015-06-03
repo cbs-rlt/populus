@@ -13,7 +13,6 @@ import java.util.*;
 
 import org.jfree.chart.ChartTheme;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.Range;
 import org.jfree.data.xy.AbstractXYDataset;
 import org.jfree.data.xy.IntervalXYDataset;
 import org.jfree.ui.TextAnchor;
@@ -22,8 +21,6 @@ import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.event.ChartChangeEvent;
-import org.jfree.chart.event.ChartChangeListener;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.StandardXYBarPainter;
 import org.jfree.chart.renderer.xy.XYBarRenderer;
@@ -330,7 +327,6 @@ public class BasicPlotInfo extends ParamInfo
 					   renderer.setSeriesStroke(i, getLineStroke(i));
 
 					   //Set Symbol
-					   Color c = getSymbolColor(i);
 					   renderer.setSeriesFillPaint(i, getSymbolColor(i));
 					   renderer.setSeriesOutlinePaint(i, getSymbolColor(i));
 
