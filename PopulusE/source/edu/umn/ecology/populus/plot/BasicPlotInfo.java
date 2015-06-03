@@ -331,7 +331,6 @@ public class BasicPlotInfo extends ParamInfo
 
 					   //Set Symbol
 					   Color c = getSymbolColor(i);
-					   Logging.log("Using color of " + c);
 					   renderer.setSeriesFillPaint(i, getSymbolColor(i));
 					   renderer.setSeriesOutlinePaint(i, getSymbolColor(i));
 

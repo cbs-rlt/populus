@@ -16,9 +16,6 @@ import javax.swing.table.*;
 import edu.umn.ecology.populus.fileio.Logging;
 
 public class ASPGLxMxTableModel extends AbstractTableModel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4778650848890791005L;
 	static final int kCOLUMNS = 5;
 	int rows = 0;

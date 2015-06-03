@@ -6,49 +6,72 @@ import java.io.Serializable;
   */
 
 class Token implements Serializable {
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = 5744460858336585474L;
-public int tokenType;
-   public double value;
-   public final static int kMaximum = 2;
-   public final static int kRandom = 3;
-   public final static int kPlus = 4;
-   public final static int kArcCosine = 4;
-   public final static int kLn = 6;
-   public final static int kFracPart = 10;
-   public final static int kSine = 0;
-   public final static int kOperator = 0;
-   public final static int kMinus = 5;
-   public final static int kAbsolute = 8;
-   public final static int kMultiply = 6;
-   public final static int kMinimum = 1;
-   public final static int kDivide = 7;
-   public final static int kCosine = 1;
-   public final static int kModulo = 8;
-   public final static int kArcSine = 3;
-   public final static int kExponent = 9;
-   public final static int kArcTangent = 5;
-   public final static int kConstant = 1;
-   public final static int kFactorial = 7;
-   public final static int kBracket = 2;
-   public final static int kIntPart = 9;
-   public final static int kOpen = 0;
-   public final static int kParameter = 4;
-   public final static int kSigFig = 0;
-   public final static int kFunction = 3;
-   public final static int kClose = 1;
-   public final static int kTangent = 2;
+
+	public enum TokenEnum {
+	   kOperator(0),
+	   kConstant(1),
+	   kBracket(2),
+	   kFunction(3),
+	   kParameter(4),
+	   kInvalidTokenType(999);
+	   
+	   private int value;    
+
+	   private TokenEnum(int value) {
+	     this.value = value;
+	   }
+
+	   public int getValue() {
+	     return value;
+	   }	   
+	}
+		   
+		   
+	public TokenEnum tokenType;
+	public double value;
+
+	//For kBracket
+	public final static int kOpen = 0;
+	public final static int kClose = 1;
+
+	//For kOperator
+	public final static int kSigFig = 0;
+	public final static int kMinimum = 1;
+	public final static int kMaximum = 2;
+	public final static int kRandom = 3;
+	public final static int kPlus = 4;
+	public final static int kMinus = 5;
+	public final static int kMultiply = 6;
+	public final static int kDivide = 7;
+	public final static int kModulo = 8;
+	public final static int kExponent = 9;
+
+
+	//For kFunction
+	public final static int kSine = 0;
+	public final static int kCosine = 1;
+	public final static int kTangent = 2;
+	public final static int kArcSine = 3;
+	public final static int kArcCosine = 4;
+	public final static int kArcTangent = 5;
+	public final static int kLn = 6;
+	public final static int kFactorial = 7;
+	public final static int kAbsolute = 8;
+	public final static int kIntPart = 9;
+	public final static int kFracPart = 10;
+
    
-   public void setToken( int newTokenType, double newValue ) {
+
+   
+   public void setToken( TokenEnum newTokenType, double newValue ) {
       tokenType = newTokenType;
       value = newValue;
    }
    
    /**
      order of precedence (lower is higher precedence)
-     0. parenthesis (not really considered)
+     0. parentheses (not really considered)
      1. unary operators (sin,cos,tan,ln,!)
      2. ^
      3. *,/,%
@@ -57,13 +80,13 @@ public int tokenType;
      */
    
    public int getPrecedence() {
-      if( tokenType == kBracket ) {
+      if( tokenType == TokenEnum.kBracket ) {
          return 0;
       }
-      if( tokenType == kFunction ) {
+      if( tokenType == TokenEnum.kFunction ) {
          return 1;
       }
-      if( tokenType == kOperator ) {
+      if( tokenType == TokenEnum.kOperator ) {
          switch( (int)value ) {
             case kExponent:
                 return 2;
@@ -316,7 +339,7 @@ public int tokenType;
       return new Token( tokenType, value );
    }
    
-   public Token( int tokenType, double value ) {
+   public Token( TokenEnum tokenType, double value ) {
       this.tokenType = tokenType;
       this.value = value;
    }

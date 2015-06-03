@@ -145,10 +145,8 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       titledBorder3 = new TitledBorder( border3, res.getString( "Initial_Conditions" ) );
       titledBorder2.setTitle( res.getString( "Fitness_Selection" ) );
       GridBagLayout gridBagLayout = new GridBagLayout();
-      gridBagLayout.columnWidths = new int[]{81, 193, 128, 0};
-      gridBagLayout.rowHeights = new int[]{168, 0};
-      gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-      gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+      gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0};
+      gridBagLayout.rowWeights = new double[]{0.0};
       setLayout(gridBagLayout);
       initialConditionsPanel.setBorder( titledBorder3 );
       initialConditionsPanel.setLayout( simpleVFlowLayout4 );
@@ -188,6 +186,8 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       wbarvspButton.setText( "<i>w\u0305</i> vs <i>p</i>" );
       wbarvspButton.setFocusPainted( false );
       GridBagConstraints gbc_plotOptionsPanel = new GridBagConstraints();
+      gbc_plotOptionsPanel.fill = GridBagConstraints.VERTICAL;
+      gbc_plotOptionsPanel.weighty = 1.0;
       gbc_plotOptionsPanel.anchor = GridBagConstraints.WEST;
       gbc_plotOptionsPanel.insets = new Insets(0, 0, 0, 5);
       gbc_plotOptionsPanel.gridx = 0;
@@ -235,7 +235,9 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       params.setParameterName( "<i>s</i>" );
       params.setHelpText("Selection Coefficient");
       GridBagConstraints gbc_coefficientsPanel = new GridBagConstraints();
-      gbc_coefficientsPanel.fill = GridBagConstraints.HORIZONTAL;
+      gbc_coefficientsPanel.weighty = 1.0;
+      gbc_coefficientsPanel.weightx = 1.0;
+      gbc_coefficientsPanel.fill = GridBagConstraints.BOTH;
       gbc_coefficientsPanel.anchor = GridBagConstraints.NORTHWEST;
       gbc_coefficientsPanel.insets = new Insets(0, 0, 0, 5);
       gbc_coefficientsPanel.gridx = 1;
@@ -265,6 +267,9 @@ ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sd
       paramGens.setParameterName( res.getString( "Generations" ) );
       paramGens.setHelpText("Number of Generations to be Simulated");
       GridBagConstraints gbc_initialConditionsPanel = new GridBagConstraints();
+      gbc_initialConditionsPanel.fill = GridBagConstraints.BOTH;
+      gbc_initialConditionsPanel.weighty = 1.0;
+      gbc_initialConditionsPanel.weightx = 1.0;
       gbc_initialConditionsPanel.anchor = GridBagConstraints.WEST;
       gbc_initialConditionsPanel.gridx = 2;
       gbc_initialConditionsPanel.gridy = 0;

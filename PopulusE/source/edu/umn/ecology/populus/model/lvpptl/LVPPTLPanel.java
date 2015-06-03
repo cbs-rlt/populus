@@ -297,7 +297,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
       paramTheta.setDefaultValue( 1.0 );
       paramTheta.setCurrentValue( 1.0 );
       paramK.setParameterName( "<i>K </i>" );
-      paramK.setMaxValue( 10000.0 );
+      paramK.setMaxValue( 100000.0 );
       paramK.setIncrementAmount( 10.0 );
       paramK.setDefaultValue( 25.0 );
       paramK.setCurrentValue( 25.0 );
@@ -316,7 +316,7 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
       paramD.setCurrentValue( 0.6 );
       paramD.setDefaultValue( 0.6 );
       paramD.setIncrementAmount( 0.1 );
-      paramD.setMaxValue( 10.0 );
+      paramD.setMaxValue( 100.0 );
       paramD.setParameterName( "<i>D </i>" );
       paramD.setHelpText("Intake rate of prey required for a predator to just replace itself in the next generation");
       gridLayout5.setColumns( 1 );
@@ -325,13 +325,13 @@ static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.m
       paramTLN0.setDefaultValue( 10.0 );
       paramTLN0.setHelpText( res.getString( "Initial_Prey_Density" ) );
       paramTLN0.setIncrementAmount( 10.0 );
-      paramTLN0.setMaxValue( 1000.0 );
+      paramTLN0.setMaxValue( 100000.0 );
       paramTLN0.setParameterName("<i>N</i><sub>0</sub>" );
       paramTLP0.setCurrentValue( 10.0 );
       paramTLP0.setDefaultValue( 10.0 );
       paramTLP0.setHelpText( res.getString( "Initial_Predator_Density" ) );
       paramTLP0.setIncrementAmount( 10.0 );
-      paramTLP0.setMaxValue( 1000.0 );
+      paramTLP0.setMaxValue( 10000.0 );
       paramTLP0.setParameterName("<i>P</i><sub>0</sub>" );
       thetaLogisticParams.setLayout( gridBagLayout2 );
       thetaLogisticParams.addComponentListener( new java.awt.event.ComponentAdapter()  {
