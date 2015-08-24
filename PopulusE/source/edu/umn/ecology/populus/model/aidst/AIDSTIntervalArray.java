@@ -12,7 +12,7 @@ import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 /**
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
- * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Copyright: Copyright (c) 2005, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Don Alstad
  * @version 5.4

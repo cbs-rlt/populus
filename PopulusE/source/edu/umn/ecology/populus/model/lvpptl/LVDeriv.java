@@ -1,3 +1,9 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Regents of the University of Minnesota.
+ *
+ * This software is released under GNU General Public License 2.0
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ *******************************************************************************/
 package edu.umn.ecology.populus.model.lvpptl;
 import edu.umn.ecology.populus.math.*;
 
@@ -27,12 +33,7 @@ public class LVDeriv extends Derivative {
    public void doDerivative( double t, double[] N, double[] dN ) {
       double ddCorrection = isDD ? ((k - N[0]) / k) : 1;
       double type2Correction;
-      boolean foo = true;
-      if (foo) {
-         type2Correction = isType2 ? (a / (1 + a*N[0]*Th)) : C;
-      } else {
-         type2Correction = isType2 ? (a*N[0] / (1 + a*N[0]*Th)) : C;
-      }
+      type2Correction = isType2 ? (a / (1 + a*N[0]*Th)) : C;
       //dN[0] is N'
       dN[0] = r1 * N[0] * ddCorrection - type2Correction * N[0] * N[1];
       //dN[1] is P'

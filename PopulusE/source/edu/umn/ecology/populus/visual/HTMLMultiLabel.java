@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
- * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Copyright: Copyright (c) 2005, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe
  * @version 5.4

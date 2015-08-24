@@ -13,7 +13,7 @@ import java.awt.Component;
  * probably isn't needed.
  * <p>Title: Populus</p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author unascribed
  * @version 5.2

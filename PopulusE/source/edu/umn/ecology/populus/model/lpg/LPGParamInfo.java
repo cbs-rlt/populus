@@ -1,3 +1,9 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Regents of the University of Minnesota.
+ *
+ * This software is released under GNU General Public License 2.0
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ *******************************************************************************/
 
 //This is still trying to copy Chris's code in the lagged model, which I am confused by a little.
 

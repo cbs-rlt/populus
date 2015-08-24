@@ -9,7 +9,7 @@ import java.awt.Font;
 /**
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
- * <p>Copyright: Copyright (c) 2006</p>
+ * <p>Copyright: Copyright (c) 2006, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe
  * @version 5.4

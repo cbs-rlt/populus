@@ -7,7 +7,7 @@ import java.util.*;
  * <p>Title: This was intended as a wrapper around ResourceBundle, since sometimes ResourceBundle won't
  * find the correct resource.</p>
  * <p>Description: ecological models</p>
- * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Copyright: Copyright (c) 2005, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe
  * @version 5.5

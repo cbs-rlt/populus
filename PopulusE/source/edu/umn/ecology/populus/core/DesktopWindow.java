@@ -33,7 +33,7 @@ import javax.swing.*;
  * a guide or use again.
  * <p>Title: Populus</p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe, Amos Anderson
  * @version 5.2

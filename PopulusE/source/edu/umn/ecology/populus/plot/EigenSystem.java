@@ -10,7 +10,7 @@ import edu.umn.ecology.populus.math.*;
 /**
  * <p>Title: Populus</p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author unascribed
  * @version 1.0

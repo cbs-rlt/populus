@@ -7,7 +7,7 @@ package edu.umn.ecology.populus.plot;
  * to a LiveGraph class, which can draw the data a little at a time.
  * <p>Title: Populus</p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Amos Anderson
  * @version 5.2

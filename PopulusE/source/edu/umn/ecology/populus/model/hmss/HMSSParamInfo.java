@@ -10,7 +10,7 @@ import edu.umn.ecology.populus.constants.ColorScheme;
  *
  * <p>Title: Populus</p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Amos Anderson
  * @version 5.2

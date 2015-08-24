@@ -7,7 +7,7 @@ import edu.umn.ecology.populus.core.DesktopWindow;
 /**
  * <p>Title: Stage Structured Growth</p>
  * <p>Description: a program for designing the stage structured growth for Populus</p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: </p>
  * @author Amos Anderson
  * @version 1.0

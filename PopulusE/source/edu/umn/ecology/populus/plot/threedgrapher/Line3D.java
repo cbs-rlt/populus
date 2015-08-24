@@ -8,7 +8,7 @@ import java.awt.*;
  * so this could represent other graphical objects as well.
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
- * <p>Copyright: Copyright (c) 2002</p>
+ * <p>Copyright: Copyright (c) 2002, 2015</p>
  * <p>Company: University of Minnesota</p>
  * @author Amos Anderson
  * @version 5.2

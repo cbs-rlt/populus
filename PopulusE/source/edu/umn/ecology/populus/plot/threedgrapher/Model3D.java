@@ -1,3 +1,9 @@
+/*******************************************************************************
+ * Copyright (c) 2015 Regents of the University of Minnesota.
+ *
+ * This software is released under GNU General Public License 2.0
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ *******************************************************************************/
 /* This file is based on:
  * ThreeD.java      1.8 98/06/29
  * and modified by Amos Anderson for simple 3D graphing capabilities.
