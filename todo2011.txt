@@ -1,0 +1,54 @@
+* Merge onto git repo
+* All TODO in code
+* Fix Eclipse project warnings
+* DSAL on Mac
+
+Test procedures:
+* verify saving and loading a model
+
+* Can we load model saved on a different machine? We should be able to.
+
+* Updating is not automatic - we need to do more than just put up a new jar file.
+  This seems strange, because the updater should just check the server time stamp on the jar file.
+
+ * Can we send the log file in email?
+ * Put version number in About menu?
+ * Check that it runs correctly in both locally and from JAR.
+
+
+
+Build procedures
+* How to sign applet/application
+* Make timestamp.txt work in PopRun.java -- see TODO
+Sign the Jar file
+http://java.sun.com/developer/Books/javaprogramming/JAR/sign/intro.html
+http://java.sun.com/developer/Books/javaprogramming/JAR/sign/
+http://javadocs.wordpress.com/2010/06/29/automate-jar-signing-in-eclipse-with-apache-ant/
+http://docs.oracle.com/javase/tutorial/deployment/jar/signing.html
+
+* Why doesn't build put resource files from source into build directory?
+
+
+* Plan for Help file...
+  Put this in one spot, it's a bit tricky.
+  Have in "install" directory, and look in there. If it's not there, copy it from:
+    (1) Using getResource(), or if that fails...
+    (2) From Web site
+
+PDF Opening:
+This works:
+"C:\Program Files (x86)\Adobe\Reader 8.0\Reader\AcroRd32.exe" /A "page=13=OpenActions" "file:///C:/Users/Lars/PopulusHelp.pdf"
+"C:\Program Files (x86)\Adobe\Reader 8.0\Reader\AcroRd32.exe" /A "page=13=OpenActions" "file:///D:/PopulusHelpEnglish5.5.pdf"
+Desktop doesn't seem to work...? ? ?
+Using File helps, but must execute, not run through Desktop.
+
+Installer issues
+
+* Why didn't it get the new version of the JAR file we installed?
+http://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/avoidingUnnecessaryUpdateChecks.html
+
+* Test that if the client does not have Java installed, it should automatically download it. It *should* work:
+    http://www.oracle.com/technetwork/java/javase/overview-137531.html#2
+* Create shortcuts if requested
+* flash screen
+    In JNLP file: <icon href="mysplash.jpg" kind="splash"/> 

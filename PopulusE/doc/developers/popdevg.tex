@@ -1,0 +1,449 @@
+\documentclass[12pt]{article}
+\title{Populus Guide for Developers}
+\author{Lars Roe}
+\usepackage{html}
+\usepackage{hyperref}
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\part{Overview}
+This document was written as a primer for anyone interested in developing or modifying the Populus source code.  This file is written in roughly in the order that you would want to understand the code, but feel free to jump around as needed.
+
+Note that much of the development started in Java 1.1-1.2 era, where AWT was still popular and Swing was new.  A lot of newer classes and APIs now exist that are better than what is currently used.  PopulusParamField predates JSpinner, we should get rid of a lot of Vector uses, etc.  Don't be afraid to make improvements to the code!
+
+
+\part{Setting Up New Development Machine}
+\section{Development Software}
+\subsection{Java Development Kit}
+Download and install Java SE (Standard Edition) from oracle.com.  Please use JDK 1.7.
+
+\subsection{Git}
+Git on the command line should be default for OS X and Linux.  You don't have to install more, but \url{http://git-scm.com/downloads/guis} has some nice GUIs.  I used GitX-dev (rowanj) for OS X, which seems good.
+
+For Windows, I like git for Windows:  \url{http://msysgit.github.io/}, which includes the command line tools and GUI.
+
+\subsection{Eclipse}
+Download the Eclipse Standard from \url{https://www.eclipse.org/downloads/}.  (You can actually install any version that has Java support.)  The "installer" is just a zip file that you extract somewhere.  You'll run it by running the executable in there.
+
+\subsection{TeX}
+We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX (now bundled with TeXworks) for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.  Only update the TEX file, and do NOT edit this PDF file directly.
+
+\subsection{Photoshop}
+Use Photoshop to make the pictures for, say, the Web page.  There are saved \texttt{.psd} files around that contain the source image to work from with its Layers.  You don't really need to use it as a developer.  In the past, Don created this.
+
+\section{Populus-specific Setup}
+\subsection{Files}
+
+Here's how you can check out the files from git.  Assume that the \texttt{.git} directory is at \texttt{C:/TEMP/pop.git} and you want to put the code into \texttt{workspace/pop} relative to your current directory.
+
+\begin{verbatim}
+  mkdir workspace
+  cd workspace
+  git clone file:///C:/TEMP/pop.git pop
+\end{verbatim}
+
+The "\texttt{pop.git}" directory I'm using as an example should be a directory that contains the \texttt{.git} directory.  I assume we'll have a real central repository soon, and then this guide can be updated to that location.
+
+\subsection{Running Eclipse}
+Now run Eclipse.  For the workspace, choose the \texttt{pop} directory, or whatever you used to extract the files from git in the previous step.
+
+Be sure that you are using an installed JDK for the workspace (\texttt{Windows $\Rightarrow$ Preferences $\Rightarrow$ Java $\Rightarrow$ Installed JREs})
+
+Go to \texttt{File $\Rightarrow$ New $\Rightarrow$ Java Project}
+
+
+For the project name, choose \texttt{PopulusE}.  Eclipse should know that this is an existing project, and don't set any more options.
+
+Click the green run button.  You want to run this as a Java Application.  The main class is \texttt{PopRun} (\texttt{edu.umn.ecology.populus.core.PopRun}).
+
+\subsection{WindowBuilder}
+You'll want to install the WindowBuilder plugin to Eclipse if you plan to edit any of the screens.  Go to \url{http://www.eclipse.org/windowbuilder/download.php} for instructions.
+
+To use WindowBuilder, right click on a Panel file in the Package Explorer, then choose Open With... and select WindowBuilder Editor.
+
+\part{How to add a new model}
+\section{Example of a new model: Fibonacci rabbits}
+
+We'll look at a simple model idea and the steps needed to incorporate it into a model.
+
+\subsection{Description of the model}
+Fibonacci once posed the following question:
+
+\begin{quote}
+Suppose a newly-born pair of rabbits, one male, one female, are put in a field. Rabbits are able to mate at the age of one month so that at the end of its second month a female can produce another pair of rabbits. Suppose that our rabbits never die and that the female always produces one new pair (one male, one female) every month from the second month on. How many pairs will there be in one year?  (from \url{http://fibonacci.uni-bayreuth.de/project/fibonacci-and-the-rabbits/the-story.html})
+\end{quote}
+
+Now, let's code!
+
+\subsection{Create package}
+From the Explorer window, select \texttt{File $\Rightarrow$ New $\Rightarrow$ Package}.
+Use \texttt{edu.umn.ecology.populus.model.fibrabbits} for the package.  By convention, models are in a package/directory just under \texttt{edu.umn.ecology.populus.model}.
+
+\subsection{FRParamInfo}
+I think it's easier to think of what data will be taken from input screen.  In this case, we just need the number of months, or generations, to run.
+
+Right-click on the new package and select \texttt{New $\Rightarrow$ Class}.
+Type in \texttt{FRInfo} for the name
+Add in the \texttt{Interface} \texttt{edu.umn.ecology.populus.plot.BasicPlot}.
+Press \texttt{Finish}.
+
+Create a constructor that takes as input the number of generations.  You should implement code here that creates a new \texttt{BasicPlotInfo} as a field.
+
+Implement \texttt{getBasicPlotInfo()}, which will return a \texttt{BasicPlotInfo} object.
+
+If you are creating a more-complicated model, you will want to create a \texttt{FRData} class that aggregates the data that you need to pass from the panel.
+
+Your code should look something like this:
+
+\begin{verbatim}
+package edu.umn.ecology.populus.model.fibrabbits;
+
+import edu.umn.ecology.populus.plot.BasicPlot;
+import edu.umn.ecology.populus.plot.BasicPlotInfo;
+
+public class FRInfo implements BasicPlot {
+    private BasicPlotInfo bpi;
+
+    public FRInfo(int maxGens) {
+        bpi = new BasicPlotInfo();
+        bpi.setMainCaption("Fibonacci Rabbits");
+        bpi.setXCaption("Generation");
+        bpi.setYCaption("Pairs of Rabbits");
+        bpi.setIsDiscrete(true);
+		
+        //Generate Data
+        //data is 1 line with 2 variables and (maxGens+1) # of points
+        double data[][][] = new double[1][2][maxGens+1]; 
+        double newbornPairs = 1.0;
+        double maturePairs = 0.0;
+        for(int gen = 0; gen <= maxGens; gen++) {
+            data[0][0][gen] = (double) gen;
+            data[0][1][gen] = newbornPairs + maturePairs;
+            double prevNewbornPairs = newbornPairs;
+            newbornPairs = maturePairs;
+            maturePairs += prevNewbornPairs;
+        }
+        bpi.setData(data);
+    }
+	
+    @Override
+    public BasicPlotInfo getBasicPlotInfo() {
+        return bpi;
+    }
+}
+\end{verbatim}
+
+\subsection{FRPanel}
+This is the input screen.
+
+Right-click on the new package and select \texttt{New $\Rightarrow$ Class}.
+
+Type in \texttt{FRPanel} for the name.
+
+Type in \texttt{edu.umn.ecology.populus.plot.BasicPlotInputPanel} for the Superclass (or use the browse button)
+
+Press \texttt{Finish}
+
+Close the tab, then re-open it with WindowBuilder.  You don't have to use WindowBuilder, but it definitely makes it easier.
+Click on the \texttt{Design} tab for the WYSIWYG designer of the window.
+We'll want to use a \texttt{PopulusParameterField} here for selecting values.  If it is not yet in the WindowBuilder field, right-click on your menu of choice in the Palette and select \texttt{Add Component...}. Choose a name of your choice (I use PPField) and use \texttt{edu.umn.ecology.populus.visual.ppfield.PopulusParameterField} for the Component.
+
+
+Now click on the \texttt{PPField} in the \texttt{Palette} then click into the panel to insert it there.
+
+In the properties window, set the \texttt{currentValue} and \texttt{defaultValue} to \texttt{10.0}.  Set \texttt{helpText} to a long description, like \texttt{Total number of months for rabbits to grow} (this is the hover text).  Set \texttt{integersOnly} to \texttt{true}, since we only want to allow an integer value (even though the underlying model uses floating point).  Set \texttt{parameterName} to \texttt{months}.  Set \texttt{minValue} and \texttt{maxValue} to something reasonable like \texttt{1.0} and \texttt{200.0}, respectively.
+
+Now switch back to the Source view tab.
+
+At the end of the constructor, add the following line so that user inpuut events will trigger plot updates:
+
+\texttt{this.registerChildren(this);}
+
+Now implement \texttt{getPlotParamInfo()}, which should return an object of type \texttt{FRInfo}.
+
+Implement \texttt{getOutputGraphName()}, which will return a string for the main title of the output window.
+
+Your code should like this:
+
+\begin{verbatim}
+package edu.umn.ecology.populus.model.fibrabbits;
+
+import edu.umn.ecology.populus.plot.BasicPlot;
+import edu.umn.ecology.populus.plot.BasicPlotInputPanel;
+import edu.umn.ecology.populus.visual.ppfield.PopulusParameterField;
+
+public class FRPanel extends BasicPlotInputPanel {
+    private static final long serialVersionUID = -982727645471238633L;
+
+    private PopulusParameterField maxGenerations;
+	
+    public FRPanel() {
+        maxGenerations = new PopulusParameterField();
+        maxGenerations.setMinValue(1.0);
+        maxGenerations.setMaxValue(200.0);
+        maxGenerations.setHelpText("Total number of months for rabbits to grow");
+        maxGenerations.setParameterName("months");
+        maxGenerations.setIntegersOnly(true);
+        maxGenerations.setDefaultValue(10.0);
+        maxGenerations.setCurrentValue(10.0);
+        add(maxGenerations);
+        this.registerChildren(this);
+    }
+	
+    @Override
+    public BasicPlot getPlotParamInfo() {
+        return new FRInfo(maxGenerations.getInt());
+    }
+	
+    @Override
+    public String getOutputGraphName() {
+        return "Fibonacci Rabbits";
+    }
+}
+\end{verbatim}
+
+
+
+\subsection{FRModel}
+Now create \texttt{FRModel}.  Its Superclass is \texttt{edu.umn.ecology.populus.plot.BasicPlotModel}.
+
+Implement \texttt{FRModel()} to set the modelInput to a new \texttt{FRPane}l.
+
+Implement \texttt{getModelName()} to return the model name.
+
+Don't worry about implementing \texttt{getModelHelpText()} and \texttt{getHelpId()} at this stage.  These functions are so that users looking for help will go to the context-specific section of the help pdf.
+
+Your code should look like this:
+
+\begin{verbatim}
+package edu.umn.ecology.populus.model.fibrabbits;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+public class FRModel extends BasicPlotModel {
+    public FRModel() {
+        this.setModelInput(new FRPanel());
+    }
+
+    public static String getModelName() {
+        return ("Fibonacci Rabbits");
+    }
+}
+\end{verbatim}
+
+\subsection{Res}
+You may want to create a Res file that should be used for storing all of the String resources.  See how other models use it.
+
+\subsection{Add model to the menu}
+If you can shoehorn this into an existing menu group, it's quite easy.  Just go to \texttt{PopPreferencesStorage::initializeMenuPackets()} and add a single line with the new \texttt{ModelPacket} accordingly.  If you wanted this near in the single-species dynamics menu, add this in the initialization list of \texttt{singleModels}:
+
+\begin{verbatim}
+new ModelPacket( edu.umn.ecology.populus.model.fibrabbits.FRModel.class ),
+\end{verbatim}
+
+If you have to create a new \texttt{ModelPacket} array, you'll need to also add code to \texttt{DesktopWindow}.
+
+\part{Java Source Code}
+
+\section{Models}
+
+\subsection{Files}
+By convention, each end model (not meant to be inherited from) should be in the package \texttt{edu.umn.ecology.populus.model.\textit{ModelName}}.
+
+\subsubsection{Model}
+A \texttt{Model} holds together the basic parts of a model.
+
+\subsubsection{ModelPacket}
+A \texttt{ModelPacket}  is a simple wrapper for a model so we can refer to one class at a time, and used in making the menus.  The menus are created in \texttt{initializeMenuPackets()}, and this is manually updated to add or remove models.
+
+
+\subsubsection{ModelPanel}
+The \texttt{ModelPanel}  (input window) base files are in \texttt{edu.umn.ecology.populus.edwin}  (short for editor window, from the Pascal DOS program's naming conventions).
+
+\texttt{registerChildren()} looks at all of the components, and sets event listeners where appropriate.  Read Events for more information.
+
+\subsubsection{ModelOutputPanel}
+The \texttt{OutputPanel}  (output window) base files are in \texttt{edu.umn.ecology.populus.resultwindow}
+
+\subsection{Events}
+
+When changes in the input panel occur, events - or messages - are sent to the output.
+The \texttt{ModelPanel}  will call \texttt{fireModelPanelEvent()}  whenever a change occurs, with a constant such as \texttt{CHANGE\_PLOT}.  If this warrants a new output, \texttt{ModelPanel}  will be queried for, in the case of Basic Plot, new plot info.
+
+Do not assume that \texttt{getPlotInfo()} will be called whenever you call \texttt{fireModelPanelEvent}.  For example, if changing the value of a radio button should disable another parameter, that should be done separately from \texttt{getPlotInfo()}.  See the method \texttt{modelPanelChanged()} to see which events are ignored and which events create a new plot.
+
+Inherited models should not have to worry about when to show the output screen.  \texttt{registerChildren()} is called after the initialize of the front panel, and this routine looks at all of the components and adds listeners to the ones that should through events.  There is a setting in the Preferences so that users can change when to automatically update the output and making decisions on a model-by-model basis will not work with this.  See the Preferences note for this.
+
+\subsubsection{Events: An Example}
+
+Let's imagine a case where a user loads a simple model, namely Density Independent Growth, and then changes the \texttt{r} parameter.
+
+\textbf{When Populus starts}, a \texttt{DesktopWindow::MenuAction} menu item, which has a reference to the class \texttt{DIGModel}, is loaded in \texttt{DesktopWindow::loadMenu()}.
+
+\textbf{When the user selects Density Independent Growth in the menu}, we call \texttt{DesktopWindow::loadModel()}, where it creates a new instance of a \texttt{DIGModel}.  (We know that it is a \texttt{DIGModel} from the \texttt{MenuAction} object.)
+
+In the \texttt{DIGModel} constructor, it creates a \texttt{DIGPanel} object, and calls \texttt{registerChildren()} to set up events from the input panel.  Then it calls \texttt{setModelInput()}, which creates the model input frame and starts listening to \texttt{ModelPanelEvents} with \texttt{modelPanelChanged()}.
+
+In \texttt{ModelPanel::registerChildren()}, we add listeners to all of the UI components.  These will call \texttt{Model::modelPanelChanged(ModelPanelEvent e)} when they receive events.
+
+\textbf{Now the user changes the \texttt{r} value}.  The UI component fires an event to \texttt{ModelPanel}, which calls \texttt{Model::modelPanelChanged()}. In \texttt{modelPanelChanged}, it sees that this is worthy of an update, and so calls \texttt{BasicPlotModel::simpleUpdateOutput()} via \texttt{Model::updateOutput()}.
+
+In \texttt{BasicPlotModel::simpleUpdateOutput()}, it takes a \texttt{DIGData} object from the input using \texttt{DIGModel::getPlotParamInfo()}, and passes it to the output.  Since we haven't already, we will also create a \texttt{ModelOutputFrame}, which contains a \texttt{BasicPlotOutputPanel}, which contains a \texttt{BasicPlotCanvas}.  Most of the real code for output is in \texttt{BasicPlotCanvas}, although that code is really the same for all 2D graphs.
+
+\textbf{On subsequent changes to \texttt{r}}, the code path is similar, except we don't need to create some of the output objects again.  Instead, we just call \texttt{BasicPlotCanvas::setBPI()}.
+
+
+\subsection{Adding a Model to the Menus}
+To add a model to the menu, add a ModelPacket in PopPreferencesStorage.
+
+I dreamed of one day being able to dynamically modify these models.  Maybe we could load a file \texttt{Model} class on the fly and it would be included in the top-level menu for that session.  Or even store it in the preferences.  But we haven't had much of a need, and Don would've preferred the simpler one-size-fits-all approach.
+
+\subsection{Basic Model}
+Most models will derive from \texttt{BasicPlotModel}, in the plot directory.
+
+\subsection{Common Variants}
+Most models extend from \verb edu.umn.ecology.populus.plot.BasicPlotModel , which does basic graphing.  But you don't have to do this.  See \texttt{Woozleology} for an example of one that does not extend from this.
+
+\section{Main}
+\texttt{main} is found in \texttt{edu.umn.ecology.populus.core.PopRun}.  This is where the application starts.  The \texttt{DesktopWindow} is the primary GUI background to the application.
+
+\section{Help}
+\subsection{How Help Events are Triggered}
+When we click the Help button on a model or the main DesktopWindow, we call \texttt{HelpUtilities::displayHelp()}.
+
+When we click on the Help button within a model, it's very similar, but we use the \texttt{getHelpId()} from the model to get a Named Destination into the PDF file.  Named Destinations are like HTML anchors, except that a lot of PDF viewers ignore them.
+
+TODO - I suspect that getModelHelpText() doesn't really do anything these days.  Maybe we can gut that.
+
+\subsection{Displaying help}
+The help system was changed dramatically in 5.5.  There are several options for how we will invoke a PDF reader, either internal APIs (via JNLP) or by using the system's "open" command, or a custom call that users can set.  Look at \texttt{displayHelp} for the list of ways.
+
+In addition, languages by modifying the local help file to use the language specified by the user's configuration.  It's hard to tell the external PDF viewer to look at a file in an archive, so we extract the help file PDF into the user's home directory before invoking the PDF viewer.
+
+Look at the README file for more information.
+
+\section{Threading and synchronization}
+
+Don't trust any code having to do with synchronization.  A lot all of the code with \texttt{synchronized} is guaranteed to be called from a single thread (e.g., Event Dispatch Thread) so
+it's redundant. TODO: We should move all of the code to run under SwingUtilities.invokeLater().
+
+\section{Logging}
+Logging normally goes both to stderr and a file in the user's home directory.
+
+Logging should be handled by \texttt{Logging.java}. On the TODO list are changing references to \texttt{System.out.println} and \texttt{System.err.println} to use \texttt{Logging} instead; add a preferences option to change the logging level for stderr and the output file; and use Java's standard logging system.
+
+\section{Preferences}
+
+\subsection{PreferencesFile}
+
+The file for keeping state is stored as \verb userpref.po  in the user's home directory (as of Populus 5.4).  It is loaded during initialization.  By default, it is in the user's home directory -- not in Populus's -- because we aren't guaranteed write permission for all systems.  This can be overrided by the startup command - see \texttt{README.config}.
+
+Almost all of the code is in \texttt{PopPreferencesStorage.java}.
+
+\subsection{Preferences GUI}
+The GUI behind it is in \texttt{PreferencesDialog.java}.
+
+A lot is also explained in the README section following here.
+
+\section{README}
+
+There is a file in the doc directory, \texttt{README.config.txt} that is distributed with Populus.  The target audience is for people in charge of installing or administering Populus.
+
+\section{Installer}
+\texttt{Installer.java} was meant to be used with JNLP install, but never made it to full production.
+
+\section{Custom GUI Widgets}
+
+Custom widgets are in the \texttt{edu.umn.ecology.populus.visual} package (or underneath it).
+
+\subsection{ParameterField}
+The ParameterField was originally concocted as a spinner.  But then we added the variable name, and variable information to the parameter.  I like to use this with WindowBuilder (more details about this in the section on creating a new model).
+
+\subsection{HTMLLabel}
+This widget was created in the day when Java didn't have good options for HTML-like tags, especially superscript and subscript.  It's basically a JLabel that knows about some HTML, and can also rotate text.  Nowadays we don't use too much of it, but there is a bean so you can use it in WindowBuilder.
+
+See Library dependencies for third-party dependencies.
+
+\section{Javadoc}
+
+I wish the code were better documented.  But you can still use \texttt{javadoc} to generate documentation for the files.
+
+\section{Library dependencies}
+Populus relies on several libraries (JAR files).  These are packaged into \texttt{PopulusAll.jar} in the build.
+
+Modifications to the dependencies will require changes to \texttt{fullbuild.xml} (and anything else to get it to run) as well as \texttt{AboutPopulusDialog.java}.
+
+\subsection{Jama}
+Jama is an free-to-distribute library for Java math.  We use it in the structured population growth models for eigenvalue decomposition.  See http://math.nist.gov/javanumerics/jama for details.
+
+\subsection{JClass}
+JClass includes the chart software for Java that we use.  The Manifest file in the JAR file they included has some bogus \texttt{dependson}  lines that give warnings when you try to run.  I manually deleted these, and just keep this new version around.
+
+JClass keeps switching companies.  We have an old version of their product, and I don't have any reason for upgrading.  We may update to something more common today, like JFreeChart.
+
+\subsection{acrobat}
+The acrobat JAR was added as a PDF viewer that's built into Populus.  It didn't work as well as hoped, and Adobe doesn't seem to support it anyway, so it was dropped.  If the need to use it again arises, look at \texttt{OpenPDFWithAdobeBean.java}.
+
+
+\part{Installer}
+Mostly, we just distribute the \texttt{PopulusAll.jar}. (The "All" part of the name means that it includes its dependent libraries with it.)  The Ant task to run this is \texttt{create\_run\_jar}.
+ 
+\section{Populus Splash Screen}
+We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it \verb PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
+
+\section{README}
+See the previous section of the README.  This is currently separate from the install, but put on the install page.
+
+\section{OS X Build}
+For OS X, please run the \texttt{bundle\_populus} option.  This will create an OS X package in the \texttt{out} directory.  Manually run iDMG to turn it into a \texttt{.dmg} file for easy transportation.  (Using iDMG is simple: Just drag the application file into it, and it will create the .dmg file in the same directory.)
+
+\section{JNLP (Obsolete?)}
+For a while, we considered using JNLP (aka Java Web Start) so that we could install via the Web.  Most of the files still exist as a proof of concept, but you may need to do some polishing to get it to work.
+
+There are a few references to using JNLP in the code, namely in the Help.  This does not imply that Populus is run via JNLP;  It just uses the JNLP library.
+
+\part{Web Page}
+
+This should all be handled by the UMN Web team these days. They now use Drupal (a content management system).  For 5.5, I just gave them a new JAR file.
+
+\part{Test and Verification}
+\section{Release Checklist}
+
+Test that the output for each model agrees with what is in the PDF.  Math is cross-platform, so I don't see much of a problem testing this on all of the platforms.
+
+\section{Platform}
+It's a good idea to test on different platforms.  They will look different from platform to platform, and that's fine.
+
+It is necessary to test that you test the following on each platform:
+
+\begin{enumerate}
+	\item Populus installs and launches.
+	\item You can open a basic model.
+	\item When you click Help for a model, the PDF should open, hopefully on the correct location for the model.  Opening to the correct Named Destination is a fickle beast (see Help section), so might not be a new bug by itself.
+	\item Preferences are stored correctly between successive launches of Populus.  Make a change in Preferences, save it, then exit and restart Populus to see if the change was saved correctly.
+	\item Save and load models, especially between a restart.  It would be nice to save a model on one platform and have it open correctly on another platform, but we aren't there yet.
+\end{enumerate}
+
+
+\subsection{Linux}
+LiveCD SLAX can boot up Linux on an otherwise Windows computer.  There are other options now too.  I personally use Ubuntu.
+\subsection{Mac OS X}
+You really just need a Mac for this.  The UofM computer team have testers to help with this.
+
+I don't really know of anyone that uses Linux, but I like to make sure this works just on principle.
+
+We've had a lot of sizing bugs on Mac.  It's best to open several models (mainly the input windows) and make sure the screen's layout looks okay.
+
+Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.  This is not yet implemented.  See the note in \texttt{fullbuild.txt}
+
+Permissions are a bit trickier now, with the addition of Gatekeeper.  We still haven't figured out the best way to do this, but make sure that we can still run it as a 
+
+\part{Conclusion}
+If anything is confusing in this document, please update or expand it as needed.
+
+\end{document}
+
