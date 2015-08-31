@@ -28,7 +28,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 	JToggleButton pauseButton = new JToggleButton();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
 	JPanel jPanel1 = new JPanel();
-	JComboBox<String> typeChangeCB = new JComboBox<String>();
+	JComboBox typeChangeCB = new JComboBox();
 	GridBagLayout gridBagLayout2 = new GridBagLayout();
 	JLabel gensL = new JLabel();
 	int numRuns;
@@ -175,7 +175,12 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 
 	void typeChangeCB_actionPerformed(ActionEvent e) {
 		//Get value from backing model, not current (and unchecked) input
-		double[][] v = cf.changeType(typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
+		double[][] v = null;
+		try {
+			cf.changeType((String) typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
+		} catch (Exception ex) {
+			;//TODO
+		}
 		if(v==null) return;
 		cellPanel.setValues(v, cf.getStrings(), cf.getDemarcations());
 	}

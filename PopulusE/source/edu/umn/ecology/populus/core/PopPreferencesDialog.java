@@ -43,7 +43,7 @@ extends JDialog {
 	JButton okButton = new JButton();
 	JLabel TriggerLabel = new JLabel();
 	JButton colorChooserButton = new JButton();
-	ComboBoxModel<String> typeComboBoxModel = new DefaultComboBoxModel<String>(new String[] {
+	ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel(new String[] {
 			/* res.getString( "None" ), - Let's not allow blank buttons */
 			res.getString("Images"),
 			res.getString("Text"), res.getString("Text_and_Images")
@@ -55,19 +55,19 @@ extends JDialog {
 
 	JButton cancelButton = new JButton();
 	Border border1;
-	ComboBoxModel<String> triggerComboBoxModel = new DefaultComboBoxModel<String>(new String[] {
+	ComboBoxModel triggerComboBoxModel = new DefaultComboBoxModel(new String[] {
 			res.getString("None"), res.getString("Default"),
 			res.getString("Always")
 	});
 	JPanel okPanel = new JPanel();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
 	JPanel actionsPanel = new JPanel();
-	JComboBox<String> triggerComboBox = new JComboBox<String>();
+	JComboBox triggerComboBox = new JComboBox();
 	GridBagLayout gridBagLayout2 = new GridBagLayout();
 	JPanel panel1 = new JPanel();
 	JLabel buttonTypeLabel = new JLabel();
 	JButton integratorPreferencesB = new JButton();
-	JComboBox<String> buttonTypeComboBox = new JComboBox<String>();
+	JComboBox buttonTypeComboBox = new JComboBox();
 	static ResourceBundle res = ResourceBundle.getBundle(
 			"edu.umn.ecology.populus.core.Res");
 	GridBagLayout gridBagLayout3 = new GridBagLayout();
@@ -82,7 +82,7 @@ extends JDialog {
 	JLabel dirLabel = new JLabel();
 	GridBagLayout gridBagLayout5 = new GridBagLayout();
 	JButton trickButton = new JButton();
-	JComboBox<String> terminusType = new JComboBox<String>();
+	JComboBox terminusType = new JComboBox();
 	private final JButton btnHelp = new JButton("Help Settings");
 	private final JPanel newFeaturesPanel = new JPanel();
 	private final JCheckBox chckbxUseNewChart = new JCheckBox("Use JFreeChart library");

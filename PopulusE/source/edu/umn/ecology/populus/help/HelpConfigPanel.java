@@ -49,8 +49,8 @@ import javax.swing.event.ChangeEvent;
 public class HelpConfigPanel extends JPanel {
 	private static final long serialVersionUID = 687468888728886427L;
 	private JTextField filePathField = new JTextField();
-	private JComboBox<String> fileOrURLBox = new JComboBox<String>();
-	private JComboBox<String> languageBox = new JComboBox<String>();
+	private JComboBox fileOrURLBox = new JComboBox();
+	private JComboBox languageBox = new JComboBox();
 	private JLabel fileStatusLabel = new JLabel("");
 	private JTextField txtCustomExecStr = new JTextField();
 	private String[] langStrings = new String[] {"English", "Spanish", "Portuguese"};
@@ -109,7 +109,7 @@ public class HelpConfigPanel extends JPanel {
 		});
 
 		fileOrURLBox.setToolTipText("Select whether resource is local file or remote URI (e.g., http)");
-		fileOrURLBox.setModel(new DefaultComboBoxModel<String>(new String[] {"file", "URI"}));
+		fileOrURLBox.setModel(new DefaultComboBoxModel(new String[] {"file", "URI"}));
 		fileOrURLBox.setSelectedIndex(0);
 		GridBagConstraints gbc_fileOrURLBox = new GridBagConstraints();
 		gbc_fileOrURLBox.insets = new Insets(0, 0, 5, 5);
@@ -193,7 +193,7 @@ public class HelpConfigPanel extends JPanel {
 		JLabel languageLabel = new JLabel("Language:");
 		languagePanel.add(languageLabel);
 
-		languageBox.setModel(new DefaultComboBoxModel<String>(langStrings));
+		languageBox.setModel(new DefaultComboBoxModel(langStrings));
 		languagePanel.add(languageBox);
 
 		JButton btnCopyHelpTo = new JButton("Copy help file to local disk now");

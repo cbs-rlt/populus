@@ -31,7 +31,7 @@ JPanel mainPanel = new JPanel();
    static IntegratorPreferences keepOnlyOneOpen;
    JTextField hSetting = new JTextField();
    JLabel jLabel5 = new JLabel();
-   JComboBox<String> intMethodCB = new JComboBox<String>();
+   JComboBox intMethodCB = new JComboBox();
    JLabel jLabel6 = new JLabel();
 
    public IntegratorPreferences( Frame frame, String title, boolean b ) {
