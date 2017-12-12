@@ -31,7 +31,7 @@ For Windows, I like git for Windows:  \url{http://msysgit.github.io/}, which inc
 Download the Eclipse Standard from \url{https://www.eclipse.org/downloads/}.  (You can actually install any version that has Java support.)  The "installer" is just a zip file that you extract somewhere.  You'll run it by running the executable in there.
 
 \subsection{TeX}
-We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX (now bundled with TeXworks) for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.  Only update the TEX file, and do NOT edit this PDF file directly.
+We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX (now bundled with TeXworks) for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.  Only update the TeX file, and do NOT edit this PDF file directly.
 
 \subsection{Photoshop}
 Use Photoshop to make the pictures for, say, the Web page.  There are saved \texttt{.psd} files around that contain the source image to work from with its Layers.  You don't really need to use it as a developer.  In the past, Don created this.
@@ -44,7 +44,7 @@ Here's how you can check out the files from git.  Assume that the \texttt{.git} 
 \begin{verbatim}
   mkdir workspace
   cd workspace
-  git clone file:///C:/TEMP/pop.git pop
+  git clone https://github.com/cbs-rlt/populus pop
 \end{verbatim}
 
 The "\texttt{pop.git}" directory I'm using as an example should be a directory that contains the \texttt{.git} directory.  I assume we'll have a real central repository soon, and then this guide can be updated to that location.
