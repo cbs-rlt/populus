@@ -97,10 +97,10 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 		setType(type, false, 0);
 	}
 
-
-	public void setValueAt(Number aValue, int rowIndex, int columnIndex) {
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		if(aValue == null) aValue = new Double(0);
-		data.get(columnIndex).set(rowIndex, aValue);
+		data.get(columnIndex).set(rowIndex, (Number) aValue);
 		if(rowIndex == 0 && columnIndex == 1){
 			fireTableChanged(new TableModelEvent(this,rowIndex,rowIndex,columnIndex));
 		}
