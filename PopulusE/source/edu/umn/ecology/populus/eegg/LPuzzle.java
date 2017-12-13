@@ -12,20 +12,20 @@ import edu.umn.ecology.populus.fileio.Logging;
 
 public class LPuzzle extends JDialog {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -2340957324111912141L;
 	public LPuzzle(Frame owner) {
-      super(owner, "puzzle", true);
-      try {
-         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-         init();
-         setSize(500, 500);
-         setVisible(true);
-      } catch (Exception exception) {
-         Logging.log(exception);
-      }
-   }
+		super(owner, "puzzle", true);
+		try {
+			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			init();
+			setSize(500, 500);
+			setVisible(true);
+		} catch (Exception exception) {
+			Logging.log(exception);
+		}
+	}
 
 	private void init() {
 		LPuzzlePanel pp = new LPuzzlePanel();

@@ -11,19 +11,19 @@ import javax.swing.*;
  */
 
 public interface TableInterface {
-   public double[][] getMatrix();
-   public JComponent[] getMatrixLabels();
-   public int getXStart();
-   public int getYStart();
-   public int getXEnd();
-   public int getYEnd();
-   public String[] getTitle();
+	public double[][] getMatrix();
+	public JComponent[] getMatrixLabels();
+	public int getXStart();
+	public int getYStart();
+	public int getXEnd();
+	public int getYEnd();
+	public String[] getTitle();
 
-/*   matrix = info.getMatrix();
+	/*   matrix = info.getMatrix();
 matrixPanel.setTopLabels(info.getMatrixLabels());
 matrixPanel.setMatrixData(matrix, info.getXStart(), info.getXEnd(), info.getYStart(), info.getYEnd());
 //matrixPanel.setTopLabelsVisible(false);
 gridLayout1.setColumns(1);
 		gridLayout1.setRows(info.getTitle().length);
-*/
+	 */
 }

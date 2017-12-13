@@ -14,29 +14,30 @@ import java.awt.event.*;
  * @version 5.2
  */
 public class LiveGraph implements ActionListener{
-   javax.swing.Timer t;
-   Stepper graph;
+	javax.swing.Timer t;
+	Stepper graph;
 
-   public void actionPerformed(ActionEvent ae){
-      if(!graph.stepGraph()){
-         t.stop();
-         System.gc();
-      }
-   }
+	@Override
+	public void actionPerformed(ActionEvent ae){
+		if(!graph.stepGraph()){
+			t.stop();
+			System.gc();
+		}
+	}
 
-   public LiveGraph(Stepper st, int increment, int sleepMillis){
-      graph = st;
-      t = new javax.swing.Timer(sleepMillis,this);
-      graph.setUpLive(increment);
-      run();
-   }
+	public LiveGraph(Stepper st, int increment, int sleepMillis){
+		graph = st;
+		t = new javax.swing.Timer(sleepMillis,this);
+		graph.setUpLive(increment);
+		run();
+	}
 
-   public void run(){
-      t.start();
-   }
+	public void run(){
+		t.start();
+	}
 
-   public void setPauseTime(int newTime){
-      t.setDelay(newTime);
-   }
+	public void setPauseTime(int newTime){
+		t.setDelay(newTime);
+	}
 }
 

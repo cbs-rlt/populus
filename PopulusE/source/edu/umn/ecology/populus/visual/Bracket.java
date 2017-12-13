@@ -6,7 +6,7 @@
  *******************************************************************************/
 
 //Title:        Populus
-//Version:      
+//Version:
 //Copyright:    Copyright (c) 1999
 //Author:       Lars Roe, under Don Alstad
 //Company:      University of Minnesota
@@ -17,7 +17,7 @@ package edu.umn.ecology.populus.visual;
 import javax.swing.*;
 public class Bracket extends JLabel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 2014559949849865632L;
 
@@ -33,10 +33,12 @@ public class Bracket extends JLabel {
 		this.side = side;
 	}
 
+	@Override
 	public String getUIClassID() {
 		return uiClassID;
 	}
 
+	@Override
 	public boolean isOpaque() {
 		return true;
 	}

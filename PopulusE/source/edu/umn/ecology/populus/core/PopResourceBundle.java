@@ -14,25 +14,25 @@ import java.util.*;
  */
 
 public class PopResourceBundle {
-   ResourceBundle resHdl;
-   String path;
+	ResourceBundle resHdl;
+	String path;
 
-   public PopResourceBundle(String path) {
-      this.path = path;
-   }
+	public PopResourceBundle(String path) {
+		this.path = path;
+	}
 
-   private synchronized void initRes() {
-      if (resHdl == null)
-         resHdl = ResourceBundle.getBundle(path);
-   }
+	private synchronized void initRes() {
+		if (resHdl == null)
+			resHdl = ResourceBundle.getBundle(path);
+	}
 
-   public String getString(String key) {
-      initRes();
-      return resHdl.getString(key);
-   }
+	public String getString(String key) {
+		initRes();
+		return resHdl.getString(key);
+	}
 
-   public static PopResourceBundle getBundle(String path) {
-      return new PopResourceBundle(path);
-   }
+	public static PopResourceBundle getBundle(String path) {
+		return new PopResourceBundle(path);
+	}
 }
 

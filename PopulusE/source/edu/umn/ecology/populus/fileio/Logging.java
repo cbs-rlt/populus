@@ -10,7 +10,7 @@ import java.util.Vector;
  * <p>Company: University of Minnesota</p>
  * @author Lars Roe
  * @version 5.4
- * 
+ *
  * This is not a very clever class, but was meant to be extensible in case
  * we wanted to redirect the output elsewhere.
  */
@@ -22,7 +22,7 @@ public class Logging {
 	public static final int kWarn = 10;
 	/* Potentially very serious */
 	public static final int kErr = 20;
-	
+
 	private static Logging singleLog;
 
 	private Vector<PrintStream> ps;
@@ -42,14 +42,14 @@ public class Logging {
 	private void log1(String msg, int severity) {
 		for (PrintStream s : ps) {
 			s.println(msg);
-		}		
+		}
 	}
 	private void log1(Exception e) {
 		for (PrintStream s : ps) {
 			e.printStackTrace(s);
 		}
 	}
-	
+
 	/** Returns true if able to add to it */
 	public static synchronized boolean addFileLog(String filename) {
 		PrintStream fstrm = getLogFileAsStream(filename);
@@ -59,7 +59,7 @@ public class Logging {
 		}
 		return false;
 	}
-	
+
 	public static String getDefaultLogFile() {
 		String fileout = "";
 		fileout = System.getProperty("user.home") + System.getProperty("file.separator");

@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class PAQGModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "PAQGHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "PAQGHELP";
+	}
 
-   public PAQGModel() {
-      this.setModelInput( new PAQGPanel() );
-   }
+	public PAQGModel() {
+		this.setModelInput( new PAQGPanel() );
+	}
 
-   public static String getModelName() {
-      return "Population & Quantitative Genetics";
-   }
+	public static String getModelName() {
+		return "Population & Quantitative Genetics";
+	}
 
-   protected String getHelpId() {
-      return "PAQG.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "PAQG.overview";
+	}
 }

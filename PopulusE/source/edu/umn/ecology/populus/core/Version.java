@@ -10,7 +10,7 @@ package edu.umn.ecology.populus.core;
  */
 
 public class Version {
-   public static boolean isDev() {
-      return true;
-   }
+	public static boolean isDev() {
+		return true;
+	}
 }

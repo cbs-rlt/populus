@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class INTERDGSModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "INTERDGSHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "INTERDGSHELP";
+	}
 
-   public INTERDGSModel() {
-      this.setModelInput( new INTERDGSPanel() );
-   }
+	public INTERDGSModel() {
+		this.setModelInput( new INTERDGSPanel() );
+	}
 
-   public static String getModelName() {
-      return "Interdemic Group Selection";
-   }
+	public static String getModelName() {
+		return "Interdemic Group Selection";
+	}
 
-   protected String getHelpId() {
-      return "INTERDGS.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "INTERDGS.overview";
+	}
 }

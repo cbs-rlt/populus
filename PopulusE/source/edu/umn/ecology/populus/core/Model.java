@@ -138,8 +138,9 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		standardHeight = outputFrame.getHeight();
 	}
 
+	@Override
 	public void modelPanelChanged( ModelPanelEvent e ) {
-		if (e.getType() == ModelPanelEvent.REPACK) {
+		if (e.getType() == ModelPanelEventTypes.REPACK) {
 			inputFrame.pack();
 		}
 		else {
@@ -173,7 +174,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		modelInput.willIterate(isIterate);
 		updateOutput();
 	}
-	
+
 	/**
 	 * Transfers data from input screen to output screen. This should not be changed.
 	 * Only modify simpleUpdateOutput, if necessary to do so.
@@ -255,9 +256,11 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		modelOutput.addOutputPanelListener( this );
 	}
 
+	@Override
 	public void writeExternal( ObjectOutput oo ) throws IOException {
 		oo.writeObject( this.modelInput );
 	}
+	@Override
 	public void readExternal( ObjectInput oi ) throws ClassNotFoundException,IOException {
 		this.basicInitModel();
 		this.setModelInput( (ModelPanel)oi.readObject() );
@@ -288,6 +291,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 	 * @param e edu.umn.ecology.populus.visual.ppfield.ParameterFieldEvent
 	 */
 
+	@Override
 	public void parameterFieldChanged( edu.umn.ecology.populus.visual.ppfield.ParameterFieldEvent e ) {
 
 		//Is it significant?
@@ -302,6 +306,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		modelColor = newModelColor;
 	}
 
+	@Override
 	public void outputChangeRequested( OutputPanelEvent e ) {
 
 	}
@@ -479,7 +484,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 	protected void fireModelEvent( ModelEvent event ) throws CannotChangeModelException {
 		Enumeration<ModelListener> enm = listeners.elements();
 		while( enm.hasMoreElements() ) {
-			( (ModelListener)enm.nextElement() ).modelChanged( event );
+			enm.nextElement().modelChanged( event );
 		}
 	}
 
@@ -648,11 +653,11 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 			ObjectOutputStream oos;
 			String filename = edu.umn.ecology.populus.fileio.IOUtility.getFileName( "model", ".po", "Save Model", FileDialog.SAVE );
 			if( filename != null ) {
-				
+
 				if (PopPreferencesStorage.getUseXMLSave()) {
 					XMLEncoder e = new XMLEncoder(
-		                          	new BufferedOutputStream(
-		                              new FileOutputStream(filename)));
+							new BufferedOutputStream(
+									new FileOutputStream(filename)));
 					e.writeObject(this);
 					e.flush();
 					e.close();
@@ -708,7 +713,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 		//           This little method here updates the help id associated with the help button whenever the button
 		//           is pressed. this happens before the HelpBroker does anything, so this method adds dynamic help id
 		//           changing.
-		//           
+		//
 		//         */
 		//         public void actionPerformed(java.awt.event.ActionEvent e){
 		//            Rectangle r = desktopPane.getBounds();

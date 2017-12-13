@@ -13,7 +13,7 @@ import edu.umn.ecology.populus.fileio.Logging;
 
 public class PDFHelpFileMgr {
 	/** Return location of help file outside of JAR, and copy the file out if needed
-	 * 
+	 *
 	 * @param forceAlwaysUpdate - If true, it will always prompt the user to set up the file.
 	 * @return name of file
 	 */
@@ -26,7 +26,7 @@ public class PDFHelpFileMgr {
 				shouldRun = true;
 			}
 		}
-		
+
 		if (shouldRun) {
 			HelpConfigPanel.launchWindow();
 		}
@@ -63,10 +63,10 @@ public class PDFHelpFileMgr {
 		if (lang.equalsIgnoreCase("Portuguese")) {
 			return "PopulusHelpPortuguese5.5.pdf";
 		} else if (lang.equalsIgnoreCase("Spanish")) {
-			return "PopulusHelpEspagnol5.5.pdf";		   
+			return "PopulusHelpEspagnol5.5.pdf";
 		} else {
-			return "PopulusHelpEnglish5.5.pdf";		   
+			return "PopulusHelpEnglish5.5.pdf";
 		}
 	}
-	
+
 }

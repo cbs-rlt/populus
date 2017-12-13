@@ -46,6 +46,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 	/**
 	 *  Return the name for the column
 	 */
+	@Override
 	public String getColumnName(int column) {
 		switch (column) {
 		case 0:
@@ -64,6 +65,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 	/**
 	 *  Returns Object.class by default
 	 */
+	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		if(columnIndex == 0) return Integer.class;
 		return Double.class;
@@ -72,6 +74,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 	/**
 	 *  Returns true for anything in columns 1-3
 	 */
+	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		if(type != ASPGPanel.kPREBREEDING)
 			return
@@ -143,13 +146,16 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 	}
 
 
+	@Override
 	public int getRowCount() {
 		return rows;
 	}
+	@Override
 	public int getColumnCount() {
 		return kCOLUMNS-1;
 	}
 
+	@Override
 	public Object getValueAt(int row, int column) {
 		if((row == (rows-1)) && (column == 3)) return null;
 		if(type != ASPGPanel.kPREBREEDING){

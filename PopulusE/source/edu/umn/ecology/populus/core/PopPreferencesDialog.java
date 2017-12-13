@@ -35,7 +35,7 @@ import java.util.*;
 public class PopPreferencesDialog
 extends JDialog {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8202655658889492472L;
 	JButton cellprefB = new JButton();
@@ -312,9 +312,9 @@ extends JDialog {
 						RAISED, Color.white, Color.white,
 						new java.awt.Color(134, 134, 134),
 						new java.awt.Color(93, 93, 93)),
-						BorderFactory.
-						createEmptyBorder(20, 10, 50,
-								10));
+				BorderFactory.
+				createEmptyBorder(20, 10, 50,
+						10));
 		okPanel.setLayout(gridBagLayout3);
 		lookPanel.setLayout(gridBagLayout2);
 		okButton.setText(res.getString("OK"));
@@ -341,6 +341,7 @@ extends JDialog {
 		colorChooserButton.setText(res.getString("Color_Scheme"));
 		colorChooserButton.addActionListener(new java.awt.event.ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				colorChooserButton_actionPerformed(e);
 			}
@@ -349,6 +350,7 @@ extends JDialog {
 		terminusType.addItem("Dot");
 		aboutPopButton.addActionListener(new java.awt.event.ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				aboutButton_actionPerformed(e);
 			}
@@ -415,13 +417,14 @@ extends JDialog {
 				, GridBagConstraints.CENTER,
 				GridBagConstraints.NONE,
 				new Insets(0, 0, 0, 0), 0, 0));
-		
+
 		GridBagConstraints gbc_btnHelp = new GridBagConstraints();
 		gbc_btnHelp.gridwidth = 3;
 		gbc_btnHelp.insets = new Insets(0, 0, 5, 0);
 		gbc_btnHelp.gridx = 0;
 		gbc_btnHelp.gridy = 4;
 		btnHelp.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				HelpConfigPanel.launchWindow();
 			}
@@ -468,7 +471,7 @@ extends JDialog {
 		lookPanel.add(terminusType, new GridBagConstraints(2, 2, 1, 1, 1.0, 1.0
 				, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL,
 				new Insets(0, 0, 0, 0), 0, 0));
-		
+
 		tabbedPane.addTab("New", null, newFeaturesPanel, null);
 		GridBagLayout gbl_newFeaturesPanel = new GridBagLayout();
 		gbl_newFeaturesPanel.columnWidths = new int[]{0, 0, 0, 0};
@@ -476,13 +479,13 @@ extends JDialog {
 		gbl_newFeaturesPanel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_newFeaturesPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		newFeaturesPanel.setLayout(gbl_newFeaturesPanel);
-		
+
 		GridBagConstraints gbc_chckbxUseNewChart = new GridBagConstraints();
 		gbc_chckbxUseNewChart.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxUseNewChart.gridx = 0;
 		gbc_chckbxUseNewChart.gridy = 0;
 		newFeaturesPanel.add(chckbxUseNewChart, gbc_chckbxUseNewChart);
-		
+
 		GridBagConstraints gbc_chckbxSaveWindowPosition = new GridBagConstraints();
 		gbc_chckbxSaveWindowPosition.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxSaveWindowPosition.gridx = 0;
@@ -498,6 +501,7 @@ extends JDialog {
 		catch (Exception exc) {}
 	}
 
+	@Override
 	public void dispose() {
 		Component[] comps = toolBar.getComponents();
 		for (int i = comps.length - 1; i >= 0; i--) {
@@ -516,6 +520,7 @@ implements ActionListener {
 		this.adaptee = adaptee;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.trickButton_actionPerformed(e);
 	}
@@ -525,6 +530,7 @@ class StandardDialog1_okButton_actionAdapter
 implements ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.okButton_actionPerformed(e);
 	}
@@ -538,6 +544,7 @@ class StandardDialog1_cancelButton_actionAdapter
 implements ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cancelButton_actionPerformed(e);
 	}
@@ -551,6 +558,7 @@ class StandardDialog1_this_windowAdapter
 extends WindowAdapter {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void windowClosing(WindowEvent e) {
 		adaptee.this_windowClosing(e);
 	}
@@ -565,6 +573,7 @@ implements java.awt.event.
 ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.defaultsButton_actionPerformed(e);
 	}
@@ -579,6 +588,7 @@ implements java.awt.event.
 ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.loadButton_actionPerformed(e);
 	}
@@ -593,6 +603,7 @@ implements java.awt.event.
 ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.saveRequested();
 	}
@@ -607,6 +618,7 @@ implements java.
 awt.event.ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.integratorPreferencesB_actionPerformed(e);
 	}
@@ -622,6 +634,7 @@ implements java.awt.event.
 ActionListener {
 	PopPreferencesDialog adaptee;
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cellprefB_actionPerformed(e);
 	}

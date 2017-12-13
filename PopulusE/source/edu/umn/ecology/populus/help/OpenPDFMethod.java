@@ -10,16 +10,16 @@ import java.io.Serializable;
 
 public class OpenPDFMethod implements Serializable {
 	private static final long serialVersionUID = -4040941158718934928L;
-	
+
 	public static final int DESKTOP = 0;
 	public static final int JNLP = 1;
 	public static final int CUSTOM_EXEC = 2;
-	
+
 	public static final OpenPDFMethod DEFAULT_METHOD = new OpenPDFMethod(DESKTOP, "\"C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe\" \"%1#%2\"");
-	
+
 	private int openMethod;
 	private String execStr;
-	
+
 	public OpenPDFMethod() {
 		this(DESKTOP, "");
 	}
@@ -27,7 +27,7 @@ public class OpenPDFMethod implements Serializable {
 		this.openMethod = method;
 		this.execStr = cmd;
 	}
-	
+
 	public int getOpenMethod() {
 		return openMethod;
 	}

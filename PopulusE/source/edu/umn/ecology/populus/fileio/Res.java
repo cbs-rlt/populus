@@ -9,7 +9,7 @@ import java.io.*;
 
 public class Res extends java.util.ListResourceBundle implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -8617428124830706803L;
 	static final Object[][] contents = new String[][] {
@@ -32,6 +32,7 @@ public class Res extends java.util.ListResourceBundle implements Serializable {
 		}
 	};
 
+	@Override
 	public Object[][] getContents() {
 		return contents;
 	}

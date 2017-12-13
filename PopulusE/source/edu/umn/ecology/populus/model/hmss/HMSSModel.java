@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class HMSSModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "HMSSHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "HMSSHELP";
+	}
 
-   public HMSSModel() {
-      this.setModelInput( new HMSSPanel() );
-   }
+	public HMSSModel() {
+		this.setModelInput( new HMSSPanel() );
+	}
 
-   public static String getModelName() {
-      return "Handicap Sexual Selection";
-   }
+	public static String getModelName() {
+		return "Handicap Sexual Selection";
+	}
 
-   protected String getHelpId() {
-      return "HMSS.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "HMSS.overview";
+	}
 }

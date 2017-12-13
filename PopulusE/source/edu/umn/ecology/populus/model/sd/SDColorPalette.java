@@ -14,10 +14,10 @@ import edu.umn.ecology.populus.plot.coloredcells.CellPalette;
 class SDColorPalette extends CellPalette {
 	SDColorPalette(){
 		colors = new Color[] {
-			Color.blue,
-			Color.yellow,
-			Color.red,
-			Color.green
+				Color.blue,
+				Color.yellow,
+				Color.red,
+				Color.green
 		};
 	}
 }

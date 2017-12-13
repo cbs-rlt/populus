@@ -8,71 +8,72 @@ package edu.umn.ecology.populus.model.imd;
 import edu.umn.ecology.populus.math.*;
 
 public class IMDDeriv extends Derivative {
-   public static final int kY = 1;
-   public static final int kZ = 2;
-   public static final int kX = 0;
-   private int type;
-   private double a, b, alpha, beta, nu, gamma;
+	public static final int kY = 1;
+	public static final int kZ = 2;
+	public static final int kX = 0;
+	private int type;
+	private double a, b, alpha, beta, nu, gamma;
 
-   public void doDerivative( double t, double[] N, double[] dN ) {
-      double x = N[kX];
-      double y = N[kY];
-      double z;
-      double n;
-      double bsi;
-      if( ( type == IMDParamInfo.SIRDD ) || ( type == IMDParamInfo.SIRFD ) ) {
-         z = N[kZ];
-         n = x + y + z;
-      }
-      else {
-         z = 0; //Just initializing it for compile errors - it is never used
-         n = x + y;
-      }
-      if( ( type == IMDParamInfo.SIDD ) || ( type == IMDParamInfo.SIRDD ) ) {
-         bsi = beta * x * y;
-      }
-      else {
+	@Override
+	public void doDerivative( double t, double[] N, double[] dN ) {
+		double x = N[kX];
+		double y = N[kY];
+		double z;
+		double n;
+		double bsi;
+		if( ( type == IMDParamInfo.SIRDD ) || ( type == IMDParamInfo.SIRFD ) ) {
+			z = N[kZ];
+			n = x + y + z;
+		}
+		else {
+			z = 0; //Just initializing it for compile errors - it is never used
+			n = x + y;
+		}
+		if( ( type == IMDParamInfo.SIDD ) || ( type == IMDParamInfo.SIRDD ) ) {
+			bsi = beta * x * y;
+		}
+		else {
 
-         //Worry about |n| < 10^-6 ?
-         if( Math.abs( n ) < 1e-6 ) {
-            bsi = 0;
-         }
-         else {
-            bsi = beta * x * y / n;
-         }
-      }
-      switch( type ) {
-         case IMDParamInfo.SIRDD:
-         case IMDParamInfo.SIRFD:
-             dN[kX] = a * ( x + y + z ) - b * x - bsi + gamma * z;
-             dN[kY] = bsi - ( alpha + b + nu ) * y;
-             dN[kZ] = nu * y - ( b + gamma ) * z;
-             break;
+			//Worry about |n| < 10^-6 ?
+			if( Math.abs( n ) < 1e-6 ) {
+				bsi = 0;
+			}
+			else {
+				bsi = beta * x * y / n;
+			}
+		}
+		switch( type ) {
+		case IMDParamInfo.SIRDD:
+		case IMDParamInfo.SIRFD:
+			dN[kX] = a * ( x + y + z ) - b * x - bsi + gamma * z;
+			dN[kY] = bsi - ( alpha + b + nu ) * y;
+			dN[kZ] = nu * y - ( b + gamma ) * z;
+			break;
 
-         case IMDParamInfo.SIDD:
-         case IMDParamInfo.SIFD:
-             dN[kX] = a * ( x + y ) + nu * y - b * x - bsi;
-             dN[kY] = bsi - ( alpha + b + nu ) * y;
-             break;
-      }
-      return ;
-   }
+		case IMDParamInfo.SIDD:
+		case IMDParamInfo.SIFD:
+			dN[kX] = a * ( x + y ) + nu * y - b * x - bsi;
+			dN[kY] = bsi - ( alpha + b + nu ) * y;
+			break;
+		}
+		return ;
+	}
 
-   public IMDDeriv( int modelType, double a, double b, double alpha, double beta, double nu, double gamma ) {
-      this.type = modelType;
-      if( ( modelType == IMDParamInfo.SIRDD ) || ( modelType == IMDParamInfo.SIRFD ) ) {
-         this.numVariables = 3;
-      }
-      else {
-         this.numVariables = 2;
-      }
-      this.a = a;
-      this.b = b;
-      this.alpha = alpha;
-      this.beta = beta;
-      this.nu = nu;
-      this.gamma = gamma;
-   }
+	public IMDDeriv( int modelType, double a, double b, double alpha, double beta, double nu, double gamma ) {
+		this.type = modelType;
+		if( ( modelType == IMDParamInfo.SIRDD ) || ( modelType == IMDParamInfo.SIRFD ) ) {
+			this.numVariables = 3;
+		}
+		else {
+			this.numVariables = 2;
+		}
+		this.a = a;
+		this.b = b;
+		this.alpha = alpha;
+		this.beta = beta;
+		this.nu = nu;
+		this.gamma = gamma;
+	}
 } /*
  densdep : begin
  case j of

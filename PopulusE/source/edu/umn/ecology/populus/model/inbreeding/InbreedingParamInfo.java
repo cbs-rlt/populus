@@ -29,7 +29,8 @@ public class InbreedingParamInfo implements BasicPlot {
     */
    Random rand = new Random();
 
-   public BasicPlotInfo getBasicPlotInfo() {
+   @Override
+public BasicPlotInfo getBasicPlotInfo() {
       BasicPlotInfo bp;
       seed = System.currentTimeMillis();
       double[][][] points = new double[3][][];
@@ -100,7 +101,7 @@ public class InbreedingParamInfo implements BasicPlot {
          System.arraycopy(offspring[0],0,parents[0],0,N);
          System.arraycopy(offspring[1],0,parents[1],0,N);
          plot[0][i] = i;
-         plot[1][i] = identities/(double)(N);
+         plot[1][i] = identities/(N);
       }
 
       return plot;

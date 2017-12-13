@@ -23,89 +23,94 @@ import javax.swing.*;
 import java.util.*;
 
 public class ModelInputFrame extends PopInternalFrame {
-   /**
-	 * 
+	/**
+	 *
 	 */
 	private static final long serialVersionUID = 8093208225694956317L;
-ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
-   BorderLayout mainBorderLayout = new BorderLayout();
-   transient Model model;
-   int whichSelected = 1;
-   JButton outputButton = PopulusToolButton.createOutputIButton();
-   JButton closeButton = PopulusToolButton.createCloseButton();
-   JButton printButton = PopulusToolButton.createPrintButton();
-   JButton helpButton = PopulusToolButton.createHelpButton();
-   JButton saveButton = PopulusToolButton.createSaveButton();
-   JPanel jPanel1 = new JPanel();
+	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.core.Res" );
+	BorderLayout mainBorderLayout = new BorderLayout();
+	transient Model model;
+	int whichSelected = 1;
+	JButton outputButton = PopulusToolButton.createOutputIButton();
+	JButton closeButton = PopulusToolButton.createCloseButton();
+	JButton printButton = PopulusToolButton.createPrintButton();
+	JButton helpButton = PopulusToolButton.createHelpButton();
+	JButton saveButton = PopulusToolButton.createSaveButton();
+	JPanel jPanel1 = new JPanel();
 
-   public void jbInit() throws Exception {
-      this.setResizable( true );
-      this.getContentPane().setLayout( mainBorderLayout );
-      saveButton.addActionListener( new java.awt.event.ActionListener()  {
+	public void jbInit() throws Exception {
+		this.setResizable( true );
+		this.getContentPane().setLayout( mainBorderLayout );
+		saveButton.addActionListener( new java.awt.event.ActionListener()  {
 
-         public void actionPerformed( ActionEvent e ) {
-            save();
-         }
-      } );
-      outputButton.addActionListener( new java.awt.event.ActionListener()  {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				save();
+			}
+		} );
+		outputButton.addActionListener( new java.awt.event.ActionListener()  {
 
-         public void actionPerformed( ActionEvent e ) {
-            outputButton_actionPerformed( e );
-         }
-      } );
-      closeButton.addActionListener( new java.awt.event.ActionListener()  {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				outputButton_actionPerformed( e );
+			}
+		} );
+		closeButton.addActionListener( new java.awt.event.ActionListener()  {
 
-         public void actionPerformed( ActionEvent e ) {
-            closeButton_actionPerformed( e );
-         }
-      } );
-      printButton.addActionListener( new java.awt.event.ActionListener()  {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				closeButton_actionPerformed( e );
+			}
+		} );
+		printButton.addActionListener( new java.awt.event.ActionListener()  {
 
-         public void actionPerformed( ActionEvent e ) {
-            printButton_actionPerformed( e );
-         }
-      } );
-      saveButton.setText( res.getString( "File" ) );
-      toolBar.setFloatable( false );
-      this.getContentPane().add( toolBar, BorderLayout.NORTH );
-      toolBar.add( outputButton, null );
-      toolBar.add( saveButton, null );
-      toolBar.add( helpButton, null );
-      toolBar.add( printButton, null );
-      toolBar.add( closeButton, null );
-      this.getContentPane().add( jPanel1, BorderLayout.SOUTH );
-      this.setTitle( model.getThisModelInputName() + res.getString( "_Input" ) );
-   }
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				printButton_actionPerformed( e );
+			}
+		} );
+		saveButton.setText( res.getString( "File" ) );
+		toolBar.setFloatable( false );
+		this.getContentPane().add( toolBar, BorderLayout.NORTH );
+		toolBar.add( outputButton, null );
+		toolBar.add( saveButton, null );
+		toolBar.add( helpButton, null );
+		toolBar.add( printButton, null );
+		toolBar.add( closeButton, null );
+		this.getContentPane().add( jPanel1, BorderLayout.SOUTH );
+		this.setTitle( model.getThisModelInputName() + res.getString( "_Input" ) );
+	}
 
-   public ModelInputFrame( Model model ) {
-      super();
-      setModelColor( model.getModelColor() );
-      this.model = model;
-      try {
-         jbInit();
-      }
-      catch( Exception e ) {
-         e.printStackTrace();
-      }
-   }
+	public ModelInputFrame( Model model ) {
+		super();
+		setModelColor( model.getModelColor() );
+		this.model = model;
+		try {
+			jbInit();
+		}
+		catch( Exception e ) {
+			e.printStackTrace();
+		}
+	}
 
-   void outputButton_actionPerformed( ActionEvent e ) {
-      model.updateOutput();
-   }
+	void outputButton_actionPerformed( ActionEvent e ) {
+		model.updateOutput();
+	}
 
-   void closeButton_actionPerformed( ActionEvent e ) {
-      model.closeInput();
-   }
+	void closeButton_actionPerformed( ActionEvent e ) {
+		model.closeInput();
+	}
 
-   Component getHelpComponent() {
-      return helpButton;
-   }
+	@Override
+	Component getHelpComponent() {
+		return helpButton;
+	}
 
-   void printButton_actionPerformed( ActionEvent e ) {
-      model.printInputGraphics();
-   }
+	void printButton_actionPerformed( ActionEvent e ) {
+		model.printInputGraphics();
+	}
 
-   void save() {
-      model.save();
-   }
+	void save() {
+		model.save();
+	}
 }

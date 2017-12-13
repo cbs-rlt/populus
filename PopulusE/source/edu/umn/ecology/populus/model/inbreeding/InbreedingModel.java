@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class InbreedingModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "INBREEDINGHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "INBREEDINGHELP";
+	}
 
-   public InbreedingModel() {
-      this.setModelInput( new InbreedingPanel() );
-   }
+	public InbreedingModel() {
+		this.setModelInput( new InbreedingPanel() );
+	}
 
-   public static String getModelName() {
-      return "Inbreeding";
-   }
+	public static String getModelName() {
+		return "Inbreeding";
+	}
 
-   protected String getHelpId() {
-      return "inbreeding.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "inbreeding.overview";
+	}
 }

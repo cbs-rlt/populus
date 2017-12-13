@@ -14,30 +14,30 @@ package edu.umn.ecology.populus.plot;
  */
 public interface Stepper{
 
-   /**
-    * this is to give the implementing class a chance to set up for
-    * being "alive"
-    * @param increment the number of steps the graph should take each <code>stepGraph</code>
-    * call
-    */
-   public void setUpLive(int increment);
+	/**
+	 * this is to give the implementing class a chance to set up for
+	 * being "alive"
+	 * @param increment the number of steps the graph should take each <code>stepGraph</code>
+	 * call
+	 */
+	public void setUpLive(int increment);
 
-   /**
-    * the implementation of this method should increment some sort
-    * of counter for how many of the data points should be drawn.
-    * this method will be called by LiveGraph for each increment of
-    * drawing.
-    * @return the boolean returned should be <code>false</code> if there are
-    * no more increments available, and <code>true</code> if we aren't done graphing
-    * yet.
-    */
-   public boolean stepGraph();
+	/**
+	 * the implementation of this method should increment some sort
+	 * of counter for how many of the data points should be drawn.
+	 * this method will be called by LiveGraph for each increment of
+	 * drawing.
+	 * @return the boolean returned should be <code>false</code> if there are
+	 * no more increments available, and <code>true</code> if we aren't done graphing
+	 * yet.
+	 */
+	public boolean stepGraph();
 
-   /**
-    * this method is here so that implementing classes will be forced
-    * to include this method, which strongly encouranges the use of
-    * "offscreen graphics drawing" or blit-ing so that only the latest
-    * increment needs to be drawn, and not the entire graph each time.
-    */
-   //public void prepNextImage();
+	/**
+	 * this method is here so that implementing classes will be forced
+	 * to include this method, which strongly encouranges the use of
+	 * "offscreen graphics drawing" or blit-ing so that only the latest
+	 * increment needs to be drawn, and not the entire graph each time.
+	 */
+	//public void prepNextImage();
 }

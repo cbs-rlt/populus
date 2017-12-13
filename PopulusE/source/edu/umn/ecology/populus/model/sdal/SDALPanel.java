@@ -25,7 +25,7 @@ import java.util.*;
 
 public class SDALPanel extends BasicPlotInputPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 104781528256778392L;
 	ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sdal.Res" );
@@ -63,6 +63,7 @@ public class SDALPanel extends BasicPlotInputPanel {
 	PopulusParameterField paramwaa = new PopulusParameterField();
 	GridBagLayout gridBagLayout = new GridBagLayout();
 
+	@Override
 	public BasicPlot getPlotParamInfo() {
 		int plotType, freqs, coeffType;
 
@@ -157,6 +158,7 @@ public class SDALPanel extends BasicPlotInputPanel {
 		oneInitialFrequencyButton.setText( res.getString( "One_Initial_Frequency" ) );
 		oneInitialFrequencyButton.addActionListener( new java.awt.event.ActionListener()  {
 
+			@Override
 			public void actionPerformed( ActionEvent e ) {
 				oneInitialFrequencyButton_actionPerformed( e );
 			}
@@ -170,6 +172,7 @@ public class SDALPanel extends BasicPlotInputPanel {
 		sixInitialFrequenciesButton.setText( res.getString( "Six_Initial" ) );
 		sixInitialFrequenciesButton.addActionListener( new java.awt.event.ActionListener()  {
 
+			@Override
 			public void actionPerformed( ActionEvent e ) {
 				sixInitialFrequenciesButton_actionPerformed( e );
 			}
@@ -254,12 +257,13 @@ public class SDALPanel extends BasicPlotInputPanel {
 		fitnessScrollPanel.setViewportView(fitnessPanel);
 
 		jTabbedPane1.add( fitnessScrollPanel, res.getString( "Fitness" ) );
-		
+
 		selectionPanel.add( paramh, null );
 		selectionPanel.add( params, null );
 		jTabbedPane1.add( selectionPanel, res.getString( "Selection" ) );
 		jTabbedPane1.addChangeListener( new javax.swing.event.ChangeListener()  {
 
+			@Override
 			public void stateChanged( ChangeEvent e ) {
 				jTabbedPane1_stateChanged( e );
 			}

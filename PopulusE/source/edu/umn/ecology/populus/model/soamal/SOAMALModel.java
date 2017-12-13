@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class SOAMALModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "SOAMALHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "SOAMALHELP";
+	}
 
-   public SOAMALModel() {
-      this.setModelInput( new SOAMALPanel() );
-   }
+	public SOAMALModel() {
+		this.setModelInput( new SOAMALPanel() );
+	}
 
-   public static String getModelName() {
-      return "Selection on a Multi-Allelic Locus";
-   }
+	public static String getModelName() {
+		return "Selection on a Multi-Allelic Locus";
+	}
 
-   protected String getHelpId() {
-      return "SOAMAL.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "SOAMAL.overview";
+	}
 }

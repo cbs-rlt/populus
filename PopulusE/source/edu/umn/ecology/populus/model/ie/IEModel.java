@@ -9,23 +9,26 @@ import edu.umn.ecology.populus.plot.*;
 
 public class IEModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "IEHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "IEHELP";
+	}
 
-   public String getThisModelInputName() {
-      return "Interaction Engine";
-   }
+	@Override
+	public String getThisModelInputName() {
+		return "Interaction Engine";
+	}
 
-   public IEModel() {
-      this.setModelInput( new IEPanel() );
-   }
+	public IEModel() {
+		this.setModelInput( new IEPanel() );
+	}
 
-   public static String getModelName() {
-      return "Interaction Engine";
-   }
+	public static String getModelName() {
+		return "Interaction Engine";
+	}
 
-   protected String getHelpId() {
-      return "ie.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "ie.overview";
+	}
 }

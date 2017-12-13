@@ -16,7 +16,7 @@ import javax.swing.*;
 /**	This class will display a picture of tiles*/
 public class CellController extends OutputPanel implements Runnable, KeyListener {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3862996446929889045L;
 	Thread cellUpdater;
@@ -43,7 +43,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		if(cf.getBreakInterval()==1) setPaused(true);
 		try  {
 			jbInit();
-         addKeyListener(this);
+			addKeyListener(this);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -69,11 +69,12 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		updateUI();
 	}
 
+	@Override
 	public void run(){
 		double[][] calc = new double[1][1];
 		boolean valuesSet=false;
 		long saveTime=0;
-      requestFocus();
+		requestFocus();
 		while(!isDone){
 			try{
 				if(saveTime<pauseTime)
@@ -101,6 +102,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		} catch(InterruptedException e){}
 	}
 
+	@Override
 	public void destroy(){
 		isDone = isSuspended = true;
 	}
@@ -117,6 +119,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		}
 		pauseButton.addActionListener(new java.awt.event.ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				pauseButtonChange(e);
 			}
@@ -127,6 +130,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		jPanel1.setLayout(gridBagLayout2);
 		typeChangeCB.addActionListener(new java.awt.event.ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				typeChangeCB_actionPerformed(e);
 			}
@@ -137,16 +141,16 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		gensL.setPreferredSize(new Dimension(40, 17));
 		jPanel1.setBackground(Color.black);
 		add(cellPanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		this.add(jPanel1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		if(a!=null && a.length>0)
 			jPanel1.add(typeChangeCB, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
-						,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		jPanel1.add(pauseButton, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
 		jPanel1.add(gensL, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 5, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 5, 0, 0), 0, 0));
 	}
 
 	public void setPaused(boolean b){
@@ -157,7 +161,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		} else {
 			pauseButton.setText("Pause");
 		}
-      requestFocus();
+		requestFocus();
 	}
 
 	void pauseButtonChange(ActionEvent e) {
@@ -168,8 +172,8 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		} else {
 			isSuspended = false;
 			pauseButton.setText("Pause");
-         /*a call to the garbage collector should happen somewhere. is this a good place?*/
-         System.gc();
+			/*a call to the garbage collector should happen somewhere. is this a good place?*/
+			System.gc();
 		}
 	}
 
@@ -189,85 +193,90 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
 		cf.setValue(typeChangeCB.getSelectedIndex(),r,c,newValue);
 	}
 
-   void zoomIn(){
-      CellDefaults.kHeight++;
-      CellDefaults.kWidth++;
-      cellPanel.repaint();
-   }
+	void zoomIn(){
+		CellDefaults.kHeight++;
+		CellDefaults.kWidth++;
+		cellPanel.repaint();
+	}
 
-   void zoomOut(){
-      if(CellDefaults.kHeight <= 1 || CellDefaults.kWidth <= 1)
-         return;
-      CellDefaults.kHeight--;
-      CellDefaults.kWidth--;
-      cellPanel.repaint();
-   }
+	void zoomOut(){
+		if(CellDefaults.kHeight <= 1 || CellDefaults.kWidth <= 1)
+			return;
+		CellDefaults.kHeight--;
+		CellDefaults.kWidth--;
+		cellPanel.repaint();
+	}
 
-   void reset(){
-      CellDefaults.kHeight = CellDefaults.kHeightDefault;
-      CellDefaults.kWidth = CellDefaults.kWidthDefault;
-      cellPanel.repaint();
-   }
+	void reset(){
+		CellDefaults.kHeight = CellDefaults.kHeightDefault;
+		CellDefaults.kWidth = CellDefaults.kWidthDefault;
+		cellPanel.repaint();
+	}
 
+	@Override
 	public void showOptions(int whatOption){
 		switch (whatOption) {
-			case MenuOptions.kCoarserGrid:
-            break;
-         case MenuOptions.kFinerGrid:
-            break;
-         case MenuOptions.kClearGrid:
-            break;
-         case MenuOptions.kOptionScreen:
-            break;
-         case MenuOptions.kReset:
-            reset();
-            break;
-         case MenuOptions.kZoomIn:
-            zoomIn();
-            break;
-         case MenuOptions.kZoomOut:
-            zoomOut();
-            break;
-      }
-   }
+		case MenuOptions.kCoarserGrid:
+			break;
+		case MenuOptions.kFinerGrid:
+			break;
+		case MenuOptions.kClearGrid:
+			break;
+		case MenuOptions.kOptionScreen:
+			break;
+		case MenuOptions.kReset:
+			reset();
+			break;
+		case MenuOptions.kZoomIn:
+			zoomIn();
+			break;
+		case MenuOptions.kZoomOut:
+			zoomOut();
+			break;
+		}
+	}
 
-   /**
-    * the help file accessed through the KeyListener javadoc says that the isFocusTraversable
-    * method should be overridden from the parent component and set to return true every time.
-    * @return always will be true
-    */
-   public boolean isFocusable() { return true; }
+	/**
+	 * the help file accessed through the KeyListener javadoc says that the isFocusTraversable
+	 * method should be overridden from the parent component and set to return true every time.
+	 * @return always will be true
+	 */
+	@Override
+	public boolean isFocusable() { return true; }
 
-   /**
-    * not useful right now, all my needs are covered with the other two methods from KeyListener
-    * @param ke
-    */
-   public void keyReleased(KeyEvent ke){}
-   public void keyPressed(KeyEvent ke){}
+	/**
+	 * not useful right now, all my needs are covered with the other two methods from KeyListener
+	 * @param ke
+	 */
+	@Override
+	public void keyReleased(KeyEvent ke){}
+	@Override
+	public void keyPressed(KeyEvent ke){}
 
-   /**
-    * this method picks up the zoom keys, which are set to be the buttons with + or - on them.
-    * @param ke
-    */
-   public void keyTyped(KeyEvent ke){
-      char c = ke.getKeyChar();
+	/**
+	 * this method picks up the zoom keys, which are set to be the buttons with + or - on them.
+	 * @param ke
+	 */
+	@Override
+	public void keyTyped(KeyEvent ke){
+		char c = ke.getKeyChar();
 
-      switch(c){
-         case '=':
-         case '+':
-            zoomIn();
-            break;
-         case '-':
-         case '_':
-            zoomOut();
-            break;
-         case 'r':
-         case 'R':
-            reset();
-            break;
-      }
-      ke.consume();
-   }
+		switch(c){
+		case '=':
+		case '+':
+			zoomIn();
+			break;
+		case '-':
+		case '_':
+			zoomOut();
+			break;
+		case 'r':
+		case 'R':
+			reset();
+			break;
+		}
+		ke.consume();
+	}
 }
 
 /* debugging code:
@@ -276,5 +285,5 @@ long time = System.currentTimeMillis();
 System.gc();
 time = System.currentTimeMillis()-time;
 edu.umn.ecology.populus.fileio.Logging.log("gc took "+((double)time)/1000+" seconds."); //usually about 1/4th sec
-*/
+ */
 

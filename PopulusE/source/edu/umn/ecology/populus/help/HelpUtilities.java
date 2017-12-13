@@ -36,14 +36,14 @@ public class HelpUtilities  {
 		}
 		return hu;
 	}
-	
+
 
 	private HelpUtilities() {
 	}
 
 
 	/** Register a component's Help button with an ID.
-	 * 
+	 *
 	 * @param c - the component that can trigger help (e.g., a Help Button within a model)
 	 * @param id - the help topic id to trigger.
 	 */
@@ -51,6 +51,7 @@ public class HelpUtilities  {
 		Logging.log("Registering for help, id=" + id);
 		if(c instanceof JButton){
 			((JButton)c).addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent ae) {
 					Logging.log("Got event from " + ae.getSource().getClass().getName());
 					Logging.log("Id of source is " + ae.getSource().hashCode());
@@ -75,11 +76,11 @@ public class HelpUtilities  {
 			Logging.log(e);
 		}
 	}
-	
+
 	public static boolean displayHelpTrial(OpenPDFMethod opm, Vector<String> results) {
 		return displayHelp("dipg.overview", opm, results);
 	}
-	
+
 	private static boolean displayHelp(String id, OpenPDFMethod opm, Vector<String> results) {
 		String baseLoc  = PDFHelpFileMgr.getHelpFileLocationURI();
 		String location = baseLoc + "#" + id;
@@ -107,7 +108,7 @@ public class HelpUtilities  {
 	}
 
 	/* Stateless method to call a command
-	 * 
+	 *
 	 * Note: this appears in Core Web Programming from
 	 * Prentice Hall Publishers, and may be freely used
 	 * or adapted. 1997 Marty Hall, hall@apl.jhu.edu.

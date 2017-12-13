@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class HERITModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "HERITHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "HERITHELP";
+	}
 
-   public HERITModel() {
-      this.setModelInput( new HERITPanel() );
-   }
+	public HERITModel() {
+		this.setModelInput( new HERITPanel() );
+	}
 
-   public static String getModelName() {
-      return "Heritability";
-   }
+	public static String getModelName() {
+		return "Heritability";
+	}
 
-   protected String getHelpId() {
-      return "HERIT.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "HERIT.overview";
+	}
 }

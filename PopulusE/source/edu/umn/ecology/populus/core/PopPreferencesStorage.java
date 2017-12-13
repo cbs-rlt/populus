@@ -74,7 +74,7 @@ public final class PopPreferencesStorage {
 	private static final String DEFAULT_DIRECTORY = "";
 	private static final boolean DEFAULT_RESTORE_DESKTOP = false;
 	private static final boolean DEFAULT_USE_JFREECHART = true;
-	
+
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
 	private static final Integer DELAY_TIME         = new Integer( 102 );
@@ -130,7 +130,7 @@ public final class PopPreferencesStorage {
 	/**
 	 * Get the singleton instance of PopPreferences.
 	 * Note that we assume that make sure to only create one singleton if it
-	 *  doesn't already exist, but there isn't any other synchronization code 
+	 *  doesn't already exist, but there isn't any other synchronization code
 	 *  elsewhere when we modify it, since we assume it's all done in one
 	 *  thread.
 	 * @return PopPreferences
@@ -165,7 +165,7 @@ public final class PopPreferencesStorage {
 		Long l = (Long) table.get(key);
 		return (l == null) ? defaultValue : l.longValue();
 	}
-	*/
+	 */
 
 	public static int getButtonType() {
 		return getSingleton().safeLookup(BUTTON_TYPE, DEFAULT_BUTTON_TYPE);
@@ -227,19 +227,19 @@ public final class PopPreferencesStorage {
 		//		loading a model from another operating system.
 		return false;
 	}
-	
+
 	public static ModelPacket[] getModelPackets(Integer i) {
-		return ( (ModelPacket[])getSingleton().packetTable.get( i ) );
+		return ( getSingleton().packetTable.get( i ) );
 	}
 
 	public static boolean isUseAWTFileDialog() {
 		return ( (Boolean)getSingleton().table.get( USE_AWT_FILEDIALOG ) ).booleanValue();
 	}
-	
+
 	public static boolean isRestoreDesktop () {
 		return ((Boolean) getSingleton().table.get( RESTORE_DESKTOP ) ).booleanValue();
 	}
-	
+
 	public static Dimension getDesktopScreenSize(JFrame frame) {
 		Dimension screenSize;
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -259,10 +259,10 @@ public final class PopPreferencesStorage {
 				Logging.log("Couldn't get desktop screen size: " + e);
 			}
 		}
-		
+
 		return screenSize;
 	}
-	
+
 	public static Point getDesktopLocation(JFrame frame) {
 		Point location;
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -270,7 +270,7 @@ public final class PopPreferencesStorage {
 		Insets insets = kit.getScreenInsets(config);
 		location = new Point(insets.left, insets.top);
 
-		
+
 		//LOGGING ONLY!
 		{
 			//Look at multiple monitors here.
@@ -281,12 +281,12 @@ public final class PopPreferencesStorage {
 			ge.getDefaultScreenDevice();
 			for (int i = 0; i < gs.length; i++)
 			{
-			    DisplayMode dm = gs[i].getDisplayMode();
-			    Logging.log("Display Mode #" + i + "= " + dm.getWidth() + " x " + dm.getHeight() + " name=" + gs[i].getIDstring());
+				DisplayMode dm = gs[i].getDisplayMode();
+				Logging.log("Display Mode #" + i + "= " + dm.getWidth() + " x " + dm.getHeight() + " name=" + gs[i].getIDstring());
 			}
-			
+
 		}
-		
+
 		if (isRestoreDesktop()) {
 			Logging.log("Retrieving the window coordinates from last session");
 			try {
@@ -350,10 +350,10 @@ public final class PopPreferencesStorage {
 		getSingleton().table.put(TERMINUS_TYPE, new Integer(newVal));
 	}
 	public static void setHelpFileLocation(String newVal) {
-		getSingleton().table.put(HELP_FILE_LOCATION, newVal);	   
+		getSingleton().table.put(HELP_FILE_LOCATION, newVal);
 	}
 	public static void setHelpLanguage(String newVal) {
-		getSingleton().table.put(HELP_FILE_LANGUAGE, newVal);	   
+		getSingleton().table.put(HELP_FILE_LANGUAGE, newVal);
 	}
 	public static void setOpenPDFMethod(int openMethod) {
 		getSingleton().table.put(OPEN_PDF_METHOD, openMethod);
@@ -363,14 +363,14 @@ public final class PopPreferencesStorage {
 	}
 	public static void setOpenPDFObject(OpenPDFMethod opm) {
 		setOpenPDFMethod(opm.getOpenMethod());
-		setOpenPDFCommand(opm.getExecStr());	   
+		setOpenPDFCommand(opm.getExecStr());
 	}
 
-	
+
 	public static void setPreferencesFile(String filename) {
 		preferencesFile = filename;
 	}
-	
+
 	public static void setUseJFreeClass(boolean newVal) {
 		getSingleton().table.put( USE_JFREECHART, new Boolean( newVal ) );
 	}
@@ -494,7 +494,7 @@ public final class PopPreferencesStorage {
 		//But this isn't high priority to fix.
 		table.put( COLOR_SAVER, new ColorSaver() );
 		table.put( VALUE_SAVER, new ValuesToSave());
-		
+
 		if (isRestoreDesktop()) {
 			Dimension dSize = DesktopWindow.defaultWindow.getSize();
 			Point pLocation = DesktopWindow.defaultWindow.getLocation();
@@ -521,7 +521,7 @@ public final class PopPreferencesStorage {
 
 	/**
 	 * Loads the Hashtable from file
-	 * 
+	 *
 	 * TODO:  Does this get called??
 	 */
 	public synchronized void load() {
@@ -531,10 +531,10 @@ public final class PopPreferencesStorage {
 	 * Loads the Hashtable from file, called by load().
 	 * @param isInit When true, we don't compare with the existing data to see if we need to update
 	 *  anything, e.g. the button look.
-	 *  
+	 *
 	 *  TODO: use javax.jnlp.FileOpenService here or javax.jnlp.PersistenceService
 	 *    http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileOpenService.html
-	 *    
+	 *
 	 */
 	private void subLoad(boolean isInit) {
 		try {
@@ -569,7 +569,7 @@ public final class PopPreferencesStorage {
 			while (it.hasNext()) {
 				//For each override element, only replace if the key is in the original table and the values are the same type
 				while (it.hasNext()) {
-					Map.Entry<Integer,Object> pair = (Map.Entry<Integer,Object>)it.next(); 
+					Map.Entry<Integer,Object> pair = it.next();
 					int k = pair.getKey();
 					Object v = pair.getValue();
 					if (table.containsKey(k)) {
@@ -583,14 +583,14 @@ public final class PopPreferencesStorage {
 								oldVal = Arrays.deepToString((Object[]) table.get(k));
 								newVal = Arrays.deepToString((Object[]) v);
 							}
-							
-						    if (isSameVal) {
-						    	//Same value, no need to override...
-						    	Logging.log("Preferences: Preserving key " + k + " with value " + oldVal, Logging.kInfo);
-						    } else {
+
+							if (isSameVal) {
+								//Same value, no need to override...
+								Logging.log("Preferences: Preserving key " + k + " with value " + oldVal, Logging.kInfo);
+							} else {
 								Logging.log("Preferences: Overriding key " + k + " from " + oldVal + " to " + newVal, Logging.kInfo);
 								table.put(k, v);
-						    }
+							}
 						} else {
 							Logging.log("Preferences: Ignoring mismatched type of key " + k + " :  " + table.get(k).getClass() + " != " + v.getClass(), Logging.kInfo);
 						}
@@ -665,7 +665,7 @@ public final class PopPreferencesStorage {
 	/**
 	 * Tells buttons that the look has changed.
 	 * TODO efficiency - This has a memory leak, since we always
-	 *        keep a reference of all the buttons -- maybe 
+	 *        keep a reference of all the buttons -- maybe
 	 *        even when their model is long gone.
 	 */
 	private void notifyButtons() {
@@ -673,7 +673,7 @@ public final class PopPreferencesStorage {
 		Enumeration<PopulusToolButton> e = buttons.elements();
 		//edu.umn.ecology.populus.fileio.Logging.log("There are " + buttons.size() + " buttons."); //Lars
 		while( e.hasMoreElements() ) {
-			button = (PopulusToolButton)e.nextElement();
+			button = e.nextElement();
 			button.setLook();
 		}
 	}

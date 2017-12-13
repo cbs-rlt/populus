@@ -29,6 +29,7 @@ public class PopRun {
 		new PopRun();
 	}
 
+	@Override
 	protected void finalize() throws Throwable {
 		edu.umn.ecology.populus.fileio.Logging.log( res.getString( "Populus_Started" ) );
 	}
@@ -61,7 +62,7 @@ public class PopRun {
 			//Try to log to file
 			try {
 				String fileName = System.getProperty("user.home", ".") + System.getProperty("file.separator")
-						+ "PopulusErrorLog" + System.currentTimeMillis() + ".txt";
+				+ "PopulusErrorLog" + System.currentTimeMillis() + ".txt";
 				java.io.PrintWriter w = new java.io.PrintWriter(new java.io.FileOutputStream(fileName));
 				w.write("!Fatal error in Populus!\n");
 				w.write("Populus built " + buildTime + "\n");

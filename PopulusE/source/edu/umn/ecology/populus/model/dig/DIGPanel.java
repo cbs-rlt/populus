@@ -26,7 +26,7 @@ import java.util.*;
 
 public class DIGPanel extends BasicPlotInputPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 4120490983905219058L;
 	public static final int kDNDTVSN = 2;
@@ -122,6 +122,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 	private GridBagLayout gridBagLayout2 = new GridBagLayout();
 
 
+	@Override
 	public BasicPlot getPlotParamInfo() {
 		int selection = nvstButton.isSelected() ? kNVST : ( lnnvstButton.isSelected() ? kLNNVST : ( dNdtButton.isSelected() ? kDNDTVSN : kDNNDTVSN ) );
 
@@ -172,6 +173,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 		}
 	}
 
+	@Override
 	public String getOutputGraphName() {
 		return res.getString( "Density_Independent" );
 
@@ -196,6 +198,7 @@ public class DIGPanel extends BasicPlotInputPanel {
    }
 	 */
 
+	@Override
 	public void updateLabels() {
 		if( continuousButton.isSelected() ) {
 			graphs.setForegroundAt( 0, ColorScheme.colors[0] );
@@ -213,6 +216,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 
 	/** Changes enablement of components */
 
+	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if( e.getSource() instanceof JRadioButton ) {
 			if( e.getSource() == continuousButton || e.getSource() == discreteButton ) {
@@ -253,7 +257,7 @@ public class DIGPanel extends BasicPlotInputPanel {
 			}
 		}
 		updateLabels();
-		this.fireModelPanelEvent( ModelPanelEvent.CHANGE_PLOT );
+		this.fireModelPanelEvent( ModelPanelEventTypes.CHANGE_PLOT );
 	}
 
 	private void jbInit() throws Exception {

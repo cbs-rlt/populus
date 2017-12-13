@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 /**
  * Circle that goes at the beginning or end of a line.
- * 
+ *
  * <p>Title: Populus</p>
  * <p>Description: ecological models</p>
  * <p>Copyright: Copyright (c) 2005, 2015</p>
@@ -22,12 +22,13 @@ public class CircleTerminus extends PlotTerminus {
 	public CircleTerminus() {
 		this(false);
 	}
-	
+
 	@Override
 	public boolean isOpaque() {
 		return !this.isStart();
 	}
 
+	@Override
 	protected void resize(int size) {
 		this.size = size;
 		x = new int[72];
@@ -50,6 +51,7 @@ public class CircleTerminus extends PlotTerminus {
 	}
 
 
+	@Override
 	public void draw(Graphics gc,
 			int xorg,
 			int yorg) {

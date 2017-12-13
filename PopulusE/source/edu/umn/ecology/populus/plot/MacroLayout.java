@@ -10,21 +10,22 @@ import java.awt.*;
 
 /**
  * This Layout is used to layout a chart along with it's main title and x/y titles.
- * Assumes that the container to lay out is a BasicPlotCanvas component. 
- * 
+ * Assumes that the container to lay out is a BasicPlotCanvas component.
+ *
  * This adds onto BorderLayout and changes the fonts of the captions dynamically.
  * We really need to be smarter about using the SOUTH, NORTH, WEST, CENTER, etc.
  */
 public class MacroLayout extends BorderLayout {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 673990963046959401L;
 
 	public MacroLayout() {
 	}
 
+	@Override
 	public void layoutContainer(Container c) {
 		edu.umn.ecology.populus.plot.BasicPlotCanvas chart;
 		if (!(c instanceof edu.umn.ecology.populus.plot.BasicPlotCanvas)) {
@@ -53,7 +54,7 @@ public class MacroLayout extends BorderLayout {
 		} catch (Exception e) {
 			//TODO
 		}
-		
+
 		smallFont = new Font(fontString, Font.PLAIN, fontsize);
 		bigFont = new Font(fontString, Font.PLAIN, fontsize * 3 / 2);
 		chart.xCaption.setDefaultFont(smallFont);

@@ -17,13 +17,14 @@ public class OwnershipBorder implements Border { //, java.io.Serializable {
 
 	public OwnershipBorder(Color borderColor) {
 		this.color = borderColor;
-                thickness = PopPreferencesStorage.getOwnershipBorderThickness();
+		thickness = PopPreferencesStorage.getOwnershipBorderThickness();
 	}
 	public OwnershipBorder(Color borderColor, int thickness) {
 		this.color = borderColor;
 		this.thickness = thickness;
 	}
 
+	@Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
 		Color oldColor = g.getColor();
 		g.translate(x, y);
@@ -35,10 +36,12 @@ public class OwnershipBorder implements Border { //, java.io.Serializable {
 		g.setColor(oldColor);
 	}
 
+	@Override
 	public Insets getBorderInsets(Component c) {
 		return new Insets(thickness, 0, 0, 0);
 	}
 
+	@Override
 	public boolean isBorderOpaque() {
 		return true;
 	}

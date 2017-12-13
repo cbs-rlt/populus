@@ -20,19 +20,21 @@ import java.util.*;
 public class ASPGModel extends BasicPlotModel {
 
 	public ASPGModel() {
-      this.setModelInput(new ASPGPanel());
+		this.setModelInput(new ASPGPanel());
 	}
 
 	public static String getModelName() {
 		return res.getString("Age_Structured");
 	}
 
+	@Override
 	public Object getModelHelpText() {
-      return "ASPGHELP";
+		return "ASPGHELP";
 	}
 
+	@Override
 	protected String getHelpId() {
-      return "aspg.overview";
+		return "aspg.overview";
 	}
 
 	static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");

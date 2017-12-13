@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class FDSDMModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "FDSDMHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "FDSDMHELP";
+	}
 
-   public FDSDMModel() {
-      this.setModelInput( new FDSDMPanel() );
-   }
+	public FDSDMModel() {
+		this.setModelInput( new FDSDMPanel() );
+	}
 
-   public static String getModelName() {
-      return "Frequency-Dependent Selection (Diploid Model)";
-   }
+	public static String getModelName() {
+		return "Frequency-Dependent Selection (Diploid Model)";
+	}
 
-   protected String getHelpId() {
-      return "FDSDM.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "FDSDM.overview";
+	}
 }

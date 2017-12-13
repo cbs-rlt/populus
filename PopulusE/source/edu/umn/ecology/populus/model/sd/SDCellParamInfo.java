@@ -12,7 +12,7 @@ import java.util.Random;
 
 class SDCellParamInfo extends ParamInfo implements CellFunction{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -9038939798762684050L;
 	static final int kC 	= 0;
@@ -42,53 +42,55 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 		this.t = t;
 		this.s = s;
 		this.r = r;
-      initialize(inittype,initfreq,patchsize,isEdge);
+		initialize(inittype,initfreq,patchsize,isEdge);
 	}
 
 	void initialize(int inittype, double initfreq, int patchsize, boolean isEdge){
 		Random r = new Random(System.currentTimeMillis());
 		switch (inittype){
-			case SDPanel.kRandom:
-				for(int i=0; i<size; i++)
-					for(int j=0; j<size; j++)
-						if(r.nextDouble()<initfreq) olddata[i][j] = kC;
-						else olddata[i][j] = kD;
-				break;
-			case SDPanel.kOneCD:
-				for(int i=0; i<size; i++)
-					for(int j=0; j<size; j++)
-						olddata[i][j] = kD;
-				if(!isEdge)
-					for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
-						for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
-							olddata[i][j] = kC;
-				else
-					for(int i=0; i<patchsize; i++)
-						for(int j=0; j<patchsize; j++)
-							olddata[i][j] = kC;
-				break;
-			case SDPanel.kOneDH:
-				for(int i=0; i<size; i++)
-					for(int j=0; j<size; j++)
+		case SDPanel.kRandom:
+			for(int i=0; i<size; i++)
+				for(int j=0; j<size; j++)
+					if(r.nextDouble()<initfreq) olddata[i][j] = kC;
+					else olddata[i][j] = kD;
+			break;
+		case SDPanel.kOneCD:
+			for(int i=0; i<size; i++)
+				for(int j=0; j<size; j++)
+					olddata[i][j] = kD;
+			if(!isEdge)
+				for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
+					for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
 						olddata[i][j] = kC;
-				if(!isEdge)
-					for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
-						for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
-							olddata[i][j] = kD;
-				else
-					for(int i=0; i<patchsize; i++)
-						for(int j=0; j<patchsize; j++)
-							olddata[i][j] = kD;
-				break;
+			else
+				for(int i=0; i<patchsize; i++)
+					for(int j=0; j<patchsize; j++)
+						olddata[i][j] = kC;
+			break;
+		case SDPanel.kOneDH:
+			for(int i=0; i<size; i++)
+				for(int j=0; j<size; j++)
+					olddata[i][j] = kC;
+			if(!isEdge)
+				for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
+					for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
+						olddata[i][j] = kD;
+			else
+				for(int i=0; i<patchsize; i++)
+					for(int j=0; j<patchsize; j++)
+						olddata[i][j] = kD;
+			break;
 		}
 	}
 
 	/** Get the values to start up the CellPanel*/
+	@Override
 	public double[][] initialF(){
 		updateFreqs();
 		return olddata;
 	}
 	/** Get the next iteration of values*/
+	@Override
 	public synchronized double[][] f(){
 		double[][] values = new double[size][size];
 		for(int i=0; i<values.length; i++)
@@ -103,33 +105,33 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 						int tM=m, tN=n;
 						double[] v;
 						switch(border){
-							case SDPanel.kAbsorbing:
-								if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;
+						case SDPanel.kAbsorbing:
+							if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;
 
-								v = getResults(i,j,tM,tN);
-								values[i][j] += v[0];
-								values[tM][tN] += v[1];
-								break;
-							case SDPanel.kPeriodic:
-								if(m<0) 	tM = values.length-1;
-								if(m>=values.length) tM = 0;
-								if(n<0) 	tN = values[0].length-1;
-								if(n>=values[0].length) tN = 0;
+							v = getResults(i,j,tM,tN);
+							values[i][j] += v[0];
+							values[tM][tN] += v[1];
+							break;
+						case SDPanel.kPeriodic:
+							if(m<0) 	tM = values.length-1;
+							if(m>=values.length) tM = 0;
+							if(n<0) 	tN = values[0].length-1;
+							if(n>=values[0].length) tN = 0;
 
-								v = getResults(i,j,tM,tN);
-								values[i][j] += v[0];
-								values[tM][tN] += v[1];
-								break;
-							case SDPanel.kReflexive:
-								if(m<0) 	tM = 0;
-								if(m>=values.length) tM = values.length-1;
-								if(n<0) 	tN = 0;
-								if(n>=values[0].length) tN = values[0].length-1;
+							v = getResults(i,j,tM,tN);
+							values[i][j] += v[0];
+							values[tM][tN] += v[1];
+							break;
+						case SDPanel.kReflexive:
+							if(m<0) 	tM = 0;
+							if(m>=values.length) tM = values.length-1;
+							if(n<0) 	tN = 0;
+							if(n>=values[0].length) tN = values[0].length-1;
 
-								v = getResults(i,j,tM,tN);
-								values[i][j] += v[0];
-								values[tM][tN] += v[1];
-								break;
+							v = getResults(i,j,tM,tN);
+							values[i][j] += v[0];
+							values[tM][tN] += v[1];
+							break;
 						}
 					}
 
@@ -138,7 +140,7 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 		int iind=-1, jind=-1;
 		for(int i=0; i<values.length; i++)
 			for(int j=0; j<values[0].length; j++){
-        high=0;
+				high=0;
 				for(int m=i-1; m<=i+1; m++)
 					for(int n=j-1; n<= j+1; n++){
 						if(!intwself && m==i && n==j)
@@ -147,39 +149,39 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 							continue;
 						int tM=m, tN=n;
 						switch(border){
-							case SDPanel.kAbsorbing:
-								if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;
+						case SDPanel.kAbsorbing:
+							if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;
 
-								if(values[tM][tN] >= high){
-									high = values[tM][tN];
-									iind = tM;
-									jind = tN;
-								}
-								break;
-							case SDPanel.kPeriodic:
-								if(m<0) 	tM = values.length-1;
-								if(m>=values.length) tM = 0;
-								if(n<0) 	tN = values[0].length-1;
-								if(n>=values[0].length) tN = 0;
+							if(values[tM][tN] >= high){
+								high = values[tM][tN];
+								iind = tM;
+								jind = tN;
+							}
+							break;
+						case SDPanel.kPeriodic:
+							if(m<0) 	tM = values.length-1;
+							if(m>=values.length) tM = 0;
+							if(n<0) 	tN = values[0].length-1;
+							if(n>=values[0].length) tN = 0;
 
-								if(values[tM][tN] >= high){
-									high = values[tM][tN];
-									iind = tM;
-									jind = tN;
-								}
-								break;
-							case SDPanel.kReflexive:
-								if(m<0) 	tM = 0;
-								if(m>=values.length) tM = values.length-1;
-								if(n<0) 	tN = 0;
-								if(n>=values[0].length) tN = values[0].length-1;
+							if(values[tM][tN] >= high){
+								high = values[tM][tN];
+								iind = tM;
+								jind = tN;
+							}
+							break;
+						case SDPanel.kReflexive:
+							if(m<0) 	tM = 0;
+							if(m>=values.length) tM = values.length-1;
+							if(n<0) 	tN = 0;
+							if(n>=values[0].length) tN = values[0].length-1;
 
-								if(values[tM][tN] >= high){
-									high = values[tM][tN];
-									iind = tM;
-									jind = tN;
-								}
-								break;
+							if(values[tM][tN] >= high){
+								high = values[tM][tN];
+								iind = tM;
+								jind = tN;
+							}
+							break;
 						}
 					}
 
@@ -262,11 +264,11 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 	}
 
 	double[][][] getFrequencies(){
-      double[][][] v = new double[2][2][currentGeneration+1];
-      for(int i=0; i<freqs.length; i++)
-         for(int j=0; j<freqs[0].length; j++)
-            for(int k=0; k<v[0][0].length; k++)
-               v[i][j][k] = freqs[i][j][k];
+		double[][][] v = new double[2][2][currentGeneration+1];
+		for(int i=0; i<freqs.length; i++)
+			for(int j=0; j<freqs[0].length; j++)
+				for(int k=0; k<v[0][0].length; k++)
+					v[i][j][k] = freqs[i][j][k];
 
 		//if the generation of the last data point is zero, then that means the
 		//the generations got out of sync.
@@ -282,40 +284,50 @@ class SDCellParamInfo extends ParamInfo implements CellFunction{
 		return v;
 	}
 	/** Change type, get other values*/
+	@Override
 	public double[][] changeType(String s){
 		return null;
 	}
 	/** Get the desired dimension of the data (not used, dim comes from data)*/
+	@Override
 	public int getDimension(){
 		return size;
 	}
 	/** Get the strings that will be used in the key*/
+	@Override
 	public String[] getStrings(){
 		return new String[] {"C","C to D","D","D to C"};
 	}
 	/** Get the values that separate the data into the different colors*/
+	@Override
 	public double[] getDemarcations(){
 		return new double[] {0d,1d,2d,3d};
 	}
 	/** Get the interval of iterations before a pause*/
+	@Override
 	public int getBreakInterval(){
 		return runInterval;
 	}
 	/** Get the output types*/
+	@Override
 	public String[] getOutputTypes(){
 		return null;
 	}
 	/** Get current model type*/
+	@Override
 	public String getCurrentType(){
 		return null;
 	}
 	/** Set one of the values in the matrix*/
+	@Override
 	public void setValue(int species, int r, int c, double newValue){
-      olddata[r][c] = newValue;
+		olddata[r][c] = newValue;
 	}
+	@Override
 	public CellPalette getColorPalette(){
 		return new SDColorPalette();
 	}
+	@Override
 	public int getGeneration(){
 		return currentGeneration;
 	}

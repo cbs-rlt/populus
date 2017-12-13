@@ -40,7 +40,7 @@ import javax.swing.*;
  */
 public class DesktopWindow extends JFrame implements ModelListener {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1729866105545816729L;
 	public static DesktopWindow defaultWindow; //TODO - this should be private, and we'd have a public getter
@@ -94,6 +94,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		newButton.addActionListener( newModelAction );
 		optionsButton.addActionListener( new java.awt.event.ActionListener()  {
 
+			@Override
 			public void actionPerformed( ActionEvent e ) {
 				optionsButton_actionPerformed( e );
 			}
@@ -115,7 +116,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		backgroundPanel.add( imagePanel, new GridBagConstraints( 0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 ) );
 		switcherPanel.add( desktopPane, "desktopPane" );
 		this.setIconImage( Toolkit.getDefaultToolkit().getImage( DesktopWindow.class.getResource( "picon.gif" ) ) );
-		
+
 		// Creates the top-level models, which right now is only Interaction Engine.
 		// The code is basically identical to loadMenu, but that method only accepts JMenu, not JPopupMenu
 		mps = PopPreferencesStorage.getModelPackets(PopPreferencesStorage.TOP_PACKETS);
@@ -123,6 +124,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 			MenuAction ma = new MenuAction( mp.getModelName(), mp.getModelClass() )  {
 				private static final long serialVersionUID = 6448584135280919807L;
 
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					loadModel( model );
 				}
@@ -132,6 +134,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 		JMenuItem jmi = topLevelMenu.add( res.getString( "Load_Model_From_File_" ) );
 		jmi.addActionListener( new java.awt.event.ActionListener()  {
+			@Override
 			public void actionPerformed( ActionEvent e ) {
 				newModelFromModelChooser( Model.load() );
 			}
@@ -164,9 +167,9 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		jmbar.add(jm1);
 		jmbar.add(loadMenu(PopPreferences.getModelPackets(PopPreferences.SINGLE_PACKETS),"Single-Species Dynamics:"),1);
 		this.setJMenuBar(jmbar);
-		*/
-		
-		
+		 */
+
+
 		System.err.print( ".\n" );
 		sizeScreen(this);
 		this.setTitle( res.getString( "Populus" ) );
@@ -201,6 +204,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	 * is thrown.
 	 */
 
+	@Override
 	public synchronized void modelChanged( ModelEvent e ) throws CannotChangeModelException {
 		int eventType = e.getType();
 		Model changedModel = e.getModel();
@@ -231,6 +235,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		}
 	}
 
+	@Override
 	protected void processWindowEvent( WindowEvent e ) {
 		super.processWindowEvent( e );
 		if( e.getID() == WindowEvent.WINDOW_CLOSING ) {
@@ -255,7 +260,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	 * this method sets what the background looks like when Populus is first started up.
 	 * Modify this for difference colors etc.
 	 */
-	void setPopulusBackground(){ 
+	void setPopulusBackground(){
 		imagePanel.setBackground( Color.white );
 		//imagePanel.setBackground(new Color(102,102,109));
 		//imagePanel.setBackground(Color.black);
@@ -285,10 +290,11 @@ public class DesktopWindow extends JFrame implements ModelListener {
 		for( int i = 0;i < mp.length;i++ ) {
 			ma = new MenuAction( mp[i].getModelName(), mp[i].getModelClass() )  {
 				/**
-				 * 
+				 *
 				 */
 				private static final long serialVersionUID = 6448584135280919807L;
 
+				@Override
 				public void actionPerformed( ActionEvent e ) {
 					loadModel( model );
 				}
@@ -404,11 +410,12 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
 class ExitAction extends AbstractAction {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1035661466491673963L;
 	DesktopWindow dw;
 
+	@Override
 	public void actionPerformed( ActionEvent event ) {
 		dw.exit();
 	}
@@ -420,7 +427,7 @@ class ExitAction extends AbstractAction {
 
 abstract class MenuAction extends AbstractAction {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 5106840855809036163L;
 	final Class<? extends Model> model;
@@ -434,6 +441,7 @@ abstract class MenuAction extends AbstractAction {
 class NewModelAction implements java.awt.event.ActionListener {
 	DesktopWindow adaptee;
 
+	@Override
 	public void actionPerformed( ActionEvent e ) {
 		adaptee.newModel( e );
 	}

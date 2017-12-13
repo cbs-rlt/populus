@@ -13,7 +13,7 @@ import java.awt.event.*;
 
 public class CellPanel extends JPanel{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 4834704545375034048L;
 	int numDivisions;
@@ -78,7 +78,7 @@ public class CellPanel extends JPanel{
 		if(r>=cells.length||c>cells[0].length||r<0||c<0) return -1d;
 		return cells[r][c].getValue();
 	}
-	
+
 	void updateImageSize(){
 		iw = CellDefaults.kWidth*cells.length;
 		ih = CellDefaults.kHeight*cells[0].length+legH;
@@ -88,7 +88,7 @@ public class CellPanel extends JPanel{
 	void setDivisions(){
 		blockStarts = new int[numDivisions+1];
 		double tempW = CellDefaults.kWidth*cells.length;
-		double blockW = tempW/((double)numDivisions);
+		double blockW = tempW/(numDivisions);
 		for(double i = 0; i < numDivisions; i++)
 			blockStarts[(int)i] = (int)(i*blockW+0.5);
 		blockStarts[numDivisions] = (int)tempW;
@@ -140,9 +140,10 @@ public class CellPanel extends JPanel{
 		g.drawLine(blockStarts[numDivisions],h+legH-1,0,h+legH-1);
 	}
 
+	@Override
 	public void paint(Graphics gr){
-	//the r,b edges surrender one pixel width to the outline so that the total
-	//width and hight are kWidth*cells.length, and kHeight*cells[0].length
+		//the r,b edges surrender one pixel width to the outline so that the total
+		//width and hight are kWidth*cells.length, and kHeight*cells[0].length
 		//setDivisions();
 		prepNextImage();
 		//BufferedImage bic = bi.getSubimage(0,0,bi.getWidth(),bi.getHeight());
@@ -168,6 +169,7 @@ public class CellPanel extends JPanel{
 	private void jbInit() throws Exception {
 		this.addMouseListener(new java.awt.event.MouseAdapter() {
 
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				this_mouseClicked(e);
 			}
@@ -193,7 +195,7 @@ public class CellPanel extends JPanel{
 			double d = getValue(r,c);
 			if(d==-1d) return;
 			g.drawString(dToS(d),e.getX(),e.getY());
-  	}
+		}
 	}
 
 	public void modifyValue(int r, int c, double newValue){

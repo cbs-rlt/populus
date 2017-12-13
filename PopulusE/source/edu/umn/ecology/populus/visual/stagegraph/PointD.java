@@ -12,15 +12,15 @@ package edu.umn.ecology.populus.visual.stagegraph;
  * @version 1.0
  */
 public class PointD {
-   public double x;
-   public double y;
+	public double x;
+	public double y;
 
-   public PointD(double x, double y){
-      this.x = x;
-      this.y = y;
-   }
-   public PointD(double[] p){
-      this.x = p[0];
-      this.y = p[1];
-   }
+	public PointD(double x, double y){
+		this.x = x;
+		this.y = y;
+	}
+	public PointD(double[] p){
+		this.x = p[0];
+		this.y = p[1];
+	}
 }

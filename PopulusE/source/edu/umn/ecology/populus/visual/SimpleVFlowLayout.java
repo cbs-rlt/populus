@@ -14,15 +14,15 @@ import java.awt.LayoutManager;
 
 
 /** Simple Vertical Layout with no frills.
- * 
+ *
  * @author Lars
- * 
+ *
  * TODO: add alignment?
  */
 public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
 	private static final long serialVersionUID = 1633523923167242992L;
 	private enum SizeMethod {MIN, PREF, MAX};
-	
+
 	private int hgap, vgap;
 	private boolean hfill;
 
@@ -35,7 +35,7 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
 	public SimpleVFlowLayout() {
 		this(5, 5, true);
 	}
-	
+
 	public int getHgap() {
 		return hgap;
 	}
@@ -65,7 +65,7 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
 	private Dimension getLayoutSizeMulti(Container parent, SizeMethod sizeMethod) {
 		synchronized (parent.getTreeLock()) {
 			Dimension d = new Dimension();
-			
+
 			//Add in components
 			for (Component c : parent.getComponents()) {
 				Dimension cd;
@@ -82,15 +82,15 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
 				d.width = Math.max(d.width, cd.width);
 				d.height += cd.height + getVgap();
 			}
-			
+
 			//Add in insets and gaps
 			Insets insets = parent.getInsets();
-	        d.width += insets.left + insets.right + getHgap()*2;
-	        d.height += insets.top + insets.bottom + getVgap()*2;
+			d.width += insets.left + insets.right + getHgap()*2;
+			d.height += insets.top + insets.bottom + getVgap()*2;
 			return d;
 		}
 	}
-	
+
 	@Override
 	public Dimension preferredLayoutSize(Container parent) {
 		return getLayoutSizeMulti(parent, SizeMethod.PREF);

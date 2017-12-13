@@ -7,7 +7,7 @@
 
 //Title:        Populus
 
-//Version:      
+//Version:
 
 //Copyright:    Copyright (c) 1999
 
@@ -21,17 +21,17 @@
 package edu.umn.ecology.populus.core;
 
 public class CannotChangeModelException extends Exception {
-   /**
-	 * 
+	/**
+	 *
 	 */
 	private static final long serialVersionUID = 4956161493132625511L;
-public static final String OTHER_MODEL_RUNNING = "Another Model is Already Processing and Has Not Stopped Yet";
-   
-   public CannotChangeModelException( String reason ) {
-      super( reason );
-   }
-   
-   public CannotChangeModelException() {
-      this( OTHER_MODEL_RUNNING );
-   }
+	public static final String OTHER_MODEL_RUNNING = "Another Model is Already Processing and Has Not Stopped Yet";
+
+	public CannotChangeModelException( String reason ) {
+		super( reason );
+	}
+
+	public CannotChangeModelException() {
+		this( OTHER_MODEL_RUNNING );
+	}
 }

@@ -10,23 +10,26 @@ import edu.umn.ecology.populus.plot.*;
 
 public class SGFACModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "SGFACHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "SGFACHELP";
+	}
 
-   public SGFACModel() {
-      this.setModelInput( new SGFACPanel() );
-   }
+	public SGFACModel() {
+		this.setModelInput( new SGFACPanel() );
+	}
 
-   public static String getModelName() {
-      return "Selection on Clinal Stepping Stones";
-   }
+	public static String getModelName() {
+		return "Selection on Clinal Stepping Stones";
+	}
 
-   protected String getHelpId() {
-      return "SGFAC.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "SGFAC.overview";
+	}
 
-   protected boolean isRepeatable() {
-      return true;
-   }
+	@Override
+	protected boolean isRepeatable() {
+		return true;
+	}
 }

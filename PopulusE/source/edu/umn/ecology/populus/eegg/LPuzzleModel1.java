@@ -10,10 +10,11 @@ import java.awt.*;
 
 /** Add up positions of yellow pieces for winning piece */
 public class LPuzzleModel1 extends LPuzzleModel {
-	
+
 	public static LPuzzleModel createNewModel() {
 		return new LPuzzleModel1();
 	}
+	@Override
 	protected int calculateWinningPiece(Color[] colors) {
 		int innerYellow=-1, outerYellow=-1;
 		for (int i=0; i<4; i++) {

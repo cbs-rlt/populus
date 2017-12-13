@@ -44,13 +44,13 @@ public class Installer {
 		try {
 			Method hasMenuShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("hasMenuShortcut");
 			Method hasDesktopShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("hasDesktopShortcut");
-			   
+
 			boolean result = true;
 			// javax.jnlp.IntegrationService is = javax.jnlp.ServiceManager.lookup("javax.jnlp.IntegrationService");
 			Method findISMeth = Class.forName("javax.jnlp.ServiceManager").getMethod("lookup", String.class);
 			Object is = findISMeth.invoke(null, "javax.jnlp.IntegrationService");
 			if (install) {
-				// creates a desktop and system menu shortcut; returns true if the shortcuts 
+				// creates a desktop and system menu shortcut; returns true if the shortcuts
 				// were created successfully
 				Method reqShortMeth = Class.forName("javax.jnlp.IntegrationService")
 						.getMethod("requestShortcut", boolean.class, boolean.class, String.class);
@@ -59,7 +59,7 @@ public class Installer {
 				// checks to see if there are shortcuts for the application
 				//result = result && is.hasMenuShortcut() && is.hasDesktopShortcut();
 				result = result && (Boolean) hasMenuShortMeth.invoke(is)
-						        && (Boolean) hasDesktopShortMeth.invoke(is);
+						&& (Boolean) hasDesktopShortMeth.invoke(is);
 			} else {
 				//removes all shortcuts for application
 				Method remShortMeth = Class.forName("javax.jnlp.IntegrationService").getMethod("removeShortcuts");
@@ -67,7 +67,7 @@ public class Installer {
 
 				// checks to see if there are shortcuts for the application
 				result = result && ! (Boolean) hasMenuShortMeth.invoke(is)
-				        && ! (Boolean) hasDesktopShortMeth.invoke(is);
+						&& ! (Boolean) hasDesktopShortMeth.invoke(is);
 			}
 		} catch(Exception unavailableServiceException){
 			Logging.log("Unable to get IntegrationService to install:");
@@ -91,7 +91,7 @@ public class Installer {
 			is.removeAssociation(mime, exts);
 			result = ! is.hasAssociation(mime, exts);
 		}
-		*/
+		 */
 
 	}
 

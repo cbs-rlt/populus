@@ -12,7 +12,7 @@ class LPGData extends Object implements Serializable {
 	public double r;
 	public double K;
 	public double N;
-	public double T;   
+	public double T;
 
 	LPGData( double paramNO, double paramK, double paramR, double paramT) {
 		this.N = paramNO;

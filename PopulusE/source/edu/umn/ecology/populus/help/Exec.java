@@ -53,166 +53,166 @@ import java.io.*;
  */
 
 public class Exec {
-  //----------------------------------------------------
+	//----------------------------------------------------
 
-  private static boolean verbose = true;
+	private static boolean verbose = true;
 
-  /** Determines if the Exec class should print which
-   *  commands are being executed, and print error
-   *  messages if a problem is found. Default is true.
-   *
-   * @param verboseFlag true: print messages.
-   *        false: don't.
-   */
+	/** Determines if the Exec class should print which
+	 *  commands are being executed, and print error
+	 *  messages if a problem is found. Default is true.
+	 *
+	 * @param verboseFlag true: print messages.
+	 *        false: don't.
+	 */
 
-  public static void setVerbose(boolean verboseFlag) {
-    verbose = verboseFlag;
-  }
+	public static void setVerbose(boolean verboseFlag) {
+		verbose = verboseFlag;
+	}
 
-  /** Will Exec print status messages? */
+	/** Will Exec print status messages? */
 
-  public static boolean getVerbose() {
-    return(verbose);
-  }
+	public static boolean getVerbose() {
+		return(verbose);
+	}
 
-  //----------------------------------------------------
-  /** Starts a process to execute the command. Returns
-   *  immediately, even if the new process is still
-   *  running.
-   *
-   * @param command The <B>full</B> pathname of the
-   *        command to be executed. No shell builtins
-   *        (e.g. "cd") or shell meta-chars (e.g. ">")
-   *        allowed.
-   * @return false if a problem is known to occur, but
-   *         since this returns immediately, problems
-   *         aren't usually found in time.
-   *         Returns true otherwise.
-   */
+	//----------------------------------------------------
+	/** Starts a process to execute the command. Returns
+	 *  immediately, even if the new process is still
+	 *  running.
+	 *
+	 * @param command The <B>full</B> pathname of the
+	 *        command to be executed. No shell builtins
+	 *        (e.g. "cd") or shell meta-chars (e.g. ">")
+	 *        allowed.
+	 * @return false if a problem is known to occur, but
+	 *         since this returns immediately, problems
+	 *         aren't usually found in time.
+	 *         Returns true otherwise.
+	 */
 
-  public static boolean exec(String command) {
-    return(exec(command, false, false));
-  }
+	public static boolean exec(String command) {
+		return(exec(command, false, false));
+	}
 
-  //----------------------------------------------------
-  /** Starts a process to execute the command. Waits
-   *  for the process to finish before returning.
-   *
-   * @param command The <B>full</B> pathname of the
-   *        command to be executed. No shell builtins
-   *        or shell meta-chars allowed.
-   * @return false if a problem is known to occur,
-   *         either due to an exception or from the
-   *         subprocess returning a non-zero value.
-   *         Returns true otherwise.
-   */
+	//----------------------------------------------------
+	/** Starts a process to execute the command. Waits
+	 *  for the process to finish before returning.
+	 *
+	 * @param command The <B>full</B> pathname of the
+	 *        command to be executed. No shell builtins
+	 *        or shell meta-chars allowed.
+	 * @return false if a problem is known to occur,
+	 *         either due to an exception or from the
+	 *         subprocess returning a non-zero value.
+	 *         Returns true otherwise.
+	 */
 
-  public static boolean execWait(String command) {
-    return(exec(command, false, true));
-  }
+	public static boolean execWait(String command) {
+		return(exec(command, false, true));
+	}
 
-  //----------------------------------------------------
-  /** Starts a process to execute the command. Prints
-   *  all output the command gives.
-   *
-   * @param command The <B>full</B> pathname of the
-   *        command to be executed. No shell builtins
-   *        or shell meta-chars allowed.
-   * @return false if a problem is known to occur,
-   *         either due to an exception or from the
-   *         subprocess returning a non-zero value.
-   *         Returns true otherwise.
-   */
+	//----------------------------------------------------
+	/** Starts a process to execute the command. Prints
+	 *  all output the command gives.
+	 *
+	 * @param command The <B>full</B> pathname of the
+	 *        command to be executed. No shell builtins
+	 *        or shell meta-chars allowed.
+	 * @return false if a problem is known to occur,
+	 *         either due to an exception or from the
+	 *         subprocess returning a non-zero value.
+	 *         Returns true otherwise.
+	 */
 
-  public static boolean execPrint(String command) {
-    return(exec(command, true, false));
-  }
+	public static boolean execPrint(String command) {
+		return(exec(command, true, false));
+	}
 
-  //----------------------------------------------------
-  // This creates a Process object via
-  // Runtime.getRuntime.exec(). Depending on the
-  // flags, it may call waitFor on the process
-  // to avoid continuing until the process terminates,
-  // or open an input stream from the process to read
-  // the results.
+	//----------------------------------------------------
+	// This creates a Process object via
+	// Runtime.getRuntime.exec(). Depending on the
+	// flags, it may call waitFor on the process
+	// to avoid continuing until the process terminates,
+	// or open an input stream from the process to read
+	// the results.
 
-  private static boolean exec(String command,
-                              boolean printResults,
-                              boolean wait) {
-     if (verbose) {
-        printSeparator();
-        edu.umn.ecology.populus.fileio.Logging.log("Executing '" + command + "'.");
-     }
-     try {
-        // Start running command, returning immediately.
-        Process p  = Runtime.getRuntime().exec(command);
+	private static boolean exec(String command,
+			boolean printResults,
+			boolean wait) {
+		if (verbose) {
+			printSeparator();
+			edu.umn.ecology.populus.fileio.Logging.log("Executing '" + command + "'.");
+		}
+		try {
+			// Start running command, returning immediately.
+			Process p  = Runtime.getRuntime().exec(command);
 
-        // Print the output. Since we read until
-        // there is no more input, this causes us
-        // to wait until the process is completed
-        if(printResults) {
-           BufferedReader buffer = new BufferedReader(new InputStreamReader(p.getInputStream()));
-           String s = null;
-           try {
-              while ((s = buffer.readLine()) != null)
-                 edu.umn.ecology.populus.fileio.Logging.log("Output: " + s);
-              buffer.close();
-              if (p.exitValue() != 0) {
-                 if (verbose)
-                    printError(command +
-                               " -- p.exitValue() != 0");
-                 return(false);
-              }
-              // Ignore read errors; they mean process is done
-              } catch (Exception e) {}
+			// Print the output. Since we read until
+			// there is no more input, this causes us
+			// to wait until the process is completed
+			if(printResults) {
+				BufferedReader buffer = new BufferedReader(new InputStreamReader(p.getInputStream()));
+				String s = null;
+				try {
+					while ((s = buffer.readLine()) != null)
+						edu.umn.ecology.populus.fileio.Logging.log("Output: " + s);
+					buffer.close();
+					if (p.exitValue() != 0) {
+						if (verbose)
+							printError(command +
+									" -- p.exitValue() != 0");
+						return(false);
+					}
+					// Ignore read errors; they mean process is done
+				} catch (Exception e) {}
 
-              // If you don't print the results, then you
-              // need to call waitFor to stop until the process
-              // is completed
-        } else if (wait) {
-           try {
-              edu.umn.ecology.populus.fileio.Logging.log(" ");
-              int returnVal = p.waitFor();
-              if (returnVal != 0) {
-                 if (verbose)
-                    printError(command);
-                 return(false);
-              }
-           } catch (Exception e) {
-              if (verbose)
-                 printError(command, e);
-              return(false);
-           }
-        }
-     } catch (Exception e) {
-        if (verbose)
-           printError(command, e);
-        return(false);
-     }
-     return(true);
-  }
+				// If you don't print the results, then you
+				// need to call waitFor to stop until the process
+				// is completed
+			} else if (wait) {
+				try {
+					edu.umn.ecology.populus.fileio.Logging.log(" ");
+					int returnVal = p.waitFor();
+					if (returnVal != 0) {
+						if (verbose)
+							printError(command);
+						return(false);
+					}
+				} catch (Exception e) {
+					if (verbose)
+						printError(command, e);
+					return(false);
+				}
+			}
+		} catch (Exception e) {
+			if (verbose)
+				printError(command, e);
+			return(false);
+		}
+		return(true);
+	}
 
-  //----------------------------------------------------
+	//----------------------------------------------------
 
-  private static void printError(String command,
-                                 Exception e) {
-    edu.umn.ecology.populus.fileio.Logging.log("Error doing exec(" +
-                       command + "): " + e.getMessage());
-    edu.umn.ecology.populus.fileio.Logging.log("Did you specify the full " +
-                       "pathname?");
-  }
+	private static void printError(String command,
+			Exception e) {
+		edu.umn.ecology.populus.fileio.Logging.log("Error doing exec(" +
+				command + "): " + e.getMessage());
+		edu.umn.ecology.populus.fileio.Logging.log("Did you specify the full " +
+				"pathname?");
+	}
 
-  private static void printError(String command) {
-    edu.umn.ecology.populus.fileio.Logging.log("Error executing '" +
-                       command + "'.");
-  }
+	private static void printError(String command) {
+		edu.umn.ecology.populus.fileio.Logging.log("Error executing '" +
+				command + "'.");
+	}
 
-  //----------------------------------------------------
+	//----------------------------------------------------
 
-  private static void printSeparator() {
-    edu.umn.ecology.populus.fileio.Logging.log
-      ("==============================================");
-  }
+	private static void printSeparator() {
+		edu.umn.ecology.populus.fileio.Logging.log
+		("==============================================");
+	}
 
-  //----------------------------------------------------
+	//----------------------------------------------------
 }

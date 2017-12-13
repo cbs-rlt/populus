@@ -13,7 +13,7 @@ import edu.umn.ecology.populus.core.DesktopWindow;
 
 public class CellPreferences extends JDialog {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 6730692691382426455L;
 	static CellPreferences keepOnlyOneOpen;
@@ -34,7 +34,7 @@ public class CellPreferences extends JDialog {
 			CellPreferences.keepOnlyOneOpen = new CellPreferences(coolthing, "Cell Preferences",false);
 		}
 		CellPreferences.keepOnlyOneOpen.init();
-    CellPreferences.keepOnlyOneOpen.setVisible(true);
+		CellPreferences.keepOnlyOneOpen.setVisible(true);
 	}
 
 	void init(){
@@ -52,16 +52,16 @@ public class CellPreferences extends JDialog {
 		}
 		pack();
 
-      //Center the window
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      Dimension frameSize = getSize();
-      if (frameSize.height > screenSize.height) {
-         frameSize.height = screenSize.height;
-      }
-      if (frameSize.width > screenSize.width) {
-         frameSize.width = screenSize.width;
-      }
-      setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
+		//Center the window
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension frameSize = getSize();
+		if (frameSize.height > screenSize.height) {
+			frameSize.height = screenSize.height;
+		}
+		if (frameSize.width > screenSize.width) {
+			frameSize.width = screenSize.width;
+		}
+		setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
 	}
 
 	void jbInit(){
@@ -78,18 +78,18 @@ public class CellPreferences extends JDialog {
 		cancelB.addActionListener(new CellPreferences_cancelB_actionAdapter(this));
 
 		mainPanel.add(wTF, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(10, 0, 5, 10), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(10, 0, 5, 10), 0, 0));
 		mainPanel.add(hTF, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 5, 10), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 5, 10), 0, 0));
 		mainPanel.add(wL, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		mainPanel.add(hL, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		mainPanel.add(cancelB, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 10, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 10, 0), 0, 0));
 		mainPanel.add(setB, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 10, 0), 0, 0));
-  	this.getContentPane().add(mainPanel,null);
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 10, 0), 0, 0));
+		this.getContentPane().add(mainPanel,null);
 	}
 
 	void setB_actionPerformed(ActionEvent e) {
@@ -114,6 +114,7 @@ class CellPreferences_setB_actionAdapter implements java.awt.event.ActionListene
 		this.adaptee = adaptee;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.setB_actionPerformed(e);
 	}
@@ -126,6 +127,7 @@ class CellPreferences_cancelB_actionAdapter implements java.awt.event.ActionList
 		this.adaptee = adaptee;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cancelB_actionPerformed(e);
 	}

@@ -8,57 +8,58 @@ package edu.umn.ecology.populus.model.appdnrs;
 import edu.umn.ecology.populus.math.*;
 
 public class APPDNRSProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-   private double l, a, k, K_;
-   private boolean indep;
-   
-   public void v( long t, double[] y ) {
-      double g, P, N, q;
-      N = y[Ny];
-      P = y[Py];
-      if( k != 0 ) {
-         q = 1 + a * P / k;
-         if( q > 0 ) {
-            q = Math.log( q ) * -k; //assuming log is the same as ln (i think it is..)
-            if( q <= 87.0 ) { //ln(MaxSingle) ~= 87.0? so MaxSingle ~= 6E37?
-               q = Math.exp( q );
-            }
-            else {
-               q = Double.POSITIVE_INFINITY;
-            }
-         }
-         else {
-            q = 0;
-         }
-      }
-      else {
-         q = 1;
-      }
-      if( !indep ) {
-         if( ( K_ != 0 ) && ( l > 0 ) ) {
-            g = Math.log( l ) / K_;
-         }
-         else {
-            g = 0;
-         }
-         y[Ny] = Math.exp( -g * N );
-      }
-      else {
-         y[Ny] = 1;
-      }
-      y[Ny] = l * N * y[Ny] * q;
-      y[Py] = N * ( 1 - q );
-   }
-   
-   public APPDNRSProc( boolean indep, double l, double a, double k, double K_ ) {
-      this.indep = indep;
-      this.l = l;
-      this.a = a;
-      this.k = k;
-      this.K_ = K_;
-      this.numVariables = 2;
-   }
+	private double l, a, k, K_;
+	private boolean indep;
 
-/* Pascal Code for NRS
+	@Override
+	public void v( long t, double[] y ) {
+		double g, P, N, q;
+		N = y[Ny];
+		P = y[Py];
+		if( k != 0 ) {
+			q = 1 + a * P / k;
+			if( q > 0 ) {
+				q = Math.log( q ) * -k; //assuming log is the same as ln (i think it is..)
+				if( q <= 87.0 ) { //ln(MaxSingle) ~= 87.0? so MaxSingle ~= 6E37?
+					q = Math.exp( q );
+				}
+				else {
+					q = Double.POSITIVE_INFINITY;
+				}
+			}
+			else {
+				q = 0;
+			}
+		}
+		else {
+			q = 1;
+		}
+		if( !indep ) {
+			if( ( K_ != 0 ) && ( l > 0 ) ) {
+				g = Math.log( l ) / K_;
+			}
+			else {
+				g = 0;
+			}
+			y[Ny] = Math.exp( -g * N );
+		}
+		else {
+			y[Ny] = 1;
+		}
+		y[Ny] = l * N * y[Ny] * q;
+		y[Py] = N * ( 1 - q );
+	}
+
+	public APPDNRSProc( boolean indep, double l, double a, double k, double K_ ) {
+		this.indep = indep;
+		this.l = l;
+		this.a = a;
+		this.k = k;
+		this.K_ = K_;
+		this.numVariables = 2;
+	}
+
+	/* Pascal Code for NRS
 procedure V(var Pm:ParamArray;t:longint;var y_); far;
 var
 a,l,k,K_,g,P,N,q : extended;
@@ -106,9 +107,9 @@ y[Ny] := l*N*y[Ny]*q;
 y[Py] := N*(1-q);
 end;
 
-*/
+	 */
 
-/* nb v()
+	/* nb v()
 if (indep) {
 q = -aDI * P;
 if (q < 500)
@@ -134,5 +135,5 @@ y[Py] = N*(1-Math.exp(q1));
 else
 y[Py] = 0;
 }
-*/
+	 */
 }

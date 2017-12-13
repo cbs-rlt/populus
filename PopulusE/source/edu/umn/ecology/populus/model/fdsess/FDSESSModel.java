@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class FDSESSModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "FDSESSHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "FDSESSHELP";
+	}
 
-   public FDSESSModel() {
-      this.setModelInput( new FDSESSPanel() );
-   }
+	public FDSESSModel() {
+		this.setModelInput( new FDSESSPanel() );
+	}
 
-   public static String getModelName() {
-      return "Frequency-Dependent Selection (ESS Model)";
-   }
+	public static String getModelName() {
+		return "Frequency-Dependent Selection (ESS Model)";
+	}
 
-   protected String getHelpId() {
-      return "FDSESS.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "FDSESS.overview";
+	}
 }

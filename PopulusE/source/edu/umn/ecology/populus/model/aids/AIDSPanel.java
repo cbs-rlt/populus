@@ -16,7 +16,7 @@ import java.util.*;
 
 public class AIDSPanel extends BasicPlotInputPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8378090699643554212L;
 	PopulusParameterField v0PPF = new PopulusParameterField();
@@ -61,6 +61,7 @@ public class AIDSPanel extends BasicPlotInputPanel {
 	long randomSeed = System.currentTimeMillis();
 	Vector<double[][]> VvsTSaved = null;
 
+	@Override
 	public BasicPlot getPlotParamInfo() {
 		int plotType;
 		if(ZXvsTRB.isSelected())
@@ -100,6 +101,7 @@ public class AIDSPanel extends BasicPlotInputPanel {
 		}
 	}
 
+	@Override
 	public String getOutputGraphName() {
 		return "AIDS: Threshold Model";
 	}

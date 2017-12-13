@@ -9,25 +9,28 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.core.PopResourceBundle;
 
 public class APPDFRModel extends BasicPlotModel {
-   static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );
+	static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );
 
-   public String getThisModelInputName() {
-      return res.getString( "Discrete_Predator" );
-   }
+	@Override
+	public String getThisModelInputName() {
+		return res.getString( "Discrete_Predator" );
+	}
 
-   public Object getModelHelpText() {
-      return "APPDFRHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "APPDFRHELP";
+	}
 
-   public APPDFRModel() {
-      this.setModelInput( new APPDFRPanel() );
-   }
+	public APPDFRModel() {
+		this.setModelInput( new APPDFRPanel() );
+	}
 
-   public static String getModelName() {
-      return res.getString( "Functional_Responses" );
-   }
+	public static String getModelName() {
+		return res.getString( "Functional_Responses" );
+	}
 
-   protected String getHelpId() {
-      return "appdfr.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "appdfr.overview";
+	}
 }

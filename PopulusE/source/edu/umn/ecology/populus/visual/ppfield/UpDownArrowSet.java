@@ -28,7 +28,7 @@ import java.util.*;
 
 public class UpDownArrowSet extends JPanel implements Serializable,ActionListener {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 7060966603979549125L;
 	public static final String DOWN = "Down";
@@ -38,10 +38,12 @@ public class UpDownArrowSet extends JPanel implements Serializable,ActionListene
 	private transient Vector<ActionListener> actionListeners;
 	private GridBagLayout gridBagLayout1 = new GridBagLayout();
 
+	@Override
 	public void actionPerformed( ActionEvent e ) {
 		fireActionPerformed( e );
 	}
 
+	@Override
 	public void setEnabled( boolean newState ) {
 		super.setEnabled( newState );
 		upButton.setEnabled( newState );
@@ -83,6 +85,7 @@ public class UpDownArrowSet extends JPanel implements Serializable,ActionListene
 		}
 	}
 
+	@Override
 	public Dimension getMinimumSize(){
 		return new Dimension(16,32);
 	}

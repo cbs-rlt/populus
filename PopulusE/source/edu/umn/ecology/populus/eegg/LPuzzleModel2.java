@@ -11,10 +11,11 @@ import java.awt.*;
 /** Winning piece is inner yellow, then outer yellow, inner, outer... */
 public class LPuzzleModel2 extends LPuzzleModel {
 	private boolean isInner = true;
-	
+
 	public static LPuzzleModel createNewModel() {
 		return new LPuzzleModel2();
 	}
+	@Override
 	protected int calculateWinningPiece(Color[] colors) {
 		int innerYellow=-1, outerYellow=-1;
 		for (int i=0; i<4; i++) {

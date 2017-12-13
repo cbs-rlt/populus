@@ -13,25 +13,25 @@ import java.io.Serializable;
  * @version 5.2
  */
 public class ValuesToSave implements Serializable {
-   /**
-	 * 
+	/**
+	 *
 	 */
 	private static final long serialVersionUID = 342451521705294304L;
-int widthForCells;
-   int heightForCells;
+	int widthForCells;
+	int heightForCells;
 
-   public ValuesToSave(){
-      heightForCells = CellDefaults.kHeight;
-      widthForCells = CellDefaults.kWidth;
-   }
+	public ValuesToSave(){
+		heightForCells = CellDefaults.kHeight;
+		widthForCells = CellDefaults.kWidth;
+	}
 
-   public void setValues(){
-      CellDefaults.kHeight = heightForCells;
-      CellDefaults.kWidth = widthForCells;
-   }
+	public void setValues(){
+		CellDefaults.kHeight = heightForCells;
+		CellDefaults.kWidth = widthForCells;
+	}
 
-   public static void setDefaults(){
-      CellDefaults.kHeight = CellDefaults.kHeightDefault;
-      CellDefaults.kWidth = CellDefaults.kWidthDefault;
-   }
+	public static void setDefaults(){
+		CellDefaults.kHeight = CellDefaults.kHeightDefault;
+		CellDefaults.kWidth = CellDefaults.kWidthDefault;
+	}
 }

@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class SAMModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "SAMHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "SAMHELP";
+	}
 
-   public SAMModel() {
-      this.setModelInput( new SAMPanel() );
-   }
+	public SAMModel() {
+		this.setModelInput( new SAMPanel() );
+	}
 
-   public static String getModelName() {
-      return "Selection & Mutation";
-   }
+	public static String getModelName() {
+		return "Selection & Mutation";
+	}
 
-   protected String getHelpId() {
-      return "SAM.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "SAM.overview";
+	}
 }

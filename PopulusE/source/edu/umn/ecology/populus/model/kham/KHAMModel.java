@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class KHAMModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "KHAMHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "KHAMHELP";
+	}
 
-   public KHAMModel() {
-      this.setModelInput( new KHAMPanel() );
-   }
+	public KHAMModel() {
+		this.setModelInput( new KHAMPanel() );
+	}
 
-   public static String getModelName() {
-      return "Arbitrary Sexual Selection";
-   }
+	public static String getModelName() {
+		return "Arbitrary Sexual Selection";
+	}
 
-   protected String getHelpId() {
-      return "KHAM.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "KHAM.overview";
+	}
 }

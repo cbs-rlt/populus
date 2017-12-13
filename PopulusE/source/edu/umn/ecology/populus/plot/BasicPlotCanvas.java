@@ -36,7 +36,7 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 
 public class BasicPlotCanvas extends JPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -9029148726700689019L;
 
@@ -80,6 +80,7 @@ public class BasicPlotCanvas extends JPanel {
 		}
 	}
 
+	@Override
 	public void setBackground( Color c ) {
 		bgcolor = c;
 		setBGColor();
@@ -92,7 +93,7 @@ public class BasicPlotCanvas extends JPanel {
 	public void displayChartOptionScreen( int whatOption ) {
 		if (PopPreferencesStorage.isUseJFreeClass()) {
 			//TODO
-			
+
 		} else {
 			JCAxis h = chart.getChartArea().getHorizActionAxis();
 			JCAxis v = chart.getChartArea().getVertActionAxis();
@@ -100,22 +101,22 @@ public class BasicPlotCanvas extends JPanel {
 			case MenuOptions.kCoarserGrid:
 				coarserGrid();
 				break;
-	
+
 			case MenuOptions.kFinerGrid:
 				finerGrid();
 				break;
-	
+
 			case MenuOptions.kClearGrid:
 				h.setGridVisible( false );
 				v.setGridVisible( false );
 				break;
-	
+
 			case MenuOptions.kOptionScreen:
 				/*this is kind of a "hacked" way of bringing up the customizer screen because unfortunately, the
 	            JClass people didn't provide an easier way to do this. but this works, so whatever.*/
 				chart.mousePressed(new MouseEvent(this,MouseEvent.MOUSE_PRESSED,System.currentTimeMillis(),InputEvent.SHIFT_MASK,0,0,1,false));
 				break;
-	
+
 			case MenuOptions.kReset:
 				h.setGridVisible( false );
 				v.setGridVisible( false );
@@ -227,12 +228,12 @@ public class BasicPlotCanvas extends JPanel {
 			mainCaption = new HTMLMultiLabel( info.getMainCaption() );
 			xCaption = new HTMLMultiLabel( info.getXCaptions() );
 			yCaption = new HTMLMultiLabel( info.getYCaptions() );
-			yCaption.setDirection( HTMLLabel.DOWN_TO_UP );
+			yCaption.setDirection( HTMLConstants.DOWN_TO_UP );
 		} else {
 			mainCaption = new HTMLMultiLabel( "Main Caption" );
 			xCaption = new HTMLMultiLabel( "X Caption" );
 			yCaption = new HTMLMultiLabel( "Y Caption" );
-			yCaption.setDirection( HTMLLabel.DOWN_TO_UP );
+			yCaption.setDirection( HTMLConstants.DOWN_TO_UP );
 		}
 		setLayout( borderLayout1 );
 		if (PopPreferencesStorage.isUseJFreeClass()) {
@@ -242,20 +243,20 @@ public class BasicPlotCanvas extends JPanel {
 
 			AbstractXYItemRenderer renderer = null;
 			if (info.isBarChart) {
-				renderer = new XYBarRenderer();				
+				renderer = new XYBarRenderer();
 			} else {
 				renderer = new XYLineAndShapeRenderer(true, false);
 			}
-			
+
 			XYPlot plot = new XYPlot(null, xAxis, yAxis, renderer);
 			plot.setOrientation(PlotOrientation.VERTICAL);
 
 			JFreeChart jfchart = new JFreeChart(null, null, plot, false);
 			jfchartpanel = new ChartPanel(jfchart);
 			plot.setBackgroundPaint(ColorScheme.bG);
-			
+
 			info.styleJFree(jfchart);
-			add( jfchartpanel, MacroLayout.CENTER );
+			add( jfchartpanel, BorderLayout.CENTER );
 		} else {
 			chart = new JCChart( JCChart.PLOT );
 			info.styleJC( chart );
@@ -266,6 +267,7 @@ public class BasicPlotCanvas extends JPanel {
 			chart.setResetKey( 'r' );
 			chart.addMouseListener( new java.awt.event.MouseAdapter()  {
 
+				@Override
 				public void mouseClicked( java.awt.event.MouseEvent e ) {
 					if( ( e.getModifiers() & InputEvent.META_MASK ) != 0 ) {
 						info.setAxis(chart);
@@ -275,11 +277,11 @@ public class BasicPlotCanvas extends JPanel {
 			} );
 			chart.setCursor( new Cursor( Cursor.CROSSHAIR_CURSOR ) );
 			chart.setWarningDialog(false);
-			add( chart, MacroLayout.CENTER );
+			add( chart, BorderLayout.CENTER );
 		}
 		setBGColor();
-		add( mainCaption, MacroLayout.NORTH );
-		add( xCaption, MacroLayout.SOUTH );
-		add( yCaption, MacroLayout.WEST );
+		add( mainCaption, BorderLayout.NORTH );
+		add( xCaption, BorderLayout.SOUTH );
+		add( yCaption, BorderLayout.WEST );
 	}
 }

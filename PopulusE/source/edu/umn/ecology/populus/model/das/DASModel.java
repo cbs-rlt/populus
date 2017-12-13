@@ -10,19 +10,21 @@ import edu.umn.ecology.populus.plot.*;
 
 public class DASModel extends BasicPlotModel {
 
-   public Object getModelHelpText() {
-      return "DASHELP";
-   }
+	@Override
+	public Object getModelHelpText() {
+		return "DASHELP";
+	}
 
-   public DASModel() {
-      this.setModelInput( new DASPanel() );
-   }
+	public DASModel() {
+		this.setModelInput( new DASPanel() );
+	}
 
-   public static String getModelName() {
-      return "Drift and Selection";
-   }
+	public static String getModelName() {
+		return "Drift and Selection";
+	}
 
-   protected String getHelpId() {
-      return "das.overview";
-   }
+	@Override
+	protected String getHelpId() {
+		return "das.overview";
+	}
 }

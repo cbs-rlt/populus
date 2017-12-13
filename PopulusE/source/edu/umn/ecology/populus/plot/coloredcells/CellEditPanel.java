@@ -15,7 +15,7 @@ import java.awt.event.*;
 
 class CellEditPanel extends JFrame{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3124911840409603685L;
 	JLabel curL = new JLabel();
@@ -43,9 +43,9 @@ class CellEditPanel extends JFrame{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-      Point p = reference.getLocationOnScreen();
-      setLocation((int)(p.getX()+reference.getWidth()/2-this.getWidth()/2),
-                  (int)(p.getY()+reference.getHeight()/2-this.getHeight()/2));
+		Point p = reference.getLocationOnScreen();
+		setLocation((int)(p.getX()+reference.getWidth()/2-this.getWidth()/2),
+				(int)(p.getY()+reference.getHeight()/2-this.getHeight()/2));
 	}
 
 	private void jbInit() throws Exception {
@@ -58,28 +58,30 @@ class CellEditPanel extends JFrame{
 		newvalTF.setPreferredSize(new Dimension(70, 21));
 		newvalTF.addActionListener(new java.awt.event.ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				newvalTF_actionPerformed(e);
 			}
 		});
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 
+			@Override
 			public void windowDeactivated(WindowEvent e) {
 				this_windowDeactivated(e);
 			}
 		});
 		this.getContentPane().add(curL, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
 		this.getContentPane().add(curvalL, new GridBagConstraints(1, 1, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		this.getContentPane().add(newL, new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
 		this.getContentPane().add(locL, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 5), 0, 0));
 		this.getContentPane().add(locvalL, new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		this.getContentPane().add(newvalTF, new GridBagConstraints(1, 2, 1, 1, 1.0, 1.0
-						,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		this.setResizable(false);
 		validate();
 		pack();
@@ -98,7 +100,7 @@ class CellEditPanel extends JFrame{
 	}
 
 	void this_windowDeactivated(WindowEvent e) {
-      setVisible(false);
+		setVisible(false);
 		super.remove(this);
 	}
 }

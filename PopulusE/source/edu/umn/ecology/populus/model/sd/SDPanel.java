@@ -18,7 +18,7 @@ import javax.swing.event.*;
 
 public class SDPanel extends ModelPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 16352175806661664L;
 	public static final int kPD = 0;
@@ -132,6 +132,7 @@ public class SDPanel extends ModelPanel {
 		pdRB.setSelected(true);
 		pdRB.addChangeListener(new javax.swing.event.ChangeListener() {
 
+			@Override
 			public void stateChanged(ChangeEvent e) {
 				pdRB_stateChanged(e);
 			}
@@ -150,6 +151,7 @@ public class SDPanel extends ModelPanel {
 		initfreqPPF.setMaxValue(1.0);
 		randomRB.addChangeListener(new javax.swing.event.ChangeListener() {
 
+			@Override
 			public void stateChanged(ChangeEvent e) {
 				randomRB_stateChanged(e);
 			}
@@ -163,8 +165,9 @@ public class SDPanel extends ModelPanel {
 		dddL.setToolTipText("Dove payoff in a Dove-Dove Encounter");
 		dddL.setText("V/2 = ");
 		dhparamP.setLayout(gridBagLayout3);
-    injuryPPF.addParameterFieldListener(new edu.umn.ecology.populus.visual.ppfield.ParameterFieldListener() {
+		injuryPPF.addParameterFieldListener(new edu.umn.ecology.populus.visual.ppfield.ParameterFieldListener() {
 
+			@Override
 			public void parameterFieldChanged(ParameterFieldEvent e) {
 				injuryPPF_parameterFieldChanged(e);
 			}
@@ -174,8 +177,9 @@ public class SDPanel extends ModelPanel {
 		injuryPPF.setMaxValue(10000.0);
 		injuryPPF.setParameterName("C");
 		injuryPPF.setHelpText("Loss of Injury");
-    winnerPPF.addParameterFieldListener(new edu.umn.ecology.populus.visual.ppfield.ParameterFieldListener() {
+		winnerPPF.addParameterFieldListener(new edu.umn.ecology.populus.visual.ppfield.ParameterFieldListener() {
 
+			@Override
 			public void parameterFieldChanged(ParameterFieldEvent e) {
 				winnerPPF_parameterFieldChanged(e);
 			}
@@ -254,78 +258,79 @@ public class SDPanel extends ModelPanel {
 		dpayoffddPPF.setHelpText("D Payoff in D-D Encounter");
 		initfreqPPF.setParameterName("Initial Frequency of C");
 		this.add(bordertypeP, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		bordertypeP.add(absorbingRB, null);
 		bordertypeP.add(periodicRB, null);
 		bordertypeP.add(reflexiveRB, null);
 		this.add(gametypeP, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		gametypeP.add(pdRB, null);
 		gametypeP.add(hdRB, null);
 		this.add(outputP, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		outputP.add(latticeRB, null);
 		outputP.add(freqRB, null);
 		this.add(layoutP, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		layoutP.add(randomRB, null);
 		layoutP.add(initfreqPPF, null);
 		layoutP.add(onecRB, null);
 		layoutP.add(onedRB, null);
 		layoutP.add(patchsizePPF, null);
 		this.add(miscP, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(edgeRB, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(fourRB, new GridBagConstraints(1, 1, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(eachGenCB, new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0
-						,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(runIntervalPPF, new GridBagConstraints(0, 3, 2, 1, 1.0, 1.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(middleRB, new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(eightRB, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		miscP.add(selfiCB, new GridBagConstraints(1, 2, 1, 1, 1.0, 1.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		this.add(pdparamP, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		pdparamP.add(laticesizePPF, null);
 		pdparamP.add(cpayoffccPPF, null);
 		pdparamP.add(cpayoffcdPPF, null);
 		pdparamP.add(dpayoffcdPPF, null);
 		pdparamP.add(dpayoffddPPF, null);
 		this.add(dhparamP, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(hhhvL, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(winnerPPF, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(injuryPPF, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(dddL, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(dhdL, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(hhdL, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(hhhL, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(dddvL, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(dhdvL, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0
-            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.add(hhdvL, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0
-						,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		dhparamP.setVisible(hdRB.isSelected());
 		pdparamP.setVisible(pdRB.isSelected());
 	}
 
+	@Override
 	public ParamInfo getParamInfo() {
 		int border,type,inittype;
 		double ccc,cdc,ddc,ddd;
-		
+
 		if(absorbingRB.isSelected())
 			border = kAbsorbing;
 		else
@@ -372,7 +377,7 @@ public class SDPanel extends ModelPanel {
 	}
 
 	void randomRB_stateChanged(ChangeEvent e) {
-  	initfreqPPF.setEnabled(randomRB.isSelected());
+		initfreqPPF.setEnabled(randomRB.isSelected());
 		patchsizePPF.setEnabled(!randomRB.isSelected());
 		edgeRB.setEnabled(!randomRB.isSelected());
 		middleRB.setEnabled(!randomRB.isSelected());
@@ -403,7 +408,7 @@ public class SDPanel extends ModelPanel {
 	}
 	void switchOutputType(){
 		boolean isfreq = freqRB.isSelected();
-    switchTrigger = true;
+		switchTrigger = true;
 		freqRB.setSelected(!isfreq);
 		latticeRB.setSelected(isfreq);
 	}

@@ -7,7 +7,7 @@
 
 //Title:        Populus
 
-//Version:      
+//Version:
 
 //Copyright:    Copyright (c) 1999
 
@@ -22,6 +22,6 @@ package edu.umn.ecology.populus.visual.ppfield;
 import java.util.*;
 
 public interface ParameterFieldListener extends EventListener {
-   
-   public void parameterFieldChanged( ParameterFieldEvent e );
+
+	public void parameterFieldChanged( ParameterFieldEvent e );
 }

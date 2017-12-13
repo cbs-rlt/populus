@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6979872204518008120L;
 	NBSSCellParamInfo cpi;
@@ -19,7 +19,7 @@ public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot{
 	public static final String kMainCap = "Spatial-Structure Populations";
 	public static final String kXCap = "Generation";
 	String kYCap = "Population ( "+ColorScheme.getColorString(0)+"<i>N</>, "
-				+ColorScheme.getColorString(1)+"<i>P</> ) ";
+			+ColorScheme.getColorString(1)+"<i>P</> ) ";
 
 	public NBSSGraphParamInfo(NBSSCellParamInfo pi, boolean plotAverage, boolean isUpdate){
 		cpi = pi;
@@ -29,6 +29,7 @@ public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot{
 		else kYCap = "Total "+kYCap;
 	}
 
+	@Override
 	public BasicPlotInfo getBasicPlotInfo(){
 		int gens = cpi.runInterval;
 		if(!isup){

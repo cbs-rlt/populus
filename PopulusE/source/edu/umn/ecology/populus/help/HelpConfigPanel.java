@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -75,7 +76,7 @@ public class HelpConfigPanel extends JPanel {
 			}
 		}
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
 		add(tabbedPane, BorderLayout.WEST);
 
 		JPanel filePanel = new JPanel();
@@ -103,6 +104,7 @@ public class HelpConfigPanel extends JPanel {
 		gbl_fileLocationPanel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		fileLocationPanel.setLayout(gbl_fileLocationPanel);
 		fileOrURLBox.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				filenameChanged();
 			}
@@ -120,6 +122,7 @@ public class HelpConfigPanel extends JPanel {
 		filePathField.setText(loc);
 
 		filePathField.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				filenameChanged();
 			}
@@ -138,6 +141,7 @@ public class HelpConfigPanel extends JPanel {
 		filePathField.setColumns(10);
 
 		browseButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (isFileMode()) {
 					//get filename
@@ -147,7 +151,7 @@ public class HelpConfigPanel extends JPanel {
 					String fileStr = filePathField.getText();
 					File f = new File(fileStr);
 					fc = new JFileChooser( f.getParent() );
-					
+
 					fc.setSelectedFile( f );
 					fc.setFileFilter( new BasicFilenameFilter( "pdf" ) );
 
@@ -198,6 +202,7 @@ public class HelpConfigPanel extends JPanel {
 
 		JButton btnCopyHelpTo = new JButton("Copy help file to local disk now");
 		btnCopyHelpTo.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				copyHelpFileOut(true);
 			}
@@ -221,6 +226,7 @@ public class HelpConfigPanel extends JPanel {
 		gbc_rdbtnDesktopApi.gridx = 1;
 		gbc_rdbtnDesktopApi.gridy = 0;
 		rdbtnDesktopApi.addChangeListener(new ChangeListener() {
+			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				openMethodChanged();
 			}
@@ -236,6 +242,7 @@ public class HelpConfigPanel extends JPanel {
 		gbc_rdbtnJnlpApi.gridy = 1;
 		openMethodPanel.add(rdbtnJnlpApi, gbc_rdbtnJnlpApi);
 		rdbtnJnlpApi.addChangeListener(new ChangeListener() {
+			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				openMethodChanged();
 			}
@@ -249,6 +256,7 @@ public class HelpConfigPanel extends JPanel {
 		gbc_rdbtnNewRadioButton.gridy = 2;
 		openMethodPanel.add(rdbtnCustomCommand, gbc_rdbtnNewRadioButton);
 		rdbtnCustomCommand.addChangeListener(new ChangeListener() {
+			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				openMethodChanged();
 			}
@@ -259,6 +267,7 @@ public class HelpConfigPanel extends JPanel {
 		gbc_btnNewButton.gridx = 0;
 		gbc_btnNewButton.gridy = 4;
 		btnTestButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Vector<String> results = new Vector<String>();
 				boolean worked = HelpUtilities.displayHelpTrial(getOpenPDFMethod(), results);
@@ -335,14 +344,14 @@ public class HelpConfigPanel extends JPanel {
 		}
 		return okay;
 	}
-	
+
 	private void updateFileStatusLabel() {
 		boolean okay = isFilenameValid();
 		if (okay) {
 			fileStatusLabel.setText("");
 		} else {
 			fileStatusLabel.setText("Will copy file over since it doesn't exist.");
-		}	
+		}
 	}
 
 	//Possibly update the filename if needed.
@@ -362,7 +371,7 @@ public class HelpConfigPanel extends JPanel {
 		updateFileStatusLabel();
 	}
 
-	
+
 	private String getURIString() {
 		String fileStr = filePathField.getText();
 		String uriText = "";
@@ -389,7 +398,7 @@ public class HelpConfigPanel extends JPanel {
 			if(force || !newf.canRead())
 			{
 				Logging.log("Copying source file from " + PDFHelpFileMgr.getHelpLangSourceFile()
-						+ " to " + newf.toString());
+				+ " to " + newf.toString());
 				PopPreferencesStorage.setHelpLanguage(getLanguageSelected());
 				InputStream is = HelpUtilities.class.getResourceAsStream(PDFHelpFileMgr.getHelpLangSourceFile());
 				OutputStream os = new FileOutputStream(newf);
@@ -411,8 +420,8 @@ public class HelpConfigPanel extends JPanel {
 		}
 		updateFileStatusLabel();
 	}
-	
-	
+
+
 	public void doConfirmAction() {
 		PopPreferencesStorage.setHelpFileLocation(this.getURIString());
 		PopPreferencesStorage.setHelpLanguage(this.getLanguageSelected());

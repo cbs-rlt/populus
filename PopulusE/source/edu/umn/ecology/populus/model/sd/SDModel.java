@@ -15,6 +15,7 @@ public class SDModel extends Model {
 	public SDModel() {
 		this.setModelInput(sdp);
 	}
+	@Override
 	protected void simpleUpdateOutput() {
 		ParamInfo pi = getData();
 
@@ -34,6 +35,7 @@ public class SDModel extends Model {
 			}
 		}
 	}
+	@Override
 	protected ParamInfo getData() {
 		outputFrame.setVisible(true);
 		return getModelInput().getParamInfo();
@@ -41,15 +43,19 @@ public class SDModel extends Model {
 	public static String getModelName() {
 		return "Spatial Dilemmas";
 	}
+	@Override
 	public Object getModelHelpText() {
 		return "SDHELP";
 	}
+	@Override
 	protected String getHelpId() {
 		return "sd.overview";
 	}
+	@Override
 	protected boolean isSwitchable(){
 		return true;
 	}
+	@Override
 	protected void switchOutput(){
 		sdp.switchOutputType();
 		updateOutput();

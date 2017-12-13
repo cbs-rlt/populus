@@ -12,7 +12,7 @@ import java.awt.event.*;
 
 public class LPuzzlePanel extends JPanel {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -4655145490229909283L;
 	LPuzzleModel model = null;
@@ -38,6 +38,7 @@ public class LPuzzlePanel extends JPanel {
 	//////////////
 	// GRAPHICS //
 	//////////////
+	@Override
 	protected void paintComponent(Graphics g) {
 		if (!isWon) {
 			for (int i=0; i<8; i++)
@@ -47,11 +48,11 @@ public class LPuzzlePanel extends JPanel {
 			g.setColor(Color.white);
 			g.fillRect(0, 0, sX(1.0), sY(1.0));
 			g.setColor(Color.darkGray);
-         int xpos = sX(0.5);
-         int ypos = sY(0.5);
-         String s = "You have earned my respect.";
-         xpos -= g.getFontMetrics().stringWidth(s)/2;
-         g.drawString(s, xpos, ypos);
+			int xpos = sX(0.5);
+			int ypos = sY(0.5);
+			String s = "You have earned my respect.";
+			xpos -= g.getFontMetrics().stringWidth(s)/2;
+			g.drawString(s, xpos, ypos);
 		}
 	}
 	private void paintPiece(int where, Graphics g) {
@@ -80,22 +81,22 @@ public class LPuzzlePanel extends JPanel {
 
 		//Draw smile
 		switch (model.getScore()) {
-			default:
-				g.drawLine(sX(11.0/24), sY(7.0/12), sX(13.0/24), sY(7.0/12));
-				break;
-			case 1:
-				g.drawLine(sX(10.0/24), sY(7.0/12), sX(14.0/24), sY(7.0/12));
-				break;
-			case 4:
-				g.drawLine(sX(10.0/24), sY(13.0/24), sX(10.0/24), sY(7.0/12));
-				g.drawLine(sX(14.0/24), sY(13.0/24), sX(14.0/24), sY(7.0/12));
-			case 3:
-				g.drawLine(sX(10.0/24), sY(7.0/12), sX(14.0/24), sY(7.0/12));
-			case 2:
-				g.drawLine(sX(10.0/24), sY(14.0/24), sX(11.0/24), sY(15.0/24));
-				g.drawLine(sX(11.0/24), sY(15.0/24), sX(13.0/24), sY(15.0/24));
-				g.drawLine(sX(13.0/24), sY(15.0/24), sX(14.0/24), sY(14.0/24));
-				break;
+		default:
+			g.drawLine(sX(11.0/24), sY(7.0/12), sX(13.0/24), sY(7.0/12));
+			break;
+		case 1:
+			g.drawLine(sX(10.0/24), sY(7.0/12), sX(14.0/24), sY(7.0/12));
+			break;
+		case 4:
+			g.drawLine(sX(10.0/24), sY(13.0/24), sX(10.0/24), sY(7.0/12));
+			g.drawLine(sX(14.0/24), sY(13.0/24), sX(14.0/24), sY(7.0/12));
+		case 3:
+			g.drawLine(sX(10.0/24), sY(7.0/12), sX(14.0/24), sY(7.0/12));
+		case 2:
+			g.drawLine(sX(10.0/24), sY(14.0/24), sX(11.0/24), sY(15.0/24));
+			g.drawLine(sX(11.0/24), sY(15.0/24), sX(13.0/24), sY(15.0/24));
+			g.drawLine(sX(13.0/24), sY(15.0/24), sX(14.0/24), sY(14.0/24));
+			break;
 		}
 	}
 	private int sc(double r, int scale) {
@@ -142,7 +143,7 @@ public class LPuzzlePanel extends JPanel {
 		edu.umn.ecology.populus.fileio.Logging.log("y is " + kPoints[where][1]);
 		edu.umn.ecology.populus.fileio.Logging.log("xp is " + xp.length);
 		edu.umn.ecology.populus.fileio.Logging.log("yp is " + yp.length);
-		*/
+		 */
 		return new Polygon(xp, yp, xp.length);
 	}
 
@@ -159,22 +160,25 @@ public class LPuzzlePanel extends JPanel {
 	int whereLast=-1;
 	private void addMouseHandler() {
 		this.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent e) {
-					userClicked(getWhere(e.getX(), e.getY()));
-				}
-				public void mouseExited(MouseEvent e) {
-					whereLast=-1;
-					userHovered(-1);
-				}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				userClicked(getWhere(e.getX(), e.getY()));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				whereLast=-1;
+				userHovered(-1);
+			}
 		});
 		this.addMouseMotionListener(new MouseMotionAdapter() {
-				public void mouseMoved(MouseEvent e) {
-					int whereNow = getWhere(e.getX(), e.getY());
-					if (whereNow != whereLast) {
-						whereLast = whereNow;
-						userHovered(whereNow);
-					}
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				int whereNow = getWhere(e.getX(), e.getY());
+				if (whereNow != whereLast) {
+					whereLast = whereNow;
+					userHovered(whereNow);
 				}
+			}
 		});
 	}
 	private void userClicked(int where) {
@@ -193,7 +197,7 @@ public class LPuzzlePanel extends JPanel {
 					Thread.sleep(10);
 				} catch (InterruptedException e) { }
 				repaint();
-				*/
+				 */
 			}
 
 		} else {

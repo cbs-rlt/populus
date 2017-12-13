@@ -13,14 +13,14 @@ import java.awt.*;
  * a new rule system for the base puzzle.
  */
 public abstract class LPuzzleModel implements LPuzzleDirections {
-	/** 
+	/**
 	 * List of colors.  This are currently four colors, but more can be
 	 * added.  Be sure to use dark colors (Color.darker()) so that when
 	 * we hover over the color, we can make it lighter.  Normal colors
 	 * are already light, so lighter() does nothing.
 	 */
 	public static final Color[] kColorList = new Color[] {
-			  Color.red.darker(), Color.blue.darker(), Color.yellow.darker(), Color.green.darker()};
+			Color.red.darker(), Color.blue.darker(), Color.yellow.darker(), Color.green.darker()};
 
 	//
 	// Public methods not intended to be overridden
@@ -60,7 +60,7 @@ public abstract class LPuzzleModel implements LPuzzleDirections {
 	 * Return the winning piece.
 	 */
 	abstract protected int calculateWinningPiece(Color[] colors);
-	
+
 	/** Generates a random permutation of length 4 */
 	protected static int[] randQuadPerm() {
 		int[] quad = new int[] {0, 1, 2, 3};
@@ -85,7 +85,7 @@ public abstract class LPuzzleModel implements LPuzzleDirections {
 
 	//
 	// Private parts
-	// 
+	//
 	private Color[] colors;
 	private int score;
 	private int winningPiece;

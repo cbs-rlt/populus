@@ -11,13 +11,13 @@ import java.lang.Exception;
   class.*/
 
 public class IEException extends Exception {
-   
-   /**
-	 * 
+
+	/**
+	 *
 	 */
 	private static final long serialVersionUID = 3719610138118809274L;
 
-public IEException( String message ) {
-      super( message );
-   }
+	public IEException( String message ) {
+		super( message );
+	}
 }
