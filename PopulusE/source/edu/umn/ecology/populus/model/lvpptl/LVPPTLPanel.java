@@ -91,10 +91,10 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 	JPanel thetaLogisticParams = new JPanel();
 	GridLayout gridLayout2 = new GridLayout();
 	GridBagLayout gridBagLayout1 = new GridBagLayout();
-	JComboBox typeComboBox = new JComboBox();
+	JComboBox<String> typeComboBox = new JComboBox<String>();
 	GridBagLayout gridBagLayout5 = new GridBagLayout();
 	JPanel preyGrowthPanel = new JPanel();
-	PopulusParameterField paramK = new PopulusParameterField();
+	private PopulusParameterField paramK = new PopulusParameterField();
 	private PopulusParameterField paramTh = new PopulusParameterField();
 	private PopulusParameterField paramA = new PopulusParameterField();
 	private JPanel lvParamsPanel = new JPanel();
@@ -237,7 +237,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramLVN0.setDefaultValue( 10.0 );
 		paramLVN0.setHelpText( res.getString( "Initial_Population" ) );
 		paramLVN0.setIncrementAmount( 10.0 );
-		paramLVN0.setMaxValue( 100000.0 );
+		paramLVN0.setMaxValue( 1000000.0 );
 		paramLVN0.setParameterName("<i>N</i><sub>0</sub>" );
 		paramr1.setCurrentValue( 0.9 );
 		paramr1.setDefaultValue( 0.9 );
@@ -255,7 +255,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramLVP0.setDefaultValue( 10.0 );
 		paramLVP0.setHelpText( res.getString( "Initial_Population" ) );
 		paramLVP0.setIncrementAmount( 10.0 );
-		paramLVP0.setMaxValue( 100000.0 );
+		paramLVP0.setMaxValue( 1000000.0 );
 		paramLVP0.setParameterName("<i>P</i><sub>0</sub>" );
 		paramr2.setCurrentValue( 0.6 );
 		paramr2.setDefaultValue( 0.6 );
@@ -308,7 +308,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramTheta.setDefaultValue( 1.0 );
 		paramTheta.setCurrentValue( 1.0 );
 		paramK.setParameterName( "<i>K </i>" );
-		paramK.setMaxValue( 100000.0 );
+		paramK.setMaxValue( 1000000.0 );
 		paramK.setIncrementAmount( 10.0 );
 		paramK.setDefaultValue( 25.0 );
 		paramK.setCurrentValue( 25.0 );
