@@ -307,6 +307,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramTheta.setIncrementAmount( 0.1 );
 		paramTheta.setDefaultValue( 1.0 );
 		paramTheta.setCurrentValue( 1.0 );
+		paramTheta.setHelpText( res.getString( "ThetaDescription" ) );
 		paramK.setParameterName( "<i>K </i>" );
 		paramK.setMaxValue( 1000000.0 );
 		paramK.setIncrementAmount( 10.0 );
@@ -357,11 +358,13 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramC.setIncrementAmount( 0.01 );
 		paramC.setMaxValue( 100.0 );
 		paramC.setParameterName( "<i>C </i>" );
+		paramC.setHelpText( res.getString( "DetailedCDescription" ));
 		paramh.setCurrentValue( 1.0 );
 		paramh.setDefaultValue( 1.0 );
 		paramh.setIncrementAmount( 0.2 );
 		paramh.setMaxValue( 1000.0 );
 		paramh.setParameterName( "<i>h </i>" );
+		paramh.setHelpText( res.getString( "DetailedhDescription" ));
 		frParamsPanel.setBorder( titledBorder8 );
 		frParamsPanel.setToolTipText( res.getString( "Functional_Response" ) );
 		frParamsPanel.setLayout( gridBagLayout5 );
@@ -379,7 +382,7 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
 		paramPreyK.setIncrementAmount( 10.0 );
 		paramPreyK.setMaxValue( 10000.0 );
 		paramPreyK.setParameterName( "<i>K</i>" );
-		paramPreyK.setHelpText("Prey carrying capacity");
+		//paramPreyK.setHelpText("Prey carrying capacity");
 		typeComboBoxModel.setSelectedItem( TYPE2 );
 		titledBorder7.setTitle( res.getString( "Init_Densities" ) );
 		titledBorder6.setTitle( res.getString( "Predator" ) );
