@@ -37,6 +37,7 @@ public class GDParamInfo implements BasicPlot {
 	double[] freqs;
 	double[] xValues;
 	int generation = 0;
+	String postMessage = null;
 
 	private double fact( double n ) {
 		if( n == 0 ) {
@@ -87,12 +88,10 @@ public class GDParamInfo implements BasicPlot {
 			}
 		}
 
-		if(fixed){
-			String message = "All loci have fixed by t = "+(fixTime+1);
-			JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, message, "Message", JOptionPane.PLAIN_MESSAGE);
-		}
-
 		bpi = new BasicPlotInfo( points, mCap, xCap, yCap );
+		if(fixed) {
+			bpi.setPostMessage("All loci have fixed by t = "+(fixTime+1));
+		}
 		bpi.setDefaultAxis( false );
 		bpi.setIsFrequencies(true);
 		bpi.vsTimeChars = new String[] {
@@ -108,6 +107,7 @@ public class GDParamInfo implements BasicPlot {
 
 	@Override
 	public BasicPlotInfo getBasicPlotInfo() {
+		postMessage = null;
 		if( isMarkov )
 			return getMarkovData();
 		else

@@ -87,6 +87,7 @@ extends JDialog {
 	private final JPanel newFeaturesPanel = new JPanel();
 	private final JCheckBox chckbxUseNewChart = new JCheckBox("Use JFreeChart library");
 	private final JCheckBox chckbxSaveWindowPosition = new JCheckBox("Save window position");
+	private final JCheckBox chckbxPostMessage = new JCheckBox("Show Plot Message Dialogs");
 
 	/**
 	 * @wbp.parser.constructor
@@ -202,6 +203,7 @@ extends JDialog {
 		PopPreferencesStorage.setOwnershipBorderThickness(ownerBorderThickness.getInt());
 		PopPreferencesStorage.setUseJFreeClass(chckbxUseNewChart.isSelected());
 		PopPreferencesStorage.setRestoreDesktop(chckbxSaveWindowPosition.isSelected());
+		PopPreferencesStorage.setPostMessage(chckbxPostMessage.isSelected());
 	}
 
 	void loadButton_actionPerformed(ActionEvent e) {
@@ -256,6 +258,8 @@ extends JDialog {
 				getOwnershipBorderThickness());
 		chckbxUseNewChart.setSelected(PopPreferencesStorage.isUseJFreeClass());
 		chckbxSaveWindowPosition.setSelected(PopPreferencesStorage.isRestoreDesktop());
+		chckbxPostMessage.setToolTipText("Some plots may show dialogs during plot, such as Genetic Drift. Select this to show those dialogs.");
+		chckbxPostMessage.setSelected(PopPreferencesStorage.isPostMessage());
 	}
 
 	void colorChooserButton_actionPerformed(ActionEvent e) {
@@ -263,7 +267,6 @@ extends JDialog {
 	}
 
 	// OK
-
 	void okButton_actionPerformed(ActionEvent e) {
 		updatePreferences();
 		saveRequested();
@@ -272,7 +275,6 @@ extends JDialog {
 	}
 
 	// Cancel
-
 	void cancelButton_actionPerformed(ActionEvent e) {
 		dispose();
 	}
@@ -452,6 +454,13 @@ extends JDialog {
 						, GridBagConstraints.WEST,
 						GridBagConstraints.HORIZONTAL,
 						new Insets(0, 0, 0, 0), 0, 0));
+		
+		GridBagConstraints gbc_chckbxPostMessage = new GridBagConstraints();
+		gbc_chckbxPostMessage.gridwidth = 3;
+		gbc_chckbxPostMessage.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxPostMessage.gridx = 0;
+		gbc_chckbxPostMessage.gridy = 6;
+		lookPanel.add(chckbxPostMessage, gbc_chckbxPostMessage);
 		lookPanel.add(cellprefB, new GridBagConstraints(0, 5, 3, 1, 0.0, 0.0
 				, GridBagConstraints.CENTER, GridBagConstraints.NONE,
 				new Insets(0, 0, 0, 0), 0, 0));

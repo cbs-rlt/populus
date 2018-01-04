@@ -74,6 +74,7 @@ public final class PopPreferencesStorage {
 	private static final String DEFAULT_DIRECTORY = "";
 	private static final boolean DEFAULT_RESTORE_DESKTOP = false;
 	private static final boolean DEFAULT_USE_JFREECHART = true;
+	private static final boolean DEFAULT_POST_MESSAGE = true;
 
 	private static final Integer BUTTON_TYPE        = new Integer( 100 );
 	private static final Integer DIRECTORY          = new Integer( 101 );
@@ -94,6 +95,7 @@ public final class PopPreferencesStorage {
 	private static final Integer DESKTOP_SIZE       = new Integer( 116 );
 	private static final Integer DESKTOP_LOCATION   = new Integer( 117 );
 	private static final Integer USE_JFREECHART     = new Integer( 118 );
+	private static final Integer POST_MESSAGE       = new Integer( 119 );
 
 	public static final Integer TOP_PACKETS = new Integer( 7 );
 	public static final Integer SINGLE_PACKETS = new Integer( 8 );
@@ -239,6 +241,9 @@ public final class PopPreferencesStorage {
 	public static boolean isRestoreDesktop () {
 		return ((Boolean) getSingleton().table.get( RESTORE_DESKTOP ) ).booleanValue();
 	}
+	public static boolean isPostMessage () {
+		return ((Boolean) getSingleton().table.get( POST_MESSAGE ) ).booleanValue();
+	}
 
 	public static Dimension getDesktopScreenSize(JFrame frame) {
 		Dimension screenSize;
@@ -376,6 +381,9 @@ public final class PopPreferencesStorage {
 	}
 	public static void setRestoreDesktop (boolean newVal) {
 		getSingleton().table.put( RESTORE_DESKTOP, new Boolean( newVal ) );
+	}
+	public static void setPostMessage(boolean newVal) {
+		getSingleton().table.put( POST_MESSAGE, new Boolean( newVal ) );
 	}
 
 	/**
@@ -652,6 +660,7 @@ public final class PopPreferencesStorage {
 		table.put( DESKTOP_SIZE, new Integer[]{0,0} );
 		table.put( DESKTOP_LOCATION, new Integer[]{0,0} );
 		table.put( USE_JFREECHART, DEFAULT_USE_JFREECHART );
+		table.put( POST_MESSAGE, DEFAULT_POST_MESSAGE );
 
 		//check if button type changed (if so, tell buttons)
 		if (!isInit) {

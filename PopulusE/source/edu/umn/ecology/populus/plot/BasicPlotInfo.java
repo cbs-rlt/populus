@@ -136,6 +136,9 @@ JCChartListener  //changeChart, paintChart
 	public boolean xMaxSet = false;
 	public boolean yMaxSet = false;
 	public boolean zMaxSet = false;
+	
+	/* This can be for displaying a message after a run */
+	private String postMessage = null;
 
 	/*these flags control whether or not to just let JCChart to determine the viewing bounds
    regardless of what xMin, xMax have been set to*/
@@ -1006,6 +1009,14 @@ JCChartListener  //changeChart, paintChart
 		while( e.hasMoreElements() ) {
 			pw.println( res.getString( "Line_" ) + inc++ );
 		}
+	}
+
+	public String getPostMessage() {
+		return postMessage;
+	}
+
+	public void setPostMessage(String postMessage) {
+		this.postMessage = postMessage;
 	}
 
 

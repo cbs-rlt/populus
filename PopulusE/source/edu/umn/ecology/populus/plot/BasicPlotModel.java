@@ -5,6 +5,8 @@ import java.io.*;
 import edu.umn.ecology.populus.math.NumberMath;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 /**
  * this class contains the method <code>simpleUpdateOutput</code> that controls what
  * kind of output it is going to be.
@@ -69,6 +71,9 @@ public class BasicPlotModel extends Model {
 				setModelOutput(new TableOutput(data));
 			}
 			break;
+		}
+		if (data.getPostMessage() != null && PopPreferencesStorage.isPostMessage()) {
+			JOptionPane.showMessageDialog( DesktopWindow.defaultWindow, data.getPostMessage(), "Message", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 
