@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bf8ce30a-4d19-4ac9-aab9-dcfd12bfb62b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/build/classes/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/TableOutput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-237">
+              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotInputPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/edwin/ModelPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-382">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2202">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="280" column="48" selection-start-line="280" selection-start-column="48" selection-end-line="280" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#8009#8280#0" expanded="true" />
+                <element signature="e#8279#8280#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/sun/misc/Unsafe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="1000" column="29" selection-start-line="1000" selection-start-column="29" selection-end-line="1000" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotOutputPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+              <folding>
+                <element signature="e#1216#1217#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mouse</find>
+      <find>listen</find>
+      <find>Iterate</find>
+      <find>run_jar</find>
+      <find>key(</find>
+      <find>genetic drif</find>
+      <find>Genetic Drift</find>
+      <find>chart</find>
+      <find>view</find>
+      <find>optionsButton</find>
+      <find>ChartFrame</find>
+      <find>jbinit</find>
+      <find>BasicPlotCanvas</find>
+      <find>jbInit</find>
+      <find>KeyboardFocusManager</find>
+      <find>Zoom In</find>
+      <find>zoom in</find>
+      <find>genetic drift</find>
+      <find>focus</find>
+      <find>Desktopwindow</find>
+      <find>JFrame</find>
+      <find>Inbreeding</find>
+      <find>chart.add</find>
+      <find>Mouse</find>
+      <find>chart.reset</find>
+      <find>reset</find>
+      <find>zoom</find>
+      <find>0.1</find>
+      <find>0</find>
+      <find>jbI</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/fullbuild.xml" />
+        <option value="$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotOutputPanel.java" />
+        <option value="$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/ChartPanel.java" />
+        <option value="$PROJECT_DIR$/source/edu/umn/ecology/populus/core/ModelOutputFrame.java" />
+        <option value="$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/TableOutput.java" />
+        <option value="$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/ant.xml" />
+        <option value="$PROJECT_DIR$/.idea/saveactions_settings.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="39" />
+    <option name="y" value="46" />
+    <option name="width" value="1362" />
+    <option name="height" value="831" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="JFreeChart.source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="JFreeChart.source" type="462c0819:PsiDirectoryNode" />
+              <item name="jfree" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="JFreeChart.source" type="462c0819:PsiDirectoryNode" />
+              <item name="jfree" type="462c0819:PsiDirectoryNode" />
+              <item name="chart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="JFreeChart.source" type="462c0819:PsiDirectoryNode" />
+              <item name="jfree" type="462c0819:PsiDirectoryNode" />
+              <item name="chart" type="462c0819:PsiDirectoryNode" />
+              <item name="plot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="populus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="populus" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="populus" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="DesktopWindow.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="populus" type="462c0819:PsiDirectoryNode" />
+              <item name="plot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PopulusE" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="populus" type="462c0819:PsiDirectoryNode" />
+              <item name="visual" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PopulusE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Ant debug" type="Remote">
+      <module name="PopulusE" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5900" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="5900" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../globo.com/aurelio/DocumentEmbeddingJob" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../globo.com/aurelio/LDABatchPredictJob" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../globo.com/aurelio/TodoAPI" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../globo.com/aurelio/batch" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../globo.com/gedis" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../globo.com/molotov/aggregator-job" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../BFSGraph" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../Hyperlinker" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../NatArtTable/NatAPI" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../campinho" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../todoapi-finch-scala" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf8ce30a-4d19-4ac9-aab9-dcfd12bfb62b" name="Default Changelist" comment="" />
+      <created>1599695696667</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599695696667</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="DB Browser" />
+      <window_info id="UI Designer" />
+      <window_info id="Project Explorer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Capture Tool" />
+      <window_info id="Job Explorer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="DB Execution Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.5071531" side_tool="true" visible="true" weight="0.30063695" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Messages" sideWeight="0.49284694" visible="true" weight="0.30063695" />
+      <window_info anchor="bottom" id="Console" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5829757" weight="0.37834394" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="make" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.24964234" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/PopRun.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/ChartPanel.java</url>
+          <line>2337</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/ModelOutputFrame.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/TableOutput.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/fullbuild.xml">
+      <expanded value="true" />
+    </buildFile>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>code</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.hasFocus()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.grabFocus()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.grabFocus();</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.requestFocus()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.requestFocus();</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.isFocusable()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this.focusable</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PopulusE.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/generics/reflectiveObjects/GenericArrayTypeImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#1420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/LiveGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fullbuild.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1729">
+          <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/PopRun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/developers/popdevg.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/Switch.gif">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/SuperFun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/ModelEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/ModelOutputFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4346#4347#0" expanded="true" />
+            <element signature="e#4401#4402#0" expanded="true" />
+            <element signature="e#4716#4717#0" expanded="true" />
+            <element signature="e#4769#4770#0" expanded="true" />
+            <element signature="e#5084#5085#0" expanded="true" />
+            <element signature="e#5137#5138#0" expanded="true" />
+            <element signature="e#5438#5439#0" expanded="true" />
+            <element signature="e#5488#5489#0" expanded="true" />
+            <element signature="e#6153#6154#0" expanded="true" />
+            <element signature="e#6202#6203#0" expanded="true" />
+            <element signature="e#6522#6523#0" expanded="true" />
+            <element signature="e#6578#6579#0" expanded="true" />
+            <element signature="e#6896#6897#0" expanded="true" />
+            <element signature="e#6940#6941#0" expanded="true" />
+            <element signature="e#7237#7238#0" expanded="true" />
+            <element signature="e#7288#7289#0" expanded="true" />
+            <element signature="e#7988#7989#0" expanded="true" />
+            <element signature="e#8071#8072#0" expanded="true" />
+            <element signature="e#8087#8088#0" expanded="true" />
+            <element signature="e#8106#8107#0" expanded="true" />
+            <element signature="e#8150#8151#0" expanded="true" />
+            <element signature="e#8174#8175#0" expanded="true" />
+            <element signature="e#8213#8214#0" expanded="true" />
+            <element signature="e#8240#8241#0" expanded="true" />
+            <element signature="e#8295#8296#0" expanded="true" />
+            <element signature="e#8326#8327#0" expanded="true" />
+            <element signature="e#8380#8381#0" expanded="true" />
+            <element signature="e#8414#8415#0" expanded="true" />
+            <element signature="e#8671#8672#0" expanded="true" />
+            <element signature="e#8697#8698#0" expanded="true" />
+            <element signature="e#10675#10676#0" expanded="true" />
+            <element signature="e#10694#10695#0" expanded="true" />
+            <element signature="e#10737#10738#0" expanded="true" />
+            <element signature="e#10790#10791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/model/interdgs/INTERDGSParamInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/model/gdamcm/GDModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/ModelInputFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/javax/swing/JPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/resultwindow/OutputPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/java/awt/BorderLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="123" column="13" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/MacroLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/TableOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/edwin/ModelPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-382">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotOutputPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+          <folding>
+            <element signature="e#1216#1217#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/plot/ThermometerPlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="1345" column="16" selection-start-line="1345" selection-start-column="16" selection-end-line="1345" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/ChartPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="2532" column="30" selection-start-line="2532" selection-start-column="30" selection-end-line="2532" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#31374#31375#0" expanded="true" />
+            <element signature="e#31407#31408#0" expanded="true" />
+            <element signature="e#32914#32915#0" expanded="true" />
+            <element signature="e#32958#32959#0" expanded="true" />
+            <element signature="e#33349#33350#0" expanded="true" />
+            <element signature="e#33394#33395#0" expanded="true" />
+            <element signature="e#33703#33704#0" expanded="true" />
+            <element signature="e#33747#33748#0" expanded="true" />
+            <element signature="e#34139#34140#0" expanded="true" />
+            <element signature="e#34184#34185#0" expanded="true" />
+            <element signature="e#34497#34498#0" expanded="true" />
+            <element signature="e#34542#34543#0" expanded="true" />
+            <element signature="e#34940#34941#0" expanded="true" />
+            <element signature="e#34987#34988#0" expanded="true" />
+            <element signature="e#35301#35302#0" expanded="true" />
+            <element signature="e#35346#35347#0" expanded="true" />
+            <element signature="e#35745#35746#0" expanded="true" />
+            <element signature="e#35792#35793#0" expanded="true" />
+            <element signature="e#35984#35985#0" expanded="true" />
+            <element signature="e#36018#36019#0" expanded="true" />
+            <element signature="e#36211#36212#0" expanded="true" />
+            <element signature="e#36245#36246#0" expanded="true" />
+            <element signature="e#36397#36398#0" expanded="true" />
+            <element signature="e#36431#36432#0" expanded="true" />
+            <element signature="e#36676#36677#0" expanded="true" />
+            <element signature="e#36712#36713#0" expanded="true" />
+            <element signature="e#36837#36838#0" expanded="true" />
+            <element signature="e#36870#36871#0" expanded="true" />
+            <element signature="e#37052#37053#0" expanded="true" />
+            <element signature="e#37086#37087#0" expanded="true" />
+            <element signature="e#37282#37283#0" expanded="true" />
+            <element signature="e#37314#37315#0" expanded="true" />
+            <element signature="e#37555#37556#0" expanded="true" />
+            <element signature="e#37599#37600#0" expanded="true" />
+            <element signature="e#38276#38277#0" expanded="true" />
+            <element signature="e#38318#38319#0" expanded="true" />
+            <element signature="e#39164#39165#0" expanded="true" />
+            <element signature="e#39205#39206#0" expanded="true" />
+            <element signature="e#39917#39918#0" expanded="true" />
+            <element signature="e#39962#39963#0" expanded="true" />
+            <element signature="e#40230#40231#0" expanded="true" />
+            <element signature="e#40275#40276#0" expanded="true" />
+            <element signature="e#40515#40516#0" expanded="true" />
+            <element signature="e#40562#40563#0" expanded="true" />
+            <element signature="e#40821#40822#0" expanded="true" />
+            <element signature="e#40872#40873#0" expanded="true" />
+            <element signature="e#41116#41117#0" expanded="true" />
+            <element signature="e#41163#41164#0" expanded="true" />
+            <element signature="e#41422#41423#0" expanded="true" />
+            <element signature="e#41469#41470#0" expanded="true" />
+            <element signature="e#41654#41655#0" expanded="true" />
+            <element signature="e#41701#41702#0" expanded="true" />
+            <element signature="e#41881#41882#0" expanded="true" />
+            <element signature="e#41928#41929#0" expanded="true" />
+            <element signature="e#42168#42169#0" expanded="true" />
+            <element signature="e#42213#42214#0" expanded="true" />
+            <element signature="e#42474#42475#0" expanded="true" />
+            <element signature="e#42519#42520#0" expanded="true" />
+            <element signature="e#42698#42699#0" expanded="true" />
+            <element signature="e#42743#42744#0" expanded="true" />
+            <element signature="e#42919#42920#0" expanded="true" />
+            <element signature="e#42964#42965#0" expanded="true" />
+            <element signature="e#43194#43195#0" expanded="true" />
+            <element signature="e#43247#43248#0" expanded="true" />
+            <element signature="e#44127#44128#0" expanded="true" />
+            <element signature="e#44176#44177#0" expanded="true" />
+            <element signature="e#44427#44428#0" expanded="true" />
+            <element signature="e#44479#44480#0" expanded="true" />
+            <element signature="e#44770#44771#0" expanded="true" />
+            <element signature="e#44814#44815#0" expanded="true" />
+            <element signature="e#45142#45143#0" expanded="true" />
+            <element signature="e#45198#45199#0" expanded="true" />
+            <element signature="e#45502#45503#0" expanded="true" />
+            <element signature="e#45543#45544#0" expanded="true" />
+            <element signature="e#46239#46240#0" expanded="true" />
+            <element signature="e#46283#46284#0" expanded="true" />
+            <element signature="e#46576#46577#0" expanded="true" />
+            <element signature="e#46621#46622#0" expanded="true" />
+            <element signature="e#46953#46954#0" expanded="true" />
+            <element signature="e#47006#47007#0" expanded="true" />
+            <element signature="e#48553#48554#0" expanded="true" />
+            <element signature="e#48578#48579#0" expanded="true" />
+            <element signature="e#52613#52614#0" expanded="true" />
+            <element signature="e#52654#52655#0" expanded="true" />
+            <element signature="e#52980#52981#0" expanded="true" />
+            <element signature="e#53021#53022#0" expanded="true" />
+            <element signature="e#88326#88327#0" expanded="true" />
+            <element signature="e#88376#88377#0" expanded="true" />
+            <element signature="e#88654#88655#0" expanded="true" />
+            <element signature="e#88703#88704#0" expanded="true" />
+            <element signature="e#89003#89004#0" expanded="true" />
+            <element signature="e#89053#89054#0" expanded="true" />
+            <element signature="e#89379#89380#0" expanded="true" />
+            <element signature="e#89430#89431#0" expanded="true" />
+            <element signature="e#89735#89736#0" expanded="true" />
+            <element signature="e#89785#89786#0" expanded="true" />
+            <element signature="e#90093#90094#0" expanded="true" />
+            <element signature="e#90144#90145#0" expanded="true" />
+            <element signature="e#90320#90321#0" expanded="true" />
+            <element signature="e#90360#90361#0" expanded="true" />
+            <element signature="e#90537#90538#0" expanded="true" />
+            <element signature="e#90579#90580#0" expanded="true" />
+            <element signature="e#90759#90760#0" expanded="true" />
+            <element signature="e#90800#90801#0" expanded="true" />
+            <element signature="e#90980#90981#0" expanded="true" />
+            <element signature="e#91023#91024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotInputPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/model/gdamcm/GDPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="209" column="24" lean-forward="true" selection-start-line="209" selection-start-column="24" selection-end-line="209" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/sun/misc/Unsafe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1000" column="29" selection-start-line="1000" selection-start-column="29" selection-end-line="1000" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/ChartFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#2945#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/JFreeChart.source/org/jfree/chart/plot/XYPlot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="318" column="13" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/PopPreferencesStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="203" column="5" lean-forward="true" selection-start-line="203" selection-start-column="5" selection-end-line="203" selection-end-column="5" />
+          <folding>
+            <element signature="e#7800#7801#0" expanded="true" />
+            <element signature="e#7879#7880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/java/awt/event/KeyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="50" column="13" lean-forward="true" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="2104" column="15" lean-forward="true" selection-start-line="2104" selection-start-column="15" selection-end-line="2104" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/javax/swing/JRootPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="197" column="2" lean-forward="true" selection-start-line="197" selection-start-column="2" selection-end-line="197" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="5344" column="5" lean-forward="true" selection-start-line="5344" selection-start-column="5" selection-end-line="5344" selection-end-column="5" />
+          <folding>
+            <element signature="e#203048#203049#0" expanded="true" />
+            <element signature="e#203103#203104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/res/reqlibs/jcchart401K.jar!/com/klg/jclass/chart/JCChart.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="1224" column="27" lean-forward="true" selection-start-line="1224" selection-start-column="27" selection-end-line="1224" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/res/reqlibs/jcchart401K.jar!/com/klg/jclass/chart/JCAxis.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+          <folding>
+            <element signature="e#3823#3824#0" expanded="true" />
+            <element signature="e#3850#3851#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/res/reqlibs/jcchart401K.jar!/com/klg/jclass/chart/JCChartArea.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="984" lean-forward="true" selection-start-line="984" selection-end-line="984" />
+          <folding>
+            <element signature="e#33212#33213#0" expanded="true" />
+            <element signature="e#33291#33292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/core/DesktopWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="142" column="48" selection-start-line="142" selection-start-column="48" selection-end-line="142" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2202">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/edu/umn/ecology/populus/plot/BasicPlotCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="280" column="48" selection-start-line="280" selection-start-column="48" selection-end-line="280" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8009#8280#0" expanded="true" />
+            <element signature="e#8279#8280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>PopulusE</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
