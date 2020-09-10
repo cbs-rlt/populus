@@ -273,8 +273,31 @@ public class BasicPlotCanvas extends JPanel {
 						info.setAxis(chart);
 						chart.reset();
 					}
+
+                    chart.requestFocusInWindow();
 				}
 			} );
+
+            chart.addKeyListener(new java.awt.event.KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent event) {
+                    int code = event.getKeyCode();
+
+                    if (code == KeyEvent.VK_KP_UP || code == KeyEvent.VK_UP) {
+                        chart.translate(0.05, chart.getChartArea().getYAxis(0), true);
+                    }
+                    if (code == KeyEvent.VK_KP_DOWN || code == KeyEvent.VK_DOWN) {
+                        chart.translate(-0.05, chart.getChartArea().getYAxis(0), true);
+                    }
+                    if (code == KeyEvent.VK_KP_LEFT || code == KeyEvent.VK_LEFT) {
+                        chart.translate(-0.1, chart.getChartArea().getXAxis(0), true);
+                    }
+                    if (code == KeyEvent.VK_KP_RIGHT || code == KeyEvent.VK_RIGHT) {
+                        chart.translate(0.1, chart.getChartArea().getXAxis(0), true);
+                    }
+                }
+            });
+
 			chart.setCursor( new Cursor( Cursor.CROSSHAIR_CURSOR ) );
 			chart.setWarningDialog(false);
 			add( chart, BorderLayout.CENTER );

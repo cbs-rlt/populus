@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/res/reqlibs/Jama-1.0.2.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/res/reqlibs/jcchart401K.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/res/reqlibs/jcommon-1.0.21.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/res/reqlibs/jfreechart-1.0.17.jar!/" />
+    <conelement value="org.eclipse.jst.j2ee.internal.module.container" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/source" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/build/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/source" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
+    <orderEntry type="module-library">
+      <library name="Jama-1.0.2.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/res/reqlibs/Jama-1.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jcchart401K.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/res/reqlibs/jcchart401K.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jcommon-1.0.21.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/res/reqlibs/jcommon-1.0.21.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jfreechart-1.0.17.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/res/reqlibs/jfreechart-1.0.17.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/res/JFreeChart.source" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
