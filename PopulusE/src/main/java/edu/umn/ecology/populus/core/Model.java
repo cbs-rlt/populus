@@ -314,7 +314,7 @@ public abstract class Model extends Object implements ParameterFieldListener,Mod
 	public String getThisModelName() {
 		String s;
 		try {
-			s = (String)this.getClass().getMethod( "getModelName", new Class[0] ).invoke( null, null );
+			s = (String)this.getClass().getMethod( "getModelName", new Class[0] ).invoke( null, new Object[]{} );
 		}
 		catch( Exception e ) {
 			s = "ERROR: " + e;

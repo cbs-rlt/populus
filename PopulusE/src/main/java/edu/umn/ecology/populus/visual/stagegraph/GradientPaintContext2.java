@@ -1,9 +1,6 @@
 package edu.umn.ecology.populus.visual.stagegraph;
 
 import java.awt.image.Raster;
-//TODO: We aren't supposed to really have access to sun.awt.image.IntegerComponentRaster
-//We are currently compiling by setting the Java Compiler->Forbidden Reference to "Warning" only.
-import sun.awt.image.IntegerComponentRaster;
 import java.awt.image.WritableRaster;
 import java.awt.image.ColorModel;
 import java.awt.image.DirectColorModel;
@@ -180,6 +177,7 @@ public class GradientPaintContext2 implements PaintContext {
 
 		//TODO: If this throws, it's probably because it can't do the gradient "flowing".
 		// Once we figure out a way not to use com.sun.*, we can fix this.
+/*
 		try {
 			IntegerComponentRaster irast = (IntegerComponentRaster) rast;
 			int off = irast.getDataOffset(0);
@@ -198,6 +196,7 @@ public class GradientPaintContext2 implements PaintContext {
 		} catch (Exception e) {
 			//Logging.log(e);
 		}
+*/
 
 		return rast;
 	}

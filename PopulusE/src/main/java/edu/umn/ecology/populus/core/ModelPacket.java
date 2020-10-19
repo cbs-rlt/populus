@@ -29,7 +29,7 @@ public final class ModelPacket implements java.io.Serializable {
 		//Extract model name using class
 		try {
 			Method m = modelClass.getMethod( "getModelName", new Class[0] );
-			modelName = (String)m.invoke( null, null );
+			modelName = (String)m.invoke( null, new Object[]{} );
 		}
 		catch( Exception e ) {
 			this.modelName = "Error Finding Model Name";
