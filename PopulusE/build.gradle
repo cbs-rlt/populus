@@ -41,15 +41,16 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
-task copyResourceFiles(type: Copy) {
-    //Copy over resource files like images from the src tree to build.
-    //TODO: the resources should be in src/main/resources, but that
-    //is for another day.
-    from ('src/main/java') {
-        include '**/*.png'
-        include '**/*.gif'
+tasks.compileJava.doLast {
+    //Copy over images to the build directory.
+    //These should really be in the resource directory and not copied out like this.
+    copy {
+        from ('src/main/java') {
+            include '**/*.png'
+            include '**/*.gif'
+        }
+        into 'build/classes/java/main'
     }
-    into 'build/classes/java/main'
 }
 
 application {
