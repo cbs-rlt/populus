@@ -150,7 +150,8 @@ public class Population implements Serializable {
 	}
 
 	/**
-	 * @return double
+	 * @return int: -1 for not fixed; otherwise the fixed value.
+	 * Namely 0 for dominant A, and 1 for recessive a.
 	 */
 	public int isFixed() {
 		int last = popArray[0][0];

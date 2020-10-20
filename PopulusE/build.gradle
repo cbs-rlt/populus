@@ -48,10 +48,14 @@ dependencies {
 
     // Use JUnit Jupiter API for testing.
     //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    //JUnit 5.5 can't handle modules, so reverting to 5.4 until
+    //the issue is resolved
+    //https://github.com/java9-modularity/gradle-modules-plugin/issues/129
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    //testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
 }
 
 tasks.compileJava.doLast {
