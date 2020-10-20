@@ -27,8 +27,13 @@ Git on the command line should be default for OS X and Linux.  You don't have to
 
 For Windows, I like git for Windows:  \url{http://msysgit.github.io/}, which includes the command line tools and GUI.
 
-\subsection{Eclipse}
-Download the Eclipse Standard from \url{https://www.eclipse.org/downloads/}.  (You can actually install any version that has Java support.)  The "installer" is just a zip file that you extract somewhere.  You'll run it by running the executable in there.
+\subsection{Gradle}
+The code now builds with Gradle instead of the old Ant.
+
+\subsection{IntelliJ}
+Download IntelliJ IDEA CE. The project should be in git.
+
+There used to be code for Eclipse, but I couldn't get the Gradle Buildship plugin and old JARs to work well together.
 
 \subsection{TeX}
 We don't use LaTeX for any externally-facing file, but it is used for modifying this document.  I use MiKTeX (now bundled with TeXworks) for Windows.  MacTeX and livetex are recommended for OS X and Linux respectively.  Only update the TeX file, and do NOT edit this PDF file directly.
@@ -391,7 +396,9 @@ The acrobat JAR was added as a PDF viewer that's built into Populus.  It didn't 
 Mostly, we just distribute the \texttt{PopulusAll.jar}. (The "All" part of the name means that it includes its dependent libraries with it.)  The Ant task to run this is \texttt{create\_run\_jar}.
  
 \section{Populus Splash Screen}
-We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it \verb PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
+We have a file called Populus*.*.psd which is a photoshop file describing the title screen. For a new release, we probably want a change in version number, so make a new .psd file with the new version, and then export it to gif format (calling it PopulusSplashScreen.gif ) and replace the one in edu/.../core/ with the new gif.
+
+There is a java command-line option, or a parameter in the MANIFEST.MF to specify a splash screen. I don't seem to notice that this works (Oct 2020), so maybe we should just get rid of it?
 
 \section{README}
 See the previous section of the README.  This is currently separate from the install, but put on the install page.
@@ -436,9 +443,9 @@ I don't really know of anyone that uses Linux, but I like to make sure this work
 
 We've had a lot of sizing bugs on Mac.  It's best to open several models (mainly the input windows) and make sure the screen's layout looks okay.
 
-Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.  This is not yet implemented.  See the note in \texttt{fullbuild.txt}
+Ideally, we'd also like to test that it will install a proper version of Java if it is not installed already.  This is not yet implemented.  See the note in \texttt{fullbuild.xml}.
 
-Permissions are a bit trickier now, with the addition of Gatekeeper.  We still haven't figured out the best way to do this, but make sure that we can still run it as a 
+Permissions are a bit trickier now, with the addition of Gatekeeper.  We still haven't figured out the best way to do this, but make sure that we can still run it as an dmg or app bundle. 
 
 \part{Conclusion}
 If anything is confusing in this document, please update or expand it as needed.
