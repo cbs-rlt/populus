@@ -45,28 +45,4 @@ class PopulationTest {
         assertEquals(p0.getHetFreq(), 0.0, 0.02);
         assertEquals(p0.isFixed(), 1);
     }
-
-    /**
-     * The PFreq should be roughly equal to the p value of the population.
-     * Allow for precision errors of truncating to a finite population.
-     */
-    @Test
-    void testHetFreq() {
-        Population p50 = new Population(100, 0.37, true);
-        assertEquals(p50.getHetFreq(), 0.5, 0.02);
-        Population p37 = new Population(100, 0.15, true);
-        assertEquals(p37.getPFreq(), 0.37, 0.02);
-    }
-
-    /**
-     * The PFreq should be roughly equal to the p value of the population.
-     * Allow for precision errors of truncating to a finite population.
-     */
-    @Test
-    void testPFreq() {
-        Population p50 = new Population(100, 0.50, true);
-        assertEquals(p50.getPFreq(), 0.5, 0.02);
-        Population p37 = new Population(100, 0.37, true);
-        assertEquals(p37.getPFreq(), 0.37, 0.02);
-    }
 }
