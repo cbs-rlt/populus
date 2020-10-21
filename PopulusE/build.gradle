@@ -14,16 +14,13 @@ plugins {
     id 'application'
 
     id 'org.openjfx.javafxplugin' version '0.0.9'
-    id 'org.beryx.jlink' version '2.21.1'
+    id 'org.beryx.jlink' version '2.22.1'
 }
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
-//    flatDir {
-//    	dirs 'libs'
-//    }
 }
 
 dependencies {
@@ -74,17 +71,30 @@ jar {
     manifest {
         attributes 'Main-Class': 'edu.umn.ecology.populus.core.PopRun'
     }
-    into('lib') {
-        from 'res/reqlibs'
-    }
 }
 
 application {
     // Define the main class for the application.
-    mainClassName = 'edu.umn.ecology.populus.core.PopRun'
+    mainModule = 'edu.umn.ecology.populus' // name defined in module-info.java
+    mainClass = 'edu.umn.ecology.populus.core.PopRun'
 }
 
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+}
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher{
+        name = 'Populus'
+    }
+    mergedModule {
+        version = '6.1'
+    }
+
+    jpackage {
+        icon = 'res/picon.icns'
+        appVersion = '6.1'
+    }
 }
