@@ -55,9 +55,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
 }
 
-tasks.compileJava.doLast {
-    //Copy over images to the build directory.
-    //These should really be in the resource directory and not copied out like this.
+//TODO: The resources shouldn't be in the src directory initially,
+//but we would need to change source code to find the new location.
+task copyResources {
+    dependsOn compileJava
     copy {
         from ('src/main/java') {
             include '**/*.png'
@@ -65,6 +66,18 @@ tasks.compileJava.doLast {
         }
         into 'build/classes/java/main'
     }
+}
+
+task createTimestampFile {
+    dependsOn compileJava
+
+    TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
+    def now = new Date()
+    def formattedDate = now.format("yyyy-MM-dd hh:mm:ss.SSS'Z'")
+    def timestampFile = new File("build/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
+    timestampFile.delete()
+    timestampFile.createNewFile()
+    timestampFile.text=formattedDate
 }
 
 jar {
