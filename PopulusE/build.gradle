@@ -73,7 +73,7 @@ task createTimestampFile {
 
     TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
     def now = new Date()
-    def formattedDate = now.format("yyyy-MM-dd hh:mm:ss.SSS'Z'")
+    def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
     def timestampFile = new File("build/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
     timestampFile.delete()
     timestampFile.createNewFile()
