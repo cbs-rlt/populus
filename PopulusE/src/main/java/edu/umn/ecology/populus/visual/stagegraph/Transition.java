@@ -93,6 +93,7 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 			setCtrlPositions();
 		}
 
+		//Self loops don't animate
 		if(connection[0] == connection[1]) {
 			timeIndex = 128;
 		}
@@ -109,9 +110,13 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 		double ch = (y2-y1)/divisions;
 
 		int period = 511-timeIndex%512;
+
+		//offratio is a scaled value of how much to translate the gradient to give an
+		//impression of animation.
+		float offratio = ((float) timeIndex%1000) / 500.0f;
 		Color[] colors = new Color[] {Color.black, Color.green};
-		p = new GradientPaint2((int)getX1(),(int)getY1(),colors[0],
-				(int)(getX1()+cw),(int)(getY1()+ch),colors[1],true,period);
+		p = new GradientPaint((float) (getX1() + offratio*cw), (float) (getY1() + offratio*ch), colors[0],
+				(float) (getX1() + (1.0+offratio)*cw), (float) (getY1() + (1.0+offratio)*ch), colors[1], true);
 		g2d.setPaint(p);
 		g2d.draw(this);
 	}
