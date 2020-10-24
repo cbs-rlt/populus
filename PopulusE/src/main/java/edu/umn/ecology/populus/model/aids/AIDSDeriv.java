@@ -136,8 +136,7 @@ public class AIDSDeriv extends Derivative {
 	}
 
 	/**
-	 * the lecture notes say "exponential distribution." does this do the same thing?
-	 * @return
+	 * TODO: the lecture notes say "exponential distribution." does this do the same thing?
 	 */
 	double getReplicateRate(){
 		double d = 2*aveR*rand.nextDouble();

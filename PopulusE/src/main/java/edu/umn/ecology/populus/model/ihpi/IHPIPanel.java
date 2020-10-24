@@ -12,7 +12,6 @@ import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.edwin.*;
 import javax.swing.*;
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import javax.swing.event.*;
 import java.util.*;

@@ -22,7 +22,6 @@ import java.awt.event.*;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import javax.swing.border.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.constants.ColorScheme;

@@ -23,9 +23,6 @@ public class RenamePanel extends JDialog {
 	private boolean changeGood = false;
 
 	class ConversionPanel extends JPanel{
-		/**
-		 *
-		 */
 		private static final long serialVersionUID = 4116449874201960586L;
 		private JLabel fromL = new JLabel();
 		private JLabel descL = new JLabel();

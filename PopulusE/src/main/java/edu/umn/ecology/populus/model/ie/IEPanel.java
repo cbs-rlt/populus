@@ -1,15 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2015 Regents of the University of Minnesota.
- *
- * This software is released under GNU General Public License 2.0
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
- *******************************************************************************/
+/******************************************************************************
+ Copyright (c) 2015 Regents of the University of Minnesota.
+
+ This software is released under GNU General Public License 2.0
+ http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ */
 package edu.umn.ecology.populus.model.ie;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import edu.umn.ecology.populus.visual.*;
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
+
 import javax.swing.border.*;
 import edu.umn.ecology.populus.plot.*;
 

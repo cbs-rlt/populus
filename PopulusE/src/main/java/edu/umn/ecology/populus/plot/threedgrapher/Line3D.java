@@ -30,7 +30,6 @@ public class Line3D {
 
 	/**
 	 * i may need to set something up to ensure that mat never gets writen over
-	 * @param mat
 	 */
 	Line3D(){
 	}

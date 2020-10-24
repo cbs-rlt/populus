@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.ppfield.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
+
 import edu.umn.ecology.populus.constants.ColorScheme;
 
 public class LVCPanel extends BasicPlotInputPanel {

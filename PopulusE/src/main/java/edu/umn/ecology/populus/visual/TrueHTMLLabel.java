@@ -4,7 +4,6 @@ import edu.umn.ecology.populus.fileio.Logging;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.Font;
 
 /**
  * <p>Title: Populus</p>

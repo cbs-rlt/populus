@@ -629,12 +629,12 @@ public final class PopPreferencesStorage {
 		}
 	}
 
+	public void reset() { reset(false); }
 	/**
 	 * Initiates the Hashtable and adds the standard set of values
 	 * @param isInit When true, we don't compare with the existing data to see if we need to update
 	 *  anything, e.g. the button look.
 	 */
-	public void reset() { reset(false); }
 	protected synchronized void reset(boolean isInit) {
 		int oldButtonType, newButtonType;
 		oldButtonType = ( table != null && !isInit ) ? getButtonType() : INVALID;

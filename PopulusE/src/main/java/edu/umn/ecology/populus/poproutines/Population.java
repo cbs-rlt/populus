@@ -46,8 +46,8 @@ public class Population implements Serializable {
 	 *<BR>
 	 *  FreqA := (Dom + Het/2) / DemeSize;<BR>
 	 * </CODE>
-	 * @param popSize int
-	 * @param domFreq double
+	 * @param popSize Population size
+	 * @param p Proportion of dominant allele, in range [0.0, 1.0]
 	 */
 	public Population( int popSize, double p, boolean selfing ) {
 		int dom, het, rec;
@@ -64,7 +64,6 @@ public class Population implements Serializable {
 	 * Assumes each person has two alleles.
 	 * This constructor is generally used for making children
 	 * @param popSize int
-	 * @param domFreq double
 	 */
 	private Population( int popSize ) {
 		this.popArray = new int[popSize][2];
@@ -121,7 +120,7 @@ public class Population implements Serializable {
 	}
 
 	/**
-	 * @return double
+	 * @return double frequency of p, or what proportion of the gene pool is dominant.
 	 */
 	public double getPFreq() {
 		int tally = 0;
@@ -166,8 +165,8 @@ public class Population implements Serializable {
 	}
 
 	/**
-	 * @param popSize int
-	 * @param domFreq double
+	 * @param dom how many dominant genes
+	 * @param het how many heterozygous
 	 */
 	private void init( int dom, int het ) {
 		for( int i = 0;i < popSize;i++ ) {

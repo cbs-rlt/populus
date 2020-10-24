@@ -1,17 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2015 Regents of the University of Minnesota.
- *
- * This software is released under GNU General Public License 2.0
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
- *******************************************************************************/
+/******************************************************************************
+ Copyright (c) 2015 Regents of the University of Minnesota.
+
+ This software is released under GNU General Public License 2.0
+ http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+ */
 package edu.umn.ecology.populus.model.gdamcm;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.math.*;
 import edu.umn.ecology.populus.poproutines.*;
 import java.util.*;
 import java.lang.Math;
-import javax.swing.JOptionPane;
-import edu.umn.ecology.populus.core.DesktopWindow;
+
 /**
  * It is assumed to distribute the initial array in the p^2, 2pq, q^2
  * ratios.

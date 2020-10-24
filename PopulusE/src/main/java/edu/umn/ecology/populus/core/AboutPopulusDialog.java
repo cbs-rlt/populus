@@ -68,9 +68,6 @@ public class AboutPopulusDialog extends JDialog {
 		this( frame, title, false );
 	}
 
-	/**
-	 * @wbp.parser.constructor
-	 */
 	public AboutPopulusDialog( JFrame frame ) {
 		this( frame, "", false );
 	}

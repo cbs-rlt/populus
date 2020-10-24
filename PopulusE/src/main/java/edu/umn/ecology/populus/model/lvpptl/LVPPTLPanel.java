@@ -12,7 +12,6 @@ import edu.umn.ecology.populus.visual.ppfield.*;
 import edu.umn.ecology.populus.plot.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 
 import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.edwin.ModelPanelEventTypes;

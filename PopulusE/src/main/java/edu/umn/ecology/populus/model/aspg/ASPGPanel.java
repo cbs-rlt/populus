@@ -15,7 +15,6 @@ import javax.swing.border.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-import edu.umn.ecology.populus.visual.SimpleVFlowLayout;
 import edu.umn.ecology.populus.plot.*;
 import edu.umn.ecology.populus.visual.*;
 import edu.umn.ecology.populus.visual.ppfield.*;

@@ -21,7 +21,6 @@ public class SOAMALTable extends AbstractTableModel {
 	/**
 	 * it is assumed that there will be 4 columns on the left side, so the parameter
 	 * is for the dimension of the Genotypic Fitness Matrix
-	 * @param matDim
 	 */
 	public SOAMALTable() {
 		table = new Vector[4];

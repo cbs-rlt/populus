@@ -1,8 +1,5 @@
 package edu.umn.ecology.populus.core;
 
-import java.awt.BorderLayout;
-import java.awt.Frame;
-
 import javax.swing.*;
 import java.awt.*;
 import edu.umn.ecology.populus.visual.*;

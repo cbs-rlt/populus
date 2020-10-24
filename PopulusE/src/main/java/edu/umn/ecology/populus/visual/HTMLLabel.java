@@ -475,7 +475,7 @@ public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
 	}
 
 	protected GridBagConstraints getGBC() {
-		/** these 2 GridBagConstraints control how each HTMLSubLabel looks
+		/* these 2 GridBagConstraints control how each HTMLSubLabel looks
           gbcH has been modified so that there is a little bit of padding on it's left side
           which makes subscripts look much better*/
 		GridBagConstraints gbcV = new GridBagConstraints( 0, GridBagConstraints.RELATIVE, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 );
