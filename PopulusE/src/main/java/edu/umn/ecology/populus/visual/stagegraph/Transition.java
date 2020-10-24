@@ -73,7 +73,6 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 	/**
 	 * if the graph is kASPG, then we always want one of the transitions to be straight.
 	 * also, it turns out that for a circular transition, we don't want pulses.
-	 * Also, GradientPaint2 is used here so that the gradient can move.
 	 * @param g
 	 */
 	@Override
@@ -93,10 +92,6 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 			setCtrlPositions();
 		}
 
-		//Self loops don't animate
-		if(connection[0] == connection[1]) {
-			timeIndex = 128;
-		}
 
 		if(isActive){
 			g2d.setColor(ac);
@@ -109,14 +104,19 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 		double cw = (x2-x1)/divisions;
 		double ch = (y2-y1)/divisions;
 
-		int period = 511-timeIndex%512;
-
-		//offratio is a scaled value of how much to translate the gradient to give an
-		//impression of animation.
+		//offratio is a scaled value of how much to translate the gradient along the
+		//vector from (x1,y1) to (x2,y2). As we move this along, we get an impression
+		//of flowing animation.
+		//The offratio should be in the range [0,2] for a complete cycle
+		//of black (0) -> green (1) -> black (2).
 		float offratio = ((float) timeIndex%1000) / 500.0f;
+		//Self loops don't animate
+		if(connection[0] == connection[1]) {
+			offratio = 0.5f;
+		}
 		Color[] colors = new Color[] {Color.black, Color.green};
 		p = new GradientPaint((float) (getX1() + offratio*cw), (float) (getY1() + offratio*ch), colors[0],
-				(float) (getX1() + (1.0+offratio)*cw), (float) (getY1() + (1.0+offratio)*ch), colors[1], true);
+				(float) (getX1() + (1.0f+offratio)*cw), (float) (getY1() + (1.0f+offratio)*ch), colors[1], true);
 		g2d.setPaint(p);
 		g2d.draw(this);
 	}
@@ -379,13 +379,6 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
 		return false;
 	}
 }
-
-
-
-
-
-
-
 
 class NullStroke implements Stroke {
 	@Override
