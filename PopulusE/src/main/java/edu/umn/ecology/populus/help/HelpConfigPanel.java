@@ -69,7 +69,7 @@ public class HelpConfigPanel extends JPanel {
 		if (loc.equals(PopPreferencesStorage.DEFAULT_HELP_FILE)) {
 			try {
 				String storeDir = System.getProperty( "user.home", "." );
-				loc = storeDir + File.separator + "PopulusHelp5.5.pdf";
+				loc = storeDir + File.separator + "PopulusHelp6.pdf";
 			} catch (Exception e) {
 				Logging.log("Couldn't get default help location");
 				Logging.log(e);

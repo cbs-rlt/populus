@@ -44,7 +44,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 	 */
 	private static final long serialVersionUID = -1729866105545816729L;
 	public static DesktopWindow defaultWindow; //TODO - this should be private, and we'd have a public getter
-	public static final String BACKGROUND_IMAGE_FILE = "Populus6.0SplashScreen.png";
+	public static final String BACKGROUND_IMAGE_FILE = "Populus6.1SplashScreen.png";
 	BorderLayout borderLayout1 = new BorderLayout();
 
 	/**

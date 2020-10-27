@@ -61,11 +61,11 @@ public class PDFHelpFileMgr {
 	public static String getHelpLangSourceFile() {
 		String lang = getHelpLang();
 		if (lang.equalsIgnoreCase("Portuguese")) {
-			return "PopulusHelpPortuguese5.5.pdf";
+			return "PopulusHelpPortuguese6.pdf";
 		} else if (lang.equalsIgnoreCase("Spanish")) {
-			return "PopulusHelpEspagnol5.5.pdf";
+			return "PopulusHelpEspagnol6.pdf";
 		} else {
-			return "PopulusHelpEnglish5.5.pdf";
+			return "PopulusHelpEnglish6.pdf";
 		}
 	}
 

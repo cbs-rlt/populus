@@ -63,6 +63,7 @@ task copyResources {
         from ('src/main/java') {
             include '**/*.png'
             include '**/*.gif'
+            include '**/*.pdf'
         }
         into "$buildDir/classes/java/main"
     }
