@@ -64,7 +64,7 @@ task copyResources {
             include '**/*.png'
             include '**/*.gif'
         }
-        into 'build/classes/java/main'
+        into "$buildDir/classes/java/main"
     }
 }
 
@@ -74,8 +74,10 @@ task createTimestampFile {
     TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
     def now = new Date()
     def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
-    def timestampFile = new File("build/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
-    timestampFile.delete()
+    def timestampFile = new File("$buildDir/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
+    if (timestampFile.exists()) {
+        timestampFile.delete()
+    }
     timestampFile.createNewFile()
     timestampFile.text=formattedDate
 }
