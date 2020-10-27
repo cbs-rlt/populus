@@ -104,12 +104,9 @@ jlink {
     launcher{
         name = 'Populus'
     }
-    mergedModule {
-        version = '6.1'
-    }
 
     jpackage {
         icon = 'res/picon.icns'
-        appVersion = '6.1'
+        appVersion = '6.1.0'
     }
 }
