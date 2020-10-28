@@ -28,10 +28,9 @@ public class DIGPanel extends BasicPlotInputPanel {
 	 *
 	 */
 	private static final long serialVersionUID = 4120490983905219058L;
-	public static final int kDNDTVSN = 2;
-	public static final int kLNNVST = 1;
-	public static final int kNVST = 0;
-	public static final int kDNNDTVSN = 3;
+	public enum GraphType {
+		kNVST, kLNNVST, kDNDTVSN, kDNNDTVSN
+	}
 	GridBagLayout gridBagLayout5 = new GridBagLayout();
 	GridBagLayout gridBagLayout4 = new GridBagLayout();
 	Box box18;
@@ -123,17 +122,8 @@ public class DIGPanel extends BasicPlotInputPanel {
 
 	@Override
 	public BasicPlot getPlotParamInfo() {
-		int selection = nvstButton.isSelected() ? kNVST : ( lnnvstButton.isSelected() ? kLNNVST : ( dNdtButton.isSelected() ? kDNDTVSN : kDNNDTVSN ) );
+		GraphType selection = nvstButton.isSelected() ? GraphType.kNVST : ( lnnvstButton.isSelected() ? GraphType.kLNNVST : ( dNdtButton.isSelected() ? GraphType.kDNDTVSN : GraphType.kDNNDTVSN ) );
 
-		/* this has uses for examples as i make other multiple graphs
-      return new DIGParamInfo(continuousButton.isSelected(), selection,
-      gensPF.getCurrentValue(),
-      lambdaPF.getCurrentValue(), n0PF.getCurrentValue(), rPF.getCurrentValue());
-
-
-      myData[1] = new DIGData(continuousButton.isSelected(), selection, 30, 0.7,10, 0.15);
-      myData[2] = new DIGData(continuousButton.isSelected(), selection, 30, 0.4,20, 0.22);
-		 */
 		myData = new DIGData[4];
 		int numToGraph = 0;
 		if( one.isSelected() ) {

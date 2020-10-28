@@ -19,7 +19,7 @@ class DIGDataTest {
         double n0 = 5.0;
         double nGens = 100.0;
         double r = 0.1;
-        DIGData d = new DIGData(true, DIGPanel.kNVST, nGens, 0.7384, n0, r);
+        DIGData d = new DIGData(true, DIGPanel.GraphType.kNVST, nGens, 0.7384, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(false, bpi.isDiscrete());
@@ -39,7 +39,7 @@ class DIGDataTest {
         double n0 = 12.0;
         double nGens = 100.0;
         double lambda = 1.1;
-        DIGData d = new DIGData(false, DIGPanel.kNVST, nGens, lambda, n0, 1.434);
+        DIGData d = new DIGData(false, DIGPanel.GraphType.kNVST, nGens, lambda, n0, 1.434);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(true, bpi.isDiscrete());
@@ -60,7 +60,7 @@ class DIGDataTest {
         double n0 = 3.0;
         double nGens = 100.0;
         double r = 0.17;
-        DIGData d = new DIGData(true, DIGPanel.kLNNVST, nGens, 3.9143, n0, r);
+        DIGData d = new DIGData(true, DIGPanel.GraphType.kLNNVST, nGens, 3.9143, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(false, bpi.isDiscrete());
@@ -81,7 +81,7 @@ class DIGDataTest {
         double n0 = 7.0;
         double nGens = 100.0;
         double r = 0.17;
-        DIGData d = new DIGData(true, DIGPanel.kDNDTVSN, nGens, 77.24, n0, r);
+        DIGData d = new DIGData(true, DIGPanel.GraphType.kDNDTVSN, nGens, 77.24, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(false, bpi.isDiscrete());
@@ -102,7 +102,7 @@ class DIGDataTest {
         double n0 = 5.0;
         double nGens = 100.0;
         double r = -0.14;
-        DIGData d = new DIGData(true, DIGPanel.kDNNDTVSN, nGens, -143.2, n0, r);
+        DIGData d = new DIGData(true, DIGPanel.GraphType.kDNNDTVSN, nGens, -143.2, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(false, bpi.isDiscrete());
@@ -125,8 +125,8 @@ class DIGDataTest {
         double nGens = 60.0;
         double r1 = -0.04;
         double r3 = 0.17;
-        DIGData d1 = new DIGData(true, DIGPanel.kNVST, nGens, -7.3, n01, r1);
-        DIGData d3 = new DIGData(true, DIGPanel.kNVST, nGens, 4.4, n03, r3);
+        DIGData d1 = new DIGData(true, DIGPanel.GraphType.kNVST, nGens, -7.3, n01, r1);
+        DIGData d3 = new DIGData(true, DIGPanel.GraphType.kNVST, nGens, 4.4, n03, r3);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d1, null, d3, null}, 2);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
         assertEquals(false, bpi.isDiscrete());

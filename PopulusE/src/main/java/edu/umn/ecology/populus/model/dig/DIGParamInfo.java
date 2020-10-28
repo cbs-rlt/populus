@@ -24,7 +24,7 @@ public class DIGParamInfo implements BasicPlot {
 	String mCCap = res.getString( "Continuous1" );
 	BasicPlotInfo thisInfo = null;
 	String mDCap = res.getString( "Discrete_Geometric" );
-	private int plottype;
+	private DIGPanel.GraphType plotType;
 	private double p0, gens, lambda, r;
 	private boolean continuous;
 
@@ -39,7 +39,9 @@ public class DIGParamInfo implements BasicPlot {
 		while( myData[j] == null )
 			j++;
 
-		this.continuous = DIGData.isContinuous;
+		DIGData repData = myData[j]; //Representative data for values that should all be the same.
+
+		this.continuous = repData.isContinuous;
 		if( continuous ) {
 			if (numGraphs == 1)
 				thisInfo.setMainCaption( mCCap + ", <i>r</i> = " + myData[j].rPF );
@@ -55,9 +57,9 @@ public class DIGParamInfo implements BasicPlot {
 		keepDoub = new double[numGraphs][][];
 		for( int i = 0;i < numGraphs;i++ ) {
 			while( myData[j] == null ) j++;
-			this.plottype = DIGData.selection;
-			this.continuous = DIGData.isContinuous;
-			this.gens = DIGData.gensPF;
+			this.plotType = repData.selection;
+			this.continuous = repData.isContinuous;
+			this.gens = repData.gensPF;
 			this.p0 = myData[j].nOPF;
 			this.lambda = myData[j].lambdaPF;
 			this.r = myData[j].rPF;
@@ -81,32 +83,33 @@ public class DIGParamInfo implements BasicPlot {
 		thisInfo.setXCaption( temp.getXCaption() );
 		thisInfo.setYCaption( temp.getYCaption() );
 
-		if(plottype == DIGPanel.kDNNDTVSN){
+		if(plotType == DIGPanel.GraphType.kDNNDTVSN){
 			//this is a fix to try and get the line(s) for this plot type to go through
 			//the middle of the graph and not lay on the x-axis
+			//TODO: If we change back to a different plot, it stickies the range, which is annoying.
 			thisInfo.setYMax(maxR+0.1*maxR);
 			thisInfo.setYMin(minR-0.1*minR);
 		}
 	}
 
-	public BasicPlotInfo getResults() {
+	private BasicPlotInfo getResults() {
 		BasicPlotInfo bpi = new BasicPlotInfo();
 		double[][][] points = null;
 		int i = 0;
-		if( continuous && ( ( plottype == DIGPanel.kDNDTVSN ) || ( plottype == DIGPanel.kDNNDTVSN ) ) ) {
+		if( continuous && ( ( plotType == DIGPanel.GraphType.kDNDTVSN ) || ( plotType == DIGPanel.GraphType.kDNNDTVSN ) ) ) {
 			points = new double[1][2][kNUM_DIVISIONS + 1];
 			double x = 0.0, y, inc = ( gens ) / ( kNUM_DIVISIONS );
 			i = 0;
 			while( i <= kNUM_DIVISIONS ) {
 				y = Math.exp( r * x ) * p0;
 				points[0][0][i] = y;
-				points[0][1][i] = ( plottype == DIGPanel.kDNDTVSN ) ? y * r : r;
+				points[0][1][i] = ( plotType == DIGPanel.GraphType.kDNDTVSN ) ? y * r : r;
 				x += inc;
 				i++;
 			}
 			bpi.setData( points );
 			bpi.setXCaption( yCap );
-			bpi.setYCaption( ( plottype == DIGPanel.kDNDTVSN ) ? kCDNDTSTRING : kCDNNDTSTRING );
+			bpi.setYCaption( ( plotType == DIGPanel.GraphType.kDNDTVSN ) ? kCDNDTSTRING : kCDNNDTSTRING );
 		} else {
 			if( continuous ) { // the graph is continuous
 				points = new double[1][2][kNUM_DIVISIONS + 1];
@@ -126,12 +129,12 @@ public class DIGParamInfo implements BasicPlot {
 					x *= lambda;
 					i++;
 				}
-				if( plottype == DIGPanel.kDNDTVSN ) {
+				if( plotType == DIGPanel.GraphType.kDNDTVSN ) {
 					double[][] xformed = new double[2][(int)gens];
 					edu.umn.ecology.populus.math.Routines.process1( points[0][1], xformed );
 					points[0] = xformed;
 				} else {
-					if( plottype == DIGPanel.kDNNDTVSN ) {
+					if( plotType == DIGPanel.GraphType.kDNNDTVSN ) {
 						double[][] xformed = new double[2][(int)gens];
 						//edu.umn.ecology.populus.math.Routines.process2( points[0][1], xformed );
 						edu.umn.ecology.populus.math.Routines.process3( points[0][1], xformed );
@@ -147,17 +150,17 @@ public class DIGParamInfo implements BasicPlot {
 					}
 				}
 			}
-			if( plottype == DIGPanel.kLNNVST ) {
+			if( plotType == DIGPanel.GraphType.kLNNVST ) {
 				edu.umn.ecology.populus.math.Routines.lnArray( points[0][1] );
 			}
 			bpi.setData( points );
 
-			if( !continuous && ( ( plottype == DIGPanel.kDNDTVSN ) || ( plottype == DIGPanel.kDNNDTVSN ) ) ) {
+			if( !continuous && ( ( plotType == DIGPanel.GraphType.kDNDTVSN ) || ( plotType == DIGPanel.GraphType.kDNNDTVSN ) ) ) {
 				bpi.setXCaption( nSubTCap );
-				bpi.setYCaption( ( plottype == DIGPanel.kDNDTVSN ) ? kDDNDTSTRING : kDDNNDTSTRING );
+				bpi.setYCaption( ( plotType == DIGPanel.GraphType.kDNDTVSN ) ? kDDNDTSTRING : kDDNNDTSTRING );
 			} else {
 				bpi.setXCaption( xCap );
-				bpi.setYCaption( ( plottype == DIGPanel.kLNNVST ) ? lnyCap : yCap );
+				bpi.setYCaption( ( plotType == DIGPanel.GraphType.kLNNVST ) ? lnyCap : yCap );
 			}
 		}
 		i = points[0][0].length; //TODO: Remove?
@@ -174,17 +177,6 @@ public class DIGParamInfo implements BasicPlot {
 	@Override
 	public BasicPlotInfo getBasicPlotInfo() {
 		return thisInfo;
-	}
-
-	//TODO: Delete this unused constructor?
-	public DIGParamInfo( boolean continuous, int plottype, double g, double l, double p, double r ) {
-		this.continuous = continuous;
-		this.plottype = plottype;
-		this.p0 = p;
-		this.gens = g;
-		this.lambda = l;
-		this.r = r;
-		thisInfo = getResults();
 	}
 
 }
