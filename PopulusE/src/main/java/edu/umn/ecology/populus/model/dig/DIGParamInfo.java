@@ -28,6 +28,7 @@ public class DIGParamInfo implements BasicPlot {
 	private double p0, gens, lambda, r;
 	private boolean continuous;
 
+	//TODO: Why pass in numGraphs? Can't we infer it from myData.length?
 	public DIGParamInfo( DIGData[] myData, int numGraphs ) {
 		BasicPlotInfo temp = null;
 		thisInfo = new BasicPlotInfo();
@@ -159,7 +160,7 @@ public class DIGParamInfo implements BasicPlot {
 				bpi.setYCaption( ( plottype == DIGPanel.kLNNVST ) ? lnyCap : yCap );
 			}
 		}
-		i = points[0][0].length;
+		i = points[0][0].length; //TODO: Remove?
 
 		if( !continuous ){
 			double[][][] newPoints = new double[2][2][points[0][1].length];
@@ -175,6 +176,7 @@ public class DIGParamInfo implements BasicPlot {
 		return thisInfo;
 	}
 
+	//TODO: Delete this unused constructor?
 	public DIGParamInfo( boolean continuous, int plottype, double g, double l, double p, double r ) {
 		this.continuous = continuous;
 		this.plottype = plottype;
