@@ -69,6 +69,8 @@ task copyResources {
     }
 }
 
+//TODO: There's probably a better (standard) way of doing this.
+//This is read at the beginning of startup and just spit into log/stdout.
 task createTimestampFile {
     dependsOn compileJava
 
@@ -111,8 +113,9 @@ jlink {
         def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
         icon = "src/main/resources/picon.$imgType"
         appVersion = '6.1.0'
+        imageOptions = ['--resource-dir', 'src/main/resources']
         installerOptions += [
-                '--vendor', 'University of Minnesota'
+                '--vendor', 'University of Minnesota',
         ]
     }
 }

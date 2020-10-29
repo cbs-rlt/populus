@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+  <key>LSMinimumSystemVersion</key>
+  <string>10.9</string>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>English</string>
+  <key>CFBundleAllowMixedLocalizations</key>
+  <true/>
+  <key>CFBundleExecutable</key>
+  <string>Populus</string>
+  <key>CFBundleIconFile</key>
+  <string>Populus.icns</string>
+  <key>CFBundleIdentifier</key>
+  <string>edu.umn.ecology.populus.core</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>Populus</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleShortVersionString</key>
+  <string>6.1</string>
+  <key>CFBundleSignature</key>
+  <string>????</string>
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.education</string>
+  <key>CFBundleVersion</key>
+  <string>6.1</string>
+  <key>NSHumanReadableCopyright</key>
+  <string>Copyright (C) 2020 Don Alstad, University of Minnnesota</string>
+  <key>NSHighResolutionCapable</key>
+  <string>true</string>
+ </dict>
+</plist>
