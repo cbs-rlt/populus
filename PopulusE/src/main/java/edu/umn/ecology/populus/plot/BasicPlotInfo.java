@@ -319,10 +319,16 @@ JCChartListener  //changeChart, paintChart
 					}
 				}
 
-				if(xMinSet) plot.getDomainAxis().setLowerBound(xAxisMin);
-				if(xMaxSet) plot.getDomainAxis().setUpperBound(xAxisMax);
-				if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
-				if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
+				if(xMinSet || xMaxSet) {
+					if (xMinSet) plot.getDomainAxis().setLowerBound(xAxisMin);
+					if (xMaxSet) plot.getDomainAxis().setUpperBound(xAxisMax);
+				} else
+					plot.getDomainAxis().setAutoRange(true);
+				if(yMinSet || yMaxSet) {
+					if(yMinSet) plot.getRangeAxis().setLowerBound(yAxisMin);
+					if(yMaxSet) plot.getRangeAxis().setUpperBound(yAxisMax);
+				} else
+					plot.getRangeAxis().setAutoRange(true);
 
 				//TODO - just use this renderer
 				plot.setRenderer(new ChartRendererWithOrientatedShapes(bpiRef));
@@ -831,6 +837,14 @@ JCChartListener  //changeChart, paintChart
 	/** Get max X value (not view window).  MUST call findbounds() first */
 	public double getMaxXVal() { return xMax; }
 
+	public void unsetXYMinMax() {
+		xMinSet = false;
+		xMaxSet = false;
+		yMinSet = false;
+		yMaxSet = false;
+		xAxisMax = xAxisMin = 0.0;
+		yAxisMax = yAxisMin = 0.0;
+	}
 	public void setXMin( double newXMin ) {
 		xAxisMin = newXMin;
 		xMinSet = true;

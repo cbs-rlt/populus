@@ -86,9 +86,11 @@ public class DIGParamInfo implements BasicPlot {
 		if(plotType == DIGPanel.GraphType.kDNNDTVSN){
 			//this is a fix to try and get the line(s) for this plot type to go through
 			//the middle of the graph and not lay on the x-axis
-			//TODO: If we change back to a different plot, it stickies the range, which is annoying.
 			thisInfo.setYMax(maxR+0.1*maxR);
 			thisInfo.setYMin(minR-0.1*minR);
+		} else {
+			//Un-sticky, in case user switches from kDNNDTVSN and back.
+			thisInfo.unsetXYMinMax();
 		}
 	}
 
