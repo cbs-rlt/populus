@@ -7,6 +7,9 @@
 package edu.umn.ecology.populus.plot;
 import java.io.Serializable;
 
+/**
+ * Base class for all messages between model input and output.
+ */
 public class ParamInfo extends Object implements Serializable {
 
 	/**
