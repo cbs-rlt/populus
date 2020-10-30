@@ -1,5 +1,17 @@
-/**/.DS_Store
+# Ignore Gradle project-specific cache directory
+.gradle
+
+#IntelliJ local files 
+.idea/gradle.xml
+.idea/misc.xml
+
+# Ignore Gradle build output directory
+build
+
+# miscellanies
+**/.DS_Store
 .metadata/**
-.recommenders/**
-/PopulusE/build
-/PopulusE/out
+doc/developers/popdevg.log
+doc/developers/popdevg.synctex.gz
+
+
