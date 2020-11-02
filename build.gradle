@@ -65,7 +65,7 @@ task copyResources {
             include '**/*.gif'
             include '**/*.pdf'
         }
-        into "$buildDir/classes/java/main"
+        into "${buildDir}/classes/java/main"
     }
 }
 
@@ -77,7 +77,7 @@ task createTimestampFile {
     TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
     def now = new Date()
     def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
-    def timestampFile = new File("$buildDir/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
+    def timestampFile = new File("${buildDir}/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
     if (timestampFile.exists()) {
         timestampFile.delete()
     }
@@ -110,12 +110,35 @@ jlink {
 
     jpackage {
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
-        def imgType = currentOs.windows ? 'ico' : currentOs.macOsX ? 'icns' : 'png'
-        icon = "src/main/resources/picon.$imgType"
         appVersion = '6.1.0'
-        imageOptions = ['--resource-dir', 'src/main/resources']
         installerOptions += [
                 '--vendor', 'University of Minnesota',
+                '--license-file', 'LICENSE',
         ]
+        if (currentOs.macOsX) {
+            imageOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
+            installerOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
+            icon = "src/main/resources/installer/macosx/picon.icns"
+        } else if (currentOs.windows) {
+            imageOptions = ['--resource-dir', 'src/main/resources/installer/windows']
+            installerOptions = ['--resource-dir', 'src/main/resources/installer/windows']
+            icon = "src/main/resources/installer/windows/picon.ico"
+            installerOptions += [
+                    '--win-dir-chooser',
+            ]
+        } else { //Linux
+            imageOptions = ['--resource-dir', 'src/main/resources/installer/linux']
+            installerOptions = ['--resource-dir', 'src/main/resources/installer/linux']
+            icon = "src/main/resources/installer/linux/picon.png"
+            installerOptions += [
+                    '--linux-menu-group', 'Education',
+                    '--linux-shortcut',
+            ]
+            if (project.findPropert('installerType') == 'rpm') {
+                installerOptions += [
+                    '--linux-rpm-license-type', 'GPLv2'
+                ]
+            }
+        }
     }
 }
