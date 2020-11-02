@@ -2,8 +2,15 @@
 .gradle
 
 #IntelliJ local files 
-.idea/gradle.xml
-.idea/misc.xml
+.idea/**/gradle.xml
+.idea/**/misc.xml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/libraries
+.idea/**/dictionaries
+.idea/**/shelf
+
 
 # Ignore Gradle build output directory
 build
