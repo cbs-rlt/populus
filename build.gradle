@@ -134,7 +134,7 @@ jlink {
                     '--linux-menu-group', 'Education',
                     '--linux-shortcut',
             ]
-            if (project.findPropert('installerType') == 'rpm') {
+            if (project.findProperty('installerType') == 'rpm') {
                 installerOptions += [
                     '--linux-rpm-license-type', 'GPLv2'
                 ]
