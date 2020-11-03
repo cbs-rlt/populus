@@ -10,11 +10,9 @@ import javax.swing.*;
 
 /**
  *  ModelPanel serves as a root for all other models in the 'edwin' directory
- *  Changes to this will affect all descendents.
- *
+ *  Changes to this will affect all descendants.
  *
  */
-
 public class OutputPanel extends JPanel {
 	/**
 	 *
@@ -86,28 +84,4 @@ public class OutputPanel extends JPanel {
 		}
 	}
 
-	/*
-public void saveGraphics() {
-try {
-java.awt.Dimension area = this.getSize();
-java.io.FileOutputStream out = new java.io.FileOutputStream("modelout.jpg");
-java.awt.image.BufferedImage bi = null;
-bi = (java.awt.image.BufferedImage) this.createImage(area.width, area.height);
-java.awt.Graphics g = bi.getGraphics();
-this.paintAll(g);
-com.sun.image.codec.jpeg.JPEGImageEncoder encoder
-= com.sun.image.codec.jpeg.JPEGCodec.createJPEGEncoder(out);
-encoder.encode(bi);
-out.flush();
-out.close();
-edu.umn.ecology.populus.fileio.Logging.log("Succesfully created file");
-}
-catch (java.io.IOException ioe) { }
-catch (java.awt.image.RasterFormatException except) { }
-catch (Exception e) {
-edu.umn.ecology.populus.fileio.Logging.log("Can't print because of");
-e.printStackTrace();
-}
-}
-	 */
 }
