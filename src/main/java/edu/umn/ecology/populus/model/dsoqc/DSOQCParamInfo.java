@@ -14,10 +14,15 @@ import java.util.Random;
 
 public class DSOQCParamInfo implements BasicPlot {
     boolean isVsTime;
-    double gAA, gAa, gaa, p, ve;
-    int popSize, repopSize;
-    int[][] parent;
-    Random rand;
+    final double gAA;
+    final double gAa;
+    final double gaa;
+    final double p;
+    final double ve;
+    final int popSize;
+    final int repopSize;
+    final int[][] parent;
+    final Random rand;
     double[][] line;
     double[] averages = new double[10];
     int generation = 0;

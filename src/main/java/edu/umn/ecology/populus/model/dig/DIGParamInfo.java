@@ -14,19 +14,19 @@ import java.util.ResourceBundle;
 
 public class DIGParamInfo implements BasicPlot {
     public static final int kNUM_DIVISIONS = 100;
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.dig.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.dig.Res");
 
-    String yCap = res.getString("Population_b_i_N_");
-    String nSubTCap = res.getString("Population_b_i_N_sub");
-    String lnyCap = res.getString("ln_Population_ln_i_b");
-    String kDDNNDTSTRING = "ln (<i><b>N<sub>t</i> +1</> / <i><b>N<sub>t</>)";
-    String xCap = res.getString("Time_b_i_t_");
-    String kCDNDTSTRING = "d<b><i>N</>/d<i><b>t</>";
-    String kCDNNDTSTRING = "d<b><i>N</i>/<i>N</>d<i><b>t</>";
-    String kDDNDTSTRING = "<i><b>N<sub>t</i>+1</> - <i><b>N<sub>t</>";
-    String mCCap = res.getString("Continuous1");
+    final String yCap = res.getString("Population_b_i_N_");
+    final String nSubTCap = res.getString("Population_b_i_N_sub");
+    final String lnyCap = res.getString("ln_Population_ln_i_b");
+    final String kDDNNDTSTRING = "ln (<i><b>N<sub>t</i> +1</> / <i><b>N<sub>t</>)";
+    final String xCap = res.getString("Time_b_i_t_");
+    final String kCDNDTSTRING = "d<b><i>N</>/d<i><b>t</>";
+    final String kCDNNDTSTRING = "d<b><i>N</i>/<i>N</>d<i><b>t</>";
+    final String kDDNDTSTRING = "<i><b>N<sub>t</i>+1</> - <i><b>N<sub>t</>";
+    final String mCCap = res.getString("Continuous1");
     BasicPlotInfo thisInfo = null;
-    String mDCap = res.getString("Discrete_Geometric");
+    final String mDCap = res.getString("Discrete_Geometric");
     private DIGPanel.GraphType plotType;
     private double p0, gens, lambda, r;
     private boolean continuous;

@@ -19,7 +19,7 @@ public class BasicPlotOutputPanel extends OutputPanel {
      */
     private static final long serialVersionUID = -1467334882548355207L;
     //Package access for BasicPlotModel to access.
-    BasicPlotCanvas bpc;
+    final BasicPlotCanvas bpc;
 
     public BasicPlotCanvas getBPC() {
         //used in simpleUpdateOutput, so we want to update the colors in the process

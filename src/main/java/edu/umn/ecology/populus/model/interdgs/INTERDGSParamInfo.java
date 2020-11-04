@@ -24,12 +24,12 @@ public class INTERDGSParamInfo implements BasicPlot {
     final int runs, gens, plotType;
     final double numDemes;
     final double n2;
-    Random rand = new Random(System.currentTimeMillis());
+    final Random rand = new Random(System.currentTimeMillis());
     private static final String xCap = "Generations<b>(<i>t</i>)</>";
     private static final String mCap1 = "Interdemic Selection: Altruistic Frequency";
     private static final String mCap2 = "Interdemic Selection: Variance";
-    private String yCap1 = "Mean Frequency of \"<i>A</i>\" Allele (  " + ColorScheme.getColorString(0) + "<b><i>p</> )";
-    private String yCap2 = "Interdemic Variance ( " + ColorScheme.getColorString(0) + "<b>\u03c3<sup>2</>) ";
+    private final String yCap1 = "Mean Frequency of \"<i>A</i>\" Allele (  " + ColorScheme.getColorString(0) + "<b><i>p</> )";
+    private final String yCap2 = "Interdemic Variance ( " + ColorScheme.getColorString(0) + "<b>\u03c3<sup>2</>) ";
 
     private double[] doRun(double[] variance) {
         double[][] data = new double[gens + 1][(int) numDemes];

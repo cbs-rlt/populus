@@ -35,7 +35,7 @@ public class BadUserOutputPanel extends OutputPanel {
     private static final long serialVersionUID = -3164580227786601659L;
     JLabel errorMessage;
     BadUserException bue = null;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
     JLabel mainMessage;
 
     public BadUserOutputPanel(BadUserException bue) {

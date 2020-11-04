@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class OwnershipBorder implements Border { //, java.io.Serializable {
     private Color color = Color.black;
-    private int thickness;
+    private final int thickness;
 
     public OwnershipBorder(Color borderColor) {
         this.color = borderColor;

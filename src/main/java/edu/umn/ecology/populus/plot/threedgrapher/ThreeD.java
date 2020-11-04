@@ -57,7 +57,8 @@ public class ThreeD extends JPanel implements Stepper, MouseListener, MouseMotio
      * these are the matricies that control the tranformations
      * of the 3D graph.
      */
-    Matrix3D amat = new Matrix3D(), tmat = new Matrix3D();
+    final Matrix3D amat = new Matrix3D();
+    final Matrix3D tmat = new Matrix3D();
 
     /**
      * this float contains the information on which axis is currently the longest

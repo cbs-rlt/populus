@@ -19,14 +19,18 @@ public class AIDSTParamInfo implements BasicPlot {
     public static final int xyvsT = 1;//x, y vs t
     public static final int vvsT = 2;//v vs t
     public static final int xvsYvsV = 3; //x vs y vs v
-    String mCapNvsT = "AIDS Therapy";
-    int plotType;
-    int numVars;
+    final String mCapNvsT = "AIDS Therapy";
+    final int plotType;
+    final int numVars;
 
-    Integrator ig;
+    final Integrator ig;
     String mCapN2vsN1 = mCapNvsT;
-    String xCap = "Time (<b><i>t</i></b>)";
-    double x, y, w, z, time;
+    final String xCap = "Time (<b><i>t</i></b>)";
+    final double x;
+    final double y;
+    final double w;
+    final double z;
+    final double time;
     double s;
     double t1, t2, t3, t4, t5, t6;
 

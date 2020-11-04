@@ -123,7 +123,7 @@ public final class PopPreferencesStorage {
     private static PopPreferencesStorage singleton = null;
 
     //Instance data
-    private ArrayList<PopulusToolButton> buttons;
+    private final ArrayList<PopulusToolButton> buttons;
     private Hashtable<Integer, ModelPacket[]> packetTable; //List of Populus models, arranged in groups
     private Hashtable<Integer, Object> table; //Miscellaneous preference data
     private static String preferencesFile = null;
@@ -223,8 +223,7 @@ public final class PopPreferencesStorage {
 
     /* HELP PREFERENCES */
     public static String getHelpFileLocation() {
-        String s = getSingleton().safeLookup(HELP_FILE_LOCATION, DEFAULT_HELP_FILE);
-        return s;
+        return getSingleton().safeLookup(HELP_FILE_LOCATION, DEFAULT_HELP_FILE);
     }
 
     public static String getHelpLang() {

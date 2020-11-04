@@ -20,27 +20,27 @@ public class PAQGPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 293207087767048504L;
-    JPanel wPanel = new JPanel();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton WBARvstRB = new StyledRadioButton();
-    private JRadioButton WBARvsPRB = new StyledRadioButton();
-    private JRadioButton h2vstRB = new StyledRadioButton();
-    private JRadioButton PvstRB = new StyledRadioButton();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JPanel paramP = new JPanel();
-    private PopulusParameterField vePPF = new PopulusParameterField();
-    private PopulusParameterField pPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField waaPPF = new PopulusParameterField();
-    private PopulusParameterField wAaPPF = new PopulusParameterField();
-    private PopulusParameterField wAAPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
+    final JPanel wPanel = new JPanel();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton WBARvstRB = new StyledRadioButton();
+    private final JRadioButton WBARvsPRB = new StyledRadioButton();
+    private final JRadioButton h2vstRB = new StyledRadioButton();
+    private final JRadioButton PvstRB = new StyledRadioButton();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JPanel paramP = new JPanel();
+    private final PopulusParameterField vePPF = new PopulusParameterField();
+    private final PopulusParameterField pPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField waaPPF = new PopulusParameterField();
+    private final PopulusParameterField wAaPPF = new PopulusParameterField();
+    private final PopulusParameterField wAAPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private ButtonGroup plotTypeBG = new ButtonGroup();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
 
     @Override
     public BasicPlot getPlotParamInfo() {

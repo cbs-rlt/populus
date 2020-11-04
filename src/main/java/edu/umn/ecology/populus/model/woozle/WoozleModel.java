@@ -12,7 +12,7 @@ import edu.umn.ecology.populus.plot.ParamInfo;
 import java.util.ResourceBundle;
 
 public class WoozleModel extends Model {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
 
     @Override
     public Object getModelHelpText() {

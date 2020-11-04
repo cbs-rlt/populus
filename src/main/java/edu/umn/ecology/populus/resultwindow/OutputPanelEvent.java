@@ -30,11 +30,14 @@ public class OutputPanelEvent extends EventObject {
     public static final int EXPORT_SIMPLE = 256;
     public static final int REFRESH = 64;
     boolean zoom = false;
-    double xMin = Double.NaN, xMax = Double.NaN, yMin = Double.NaN, yMax = Double.NaN;
+    final double xMin = Double.NaN;
+    final double xMax = Double.NaN;
+    final double yMin = Double.NaN;
+    final double yMax = Double.NaN;
     boolean resized = false;
     boolean switchOutput = false;
     boolean refresh = false;
-    private int type;
+    private final int type;
 
     /**
      * Informative Constructor

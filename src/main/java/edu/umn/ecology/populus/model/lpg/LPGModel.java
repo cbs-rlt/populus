@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.plot.BasicPlotModel;
 import java.util.ResourceBundle;
 
 public class LPGModel extends BasicPlotModel {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lpg.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lpg.Res");
 
     @Override
     public Object getModelHelpText() {

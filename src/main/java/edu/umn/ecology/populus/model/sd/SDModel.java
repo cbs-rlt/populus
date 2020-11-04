@@ -14,7 +14,7 @@ import edu.umn.ecology.populus.plot.ParamInfo;
 import edu.umn.ecology.populus.plot.coloredcells.CellController;
 
 public class SDModel extends Model {
-    SDPanel sdp = new SDPanel();
+    final SDPanel sdp = new SDPanel();
 
     public SDModel() {
         this.setModelInput(sdp);

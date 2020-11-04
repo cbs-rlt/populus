@@ -21,34 +21,34 @@ public class INTERDGSPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -465299890956646946L;
-    JPanel indCoefsP = new JPanel();
-    PopulusParameterField sEEPPF = new PopulusParameterField();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton svstRB = new StyledRadioButton();
-    private JRadioButton AvstRB = new StyledRadioButton();
-    private JPanel modelP = new JPanel();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField sAEPPF = new PopulusParameterField();
-    private PopulusParameterField sAAPPF = new PopulusParameterField();
-    private PopulusParameterField cPPF = new PopulusParameterField();
-    private JPanel groupCoefsP = new JPanel();
-    private PopulusParameterField aPPF = new PopulusParameterField();
-    private PopulusParameterField bPPF = new PopulusParameterField();
-    private PopulusParameterField runsPPF = new PopulusParameterField();
-    private PopulusParameterField AfreqPPF = new PopulusParameterField();
-    private PopulusParameterField mPPF = new PopulusParameterField();
-    private JCheckBox singleMutationCB = new JCheckBox();
-    private PopulusParameterField demeSizePPF = new PopulusParameterField();
+    final JPanel indCoefsP = new JPanel();
+    final PopulusParameterField sEEPPF = new PopulusParameterField();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton svstRB = new StyledRadioButton();
+    private final JRadioButton AvstRB = new StyledRadioButton();
+    private final JPanel modelP = new JPanel();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField sAEPPF = new PopulusParameterField();
+    private final PopulusParameterField sAAPPF = new PopulusParameterField();
+    private final PopulusParameterField cPPF = new PopulusParameterField();
+    private final JPanel groupCoefsP = new JPanel();
+    private final PopulusParameterField aPPF = new PopulusParameterField();
+    private final PopulusParameterField bPPF = new PopulusParameterField();
+    private final PopulusParameterField runsPPF = new PopulusParameterField();
+    private final PopulusParameterField AfreqPPF = new PopulusParameterField();
+    private final PopulusParameterField mPPF = new PopulusParameterField();
+    private final JCheckBox singleMutationCB = new JCheckBox();
+    private final PopulusParameterField demeSizePPF = new PopulusParameterField();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
     private TitledBorder titledBorder4;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
-    private GridBagLayout gridBagLayout5 = new GridBagLayout();
-    private ButtonGroup plotTypeBG = new ButtonGroup();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout5 = new GridBagLayout();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
     private final int numDemes = 10;
 
     @Override

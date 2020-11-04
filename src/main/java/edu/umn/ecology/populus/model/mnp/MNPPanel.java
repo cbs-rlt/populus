@@ -22,30 +22,30 @@ public class MNPPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -3575124733108402223L;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JScrollPane dataTableSP = new JScrollPane();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JScrollPane dataTableSP = new JScrollPane();
     private JTable table;
-    private MNPTable st = new MNPTable();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton wbarvspRB = new StyledRadioButton();
-    private JRadioButton dPvsPRB = new StyledRadioButton();
-    private JRadioButton PvsTRB = new StyledRadioButton();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final MNPTable st = new MNPTable();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton wbarvspRB = new StyledRadioButton();
+    private final JRadioButton dPvsPRB = new StyledRadioButton();
+    private final JRadioButton PvsTRB = new StyledRadioButton();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
     private TitledBorder titledBorder1;
-    private ButtonGroup bg = new ButtonGroup();
-    private JPanel miscP = new JPanel();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private JButton addRowB = new JButton();
-    private JRadioButton GFvstRB = new StyledRadioButton();
-    private JRadioButton sixFreqRB = new JRadioButton();
-    private JRadioButton singleFreqRB = new JRadioButton();
-    private JButton removeRowB = new JButton();
-    private PopulusParameterField freqPPF = new PopulusParameterField();
-    private JRadioButton levModelRB = new JRadioButton();
-    private JRadioButton dempModelRB = new JRadioButton();
-    private ButtonGroup modelTypeBG = new ButtonGroup();
-    private ButtonGroup freqTypeBG = new ButtonGroup();
+    private final ButtonGroup bg = new ButtonGroup();
+    private final JPanel miscP = new JPanel();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final JButton addRowB = new JButton();
+    private final JRadioButton GFvstRB = new StyledRadioButton();
+    private final JRadioButton sixFreqRB = new JRadioButton();
+    private final JRadioButton singleFreqRB = new JRadioButton();
+    private final JButton removeRowB = new JButton();
+    private final PopulusParameterField freqPPF = new PopulusParameterField();
+    private final JRadioButton levModelRB = new JRadioButton();
+    private final JRadioButton dempModelRB = new JRadioButton();
+    private final ButtonGroup modelTypeBG = new ButtonGroup();
+    private final ButtonGroup freqTypeBG = new ButtonGroup();
 
     @Override
     public BasicPlot getPlotParamInfo() {

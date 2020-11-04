@@ -13,8 +13,8 @@ public class LVDeriv extends Derivative {
     private final double k;
     private final double r1, C;
     private final double a, Th;
-    private boolean isType2;
-    private boolean isDD;
+    private final boolean isType2;
+    private final boolean isDD;
 
     public LVDeriv(double r1, double c1, double r2, double c2,
                    boolean isDD, double k,

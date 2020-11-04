@@ -18,20 +18,29 @@ public class EOVParamInfo implements BasicPlot {
     public static final int hivsT = 0;//H, I vs t
     public static final int ebvsT = 1;//e, b vs t
     public static final int hiStar = 2;//H*, I*, H* + I* vs b
-    String mCapNvsT = res.getString("Infectious1");
-    int plotType;
+    final String mCapNvsT = res.getString("Infectious1");
+    final int plotType;
 
-    Integrator ig;
+    final Integrator ig;
     String mCapN2vsN1 = mCapNvsT;
-    String xCap = res.getString("Time_b_i_t_");
-    double x, y, z, time;
-    double c1, c2, c3, d, a0, a1, p;
-    String xCap2 = " Transmission Rate ( <b><i>b</i></b> )";
-    String yCap4 = res.getString("hstar_");
-    String yCap2 = res.getString("Susceptable_Host_S_") + ", " + res.getString("Infected_Host_I_");
-    String yCap3 = res.getString("Virulence_");
+    final String xCap = res.getString("Time_b_i_t_");
+    final double x;
+    final double y;
+    double z;
+    final double time;
+    final double c1;
+    final double c2;
+    final double c3;
+    final double d;
+    final double a0;
+    final double a1;
+    final double p;
+    final String xCap2 = " Transmission Rate ( <b><i>b</i></b> )";
+    final String yCap4 = res.getString("hstar_");
+    final String yCap2 = res.getString("Susceptable_Host_S_") + ", " + res.getString("Infected_Host_I_");
+    final String yCap3 = res.getString("Virulence_");
     String nCaption = res.getString("totHostDens");
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.eov.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.eov.Res");
 
 
     @Override

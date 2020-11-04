@@ -23,18 +23,18 @@ import java.util.Vector;
 
 public class HelpConfigPanel extends JPanel {
     private static final long serialVersionUID = 687468888728886427L;
-    private JTextField filePathField = new JTextField();
-    private JComboBox fileOrURLBox = new JComboBox();
-    private JComboBox languageBox = new JComboBox();
-    private JLabel fileStatusLabel = new JLabel("");
-    private JTextField txtCustomExecStr = new JTextField();
-    private String[] langStrings = new String[]{"English", "Spanish", "Portuguese"};
-    private JRadioButton rdbtnCustomCommand = new JRadioButton("Custom command");
-    private JRadioButton rdbtnJnlpApi = new JRadioButton("JNLP API");
-    private JRadioButton rdbtnDesktopApi = new JRadioButton("Desktop API");
-    private JButton btnTestButton = new JButton("Test");
-    private JTextArea testResultText = new JTextArea();
-    private JButton browseButton = new JButton("Browse...");
+    private final JTextField filePathField = new JTextField();
+    private final JComboBox fileOrURLBox = new JComboBox();
+    private final JComboBox languageBox = new JComboBox();
+    private final JLabel fileStatusLabel = new JLabel("");
+    private final JTextField txtCustomExecStr = new JTextField();
+    private final String[] langStrings = new String[]{"English", "Spanish", "Portuguese"};
+    private final JRadioButton rdbtnCustomCommand = new JRadioButton("Custom command");
+    private final JRadioButton rdbtnJnlpApi = new JRadioButton("JNLP API");
+    private final JRadioButton rdbtnDesktopApi = new JRadioButton("Desktop API");
+    private final JButton btnTestButton = new JButton("Test");
+    private final JTextArea testResultText = new JTextArea();
+    private final JButton browseButton = new JButton("Browse...");
 
     public HelpConfigPanel() {
         setLayout(new BorderLayout(0, 0));

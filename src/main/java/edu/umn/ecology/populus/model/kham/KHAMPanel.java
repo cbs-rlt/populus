@@ -20,26 +20,26 @@ public class KHAMPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -9042335499740405956L;
-    JPanel modParamP = new JPanel();
-    PopulusParameterField p2PPF = new PopulusParameterField();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton Dvst2p2RB = new StyledRadioButton();
-    private JRadioButton MVvsTRB = new StyledRadioButton();
-    private PopulusParameterField sPPF = new PopulusParameterField();
-    private PopulusParameterField rPPF = new PopulusParameterField();
+    final JPanel modParamP = new JPanel();
+    final PopulusParameterField p2PPF = new PopulusParameterField();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton Dvst2p2RB = new StyledRadioButton();
+    private final JRadioButton MVvsTRB = new StyledRadioButton();
+    private final PopulusParameterField sPPF = new PopulusParameterField();
+    private final PopulusParameterField rPPF = new PopulusParameterField();
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
-    private ButtonGroup plotTypeBG = new ButtonGroup();
-    private JRadioButton DvsTRB = new StyledRadioButton();
-    private JRadioButton t2vsp2RB = new StyledRadioButton();
-    private PopulusParameterField a1PPF = new PopulusParameterField();
-    private PopulusParameterField D0PPF = new PopulusParameterField();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField a2PPF = new PopulusParameterField();
-    private PopulusParameterField t2PPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
+    private final JRadioButton DvsTRB = new StyledRadioButton();
+    private final JRadioButton t2vsp2RB = new StyledRadioButton();
+    private final PopulusParameterField a1PPF = new PopulusParameterField();
+    private final PopulusParameterField D0PPF = new PopulusParameterField();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField a2PPF = new PopulusParameterField();
+    private final PopulusParameterField t2PPF = new PopulusParameterField();
 
     @Override
     public BasicPlot getPlotParamInfo() {

@@ -17,8 +17,8 @@ public class Plane3D {
     public static final int isXZ = 2;
     public static final int isYZ = 4;
 
-    Point3D[][] grid;
-    int last;
+    final Point3D[][] grid;
+    final int last;
     Matrix3D mat;
     Color planeColor;
     Color backgroundColor;

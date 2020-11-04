@@ -10,7 +10,7 @@ import edu.umn.ecology.populus.core.PopResourceBundle;
 import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class EOVModel extends BasicPlotModel {
-    static PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.eov.Res");
+    static final PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.eov.Res");
 
     @Override
     public Object getModelHelpText() {

@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.model.appd.APPD3DProtoParamInfo;
 import java.util.ResourceBundle;
 
 public class PP3DParamInfo extends APPD3DProtoParamInfo {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.pp.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.pp.Res");
 
     public PP3DParamInfo(double X0, double Y0, double P0, boolean switching, double[] l, double[] aX, double[] g, double[] a, double m, double s, int gens, boolean vsTime) {
         discProc = new PPProc(switching, l, aX, g, a, m, s);

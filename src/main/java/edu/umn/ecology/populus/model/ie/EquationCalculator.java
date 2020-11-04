@@ -43,10 +43,10 @@ public class EquationCalculator implements Serializable {
     private Stack[] s;
     private double[] initial, calculated;
     private Hashtable constants = null;
-    private boolean[] used;
+    private final boolean[] used;
     private int numEQ = 0;
     private boolean randomOK = true;
-    private static Random eqRand = new Random(System.currentTimeMillis());
+    private static final Random eqRand = new Random(System.currentTimeMillis());
 
     /**
      * See EquationCalculator(String[] equations) for a description of

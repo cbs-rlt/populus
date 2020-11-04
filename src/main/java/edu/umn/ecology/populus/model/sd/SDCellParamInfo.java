@@ -22,11 +22,20 @@ class SDCellParamInfo extends ParamInfo implements CellFunction {
     static final int kD = 2;
     static final int kDC = 3;
 
-    int size, type, border, runInterval, currentGeneration = 0;
-    boolean is8, intwself, isStable;
+    final int size;
+    final int type;
+    final int border;
+    int runInterval;
+    int currentGeneration = 0;
+    final boolean is8;
+    final boolean intwself;
+    boolean isStable;
     double[][][] freqs;
     double[][] olddata;
-    double p, t, s, r;
+    final double p;
+    final double t;
+    final double s;
+    final double r;
 
 
     public SDCellParamInfo(int type, int border, int inittype, double initfreq, int patchsize,

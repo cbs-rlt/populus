@@ -28,16 +28,16 @@ public class ModelInputFrame extends PopInternalFrame {
      *
      */
     private static final long serialVersionUID = 8093208225694956317L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
-    BorderLayout mainBorderLayout = new BorderLayout();
-    transient Model model;
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
+    final BorderLayout mainBorderLayout = new BorderLayout();
+    final transient Model model;
     int whichSelected = 1;
-    JButton outputButton = PopulusToolButton.createOutputIButton();
-    JButton closeButton = PopulusToolButton.createCloseButton();
-    JButton printButton = PopulusToolButton.createPrintButton();
-    JButton helpButton = PopulusToolButton.createHelpButton();
-    JButton saveButton = PopulusToolButton.createSaveButton();
-    JPanel jPanel1 = new JPanel();
+    final JButton outputButton = PopulusToolButton.createOutputIButton();
+    final JButton closeButton = PopulusToolButton.createCloseButton();
+    final JButton printButton = PopulusToolButton.createPrintButton();
+    final JButton helpButton = PopulusToolButton.createHelpButton();
+    final JButton saveButton = PopulusToolButton.createSaveButton();
+    final JPanel jPanel1 = new JPanel();
 
     public void jbInit() throws Exception {
         this.setResizable(true);

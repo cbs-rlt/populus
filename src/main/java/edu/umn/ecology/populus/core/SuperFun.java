@@ -22,13 +22,13 @@ public class SuperFun extends JDialog {
      *
      */
     private static final long serialVersionUID = 5823526538834551269L;
-    JPanel panel1 = new JPanel();
-    BorderLayout borderLayout1 = new BorderLayout();
-    RotatablePanel rp = new RotatablePanel();
-    JLabel label = new JLabel();
-    JPanel jPanel1 = new JPanel();
-    JButton jButton1 = new JButton();
-    JRadioButton jRadioButton1 = new JRadioButton() {
+    final JPanel panel1 = new JPanel();
+    final BorderLayout borderLayout1 = new BorderLayout();
+    final RotatablePanel rp = new RotatablePanel();
+    final JLabel label = new JLabel();
+    final JPanel jPanel1 = new JPanel();
+    final JButton jButton1 = new JButton();
+    final JRadioButton jRadioButton1 = new JRadioButton() {
         /**
          *
          */
@@ -39,9 +39,9 @@ public class SuperFun extends JDialog {
             super.paint(g);
         }
     };
-    JPanel jPanel2 = new JPanel();
-    BorderLayout borderLayout2 = new BorderLayout();
-    JLabel jLabel1 = new JLabel();
+    final JPanel jPanel2 = new JPanel();
+    final BorderLayout borderLayout2 = new BorderLayout();
+    final JLabel jLabel1 = new JLabel();
 
     public SuperFun(Frame owner, String title, boolean modal) {
         super(owner, title, modal);

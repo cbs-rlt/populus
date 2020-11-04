@@ -20,37 +20,37 @@ public class HHAPPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 6203698711272625912L;
-    JPanel modParamP = new JPanel();
-    PopulusParameterField tPPF = new PopulusParameterField();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton DeFinettiRB = new JRadioButton();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField genIntPPF = new PopulusParameterField();
+    final JPanel modParamP = new JPanel();
+    final PopulusParameterField tPPF = new PopulusParameterField();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton DeFinettiRB = new JRadioButton();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField genIntPPF = new PopulusParameterField();
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
-    private ButtonGroup plotTypeBG = new ButtonGroup();
-    private JRadioButton ThreeAlleleRB = new JRadioButton();
-    private JRadioButton TwoAlleleRB = new JRadioButton();
-    private PopulusParameterField mhPPF = new PopulusParameterField();
-    private PopulusParameterField phRPPF = new PopulusParameterField();
-    private PopulusParameterField mpPPF = new PopulusParameterField();
-    private PopulusParameterField sPPF = new PopulusParameterField();
-    private JPanel hostFreqsP = new JPanel();
-    private JPanel parasideFreqsP = new JPanel();
-    private TitledBorder titledBorder1 = new TitledBorder("");
-    private TitledBorder titledBorder4 = new TitledBorder("");
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
+    private final JRadioButton ThreeAlleleRB = new JRadioButton();
+    private final JRadioButton TwoAlleleRB = new JRadioButton();
+    private final PopulusParameterField mhPPF = new PopulusParameterField();
+    private final PopulusParameterField phRPPF = new PopulusParameterField();
+    private final PopulusParameterField mpPPF = new PopulusParameterField();
+    private final PopulusParameterField sPPF = new PopulusParameterField();
+    private final JPanel hostFreqsP = new JPanel();
+    private final JPanel parasideFreqsP = new JPanel();
+    private final TitledBorder titledBorder1 = new TitledBorder("");
+    private final TitledBorder titledBorder4 = new TitledBorder("");
     ;
-    private PopulusParameterField h3PPF = new PopulusParameterField();
-    private PopulusParameterField h2PPF = new PopulusParameterField();
-    private PopulusParameterField h1PPF = new PopulusParameterField();
-    private PopulusParameterField p3PPF = new PopulusParameterField();
-    private PopulusParameterField p2PPF = new PopulusParameterField();
-    private PopulusParameterField p1PPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout5 = new GridBagLayout();
+    private final PopulusParameterField h3PPF = new PopulusParameterField();
+    private final PopulusParameterField h2PPF = new PopulusParameterField();
+    private final PopulusParameterField h1PPF = new PopulusParameterField();
+    private final PopulusParameterField p3PPF = new PopulusParameterField();
+    private final PopulusParameterField p2PPF = new PopulusParameterField();
+    private final PopulusParameterField p1PPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout5 = new GridBagLayout();
 
     @Override
     public BasicPlot getPlotParamInfo() {

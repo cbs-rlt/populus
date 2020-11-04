@@ -23,7 +23,7 @@ class Token implements Serializable {
         kParameter(4),
         kInvalidTokenType(999);
 
-        private int value;
+        private final int value;
 
         private TokenEnum(int value) {
             this.value = value;

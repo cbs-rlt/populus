@@ -27,15 +27,15 @@ public class EigenSystem extends OutputPanel {
     double[][] eigenvectors;
     double[] re, ie;
     String[] text;
-    private JList eigenValueList = new JList();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JScrollPane eigenVectorPane = new JScrollPane();
-    private JPanel eigenVectorPanel = new JPanel();
-    private JLabel valueTL = new JLabel();
-    private JLabel valueL = new JLabel();
-    private JLabel vectorTL = new JLabel();
+    private final JList<String> eigenValueList = new JList();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JScrollPane eigenVectorPane = new JScrollPane();
+    private final JPanel eigenVectorPanel = new JPanel();
+    private final JLabel valueTL = new JLabel();
+    private final JLabel valueL = new JLabel();
+    private final JLabel vectorTL = new JLabel();
     private JLabel[] vector;
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
     private int dominantIndex;
 
     public EigenSystem(BasicPlotInfo bpi) {

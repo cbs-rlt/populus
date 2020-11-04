@@ -50,7 +50,7 @@ public class BasicPlotCanvas extends JPanel {
     //double bigMod;
     //double littleMod;
     //int pWidth, pHeight, pPTop, pPBottom, pPLeft, pPRight;
-    MacroLayout borderLayout1 = new MacroLayout();
+    final MacroLayout borderLayout1 = new MacroLayout();
 
     //BorderLayout borderLayout1 = new BorderLayout();
     /**

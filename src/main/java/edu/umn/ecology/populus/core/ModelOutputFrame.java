@@ -28,20 +28,20 @@ public class ModelOutputFrame extends PopInternalFrame {
      *
      */
     private static final long serialVersionUID = -5467950895300033315L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
-    BorderLayout mainBorderLayout = new BorderLayout();
-    JButton closeButton = PopulusToolButton.createCloseButton();
-    transient Model model;
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
+    final BorderLayout mainBorderLayout = new BorderLayout();
+    final JButton closeButton = PopulusToolButton.createCloseButton();
+    final transient Model model;
 
     //JButton optionsButton = PopulusToolButton.createPreferencesButton();//is there a reason to use PreferencesButton?
-    JButton optionsButton = PopulusToolButton.createOptionButton();
-    JButton iterateButton = PopulusToolButton.createIterateButton();
-    JButton switchButton = PopulusToolButton.createSwitchButton();
-    JButton helpButton = PopulusToolButton.createHelpButton();
-    JPopupMenu popupMenu1 = new JPopupMenu();
-    JButton saveButton = PopulusToolButton.createSaveButton();
-    JButton printButton = PopulusToolButton.createPrintButton();
-    JCheckBoxMenuItem jb = new JCheckBoxMenuItem("Don't Overlap Labels");
+    final JButton optionsButton = PopulusToolButton.createOptionButton();
+    final JButton iterateButton = PopulusToolButton.createIterateButton();
+    final JButton switchButton = PopulusToolButton.createSwitchButton();
+    final JButton helpButton = PopulusToolButton.createHelpButton();
+    final JPopupMenu popupMenu1 = new JPopupMenu();
+    final JButton saveButton = PopulusToolButton.createSaveButton();
+    final JButton printButton = PopulusToolButton.createPrintButton();
+    final JCheckBoxMenuItem jb = new JCheckBoxMenuItem("Don't Overlap Labels");
 
     public void jbInit() throws Exception {
         this.setIconifiable(true);

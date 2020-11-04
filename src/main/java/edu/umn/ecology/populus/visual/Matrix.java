@@ -21,17 +21,17 @@ public class Matrix extends JPanel {
      *
      */
     private static final long serialVersionUID = 2911537167756373181L;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JPanel matrixPanel = new JPanel();
-    JPanel topLabelsPanel = new JPanel();
-    Bracket leftBracket = new Bracket(SwingConstants.LEFT);
-    Bracket rightBracket = new Bracket(SwingConstants.RIGHT);
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JPanel matrixPanel = new JPanel();
+    final JPanel topLabelsPanel = new JPanel();
+    final Bracket leftBracket = new Bracket(SwingConstants.LEFT);
+    final Bracket rightBracket = new Bracket(SwingConstants.RIGHT);
     //GridLayout labelGridLayout = new GridLayout();
     JComponent[] topLabels = null;
     boolean showBrackets = true;
     private double[][] matrixData;
-    private GridBagLayout labelsGBL = new GridBagLayout();
-    private GridBagLayout matrixGBL = new GridBagLayout();
+    private final GridBagLayout labelsGBL = new GridBagLayout();
+    private final GridBagLayout matrixGBL = new GridBagLayout();
 
     public Matrix() {
         try {

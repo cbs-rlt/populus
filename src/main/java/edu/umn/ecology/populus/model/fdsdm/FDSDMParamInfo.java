@@ -16,7 +16,7 @@ public class FDSDMParamInfo implements BasicPlot {
 
     final double[] w;
     final int gens, plotType;
-    double freq;
+    final double freq;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

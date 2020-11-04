@@ -24,18 +24,18 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
      *
      */
     private static final long serialVersionUID = 3862996446929889045L;
-    Thread cellUpdater;
+    final Thread cellUpdater;
     CellPanel cellPanel;
     boolean isDone = false, isSuspended = false;
     CellFunction cf;
-    GridBagLayout gbl1 = new GridBagLayout();
+    final GridBagLayout gbl1 = new GridBagLayout();
     private long pauseTime = 100;
-    JToggleButton pauseButton = new JToggleButton();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JPanel jPanel1 = new JPanel();
-    JComboBox<String> typeChangeCB = new JComboBox();
-    GridBagLayout gridBagLayout2 = new GridBagLayout();
-    JLabel gensL = new JLabel();
+    final JToggleButton pauseButton = new JToggleButton();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JPanel jPanel1 = new JPanel();
+    final JComboBox<String> typeChangeCB = new JComboBox<String>();
+    final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    final JLabel gensL = new JLabel();
     int numRuns;
 
     public CellController(CellFunction evaluator) {
@@ -177,7 +177,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
         //Get value from backing model, not current (and unchecked) input
         double[][] v = null;
         try {
-            cf.changeType((String) typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
+            cf.changeType(typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
         } catch (Exception ex) {
             ;//TODO
         }

@@ -14,7 +14,7 @@ import edu.umn.ecology.populus.plot.ParamInfo;
 import edu.umn.ecology.populus.plot.coloredcells.CellController;
 
 public class NBSSModel extends Model {
-    NBSSPanel nbssp = new NBSSPanel();
+    final NBSSPanel nbssp = new NBSSPanel();
 
     public NBSSModel() {
         this.setModelInput(nbssp);

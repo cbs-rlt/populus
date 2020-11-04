@@ -18,16 +18,18 @@ class CellEditPanel extends JFrame {
      *
      */
     private static final long serialVersionUID = 3124911840409603685L;
-    JLabel curL = new JLabel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JLabel curvalL = new JLabel();
-    JLabel newL = new JLabel();
-    JLabel locL = new JLabel();
-    JLabel locvalL = new JLabel();
-    JTextField newvalTF = new JTextField();
-    String loc, curval;
-    CellPanel cp;
-    int r, c;
+    final JLabel curL = new JLabel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JLabel curvalL = new JLabel();
+    final JLabel newL = new JLabel();
+    final JLabel locL = new JLabel();
+    final JLabel locvalL = new JLabel();
+    final JTextField newvalTF = new JTextField();
+    final String loc;
+    final String curval;
+    final CellPanel cp;
+    final int r;
+    final int c;
 
     public CellEditPanel(CellPanel reference, int r, int c, double curVal) {
         setIconImage(Toolkit.getDefaultToolkit().getImage(DesktopWindow.class.getResource("picon.gif")));

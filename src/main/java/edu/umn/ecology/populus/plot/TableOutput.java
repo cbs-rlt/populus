@@ -23,13 +23,13 @@ public class TableOutput extends OutputPanel {
      */
     private static final long serialVersionUID = -1964107062861738333L;
     TableInterface info;
-    JScrollPane scrollPane = new JScrollPane();
-    JPanel jPanel1 = new JPanel();
-    BorderLayout borderLayout2 = new BorderLayout();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    Matrix matrixPanel = new Matrix();
-    JPanel jPanel2 = new JPanel();
-    GridLayout gridLayout1 = new GridLayout();
+    final JScrollPane scrollPane = new JScrollPane();
+    final JPanel jPanel1 = new JPanel();
+    final BorderLayout borderLayout2 = new BorderLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final Matrix matrixPanel = new Matrix();
+    final JPanel jPanel2 = new JPanel();
+    final GridLayout gridLayout1 = new GridLayout();
 
     /**
      * Call this when updating, not initializing (not for first time)

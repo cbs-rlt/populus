@@ -25,33 +25,33 @@ public class APPDTPRPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 6188249316261413210L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdtpr.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdtpr.Res");
     Border border1;
     TitledBorder titledBorder1;
-    PopulusParameterField aPF = new PopulusParameterField();
-    JPanel plotTypePanel = new JPanel();
-    JRadioButton npvstButton = new StyledRadioButton();
-    PopulusParameterField gensPF = new PopulusParameterField();
-    JPanel initialConditionsPanel = new JPanel();
+    final PopulusParameterField aPF = new PopulusParameterField();
+    final JPanel plotTypePanel = new JPanel();
+    final JRadioButton npvstButton = new StyledRadioButton();
+    final PopulusParameterField gensPF = new PopulusParameterField();
+    final JPanel initialConditionsPanel = new JPanel();
     Border border2;
     TitledBorder titledBorder4;
     TitledBorder titledBorder2;
-    SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+    final SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
     Border border3;
-    JPanel paramsPanel = new JPanel();
+    final JPanel paramsPanel = new JPanel();
     TitledBorder titledBorder3;
-    PopulusParameterField cPF = new PopulusParameterField();
-    PopulusParameterField n0PF = new PopulusParameterField();
-    PopulusParameterField rPF = new PopulusParameterField();
-    PopulusParameterField KPF = new PopulusParameterField();
+    final PopulusParameterField cPF = new PopulusParameterField();
+    final PopulusParameterField n0PF = new PopulusParameterField();
+    final PopulusParameterField rPF = new PopulusParameterField();
+    final PopulusParameterField KPF = new PopulusParameterField();
     Border border4;
     ButtonGroup bg = new ButtonGroup();
-    JRadioButton pvsnButton = new StyledRadioButton();
-    ButtonGroup plotGroup = new ButtonGroup();
-    SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    PopulusParameterField p0PF = new PopulusParameterField();
-    PopulusParameterField bPF = new PopulusParameterField();
+    final JRadioButton pvsnButton = new StyledRadioButton();
+    final ButtonGroup plotGroup = new ButtonGroup();
+    final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final PopulusParameterField p0PF = new PopulusParameterField();
+    final PopulusParameterField bPF = new PopulusParameterField();
 
     @Override
     public BasicPlot getPlotParamInfo() {

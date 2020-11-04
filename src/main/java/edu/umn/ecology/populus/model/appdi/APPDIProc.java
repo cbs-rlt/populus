@@ -9,8 +9,15 @@ package edu.umn.ecology.populus.model.appdi;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class APPDIProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double l, a, b, c, T_, Tw, m, Q;
-    private boolean linear;
+    private final double l;
+    private final double a;
+    private final double b;
+    private double c;
+    private final double T_;
+    private final double Tw;
+    private final double m;
+    private final double Q;
+    private final boolean linear;
 
     @Override
     public void v(long t, double[] y) {

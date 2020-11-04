@@ -19,8 +19,8 @@ public class ValuesToSave implements Serializable {
      *
      */
     private static final long serialVersionUID = 342451521705294304L;
-    int widthForCells;
-    int heightForCells;
+    final int widthForCells;
+    final int heightForCells;
 
     public ValuesToSave() {
         heightForCells = CellDefaults.kHeight;

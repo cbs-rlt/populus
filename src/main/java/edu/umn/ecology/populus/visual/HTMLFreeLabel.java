@@ -24,8 +24,8 @@ import java.util.StringTokenizer;
  */
 
 public class HTMLFreeLabel {
-    public static Color defaultColor = Color.black;
-    public static int defaultSize = 12;
+    public static final Color defaultColor = Color.black;
+    public static final int defaultSize = 12;
     private static final String BOLD_END = "/b";
     private static final String PLAIN_BEGIN = "p";
     private static final String PLAIN_END = "/p";

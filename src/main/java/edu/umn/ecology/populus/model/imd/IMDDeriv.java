@@ -12,8 +12,13 @@ public class IMDDeriv extends Derivative {
     public static final int kY = 1;
     public static final int kZ = 2;
     public static final int kX = 0;
-    private int type;
-    private double a, b, alpha, beta, nu, gamma;
+    private final int type;
+    private final double a;
+    private final double b;
+    private final double alpha;
+    private final double beta;
+    private final double nu;
+    private final double gamma;
 
     @Override
     public void doDerivative(double t, double[] N, double[] dN) {

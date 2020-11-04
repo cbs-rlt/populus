@@ -18,7 +18,7 @@ public class FDSESSParamInfo implements BasicPlot {
 
     final double[] e;
     final int invader, resident, gens;
-    double[] p = new double[4];
+    final double[] p = new double[4];
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

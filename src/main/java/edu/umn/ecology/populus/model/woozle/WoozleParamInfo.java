@@ -25,8 +25,8 @@ public class WoozleParamInfo extends ParamInfo {
      *
      */
     private static final long serialVersionUID = -476360965163357223L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
-    private int phraseLength;
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
+    private final int phraseLength;
     private char[] targetPhrase = {
             'M', 'E', 'T', 'H', 'I', 'N', 'K', 'S', ' ', 'I', 'T',
             ' ', 'I', 'S', ' ', 'L', 'I', 'K', 'E', ' ', 'A', ' ',
@@ -62,7 +62,7 @@ public class WoozleParamInfo extends ParamInfo {
      * index refers to generation,
      * value refers to matches.
      */
-    private int[] progress;
+    private final int[] progress;
     private boolean showEvolve;
     private int bestMatch = 0; //the best number of agreements so far
     private boolean crossoverEnabled = false;
@@ -74,11 +74,11 @@ public class WoozleParamInfo extends ParamInfo {
      */
     private char[] currentPhrase;
     private int broodSize;
-    private char[][] children;
-    private Random myRand = new Random();
-    private int[] childMatches; //An array of the children's "successes", or number of correct matches
+    private final char[][] children;
+    private final Random myRand = new Random();
+    private final int[] childMatches; //An array of the children's "successes", or number of correct matches
     private double crossoverRate;
-    private static char[] possibleChars = {
+    private static final char[] possibleChars = {
             ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
             'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
             'V', 'W', 'X', 'Y', 'Z'
@@ -204,8 +204,7 @@ public class WoozleParamInfo extends ParamInfo {
         for (int i = 0; i < numParents; i++) {
             parentMatches[i] = countMatches(currentPhrases[i], targetPhrase);
         }
-        String s = new String(currentPhrases[Routines.getMaxIndex(parentMatches)]);
-        return s;
+        return new String(currentPhrases[Routines.getMaxIndex(parentMatches)]);
     }
 
     /**

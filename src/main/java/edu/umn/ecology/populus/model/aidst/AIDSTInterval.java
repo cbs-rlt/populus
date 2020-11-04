@@ -22,12 +22,12 @@ public class AIDSTInterval extends JPanel {
      *
      */
     private static final long serialVersionUID = -9182934658867998210L;
-    private GridBagLayout gridBagLayout7 = new GridBagLayout();
-    private PopulusParameterField paramt2 = new PopulusParameterField();
-    private PopulusParameterField paramt1 = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout7 = new GridBagLayout();
+    private final PopulusParameterField paramt2 = new PopulusParameterField();
+    private final PopulusParameterField paramt1 = new PopulusParameterField();
     private Border border2;
     private TitledBorder titledBorder2;
-    String borderString = "Treatment Interval ";
+    final String borderString = "Treatment Interval ";
 
     public AIDSTInterval() {
         try {

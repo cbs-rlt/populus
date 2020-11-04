@@ -47,39 +47,39 @@ public class DesktopWindow extends JFrame implements ModelListener {
     private static final long serialVersionUID = -1729866105545816729L;
     public static DesktopWindow defaultWindow; //TODO - this should be private, and we'd have a public getter
     public static final String BACKGROUND_IMAGE_FILE = "Populus6.1SplashScreen.png";
-    BorderLayout borderLayout1 = new BorderLayout();
+    final BorderLayout borderLayout1 = new BorderLayout();
 
     /**
      * When <code>lock</code> is null, there is no lock.
      * Otherwise, the Model it points to is the locked model.
      */
     Model lock = null;
-    JPanel switcherPanel = new JPanel();
-    NewModelAction newModelAction = new NewModelAction(this);
-    JDesktopPane desktopPane = new JDesktopPane();
-    JLabel imagePanel = new JLabel();
-    JToolBar toolBar = new JToolBar();
+    final JPanel switcherPanel = new JPanel();
+    final NewModelAction newModelAction = new NewModelAction(this);
+    final JDesktopPane desktopPane = new JDesktopPane();
+    final JLabel imagePanel = new JLabel();
+    final JToolBar toolBar = new JToolBar();
     JButton newButton;
 
     //Action variables
-    ExitAction exitAction = new ExitAction(this);
+    final ExitAction exitAction = new ExitAction(this);
     JButton helpButton;
 
     //Core ("Useful") variables
-    Vector<Model> models = new Vector<>(1, 1);
+    final Vector<Model> models = new Vector<>(1, 1);
     JButton optionsButton;
     JPanel backgroundPanel = new JPanel();
     JButton quitButton;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
     ButtonGroup bg1 = new ButtonGroup();
     boolean imageBackgroundIsShowing = true;
 
     /*2 menu variables*/
-    JPopupMenu topLevelMenu = new JPopupMenu();
+    final JPopupMenu topLevelMenu = new JPopupMenu();
     ModelPacket[] mps = null;
 
-    CardLayout cardLayout1 = new CardLayout(0, 0);
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
+    final CardLayout cardLayout1 = new CardLayout(0, 0);
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
 
     public void jbInit() throws Exception, Error {
         defaultWindow = this;
@@ -395,7 +395,7 @@ class ExitAction extends AbstractAction {
      *
      */
     private static final long serialVersionUID = 1035661466491673963L;
-    DesktopWindow dw;
+    final DesktopWindow dw;
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -421,7 +421,7 @@ abstract class MenuAction extends AbstractAction {
 }
 
 class NewModelAction implements java.awt.event.ActionListener {
-    DesktopWindow adaptee;
+    final DesktopWindow adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {

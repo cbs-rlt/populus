@@ -14,7 +14,7 @@ public abstract class CellPalette {
     public int textFormat = kCenter;
     public Color[] colors;
     public Color textColor = Color.black;
-    public Color background = Color.black;
-    public Color outline = Color.white;
+    public final Color background = Color.black;
+    public final Color outline = Color.white;
 }
 

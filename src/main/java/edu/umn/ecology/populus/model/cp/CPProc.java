@@ -9,7 +9,11 @@ package edu.umn.ecology.populus.model.cp;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class CPProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double l, a1, a2, k1, k2;
+    private final double l;
+    private final double a1;
+    private final double a2;
+    private final double k1;
+    private final double k2;
 
     @Override
     public void v(long t, double[] y) {

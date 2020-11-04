@@ -10,7 +10,9 @@ import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class NBSSProc extends DiscreteProc
         implements edu.umn.ecology.populus.model.appd.Constants {
-    private double a, l, q;
+    private final double a;
+    private final double l;
+    private final double q;
 
 
     public NBSSProc(double a, double l, double q) {

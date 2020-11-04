@@ -15,12 +15,13 @@ public class SOTLParamInfo implements BasicPlot {
     protected static final int pvst = 1;
     protected static final int Dvst = 2;
     protected static final int WBARvst = 3;
-    private String yCap1 = "(" + ColorScheme.getColorString(0) + " <i>P<sub>AB</>, " + ColorScheme.getColorString(1) + "<i>P<sub>Ab</>, " + ColorScheme.getColorString(2) + "<i>P<sub>aB</>, " + ColorScheme.getColorString(3) + "<i>P<sub>ab </>) ";
-    private String yCap2 = ColorScheme.getColorString(0) + " <i>p<sub>A</>, " + ColorScheme.getColorString(1) + "<i>p<sub>B</>, " + ColorScheme.getColorString(2) + "<i>p<sub>a</>, " + ColorScheme.getColorString(3) + "<i>p<sub>b </>) ";
+    private final String yCap1 = "(" + ColorScheme.getColorString(0) + " <i>P<sub>AB</>, " + ColorScheme.getColorString(1) + "<i>P<sub>Ab</>, " + ColorScheme.getColorString(2) + "<i>P<sub>aB</>, " + ColorScheme.getColorString(3) + "<i>P<sub>ab </>) ";
+    private final String yCap2 = ColorScheme.getColorString(0) + " <i>p<sub>A</>, " + ColorScheme.getColorString(1) + "<i>p<sub>B</>, " + ColorScheme.getColorString(2) + "<i>p<sub>a</>, " + ColorScheme.getColorString(3) + "<i>p<sub>b </>) ";
     final double[][] wij;
     final double r;
-    int plotType, gens;
-    double[] x;
+    final int plotType;
+    final int gens;
+    final double[] x;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

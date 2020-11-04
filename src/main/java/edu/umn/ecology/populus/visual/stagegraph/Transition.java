@@ -22,7 +22,7 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
      *
      */
     private static final long serialVersionUID = 9207297956088366512L;
-    Color ac = Color.blue;
+    final Color ac = Color.blue;
     double x1 = 0;
     double y1 = 0;
     double ctrlx1 = 0;
@@ -37,13 +37,13 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
     boolean isActive = false;
     String name;
     String value;
-    Label l;
-    AffineTransform at = new AffineTransform();
+    final Label l;
+    final AffineTransform at = new AffineTransform();
     int shift = 30;
     final int type;
     boolean isStraight = true;
     boolean isCircular = false;
-    Stage[] connection = new Stage[2];
+    final Stage[] connection = new Stage[2];
     final int circle = 100;
     int timeIndex = 0;
 
@@ -397,7 +397,8 @@ class NullStroke implements Stroke {
  * you're outlining the outline of the shape.
  **/
 class DoubleStroke implements Stroke {
-    BasicStroke stroke1, stroke2;   // the two strokes to use
+    final BasicStroke stroke1;
+    final BasicStroke stroke2;   // the two strokes to use
 
     public DoubleStroke(float width1, float width2) {
         stroke1 = new BasicStroke(width1);  // Constructor arguments specify
@@ -423,7 +424,7 @@ class DoubleStroke implements Stroke {
  * its segments, and of GeneralPath to build up the stroked shape.
  **/
 class ControlPointsStroke implements Stroke {
-    float radius;  // how big the control point markers should be
+    final float radius;  // how big the control point markers should be
 
     public ControlPointsStroke(float radius) {
         this.radius = radius;
@@ -479,8 +480,8 @@ class ControlPointsStroke implements Stroke {
  * shape.  The result is a "sloppy" looking shape.
  **/
 class SloppyStroke implements Stroke {
-    BasicStroke stroke;
-    float sloppiness;
+    final BasicStroke stroke;
+    final float sloppiness;
 
     public SloppyStroke(float width, float sloppiness) {
         this.stroke = new BasicStroke(width); // Used to stroke modified shape

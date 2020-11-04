@@ -16,11 +16,10 @@ public class PDFHelpFileMgr {
     /**
      * Return location of help file outside of JAR, and copy the file out if needed
      *
-     * @param forceAlwaysUpdate - If true, it will always prompt the user to set up the file.
      * @return name of file
      */
-    private static void setupHelpFileFirst(boolean forceAlwaysUpdate) {
-        boolean shouldRun = forceAlwaysUpdate;
+    private static void setupHelpFileFirst() {
+        boolean shouldRun = false;
         if (!shouldRun && isLocalFile()) {
             File f = new File(getHelpFileAsFileName(false));
             if (null != f && (!f.canRead() || f.length() < 100)) {
@@ -37,7 +36,7 @@ public class PDFHelpFileMgr {
 
     private static String getHelpFileLocation(boolean setupIfNeeded) {
         if (setupIfNeeded)
-            setupHelpFileFirst(false);
+            setupHelpFileFirst();
         return PopPreferencesStorage.getHelpFileLocation();
     }
 

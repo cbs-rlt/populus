@@ -16,7 +16,7 @@ public final class ModelPacket implements java.io.Serializable {
      */
     private static final long serialVersionUID = -6919970167290967332L;
     private String modelName;
-    private Class<? extends Model> modelClass;
+    private final Class<? extends Model> modelClass;
 
     public Class<? extends Model> getModelClass() {
         return modelClass;

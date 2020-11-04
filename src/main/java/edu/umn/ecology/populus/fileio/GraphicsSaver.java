@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  */
 public class GraphicsSaver {
     public static Exception exception = null;
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.fileio.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.fileio.Res");
 
     public GraphicsSaver() {
 

@@ -20,8 +20,9 @@ public class PRMParamInfo implements BasicPlot {
     protected static final int ALSTAD = 4;
 
 
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.prm.Res");
-    private int plotType, modelType;
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.prm.Res");
+    private final int plotType;
+    private final int modelType;
     private double[][][] points2;
     private double[][][] points1;
     private double[][][] points3;
@@ -33,8 +34,26 @@ public class PRMParamInfo implements BasicPlot {
     private static final String yCap3 = res.getString("Three");
     private static final String yCap4 = res.getString("Four");
     //PRM
-    private double x, y, p, w, b1, b2, b3, g, r, L, k, h, mu, s1, s2, s3, f, a, time;
-    private int genNum;
+    private double x;
+    private double y;
+    private final double p;
+    private final double w;
+    private final double b1;
+    private final double b2;
+    private final double b3;
+    private final double g;
+    private final double r;
+    private final double L;
+    private final double k;
+    private final double h;
+    private final double mu;
+    private final double s1;
+    private final double s2;
+    private final double s3;
+    private final double f;
+    private final double a;
+    private final double time;
+    private final int genNum;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

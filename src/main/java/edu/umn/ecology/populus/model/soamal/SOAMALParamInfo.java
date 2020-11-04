@@ -17,9 +17,9 @@ public class SOAMALParamInfo implements BasicPlot {
 
     final int plotType, gens, dim;
     final double[][] wij;
-    double[] freq;
-    int[] plotted;
-    int[] used;
+    final double[] freq;
+    final int[] plotted;
+    final int[] used;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

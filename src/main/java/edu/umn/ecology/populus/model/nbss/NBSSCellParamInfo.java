@@ -18,14 +18,21 @@ class NBSSCellParamInfo extends ParamInfo implements CellFunction {
      */
     private static final long serialVersionUID = 8413398310438128499L;
     public Random myRand = new Random(System.currentTimeMillis());
-    NBSSProc v;
-    int s, type, border, runInterval, currentGeneration = 0;
+    final NBSSProc v;
+    final int s;
+    int type;
+    final int border;
+    final int runInterval;
+    int currentGeneration = 0;
     double[][][] oldData, popTotals, values;
-    int[] init = new int[2];
-    double mun, mup;
-    boolean intpops, diseach, se;
+    final int[] init = new int[2];
+    final double mun;
+    final double mup;
+    final boolean intpops;
+    final boolean diseach;
+    final boolean se;
 
-    String[] strings = {"0", "5", "10", "20", "40", "80", "160", "320", "640", "1280"};
+    final String[] strings = {"0", "5", "10", "20", "40", "80", "160", "320", "640", "1280"};
 
     NBSSCellParamInfo(int n0, int p0, double l, double a, double mun, double mup, double q,
                       int size, int border, int type, boolean intpops, boolean diseach,

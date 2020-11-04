@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
  * Age-Structured Population Growth
  */
 public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externalizable {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
     //birth pattern
     public static final int kCONTINUOUS = 1;
     public static final int kPREBREEDING = 2;
@@ -59,44 +59,44 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
     public static final int kProjection = 18;
 
     //Pure GUI (stateless)
-    private JPanel outputTypePanel = new JPanel();
+    private final JPanel outputTypePanel = new JPanel();
     private Border border1;
     private TitledBorder titledBorder1;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JPanel outputParameterPanel = new JPanel();
-    private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JPanel outputParameterPanel = new JPanel();
+    private final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
     private Border border2;
     private TitledBorder titledBorder2;
-    private JTabbedPane inputPane = new JTabbedPane();
-    private JScrollPane lxmxScroller = new JScrollPane();
-    private JPanel ageClassToViewPanel = new JPanel();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
-    private JPanel birthPanel = new JPanel();
-    private GridLayout gridLayout3 = new GridLayout();
-    private JPanel censusTypePanel = new JPanel();
+    private final JTabbedPane inputPane = new JTabbedPane();
+    private final JScrollPane lxmxScroller = new JScrollPane();
+    private final JPanel ageClassToViewPanel = new JPanel();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+    private final JPanel birthPanel = new JPanel();
+    private final GridLayout gridLayout3 = new GridLayout();
+    private final JPanel censusTypePanel = new JPanel();
     private Border border4;
     private TitledBorder titledBorder4;
     private Border border6;
     private TitledBorder titledBorder6;
-    private JPanel centerPanel = new JPanel();
-    private JLabel birthPulseSubLabel = new JLabel();
-    private JLabel birthFlowSubLabel = new JLabel();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private JPanel outputTypes2 = new JPanel();
-    private JPanel outputTypes1 = new JPanel();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
-    private GridLayout gridLayout1 = new GridLayout();
-    private GridLayout gridLayout2 = new GridLayout();
-    private JPanel l1P = new JPanel();
+    private final JPanel centerPanel = new JPanel();
+    private final JLabel birthPulseSubLabel = new JLabel();
+    private final JLabel birthFlowSubLabel = new JLabel();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final JPanel outputTypes2 = new JPanel();
+    private final JPanel outputTypes1 = new JPanel();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
+    private final GridLayout gridLayout1 = new GridLayout();
+    private final GridLayout gridLayout2 = new GridLayout();
+    private final JPanel l1P = new JPanel();
     private TitledBorder titledBorder7;
-    private GridBagLayout gridBagLayout5 = new GridBagLayout();
-    private GridBagLayout gridBagLayout6 = new GridBagLayout();
-    private JScrollPane projectionScroller = new JScrollPane();
-    private JScrollBar jsbh = new JScrollBar();
-    private JScrollBar jsbv = new JScrollBar();
+    private final GridBagLayout gridBagLayout5 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout6 = new GridBagLayout();
+    private final JScrollPane projectionScroller = new JScrollPane();
+    private final JScrollBar jsbh = new JScrollBar();
+    private final JScrollBar jsbv = new JScrollBar();
     //Note:  Table will contain
-    private JTable projectionTable = new JTable() {
+    private final JTable projectionTable = new JTable() {
         /**
          *
          */
@@ -109,48 +109,48 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
             return getPreferredSize();
         }
     };
-    private JTable lxmxTable = new JTable();
+    private final JTable lxmxTable = new JTable();
     private Component comp;
 
     //Buttons
-    private ButtonGroup bgOutputType = new ButtonGroup();
-    private StyledRadioButton lambdaVsTButton = new StyledRadioButton();
-    private StyledRadioButton sigmaNxVsTButton = new StyledRadioButton();
-    private StyledRadioButton nxsnxvstButton = new StyledRadioButton();
-    private StyledRadioButton vxvsxButton = new StyledRadioButton();
-    private StyledRadioButton tabularOutputButton = new StyledRadioButton();
-    private StyledRadioButton xvsnxsnxtButton = new StyledRadioButton();
-    private StyledRadioButton nxsnxvsxButton = new StyledRadioButton();
-    private StyledRadioButton xvsnxtButton = new StyledRadioButton();
-    private StyledRadioButton lxVsXButton = new StyledRadioButton();
-    private StyledRadioButton mxVsXButton = new StyledRadioButton();
+    private final ButtonGroup bgOutputType = new ButtonGroup();
+    private final StyledRadioButton lambdaVsTButton = new StyledRadioButton();
+    private final StyledRadioButton sigmaNxVsTButton = new StyledRadioButton();
+    private final StyledRadioButton nxsnxvstButton = new StyledRadioButton();
+    private final StyledRadioButton vxvsxButton = new StyledRadioButton();
+    private final StyledRadioButton tabularOutputButton = new StyledRadioButton();
+    private final StyledRadioButton xvsnxsnxtButton = new StyledRadioButton();
+    private final StyledRadioButton nxsnxvsxButton = new StyledRadioButton();
+    private final StyledRadioButton xvsnxtButton = new StyledRadioButton();
+    private final StyledRadioButton lxVsXButton = new StyledRadioButton();
+    private final StyledRadioButton mxVsXButton = new StyledRadioButton();
 
-    private ButtonGroup bgCensusType = new ButtonGroup();
-    private StyledRadioButton eigenButton = new StyledRadioButton();
-    private StyledRadioButton leslieMatrixButton = new StyledRadioButton();
+    private final ButtonGroup bgCensusType = new ButtonGroup();
+    private final StyledRadioButton eigenButton = new StyledRadioButton();
+    private final StyledRadioButton leslieMatrixButton = new StyledRadioButton();
 
-    private ButtonGroup bgBirthType = new ButtonGroup();
-    private JRadioButton birthFlowButton = new JRadioButton();
-    private JRadioButton birthPulseButton = new JRadioButton();
-    private JRadioButton preBreedingButton = new JRadioButton();
-    private JRadioButton postBreedingButton = new JRadioButton();
+    private final ButtonGroup bgBirthType = new ButtonGroup();
+    private final JRadioButton birthFlowButton = new JRadioButton();
+    private final JRadioButton birthPulseButton = new JRadioButton();
+    private final JRadioButton preBreedingButton = new JRadioButton();
+    private final JRadioButton postBreedingButton = new JRadioButton();
 
-    private JCheckBox viewAllAgesBox = new JCheckBox();
+    private final JCheckBox viewAllAgesBox = new JCheckBox();
 
 
     //Fields with state
     //Parameters
-    private PopulusParameterField numClassesPPF = new PopulusParameterField();
-    private PopulusParameterField ageClassToViewPPF = new PopulusParameterField();
-    private PopulusParameterField runTimePPF = new PopulusParameterField();
-    private PopulusParameterField initialL1PPF = new PopulusParameterField();
-    private transient StageStructuredPane sp = new StageStructuredPane(StageStructuredPane.kASPG);
+    private final PopulusParameterField numClassesPPF = new PopulusParameterField();
+    private final PopulusParameterField ageClassToViewPPF = new PopulusParameterField();
+    private final PopulusParameterField runTimePPF = new PopulusParameterField();
+    private final PopulusParameterField initialL1PPF = new PopulusParameterField();
+    private final transient StageStructuredPane sp = new StageStructuredPane(StageStructuredPane.kASPG);
     private int numStages;
-    private ASPGData data = new ASPGData();
-    private MatrixTableModel projectionModel = new MatrixTableModel(true);
+    private final ASPGData data = new ASPGData();
+    private final MatrixTableModel projectionModel = new MatrixTableModel(true);
 
     //Table Fields
-    private ASPGLxMxTableModel tableModel = new ASPGLxMxTableModel(4);
+    private final ASPGLxMxTableModel tableModel = new ASPGLxMxTableModel(4);
 
 
     public ASPGPanel() {
@@ -719,7 +719,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
 }
 
 class ASPGPanel_inputPane_changeAdapter implements javax.swing.event.ChangeListener {
-    private ASPGPanel adaptee;
+    private final ASPGPanel adaptee;
 
     ASPGPanel_inputPane_changeAdapter(ASPGPanel adaptee) {
         this.adaptee = adaptee;

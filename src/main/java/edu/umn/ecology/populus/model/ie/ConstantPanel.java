@@ -19,14 +19,14 @@ public class ConstantPanel extends JPanel {
      *
      */
     private static final long serialVersionUID = -5089773599005699384L;
-    JPanel conHolder = new JPanel();
-    JButton addConstant = new JButton();
-    JPanel addConstantPanel = new JPanel();
-    JTextField newConstantName = new JTextField();
-    SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+    final JPanel conHolder = new JPanel();
+    final JButton addConstant = new JButton();
+    final JPanel addConstantPanel = new JPanel();
+    final JTextField newConstantName = new JTextField();
+    final SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
     JScrollBar jsb;
-    JScrollPane scroller = new JScrollPane();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JScrollPane scroller = new JScrollPane();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
 
     public ConstantPanel(int numConstants) {
         this();
@@ -57,8 +57,8 @@ public class ConstantPanel extends JPanel {
       //*/
     }
 
-    public Hashtable getConstantHashTable() {
-        Hashtable h = new Hashtable();
+    public Hashtable<String, Double> getConstantHashTable() {
+        Hashtable<String, Double> h = new Hashtable();
         Constant c;
         for (int i = conHolder.getComponentCount() - 1; i >= 0; i--) {
             c = (Constant) conHolder.getComponent(i);

@@ -18,11 +18,12 @@ public class SGFACParamInfo implements BasicPlot {
 
     private final double s, g, h1, h2, p0 = 0.5;
     private final int plotType;
-    int numDemes = 50, gen = 0;
-    double[][] w = new double[numDemes][3];
+    final int numDemes = 50;
+    int gen = 0;
+    final double[][] w = new double[numDemes][3];
     ;
-    double[][] f = new double[numDemes][3];
-    double[] p;
+    final double[][] f = new double[numDemes][3];
+    final double[] p;
 
     String mcap1 = "Selection: Gradient";
     String mcap2 = "Selection: Heterozygote Advantage";

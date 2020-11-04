@@ -23,35 +23,37 @@ public class RCTParamInfo implements BasicPlot {
     public static final int rvst = 4;//R vs t
     public static final int nvsn = 5;//N vs N
     public static final int rvsr = 6;//R vs R
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rct.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rct.Res");
 
     RCTVariableIndex vars = null;
-    int plotType, modelType;
+    final int plotType;
+    final int modelType;
     //initial conditions
-    double[] initN, initR;
-    double time;
-    Integrator ig;
-    double[] m;
-    double[] r;
-    double[][] k;
+    final double[] initN;
+    final double[] initR;
+    final double time;
+    final Integrator ig;
+    final double[] m;
+    final double[] r;
+    final double[][] k;
 
-    String mCapNvsT = res.getString("Resource_competition");
-    String mCapNvsN = res.getString("Resource_competition");
-    String mCapRvsR = res.getString("Resource_competition");
-    String xCap = res.getString("Time_b_i_t_");
-    String yCap1 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>";
-    String yCap2 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "N<sub>2</>";
-    String yCap3 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "N<sub>2</>, <b><i>" + ColorScheme.getColorString(2) + "N<sub>3</>";
-    String yCap4 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>";
-    String yCap5 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "R<sub>2</>";
-    String yCap6 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "R<sub>2</>, <b><i>" + ColorScheme.getColorString(2) + "R<sub>3</>";
+    final String mCapNvsT = res.getString("Resource_competition");
+    final String mCapNvsN = res.getString("Resource_competition");
+    final String mCapRvsR = res.getString("Resource_competition");
+    final String xCap = res.getString("Time_b_i_t_");
+    final String yCap1 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>";
+    final String yCap2 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "N<sub>2</>";
+    final String yCap3 = "<b><i>" + ColorScheme.getColorString(0) + "N<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "N<sub>2</>, <b><i>" + ColorScheme.getColorString(2) + "N<sub>3</>";
+    final String yCap4 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>";
+    final String yCap5 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "R<sub>2</>";
+    final String yCap6 = "<b><i>" + ColorScheme.getColorString(0) + "R<sub>1</>, <b><i>" + ColorScheme.getColorString(1) + "R<sub>2</>, <b><i>" + ColorScheme.getColorString(2) + "R<sub>3</>";
 
-    String n1Caption = res.getString("CapSpecies1");
-    String n2Caption = res.getString("CapSpecies2");
-    String n3Caption = res.getString("CapSpecies3");
-    String r1Caption = res.getString("CapResource1");
-    String r2Caption = res.getString("CapResource2");
-    String r3Caption = res.getString("CapResource3");
+    final String n1Caption = res.getString("CapSpecies1");
+    final String n2Caption = res.getString("CapSpecies2");
+    final String n3Caption = res.getString("CapSpecies3");
+    final String r1Caption = res.getString("CapResource1");
+    final String r2Caption = res.getString("CapResource2");
+    final String r3Caption = res.getString("CapResource3");
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

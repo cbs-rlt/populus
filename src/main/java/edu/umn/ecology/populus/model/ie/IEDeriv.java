@@ -9,8 +9,8 @@ package edu.umn.ecology.populus.model.ie;
 import edu.umn.ecology.populus.math.Derivative;
 
 public class IEDeriv extends Derivative {
-    boolean[] plotted;
-    private EquationCalculator calc;
+    final boolean[] plotted;
+    private final EquationCalculator calc;
 
     @Override
     public void doDerivative(double time, double[] y, double[] dN) {

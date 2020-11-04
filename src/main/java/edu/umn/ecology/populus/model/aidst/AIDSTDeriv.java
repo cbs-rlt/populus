@@ -14,8 +14,17 @@ public class AIDSTDeriv extends Derivative {
     //public static final int kV = 2;
     public static final int kW = 2;
     public static final int kZ = 3;
-    private double lambda, d, beta, a, c, q, h, b, s, p;
-    private double[][] intervals;
+    private final double lambda;
+    private final double d;
+    private final double beta;
+    private final double a;
+    private final double c;
+    private final double q;
+    private final double h;
+    private final double b;
+    private final double s;
+    private final double p;
+    private final double[][] intervals;
     private double s_new;
 
 

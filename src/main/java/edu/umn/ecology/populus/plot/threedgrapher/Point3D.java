@@ -17,7 +17,7 @@ class Point3D {
     /**
      * To hold the transformation values
      */
-    public int[] tv = new int[3];
+    public final int[] tv = new int[3];
 
     Point3D(float x, float y, float z) {
         v[0] = x;

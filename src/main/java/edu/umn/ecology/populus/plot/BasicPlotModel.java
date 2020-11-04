@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * @version 5.2
  */
 public class BasicPlotModel extends Model {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.Res");
     //BasicPlotOutputPanel panel = null;
     BasicPlotInfo data = null;
 
@@ -113,7 +113,7 @@ public class BasicPlotModel extends Model {
             len = Math.min(data[i][0].length, data[i][1].length);
             for (j = 0; j < len; j++) {
                 for (int k = 0; k < data[i].length; k++) {
-                    osw.write(NumToStr(data[i][k][j], columnWidth, true));
+                    osw.write(NumToStr(data[i][k][j]));
                 }
                 osw.write("\n");
             }
@@ -214,9 +214,9 @@ public class BasicPlotModel extends Model {
         return sb.toString();
     }
 
-    private String NumToStr(double num, int len, boolean addComma) {
+    private String NumToStr(double num) {
         num = NumberMath.roundSig(num, 10, 0);
-        return NewStringLength(String.valueOf(num), len, ' ', true);
+        return NewStringLength(String.valueOf(num), 20, ' ', true);
     }
 
     //uncomment this method for an excel-type option

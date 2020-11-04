@@ -51,7 +51,7 @@ public class BasicPlotInfo extends ParamInfo
 {
     private static final long serialVersionUID = -882044708806321402L;
 
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.Res");
 
     public static final int k2D = 0;
     public static final int k3D = 1;
@@ -77,7 +77,7 @@ public class BasicPlotInfo extends ParamInfo
     public static final int FLETCHING = -3;
 
     /*these objects are for turning a plot line into an arrow*/
-    protected Vector<PlotTerminus> plotTerminusList = new Vector<>();
+    protected final Vector<PlotTerminus> plotTerminusList = new Vector<>();
 
     /*Line Styles*/
     public static final int CONTINUOUS = JCLineStyle.SOLID;        // 1
@@ -102,7 +102,7 @@ public class BasicPlotInfo extends ParamInfo
      * SymbolSize
      * SymbolColor
      */
-    private Vector<JCChartStyle> lines = new Vector<>();
+    private final Vector<JCChartStyle> lines = new Vector<>();
 
     /*these are a collection of flags*/
     private boolean hasIso = false;
@@ -123,7 +123,7 @@ public class BasicPlotInfo extends ParamInfo
     private String[] xCaption, yCaption, mainCaption;
     private String zCaption; //Still need to make Free MultiLine Label
     /* List of InnerLabel objects for inside labels */
-    private Vector<InnerLabel> innerLabels = new Vector<>();
+    private final Vector<InnerLabel> innerLabels = new Vector<>();
     private double xMin, xMax;
     private double yMin, yMax;
     private double zMin, zMax;
@@ -298,7 +298,7 @@ public class BasicPlotInfo extends ParamInfo
 
     public ChartTheme getJFreeChartTheme() {
         class PopChartTheme implements ChartTheme {
-            private BasicPlotInfo bpiRef;
+            private final BasicPlotInfo bpiRef;
 
             public PopChartTheme(BasicPlotInfo bpi) {
                 this.bpiRef = bpi;
@@ -1176,8 +1176,9 @@ public class BasicPlotInfo extends ParamInfo
 }
 
 class InnerLabel {
-    String caption;
-    double x, y;
+    final String caption;
+    final double x;
+    final double y;
 
     InnerLabel(String c, double x, double y) {
         this.caption = c;

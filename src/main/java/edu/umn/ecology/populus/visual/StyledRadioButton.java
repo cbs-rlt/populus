@@ -27,7 +27,7 @@ public class StyledRadioButton extends JRadioButton {
      */
     private static final long serialVersionUID = -4655637662372692469L;
     //Vector v;
-    private String formattedText = "";
+    private final String formattedText = "";
 
     public StyledRadioButton() {
 		/*

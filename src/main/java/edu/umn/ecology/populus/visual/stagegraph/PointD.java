@@ -13,8 +13,8 @@ package edu.umn.ecology.populus.visual.stagegraph;
  * @version 1.0
  */
 public class PointD {
-    public double x;
-    public double y;
+    public final double x;
+    public final double y;
 
     public PointD(double x, double y) {
         this.x = x;

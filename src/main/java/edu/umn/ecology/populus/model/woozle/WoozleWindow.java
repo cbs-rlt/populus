@@ -24,23 +24,23 @@ public class WoozleWindow extends OutputPanel implements Runnable, ActionListene
      *
      */
     private static final long serialVersionUID = -5036237593784372454L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
-    JToggleButton pauseButton = new JToggleButton();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JLabel generationLabel = new JLabel();
-    GridLayout gridLayout1 = new GridLayout();
-    JLabel currentPhraseLabel = new JLabel();
-    GridLayout gridLayout2 = new GridLayout();
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
+    final JToggleButton pauseButton = new JToggleButton();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JLabel generationLabel = new JLabel();
+    final GridLayout gridLayout1 = new GridLayout();
+    final JLabel currentPhraseLabel = new JLabel();
+    final GridLayout gridLayout2 = new GridLayout();
     WoozleParamInfo info;
     WoozleAGPanel aGPanel = new WoozleAGPanel();
-    JPanel currentPhrasePanel = new JPanel();
-    GridLayout gridLayout3 = new GridLayout();
-    JLabel currentPhrase = new JLabel();
-    JLabel targetPhrase = new JLabel();
-    JPanel targetPhrasePanel = new JPanel();
-    JPanel generationPanel = new JPanel();
-    JLabel generations = new JLabel();
-    JLabel targetPhraseLabel = new JLabel();
+    final JPanel currentPhrasePanel = new JPanel();
+    final GridLayout gridLayout3 = new GridLayout();
+    final JLabel currentPhrase = new JLabel();
+    final JLabel targetPhrase = new JLabel();
+    final JPanel targetPhrasePanel = new JPanel();
+    final JPanel generationPanel = new JPanel();
+    final JLabel generations = new JLabel();
+    final JLabel targetPhraseLabel = new JLabel();
     private int phase = RUNNING;
     private Thread runner;
     private boolean isSuspended = false;

@@ -25,36 +25,36 @@ public class CPPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -2681157339951149355L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.cp.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.cp.Res");
     Border border1;
     TitledBorder titledBorder1;
-    JPanel initialConditionsPanel = new JPanel();
-    JPanel jPanel1 = new JPanel();
-    JRadioButton vsButton = new StyledRadioButton();
-    PopulusParameterField sPF = new PopulusParameterField();
-    PopulusParameterField q0PF = new PopulusParameterField();
+    final JPanel initialConditionsPanel = new JPanel();
+    final JPanel jPanel1 = new JPanel();
+    final JRadioButton vsButton = new StyledRadioButton();
+    final PopulusParameterField sPF = new PopulusParameterField();
+    final PopulusParameterField q0PF = new PopulusParameterField();
     Border border2;
-    JPanel plotTypePanel = new JPanel();
+    final JPanel plotTypePanel = new JPanel();
     TitledBorder titledBorder2;
-    GridBagLayout gridBagLayout3 = new GridBagLayout();
+    final GridBagLayout gridBagLayout3 = new GridBagLayout();
     Border border3;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
     TitledBorder titledBorder3;
-    PopulusParameterField a1PF = new PopulusParameterField();
+    final PopulusParameterField a1PF = new PopulusParameterField();
     Border border4;
-    PopulusParameterField gensPF = new PopulusParameterField();
+    final PopulusParameterField gensPF = new PopulusParameterField();
     TitledBorder titledBorder4;
-    GridBagLayout gridBagLayout2 = new GridBagLayout();
-    PopulusParameterField p0PF = new PopulusParameterField();
-    JRadioButton npqvstButton = new StyledRadioButton();
-    PopulusParameterField k1PF = new PopulusParameterField();
-    PopulusParameterField k2PF = new PopulusParameterField();
-    PopulusParameterField lambdaPF = new PopulusParameterField();
-    PopulusParameterField n0PF = new PopulusParameterField();
+    final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    final PopulusParameterField p0PF = new PopulusParameterField();
+    final JRadioButton npqvstButton = new StyledRadioButton();
+    final PopulusParameterField k1PF = new PopulusParameterField();
+    final PopulusParameterField k2PF = new PopulusParameterField();
+    final PopulusParameterField lambdaPF = new PopulusParameterField();
+    final PopulusParameterField n0PF = new PopulusParameterField();
     ButtonGroup bg = new ButtonGroup();
-    SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
-    ButtonGroup vs = new ButtonGroup();
-    PopulusParameterField a2PF = new PopulusParameterField();
+    final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    final ButtonGroup vs = new ButtonGroup();
+    final PopulusParameterField a2PF = new PopulusParameterField();
 
     @Override
     public BasicPlot getPlotParamInfo() {

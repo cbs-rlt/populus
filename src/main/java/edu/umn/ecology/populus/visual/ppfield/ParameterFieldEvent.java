@@ -55,7 +55,7 @@ public class ParameterFieldEvent extends EventObject {
      * Programmatically, i.e. explicitly called through a function
      */
     public static final int PROG = 32;
-    private int type;
+    private final int type;
 
     /**
      * Returns the type. Other methods are preferred, so that

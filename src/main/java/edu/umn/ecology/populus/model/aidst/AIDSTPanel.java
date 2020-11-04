@@ -25,43 +25,45 @@ public class AIDSTPanel extends BasicPlotInputPanel {
     private static final long serialVersionUID = 3027326745486113765L;
     Border border1;
     TitledBorder titledBorder1;
-    StyledRadioButton xyvtButton = new StyledRadioButton();
+    final StyledRadioButton xyvtButton = new StyledRadioButton();
     Border border8;
-    ButtonGroup bg1 = new ButtonGroup(), bg2 = new ButtonGroup(), bg3 = new ButtonGroup();
-    JPanel plotTypePanel = new JPanel();
-    RunningTimePanel runningTimePanel1 = new RunningTimePanel();
-    StyledRadioButton xyvstButton = new StyledRadioButton();
+    ButtonGroup bg1 = new ButtonGroup();
+    final ButtonGroup bg2 = new ButtonGroup();
+    ButtonGroup bg3 = new ButtonGroup();
+    final JPanel plotTypePanel = new JPanel();
+    final RunningTimePanel runningTimePanel1 = new RunningTimePanel();
+    final StyledRadioButton xyvstButton = new StyledRadioButton();
     Border border9;
-    StyledRadioButton vvstButton = new StyledRadioButton();
+    final StyledRadioButton vvstButton = new StyledRadioButton();
     //StyledRadioButton xvsyvsvButton = new StyledRadioButton();
-    SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
-    PopulusParameterField paramB = new PopulusParameterField();
-    JPanel modelParametersPanel = new JPanel();
+    final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    final PopulusParameterField paramB = new PopulusParameterField();
+    final JPanel modelParametersPanel = new JPanel();
     Border border6;
     Border border2;
     Border border7;
     TitledBorder titledBorder2;
-    JPanel hostRatesPanel = new JPanel();
-    GridBagLayout gridBagLayout5 = new GridBagLayout();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    PopulusParameterField paramA = new PopulusParameterField();
-    PopulusParameterField parambeta = new PopulusParameterField();
-    PopulusParameterField paramC = new PopulusParameterField();
-    PopulusParameterField paramQ = new PopulusParameterField();
-    PopulusParameterField paramH = new PopulusParameterField();
-    PopulusParameterField paramS = new PopulusParameterField();
-    PopulusParameterField paramP = new PopulusParameterField();
-    GridBagLayout gridBagLayout3 = new GridBagLayout();
-    PopulusParameterField paramX = new PopulusParameterField();
+    final JPanel hostRatesPanel = new JPanel();
+    final GridBagLayout gridBagLayout5 = new GridBagLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final PopulusParameterField paramA = new PopulusParameterField();
+    final PopulusParameterField parambeta = new PopulusParameterField();
+    final PopulusParameterField paramC = new PopulusParameterField();
+    final PopulusParameterField paramQ = new PopulusParameterField();
+    final PopulusParameterField paramH = new PopulusParameterField();
+    final PopulusParameterField paramS = new PopulusParameterField();
+    final PopulusParameterField paramP = new PopulusParameterField();
+    final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    final PopulusParameterField paramX = new PopulusParameterField();
     TitledBorder titledBorder6;
 
-    PopulusParameterField paramY = new PopulusParameterField();
-    PopulusParameterField paramW = new PopulusParameterField();
-    PopulusParameterField paramZ = new PopulusParameterField();
+    final PopulusParameterField paramY = new PopulusParameterField();
+    final PopulusParameterField paramW = new PopulusParameterField();
+    final PopulusParameterField paramZ = new PopulusParameterField();
 
 
     TitledBorder titledBorder7;
-    JPanel hostDensitiesPanel = new JPanel();
+    final JPanel hostDensitiesPanel = new JPanel();
     Border border3;
     TitledBorder titledBorder3;
     TitledBorder titledBorder8;
@@ -74,10 +76,10 @@ public class AIDSTPanel extends BasicPlotInputPanel {
     TitledBorder titledBorder10;
     Border border11;
     TitledBorder titledBorder11;
-    GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private PopulusParameterField paramlambda = new PopulusParameterField();
-    private PopulusParameterField paramd = new PopulusParameterField();
-    private AIDSTIntervalArray intervalArray = new AIDSTIntervalArray();
+    final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final PopulusParameterField paramlambda = new PopulusParameterField();
+    private final PopulusParameterField paramd = new PopulusParameterField();
+    private final AIDSTIntervalArray intervalArray = new AIDSTIntervalArray();
 
     @Override
     public BasicPlot getPlotParamInfo() {

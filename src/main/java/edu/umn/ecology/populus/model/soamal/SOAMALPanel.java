@@ -26,23 +26,23 @@ public class SOAMALPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 8894866035921281037L;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JScrollPane dataTableSP = new JScrollPane();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JScrollPane dataTableSP = new JScrollPane();
     private JTable table;
-    private SOAMALTable st = new SOAMALTable();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton deFinettiRB = new JRadioButton();
-    private JRadioButton PvsPRB = new StyledRadioButton();
-    private JRadioButton PvsTRB = new StyledRadioButton();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final SOAMALTable st = new SOAMALTable();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton deFinettiRB = new JRadioButton();
+    private final JRadioButton PvsPRB = new StyledRadioButton();
+    private final JRadioButton PvsTRB = new StyledRadioButton();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
     private TitledBorder titledBorder1;
-    private ButtonGroup bg = new ButtonGroup();
-    private JPanel miscP = new JPanel();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private JButton addDimB = new JButton();
+    private final ButtonGroup bg = new ButtonGroup();
+    private final JPanel miscP = new JPanel();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final JButton addDimB = new JButton();
     //private JLabel tableLabel = new JLabel();
-    private HTMLLabel tableLabel = new HTMLLabel("Genotypic Fitness Matrix ( w<sub>xx</> )");
+    private final HTMLLabel tableLabel = new HTMLLabel("Genotypic Fitness Matrix ( w<sub>xx</> )");
 
     @Override
     public BasicPlot getPlotParamInfo() {

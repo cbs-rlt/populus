@@ -20,12 +20,12 @@ public class StageStructuredPane extends JPanel implements Serializable {
      */
     private static final long serialVersionUID = -7507895596014905385L;
     DrawingPane drawingPanel;
-    JPanel controlPanel = new JPanel();
-    JToggleButton addStage = new JToggleButton();
-    GridBagLayout gridBagLayout2 = new GridBagLayout();
-    JToggleButton addTransition = new JToggleButton();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JToggleButton removeElement = new JToggleButton();
+    final JPanel controlPanel = new JPanel();
+    final JToggleButton addStage = new JToggleButton();
+    final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    final JToggleButton addTransition = new JToggleButton();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JToggleButton removeElement = new JToggleButton();
 
     public static final int kSSPG = 0;
     public static final int kASPG = 1;
@@ -172,23 +172,23 @@ public class StageStructuredPane extends JPanel implements Serializable {
          */
         private static final long serialVersionUID = 2149768979816767741L;
         //Color background = Color.green;
-        Color background = new Color(170, 170, 170);
+        final Color background = new Color(170, 170, 170);
         JToggleButton stageTB = null;
         JToggleButton transTB = null;
         JToggleButton removeTB = null;
-        Vector<Stage> stages = new Vector<>(0);
-        Vector<Stage> queue = new Vector<>(0);
-        Vector<Transition> trans = new Vector<>(0);
+        final Vector<Stage> stages = new Vector<>(0);
+        final Vector<Stage> queue = new Vector<>(0);
+        final Vector<Transition> trans = new Vector<>(0);
         int prevx, prevy;
         Stage firstTrans = null;
         int timeIndex = 0;
-        int type;
+        final int type;
         boolean lastCanHaveStarts;
         int indexShift = 0;
         final double scale;
         StageShape currentSelection;
         public PopulusParameterField numPPF, whichPPF;
-        public javax.swing.Timer t = new javax.swing.Timer(50, this);
+        public final javax.swing.Timer t = new javax.swing.Timer(50, this);
         public String defaultTitle = "";
 
         public DrawingPane(int type, double scale) {

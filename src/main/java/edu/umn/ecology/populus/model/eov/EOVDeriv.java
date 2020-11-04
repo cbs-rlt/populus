@@ -11,8 +11,17 @@ import edu.umn.ecology.populus.math.Derivative;
 public class EOVDeriv extends Derivative {
     public static final int kX = 0;
     public static final int kY = 1;
-    private int type;
-    private double a, a0, a1, b, d, e, p, c1, c2, c3;
+    private final int type;
+    private double a;
+    private final double a0;
+    private final double a1;
+    private final double b;
+    private final double d;
+    private final double e;
+    private final double p;
+    private final double c1;
+    private final double c2;
+    private final double c3;
     private double bop, eop;
 
     @Override

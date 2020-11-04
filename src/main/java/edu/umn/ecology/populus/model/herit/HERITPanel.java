@@ -20,25 +20,25 @@ public class HERITPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -1308377477081368096L;
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton mcRB = new JRadioButton();
-    private JRadioButton theoreticalRB = new JRadioButton();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JPanel paramP = new JPanel();
-    private PopulusParameterField vePPF = new PopulusParameterField();
-    private PopulusParameterField G3PPF = new PopulusParameterField();
-    private PopulusParameterField G2PPF = new PopulusParameterField();
-    private PopulusParameterField G1PPF = new PopulusParameterField();
-    private PopulusParameterField pPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private PopulusParameterField popSizePPF = new PopulusParameterField();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton mcRB = new JRadioButton();
+    private final JRadioButton theoreticalRB = new JRadioButton();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JPanel paramP = new JPanel();
+    private final PopulusParameterField vePPF = new PopulusParameterField();
+    private final PopulusParameterField G3PPF = new PopulusParameterField();
+    private final PopulusParameterField G2PPF = new PopulusParameterField();
+    private final PopulusParameterField G1PPF = new PopulusParameterField();
+    private final PopulusParameterField pPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final PopulusParameterField popSizePPF = new PopulusParameterField();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private ButtonGroup plotTypeBG = new ButtonGroup();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
     long seed = System.currentTimeMillis();
-    private JCheckBox keepSeedCB = new JCheckBox();
+    private final JCheckBox keepSeedCB = new JCheckBox();
 
     @Override
     public BasicPlot getPlotParamInfo() {

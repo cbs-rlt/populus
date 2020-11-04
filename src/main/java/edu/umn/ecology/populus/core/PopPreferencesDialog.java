@@ -42,51 +42,51 @@ public class PopPreferencesDialog
      *
      */
     private static final long serialVersionUID = 8202655658889492472L;
-    JButton cellprefB = new JButton();
-    JPanel lookPanel = new JPanel();
-    JButton okButton = new JButton();
-    JLabel TriggerLabel = new JLabel();
-    JButton colorChooserButton = new JButton();
-    ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel(new String[]{
+    final JButton cellprefB = new JButton();
+    final JPanel lookPanel = new JPanel();
+    final JButton okButton = new JButton();
+    final JLabel TriggerLabel = new JLabel();
+    final JButton colorChooserButton = new JButton();
+    final ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel(new String[]{
             /* res.getString( "None" ), - Let's not allow blank buttons */
             res.getString("Images"),
             res.getString("Text"), res.getString("Text_and_Images")
     });
-    JButton defaultButton = PopulusToolButton.createRestoreDefaultButton();
-    JButton savePrefButton = PopulusToolButton.createSaveButton();
-    JButton loadPrefButton = PopulusToolButton.createOpenButton();
-    JButton aboutPopButton = PopulusToolButton.createAboutButton();
+    final JButton defaultButton = PopulusToolButton.createRestoreDefaultButton();
+    final JButton savePrefButton = PopulusToolButton.createSaveButton();
+    final JButton loadPrefButton = PopulusToolButton.createOpenButton();
+    final JButton aboutPopButton = PopulusToolButton.createAboutButton();
 
-    JButton cancelButton = new JButton();
+    final JButton cancelButton = new JButton();
     Border border1;
-    ComboBoxModel triggerComboBoxModel = new DefaultComboBoxModel(new String[]{
+    final ComboBoxModel triggerComboBoxModel = new DefaultComboBoxModel(new String[]{
             res.getString("None"), res.getString("Default"),
             res.getString("Always")
     });
-    JPanel okPanel = new JPanel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JPanel actionsPanel = new JPanel();
-    JComboBox triggerComboBox = new JComboBox();
-    GridBagLayout gridBagLayout2 = new GridBagLayout();
-    JPanel panel1 = new JPanel();
-    JLabel buttonTypeLabel = new JLabel();
-    JButton integratorPreferencesB = new JButton();
-    JComboBox buttonTypeComboBox = new JComboBox();
-    static ResourceBundle res = ResourceBundle.getBundle(
+    final JPanel okPanel = new JPanel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JPanel actionsPanel = new JPanel();
+    final JComboBox triggerComboBox = new JComboBox();
+    final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    final JPanel panel1 = new JPanel();
+    final JLabel buttonTypeLabel = new JLabel();
+    final JButton integratorPreferencesB = new JButton();
+    final JComboBox buttonTypeComboBox = new JComboBox();
+    static final ResourceBundle res = ResourceBundle.getBundle(
             "edu.umn.ecology.populus.core.Res");
-    GridBagLayout gridBagLayout3 = new GridBagLayout();
-    PopulusParameterField throttlePPF = new PopulusParameterField();
-    JTabbedPane tabbedPane = new JTabbedPane();
-    BorderLayout borderLayout1 = new BorderLayout();
-    JToolBar toolBar = new JToolBar();
-    JPanel extraPanel = new JPanel();
-    PopulusParameterField ownerBorderThickness = new PopulusParameterField();
-    GridBagLayout gridBagLayout4 = new GridBagLayout();
-    JTextField directory = new JTextField();
-    JLabel dirLabel = new JLabel();
-    GridBagLayout gridBagLayout5 = new GridBagLayout();
-    JButton trickButton = new JButton();
-    JComboBox terminusType = new JComboBox();
+    final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    final PopulusParameterField throttlePPF = new PopulusParameterField();
+    final JTabbedPane tabbedPane = new JTabbedPane();
+    final BorderLayout borderLayout1 = new BorderLayout();
+    final JToolBar toolBar = new JToolBar();
+    final JPanel extraPanel = new JPanel();
+    final PopulusParameterField ownerBorderThickness = new PopulusParameterField();
+    final GridBagLayout gridBagLayout4 = new GridBagLayout();
+    final JTextField directory = new JTextField();
+    final JLabel dirLabel = new JLabel();
+    final GridBagLayout gridBagLayout5 = new GridBagLayout();
+    final JButton trickButton = new JButton();
+    final JComboBox terminusType = new JComboBox();
     private final JButton btnHelp = new JButton("Help Settings");
     private final JPanel newFeaturesPanel = new JPanel();
     private final JCheckBox chckbxUseNewChart = new JCheckBox("Use JFreeChart library");
@@ -488,7 +488,7 @@ public class PopPreferencesDialog
 
 class PreferencesDialog_trickButton_actionAdapter
         implements ActionListener {
-    private PopPreferencesDialog adaptee;
+    private final PopPreferencesDialog adaptee;
 
     PreferencesDialog_trickButton_actionAdapter(PopPreferencesDialog adaptee) {
         this.adaptee = adaptee;
@@ -502,7 +502,7 @@ class PreferencesDialog_trickButton_actionAdapter
 
 class StandardDialog1_okButton_actionAdapter
         implements ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -516,7 +516,7 @@ class StandardDialog1_okButton_actionAdapter
 
 class StandardDialog1_cancelButton_actionAdapter
         implements ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -530,7 +530,7 @@ class StandardDialog1_cancelButton_actionAdapter
 
 class StandardDialog1_this_windowAdapter
         extends WindowAdapter {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void windowClosing(WindowEvent e) {
@@ -545,7 +545,7 @@ class StandardDialog1_this_windowAdapter
 class PreferencesDialog_defaultsButton_actionAdapter
         implements java.awt.event.
         ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -560,7 +560,7 @@ class PreferencesDialog_defaultsButton_actionAdapter
 class PreferencesDialog_loadButton_actionAdapter
         implements java.awt.event.
         ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -575,7 +575,7 @@ class PreferencesDialog_loadButton_actionAdapter
 class PreferencesDialog_saveButton_actionAdapter
         implements java.awt.event.
         ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -590,7 +590,7 @@ class PreferencesDialog_saveButton_actionAdapter
 class PreferencesDialog_integratorPreferencesB_actionAdapter
         implements java.
         awt.event.ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -606,7 +606,7 @@ class PreferencesDialog_integratorPreferencesB_actionAdapter
 class PreferencesDialog_cellprefB_actionAdapter
         implements java.awt.event.
         ActionListener {
-    PopPreferencesDialog adaptee;
+    final PopPreferencesDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {

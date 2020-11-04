@@ -12,11 +12,15 @@ import edu.umn.ecology.populus.plot.BasicPlot;
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 
 public class DASParamInfo implements BasicPlot {
-    static String xCap = "Generations ( <i>t</i> )";
-    static String yCap = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<i>p</> )";
-    static String mainCap = "Drift and Selection";
-    double time, ifreq, wAA, wAa, waa;
-    int N;
+    static final String xCap = "Generations ( <i>t</i> )";
+    static final String yCap = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<i>p</> )";
+    static final String mainCap = "Drift and Selection";
+    final double time;
+    final double ifreq;
+    final double wAA;
+    final double wAa;
+    final double waa;
+    final int N;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

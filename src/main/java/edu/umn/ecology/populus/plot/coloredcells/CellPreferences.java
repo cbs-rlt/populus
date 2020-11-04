@@ -18,14 +18,14 @@ public class CellPreferences extends JDialog {
      */
     private static final long serialVersionUID = 6730692691382426455L;
     static CellPreferences keepOnlyOneOpen;
-    JPanel mainPanel = new JPanel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JTextField wTF = new JTextField();
-    JTextField hTF = new JTextField();
-    JLabel wL = new JLabel();
-    JLabel hL = new JLabel();
-    JButton setB = new JButton();
-    JButton cancelB = new JButton();
+    final JPanel mainPanel = new JPanel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JTextField wTF = new JTextField();
+    final JTextField hTF = new JTextField();
+    final JLabel wL = new JLabel();
+    final JLabel hL = new JLabel();
+    final JButton setB = new JButton();
+    final JButton cancelB = new JButton();
 
     public static void bringUpCellPreferences() {
         if (CellPreferences.keepOnlyOneOpen == null) {
@@ -108,7 +108,7 @@ public class CellPreferences extends JDialog {
 }
 
 class CellPreferences_setB_actionAdapter implements java.awt.event.ActionListener {
-    CellPreferences adaptee;
+    final CellPreferences adaptee;
 
     CellPreferences_setB_actionAdapter(CellPreferences adaptee) {
         this.adaptee = adaptee;
@@ -121,7 +121,7 @@ class CellPreferences_setB_actionAdapter implements java.awt.event.ActionListene
 }
 
 class CellPreferences_cancelB_actionAdapter implements java.awt.event.ActionListener {
-    CellPreferences adaptee;
+    final CellPreferences adaptee;
 
     CellPreferences_cancelB_actionAdapter(CellPreferences adaptee) {
         this.adaptee = adaptee;

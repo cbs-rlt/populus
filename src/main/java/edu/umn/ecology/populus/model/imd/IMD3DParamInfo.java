@@ -16,17 +16,19 @@ import java.util.ResourceBundle;
 public class IMD3DParamInfo extends APPD3DProtoParamInfo {
     public static final int NvsT = 1;
     public static final int NvsN = 2;
-    protected double time;
-    protected double x, y, z;
+    protected final double time;
+    protected final double x;
+    protected final double y;
+    protected final double z;
     protected DiscreteProc discProc = null;
     protected String xCaption = null;
     protected String yCaption = null;
-    protected int numVars;
+    protected final int numVars;
     protected int plotType = 0;
     protected double[] initialConditions = null;
     protected String mainCaption = null;
     protected String zCaption = null;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
     Integrator ig = null;
 
     @Override

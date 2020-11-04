@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class APPDTPRParamInfo extends APPDProtoParamInfo {
     protected int modelType = 1;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdtpr.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdtpr.Res");
 
     public APPDTPRParamInfo(double n0, double p0, double K, double r, double a, double c, double b, int gens, boolean vsTime) {
         discProc = new APPDTPRProc(K, r, a, c, b);

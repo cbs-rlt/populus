@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.plot.BasicPlotModel;
 import java.util.ResourceBundle;
 
 public class CPModel extends BasicPlotModel {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.cp.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.cp.Res");
 
     @Override
     public String getThisModelInputName() {

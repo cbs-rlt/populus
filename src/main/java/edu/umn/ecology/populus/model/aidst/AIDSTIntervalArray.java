@@ -28,18 +28,18 @@ public class AIDSTIntervalArray extends JPanel {
     private static final long serialVersionUID = -3245040664068263100L;
     private Border border1;
     private TitledBorder titledBorder1;
-    private JScrollPane scrollPane = new JScrollPane();
-    private JButton delButton = new JButton();
-    private JPanel mainPanel = new JPanel();
-    private JPanel intervalsPane = new JPanel();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JButton addButton = new JButton();
-    private Stack<AIDSTInterval> intervals = new Stack<>();
+    private final JScrollPane scrollPane = new JScrollPane();
+    private final JButton delButton = new JButton();
+    private final JPanel mainPanel = new JPanel();
+    private final JPanel intervalsPane = new JPanel();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JButton addButton = new JButton();
+    private final Stack<AIDSTInterval> intervals = new Stack<>();
     private int enabledIntervals = 0;
     public static final int kMaxIntervals = 3;
     public static final int kMinIntervals = 0;
-    private GridLayout gridLayout2 = new GridLayout();
-    private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    private final GridLayout gridLayout2 = new GridLayout();
+    private final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
 
     public AIDSTIntervalArray() {
         try {

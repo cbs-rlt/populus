@@ -24,7 +24,7 @@ public class HTMLSubLabel extends JLabel implements Serializable {
     private static final long serialVersionUID = -8870358049640670979L;
     public static final float SCRIPT_SHRINKAGE = 0.8f;
     private int supLevel = 0;
-    private Font defaultFont;
+    private final Font defaultFont;
     private boolean bar = false;
     private boolean isSpecial = false;
 

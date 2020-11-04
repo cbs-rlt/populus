@@ -17,9 +17,13 @@ public class SAMParamInfo implements BasicPlot {
     public static final int GenovsT = 1;
     public static final int dPvsP = 2;
     public static final int WBar = 3;
-    private double s, h, mu, qhat;
-    private int gens, plotType;
-    private double[] freqs;
+    private final double s;
+    private final double h;
+    private final double mu;
+    private double qhat;
+    private final int gens;
+    private final int plotType;
+    private final double[] freqs;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

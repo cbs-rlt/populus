@@ -20,36 +20,36 @@ public class SOTLPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -3563042864719360505L;
-    JPanel wPanel = new JPanel();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton WBARvstRB = new StyledRadioButton();
-    private JRadioButton DvstRB = new StyledRadioButton();
-    private JRadioButton pvstRB = new StyledRadioButton();
-    private JRadioButton PvstRB = new StyledRadioButton();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JPanel paramP = new JPanel();
-    private PopulusParameterField RPPF = new PopulusParameterField();
-    private PopulusParameterField PabPPF = new PopulusParameterField();
-    private PopulusParameterField PaBPPF = new PopulusParameterField();
-    private PopulusParameterField PAbPPF = new PopulusParameterField();
-    private PopulusParameterField PABPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField waabbPPF = new PopulusParameterField();
-    private PopulusParameterField waaBbPPF = new PopulusParameterField();
-    private PopulusParameterField waaBBPPF = new PopulusParameterField();
-    private PopulusParameterField wAabbPPF = new PopulusParameterField();
-    private PopulusParameterField wAaBbPPF = new PopulusParameterField();
-    private PopulusParameterField wAaBBPPF = new PopulusParameterField();
-    private PopulusParameterField wAAbbPPF = new PopulusParameterField();
-    private PopulusParameterField wAABbPPF = new PopulusParameterField();
-    private PopulusParameterField wAABBPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
+    final JPanel wPanel = new JPanel();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton WBARvstRB = new StyledRadioButton();
+    private final JRadioButton DvstRB = new StyledRadioButton();
+    private final JRadioButton pvstRB = new StyledRadioButton();
+    private final JRadioButton PvstRB = new StyledRadioButton();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JPanel paramP = new JPanel();
+    private final PopulusParameterField RPPF = new PopulusParameterField();
+    private final PopulusParameterField PabPPF = new PopulusParameterField();
+    private final PopulusParameterField PaBPPF = new PopulusParameterField();
+    private final PopulusParameterField PAbPPF = new PopulusParameterField();
+    private final PopulusParameterField PABPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField waabbPPF = new PopulusParameterField();
+    private final PopulusParameterField waaBbPPF = new PopulusParameterField();
+    private final PopulusParameterField waaBBPPF = new PopulusParameterField();
+    private final PopulusParameterField wAabbPPF = new PopulusParameterField();
+    private final PopulusParameterField wAaBbPPF = new PopulusParameterField();
+    private final PopulusParameterField wAaBBPPF = new PopulusParameterField();
+    private final PopulusParameterField wAAbbPPF = new PopulusParameterField();
+    private final PopulusParameterField wAABbPPF = new PopulusParameterField();
+    private final PopulusParameterField wAABBPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private ButtonGroup plotTypeBG = new ButtonGroup();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
 
     @Override
     public BasicPlot getPlotParamInfo() {

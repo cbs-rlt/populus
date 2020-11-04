@@ -20,32 +20,32 @@ public class DSOQCPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 2759769583551935323L;
-    JPanel wPanel = new JPanel();
-    private JPanel plotTypeP = new JPanel();
-    private JRadioButton MPvsTRB = new StyledRadioButton();
-    private JRadioButton IvsPRB = new JRadioButton();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JPanel paramP = new JPanel();
-    private PopulusParameterField repopsPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private PopulusParameterField gensIntervalPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout4 = new GridBagLayout();
+    final JPanel wPanel = new JPanel();
+    private final JPanel plotTypeP = new JPanel();
+    private final JRadioButton MPvsTRB = new StyledRadioButton();
+    private final JRadioButton IvsPRB = new JRadioButton();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JPanel paramP = new JPanel();
+    private final PopulusParameterField repopsPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final PopulusParameterField gensIntervalPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout4 = new GridBagLayout();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
     private TitledBorder titledBorder3;
-    private ButtonGroup plotTypeBG = new ButtonGroup();
-    private PopulusParameterField pPPF = new PopulusParameterField();
-    private PopulusParameterField VePPF = new PopulusParameterField();
-    private PopulusParameterField popsPPF = new PopulusParameterField();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
+    private final PopulusParameterField pPPF = new PopulusParameterField();
+    private final PopulusParameterField VePPF = new PopulusParameterField();
+    private final PopulusParameterField popsPPF = new PopulusParameterField();
     DSOQCParamInfo dPI = null;
     boolean isIterate = false;
     boolean doSwitch = false;
-    private PopulusParameterField GaaPPF = new PopulusParameterField();
-    private PopulusParameterField GAAPPF = new PopulusParameterField();
-    private JPanel genoValsP = new JPanel();
-    private PopulusParameterField GAaPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout5 = new GridBagLayout();
+    private final PopulusParameterField GaaPPF = new PopulusParameterField();
+    private final PopulusParameterField GAAPPF = new PopulusParameterField();
+    private final JPanel genoValsP = new JPanel();
+    private final PopulusParameterField GAaPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout5 = new GridBagLayout();
 
     @Override
     public BasicPlot getPlotParamInfo() {

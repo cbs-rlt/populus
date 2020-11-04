@@ -10,10 +10,10 @@ import java.io.Serializable;
 
 class LPGData implements Serializable {
     private static final long serialVersionUID = 8248674235327098587L;
-    public double r;
-    public double K;
-    public double N;
-    public double T;
+    public final double r;
+    public final double K;
+    public final double N;
+    public final double T;
 
     LPGData(double paramNO, double paramK, double paramR, double paramT) {
         this.N = paramNO;

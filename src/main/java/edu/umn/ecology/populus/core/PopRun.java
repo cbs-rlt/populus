@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PopRun {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
     boolean packFrame = false;
 
     /**

@@ -19,19 +19,19 @@ public class SOASLLPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -5796264770398871761L;
-    private JPanel fitnessesP = new JPanel();
-    private JPanel pP = new JPanel();
-    private PopulusParameterField wxYPPF = new PopulusParameterField();
-    private PopulusParameterField wXYPPF = new PopulusParameterField();
-    private PopulusParameterField wxxPPF = new PopulusParameterField();
-    private PopulusParameterField wXxPPF = new PopulusParameterField();
-    private PopulusParameterField wXXPPF = new PopulusParameterField();
-    private PopulusParameterField pMalePPF = new PopulusParameterField();
-    private PopulusParameterField pFemalePPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final JPanel fitnessesP = new JPanel();
+    private final JPanel pP = new JPanel();
+    private final PopulusParameterField wxYPPF = new PopulusParameterField();
+    private final PopulusParameterField wXYPPF = new PopulusParameterField();
+    private final PopulusParameterField wxxPPF = new PopulusParameterField();
+    private final PopulusParameterField wXxPPF = new PopulusParameterField();
+    private final PopulusParameterField wXXPPF = new PopulusParameterField();
+    private final PopulusParameterField pMalePPF = new PopulusParameterField();
+    private final PopulusParameterField pFemalePPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
 

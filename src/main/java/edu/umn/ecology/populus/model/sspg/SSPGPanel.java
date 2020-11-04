@@ -39,38 +39,38 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
     public static final int kEIGEN = 7;
 
     //Pure GUI
-    private transient JScrollPane projectionScroller = new JScrollPane();
-    private transient JScrollBar jsbh = new JScrollBar();
-    private transient JScrollBar jsbv = new JScrollBar();
+    private final transient JScrollPane projectionScroller = new JScrollPane();
+    private final transient JScrollBar jsbh = new JScrollBar();
+    private final transient JScrollBar jsbv = new JScrollBar();
     private transient Component comp;
-    private transient String defaultTitle = "";
-    private transient GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private transient JTabbedPane inputPane = new JTabbedPane();
-    private transient JPanel graphTypePanel = new JPanel();
-    private transient JPanel parametersPanel = new JPanel();
+    private final transient String defaultTitle = "";
+    private final transient GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final transient JTabbedPane inputPane = new JTabbedPane();
+    private final transient JPanel graphTypePanel = new JPanel();
+    private final transient JPanel parametersPanel = new JPanel();
     private transient TitledBorder titledBorder1;
     private transient TitledBorder titledBorder2;
-    private transient GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private transient GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final transient GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final transient GridBagLayout gridBagLayout3 = new GridBagLayout();
 
     //Radio Buttons - need to remember plot type.
-    private StyledRadioButton lambdavstRB = new StyledRadioButton();
-    private StyledRadioButton snxRB = new StyledRadioButton();
-    private StyledRadioButton nxsnxvstRB = new StyledRadioButton();
-    private StyledRadioButton nxsnxvsxRB = new StyledRadioButton();
-    private StyledRadioButton xvsnxsnxtRB = new StyledRadioButton();
-    private StyledRadioButton xvsnxtRB = new StyledRadioButton();
-    private StyledRadioButton taboutRB = new StyledRadioButton();
-    private StyledRadioButton eigenRB = new StyledRadioButton();
-    private ButtonGroup bg = new ButtonGroup();
+    private final StyledRadioButton lambdavstRB = new StyledRadioButton();
+    private final StyledRadioButton snxRB = new StyledRadioButton();
+    private final StyledRadioButton nxsnxvstRB = new StyledRadioButton();
+    private final StyledRadioButton nxsnxvsxRB = new StyledRadioButton();
+    private final StyledRadioButton xvsnxsnxtRB = new StyledRadioButton();
+    private final StyledRadioButton xvsnxtRB = new StyledRadioButton();
+    private final StyledRadioButton taboutRB = new StyledRadioButton();
+    private final StyledRadioButton eigenRB = new StyledRadioButton();
+    private final ButtonGroup bg = new ButtonGroup();
 
     //These parameters need to be saved.  Oh yes they do.
-    private PopulusParameterField numStagesPPF = new PopulusParameterField();
-    private PopulusParameterField intervalsPPF = new PopulusParameterField();
-    private PopulusParameterField whichStagePPF = new PopulusParameterField();
+    private final PopulusParameterField numStagesPPF = new PopulusParameterField();
+    private final PopulusParameterField intervalsPPF = new PopulusParameterField();
+    private final PopulusParameterField whichStagePPF = new PopulusParameterField();
     private transient StageStructuredPane sp = new StageStructuredPane(StageStructuredPane.kSSPG);
     private MatrixTableModel tableModel = new MatrixTableModel(false);
-    private JTable projectionTable = new JTable() {
+    private final JTable projectionTable = new JTable() {
         /**
          *
          */
@@ -95,18 +95,18 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
          {0,     0,    0,     0.023, 0.75,  0     }};
 	 */
 
-    double[][] initialMatrix = new double[][]{
+    final double[][] initialMatrix = new double[][]{
             {0, 0, 0, 0, 9},
             {0.75, 0, 0, 0, 0},
             {0.75, 0, 0, 3, 0},
             {0, 0.75, 0.75, 0, 0},
             {0, 0, 0, 0.75, 0}};
 
-    double[] initialPops = new double[]{
+    final double[] initialPops = new double[]{
             500, 0, 0, 0, 0
     };
 
-    String[] initialTitles = new String[]{
+    final String[] initialTitles = new String[]{
             defaultTitle, defaultTitle, defaultTitle, defaultTitle, defaultTitle
     };
 

@@ -20,7 +20,7 @@ public class PSParamInfo implements BasicPlot {
     final int loci;
     int gen = 0;
     final double migrationRate;
-    Population[] pops;
+    final Population[] pops;
     double freqAve;
     double[][] data;
     double[][] statistics;
@@ -30,7 +30,7 @@ public class PSParamInfo implements BasicPlot {
     public static final String maincap1 = "Population Structure: Demic Allele Frequencies";
     public static final String maincap2 = "Population Structure: Wright's <i>F</i>-Statistics";
     public static final String ycap1 = "Allelic Frequency (  <b><i>p</i> )";
-    public String ycap2 = ColorScheme.getColorString(0) + "F<sub><i>is</>, " + ColorScheme.getColorString(1) + "F<sub><i>st</>, and " + ColorScheme.getColorString(2) + "F<sub><i>it</>";
+    public final String ycap2 = ColorScheme.getColorString(0) + "F<sub><i>is</>, " + ColorScheme.getColorString(1) + "F<sub><i>st</>, and " + ColorScheme.getColorString(2) + "F<sub><i>it</>";
     public static final String xcap = "Generations (<b><i>t</>)";
 
     public void switchOutputs() {

@@ -35,18 +35,18 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class PopulusParameterField extends JPanel implements Externalizable {
-    NumberField numberField = new NumberField();
+    final NumberField numberField = new NumberField();
 
     //JLabel plainLabel; // = new JLabel();
-    HTMLLabel fancyLabel = new HTMLLabel();
-    JMenuItem setIncrementAmount = new JMenuItem();
-    UpDownArrowSet arrowButtonSet = new UpDownArrowSet();
-    JPopupMenu popupMenu = new JPopupMenu();
-    JMenuItem setToMaximumMenuItem = new JMenuItem();
-    JMenuItem setToMinimumMenuItem = new JMenuItem();
-    JMenuItem setToDefaultMenuItem = new JMenuItem();
-    JMenuItem aboutParameterMenuItem = new JMenuItem();
-    JMenuItem cancelMenuItem = new JMenuItem();
+    final HTMLLabel fancyLabel = new HTMLLabel();
+    final JMenuItem setIncrementAmount = new JMenuItem();
+    final UpDownArrowSet arrowButtonSet = new UpDownArrowSet();
+    final JPopupMenu popupMenu = new JPopupMenu();
+    final JMenuItem setToMaximumMenuItem = new JMenuItem();
+    final JMenuItem setToMinimumMenuItem = new JMenuItem();
+    final JMenuItem setToDefaultMenuItem = new JMenuItem();
+    final JMenuItem aboutParameterMenuItem = new JMenuItem();
+    final JMenuItem cancelMenuItem = new JMenuItem();
     private double defaultValue;
     private double minValue;
     private double maxValue;
@@ -68,7 +68,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     private String unicodeName;
     private boolean useHTML = true;
     private double maxAutoUpdateValue = 1000.0;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();//essentially unlimited to start
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();//essentially unlimited to start
 
     @Override
     public Dimension getMinimumSize() {

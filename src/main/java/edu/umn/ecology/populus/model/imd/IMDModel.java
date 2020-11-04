@@ -10,7 +10,7 @@ import edu.umn.ecology.populus.core.PopResourceBundle;
 import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class IMDModel extends BasicPlotModel {
-    static PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
+    static final PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
 
     @Override
     public Object getModelHelpText() {

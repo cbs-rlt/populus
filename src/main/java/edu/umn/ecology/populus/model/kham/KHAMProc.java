@@ -9,7 +9,10 @@ package edu.umn.ecology.populus.model.kham;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class KHAMProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double s, r, a1, a2;
+    private final double s;
+    private final double r;
+    private final double a1;
+    private final double a2;
     public static final int p2y = 0;
     public static final int t2y = 1;
     public static final int Dy = 2;

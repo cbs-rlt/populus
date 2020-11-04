@@ -9,7 +9,7 @@ package edu.umn.ecology.populus.model.ps;
 import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class PSModel extends BasicPlotModel {
-    PSPanel psp;
+    final PSPanel psp;
 
     @Override
     public Object getModelHelpText() {

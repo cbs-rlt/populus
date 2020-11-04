@@ -9,7 +9,11 @@ package edu.umn.ecology.populus.model.appdtpr;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class APPDTPRProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double K, r, a, c, b;
+    private final double K;
+    private final double r;
+    private final double a;
+    private final double c;
+    private final double b;
 
     @Override
     public void v(long t, double[] y) {

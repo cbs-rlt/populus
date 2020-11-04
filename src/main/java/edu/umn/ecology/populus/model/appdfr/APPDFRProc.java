@@ -9,8 +9,13 @@ package edu.umn.ecology.populus.model.appdfr;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class APPDFRProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double ap, lambda, c, t, th, b;
-    private int type; //Type 1-3
+    private final double ap;
+    private final double lambda;
+    private final double c;
+    private final double t;
+    private final double th;
+    private final double b;
+    private final int type; //Type 1-3
 
     @Override
     public void v(long time, double[] y) {

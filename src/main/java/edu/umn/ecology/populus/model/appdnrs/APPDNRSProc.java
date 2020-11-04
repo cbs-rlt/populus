@@ -9,8 +9,11 @@ package edu.umn.ecology.populus.model.appdnrs;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class APPDNRSProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double l, a, k, K_;
-    private boolean indep;
+    private final double l;
+    private final double a;
+    private final double k;
+    private final double K_;
+    private final boolean indep;
 
     @Override
     public void v(long t, double[] y) {

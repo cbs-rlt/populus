@@ -12,13 +12,13 @@ class DIGData implements Serializable {
     private static final long serialVersionUID = 2469088803649153178L;
 
     //In a collection of DIGData values, these three are assumed to be the same.
-    DIGPanel.GraphType selection;
-    double gensPF;
-    boolean isContinuous;
+    final DIGPanel.GraphType selection;
+    final double gensPF;
+    final boolean isContinuous;
 
-    double rPF;
-    double nOPF;
-    double lambdaPF;
+    final double rPF;
+    final double nOPF;
+    final double lambdaPF;
 
     DIGData(boolean a, DIGPanel.GraphType b, double c, double d, double e, double f) {
         isContinuous = a;

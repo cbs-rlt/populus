@@ -30,7 +30,7 @@ public class SpecialLineBorder extends LineBorder {
     public boolean upperLeft = false;
     public boolean lowerRight = false;
     public boolean lowerLeft = false;
-    public double fraction = 0.2;
+    public final double fraction = 0.2;
 
     public SpecialLineBorder(Color c) {
         super(c);

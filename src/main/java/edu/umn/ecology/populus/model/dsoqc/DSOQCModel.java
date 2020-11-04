@@ -9,7 +9,7 @@ package edu.umn.ecology.populus.model.dsoqc;
 import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class DSOQCModel extends BasicPlotModel {
-    DSOQCPanel dp;
+    final DSOQCPanel dp;
 
     @Override
     public Object getModelHelpText() {

@@ -18,7 +18,7 @@ public class IOUtility {
     public static Exception exception = null;
 
     static class ExtensionFileFilter implements java.io.FileFilter {
-        private String ext;
+        private final String ext;
 
         ExtensionFileFilter(String str) {
             this.ext = str;

@@ -34,7 +34,7 @@ import java.awt.print.PrinterJob;
  */
 
 public class PrintUtilities implements Printable {
-    private Component componentToBePrinted;
+    private final Component componentToBePrinted;
 
     public PrintUtilities(Component componentToBePrinted, Frame f) {
         this.componentToBePrinted = componentToBePrinted;

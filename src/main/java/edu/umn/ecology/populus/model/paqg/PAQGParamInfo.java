@@ -15,9 +15,11 @@ public class PAQGParamInfo implements BasicPlot {
     protected static final int h2vst = 1;
     protected static final int WBARvsP = 2;
     protected static final int WBARvst = 3;
-    int plotType, gens;
+    final int plotType;
+    final int gens;
     final double[] w;
-    double p, ve;
+    double p;
+    final double ve;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

@@ -58,7 +58,7 @@ public class HMSSParamInfo implements BasicPlot {
 
     final double a, b, e, m;
     final boolean isBell, isMono;
-    double[][] f = new double[2][3];
+    final double[][] f = new double[2][3];
     double[][] genotypicFrequencies = new double[2][(A | B | C) + 1];
     final int plotType, gens;
 

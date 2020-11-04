@@ -20,7 +20,7 @@ import java.util.Random;
  * @version 5.2
  */
 public class AIDSDeriv extends Derivative {
-    private int kMaxStrains;
+    private final int kMaxStrains;
     public static final double kTooSmall = 1e-15;
 
     public static final int kY = 0;
@@ -29,10 +29,21 @@ public class AIDSDeriv extends Derivative {
     public static final int kXi = 3;
     //after 1, evens will be for viruses and odds will be for strain-specific CD4+
 
-    private double vi0, u, aveR, rp, Q, K, d, kp, k, s, p, dt;
+    private final double vi0;
+    private final double u;
+    private final double aveR;
+    private final double rp;
+    private final double Q;
+    private final double K;
+    private final double d;
+    private final double kp;
+    private final double k;
+    private final double s;
+    private final double p;
+    private final double dt;
     private double v;
     double[] r = new double[1];
-    private Random rand;
+    private final Random rand;
     //this is so that the "max strains" is detected once
     public boolean maxStrains = false;
 
@@ -152,9 +163,8 @@ public class AIDSDeriv extends Derivative {
      * TODO: the lecture notes say "exponential distribution." does this do the same thing?
      */
     double getReplicateRate() {
-        double d = 2 * aveR * rand.nextDouble();
         //      edu.umn.ecology.populus.fileio.Logging.log("d is "+d);
-        return d;
+        return 2 * aveR * rand.nextDouble();
     }
 
     double[] addElement(double[] a, double e) {

@@ -9,9 +9,13 @@ package edu.umn.ecology.populus.model.pp;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class PPProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double[] l, aX, g, a;
-    private double m, s;
-    private boolean switching;
+    private final double[] l;
+    private double[] aX;
+    private final double[] g;
+    private final double[] a;
+    private final double m;
+    private final double s;
+    private final boolean switching;
     final private double[] kaX;
 
     @Override

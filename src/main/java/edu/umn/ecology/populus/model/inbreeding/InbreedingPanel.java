@@ -17,10 +17,10 @@ public class InbreedingPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = -9153822050325863983L;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    PopulusParameterField populationPPF = new PopulusParameterField();
-    PopulusParameterField frequencyPPF = new PopulusParameterField();
-    PopulusParameterField gensPPF = new PopulusParameterField();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final PopulusParameterField populationPPF = new PopulusParameterField();
+    final PopulusParameterField frequencyPPF = new PopulusParameterField();
+    final PopulusParameterField gensPPF = new PopulusParameterField();
 
     public InbreedingPanel() {
         try {

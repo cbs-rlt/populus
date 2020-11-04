@@ -42,16 +42,16 @@ public class RunningTimePanel extends JPanel implements Serializable {
      */
     private static final long serialVersionUID = -4226071707631879578L;
     public static final double STEADYSTATE = -1.3;
-    SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
-    PopulusParameterField paramTime = new PopulusParameterField();
-    JRadioButton steadyStateButton = new JRadioButton();
+    final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    final PopulusParameterField paramTime = new PopulusParameterField();
+    final JRadioButton steadyStateButton = new JRadioButton();
     Border border1;
     TitledBorder titledBorder1;
-    JRadioButton fixedTimeButton = new JRadioButton();
-    ButtonGroup bg = new ButtonGroup();
+    final JRadioButton fixedTimeButton = new JRadioButton();
+    final ButtonGroup bg = new ButtonGroup();
     private double incrementTime = 20.0;
     private double maxTime = 10000.0;
-    private double minTime = 1.0;
+    private final double minTime = 1.0;
     private double defaultTime = 100.0;
 
     public RunningTimePanel(double defaultTime, double maxTime, double incrementTime) {

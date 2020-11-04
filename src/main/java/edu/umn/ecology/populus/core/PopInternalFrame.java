@@ -17,7 +17,7 @@ public class PopInternalFrame extends JInternalFrame {
      *
      */
     private static final long serialVersionUID = 608794057839649107L;
-    protected JToolBar toolBar = new JToolBar();
+    protected final JToolBar toolBar = new JToolBar();
 
     @Override
     public void setVisible(boolean vis) {

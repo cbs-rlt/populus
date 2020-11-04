@@ -21,7 +21,7 @@ public class HERITParamInfo implements BasicPlot {
     final int popSize;
     double max;
     final double scale = 1.0 / 6.0;
-    Random rand;
+    final Random rand;
 
     BasicPlotInfo getTheoreticalData() {
         double a = (g1 - g3) / 2.0;
@@ -47,8 +47,7 @@ public class HERITParamInfo implements BasicPlot {
         points[1] = Routines.buildGaussianCurve(ave, ve, max * scale, max);
         points[2][0] = points[1][1];
         points[2][1] = points[1][0];
-        BasicPlotInfo bpi = new BasicPlotInfo(points, "Theoretical Heritability" + extra, " Parental Phenotype ", " Offspring Phenotype ");
-        return bpi;
+        return new BasicPlotInfo(points, "Theoretical Heritability" + extra, " Parental Phenotype ", " Offspring Phenotype ");
     }
 
     BasicPlotInfo getMonteCarloData() {

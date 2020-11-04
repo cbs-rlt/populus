@@ -95,7 +95,7 @@ public class HelpUtilities {
             if (null == results) {
                 results = new Vector<>();
             }
-            boolean retVal = execute(new String[]{command}, results, true);
+            boolean retVal = execute(new String[]{command}, results);
             Logging.log("execute results (" + retVal + "): ");
             for (String s : results) {
                 Logging.log(s);
@@ -112,12 +112,12 @@ public class HelpUtilities {
      * was modified though to store the result in the Vector.
      *
      */
-    private static boolean execute(String[] command, Vector<String> result, boolean printResults) {
+    private static boolean execute(String[] command, Vector<String> result) {
         try {
             // Print the output. Since we read until
             // there is no more input, this causes us
             // to wait until the process is completed
-            if (printResults) {
+            if (true) {
                 Logging.log("About to execute: " + Arrays.toString(command));
                 Process p;
                 if (1 == command.length) {

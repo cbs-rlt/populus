@@ -22,7 +22,7 @@ public class KHAMParamInfo implements BasicPlot {
     final double a1, a2, s, r;
     final double[] ic = new double[3];
     final int plotType, gens;
-    DiscreteProc dp;
+    final DiscreteProc dp;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

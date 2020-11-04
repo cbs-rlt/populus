@@ -20,23 +20,23 @@ public class SGFACPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 3113318822291660775L;
-    private JPanel fitnessesP = new JPanel();
-    private JPanel pP = new JPanel();
-    private PopulusParameterField sPPF = new PopulusParameterField();
-    private PopulusParameterField h2PPF = new PopulusParameterField();
-    private PopulusParameterField h1PPF = new PopulusParameterField();
-    private PopulusParameterField gPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final JPanel fitnessesP = new JPanel();
+    private final JPanel pP = new JPanel();
+    private final PopulusParameterField sPPF = new PopulusParameterField();
+    private final PopulusParameterField h2PPF = new PopulusParameterField();
+    private final PopulusParameterField h1PPF = new PopulusParameterField();
+    private final PopulusParameterField gPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
     private TitledBorder titledBorder1;
     private TitledBorder titledBorder2;
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private JRadioButton freqRB = new JRadioButton();
-    private JRadioButton locHetRB = new JRadioButton();
-    private JRadioButton hetAdRB = new JRadioButton();
-    private JRadioButton gradRB = new JRadioButton();
-    private ButtonGroup plotTypeBG = new ButtonGroup();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final JRadioButton freqRB = new JRadioButton();
+    private final JRadioButton locHetRB = new JRadioButton();
+    private final JRadioButton hetAdRB = new JRadioButton();
+    private final JRadioButton gradRB = new JRadioButton();
+    private final ButtonGroup plotTypeBG = new ButtonGroup();
     SGFACParamInfo pi = null;
     boolean isIterate = false;
 

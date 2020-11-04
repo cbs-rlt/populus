@@ -15,7 +15,7 @@ public class APPDIParamInfo extends APPDProtoParamInfo {
     public static final int DDGrowth = 1; //one of these supposed to be 0?
     public static final int DIGrowth = 1;
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdi.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdi.Res");
 
     public APPDIParamInfo(double n0, double p0, double l, double a, double b, double c, double T_, double Tw, double m, double Q, int gens, boolean linear, boolean vsTime) {
         discProc = new APPDIProc(linear, l, a, b, c, T_, Tw, m, Q);

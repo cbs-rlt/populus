@@ -17,14 +17,14 @@ public class Equation extends JPanel {
      *
      */
     private static final long serialVersionUID = -6600287433471621366L;
-    JCheckBox isPlottedCB = new JCheckBox();
-    JTextField equationTF = new JTextField();
-    HTMLLabel dNdT = new HTMLLabel();
-    HTMLLabel N0TF = new HTMLLabel();
+    final JCheckBox isPlottedCB = new JCheckBox();
+    final JTextField equationTF = new JTextField();
+    final HTMLLabel dNdT = new HTMLLabel();
+    final HTMLLabel N0TF = new HTMLLabel();
     int index;
-    JTextField initialValue = new JTextField();
-    JCheckBox isUsedCB = new JCheckBox();
-    FlowLayout flowLayout1 = new FlowLayout();
+    final JTextField initialValue = new JTextField();
+    final JCheckBox isUsedCB = new JCheckBox();
+    final FlowLayout flowLayout1 = new FlowLayout();
     String parameterName;
     boolean isDiscrete;
 

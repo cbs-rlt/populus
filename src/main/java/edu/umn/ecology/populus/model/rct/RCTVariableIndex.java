@@ -11,8 +11,8 @@ package edu.umn.ecology.populus.model.rct;
  */
 
 public class RCTVariableIndex {
-    private int numSpecies;
-    private int numResources;
+    private final int numSpecies;
+    private final int numResources;
 
     public RCTVariableIndex(int numSpecies, int numResources) {
         this.numSpecies = numSpecies;

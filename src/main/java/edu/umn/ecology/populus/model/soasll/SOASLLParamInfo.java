@@ -11,11 +11,17 @@ import edu.umn.ecology.populus.plot.BasicPlot;
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 
 public class SOASLLParamInfo implements BasicPlot {
-    private double wXX, wXx, wxx, wXY, wxY, pF, pM;
-    private int gens;
+    private final double wXX;
+    private final double wXx;
+    private final double wxx;
+    private final double wXY;
+    private final double wxY;
+    private double pF;
+    private double pM;
+    private final int gens;
     private static final String mCap = "Selection on a Sex-Linked Locus";
     private static final String xCap = "Generations (<b><i>t</>) ";
-    private String yCap = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<i>p<sub>m</>, " + ColorScheme.getColorString(1) + "<i>p<sub>f</> )    ";
+    private final String yCap = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<i>p<sub>m</>, " + ColorScheme.getColorString(1) + "<i>p<sub>f</> )    ";
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

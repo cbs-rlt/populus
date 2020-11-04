@@ -17,18 +17,18 @@ public class RenamePanel extends JDialog {
      *
      */
     private static final long serialVersionUID = -1265136327126112883L;
-    private JButton okB = new JButton();
-    private ConversionPanel[] cpA;
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private JButton cancelB = new JButton();
+    private final JButton okB = new JButton();
+    private final ConversionPanel[] cpA;
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JButton cancelB = new JButton();
     private boolean changeGood = false;
 
     class ConversionPanel extends JPanel {
         private static final long serialVersionUID = 4116449874201960586L;
-        private JLabel fromL = new JLabel();
-        private JLabel descL = new JLabel();
-        private JTextField toTF = new JTextField();
-        private GridBagLayout gbl = new GridBagLayout();
+        private final JLabel fromL = new JLabel();
+        private final JLabel descL = new JLabel();
+        private final JTextField toTF = new JTextField();
+        private final GridBagLayout gbl = new GridBagLayout();
 
         ConversionPanel(String from) {
             setLayout(gbl);

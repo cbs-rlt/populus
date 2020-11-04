@@ -28,7 +28,6 @@ public class LPuzzleModel1 extends LPuzzleModel {
             if (colors[i] == kColorList[2])
                 outerYellow = i;
         }
-        int winningPiece = (outerYellow + innerYellow) % 8;
-        return winningPiece;
+        return (outerYellow + innerYellow) % 8;
     }
 }

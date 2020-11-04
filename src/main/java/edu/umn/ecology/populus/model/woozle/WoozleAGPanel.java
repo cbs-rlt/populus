@@ -29,10 +29,10 @@ public class WoozleAGPanel extends JScrollPane {
     private static final long serialVersionUID = -4036338922218170237L;
     public static final int DEFAULT_INCREMENT = 1;
     int bestMatch = 0;
-    int mod;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
+    final int mod;
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
     MainPanel mainPanel;
-    static LineThroughMiddleBorder lineBorder = new LineThroughMiddleBorder();
+    static final LineThroughMiddleBorder lineBorder = new LineThroughMiddleBorder();
 
 
     public WoozleAGPanel() {
@@ -102,8 +102,8 @@ public class WoozleAGPanel extends JScrollPane {
          *
          */
         private static final long serialVersionUID = 5134266153816859136L;
-        JLabel genLabel = new JLabel(res.getString("Generation_"));
-        JLabel matchLabel = new JLabel(res.getString("Agreements_"));
+        final JLabel genLabel = new JLabel(res.getString("Generation_"));
+        final JLabel matchLabel = new JLabel(res.getString("Agreements_"));
 
         AGLabels() {
             super();

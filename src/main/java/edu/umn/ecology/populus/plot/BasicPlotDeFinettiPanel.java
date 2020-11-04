@@ -20,7 +20,7 @@ public class BasicPlotDeFinettiPanel extends OutputPanel {
      */
     private static final long serialVersionUID = -6099639899121220530L;
     DeFinettiGraph dfg;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
 
     public BasicPlotDeFinettiPanel(BasicPlotInfo info) {
         this();

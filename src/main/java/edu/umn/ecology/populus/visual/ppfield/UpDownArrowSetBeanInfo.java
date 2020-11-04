@@ -26,15 +26,14 @@ import java.beans.SimpleBeanInfo;
 
 public class UpDownArrowSetBeanInfo extends SimpleBeanInfo {
     String iconColor16x16Filename;
-    String iconColor32x32Filename = "updown.gif";
+    final String iconColor32x32Filename = "updown.gif";
     String iconMono16x16Filename;
     String iconMono32x32Filename;
     Class beanClass = UpDownArrowSet.class;
 
     @Override
     public PropertyDescriptor[] getPropertyDescriptors() {
-        PropertyDescriptor[] pds = new PropertyDescriptor[]{};
-        return pds;
+        return new PropertyDescriptor[]{};
     }
 
     @Override

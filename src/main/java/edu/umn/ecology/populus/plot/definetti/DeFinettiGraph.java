@@ -32,8 +32,11 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
     double sqrt3div2 = Math.sin(Math.PI * 40.0d / 180.0d);
     private int[][][] data;
     private double[][][] points;
-    double scale, minorLength = 0.02, majorLength = 0.1;
-    private int bottomSpace = 50, topSpace = 60;
+    double scale;
+    final double minorLength = 0.02;
+    final double majorLength = 0.1;
+    private final int bottomSpace = 50;
+    private final int topSpace = 60;
     double xstart, ystart;
     String mainCap = "", firstCap = "", secondCap = "", thirdCap = "";
     Font mainFont = new Font("Dialog", Font.PLAIN, 18);

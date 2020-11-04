@@ -12,10 +12,11 @@ import edu.umn.ecology.populus.plot.BasicPlotInfo;
 import java.util.Random;
 
 public class INTRADGSParamInfo implements BasicPlot {
-    double[] freqs;
+    final double[] freqs;
     final double b, s;
     final int N, gens, G, numGroups;
-    double n2, popFreq;
+    final double n2;
+    double popFreq;
     Random rand = new Random(System.currentTimeMillis());
 
 

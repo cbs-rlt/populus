@@ -40,34 +40,34 @@ public class AboutPopulusDialog extends JDialog {
      *
      */
     private static final long serialVersionUID = -3075187335844374818L;
-    JButton button1 = new JButton();
+    final JButton button1 = new JButton();
     Border border1;
-    JPanel jPanel1 = new JPanel();
-    JTextPane line3 = new JTextPane();
-    JLabel line1 = new JLabel();
-    JLabel line7 = new JLabel();
-    JPanel panel1 = new JPanel();
-    SimpleVFlowLayout verticalFlowLayout1 = new SimpleVFlowLayout();
-    JPanel urlPanel = new JPanel();
-    JPanel jPanel2 = new JPanel();
-    JLabel line8 = new JLabel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JLabel line6 = new JLabel();
+    final JPanel jPanel1 = new JPanel();
+    final JTextPane line3 = new JTextPane();
+    final JLabel line1 = new JLabel();
+    final JLabel line7 = new JLabel();
+    final JPanel panel1 = new JPanel();
+    final SimpleVFlowLayout verticalFlowLayout1 = new SimpleVFlowLayout();
+    final JPanel urlPanel = new JPanel();
+    final JPanel jPanel2 = new JPanel();
+    final JLabel line8 = new JLabel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JLabel line6 = new JLabel();
     ImageIcon populusImage;
-    JLabel line4 = new JLabel();
-    JLabel line13 = new JLabel();
-    JTextPane line2 = new JTextPane();
-    JLabel line12 = new JLabel();
+    final JLabel line4 = new JLabel();
+    final JLabel line13 = new JLabel();
+    final JTextPane line2 = new JTextPane();
+    final JLabel line12 = new JLabel();
     TitledBorder titledBorder1;
-    JLabel line11 = new JLabel();
-    JButton goB = new JButton();
-    JLabel line10 = new JLabel();
-    JLabel line9 = new JLabel();
-    JLabel line5 = new JLabel();
+    final JLabel line11 = new JLabel();
+    final JButton goB = new JButton();
+    final JLabel line10 = new JLabel();
+    final JLabel line9 = new JLabel();
+    final JLabel line5 = new JLabel();
     private final JPanel panel3rdParty = new JPanel();
     private final JTextPane txtpnDependsOnThe = new JTextPane();
     private final JPanel emailPanel = new JPanel();
-    private JButton emailButton = new JButton("Email");
+    private final JButton emailButton = new JButton("Email");
 
     public AboutPopulusDialog(JFrame frame, String title) {
         this(frame, title, false);
@@ -115,7 +115,6 @@ public class AboutPopulusDialog extends JDialog {
     static public boolean openURI(String uriString) {
         //TODO: Should switch on PopPreferences, like context help does.
         return openURIDesktop(uriString);
-        //return openURIJNLP( uriString );
     }
 
     /**
@@ -173,17 +172,17 @@ public class AboutPopulusDialog extends JDialog {
         openURI("https://www.cbs.umn.edu/populus/");
     }
 
-    boolean sendEmail(String emailAddress) {
+    boolean sendEmail() {
         try {
             Class<?> desktopClass = Class.forName("java.awt.Desktop");
             Method getDeskMeth = desktopClass.getMethod("getDesktop");
             Object desktop = getDeskMeth.invoke(null);
             Method openURI = desktopClass.getMethod("mail", java.net.URI.class);
-            java.net.URI uri = new java.net.URI("mailto:" + emailAddress);
+            java.net.URI uri = new java.net.URI("mailto:" + "populus@umn.edu");
             openURI.invoke(desktop, uri);
             return true;
         } catch (Exception e) {
-            Logging.log("Could not open email to " + emailAddress);
+            Logging.log("Could not open email to " + "populus@umn.edu");
             Logging.log(e);
             return false;
         }
@@ -294,7 +293,7 @@ public class AboutPopulusDialog extends JDialog {
         line3.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         emailPanel.add(line3, gbc_line3);
         line3.setText(" email: populus@umn.edu");
-        emailButton.addActionListener(arg0 -> sendEmail("populus@umn.edu"));
+        emailButton.addActionListener(arg0 -> sendEmail());
 
         emailButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
         emailButton.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -332,7 +331,7 @@ public class AboutPopulusDialog extends JDialog {
 }
 
 class AboutPopulusDialog_button1_actionAdapter implements ActionListener {
-    AboutPopulusDialog adaptee;
+    final AboutPopulusDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -345,7 +344,7 @@ class AboutPopulusDialog_button1_actionAdapter implements ActionListener {
 }
 
 class AboutPopulusDialog_this_windowAdapter extends WindowAdapter {
-    AboutPopulusDialog adaptee;
+    final AboutPopulusDialog adaptee;
 
     @Override
     public void windowClosing(WindowEvent e) {
@@ -358,7 +357,7 @@ class AboutPopulusDialog_this_windowAdapter extends WindowAdapter {
 }
 
 class AboutPopulusDialog_goB_actionAdapter implements java.awt.event.ActionListener {
-    AboutPopulusDialog adaptee;
+    final AboutPopulusDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {

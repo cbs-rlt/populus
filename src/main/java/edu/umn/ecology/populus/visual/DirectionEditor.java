@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * If it <em>doesn't</em> work, the worst thing that will happen will only affect developers.
  */
 public class DirectionEditor extends PropertyEditorSupport {
-    private ArrayList<Integer> values;
-    private ArrayList<String> names;
+    private final ArrayList<Integer> values;
+    private final ArrayList<String> names;
 
     @SuppressWarnings("serial")
     public DirectionEditor() {

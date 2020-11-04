@@ -15,7 +15,8 @@ public class HHAPParamInfo implements BasicPlot {
     public static final int Allele3 = 1;
     public static final int DeFin = 2;
 
-    double[] h, p;
+    final double[] h;
+    final double[] p;
     final double s, t, mh, mp, ph;
     final int gens, genInt, plotType;
 

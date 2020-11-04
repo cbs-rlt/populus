@@ -9,8 +9,14 @@ package edu.umn.ecology.populus.model.ihpi;
 import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class IHPIProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-    private double F_, I, a, k, theta, Th, Ip_;
-    private int type; //Type 1-4
+    private final double F_;
+    private final double I;
+    private final double a;
+    private final double k;
+    private final double theta;
+    private final double Th;
+    private final double Ip_;
+    private final int type; //Type 1-4
 
     @Override
     public void v(long time, double[] y) {

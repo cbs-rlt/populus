@@ -18,23 +18,23 @@ public class IntegratorPreferences extends JDialog {
      *
      */
     private static final long serialVersionUID = 959285401462290615L;
-    JPanel mainPanel = new JPanel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JTextField epsSetting = new JTextField();
-    JLabel jLabel4 = new JLabel();
-    JButton cancelB = new JButton();
-    JLabel jLabel1 = new JLabel();
-    JLabel jLabel2 = new JLabel();
-    JLabel jLabel3 = new JLabel();
-    JTextField maxPointsSetting = new JTextField();
-    JTextField ssMinDurSetting = new JTextField();
-    JTextField ssPrecisionSetting = new JTextField();
-    JButton setB = new JButton();
+    final JPanel mainPanel = new JPanel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JTextField epsSetting = new JTextField();
+    final JLabel jLabel4 = new JLabel();
+    final JButton cancelB = new JButton();
+    final JLabel jLabel1 = new JLabel();
+    final JLabel jLabel2 = new JLabel();
+    final JLabel jLabel3 = new JLabel();
+    final JTextField maxPointsSetting = new JTextField();
+    final JTextField ssMinDurSetting = new JTextField();
+    final JTextField ssPrecisionSetting = new JTextField();
+    final JButton setB = new JButton();
     static IntegratorPreferences keepOnlyOneOpen;
-    JTextField hSetting = new JTextField();
-    JLabel jLabel5 = new JLabel();
-    JComboBox intMethodCB = new JComboBox();
-    JLabel jLabel6 = new JLabel();
+    final JTextField hSetting = new JTextField();
+    final JLabel jLabel5 = new JLabel();
+    final JComboBox intMethodCB = new JComboBox();
+    final JLabel jLabel6 = new JLabel();
 
     public IntegratorPreferences(Frame frame, String title, boolean b) {
         super(frame, title, b);
@@ -160,7 +160,7 @@ public class IntegratorPreferences extends JDialog {
 }
 
 class IntegratorPreferences_setB_actionAdapter implements java.awt.event.ActionListener {
-    IntegratorPreferences adaptee;
+    final IntegratorPreferences adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -173,7 +173,7 @@ class IntegratorPreferences_setB_actionAdapter implements java.awt.event.ActionL
 }
 
 class IntegratorPreferences_cancelB_actionAdapter implements java.awt.event.ActionListener {
-    IntegratorPreferences adaptee;
+    final IntegratorPreferences adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {

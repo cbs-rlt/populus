@@ -22,16 +22,16 @@ public class ValueModifyFrame extends JDialog {
      *
      */
     private static final long serialVersionUID = -3663970312045684506L;
-    private JLabel nameL = new JLabel();
-    private JLabel valueL = new JLabel();
-    private JTextField valueTF = new JTextField();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final JLabel nameL = new JLabel();
+    private final JLabel valueL = new JLabel();
+    private final JTextField valueTF = new JTextField();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
     Label l;
-    private JTextField nameTF = new JTextField();
-    private JLabel nameConstL = new JLabel();
-    private JButton okB = new JButton();
-    private JLabel stageL = new JLabel();
-    private JTextField stageTF = new JTextField();
+    private final JTextField nameTF = new JTextField();
+    private final JLabel nameConstL = new JLabel();
+    private final JButton okB = new JButton();
+    private final JLabel stageL = new JLabel();
+    private final JTextField stageTF = new JTextField();
     int type;
 
     public ValueModifyFrame(JPanel reference, Label l, int type) {

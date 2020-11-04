@@ -18,8 +18,7 @@ public abstract class PPPlotInfo extends BasicPlotInfo {
     private static final long serialVersionUID = 4236948640811328005L;
 
     public BasicPlotInfo getBasicPlotInfo() {
-        BasicPlotInfo bp = null;
-        return bp;
+        return null;
     }
 
     public PPPlotInfo() {

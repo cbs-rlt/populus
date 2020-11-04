@@ -14,12 +14,13 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class InbreedingParamInfo implements BasicPlot {
-    static String xCap = "Generations";
-    static String yCap = "Inbreeding Coefficient ( " + ColorScheme.getColorString(0) + "F<sub>t</>, " + ColorScheme.getColorString(1) +
+    static final String xCap = "Generations";
+    static final String yCap = "Inbreeding Coefficient ( " + ColorScheme.getColorString(0) + "F<sub>t</>, " + ColorScheme.getColorString(1) +
             "F<sub>a</>, " + ColorScheme.getColorString(2) + "F<sub>f</> )";
-    static String mainCap = "Inbreeding Coefficient vs Time";
-    double time, ifreq;
-    int N;
+    static final String mainCap = "Inbreeding Coefficient vs Time";
+    final double time;
+    final double ifreq;
+    final int N;
 
     /**
      * this seed needs to be used in the random number generator for both getFa and getFf methods
@@ -30,7 +31,7 @@ public class InbreedingParamInfo implements BasicPlot {
      * both the getFa and getFf methods use the random number generator, and they need to produce
      * the same set of random numbers each. so the seed is set to be the same in each method.
      */
-    Random rand = new Random();
+    final Random rand = new Random();
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

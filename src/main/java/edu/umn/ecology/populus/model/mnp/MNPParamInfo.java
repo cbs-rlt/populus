@@ -114,8 +114,7 @@ public class MNPParamInfo implements BasicPlot {
         } else {
             mc = "Multiple-Niche Polymorphism: Levene";
         }
-        BasicPlotInfo bpi = new BasicPlotInfo(points, mc, xc, yc);
-        return bpi;
+        return new BasicPlotInfo(points, mc, xc, yc);
     }
 
     public MNPParamInfo(double[][] matrix, double[] freqs, boolean isDemp, int gens, int plotType) {

@@ -320,8 +320,8 @@ public final class NumberMath {
         edu.umn.ecology.populus.fileio.Logging.log("\n" + name + ": ");
         if (reverse) {
             for (double[] doubles : a) {
-                for (int j = 0; j < doubles.length; j++) {
-                    System.out.print(TextOutput.NumToStr(doubles[j], 20, 10, false));
+                for (double aDouble : doubles) {
+                    System.out.print(TextOutput.NumToStr(aDouble, 20, 10, false));
                 }
                 System.out.print("\n");
             }
@@ -339,8 +339,7 @@ public final class NumberMath {
     static void normalize(double[][] a) {
         double sum = 0;
         for (double[] doubles : a)
-            for (int j = 0; j < doubles.length; j++)
-                sum += doubles[j];
+            for (double aDouble : doubles) sum += aDouble;
         for (int i = 0; i < a.length; i++)
             for (int j = 0; j < a[i].length; j++)
                 a[i][j] /= sum;

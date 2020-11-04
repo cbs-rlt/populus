@@ -14,12 +14,14 @@ import edu.umn.ecology.populus.plot.BasicPlotInfo;
 public class AIDSBASIC3DParamInfo extends APPD3DProtoParamInfo {
     public static final int NvsT = 1;
     public static final int NvsN = 2;
-    protected double time;
-    protected double x, y, v;
+    protected final double time;
+    protected final double x;
+    protected final double y;
+    protected final double v;
     protected DiscreteProc discProc = null;
     protected String xCaption = null;
     protected String yCaption = null;
-    protected int numVars;
+    protected final int numVars;
     protected int plotType = 0;
     protected double[] initialConditions = null;
     protected String mainCaption = null;

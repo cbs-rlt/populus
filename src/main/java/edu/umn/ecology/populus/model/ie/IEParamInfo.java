@@ -179,7 +179,7 @@ public class IEParamInfo implements BasicPlot {
 }
 
 class IEDiscreteProc extends DiscreteProc {
-    private EquationCalculator calc;
+    private final EquationCalculator calc;
 
     public IEDiscreteProc(EquationCalculator ss) {
         calc = ss;

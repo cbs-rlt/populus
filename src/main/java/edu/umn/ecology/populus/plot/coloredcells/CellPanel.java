@@ -26,7 +26,7 @@ public class CellPanel extends JPanel {
     BufferedImage bi;
     int iw, ih;
     final int legH = 40;
-    Rectangle r = new Rectangle();
+    final Rectangle r = new Rectangle();
 
     CellPanel() {
         super();

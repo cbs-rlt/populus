@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.plot.BasicPlotModel;
 import java.util.ResourceBundle;
 
 public class APPDIModel extends BasicPlotModel {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdi.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdi.Res");
 
     @Override
     public String getThisModelInputName() {

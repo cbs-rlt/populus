@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
  * @version 5.2
  */
 public class LiveGraph implements ActionListener {
-    javax.swing.Timer t;
-    Stepper graph;
+    final javax.swing.Timer t;
+    final Stepper graph;
 
     @Override
     public void actionPerformed(ActionEvent ae) {

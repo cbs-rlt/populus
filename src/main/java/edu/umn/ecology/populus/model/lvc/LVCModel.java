@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.plot.BasicPlotModel;
 import java.util.ResourceBundle;
 
 public class LVCModel extends BasicPlotModel {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lvc.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lvc.Res");
 
     @Override
     public Object getModelHelpText() {

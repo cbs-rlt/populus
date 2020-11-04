@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.model.ie.IEDeriv;
 import java.util.Vector;
 
 class IsoPoint {
-    double[] points;
+    final double[] points;
 
     public double[] getPoint() {
         return points;
@@ -40,24 +40,24 @@ public class IsoclineAnalysis {
      * a double holds, but the last decimal is always inaccurate,
      * so a setting of 1E-14 is best.
      */
-    public static double acceptableError = 1E-14;
+    public static final double acceptableError = 1E-14;
 
     /**
      * How many times should the method iterate to get to the answer to the
      * desired accuracy. With Populus isoclines, it will usually get the answer
      * in 1 or 2, so this setting doesn't really matter.
      */
-    public static int maxTries = 30;
+    public static final int maxTries = 30;
 
     /**
      * How many points will be in the isocline line.
      */
-    public static int numPointsToAdd = 50;
+    public static final int numPointsToAdd = 50;
 
     /**
      * How far beyond the data the isocline will extend.
      */
-    public static double extendFactor = 1.2;
+    public static final double extendFactor = 1.2;
 
     /**
      * This method will add isocline lines to the data.
@@ -97,7 +97,7 @@ public class IsoclineAnalysis {
                 }
                 double x1 = Routines.getMinValue(points[points.length - 1][dataToModify]);
                 double x2 = Routines.getMaxValue(points[points.length - 1][dataToModify]);
-                n = findRootBySecant(d, n, 0, analyte, dataToModify, x1, x2);
+                n = findRootBySecant(d, n, analyte, dataToModify, x1, x2);
                 for (int j = 0; j < numVars; j++) {
                     points[i][j][p] = n[j];
                 }
@@ -201,7 +201,7 @@ public class IsoclineAnalysis {
      * x1,x2 are the bounds the critical point is assumed to be inside.
      */
 
-    static final double[] findRootBySecant(Derivative d, double[] n, double t, int a, int cd, double x1, double x2) {
+    static final double[] findRootBySecant(Derivative d, double[] n, int a, int cd, double x1, double x2) {
         double dx, f, fl, swap, xl, rts;
         double[] dN = new double[n.length];
         int as = a, cds = cd;
@@ -220,10 +220,10 @@ public class IsoclineAnalysis {
             n[a] = temp[as];
         }
         n[cd] = x2;
-        d.doDerivative(t, n, dN);
+        d.doDerivative(0, n, dN);
         f = dN[a];
         n[cd] = x1;
-        d.doDerivative(t, n, dN);
+        d.doDerivative(0, n, dN);
         fl = dN[a];
         if (f == fl) {
             return n;
@@ -247,7 +247,7 @@ public class IsoclineAnalysis {
             fl = f;
             rts += dx;
             n[cd] = rts;
-            d.doDerivative(t, n, dN);
+            d.doDerivative(0, n, dN);
             f = dN[a];
             if (Math.abs(dx) < acceptableError || f == 0d) {
                 break; //Convergence

@@ -24,22 +24,28 @@ public class BPParamInfo implements BasicPlot {
     public static final int nplusvsn = 1;//N+ vs N
     public static final int nstarvsn = 2;//N* vs N
     public static final int fvst = 3;//F vs t
-    int numVars;
-    String mCapNvsT = res.getString("Bacterial");
-    int plotType, modelType;
-    double x, y, z, w, d; // w is r in the equations
-    double time;
-    int tlast, tI;
-    Integrator ig;
-    Derivative der;
-    String mCapN2vsN1 = mCapNvsT;
-    String xCap = res.getString("Time_b_i_t_");
-    String yCap2 = res.getString("Plasmid-Bearing");
-    String yCap3 = res.getString("nstar");
-    String Caption = res.getString("N_t_");
-    String totCaption = res.getString("plasmid-free");
-    String fCaption = res.getString("frequency");
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.bp.Res");
+    final int numVars;
+    final String mCapNvsT = res.getString("Bacterial");
+    final int plotType;
+    final int modelType;
+    final double x;
+    final double y;
+    final double z;
+    final double w;
+    final double d; // w is r in the equations
+    final double time;
+    int tlast;
+    final int tI;
+    final Integrator ig;
+    final Derivative der;
+    final String mCapN2vsN1 = mCapNvsT;
+    final String xCap = res.getString("Time_b_i_t_");
+    final String yCap2 = res.getString("Plasmid-Bearing");
+    final String yCap3 = res.getString("nstar");
+    final String Caption = res.getString("N_t_");
+    final String totCaption = res.getString("plasmid-free");
+    final String fCaption = res.getString("frequency");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.bp.Res");
 
 
     @Override

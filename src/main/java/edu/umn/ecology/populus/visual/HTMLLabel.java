@@ -77,7 +77,7 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
     private int direction = NORMAL;
     private String text = "";
     private Font defaultFont;
-    private Stack<StackContainer> componentStack = new Stack<>();
+    private final Stack<StackContainer> componentStack = new Stack<>();
     private boolean hasHTMLLabels = true;
 
     public void setHasHTMLLabels(boolean newB) {
@@ -258,14 +258,13 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
 
     protected int getTurns() {
         //ERROR!!!
-        int turns = switch (direction) {
+        return switch (direction) {
             case NORMAL -> 0;
             case DOWN_TO_UP -> 1;
             case UPSIDEDOWN -> 2;
             case UP_TO_DOWN -> 3;
             default -> -1;
         };
-        return turns;
     }
 
     protected void unstack() {
@@ -457,9 +456,9 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
 }
 
 class StackContainer {
-    Component c;
-    Object cts;
-    int index;
+    final Component c;
+    final Object cts;
+    final int index;
 
     StackContainer(Component c, Object cts, int index) {
         this.c = c;

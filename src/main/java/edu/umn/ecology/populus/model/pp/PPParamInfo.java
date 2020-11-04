@@ -16,7 +16,7 @@ public class PPParamInfo extends APPDProtoParamInfo {
     public static final int DDGrowth = 1; //one of these supposed to be 0?
     public static final int DIGrowth = 1;
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.pp.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.pp.Res");
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

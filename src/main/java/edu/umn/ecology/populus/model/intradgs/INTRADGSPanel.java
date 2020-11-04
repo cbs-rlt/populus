@@ -19,17 +19,17 @@ public class INTRADGSPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 7758086403816220837L;
-    JPanel paramsP = new JPanel();
-    PopulusParameterField sPPF = new PopulusParameterField();
-    private PopulusParameterField GPPF = new PopulusParameterField();
-    private PopulusParameterField bPPF = new PopulusParameterField();
-    private GridBagLayout gridBagLayout1 = new GridBagLayout();
-    private GridBagLayout gridBagLayout3 = new GridBagLayout();
-    private PopulusParameterField NPPF = new PopulusParameterField();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField AfreqPPF = new PopulusParameterField();
-    private JCheckBox singleMutationCB = new JCheckBox();
-    private PopulusParameterField numGroupsPPF = new PopulusParameterField();
+    final JPanel paramsP = new JPanel();
+    final PopulusParameterField sPPF = new PopulusParameterField();
+    private final PopulusParameterField GPPF = new PopulusParameterField();
+    private final PopulusParameterField bPPF = new PopulusParameterField();
+    private final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    private final GridBagLayout gridBagLayout3 = new GridBagLayout();
+    private final PopulusParameterField NPPF = new PopulusParameterField();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField AfreqPPF = new PopulusParameterField();
+    private final JCheckBox singleMutationCB = new JCheckBox();
+    private final PopulusParameterField numGroupsPPF = new PopulusParameterField();
 
     @Override
     public BasicPlot getPlotParamInfo() {

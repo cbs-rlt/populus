@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class IHPIParamInfo extends APPDProtoParamInfo {
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.ihpi.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.ihpi.Res");
 
     public IHPIParamInfo(double n0, double p0, double F_, double I, double a, double k, double theta, double Th, double Ip_, int gens, int type, boolean vsTime) {
         discProc = new IHPIProc(type, F_, I, a, k, theta, Th, Ip_);

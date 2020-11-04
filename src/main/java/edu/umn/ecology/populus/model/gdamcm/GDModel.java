@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class GDModel extends BasicPlotModel {
     static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.gdamcm.Res");
-    GDPanel gdp;
+    final GDPanel gdp;
 
     @Override
     public Object getModelHelpText() {

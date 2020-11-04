@@ -19,21 +19,27 @@ public class TPParamInfo implements BasicPlot {
     public static final int FOUR = 4;
     public static final int FIVE = 5;
     public static final int vsT = 0; //S,I,R,N vs T or S,I,N vs T
-    String mCapNvsT = res.getString("Bacterial");
-    int modelType;
-    int numVars;
-    static ResourceBundle res = ResourceBundle.getBundle(
+    final String mCapNvsT = res.getString("Bacterial");
+    final int modelType;
+    final int numVars;
+    static final ResourceBundle res = ResourceBundle.getBundle(
             "edu.umn.ecology.populus.model.tp.Res");
-    Integrator ig;
+    final Integrator ig;
     String mCapN2vsN1 = mCapNvsT;
     String caption;
-    String xCap = res.getString("Time_b_i_t_");
-    double temp, v, s, l, resistant, r, time;
-    String yCap1 = res.getString("One");
-    String yCap2 = res.getString("Two");
-    String yCap3 = res.getString("Three");
-    String yCap4 = res.getString("Four");
-    String yCap5 = res.getString("Five");
+    final String xCap = res.getString("Time_b_i_t_");
+    final double temp;
+    final double v;
+    final double s;
+    final double l;
+    final double resistant;
+    final double r;
+    final double time;
+    final String yCap1 = res.getString("One");
+    final String yCap2 = res.getString("Two");
+    final String yCap3 = res.getString("Three");
+    final String yCap4 = res.getString("Four");
+    final String yCap5 = res.getString("Five");
 
 
     @Override

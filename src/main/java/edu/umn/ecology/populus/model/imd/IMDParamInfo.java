@@ -22,20 +22,23 @@ public class IMDParamInfo implements BasicPlot {
     public static final int vsT = 0;//S,I,R,N vs T or S,I,N vs T
     public static final int ivsn = 1;//I vs N
     public static final int phase = 2;//S vs I vs R or I vs S
-    String mCapNvsT = res.getString("Infectious1");
-    int plotType;
-    int numVars;
+    final String mCapNvsT = res.getString("Infectious1");
+    final int plotType;
+    final int numVars;
 
-    Integrator ig;
-    String mCapN2vsN1 = mCapNvsT;
-    String xCap = res.getString("Time_b_i_t_");
-    double x, y, z, time;
-    String yCap2 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "N </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "S </font></i></b>, <b><i>" + ColorScheme.getColorString(2) + "I </font>" + "</i></b> )";
-    String yCap3 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "N </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "S </font></i></b>, <b><i>" + ColorScheme.getColorString(2) + "I </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(3) + "R </font></i></b> )";
-    String sCaption = res.getString("Susceptable_Host_S_R");
-    String iCaption = res.getString("Infected_Host_I_R");
-    String nCaption = res.getString("totHostDens");
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
+    final Integrator ig;
+    final String mCapN2vsN1 = mCapNvsT;
+    final String xCap = res.getString("Time_b_i_t_");
+    final double x;
+    final double y;
+    final double z;
+    final double time;
+    final String yCap2 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "N </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "S </font></i></b>, <b><i>" + ColorScheme.getColorString(2) + "I </font>" + "</i></b> )";
+    final String yCap3 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "N </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "S </font></i></b>, <b><i>" + ColorScheme.getColorString(2) + "I </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(3) + "R </font></i></b> )";
+    final String sCaption = res.getString("Susceptable_Host_S_R");
+    final String iCaption = res.getString("Infected_Host_I_R");
+    final String nCaption = res.getString("totHostDens");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
 
 
     @Override

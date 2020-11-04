@@ -17,9 +17,9 @@ public class Constant extends JPanel {
      *
      */
     private static final long serialVersionUID = 7232261105799052347L;
-    JButton closeButton = new JButton();
+    final JButton closeButton = new JButton();
     String name;
-    PopulusParameterField constantPPF = new PopulusParameterField();
+    final PopulusParameterField constantPPF = new PopulusParameterField();
 
     public Constant() {
         try {

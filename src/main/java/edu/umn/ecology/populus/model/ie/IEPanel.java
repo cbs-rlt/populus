@@ -25,23 +25,23 @@ public class IEPanel extends BasicPlotInputPanel {
     private static final long serialVersionUID = 2656336723261477979L;
     EquationCalculator ss;
     EquationPanel ep;
-    JRadioButton textB = new JRadioButton();
-    JPanel integrationType = new JPanel();
-    JRadioButton discreteB = new JRadioButton();
+    final JRadioButton textB = new JRadioButton();
+    final JPanel integrationType = new JPanel();
+    final JRadioButton discreteB = new JRadioButton();
     TitledBorder titledBorder1;
-    ButtonGroup bgPlot = new ButtonGroup();
-    ConstantPanel cp = new ConstantPanel(3);
-    JRadioButton continuousB = new JRadioButton();
-    RunningTimePanel runTime = new RunningTimePanel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JPanel plotType = new JPanel();
+    final ButtonGroup bgPlot = new ButtonGroup();
+    final ConstantPanel cp = new ConstantPanel(3);
+    final JRadioButton continuousB = new JRadioButton();
+    final RunningTimePanel runTime = new RunningTimePanel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JPanel plotType = new JPanel();
     TitledBorder titledBorder2;
-    StyledRadioButton nvsnB = new StyledRadioButton();
-    ButtonGroup bgInte = new ButtonGroup();
-    StyledRadioButton nvstB = new StyledRadioButton();
+    final StyledRadioButton nvsnB = new StyledRadioButton();
+    final ButtonGroup bgInte = new ButtonGroup();
+    final StyledRadioButton nvstB = new StyledRadioButton();
     Border border1, border2;
-    SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
-    SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
+    final SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+    final SimpleVFlowLayout simpleVFlowLayout3 = new SimpleVFlowLayout();
 
     @Override
     public BasicPlot getPlotParamInfo() {

@@ -35,16 +35,16 @@ public class NotSupportedDialog extends JDialog {
      *
      */
     private static final long serialVersionUID = 9143334206721753109L;
-    JPanel panel2 = new JPanel();
-    JButton button1 = new JButton();
-    JButton button2 = new JButton();
-    BorderLayout borderLayout1 = new BorderLayout();
-    JPanel jPanel1 = new JPanel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    GridLayout gridLayout1 = new GridLayout();
-    JPanel panel1 = new JPanel();
+    final JPanel panel2 = new JPanel();
+    final JButton button1 = new JButton();
+    final JButton button2 = new JButton();
+    final BorderLayout borderLayout1 = new BorderLayout();
+    final JPanel jPanel1 = new JPanel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final GridLayout gridLayout1 = new GridLayout();
+    final JPanel panel1 = new JPanel();
     Border border1;
-    JLabel jLabel1 = new JLabel();
+    final JLabel jLabel1 = new JLabel();
 
     public NotSupportedDialog(Frame frame, String title) {
         this(frame, title, false);
@@ -105,7 +105,7 @@ public class NotSupportedDialog extends JDialog {
 }
 
 class NotSupportedDialog_button1_actionAdapter implements ActionListener {
-    NotSupportedDialog adaptee;
+    final NotSupportedDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -118,7 +118,7 @@ class NotSupportedDialog_button1_actionAdapter implements ActionListener {
 }
 
 class NotSupportedDialog_button2_actionAdapter implements ActionListener {
-    NotSupportedDialog adaptee;
+    final NotSupportedDialog adaptee;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -131,7 +131,7 @@ class NotSupportedDialog_button2_actionAdapter implements ActionListener {
 }
 
 class NotSupportedDialog_this_windowAdapter extends WindowAdapter {
-    NotSupportedDialog adaptee;
+    final NotSupportedDialog adaptee;
 
     @Override
     public void windowClosing(WindowEvent e) {

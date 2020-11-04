@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class APPDFRParamInfo extends APPDProtoParamInfo {
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdfr.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdfr.Res");
 
     public APPDFRParamInfo(double n0, double p0, double lambda, double ap, double c, double t, double th, double b, int gens, int type, boolean vsTime) {
         discProc = new APPDFRProc(type, lambda, ap, c, t, th, b);

@@ -26,27 +26,27 @@ import java.util.Vector;
  * be relatively easily modified to do these.
  */
 class Model3D {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.threedgrapher.Res");
-    Matrix3D mat;
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.plot.threedgrapher.Res");
+    final Matrix3D mat;
 
     /**
      * this Vector will be used to hold all the 2D surfaces that get put on the plot -- including
      * the griding panes
      */
-    Vector<Plane3D> planes = new Vector<>(0);
+    final Vector<Plane3D> planes = new Vector<>(0);
 
     /**
      * this Vector will be used to hold all the Lines that get put on the plot. however,
      * because it holds Line3D objects, it could hold more than just "lines"...
      */
-    Vector<Line3D> lines = new Vector<>(0);
+    final Vector<Line3D> lines = new Vector<>(0);
 
     int numLines;
     float xmin, xmax, ymin, ymax, zmin, zmax;
     float xMaxEnforced, yMaxEnforced, zMaxEnforced;
-    String[] graphLabels = {"X-axis label", "Y-axis label", "Z-axis label", "Graph Title"};
+    final String[] graphLabels = {"X-axis label", "Y-axis label", "Z-axis label", "Graph Title"};
     Color[] graphColors;
-    Color[] plotColors = new Color[]{Color.green, Color.cyan};
+    final Color[] plotColors = new Color[]{Color.green, Color.cyan};
     Color backColor;
     Color textColor;
     boolean gridVisible = true;
@@ -60,7 +60,7 @@ class Model3D {
      * this is the factor by which the axes will be longer than the value longest vector
      * component found in the points.
      */
-    float fudgeFactor = 1.1f;
+    final float fudgeFactor = 1.1f;
 
     /**
      * this stores the length of the message for the previous query about a data point so that

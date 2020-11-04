@@ -12,7 +12,12 @@ public class AIDSBASICDeriv extends Derivative {
     public static final int kY = 1;
     public static final int kV = 2;
     public static final int kX = 0;
-    private double lambda, d, beta, a, k, u;
+    private final double lambda;
+    private final double d;
+    private final double beta;
+    private final double a;
+    private final double k;
+    private final double u;
 
     @Override
     public void doDerivative(double t, double[] N, double[] dN) {

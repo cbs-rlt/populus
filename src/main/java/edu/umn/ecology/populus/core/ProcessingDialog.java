@@ -28,11 +28,11 @@ public class ProcessingDialog extends JDialog {
      *
      */
     private static final long serialVersionUID = -2891643239222105852L;
-    JButton cancelButton = new JButton();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    JLabel thinkingLabel = new JLabel();
-    JProgressBar jProgressBar1 = new JProgressBar();
-    JPanel panel1 = new JPanel();
+    final JButton cancelButton = new JButton();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JLabel thinkingLabel = new JLabel();
+    final JProgressBar jProgressBar1 = new JProgressBar();
+    final JPanel panel1 = new JPanel();
 
     public ProcessingDialog() {
         this(null, "", false);

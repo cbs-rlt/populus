@@ -17,13 +17,13 @@ public class DASPanel extends BasicPlotInputPanel {
      *
      */
     private static final long serialVersionUID = 8914796709495836009L;
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    PopulusParameterField populationPPF = new PopulusParameterField();
-    PopulusParameterField frequencyPPF = new PopulusParameterField();
-    PopulusParameterField gensPPF = new PopulusParameterField();
-    PopulusParameterField wAAPPF = new PopulusParameterField();
-    PopulusParameterField wAaPPF = new PopulusParameterField();
-    PopulusParameterField waaPPF = new PopulusParameterField();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final PopulusParameterField populationPPF = new PopulusParameterField();
+    final PopulusParameterField frequencyPPF = new PopulusParameterField();
+    final PopulusParameterField gensPPF = new PopulusParameterField();
+    final PopulusParameterField wAAPPF = new PopulusParameterField();
+    final PopulusParameterField wAaPPF = new PopulusParameterField();
+    final PopulusParameterField waaPPF = new PopulusParameterField();
 
     public DASPanel() {
         try {

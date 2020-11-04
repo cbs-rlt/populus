@@ -37,28 +37,28 @@ public class PSPanel extends BasicPlotInputPanel {
     Border border2 = BorderFactory.createLineBorder(SystemColor.controlText, 1);
     GridBagLayout gridBagLayout4 = new GridBagLayout();
     TitledBorder titledBorder2 = new TitledBorder("Loci Parameters");
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
-    ButtonGroup goBG = new ButtonGroup();
-    private JPanel demicPanel = new JPanel();
-    private JScrollPane lociScroller = new JScrollPane();
-    private SimpleVFlowLayout simpleVFlowLayout7 = new SimpleVFlowLayout();
-    private SimpleVFlowLayout simpleVFlowLayout5 = new SimpleVFlowLayout();
-    private SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
-    private JPanel individualFreqPanel = new JPanel();
-    private PopulusParameterField paramInitFreq = new PopulusParameterField();
-    private JRadioButton individualFrequencyButton = new JRadioButton();
-    private JRadioButton singleFrequencyButton = new JRadioButton();
-    private PopulusParameterField paramNumDemes = new PopulusParameterField();
-    private JPanel lociFreqP = new JPanel();
-    private JPanel singleFreqPanel = new JPanel();
-    private JCheckBox selfingCB = new JCheckBox();
-    private GridBagLayout gridBagLayout2 = new GridBagLayout();
-    private JPanel modelP = new JPanel();
-    private PopulusParameterField gensPPF = new PopulusParameterField();
-    private PopulusParameterField migrationPPF = new PopulusParameterField();
-    private PopulusParameterField demeSizePPF = new PopulusParameterField();
-    PopulusParameterField[] demicPPFArray = new PopulusParameterField[MAX_LOCI];
-    private SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final ButtonGroup goBG = new ButtonGroup();
+    private final JPanel demicPanel = new JPanel();
+    private final JScrollPane lociScroller = new JScrollPane();
+    private final SimpleVFlowLayout simpleVFlowLayout7 = new SimpleVFlowLayout();
+    private final SimpleVFlowLayout simpleVFlowLayout5 = new SimpleVFlowLayout();
+    private final SimpleVFlowLayout simpleVFlowLayout4 = new SimpleVFlowLayout();
+    private final JPanel individualFreqPanel = new JPanel();
+    private final PopulusParameterField paramInitFreq = new PopulusParameterField();
+    private final JRadioButton individualFrequencyButton = new JRadioButton();
+    private final JRadioButton singleFrequencyButton = new JRadioButton();
+    private final PopulusParameterField paramNumDemes = new PopulusParameterField();
+    private final JPanel lociFreqP = new JPanel();
+    private final JPanel singleFreqPanel = new JPanel();
+    private final JCheckBox selfingCB = new JCheckBox();
+    private final GridBagLayout gridBagLayout2 = new GridBagLayout();
+    private final JPanel modelP = new JPanel();
+    private final PopulusParameterField gensPPF = new PopulusParameterField();
+    private final PopulusParameterField migrationPPF = new PopulusParameterField();
+    private final PopulusParameterField demeSizePPF = new PopulusParameterField();
+    final PopulusParameterField[] demicPPFArray = new PopulusParameterField[MAX_LOCI];
+    private final SimpleVFlowLayout simpleVFlowLayout1 = new SimpleVFlowLayout();
 
     //these are saved so we can use the same last calculated frequencies
     //for the next iteration
@@ -135,8 +135,8 @@ public class PSPanel extends BasicPlotInputPanel {
         lociScroller.repaint();
     }
 
-    void setPFGEnabled(boolean b) {
-        setPFGEnabled(b, true);
+    void setPFGEnabled() {
+        setPFGEnabled(true, true);
     }
 
     private void jbInit() throws Exception {
@@ -179,7 +179,7 @@ public class PSPanel extends BasicPlotInputPanel {
             demicPPFArray[i].setParameterName("Deme #" + Integer.toString(i + 1));
             demicPanel.add(demicPPFArray[i], null);
         }
-        setPFGEnabled(true);//this number can't be too big b/c 10*this will be the number of grid lines
+        setPFGEnabled();//this number can't be too big b/c 10*this will be the number of grid lines
 
         JScrollBar myBar = lociScroller.getVerticalScrollBar();
         myBar.setUnitIncrement(37);

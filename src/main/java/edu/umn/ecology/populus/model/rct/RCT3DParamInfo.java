@@ -25,15 +25,15 @@ public class RCT3DParamInfo extends APPD3DProtoParamInfo {
     protected int speciesNum = 3;
     protected int resourceNum;
     protected DiscreteProc discProc = null;
-    protected String xCaption = null;
-    protected String yCaption = null;
+    protected final String xCaption = null;
+    protected final String yCaption = null;
     protected int numVars;
     protected int plotType = 0;
     protected double[] initialConditions = null;
-    protected String mainCaption = null;
-    protected String zCaption = null;
+    protected final String mainCaption = null;
+    protected final String zCaption = null;
     ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rct.Res");
-    Integrator ig = null;
+    final Integrator ig = null;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

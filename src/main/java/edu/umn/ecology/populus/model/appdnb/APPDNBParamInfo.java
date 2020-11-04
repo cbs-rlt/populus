@@ -15,7 +15,7 @@ public class APPDNBParamInfo extends APPDProtoParamInfo {
     public static final int DDGrowth = 1;
     public static final int DIGrowth = 1;
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdnb.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdnb.Res");
 
     public APPDNBParamInfo(double n0, double p0, double lambda, double a, double r, double K, int gens, boolean independent, boolean vsTime) {
         discProc = new APPDNBProc(independent, a, lambda, K, r, a);

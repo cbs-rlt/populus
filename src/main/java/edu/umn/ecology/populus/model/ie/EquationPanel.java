@@ -19,19 +19,19 @@ public class EquationPanel extends JPanel {
      *
      */
     private static final long serialVersionUID = -5235310299666499109L;
-    JPanel labelHolder = new JPanel();
-    JScrollPane scroller = new JScrollPane();
-    JLabel useL = new JLabel();
-    JLabel numEqL = new JLabel();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final JPanel labelHolder = new JPanel();
+    final JScrollPane scroller = new JScrollPane();
+    final JLabel useL = new JLabel();
+    final JLabel numEqL = new JLabel();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
     int numEqs;
-    SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
-    JTextField numEQTF = new JTextField();
-    JLabel plotL = new JLabel();
-    JPanel eqHolder = new JPanel();
+    final SimpleVFlowLayout simpleVFlowLayout2 = new SimpleVFlowLayout();
+    final JTextField numEQTF = new JTextField();
+    final JLabel plotL = new JLabel();
+    final JPanel eqHolder = new JPanel();
     boolean isDiscrete = false;
     String[] paramNames;
-    private JButton renameB = new JButton();
+    private final JButton renameB = new JButton();
     private final JSeparator separator = new JSeparator();
     private final JSeparator separator_1 = new JSeparator();
     private final JSeparator separator_2 = new JSeparator();

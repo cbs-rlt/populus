@@ -15,17 +15,20 @@ import edu.umn.ecology.populus.plot.plotshapes.PlotArrow;
 import java.util.ResourceBundle;
 
 public class LVCParamInfo implements BasicPlot {
-    String xCap = res.getString("Time_b_i_t_");
-    String yCap = res.getString("Population_") + ColorScheme.getColorString(0) + "<b><i>N<sub></i>1</sub></font> , " + ColorScheme.getColorString(1) + "<i>N<sub></i>2</sub></font> )";
-    double[][] isocline1, isocline2;
-    String mCapNvsT = res.getString("Lotka_Volterra1");
-    Integrator ig;
-    boolean vsTime;
-    double n1, n2, time;
-    String n1Cap = res.getString("Population_b_i_") /*+ ColorScheme.getColorString( 0 )*/ + "N<SUB></i>1</> )";
-    String n2Cap = res.getString("Population_b_i_") /*+ ColorScheme.getColorString( 1 )*/ + "N<SUB></i>2</> )";
-    String mCapN2vsN1 = res.getString("Lotka_Volterra2");
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lvc.Res");
+    final String xCap = res.getString("Time_b_i_t_");
+    final String yCap = res.getString("Population_") + ColorScheme.getColorString(0) + "<b><i>N<sub></i>1</sub></font> , " + ColorScheme.getColorString(1) + "<i>N<sub></i>2</sub></font> )";
+    final double[][] isocline1;
+    final double[][] isocline2;
+    final String mCapNvsT = res.getString("Lotka_Volterra1");
+    final Integrator ig;
+    final boolean vsTime;
+    final double n1;
+    final double n2;
+    final double time;
+    final String n1Cap = res.getString("Population_b_i_") /*+ ColorScheme.getColorString( 0 )*/ + "N<SUB></i>1</> )";
+    final String n2Cap = res.getString("Population_b_i_") /*+ ColorScheme.getColorString( 1 )*/ + "N<SUB></i>2</> )";
+    final String mCapN2vsN1 = res.getString("Lotka_Volterra2");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lvc.Res");
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

@@ -32,40 +32,40 @@ public class LPGParamInfo implements BasicPlot {
     public static final long NUM_ITERS = 1; //Is this correct?
     public static final double U_LIMIT = 1e30;
     public static final int MAX_ITERS = 100000;
-    String lnyCap = res.getString("ln_Population_ln_i_b");
-    String dndtCap = "d<i><b>N</>/d<i><b>t</>";
-    String dnndtCap = "d<i><b>N</>/<i><b>N</>d<b><i>t</>";
+    final String lnyCap = res.getString("ln_Population_ln_i_b");
+    final String dndtCap = "d<i><b>N</>/d<i><b>t</>";
+    final String dnndtCap = "d<i><b>N</>/<i><b>N</>d<b><i>t</>";
     double r; //growth rate
     int lagLagIters;
-    String timeCap = res.getString("Time_b_i_t_");
+    final String timeCap = res.getString("Time_b_i_t_");
     String xCap = timeCap;
     double n0; //n0 = pop0
-    String nsubtCap = "<i>N <sub>t</>";
+    final String nsubtCap = "<i>N <sub>t</>";
 
     /**
      * May be kNVST, kLNNVST, kDNDTVSN, kDNNDTVSN, or kLNNTP1VSLNNT
      */
     int plotType;
-    String disc1Cap = "<i>N<sub>t</i>+1</>-<i>N<sub> t</>";
+    final String disc1Cap = "<i>N<sub>t</i>+1</>-<i>N<sub> t</>";
     double kNumPoints = 2000.0; //number of points on each graph. be sure it is less than MAX_ITERS
     //String disc2Cap = "(<i>N<sub>t</i>+1</sub>-<i>N<sub>t</>)/<i>N<sub>t</>"; //<- this is for "process2"
-    String disc2Cap = "ln ( <i>N<sub>t</i>+1</sub> / <i>N<sub>t</> )";
+    final String disc2Cap = "ln ( <i>N<sub>t</i>+1</sub> / <i>N<sub>t</> )";
     int generations; //gens
-    String lnntp1Cap = "ln <i>N<sub>t</i>+1</>";
-    String nCap = res.getString("Population_Size_b_i_N");
-    String lnntCap = "ln <i>N <sub>t</>";
+    final String lnntp1Cap = "ln <i>N<sub>t</i>+1</>";
+    final String nCap = res.getString("Population_Size_b_i_N");
+    final String lnntCap = "ln <i>N <sub>t</>";
     int lag; //need this be int, or can it be double?
-    String mCapContinuous = res.getString("Continuous_Logistic1");
+    final String mCapContinuous = res.getString("Continuous_Logistic1");
 
     /**
      * May be LAGGED, DISCRETE, or CONTINUOUS
      */
     int modelType;
-    String mCapLagged = res.getString("Lagged_Logistic1");
+    final String mCapLagged = res.getString("Lagged_Logistic1");
     String yCap = nCap;
-    String mCapDiscrete = res.getString("Discrete_Logistic1");
+    final String mCapDiscrete = res.getString("Discrete_Logistic1");
     int k; //k = max size
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lpg.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lpg.Res");
 
     /*
    private variables pulled out so the switch could be expanded

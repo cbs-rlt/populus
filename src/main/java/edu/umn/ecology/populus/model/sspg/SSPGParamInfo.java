@@ -179,8 +179,7 @@ public class SSPGParamInfo implements BasicPlot, TableInterface {
 
     @Override
     public String[] getTitle() {
-        String[] title = new String[]{"Tabular Projection"};
-        return title;
+        return new String[]{"Tabular Projection"};
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
     private static final long serialVersionUID = 4778650848890791005L;
     static final int kCOLUMNS = 5;
     int rows = 0;
-    ArrayList<ArrayList<Number>> data;
+    final ArrayList<ArrayList<Number>> data;
     int type = ASPGPanel.kPOSTBREEDING;
 
     public ASPGLxMxTableModel(int rows) {

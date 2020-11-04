@@ -26,11 +26,11 @@ import java.beans.PropertyDescriptor;
 import java.beans.SimpleBeanInfo;
 
 public class HTMLLabelBeanInfo extends SimpleBeanInfo {
-    String iconColor16x16Filename = "clr16hl.gif";
-    String iconColor32x32Filename = "clr32hl.gif";
-    String iconMono16x16Filename = "mono16hl.gif";
-    String iconMono32x32Filename = "mono32hl.gif";
-    Class<HTMLLabel> beanClass = HTMLLabel.class;
+    final String iconColor16x16Filename = "clr16hl.gif";
+    final String iconColor32x32Filename = "clr32hl.gif";
+    final String iconMono16x16Filename = "mono16hl.gif";
+    final String iconMono32x32Filename = "mono32hl.gif";
+    final Class<HTMLLabel> beanClass = HTMLLabel.class;
 
     @Override
     public PropertyDescriptor[] getPropertyDescriptors() {
@@ -51,10 +51,9 @@ public class HTMLLabelBeanInfo extends SimpleBeanInfo {
             PropertyDescriptor _text = new PropertyDescriptor("text", beanClass, "getText", "setText");
             _text.setDisplayName("text");
             _text.setShortDescription("text");
-            PropertyDescriptor[] pds = new PropertyDescriptor[]{
+            return new PropertyDescriptor[]{
                     _defaultColor, _defaultFont, _direction, _rotate, _text,
             };
-            return pds;
         } catch (IntrospectionException ex) {
             ex.printStackTrace();
             return null;

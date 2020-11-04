@@ -18,7 +18,7 @@ import java.awt.*;
 //TODO - do not extend from JCShape, but rather just use the getJCShape function
 
 abstract public class PlotTerminus extends JCShape {
-    private boolean isStart;
+    private final boolean isStart;
     protected double adjustment = 1.0;
 
     public boolean isOpaque() {

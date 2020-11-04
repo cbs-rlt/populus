@@ -56,7 +56,7 @@ public abstract class Model implements ParameterFieldListener, ModelPanelListene
     /**
      * Used for changing where windows show up
      */
-    private static Alternator alternator = new Alternator();
+    private static final Alternator alternator = new Alternator();
     private static int colorNumber = 0;
 
     public OutputPanel getModelOutput() {

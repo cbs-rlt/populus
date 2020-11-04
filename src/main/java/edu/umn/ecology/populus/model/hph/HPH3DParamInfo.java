@@ -11,7 +11,7 @@ import edu.umn.ecology.populus.model.appd.APPD3DProtoParamInfo;
 import java.util.ResourceBundle;
 
 public class HPH3DParamInfo extends APPD3DProtoParamInfo {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.hph.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.hph.Res");
 
     public HPH3DParamInfo(double N0, double P0, double Q0, double l, double a1, double a2, double k1, double k2, int gens, boolean vsTime) {
         discProc = new HPHProc(l, a1, a2, k1, k2);

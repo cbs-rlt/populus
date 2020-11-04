@@ -17,14 +17,19 @@ public class AIDSBASICParamInfo implements BasicPlot {
     public static final int xyvsT = 1;//x, y vs t
     public static final int vvsT = 2;//v vs t
     public static final int xvsYvsV = 3; //x vs y vs v
-    String mCapNvsT = "Viral Dynamics";
-    int plotType;
-    int numVars;
+    final String mCapNvsT = "Viral Dynamics";
+    final int plotType;
+    final int numVars;
 
-    Integrator ig;
+    final Integrator ig;
     String mCapN2vsN1 = mCapNvsT;
-    String xCap = "Time (<i>t</i>)";
-    double x, y, v, time, k, u;
+    final String xCap = "Time (<i>t</i>)";
+    final double x;
+    final double y;
+    final double v;
+    final double time;
+    double k;
+    double u;
     String yCap2 = "Host_Population" + "<b><i>" + ColorScheme.getColorString(0) + "N </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "S </font></i></b>, <b><i>" + ColorScheme.getColorString(2) + "I </font>" + "</i></b> )";
 
 

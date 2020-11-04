@@ -81,7 +81,7 @@ public class ColorScheme {
      * the text here doesn't matter, ColorChooser modifies these strings before
      * they are used.
      */
-    public static String[] colorStrings = {
+    public static final String[] colorStrings = {
             "<font color=red>", "<font color=blue>", "<font color=green>",
             "<font color=magenta>", "<font color=black>", "<font color=yellow>",
             "<font color=cyan>", "<font color=gray>", "<font color=pink>",
@@ -91,7 +91,7 @@ public class ColorScheme {
     /**
      * This vector holds all of the open models.
      */
-    public static Vector<Model> theseModels = new Vector<>();
+    public static final Vector<Model> theseModels = new Vector<>();
     public static int schemeIndex = 0;
 
     /**

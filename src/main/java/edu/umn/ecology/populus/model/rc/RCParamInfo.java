@@ -34,28 +34,50 @@ public class RCParamInfo implements BasicPlot {
     public static final int nandrvst = 16;//r,n vs t
     public static final int n2vsn1 = 32;//n2 vs n1
 
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rc.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rc.Res");
 
     //public static final int freqvsS = 1;//Freq vs Season
     //public static final int freqvsTime = 2;//Freq vs time
     //public static final int r1vst= 13;//r1 vs t
     //public static final int r2vst= 14;//r2 vs t
 
-    int numVars;
+    final int numVars;
 
-    int plotType, modelType;
-    double n1, n2, r1, r2, d;
-    double a11, a12, a21, a22, b11, b12, b21, b22;
-    double time;
-    int tlast, tI;
+    final int plotType;
+    final int modelType;
+    final double n1;
+    final double n2;
+    final double r1;
+    final double r2;
+    final double d;
+    final double a11;
+    final double a12;
+    final double a21;
+    final double a22;
+    final double b11;
+    final double b12;
+    final double b21;
+    final double b22;
+    final double time;
+    int tlast;
+    final int tI;
     int endindex;
-    Integrator ig;
-    Derivative der;
+    final Integrator ig;
+    final Derivative der;
 
-    String mCap;
-    String capR1, capR2, capR1P, capR2P, capRBoth,
-            capTime, capN1, capN2, capNBoth,
-            capConc2, capConc3, capConc4;
+    final String mCap;
+    final String capR1;
+    final String capR2;
+    final String capR1P;
+    final String capR2P;
+    final String capRBoth;
+    final String capTime;
+    final String capN1;
+    final String capN2;
+    final String capNBoth;
+    final String capConc2;
+    final String capConc3;
+    final String capConc4;
 
     @Override
     public BasicPlotInfo getBasicPlotInfo() {

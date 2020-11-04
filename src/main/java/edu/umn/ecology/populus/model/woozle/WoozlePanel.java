@@ -28,19 +28,19 @@ public class WoozlePanel extends ModelPanel {
      *
      */
     private static final long serialVersionUID = 8112260482356402009L;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
-    PopulusParameterField broodSize = new PopulusParameterField();
-    JPanel targetPhrasePanel = new JPanel();
-    JCheckBox showEvolveBox = new JCheckBox();
-    PopulusParameterField mutationRate = new PopulusParameterField();
-    FlowLayout flowLayout1 = new FlowLayout();
-    JCheckBox diploidBox = new JCheckBox();
-    JCheckBox keepSeed = new JCheckBox();
-    JTextField targetPhraseField = new WoozleField();
-    GridBagLayout gridBagLayout1 = new GridBagLayout();
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.woozle.Res");
+    final PopulusParameterField broodSize = new PopulusParameterField();
+    final JPanel targetPhrasePanel = new JPanel();
+    final JCheckBox showEvolveBox = new JCheckBox();
+    final PopulusParameterField mutationRate = new PopulusParameterField();
+    final FlowLayout flowLayout1 = new FlowLayout();
+    final JCheckBox diploidBox = new JCheckBox();
+    final JCheckBox keepSeed = new JCheckBox();
+    final JTextField targetPhraseField = new WoozleField();
+    final GridBagLayout gridBagLayout1 = new GridBagLayout();
     Border border1;
     TitledBorder titledBorder1;
-    PopulusParameterField crossoverRate = new PopulusParameterField();
+    final PopulusParameterField crossoverRate = new PopulusParameterField();
     private long seed;
 
     public WoozlePanel() {

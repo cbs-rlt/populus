@@ -19,7 +19,7 @@ public class OutputPanel extends JPanel {
      *
      */
     private static final long serialVersionUID = 5766971437163627959L;
-    protected transient Vector<OutputPanelListener> listeners = new Vector<>(1, 1);
+    protected final transient Vector<OutputPanelListener> listeners = new Vector<>(1, 1);
     int type = 0;
 
     /**

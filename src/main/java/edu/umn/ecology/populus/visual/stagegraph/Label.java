@@ -26,15 +26,15 @@ public class Label extends Rectangle2D implements StageShape, Serializable {
      *
      */
     private static final long serialVersionUID = 6111331350917097525L;
-    Color c = Color.black;
-    Color ac = Color.green;
+    final Color c = Color.black;
+    final Color ac = Color.green;
     public double x;
     public double y;
     public double width;
     public double height;
     public double w1, w2;
     double v = 0;
-    StageShape owner;
+    final StageShape owner;
     boolean isActive = false;
 
     public Label(StageShape owner, double x, double y, double value) {

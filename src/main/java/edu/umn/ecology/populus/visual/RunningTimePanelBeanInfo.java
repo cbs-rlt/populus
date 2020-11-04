@@ -27,10 +27,10 @@ import java.beans.SimpleBeanInfo;
 
 public class RunningTimePanelBeanInfo extends SimpleBeanInfo {
     String iconColor16x16Filename;
-    String iconColor32x32Filename = "runningTimePanel32c.jpg";
+    final String iconColor32x32Filename = "runningTimePanel32c.jpg";
     String iconMono16x16Filename;
     String iconMono32x32Filename;
-    Class<RunningTimePanel> beanClass = RunningTimePanel.class;
+    final Class<RunningTimePanel> beanClass = RunningTimePanel.class;
 
     @Override
     public PropertyDescriptor[] getPropertyDescriptors() {
@@ -45,10 +45,9 @@ public class RunningTimePanelBeanInfo extends SimpleBeanInfo {
             PropertyDescriptor _incrementTime = new PropertyDescriptor("incrementTime", beanClass, "getIncrementTime", "setIncrementTime");
             _incrementTime.setDisplayName("incrementTime");
             _incrementTime.setShortDescription("incrementTime");
-            PropertyDescriptor[] pds = new PropertyDescriptor[]{
+            return new PropertyDescriptor[]{
                     _time, _maxTime, _defaultTime, _incrementTime,
             };
-            return pds;
         } catch (IntrospectionException ex) {
             ex.printStackTrace();
             return null;

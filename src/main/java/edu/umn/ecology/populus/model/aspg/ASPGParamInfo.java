@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  *
  */
 public class ASPGParamInfo implements BasicPlot, TableInterface {
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
     public static final String kLAMBDAVSTXCAPTION = "Time Interval (<i>t</i>)";
     public static final String kLAMBDAVSTYCAPTION = "\u03bb";
     public static final String kLAMBDAVSTMAINCAPTION = "\u03bb vs <i>t</>";
@@ -59,10 +59,10 @@ public class ASPGParamInfo implements BasicPlot, TableInterface {
     public static final double kMAXR = 100.0;
     public static final double kRPREC = 1.0e-4;
 
-    ASPGData data;
-    double[][] lxmxTable;
-    int outputType;
-    int ageClassToView;
+    final ASPGData data;
+    final double[][] lxmxTable;
+    final int outputType;
+    final int ageClassToView;
     double r0, g, r, va;
     String[] title = null;
 

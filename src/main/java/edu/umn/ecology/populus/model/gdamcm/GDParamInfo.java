@@ -20,13 +20,13 @@ import java.util.ResourceBundle;
  */
 
 public class GDParamInfo implements BasicPlot {
-    String xCap = res.getString("Generations_b_i_t_");
-    String yCap = res.getString("Allelic_Frequency_b_i");
-    String mCap = res.getString("Genetic_Drift");
-    String xMCap = "Proportion of  Populations (<i>t</i> = ";
-    String yMCap = "Frequency of \"A\" Alleles";
-    String mMCap = "Genetic Drift (Markov Model)";
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.gdamcm.Res");
+    final String xCap = res.getString("Generations_b_i_t_");
+    final String yCap = res.getString("Allelic_Frequency_b_i");
+    final String mCap = res.getString("Genetic_Drift");
+    final String xMCap = "Proportion of  Populations (<i>t</i> = ";
+    final String yMCap = "Frequency of \"A\" Alleles";
+    final String mMCap = "Genetic Drift (Markov Model)";
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.gdamcm.Res");
     private boolean isMarkov = false;
     private boolean is3D = false;
     private boolean selfing;

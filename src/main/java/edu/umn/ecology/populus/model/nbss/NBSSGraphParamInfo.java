@@ -16,8 +16,9 @@ public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot {
      *
      */
     private static final long serialVersionUID = -6979872204518008120L;
-    NBSSCellParamInfo cpi;
-    boolean avg, isup;
+    final NBSSCellParamInfo cpi;
+    final boolean avg;
+    final boolean isup;
     public static final String kMainCap = "Spatial-Structure Populations";
     public static final String kXCap = "Generation";
     String kYCap = "Population ( " + ColorScheme.getColorString(0) + "<i>N</>, "
@@ -39,7 +40,6 @@ public class NBSSGraphParamInfo extends ParamInfo implements BasicPlot {
             for (int i = 0; i < gens; i++)
                 cpi.f();
         }
-        BasicPlotInfo bpi = new BasicPlotInfo(cpi.getTotals(avg), kMainCap, kXCap, kYCap);
-        return bpi;
+        return new BasicPlotInfo(cpi.getTotals(avg), kMainCap, kXCap, kYCap);
     }
 }

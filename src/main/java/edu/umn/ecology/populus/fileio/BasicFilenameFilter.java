@@ -11,9 +11,9 @@ import java.io.File;
 import java.util.ResourceBundle;
 
 public class BasicFilenameFilter extends FileFilter {
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.fileio.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.fileio.Res");
     String description = res.getString("No_description");
-    String[] s;
+    final String[] s;
 
     public BasicFilenameFilter(String suffix) {
         this(new String[]{

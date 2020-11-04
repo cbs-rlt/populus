@@ -85,16 +85,16 @@ public class RungeKuttaRec {
 
       should we have another control that would set a calculation
       to zero if it is too small?*/
-    public double min = 1e-15;
+    public final double min = 1e-15;
     /**
      * stop if all values reach this
      */
     public boolean minExit = false;
-    public double max = 1e15;
+    public final double max = 1e15;
     /**
      * stop if one value exceeds this
      */
-    public boolean maxExit = false;
+    public final boolean maxExit = false;
 
     /**
      * Precision used in threshold

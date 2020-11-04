@@ -23,8 +23,8 @@ public class Population implements Serializable {
     private static final long serialVersionUID = -6282214892616261592L;
     public static final int a = 1;
     public static final int A = 0;
-    private int popSize;
-    private int[][] popArray;
+    private final int popSize;
+    private final int[][] popArray;
     private boolean selfing = true;
 
     /**

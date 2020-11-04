@@ -38,6 +38,6 @@ public class ASPGModel extends BasicPlotModel {
         return "aspg.overview";
     }
 
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
 
 }

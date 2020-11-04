@@ -24,21 +24,20 @@ public class Fletching extends DirectionalPlotTerminus {
     @Override
     protected float[] getArray(int size) {
         float[] pc = new float[14];
-        float s = size;
         float l = 3.0f;
 
         pc[0] = 0.0f;
         pc[1] = 0.0f;
-        pc[2] = -1.0f * s;
-        pc[3] = s;
-        pc[4] = -1.0f * l * s;
-        pc[5] = s;
-        pc[6] = -2.0f / 3.0f * l * s;
+        pc[2] = -1.0f * (float) size;
+        pc[3] = (float) size;
+        pc[4] = -1.0f * l * (float) size;
+        pc[5] = (float) size;
+        pc[6] = -2.0f / 3.0f * l * (float) size;
         pc[7] = 0.0f;
-        pc[8] = -1.0f * l * s;
-        pc[9] = -1.0f * s;
-        pc[10] = -1.0f * s;
-        pc[11] = -1.0f * s;
+        pc[8] = -1.0f * l * (float) size;
+        pc[9] = -1.0f * (float) size;
+        pc[10] = -1.0f * (float) size;
+        pc[11] = -1.0f * (float) size;
         pc[12] = 0.0f;
         pc[13] = 0.0f;
         return pc;

@@ -19,10 +19,10 @@ public class ColorSaver implements Serializable {
      *
      */
     private static final long serialVersionUID = -2730125349195960295L;
-    Color bGToSave;
-    int[] currentIndexToSave;
+    final Color bGToSave;
+    final int[] currentIndexToSave;
     int scheme = 0;
-    Color[] colorsToSave;
+    final Color[] colorsToSave;
 
     /**
      * Restore the colors in the ColorChooser to the saved values.

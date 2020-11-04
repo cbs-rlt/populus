@@ -30,12 +30,12 @@ public class AIDSParamInfo implements BasicPlot {
     protected String yCaption = null;
     protected String zCaption = null;
     protected double[] initialConditions = null;
-    protected Derivative der;
-    protected double runTime;
+    protected final Derivative der;
+    protected final double runTime;
     protected int plotType = YVvsT;
-    protected double dt;
+    protected final double dt;
     protected String[] vsTimeChars;
-    protected Vector<double[][]> VvsTSaved;
+    protected final Vector<double[][]> VvsTSaved;
     protected double[] xlist;
     protected double[][] ylists;
     protected double[] vt, xt, r, R, D;

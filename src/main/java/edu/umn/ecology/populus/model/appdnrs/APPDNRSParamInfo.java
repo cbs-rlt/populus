@@ -15,7 +15,7 @@ public class APPDNRSParamInfo extends APPDProtoParamInfo {
     public static final int DDGrowth = 1;
     public static final int DIGrowth = 1; //one of these is supposed to be 0?
     protected int modelType = 0;
-    ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdnrs.Res");
+    final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.appdnrs.Res");
 
     public APPDNRSParamInfo(double n0, double p0, double lambda, double a, double k, double K_, int gens, boolean independent, boolean vsTime) {
         discProc = new APPDNRSProc(independent, lambda, a, k, K_);

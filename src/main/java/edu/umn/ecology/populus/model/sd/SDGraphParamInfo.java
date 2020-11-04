@@ -16,12 +16,12 @@ public class SDGraphParamInfo extends ParamInfo implements BasicPlot {
      *
      */
     private static final long serialVersionUID = -2814532574960933881L;
-    SDCellParamInfo cpi;
+    final SDCellParamInfo cpi;
     public static final String kMainCap = "Spatial Dilemmas Frequency Time Trajectory";
     public static final String kXCap = "Generation";
-    String kYCap = "Frequency ( " + ColorScheme.getColorString(0) + "<i>C</>, "
+    final String kYCap = "Frequency ( " + ColorScheme.getColorString(0) + "<i>C</>, "
             + ColorScheme.getColorString(1) + "<i>D</> ) ";
-    boolean isup;
+    final boolean isup;
 
     public SDGraphParamInfo(SDCellParamInfo pi, boolean isUpdate) {
         cpi = pi;
@@ -36,7 +36,6 @@ public class SDGraphParamInfo extends ParamInfo implements BasicPlot {
             for (int i = 0; i < gens; i++)
                 cpi.f();
         }
-        BasicPlotInfo bpi = new BasicPlotInfo(cpi.getFrequencies(), kMainCap, kXCap, kYCap);
-        return bpi;
+        return new BasicPlotInfo(cpi.getFrequencies(), kMainCap, kXCap, kYCap);
     }
 }

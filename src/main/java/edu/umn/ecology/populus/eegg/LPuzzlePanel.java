@@ -108,8 +108,7 @@ public class LPuzzlePanel extends JPanel {
     }
 
     private int sc(double r, int scale) {
-        int nr = (int) (scale * r);
-        return nr;
+        return (int) (scale * r);
     }
 
     private int[] sc(double[] r, int scale) {
@@ -135,7 +134,7 @@ public class LPuzzlePanel extends JPanel {
         return sc(y, getSize().height);
     }
 
-    static double[][][] kPoints = {
+    static final double[][][] kPoints = {
             {{1.0, 0.0, 1.0 / 6, 5.0 / 6}, {0.0, 0.0, 1.0 / 6, 1.0 / 6}},//N
             {{0.0, 0.0, 1.0 / 6, 1.0 / 6}, {0.0, 1.0, 5.0 / 6, 1.0 / 6}},//W
             {{0.0, 1.0, 5.0 / 6, 1.0 / 6}, {1.0, 1.0, 5.0 / 6, 5.0 / 6}},//S

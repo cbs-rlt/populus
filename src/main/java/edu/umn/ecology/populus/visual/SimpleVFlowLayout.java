@@ -24,7 +24,7 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
     ;
 
     private int hgap, vgap;
-    private boolean hfill;
+    private final boolean hfill;
 
     public SimpleVFlowLayout(int hgap, int vgap, boolean hfill) {
         this.hgap = hgap;

@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class PopResourceBundle {
     ResourceBundle resHdl;
-    String path;
+    final String path;
 
     public PopResourceBundle(String path) {
         this.path = path;

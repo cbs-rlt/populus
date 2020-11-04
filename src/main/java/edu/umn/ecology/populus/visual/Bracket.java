@@ -22,7 +22,7 @@ public class Bracket extends JLabel {
      */
     private static final long serialVersionUID = 2014559949849865632L;
 
-    private int side;
+    private final int side;
 
     private final String uiClassID = "BracketUI";
 

@@ -17,7 +17,7 @@ public class PPFLayoutManager extends FlowLayout {
      *
      */
     private static final long serialVersionUID = -886584094839158031L;
-    PopulusParameterField ref;
+    final PopulusParameterField ref;
 
     @Override
     public void layoutContainer(Container target) {

@@ -22,19 +22,23 @@ public class MDParamInfo implements BasicPlot {
     public static final int nvsp = 1;//N vs P
     public static final int phase = 2;//N vs P vs W
 
-    String mCapNvsT = res.getString("Infectious1");
-    int plotType;
-    int numVars, aorW;
-    double x, y, z, time;
-    Integrator ig;
-    String mCapN2vsN1 = mCapNvsT;
-    String xCap = res.getString("Time_b_i_t_");
-    String yCap2 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b> )";
-    String yCap3 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(2) + "W </font></i></b>" + "</i></b> )";
-    String yCap4 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(2) + "A </font></i></b>" + "</i></b> )";
-    String nCaption = res.getString("Host_N_W");
-    String pCaption = res.getString("Parasite_P_W");
-    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.md.Res");
+    final String mCapNvsT = res.getString("Infectious1");
+    final int plotType;
+    final int numVars;
+    final int aorW;
+    final double x;
+    final double y;
+    final double z;
+    final double time;
+    final Integrator ig;
+    final String mCapN2vsN1 = mCapNvsT;
+    final String xCap = res.getString("Time_b_i_t_");
+    final String yCap2 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b> )";
+    final String yCap3 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(2) + "W </font></i></b>" + "</i></b> )";
+    final String yCap4 = res.getString("Host_Population") + "<b><i>" + ColorScheme.getColorString(0) + "H </font></i></b>, <b><i>" + ColorScheme.getColorString(1) + "P </font>" + "</i></b>, <b><i>" + ColorScheme.getColorString(2) + "A </font></i></b>" + "</i></b> )";
+    final String nCaption = res.getString("Host_N_W");
+    final String pCaption = res.getString("Parasite_P_W");
+    static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.md.Res");
 
 
     @Override
