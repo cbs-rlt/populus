@@ -26,6 +26,7 @@ If you are using JDK 14 or later, you can also create installer/packager:
 
 The images and installers will be in the `build` directory.
 
+Note that for Windows, you'll need to run `gradlew.bat` instead, and need to install [WiX](https://wixtoolset.org) to package.
 
 # Feedback
 If you find bugs, irregularities, places for improvement, or have other comments, please send an email to populus@umn.edu.
