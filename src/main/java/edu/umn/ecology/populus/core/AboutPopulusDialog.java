@@ -170,7 +170,7 @@ public class AboutPopulusDialog extends JDialog {
     }
 
     void goB_actionPerformed(ActionEvent e) {
-        openURI("http://www.cbs.umn.edu/populus/");
+        openURI("https://www.cbs.umn.edu/populus/");
     }
 
     boolean sendEmail(String emailAddress) {
