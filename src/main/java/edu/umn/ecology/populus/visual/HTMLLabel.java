@@ -19,14 +19,18 @@
 
 //with Populus
 package edu.umn.ecology.populus.visual;
-import java.awt.*;
+
 import javax.swing.*;
-import java.util.*;
-import java.io.*;
+import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Stack;
 
 /**
  * Homemade class to imitate html-like formatting commands. The following tags
- *  are acceptable (case insensitive): <P>
+ * are acceptable (case insensitive): <P>
  * private static String SUP_BEGIN = "<SUP>"; <br>
  * private static String SUP_END = "</SUP>"; <br>
  * private static String SUB_BEGIN = "<SUB>"; <br>
@@ -42,94 +46,99 @@ import java.io.*;
  * Deprecate BAR tag:  Use \u0305 instead of bar!!
  * private static String ALL_END = "</>"; <p>
  * KNOWN ISSUES:
- *  <OL><LI>subscript bars appear as high as other bars
- *  </OL>
+ * <OL><LI>subscript bars appear as high as other bars
+ * </OL>
+ *
  * @author Lars Roe
  **/
 
-public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -3706000911036148584L;
-	private Color defaultColor;
-	private Color currentColor;
-	private int supLevel = 0; //1 == superscript, -1 == subscript
-	private int nextChar;
-	private Object tagExtra;
-	private Font currentFont;
+public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -3706000911036148584L;
+    private Color defaultColor;
+    private Color currentColor;
+    private int supLevel = 0; //1 == superscript, -1 == subscript
+    private int nextChar;
+    private Object tagExtra;
+    private Font currentFont;
 
-	/** If it needs to be parsed or not */
-	private boolean formatted;
+    /**
+     * If it needs to be parsed or not
+     */
+    private boolean formatted;
 
-	/** Elements will be HTMLSubLabels */
-	private int lastTag;
-	private boolean topBar = false;
-	private int direction = NORMAL;
-	private String text = "";
-	private Font defaultFont;
-	private Stack<StackContainer> componentStack = new Stack<StackContainer>();
-	private boolean hasHTMLLabels = true;
+    /**
+     * Elements will be HTMLSubLabels
+     */
+    private int lastTag;
+    private boolean topBar = false;
+    private int direction = NORMAL;
+    private String text = "";
+    private Font defaultFont;
+    private Stack<StackContainer> componentStack = new Stack<>();
+    private boolean hasHTMLLabels = true;
 
-	public void setHasHTMLLabels(boolean newB){
-		hasHTMLLabels = newB;
-	}
-	public boolean getHasHTMLLabels(){
-		return hasHTMLLabels;
-	}
+    public void setHasHTMLLabels(boolean newB) {
+        hasHTMLLabels = newB;
+    }
 
-	public void setDirection( int newDirection ) {
-		direction = newDirection;
-		objectNeedsUpdating();
-	}
+    public boolean getHasHTMLLabels() {
+        return hasHTMLLabels;
+    }
 
-	public void setDefaultFont( Font newDefaultFont ) {
+    public void setDirection(int newDirection) {
+        direction = newDirection;
+        objectNeedsUpdating();
+    }
 
-		//super.setFont(newDefaultFont);
-		defaultFont = newDefaultFont;
-		objectNeedsUpdating();
-	}
+    public void setDefaultFont(Font newDefaultFont) {
 
-	public void setText( String newText ) {
-		if( newText == null ) {
-			newText = "";
-		}
-		else {
-			if( newText == text ) {
-				return ;
-			}
-		}
-		text = newText;
-		objectNeedsUpdating();
-	}
+        //super.setFont(newDefaultFont);
+        defaultFont = newDefaultFont;
+        objectNeedsUpdating();
+    }
 
-	public Font getDefaultFont() {
-		return defaultFont;
-	}
+    public void setText(String newText) {
+        if (newText == null) {
+            newText = "";
+        } else {
+            if (newText == text) {
+                return;
+            }
+        }
+        text = newText;
+        objectNeedsUpdating();
+    }
 
-	public int getDirection() {
-		return direction;
-	}
+    public Font getDefaultFont() {
+        return defaultFont;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public int getDirection() {
+        return direction;
+    }
 
-	@Override
-	public void setEnabled( boolean b ) {
-		super.setEnabled( b );
-		objectNeedsUpdating();
-	}
+    public String getText() {
+        return text;
+    }
 
-	// GETTERS
-	//  AND
-	// SETTERS
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+        objectNeedsUpdating();
+    }
 
-	public Color getDefaultColor() {
-		return defaultColor;
-	}
+    // GETTERS
+    //  AND
+    // SETTERS
 
-	public String getPlainText() {
+    public Color getDefaultColor() {
+        return defaultColor;
+    }
+
+    public String getPlainText() {
 		/*
       char tempChar = 0;
       StringBuffer tempBuffer = new StringBuffer();
@@ -175,121 +184,104 @@ public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
       tagExtra = tempString;
       }
 		 */
-		return null;
-	}
+        return null;
+    }
 
-	public boolean isRotate() {
-		return ( ( direction & SIDEWAYS ) != 0 );
-	}
+    public boolean isRotate() {
+        return ((direction & SIDEWAYS) != 0);
+    }
 
-	public void setDefaultColor( Color c ) {
-		defaultColor = c;
-		objectNeedsUpdating();
-	}
+    public void setDefaultColor(Color c) {
+        defaultColor = c;
+        objectNeedsUpdating();
+    }
 
-	///////////////////////////////
-	//////   Constructors    //////
-	///////////////////////////////
+    ///////////////////////////////
+    //////   Constructors    //////
+    ///////////////////////////////
 
-	public HTMLLabel() {
-		text = "";
-		this.setLayout( new GridBagLayout() );
-		//objectNeedsUpdating();
-	}
+    public HTMLLabel() {
+        text = "";
+        this.setLayout(new GridBagLayout());
+        //objectNeedsUpdating();
+    }
 
-	public void setRotate( boolean newRotate ) {
-		if( newRotate ) {
-			direction |= SIDEWAYS;
-		}
-		else {
-			direction &= STACKED;
-		}
-		objectNeedsUpdating();
-	}
+    public void setRotate(boolean newRotate) {
+        if (newRotate) {
+            direction |= SIDEWAYS;
+        } else {
+            direction &= STACKED;
+        }
+        objectNeedsUpdating();
+    }
 
-	public HTMLLabel( String text ) {
-		this.setText( text );
-		this.setLayout( new GridBagLayout() );
-		objectNeedsUpdating();
-	}
+    public HTMLLabel(String text) {
+        this.setText(text);
+        this.setLayout(new GridBagLayout());
+        objectNeedsUpdating();
+    }
 
-	protected boolean isStacked() {
+    protected boolean isStacked() {
 
-		//return ((direction & STACKED) != 0);
-		return ( ( direction == UPSIDEDOWN ) || ( direction == DOWN_TO_UP ) );
-	}
+        //return ((direction & STACKED) != 0);
+        return ((direction == UPSIDEDOWN) || (direction == DOWN_TO_UP));
+    }
 
-	protected void setStacked( boolean newStacked ) {
-		if( newStacked ) {
-			direction |= STACKED;
-		}
-		else {
-			direction &= SIDEWAYS;
-		}
-		objectNeedsUpdating();
-	}
+    protected void setStacked(boolean newStacked) {
+        if (newStacked) {
+            direction |= STACKED;
+        } else {
+            direction &= SIDEWAYS;
+        }
+        objectNeedsUpdating();
+    }
 
-	//
-	// Visual stuff
-	//
+    //
+    // Visual stuff
+    //
 
-	@Override
-	protected void addImpl( Component c, Object constraints, int index ) {
-		RotatablePanel actualComp = null;
-		if( c instanceof RotatablePanel ) {
-			actualComp = (RotatablePanel)c;
-		} else {
-			actualComp = new RotatablePanel( c );
-		}
-		actualComp.setTurns( getTurns() );
-		if( isStacked() ) {
-			componentStack.push( new StackContainer( actualComp, constraints, index ) );
-		} else {
-			super.addImpl( actualComp, constraints, index );
-		}
-	}
+    @Override
+    protected void addImpl(Component c, Object constraints, int index) {
+        RotatablePanel actualComp = null;
+        if (c instanceof RotatablePanel) {
+            actualComp = (RotatablePanel) c;
+        } else {
+            actualComp = new RotatablePanel(c);
+        }
+        actualComp.setTurns(getTurns());
+        if (isStacked()) {
+            componentStack.push(new StackContainer(actualComp, constraints, index));
+        } else {
+            super.addImpl(actualComp, constraints, index);
+        }
+    }
 
-	protected int getTurns() {
-		int turns = 0;
-		switch( direction ) {
-		case NORMAL:
-			turns = 0;
-			break;
+    protected int getTurns() {
+        //ERROR!!!
+        int turns = switch (direction) {
+            case NORMAL -> 0;
+            case DOWN_TO_UP -> 1;
+            case UPSIDEDOWN -> 2;
+            case UP_TO_DOWN -> 3;
+            default -> -1;
+        };
+        return turns;
+    }
 
-		case DOWN_TO_UP:
-			turns = 1;
-			break;
+    protected void unstack() {
+        StackContainer comp;
+        if (!isStacked()) {
+            return;
+        }
+        while (!componentStack.isEmpty()) {
+            comp = componentStack.pop();
+            super.addImpl(comp.c, comp.cts, comp.index);
+        }
+    }
 
-		case UPSIDEDOWN:
-			turns = 2;
-			break;
-
-		case UP_TO_DOWN:
-			turns = 3;
-			break;
-
-		default:
-			//ERROR!!!
-			turns = -1;
-			break;
-		}
-		return turns;
-	}
-
-	protected void unstack() {
-		StackContainer comp;
-		if( !isStacked() ) {
-			return ;
-		}
-		while( !componentStack.isEmpty() ) {
-			comp = componentStack.pop();
-			super.addImpl( comp.c, comp.cts, comp.index );
-		}
-	}
-
-	void readObject( ObjectInputStream ois ) throws ClassNotFoundException,IOException {
-		ois.defaultReadObject();
-	}
+    void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        ois.defaultReadObject();
+    }
 
 	/*
    public void setBackground(java.awt.Color c) {
@@ -304,22 +296,22 @@ public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
    }
    }
 	 */
-	//
-	// Serialization
-	//
+    //
+    // Serialization
+    //
 
-	void writeObject( ObjectOutputStream oos ) throws IOException {
-		oos.defaultWriteObject();
-	}
+    void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.defaultWriteObject();
+    }
 
-	synchronized void parse() {
-		if( formatted ) {
-			return ;
-		}
-		int len = text.length();
-		StringBuffer tempText = new StringBuffer();
-		this.removeAll();
-		supLevel = 0;
+    synchronized void parse() {
+        if (formatted) {
+            return;
+        }
+        int len = text.length();
+        StringBuffer tempText = new StringBuffer();
+        this.removeAll();
+        supLevel = 0;
 
 		/*
       if (isRotate()) {
@@ -328,181 +320,151 @@ public class HTMLLabel extends JPanel implements Serializable,HTMLConstants {
       this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
       }
 		 */
-		if( defaultFont == null ) {
-			defaultFont = (Font)UIManager.get( "Label.font" );
-		}
-		if( defaultColor == null ) {
-			defaultColor = (Color)UIManager.get( "Label.foreground" );
-		}
-		currentFont = defaultFont;
-		if( this.isEnabled() ) {
-			currentColor = defaultColor;
-		}
-		else {
-			currentColor = Color.gray;
-		}
-		nextChar = 0;
-		while( nextChar < len ) {
-			if( text.charAt( nextChar ) == TAG_BEGIN && hasHTMLLabels) {
-				if( tempText.length() > 0 ) {
-					addSubLabel( new HTMLSubLabel( tempText.toString(), currentFont, currentColor, supLevel, topBar ));
-					tempText = new StringBuffer();
-				}
-				getNextTag();
-				switch( lastTag ) {
-				case BOLD_BEGIN:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() | Font.BOLD, currentFont.getSize() );
-					break;
-
-				case BOLD_END:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() & Font.ITALIC, currentFont.getSize() );
-					break;
-
-				case ITALIC_BEGIN:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() | Font.ITALIC, currentFont.getSize() );
-					break;
-
-				case ITALIC_END:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() & Font.BOLD, currentFont.getSize() );
-					break;
-
-				case SUP_BEGIN:
-				case SUB_END:
-					supLevel++;
-					break;
-
-				case SUP_END:
-				case SUB_BEGIN:
-					supLevel--;
-					break;
-
-				case COLOR_BEGIN:
-					currentColor = (Color)tagExtra;
-					break;
-
-				case COLOR_END:
-					currentColor = defaultColor;
-					break;
-
-					/*
+        if (defaultFont == null) {
+            defaultFont = (Font) UIManager.get("Label.font");
+        }
+        if (defaultColor == null) {
+            defaultColor = (Color) UIManager.get("Label.foreground");
+        }
+        currentFont = defaultFont;
+        if (this.isEnabled()) {
+            currentColor = defaultColor;
+        } else {
+            currentColor = Color.gray;
+        }
+        nextChar = 0;
+        while (nextChar < len) {
+            if (text.charAt(nextChar) == TAG_BEGIN && hasHTMLLabels) {
+                if (tempText.length() > 0) {
+                    addSubLabel(new HTMLSubLabel(tempText.toString(), currentFont, currentColor, supLevel, topBar));
+                    tempText = new StringBuffer();
+                }
+                getNextTag();
+				/*
                case NEW_LINE:
                   currentRowPanel = null; //Lars - untested
                   break;
 					 */
+                switch (lastTag) {
+                    case BOLD_BEGIN -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() | Font.BOLD, currentFont.getSize());
+                    case BOLD_END -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() & Font.ITALIC, currentFont.getSize());
+                    case ITALIC_BEGIN -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() | Font.ITALIC, currentFont.getSize());
+                    case ITALIC_END -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() & Font.BOLD, currentFont.getSize());
+                    case SUP_BEGIN, SUB_END -> supLevel++;
+                    case SUP_END, SUB_BEGIN -> supLevel--;
+                    case COLOR_BEGIN -> currentColor = (Color) tagExtra;
+                    case COLOR_END -> currentColor = defaultColor;
+                    case ALL_END -> {
+                        currentColor = defaultColor;
+                        currentFont = defaultFont;
+                        supLevel = 0;
+                        topBar = false;
+                    }
+                    default -> System.err.println("Unknown Tag #" + lastTag + " = " + tagExtra);
+                }
+            } else {
+                if (text.charAt(nextChar) == '\\') {
+                    nextChar++;
+                }
+                tempText.append("" + text.charAt(nextChar++)); //Lars - Adding "" because JDK 1.5 is stupid.
+            }
+        }
+        if (tempText.length() > 0) {
+            addSubLabel(new HTMLSubLabel(tempText.toString(), currentFont, currentColor, supLevel, topBar));
+        }
 
-               case ALL_END:
-            	   currentColor = defaultColor;
-            	   currentFont = defaultFont;
-            	   supLevel = 0;
-            	   topBar = false;
-            	   break;
+        //setBackground(this.getBackground());
+        formatted = true;
+        unstack();
+        revalidate();
+    }
 
-               default:
-            	   System.err.println( "Unknown Tag #" + lastTag + " = " + tagExtra );
-				}
-			} else {
-				if( text.charAt( nextChar ) == '\\' ) {
-					nextChar++;
-				}
-				tempText.append( "" + text.charAt( nextChar++ ) ); //Lars - Adding "" because JDK 1.5 is stupid.
-			}
-		}
-		if( tempText.length() > 0 ) {
-			addSubLabel( new HTMLSubLabel( tempText.toString(), currentFont, currentColor, supLevel, topBar ));
-		}
-
-		//setBackground(this.getBackground());
-		formatted = true;
-		unstack();
-		revalidate();
-	}
-
-	private void getNextTag() {
-		char tempChar = 0;
-		StringBuffer tempBuffer = new StringBuffer();
-		String tempString;
-		if( ( tempChar = text.charAt( nextChar++ ) ) != TAG_BEGIN ) {
-			//ERROR!
-			System.err.println( "Bad char " + tempChar + ". Looking for '<'" );
-		}
-		while( ( tempChar = text.charAt( nextChar++ ) ) != TAG_END ) {
-			tempBuffer.append( "" + tempChar ); //Lars - Adding "" because JDK 1.5 is stupid.
-		}
-		tempString = tempBuffer.toString();
-		if( tempString.equalsIgnoreCase( "b" ) ) {
-			lastTag = BOLD_BEGIN;
-		} else if( tempString.equalsIgnoreCase( "/b" ) ) {
-			lastTag = BOLD_END;
-		} else if( tempString.equalsIgnoreCase( "i" ) ) {
-			lastTag = ITALIC_BEGIN;
-		} else if( tempString.equalsIgnoreCase( "/i" ) ) {
-			lastTag = ITALIC_END;
-		} else if( tempString.equalsIgnoreCase( "bar" ) ) {
-			lastTag = BAR_BEGIN;
-		} else if( tempString.equalsIgnoreCase( "/bar" ) ) {
-			lastTag = BAR_END;
-		} else if( tempString.equalsIgnoreCase( "/font" ) ) {
-			lastTag = COLOR_END;
-		} else if( ( tempString.length() > 11 ) && tempString.substring( 0, 11 ).equalsIgnoreCase( "font color=" ) ) {
-			lastTag = COLOR_BEGIN;
-			String tempColorName = tempString.substring( 11 );
-			tagExtra = Utilities.getColor( tempColorName );
-		} else if( tempString.equalsIgnoreCase( "sup" ) ) {
-			lastTag = SUP_BEGIN;
-		} else if( tempString.equalsIgnoreCase( "sub" ) ) {
-			lastTag = SUB_BEGIN;
-		} else if( tempString.equalsIgnoreCase( "/sup" ) ) {
-			lastTag = SUP_END;
-		} else if( tempString.equalsIgnoreCase( "/sub" ) ) {
-			lastTag = SUB_END;
-		} else if( tempString.equalsIgnoreCase( "/" ) ) {
-			lastTag = ALL_END;
-		} else if( tempString.equalsIgnoreCase( "lt" ) ) {
-			lastTag = LESS_THAN;
-		} else if( tempString.equalsIgnoreCase( "gt" ) ) {
-			lastTag = GREATER_THAN;
-		} else if( ( tempString.length() >= 3 ) && tempString.substring( 0, 3 ).equalsIgnoreCase( "sp=" ) ) {
-			lastTag = SPECIAL_CHAR;
-			tagExtra = tempString.substring(3);
+    private void getNextTag() {
+        char tempChar = 0;
+        StringBuffer tempBuffer = new StringBuffer();
+        String tempString;
+        if ((tempChar = text.charAt(nextChar++)) != TAG_BEGIN) {
+            //ERROR!
+            System.err.println("Bad char " + tempChar + ". Looking for '<'");
+        }
+        while ((tempChar = text.charAt(nextChar++)) != TAG_END) {
+            tempBuffer.append("" + tempChar); //Lars - Adding "" because JDK 1.5 is stupid.
+        }
+        tempString = tempBuffer.toString();
+        if (tempString.equalsIgnoreCase("b")) {
+            lastTag = BOLD_BEGIN;
+        } else if (tempString.equalsIgnoreCase("/b")) {
+            lastTag = BOLD_END;
+        } else if (tempString.equalsIgnoreCase("i")) {
+            lastTag = ITALIC_BEGIN;
+        } else if (tempString.equalsIgnoreCase("/i")) {
+            lastTag = ITALIC_END;
+        } else if (tempString.equalsIgnoreCase("bar")) {
+            lastTag = BAR_BEGIN;
+        } else if (tempString.equalsIgnoreCase("/bar")) {
+            lastTag = BAR_END;
+        } else if (tempString.equalsIgnoreCase("/font")) {
+            lastTag = COLOR_END;
+        } else if ((tempString.length() > 11) && tempString.substring(0, 11).equalsIgnoreCase("font color=")) {
+            lastTag = COLOR_BEGIN;
+            String tempColorName = tempString.substring(11);
+            tagExtra = Utilities.getColor(tempColorName);
+        } else if (tempString.equalsIgnoreCase("sup")) {
+            lastTag = SUP_BEGIN;
+        } else if (tempString.equalsIgnoreCase("sub")) {
+            lastTag = SUB_BEGIN;
+        } else if (tempString.equalsIgnoreCase("/sup")) {
+            lastTag = SUP_END;
+        } else if (tempString.equalsIgnoreCase("/sub")) {
+            lastTag = SUB_END;
+        } else if (tempString.equalsIgnoreCase("/")) {
+            lastTag = ALL_END;
+        } else if (tempString.equalsIgnoreCase("lt")) {
+            lastTag = LESS_THAN;
+        } else if (tempString.equalsIgnoreCase("gt")) {
+            lastTag = GREATER_THAN;
+        } else if ((tempString.length() >= 3) && tempString.substring(0, 3).equalsIgnoreCase("sp=")) {
+            lastTag = SPECIAL_CHAR;
+            tagExtra = tempString.substring(3);
 			/*
       } else if (tempString.equalsIgnoreCase("br")) {
          lastTag = NEW_LINE;
 			 */
-		} else {
-			lastTag = INVALID;
-			tagExtra = tempString;
-		}
-	}
+        } else {
+            lastTag = INVALID;
+            tagExtra = tempString;
+        }
+    }
 
-	protected GridBagConstraints getGBC() {
+    protected GridBagConstraints getGBC() {
 		/* these 2 GridBagConstraints control how each HTMLSubLabel looks
           gbcH has been modified so that there is a little bit of padding on it's left side
           which makes subscripts look much better*/
-		GridBagConstraints gbcV = new GridBagConstraints( 0, GridBagConstraints.RELATIVE, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 );
-		GridBagConstraints gbcH = new GridBagConstraints( GridBagConstraints.RELATIVE, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 2, 0 );
-		return isRotate() ? gbcV : gbcH;
-	}
+        GridBagConstraints gbcV = new GridBagConstraints(0, GridBagConstraints.RELATIVE, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0);
+        GridBagConstraints gbcH = new GridBagConstraints(GridBagConstraints.RELATIVE, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 2, 0);
+        return isRotate() ? gbcV : gbcH;
+    }
 
-	protected void addSubLabel(HTMLSubLabel l) {
-		this.add(l, getGBC());
-	}
+    protected void addSubLabel(HTMLSubLabel l) {
+        this.add(l, getGBC());
+    }
 
-	private void objectNeedsUpdating() {
-		formatted = false;
-		parse();
-		repaint();
-	}
+    private void objectNeedsUpdating() {
+        formatted = false;
+        parse();
+        repaint();
+    }
 }
 
 class StackContainer {
-	Component c;
-	Object cts;
-	int index;
+    Component c;
+    Object cts;
+    int index;
 
-	StackContainer( Component c, Object cts, int index ) {
-		this.c = c;
-		this.cts = cts;
-		this.index = index;
-	}
+    StackContainer(Component c, Object cts, int index) {
+        this.c = c;
+        this.cts = cts;
+        this.index = index;
+    }
 }
 

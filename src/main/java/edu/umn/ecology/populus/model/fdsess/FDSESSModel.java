@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.fdsess;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class FDSESSModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "FDSESSHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "FDSESSHELP";
+    }
 
-	public FDSESSModel() {
-		this.setModelInput( new FDSESSPanel() );
-	}
+    public FDSESSModel() {
+        this.setModelInput(new FDSESSPanel());
+    }
 
-	public static String getModelName() {
-		return "Frequency-Dependent Selection (ESS Model)";
-	}
+    public static String getModelName() {
+        return "Frequency-Dependent Selection (ESS Model)";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "FDSESS.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "FDSESS.overview";
+    }
 }

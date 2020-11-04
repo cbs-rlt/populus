@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.sspg;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class SSPGModel extends BasicPlotModel {
-	public SSPGModel() {
-		this.setModelInput(new SSPGPanel());
-	}
+    public SSPGModel() {
+        this.setModelInput(new SSPGPanel());
+    }
 
-	public static String getModelName() {
-		return "Stage-Structured Population Growth";
-	}
+    public static String getModelName() {
+        return "Stage-Structured Population Growth";
+    }
 
-	@Override
-	public Object getModelHelpText() {
-		return "SSPGHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SSPGHELP";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "SSPG.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "SSPG.overview";
+    }
 
 }

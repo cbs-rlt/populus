@@ -6,43 +6,43 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.plot;
 
-import edu.umn.ecology.populus.edwin.*;
+import edu.umn.ecology.populus.edwin.ModelPanel;
 
 /**
  * Every model extends this class to implement their personalized input screen.
  * if more flexibility is required, then the model could extend ModelPanel
  * instead...
- *
+ * <p>
  * Of course, getPlotParamInfo is to be overridden with something that looks
  * like (from APPD Functional Responses):
- *
+ * <p>
  * public BasicPlot getPlotParamInfo() { int type = type1Button.isSelected() ? 1
  * : (type2Button.isSelected() ? 2 : 3);
- *
+ * <p>
  * return new APPDFRParamInfo(n0PF.getDouble(), p0PF.getDouble(),
  * lambdaPF.getDouble(), apPF.getDouble(), cPF.getDouble(), tPF.getDouble(),
  * thPF.getDouble(), bPF.getDouble(), gensPF.getInt(), type,
  * npvstButton.isSelected()); }
- *
+ * <p>
  * which returns the class who knows how to calculate the results from the input
  * screen.
  */
 
 public class BasicPlotInputPanel extends ModelPanel {
-	private static final long serialVersionUID = -3085139371708191553L;
+    private static final long serialVersionUID = -3085139371708191553L;
 
-	/**
-	 * The only reason this is not abstract is to use the visual designer
-	 */
-	public BasicPlot getPlotParamInfo() {
-		return null;
-	}
+    /**
+     * The only reason this is not abstract is to use the visual designer
+     */
+    public BasicPlot getPlotParamInfo() {
+        return null;
+    }
 
-	public void updateLabels() {
+    public void updateLabels() {
 
-	}
+    }
 
-	public BasicPlotInputPanel() {
+    public BasicPlotInputPanel() {
 
-	}
+    }
 }

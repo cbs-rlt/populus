@@ -6,29 +6,29 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.aids;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class AIDSModel extends BasicPlotModel {
-	@Override
-	public String getThisModelInputName() {
-		return "AIDS: Threshold Model";
-	}
+    @Override
+    public String getThisModelInputName() {
+        return "AIDS: Threshold Model";
+    }
 
-	@Override
-	public Object getModelHelpText() {
-		return "AIDSHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "AIDSHELP";
+    }
 
-	public AIDSModel() {
-		this.setModelInput( new AIDSPanel() );
-	}
+    public AIDSModel() {
+        this.setModelInput(new AIDSPanel());
+    }
 
-	public static String getModelName() {
-		return "AIDS: Threshold Model";
-	}
+    public static String getModelName() {
+        return "AIDS: Threshold Model";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "aids.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "aids.overview";
+    }
 }

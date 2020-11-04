@@ -12,5 +12,5 @@ package edu.umn.ecology.populus.core;
 
 public interface ModelListener {
 
-	public void modelChanged( ModelEvent e ) throws CannotChangeModelException;
+    public void modelChanged(ModelEvent e) throws CannotChangeModelException;
 }

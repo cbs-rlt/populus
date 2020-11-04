@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.intradgs;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class INTRADGSModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "INTRADGSHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "INTRADGSHELP";
+    }
 
-	public INTRADGSModel() {
-		this.setModelInput( new INTRADGSPanel() );
-	}
+    public INTRADGSModel() {
+        this.setModelInput(new INTRADGSPanel());
+    }
 
-	public static String getModelName() {
-		return "Intrademic Group Selection";
-	}
+    public static String getModelName() {
+        return "Intrademic Group Selection";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "INTRADGS.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "INTRADGS.overview";
+    }
 }

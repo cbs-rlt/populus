@@ -5,16 +5,17 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.woozle;
+
 import javax.swing.*;
 
 public class WoozleField extends JTextField {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -1617839763846866140L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1617839763846866140L;
 
-	public WoozleField() {
+    public WoozleField() {
 
-	}
+    }
 }

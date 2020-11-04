@@ -5,7 +5,8 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.fileio;
-import java.io.*;
+
+import java.io.File;
 
 /**
  * This type was created in VisualAge.
@@ -14,20 +15,20 @@ import java.io.*;
 
 public class OutputFilter implements java.io.FilenameFilter {
 
-	/**
-	 * accept method comment.
-	 */
+    /**
+     * accept method comment.
+     */
 
-	@Override
-	public boolean accept( File dir, String name ) {
-		return true;
-	}
+    @Override
+    public boolean accept(File dir, String name) {
+        return true;
+    }
 
-	/**
-	 * OutputFilter constructor comment.
-	 */
+    /**
+     * OutputFilter constructor comment.
+     */
 
-	public OutputFilter() {
-		super();
-	}
+    public OutputFilter() {
+        super();
+    }
 }

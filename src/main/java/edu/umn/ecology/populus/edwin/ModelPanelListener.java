@@ -12,5 +12,5 @@ package edu.umn.ecology.populus.edwin;
 
 public interface ModelPanelListener {
 
-	public abstract void modelPanelChanged( ModelPanelEvent e );
+    public abstract void modelPanelChanged(ModelPanelEvent e);
 }

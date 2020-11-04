@@ -5,11 +5,12 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.ppplot;
-import edu.umn.ecology.populus.plot.*;
+
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class PPModel extends BasicPlotModel {
 
-	public PPModel() {
+    public PPModel() {
 
-	}
+    }
 }

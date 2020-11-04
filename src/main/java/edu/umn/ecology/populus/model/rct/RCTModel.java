@@ -5,36 +5,41 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.rct;
-import edu.umn.ecology.populus.plot.*;
-import java.util.*;
+
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+import java.util.ResourceBundle;
 
 public class RCTModel extends BasicPlotModel {
-	static ResourceBundle res = null;
-	private static synchronized void initRes() {
-		if (res == null)
-			res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.rct.Res" );
-	}
+    static ResourceBundle res = null;
 
-	@Override
-	public Object getModelHelpText() {
-		return "RCTHELP";
-	}
+    private static synchronized void initRes() {
+        if (res == null)
+            res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.rct.Res");
+    }
 
-	public RCTModel() {
-		this.setModelInput( new RCTPanel() );
-	}
-	@Override
-	public String getThisModelInputName() {
-		initRes();
-		return res.getString( "Resource_competition" );
-	}
-	public static String getModelName() {
-		initRes();
-		return res.getString( "Resource" );
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "RCTHELP";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "rct.overview";
-	}
+    public RCTModel() {
+        this.setModelInput(new RCTPanel());
+    }
+
+    @Override
+    public String getThisModelInputName() {
+        initRes();
+        return res.getString("Resource_competition");
+    }
+
+    public static String getModelName() {
+        initRes();
+        return res.getString("Resource");
+    }
+
+    @Override
+    protected String getHelpId() {
+        return "rct.overview";
+    }
 }

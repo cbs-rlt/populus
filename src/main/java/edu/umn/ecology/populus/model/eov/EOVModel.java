@@ -5,27 +5,28 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.eov;
-import edu.umn.ecology.populus.plot.*;
+
 import edu.umn.ecology.populus.core.PopResourceBundle;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class EOVModel extends BasicPlotModel {
-	static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.eov.Res" );
+    static PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.eov.Res");
 
-	@Override
-	public Object getModelHelpText() {
-		return "EOVHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "EOVHELP";
+    }
 
-	public EOVModel() {
-		this.setModelInput( new EOVPanel() );
-	}
+    public EOVModel() {
+        this.setModelInput(new EOVPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString( "Infectious" );
-	}
+    public static String getModelName() {
+        return res.getString("Infectious");
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "eov.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "eov.overview";
+    }
 }

@@ -15,36 +15,37 @@
 package edu.umn.ecology.populus.visual;
 
 import javax.swing.*;
+
 public class Bracket extends JLabel {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 2014559949849865632L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2014559949849865632L;
 
-	private int side;
+    private int side;
 
-	private final String uiClassID = "BracketUI";
-
-
-	/**
-	 * 'side' may be either SwingConstants.LEFT or SwingConstants.RIGHT
-	 */
-	public Bracket(int side) {
-		this.side = side;
-	}
-
-	@Override
-	public String getUIClassID() {
-		return uiClassID;
-	}
-
-	@Override
-	public boolean isOpaque() {
-		return true;
-	}
+    private final String uiClassID = "BracketUI";
 
 
-	public int getSide() {
-		return side;
-	}
+    /**
+     * 'side' may be either SwingConstants.LEFT or SwingConstants.RIGHT
+     */
+    public Bracket(int side) {
+        this.side = side;
+    }
+
+    @Override
+    public String getUIClassID() {
+        return uiClassID;
+    }
+
+    @Override
+    public boolean isOpaque() {
+        return true;
+    }
+
+
+    public int getSide() {
+        return side;
+    }
 }

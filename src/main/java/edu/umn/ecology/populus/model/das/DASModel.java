@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.das;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class DASModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "DASHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "DASHELP";
+    }
 
-	public DASModel() {
-		this.setModelInput( new DASPanel() );
-	}
+    public DASModel() {
+        this.setModelInput(new DASPanel());
+    }
 
-	public static String getModelName() {
-		return "Drift and Selection";
-	}
+    public static String getModelName() {
+        return "Drift and Selection";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "das.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "das.overview";
+    }
 }

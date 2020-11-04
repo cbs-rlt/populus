@@ -5,30 +5,31 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.ie;
-import edu.umn.ecology.populus.plot.*;
+
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class IEModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "IEHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "IEHELP";
+    }
 
-	@Override
-	public String getThisModelInputName() {
-		return "Interaction Engine";
-	}
+    @Override
+    public String getThisModelInputName() {
+        return "Interaction Engine";
+    }
 
-	public IEModel() {
-		this.setModelInput( new IEPanel() );
-	}
+    public IEModel() {
+        this.setModelInput(new IEPanel());
+    }
 
-	public static String getModelName() {
-		return "Interaction Engine";
-	}
+    public static String getModelName() {
+        return "Interaction Engine";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "ie.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "ie.overview";
+    }
 }

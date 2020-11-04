@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.soasll;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class SOASLLModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "SOASLLHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SOASLLHELP";
+    }
 
-	public SOASLLModel() {
-		this.setModelInput( new SOASLLPanel() );
-	}
+    public SOASLLModel() {
+        this.setModelInput(new SOASLLPanel());
+    }
 
-	public static String getModelName() {
-		return "Selection on a Sex-Linked Locus";
-	}
+    public static String getModelName() {
+        return "Selection on a Sex-Linked Locus";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "SOASLL.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "SOASLL.overview";
+    }
 }

@@ -6,8 +6,9 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.aspg;
 
-import edu.umn.ecology.populus.plot.*;
-import java.util.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+import java.util.ResourceBundle;
 
 /**
  * <b>Demography (or ASPG=Age-Structured Population Growth)</b>
@@ -19,24 +20,24 @@ import java.util.*;
  */
 public class ASPGModel extends BasicPlotModel {
 
-	public ASPGModel() {
-		this.setModelInput(new ASPGPanel());
-	}
+    public ASPGModel() {
+        this.setModelInput(new ASPGPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString("Age_Structured");
-	}
+    public static String getModelName() {
+        return res.getString("Age_Structured");
+    }
 
-	@Override
-	public Object getModelHelpText() {
-		return "ASPGHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "ASPGHELP";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "aspg.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "aspg.overview";
+    }
 
-	static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
+    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.aspg.Res");
 
 }

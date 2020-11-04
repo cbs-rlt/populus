@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.ddsgv;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class DDSGVModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "DDSGVHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "DDSGVHELP";
+    }
 
-	public DDSGVModel() {
-		this.setModelInput( new DDSGVPanel() );
-	}
+    public DDSGVModel() {
+        this.setModelInput(new DDSGVPanel());
+    }
 
-	public static String getModelName() {
-		return "Density-Dependent Selection w/ Genetic Variation";
-	}
+    public static String getModelName() {
+        return "Density-Dependent Selection w/ Genetic Variation";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "DDSGV.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "DDSGV.overview";
+    }
 }

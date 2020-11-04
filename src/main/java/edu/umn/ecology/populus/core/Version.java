@@ -5,12 +5,13 @@ package edu.umn.ecology.populus.core;
  * <p>Description: ecological models</p>
  * <p>Copyright: Copyright (c) 2005, 2015</p>
  * <p>Company: University of Minnesota</p>
+ *
  * @author Lars Roe
  * @version 5.4
  */
 
 public class Version {
-	public static boolean isDev() {
-		return true;
-	}
+    public static boolean isDev() {
+        return true;
+    }
 }

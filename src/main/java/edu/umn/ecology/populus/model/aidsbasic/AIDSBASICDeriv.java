@@ -5,34 +5,36 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.aidsbasic;
-import edu.umn.ecology.populus.math.*;
+
+import edu.umn.ecology.populus.math.Derivative;
 
 public class AIDSBASICDeriv extends Derivative {
-	public static final int kY = 1;
-	public static final int kV = 2;
-	public static final int kX = 0;
-	private double lambda,d,beta,a,k,u;
+    public static final int kY = 1;
+    public static final int kV = 2;
+    public static final int kX = 0;
+    private double lambda, d, beta, a, k, u;
 
-	@Override
-	public void doDerivative( double t, double[] N, double[] dN ) {
-		double x = N[kX];
-		double y = N[kY];
-		double v = N[kV];
+    @Override
+    public void doDerivative(double t, double[] N, double[] dN) {
+        double x = N[kX];
+        double y = N[kY];
+        double v = N[kV];
 
-		dN[kX] = lambda- d*x - beta*x*v;
-		dN[kY] = beta*x*v-a*y;
-		dN[kV] = k*y-u*v;
+        dN[kX] = lambda - d * x - beta * x * v;
+        dN[kY] = beta * x * v - a * y;
+        dN[kV] = k * y - u * v;
 
-	}
-	public AIDSBASICDeriv( double lambda, double d, double k, double a, double beta, double u ) {
-		this.lambda = lambda;
-		this.d = d;
-		this.k = k;
-		this.beta = beta;
-		this.a = a;
-		this.u = u;
-		this.numVariables = 3;
-	}
+    }
+
+    public AIDSBASICDeriv(double lambda, double d, double k, double a, double beta, double u) {
+        this.lambda = lambda;
+        this.d = d;
+        this.k = k;
+        this.beta = beta;
+        this.a = a;
+        this.u = u;
+        this.numVariables = 3;
+    }
 }
 
 /*

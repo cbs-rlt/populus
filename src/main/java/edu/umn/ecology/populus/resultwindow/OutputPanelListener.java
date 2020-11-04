@@ -14,5 +14,5 @@ package edu.umn.ecology.populus.resultwindow;
 
 public interface OutputPanelListener {
 
-	public void outputChangeRequested( OutputPanelEvent e );
+    public void outputChangeRequested(OutputPanelEvent e);
 }

@@ -5,6 +5,7 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.visual.ppfield;
+
 import java.awt.*;
 
 /**
@@ -12,15 +13,15 @@ import java.awt.*;
  */
 
 public class PPFLayoutManager extends FlowLayout {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -886584094839158031L;
-	PopulusParameterField ref;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -886584094839158031L;
+    PopulusParameterField ref;
 
-	@Override
-	public void layoutContainer( Container target ) {
-		synchronized( target.getTreeLock() ) {
+    @Override
+    public void layoutContainer(Container target) {
+        synchronized (target.getTreeLock()) {
 
 
 			/*
@@ -55,13 +56,13 @@ public class PPFLayoutManager extends FlowLayout {
       }
       moveComponents(target, insets.left + hgap, y, maxwidth - x, rowh, start, nmembers, ltr);
 			 */
-		}
-	}
+        }
+    }
 
-	public PPFLayoutManager( PopulusParameterField ref ) {
-		super( CENTER, 0, 0 );
-		this.ref = ref;
-	}
+    public PPFLayoutManager(PopulusParameterField ref) {
+        super(CENTER, 0, 0);
+        this.ref = ref;
+    }
 
 	/*
 private PopulusParameterField castToPPF(Component comp) {

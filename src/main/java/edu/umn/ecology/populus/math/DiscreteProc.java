@@ -7,26 +7,26 @@
 package edu.umn.ecology.populus.math;
 
 abstract public class DiscreteProc {
-	protected int numVariables = -1;
+    protected int numVariables = -1;
 
-	/**
-	 * gen is current generation to get  <BR>
-	 * y is both input and output
-	 */
+    /**
+     * gen is current generation to get  <BR>
+     * y is both input and output
+     */
 
-	public abstract void v( long gen, double[] y );
+    public abstract void v(long gen, double[] y);
 
-	/********************/
+    /********************/
 
-	/* ACCESSOR METHODS */
+    /* ACCESSOR METHODS */
 
-	/********************/
+    /********************/
 
-	public int getNumVariables() {
-		return numVariables;
-	}
+    public int getNumVariables() {
+        return numVariables;
+    }
 
-	public DiscreteProc() {
+    public DiscreteProc() {
 
-	}
+    }
 }

@@ -6,30 +6,30 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.sgfac;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class SGFACModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "SGFACHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SGFACHELP";
+    }
 
-	public SGFACModel() {
-		this.setModelInput( new SGFACPanel() );
-	}
+    public SGFACModel() {
+        this.setModelInput(new SGFACPanel());
+    }
 
-	public static String getModelName() {
-		return "Selection on Clinal Stepping Stones";
-	}
+    public static String getModelName() {
+        return "Selection on Clinal Stepping Stones";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "SGFAC.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "SGFAC.overview";
+    }
 
-	@Override
-	protected boolean isRepeatable() {
-		return true;
-	}
+    @Override
+    protected boolean isRepeatable() {
+        return true;
+    }
 }

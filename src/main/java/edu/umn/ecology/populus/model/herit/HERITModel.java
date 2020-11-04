@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.herit;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class HERITModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "HERITHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "HERITHELP";
+    }
 
-	public HERITModel() {
-		this.setModelInput( new HERITPanel() );
-	}
+    public HERITModel() {
+        this.setModelInput(new HERITPanel());
+    }
 
-	public static String getModelName() {
-		return "Heritability";
-	}
+    public static String getModelName() {
+        return "Heritability";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "HERIT.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "HERIT.overview";
+    }
 }

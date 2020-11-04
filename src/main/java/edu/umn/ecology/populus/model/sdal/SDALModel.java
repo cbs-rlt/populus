@@ -5,27 +5,29 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.sdal;
-import edu.umn.ecology.populus.plot.*;
-import java.util.*;
+
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+import java.util.ResourceBundle;
 
 public class SDALModel extends BasicPlotModel {
-	static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.sdal.Res" );
+    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.sdal.Res");
 
-	@Override
-	public Object getModelHelpText() {
-		return "SDALHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SDALHELP";
+    }
 
-	public SDALModel() {
-		this.setModelInput( new SDALPanel() );
-	}
+    public SDALModel() {
+        this.setModelInput(new SDALPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString( "Autosomal_Selection" );
-	}
+    public static String getModelName() {
+        return res.getString("Autosomal_Selection");
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "sdal.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "sdal.overview";
+    }
 }

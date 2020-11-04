@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.mnp;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class MNPModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "MNPHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "MNPHELP";
+    }
 
-	public MNPModel() {
-		this.setModelInput( new MNPPanel() );
-	}
+    public MNPModel() {
+        this.setModelInput(new MNPPanel());
+    }
 
-	public static String getModelName() {
-		return "Multiple Niche Polymorphism";
-	}
+    public static String getModelName() {
+        return "Multiple Niche Polymorphism";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "MNP.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "MNP.overview";
+    }
 }

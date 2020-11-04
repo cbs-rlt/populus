@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.sam;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class SAMModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "SAMHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SAMHELP";
+    }
 
-	public SAMModel() {
-		this.setModelInput( new SAMPanel() );
-	}
+    public SAMModel() {
+        this.setModelInput(new SAMPanel());
+    }
 
-	public static String getModelName() {
-		return "Selection & Mutation";
-	}
+    public static String getModelName() {
+        return "Selection & Mutation";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "SAM.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "SAM.overview";
+    }
 }

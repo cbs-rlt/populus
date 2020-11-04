@@ -5,32 +5,33 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.appdfr;
-import edu.umn.ecology.populus.plot.*;
+
 import edu.umn.ecology.populus.core.PopResourceBundle;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class APPDFRModel extends BasicPlotModel {
-	static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.appdfr.Res" );
+    static PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.appdfr.Res");
 
-	@Override
-	public String getThisModelInputName() {
-		return res.getString( "Discrete_Predator" );
-	}
+    @Override
+    public String getThisModelInputName() {
+        return res.getString("Discrete_Predator");
+    }
 
-	@Override
-	public Object getModelHelpText() {
-		return "APPDFRHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "APPDFRHELP";
+    }
 
-	public APPDFRModel() {
-		this.setModelInput( new APPDFRPanel() );
-	}
+    public APPDFRModel() {
+        this.setModelInput(new APPDFRPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString( "Functional_Responses" );
-	}
+    public static String getModelName() {
+        return res.getString("Functional_Responses");
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "appdfr.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "appdfr.overview";
+    }
 }

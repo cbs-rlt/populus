@@ -5,27 +5,28 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.imd;
-import edu.umn.ecology.populus.plot.*;
+
 import edu.umn.ecology.populus.core.PopResourceBundle;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class IMDModel extends BasicPlotModel {
-	static PopResourceBundle res = PopResourceBundle.getBundle( "edu.umn.ecology.populus.model.imd.Res" );
+    static PopResourceBundle res = PopResourceBundle.getBundle("edu.umn.ecology.populus.model.imd.Res");
 
-	@Override
-	public Object getModelHelpText() {
-		return "IMDHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "IMDHELP";
+    }
 
-	public IMDModel() {
-		this.setModelInput( new IMDPanel() );
-	}
+    public IMDModel() {
+        this.setModelInput(new IMDPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString( "Infectious" );
-	}
+    public static String getModelName() {
+        return res.getString("Infectious");
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "imd.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "imd.overview";
+    }
 }

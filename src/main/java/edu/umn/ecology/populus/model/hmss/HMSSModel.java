@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.hmss;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class HMSSModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "HMSSHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "HMSSHELP";
+    }
 
-	public HMSSModel() {
-		this.setModelInput( new HMSSPanel() );
-	}
+    public HMSSModel() {
+        this.setModelInput(new HMSSPanel());
+    }
 
-	public static String getModelName() {
-		return "Handicap Sexual Selection";
-	}
+    public static String getModelName() {
+        return "Handicap Sexual Selection";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "HMSS.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "HMSS.overview";
+    }
 }

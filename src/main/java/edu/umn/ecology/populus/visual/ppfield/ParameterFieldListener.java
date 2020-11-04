@@ -19,9 +19,10 @@
 
 //with Populus
 package edu.umn.ecology.populus.visual.ppfield;
-import java.util.*;
+
+import java.util.EventListener;
 
 public interface ParameterFieldListener extends EventListener {
 
-	public void parameterFieldChanged( ParameterFieldEvent e );
+    public void parameterFieldChanged(ParameterFieldEvent e);
 }

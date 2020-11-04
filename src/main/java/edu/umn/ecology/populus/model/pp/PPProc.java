@@ -5,85 +5,79 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.pp;
-import edu.umn.ecology.populus.math.*;
+
+import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class PPProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-	private double[] l, aX, g, a;
-	private double m, s;
-	private boolean switching;
-	final private double[] kaX;
+    private double[] l, aX, g, a;
+    private double m, s;
+    private boolean switching;
+    final private double[] kaX;
 
-	@Override
-	public void v( long t, double[] y ) {
-		final short Xy = 0, Yy = 1, Py = 2;
-		double[] X =  {
-				y[Xy], y[Yy]
-		};
-		double P = y[Py], P1m, E;
-		this.aX = kaX.clone();
-		if( P > 0 ) {
-			P1m = Math.log( P ) * ( 1 - m );
-			if( P1m < 87.0 ) {
-				P1m = Math.exp( P1m );
-			}
-			else {
-				P1m = Double.POSITIVE_INFINITY;
-			}
-		}
-		else {
-			P1m = 0;
-		}
-		if( switching ) {
-			if( X[0] + X[1] != 0 ) {
-				E = s * ( X[0] - X[1] ) / ( X[0] + X[1] );
-			}
-			else {
-				E = 0;
-			}
-			aX[0] *= ( 1 + E );
-			aX[1] *= ( 1 - E );
-		}
-		aX[0] *= P1m;
-		aX[1] *= P1m;
-		y[Xy] = -g[0] * ( X[0] + a[0] * X[1] ) - aX[0];
-		if( y[Xy] > -1e5 ) {
-			y[Xy] = l[0] * X[0] * Math.exp( y[Xy] );
-		}
-		else {
-			y[Xy] = 0;
-		}
-		y[Yy] = -g[1] * ( X[1] + a[1] * X[0] ) - aX[1];
-		if( y[Yy] > -1e5 ) {
-			y[Yy] = l[1] * X[1] * Math.exp( y[Yy] );
-		}
-		else {
-			y[Yy] = 0;
-		}
-		if( -aX[0] > -1e5 ) {
-			aX[0] = Math.exp( -aX[0] );
-		}
-		else {
-			aX[0] = 0;
-		}
-		if( -aX[1] > -1e5 ) {
-			aX[1] = Math.exp( -aX[1] );
-		}
-		else {
-			aX[1] = 0;
-		}
-		y[Py] = X[0] * ( 1 - aX[0] ) + X[1] * ( 1 - aX[1] );
-	}
+    @Override
+    public void v(long t, double[] y) {
+        final short Xy = 0, Yy = 1, Py = 2;
+        double[] X = {
+                y[Xy], y[Yy]
+        };
+        double P = y[Py], P1m, E;
+        this.aX = kaX.clone();
+        if (P > 0) {
+            P1m = Math.log(P) * (1 - m);
+            if (P1m < 87.0) {
+                P1m = Math.exp(P1m);
+            } else {
+                P1m = Double.POSITIVE_INFINITY;
+            }
+        } else {
+            P1m = 0;
+        }
+        if (switching) {
+            if (X[0] + X[1] != 0) {
+                E = s * (X[0] - X[1]) / (X[0] + X[1]);
+            } else {
+                E = 0;
+            }
+            aX[0] *= (1 + E);
+            aX[1] *= (1 - E);
+        }
+        aX[0] *= P1m;
+        aX[1] *= P1m;
+        y[Xy] = -g[0] * (X[0] + a[0] * X[1]) - aX[0];
+        if (y[Xy] > -1e5) {
+            y[Xy] = l[0] * X[0] * Math.exp(y[Xy]);
+        } else {
+            y[Xy] = 0;
+        }
+        y[Yy] = -g[1] * (X[1] + a[1] * X[0]) - aX[1];
+        if (y[Yy] > -1e5) {
+            y[Yy] = l[1] * X[1] * Math.exp(y[Yy]);
+        } else {
+            y[Yy] = 0;
+        }
+        if (-aX[0] > -1e5) {
+            aX[0] = Math.exp(-aX[0]);
+        } else {
+            aX[0] = 0;
+        }
+        if (-aX[1] > -1e5) {
+            aX[1] = Math.exp(-aX[1]);
+        } else {
+            aX[1] = 0;
+        }
+        y[Py] = X[0] * (1 - aX[0]) + X[1] * (1 - aX[1]);
+    }
 
-	public PPProc( boolean switching, double[] l, double[] aX, double[] g, double[] a, double m, double s ) {
-		this.l = l;
-		this.kaX = aX;
-		this.g = g;
-		this.a = a;
-		this.m = m;
-		this.s = s;
-		this.switching = switching;
-		this.numVariables = 3;
-	}
+    public PPProc(boolean switching, double[] l, double[] aX, double[] g, double[] a, double m, double s) {
+        this.l = l;
+        this.kaX = aX;
+        this.g = g;
+        this.a = a;
+        this.m = m;
+        this.s = s;
+        this.switching = switching;
+        this.numVariables = 3;
+    }
 } /* pascal code for "Polyphagous Predators"
  procedure V(var Pm:ParamArray;t:longint;var y_); far;
  var

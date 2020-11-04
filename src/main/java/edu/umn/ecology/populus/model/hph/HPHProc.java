@@ -5,42 +5,41 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.hph;
-import edu.umn.ecology.populus.math.*;
+
+import edu.umn.ecology.populus.math.DiscreteProc;
 
 public class HPHProc extends DiscreteProc implements edu.umn.ecology.populus.model.appd.Constants {
-	private double l, a1, a2, k1, k2;
+    private double l, a1, a2, k1, k2;
 
-	@Override
-	public void v( long t, double[] y ) {
-		double f1, f2, N, P, Q;
-		N = y[0];
-		P = y[1];
-		Q = y[2];
-		if( k1 != 0 ) {
-			f1 = Math.exp( Math.log( 1 + a1 * P / k1 ) * -k1 );
-		}
-		else {
-			f1 = 0;
-		}
-		if( k2 != 0 ) {
-			f2 = Math.exp( Math.log( 1 + a2 * Q / k2 ) * -k2 );
-		}
-		else {
-			f2 = 0;
-		}
-		y[0] = l * N * f1;
-		y[1] = N * ( 1 - f1 ) * f2;
-		y[2] = N * ( 1 - f1 ) * ( 1 - f2 );
-	}
+    @Override
+    public void v(long t, double[] y) {
+        double f1, f2, N, P, Q;
+        N = y[0];
+        P = y[1];
+        Q = y[2];
+        if (k1 != 0) {
+            f1 = Math.exp(Math.log(1 + a1 * P / k1) * -k1);
+        } else {
+            f1 = 0;
+        }
+        if (k2 != 0) {
+            f2 = Math.exp(Math.log(1 + a2 * Q / k2) * -k2);
+        } else {
+            f2 = 0;
+        }
+        y[0] = l * N * f1;
+        y[1] = N * (1 - f1) * f2;
+        y[2] = N * (1 - f1) * (1 - f2);
+    }
 
-	public HPHProc( double l, double a1, double a2, double k1, double k2 ) {
-		this.l = l;
-		this.a1 = a1;
-		this.a2 = a2;
-		this.k1 = k1;
-		this.k2 = k2;
-		this.numVariables = 3;
-	}
+    public HPHProc(double l, double a1, double a2, double k1, double k2) {
+        this.l = l;
+        this.a1 = a1;
+        this.a2 = a2;
+        this.k1 = k1;
+        this.k2 = k2;
+        this.numVariables = 3;
+    }
 } /*pascal code for "Host, Parasite, Hyperparasitoid"
  procedure V(var Pm:ParamArray;t:longint;var y_); far;
  var

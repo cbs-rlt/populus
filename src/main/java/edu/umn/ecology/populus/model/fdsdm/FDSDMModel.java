@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.fdsdm;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class FDSDMModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "FDSDMHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "FDSDMHELP";
+    }
 
-	public FDSDMModel() {
-		this.setModelInput( new FDSDMPanel() );
-	}
+    public FDSDMModel() {
+        this.setModelInput(new FDSDMPanel());
+    }
 
-	public static String getModelName() {
-		return "Frequency-Dependent Selection (Diploid Model)";
-	}
+    public static String getModelName() {
+        return "Frequency-Dependent Selection (Diploid Model)";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "FDSDM.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "FDSDM.overview";
+    }
 }

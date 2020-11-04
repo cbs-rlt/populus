@@ -6,9 +6,10 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.help;
 
+import edu.umn.ecology.populus.fileio.Logging;
+
 import javax.swing.*;
 import java.awt.*;
-import edu.umn.ecology.populus.fileio.Logging;
 
 /**
  * Use the Adobe PDF Reader Bean.  Currently disabled to use what user plugs in.
@@ -16,19 +17,20 @@ import edu.umn.ecology.populus.fileio.Logging;
  * 1) add the AdobeBean JAR file to the classpath (in several places, including the installer),
  * 2) uncomment the code in here
  * 3) fix the file name for the pdf file
+ *
  * @author Lars Roe
  * @version 5.4
  */
 
 public class OpenPDFWithAdobeBean {
 
-	/**
-	 * Opens PDF with named destination
-	 */
-	public OpenPDFWithAdobeBean(String filename, String namedDest) {
-		try {
-			JFrame frame = new JFrame("Test Viewer"); //Todo - must make sure we have a singleton JFrame
-			frame.setLayout(new BorderLayout());
+    /**
+     * Opens PDF with named destination
+     */
+    public OpenPDFWithAdobeBean(String filename, String namedDest) {
+        try {
+            JFrame frame = new JFrame("Test Viewer"); //Todo - must make sure we have a singleton JFrame
+            frame.setLayout(new BorderLayout());
 
 			/*
          com.adobe.acrobat.Viewer viewer = new com.adobe.acrobat.Viewer();
@@ -40,14 +42,15 @@ public class OpenPDFWithAdobeBean {
             viewer.gotoNamedDest(namedDest);
 			 */
 
-			frame.setSize(400, 500);
-			frame.setVisible(true);
-		} catch (Exception e) {
-			Logging.log("Couldn't open PDF");
-		} catch (Error e) {
-		}
-	}
-	public static void open(String filename, String dest) {
-		new OpenPDFWithAdobeBean(filename, dest);
-	}
+            frame.setSize(400, 500);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            Logging.log("Couldn't open PDF");
+        } catch (Error e) {
+        }
+    }
+
+    public static void open(String filename, String dest) {
+        new OpenPDFWithAdobeBean(filename, dest);
+    }
 }

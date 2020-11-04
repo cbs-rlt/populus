@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.soamal;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class SOAMALModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "SOAMALHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "SOAMALHELP";
+    }
 
-	public SOAMALModel() {
-		this.setModelInput( new SOAMALPanel() );
-	}
+    public SOAMALModel() {
+        this.setModelInput(new SOAMALPanel());
+    }
 
-	public static String getModelName() {
-		return "Selection on a Multi-Allelic Locus";
-	}
+    public static String getModelName() {
+        return "Selection on a Multi-Allelic Locus";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "SOAMAL.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "SOAMAL.overview";
+    }
 }

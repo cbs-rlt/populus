@@ -6,25 +6,25 @@
  *******************************************************************************/
 package edu.umn.ecology.populus.model.paqg;
 
-import edu.umn.ecology.populus.plot.*;
+import edu.umn.ecology.populus.plot.BasicPlotModel;
 
 public class PAQGModel extends BasicPlotModel {
 
-	@Override
-	public Object getModelHelpText() {
-		return "PAQGHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "PAQGHELP";
+    }
 
-	public PAQGModel() {
-		this.setModelInput( new PAQGPanel() );
-	}
+    public PAQGModel() {
+        this.setModelInput(new PAQGPanel());
+    }
 
-	public static String getModelName() {
-		return "Population & Quantitative Genetics";
-	}
+    public static String getModelName() {
+        return "Population & Quantitative Genetics";
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "PAQG.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "PAQG.overview";
+    }
 }

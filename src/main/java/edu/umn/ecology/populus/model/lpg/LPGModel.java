@@ -5,27 +5,29 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.model.lpg;
-import edu.umn.ecology.populus.plot.*;
-import java.util.*;
+
+import edu.umn.ecology.populus.plot.BasicPlotModel;
+
+import java.util.ResourceBundle;
 
 public class LPGModel extends BasicPlotModel {
-	static ResourceBundle res = ResourceBundle.getBundle( "edu.umn.ecology.populus.model.lpg.Res" );
+    static ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.model.lpg.Res");
 
-	@Override
-	public Object getModelHelpText() {
-		return "LPGHELP";
-	}
+    @Override
+    public Object getModelHelpText() {
+        return "LPGHELP";
+    }
 
-	public LPGModel() {
-		this.setModelInput( new LPGPanel() );
-	}
+    public LPGModel() {
+        this.setModelInput(new LPGPanel());
+    }
 
-	public static String getModelName() {
-		return res.getString( "Density_Dependent" );
-	}
+    public static String getModelName() {
+        return res.getString("Density_Dependent");
+    }
 
-	@Override
-	protected String getHelpId() {
-		return "ddpg.overview";
-	}
+    @Override
+    protected String getHelpId() {
+        return "ddpg.overview";
+    }
 }

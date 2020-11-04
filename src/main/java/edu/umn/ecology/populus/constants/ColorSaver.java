@@ -5,44 +5,48 @@
  * http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
  *******************************************************************************/
 package edu.umn.ecology.populus.constants;
-import java.awt.Color;
+
+import java.awt.*;
 import java.io.Serializable;
 
 /**
-  This class enables the capability of saving the user's color choices.
-  ColorScheme isn't serializable because the all relevant data are static,
+ * This class enables the capability of saving the user's color choices.
+ * ColorScheme isn't serializable because the all relevant data are static,
  */
 
 public class ColorSaver implements Serializable {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -2730125349195960295L;
-	Color bGToSave;
-	int[] currentIndexToSave;
-	int scheme = 0;
-	Color[] colorsToSave;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2730125349195960295L;
+    Color bGToSave;
+    int[] currentIndexToSave;
+    int scheme = 0;
+    Color[] colorsToSave;
 
-	/**	Restore the colors in the ColorChooser to the saved values.*/
+    /**
+     * Restore the colors in the ColorChooser to the saved values.
+     */
 
-	public void setColors() {
-		ColorScheme.colors = colorsToSave.clone();
-		ColorScheme.bG = bGToSave;
-		ColorScheme.currentIndex = currentIndexToSave.clone();
-		ColorScheme.schemeIndex = scheme;
-	}
+    public void setColors() {
+        ColorScheme.colors = colorsToSave.clone();
+        ColorScheme.bG = bGToSave;
+        ColorScheme.currentIndex = currentIndexToSave.clone();
+        ColorScheme.schemeIndex = scheme;
+    }
 
-	public ColorSaver() {
-		colorsToSave = ColorScheme.colors.clone();
-		bGToSave = ColorScheme.bG;
-		currentIndexToSave = ColorScheme.currentIndex.clone();
-		if( ColorScheme.keepOnlyOneOpen != null ) {
-			scheme = ColorScheme.keepOnlyOneOpen.getSchemeIndex();
-		}
-	}
-	public static void setDefaults(){
-		if(ColorScheme.keepOnlyOneOpen != null){
-			ColorScheme.keepOnlyOneOpen.reinit();
-		}
-	}
+    public ColorSaver() {
+        colorsToSave = ColorScheme.colors.clone();
+        bGToSave = ColorScheme.bG;
+        currentIndexToSave = ColorScheme.currentIndex.clone();
+        if (ColorScheme.keepOnlyOneOpen != null) {
+            scheme = ColorScheme.keepOnlyOneOpen.getSchemeIndex();
+        }
+    }
+
+    public static void setDefaults() {
+        if (ColorScheme.keepOnlyOneOpen != null) {
+            ColorScheme.keepOnlyOneOpen.reinit();
+        }
+    }
 }
