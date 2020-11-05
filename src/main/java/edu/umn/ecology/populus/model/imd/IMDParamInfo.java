@@ -67,44 +67,44 @@ public class IMDParamInfo implements BasicPlot {
         for (int i = 0; i < totalPop.length; i++)
             for (double[] ylist : ylists) totalPop[i] += ylist[i];
 
-        //PlotArrow.addFletching( bp, 0 );
-        //PlotArrow.addFletching( bp, 0 );
-        switch (plotType) {
-            case vsT -> {
-                points = new double[numVars + 1][2][];
-                points[0][0] = xlist;
-                points[0][1] = totalPop;
-                points[1][0] = xlist;
-                points[1][1] = ylists[0];
-                points[2][0] = xlist;
-                points[2][1] = ylists[1];
-                if (numVars == 3) {
-                    points[3][0] = xlist;
-                    points[3][1] = ylists[2];
-                }
-                String caption = numVars == 3 ? yCap3 : yCap2;
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, caption);
-                bp.setYMin(0.0);
-                bp.vsTimeChars = new String[]{
-                        "S", "I", "R"
-                };
-            }
-            case ivsn -> {
-                points = new double[1][2][];
-                points[0][1] = ylists[1];
-                points[0][0] = totalPop;
-                bp = new BasicPlotInfo(points, mCapN2vsN1, nCaption, iCaption);
-                PlotArrow.addArrow(bp, 0);
-            }
-            case phase -> {
-                points = new double[1][][];
-                points[0] = ylists;
-                bp = new BasicPlotInfo(points, mCapN2vsN1, sCaption, iCaption);
-                PlotArrow.addArrow(bp, 0);
-            }
-        }
-        return bp;
-    }
+		switch(plotType){
+		case vsT:
+			points = new double[numVars+1][2][];
+			points[0][0] = xlist;
+			points[0][1] = totalPop;
+			points[1][0] = xlist;
+			points[1][1] = ylists[0];
+			points[2][0] = xlist;
+			points[2][1] = ylists[1];
+			if( numVars == 3 ) {
+				points[3][0] = xlist;
+				points[3][1] = ylists[2];
+			}
+			String caption = numVars == 3 ? yCap3 : yCap2;
+			bp = new BasicPlotInfo( points, mCapNvsT, xCap, caption );
+			bp.setYMin( 0.0 );
+			bp.vsTimeChars = new String[] {
+					"S", "I", "R"
+			};
+			break;
+		case ivsn:
+			points = new double[1][2][];
+			points[0][1] = ylists[1];
+			points[0][0] = totalPop;
+			bp = new BasicPlotInfo( points, mCapN2vsN1, nCaption, iCaption );
+			PlotArrow.addArrow( bp, 0 );
+			//PlotArrow.addFletching( bp, 0 );
+			break;
+		case phase:
+			points = new double[1][][];
+			points[0] = ylists;
+			bp = new BasicPlotInfo( points, mCapN2vsN1, sCaption, iCaption );
+			PlotArrow.addArrow( bp, 0 );
+			//PlotArrow.addFletching( bp, 0 );
+			break;
+		}
+		return bp;
+	}
 
     public IMDParamInfo(int modelType, int plotType, double time, /*time < 0 for steady state*/ double X, double Y, double Z, double a, double b, double alpha, double beta, double nu, double gamma) {
         ig = new Integrator(new IMDDeriv(modelType, a, b, alpha, beta, nu, gamma));

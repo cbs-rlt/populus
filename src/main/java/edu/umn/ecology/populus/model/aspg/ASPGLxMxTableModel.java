@@ -44,19 +44,24 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
         super.fireTableChanged(new TableModelEvent(this));
     }
 
-    /**
-     *  Return the name for the column
-     */
-    @Override
-    public String getColumnName(int column) {
-        return switch (column) {
-            case 0 -> "<i>x</i>";
-            case 1 -> "<i>l</i><sub>x</sub>";
-            case 2 -> "<i>m</i><sub>x</sub>";
-            case 3 -> "Initial <i>S</i><sub>x</sub>(0)";
-            default -> null;
-        };
-    }
+	/**
+	 *  Return the name for the column
+	 */
+	@Override
+	public String getColumnName(int column) {
+		switch (column) {
+		case 0:
+			return "<i>x</i>";
+		case 1:
+			return "<i>l</i><sub>x</sub>";
+		case 2:
+			return "<i>m</i><sub>x</sub>";
+		case 3:
+			return "Initial <i>S</i><sub>x</sub>(0)";
+		default:
+			return null;
+		}
+	}
 
     /**
      *  Returns Object.class by default

@@ -38,75 +38,80 @@ public class RCDeriv extends Derivative {
         }
 
 
-        rho = w / v;
-        //i=2, j=1
-        //i = 1, j = 2
-        // i = 2, j=2
-        //i=2, j=2
-        //i=2, j=1
-        //i=2, j=2
-        //i = 1, j = 2
-        // i = 2, j=2
-        switch (modeltype) {
-            case RCParamInfo.equable_11 -> {
-                dN[kR1] = rho * (c1 - r1) - n1 * phi11;
-                dN[kN1] = n1 * (phi11 / e11 - rho);
-            }
-            case RCParamInfo.equable_21 -> {
-                n2 = N[kN2];
-                dN[kR1] = rho * (c1 - r1) - n1 * phi11 - n2 * phi21;
-                dN[kN1] = n1 * (phi11 / e11 - rho);
-                dN[kN2] = n2 * (phi21 / e21 - rho);
-            }
-            case RCParamInfo.equable_22 -> {
-                r2 = N[kR2];
-                n2 = N[kN2];
-                if ((r2 + b12) != 0) {
-                    phi12 = a12 * r2 / (r2 + b12);
-                } else {
-                    phi12 = 0;
-                }
-                if ((r2 + b22) != 0) {
-                    phi22 = a22 * r2 / (r2 + b22);
-                } else {
-                    phi22 = 0;
-                }
-                dN[kR1] = rho * (c1 - r1) - n1 * phi11 - n2 * phi21;
-                dN[kR2] = rho * (c2 - r2) - n1 * phi12 - n2 * phi22;
-                dN[kN1] = n1 * (phi11 / e11 + phi12 / e12 - rho);
-                dN[kN2] = n2 * (phi21 / e21 + phi22 / e22 - rho);
-            }
-            case RCParamInfo.seasonal_11 -> {
-                dN[kR1] = -n1 * phi11;
-                dN[kN1] = n1 * (phi11 / e11);
-            }
-            case RCParamInfo.seasonal_21 -> {
-                n2 = N[kN2];
-                dN[kR1] = -n1 * phi11 - n2 * phi21;
-                dN[kN1] = n1 * phi11 / e11;
-                dN[kN2] = n2 * phi21 / e21;
-            }
-            case RCParamInfo.seasonal_22 -> {
-                r2 = N[kR2];
-                n2 = N[kN2];
-                if ((r2 + b12) != 0) {
-                    phi12 = a12 * r2 / (r2 + b12);
-                } else {
-                    phi12 = 0;
-                }
-                if ((r2 + b22) != 0) {
-                    phi22 = a22 * r2 / (r2 + b22);
-                } else {
-                    phi22 = 0;
-                }
-                dN[kR1] = -n1 * phi11 - n2 * phi21;
-                dN[kR2] = -n1 * phi12 - n2 * phi22;
-                dN[kN1] = n1 * (phi11 / e11 + phi12 / e12);
-                dN[kN2] = n2 * (phi21 / e21 + phi22 / e22);
-            }
-        }
-        return;
-    }
+		rho = w/ v;
+		switch( modeltype ) {
+		case RCParamInfo.equable_11:
+
+			dN[kR1] = rho * (c1- r1) - n1* phi11;
+			dN[kN1] = n1 * ( phi11/e11 -rho);
+			break;
+
+		case RCParamInfo.equable_21:
+			n2 =N[kN2];
+			//i=2, j=1
+					dN[kR1] = rho * (c1- r1) - n1* phi11 - n2 * phi21;
+					dN[kN1] = n1 * ( phi11/e11 -rho);
+					dN[kN2] = n2 * ( phi21/e21 -rho);
+					break;
+
+		case RCParamInfo.equable_22:
+			r2 = N[kR2];
+			n2 =N[kN2];
+			//i = 1, j = 2
+			if ((r2+ b12) != 0) {
+				phi12= a12 * r2/(r2 + b12);
+			} else {
+				phi12 = 0;
+			}
+			// i = 2, j=2
+			if ((r2+ b22) != 0) {
+				phi22= a22 * r2/(r2 + b22);
+			} else {
+				phi22 = 0;
+			}
+			//i=2, j=2
+			dN[kR1] = rho * (c1- r1) - n1* phi11 - n2 * phi21;
+			dN[kR2] = rho * (c2- r2) - n1* phi12 - n2 * phi22;
+			dN[kN1] = n1 * ( phi11/e11 + phi12/e12 -rho);
+			dN[kN2] = n2 * ( phi21/e21+ phi22/e22 -rho);
+			break;
+
+		case RCParamInfo.seasonal_11:
+			dN[kR1] = - n1* phi11;
+			dN[kN1] = n1 * ( phi11/e11);
+			break;
+		case RCParamInfo.seasonal_21:
+			//i=2, j=1
+			n2 =N[kN2];
+			dN[kR1] = - n1* phi11 - n2 * phi21;
+			dN[kN1] = n1 * phi11/e11;
+			dN[kN2] = n2 * phi21/e21;
+			break;
+		case RCParamInfo.seasonal_22:
+			//i=2, j=2
+			r2 = N[kR2];
+			n2 =N[kN2];
+			//i = 1, j = 2
+			if ((r2+ b12) != 0) {
+				phi12= a12 * r2/(r2 + b12);
+			} else {
+				phi12 = 0;
+			}
+			// i = 2, j=2
+			if ((r2+ b22) != 0) {
+				phi22= a22 * r2/(r2 + b22);
+			} else {
+				phi22 = 0;
+			}
+			dN[kR1] = - n1* phi11 - n2 * phi21;
+			dN[kR2] = - n1* phi12 - n2 * phi22;
+			dN[kN1] = n1 * ( phi11/e11 + phi12/e12);
+			dN[kN2] = n2 * ( phi21/e21+ phi22/e22);
+			break;
+
+		}
+		return ;
+	}
 
 
     public RCDeriv(int modelType, double time, double v, double w, double c1, double c2, double e11, double e12, double e21, double e22, double a11, double a12, double a21, double a22, double b11, double b12, double b21, double b22, double d, int tI) {

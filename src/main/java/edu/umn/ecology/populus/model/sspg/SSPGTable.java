@@ -79,16 +79,20 @@ public class SSPGTable extends AbstractTableModel {
         this.fireTableStructureChanged();
     }
 
-    @Override
-    public String getColumnName(int column) {
-        if (column > 2) return "" + (column - 2);
-        return switch (column) {
-            case 0 -> "Stage";
-            case 1 -> "Title";
-            case 2 -> "N0";
-            default -> null;
-        };
-    }
+	@Override
+	public String getColumnName(int column) {
+		if(column>2) return ""+(column-2);
+		switch (column) {
+		case 0:
+			return "Stage";
+		case 1:
+			return "Title";
+		case 2:
+			return "N0";
+		default:
+			return null;
+		}
+	}
 
     /**
      * Returns Object.class by default

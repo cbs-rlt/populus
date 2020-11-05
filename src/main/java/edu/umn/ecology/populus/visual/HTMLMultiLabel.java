@@ -100,18 +100,26 @@ public class HTMLMultiLabel extends JPanel implements HTMLConstants {
             }
         }
 
-        this.removeAll();
-        gdbc = new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0);
-        for (int i = 0; i < labels.length; i++) {
-            switch (direction) {
-                case NORMAL -> gdbc.gridy = i;
-                case UPSIDEDOWN -> gdbc.gridy = labels.length - 1 - i;
-                case DOWN_TO_UP -> gdbc.gridx = i;
-                case UP_TO_DOWN -> gdbc.gridx = labels.length - 1 - i;
-            }
-            this.add(labels[i], gdbc);
-        }
-    }
+		this.removeAll();
+		gdbc = new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0);
+		for (int i = 0; i < labels.length; i++) {
+			switch (direction) {
+			case NORMAL:
+				gdbc.gridy = i;
+				break;
+			case UPSIDEDOWN:
+				gdbc.gridy = labels.length - 1 - i;
+				break;
+			case DOWN_TO_UP:
+				gdbc.gridx = i;
+				break;
+			case UP_TO_DOWN:
+				gdbc.gridx = labels.length - 1 - i;
+				break;
+			}
+			this.add(labels[i], gdbc);
+		}
+	}
 
     public void setText(String newText) {
         setText(new String[]{newText});

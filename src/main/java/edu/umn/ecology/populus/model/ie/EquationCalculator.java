@@ -133,53 +133,55 @@ public class EquationCalculator implements Serializable {
 
     void Tokenize() throws IEException {
 
-        //Preconditions:
-        //		an array of strings stored in the global variable
-        //Postconditions:
-        //		an array of vectors storing the tokens.
-        //
-        //		will modify the equation when numbers and functions get in same token
-        StringTokenizer st;
-        String temp = "";
-        boolean tokenIdentified, lastTokenWasParam = false;
-        for (int i = 0; i < numEQ; i++) {
-            v[i] = new Vector();
-            if (!used[i]) {
-                continue;
-            }
-            st = new StringTokenizer(eqs[i], " +-*/%^!()[]{}", true);
-            lastTokenWasParam = false;
-            while (st.hasMoreTokens()) {
-                tokenIdentified = false;
-                temp = st.nextToken();
-                if (Character.isDigit(temp.charAt(0))) {
-                    tokenIdentified = true;
-                    int k;
-                    for (k = 0; k < temp.length() && tokenIdentified == true; k++) {
-                        if (!Character.isDigit(temp.charAt(k))) {
-                            tokenIdentified = false;
-                        }
-                    }
-                    if (tokenIdentified) {
-                        v[i].addElement(new Token(TokenEnum.kConstant, Double.valueOf(temp).doubleValue()));
-                    } else {
-                        v[i].addElement(new Token(TokenEnum.kConstant, Double.valueOf(temp.substring(0, k - 1)).doubleValue()));
-                        temp = temp.substring(k - 1, temp.length());
-                    }
-                }
-                if (tokenIdentified == false && temp.charAt(0) == '.') {
-                    tokenIdentified = true;
-                    temp = "0" + temp;
-                    if (v[i].size() > 0 && ((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kConstant) {
-                        ((Token) v[i].elementAt(v[i].size() - 1)).value += Double.parseDouble(temp);
-                    } else {
-                        throw new IEException("Invalid decimal");
-                    }
-                }
-                if (tokenIdentified == false && (temp.charAt(0) >= 'a' && temp.charAt(0) <= 'z') || (temp.charAt(0) >= 'A' && temp.charAt(0) <= 'Z')) {
-                    tokenIdentified = true;
-                    TokenEnum type = TokenEnum.kInvalidTokenType;
-                    double value = 0;
+		//Preconditions:
+		//		an array of strings stored in the global variable
+		//Postconditions:
+		//		an array of vectors storing the tokens.
+		//
+		//		will modify the equation when numbers and functions get in same token
+		StringTokenizer st;
+		String temp = "";
+		boolean tokenIdentified, lastTokenWasParam = false;
+		for( int i = 0;i < numEQ;i++ ) {
+			v[i] = new Vector();
+			if( !used[i] ) {
+				continue;
+			}
+			st = new StringTokenizer( eqs[i], " +-*/%^!()[]{}", true );
+			lastTokenWasParam = false;
+			while( st.hasMoreTokens() ) {
+				tokenIdentified = false;
+				temp = st.nextToken();
+				if( Character.isDigit( temp.charAt( 0 ) ) ) {
+					tokenIdentified = true;
+					int k;
+					for( k = 0;k < temp.length() && tokenIdentified == true;k++ ) {
+						if( !Character.isDigit( temp.charAt( k ) ) ) {
+							tokenIdentified = false;
+						}
+					}
+					if( tokenIdentified ) {
+						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf( temp ).doubleValue() ) );
+					}
+					else {
+						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf( temp.substring( 0, k - 1 ) ).doubleValue() ) );
+						temp = temp.substring( k - 1, temp.length() );
+					}
+				}
+				if( tokenIdentified == false && temp.charAt( 0 ) == '.' ) {
+					tokenIdentified = true;
+					temp = "0" + temp;
+					if( v[i].size() > 0 && ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kConstant ) {
+						( (Token)v[i].elementAt( v[i].size() - 1 ) ).value += Double.parseDouble( temp );
+					}
+					else {
+						throw new IEException( "Invalid decimal" );
+					}
+				}
+				if( tokenIdentified == false && ( temp.charAt( 0 ) >= 'a' && temp.charAt( 0 ) <= 'z' ) || ( temp.charAt( 0 ) >= 'A' && temp.charAt( 0 ) <= 'Z' ) ) {
+					tokenIdentified = true;
+					TokenEnum type = TokenEnum.kInvalidTokenType;
+					double value = 0;
 
                     //functions
                     if (temp.equalsIgnoreCase("sin")) {
@@ -325,38 +327,81 @@ public class EquationCalculator implements Serializable {
                             }
                         }
 
-                        //if appropriate, insert multiplication before the constant
-                        if (v[i].size() > 0) {
-                            if (((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kConstant || (((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kBracket && ((Token) v[i].elementAt(v[i].size() - 1)).value == Token.kClose)) {
-                                v[i].addElement(new Token(TokenEnum.kOperator, Token.kMultiply));
-                            }
-                        }
-                        v[i].addElement(new Token(TokenEnum.kConstant, value));
-                        lastTokenWasParam = true;
-                        temp = "";
-                    }
-                }
-                if (!tokenIdentified) {
-                    switch (temp.charAt(0)) {
-                        case '+' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kPlus));
-                        case '-' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kMinus));
-                        case '*' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kMultiply));
-                        case '/' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kDivide));
-                        case '%' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kModulo));
-                        case '^' -> v[i].addElement(new Token(TokenEnum.kOperator, Token.kExponent));
-                        case '!' -> v[i].addElement(new Token(TokenEnum.kFunction, Token.kFactorial));
-                        case '(' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kOpen));
-                        case ')' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kClose));
-                        case '{' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kOpen));
-                        case '}' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kClose));
-                        case '[' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kOpen));
-                        case ']' -> v[i].addElement(new Token(TokenEnum.kBracket, Token.kClose));
-                        case ' ' -> temp = "";
-                        default -> throw new IEException("Unknown token: '" + temp + "'.");
-                    } //end switch
-                }
-                if (lastTokenWasParam && temp != "") {
-                    lastTokenWasParam = false;
+						//if appropriate, insert multiplication before the constant
+						if( v[i].size() > 0 ) {
+							if( ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kConstant || ( ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kBracket && ( (Token)v[i].elementAt( v[i].size() - 1 ) ).value == Token.kClose ) ) {
+								v[i].addElement( new Token( TokenEnum.kOperator, Token.kMultiply ) );
+							}
+						}
+						v[i].addElement( new Token( TokenEnum.kConstant, value ) );
+						lastTokenWasParam = true;
+						temp = "";
+					}
+				}
+				if( !tokenIdentified ) {
+					switch( temp.charAt( 0 ) ) {
+					case '+':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kPlus ) );
+						break;
+
+					case '-':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kMinus ) );
+						break;
+
+					case '*':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kMultiply ) );
+						break;
+
+					case '/':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kDivide ) );
+						break;
+
+					case '%':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kModulo ) );
+						break;
+
+					case '^':
+						v[i].addElement( new Token( TokenEnum.kOperator, Token.kExponent ) );
+						break;
+
+					case '!':
+						v[i].addElement( new Token( TokenEnum.kFunction, Token.kFactorial ) );
+						break;
+
+					case '(':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kOpen ) );
+						break;
+
+					case ')':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kClose ) );
+						break;
+
+					case '{':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kOpen ) );
+						break;
+
+					case '}':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kClose ) );
+						break;
+
+					case '[':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kOpen ) );
+						break;
+
+					case ']':
+						v[i].addElement( new Token( TokenEnum.kBracket, Token.kClose ) );
+						break;
+
+					case ' ':
+						temp = "";
+						break;
+
+					default:
+						throw new IEException( "Unknown token: '" + temp + "'." );
+					} //end switch
+				}
+				if( lastTokenWasParam && temp != "" ) {
+					lastTokenWasParam = false;
 
                     //we will insert a * if it doesn't already have an operator and it is not the
 
@@ -458,74 +503,75 @@ public class EquationCalculator implements Serializable {
                 throw new IEException("Brackets unbalanced.");
             }
 
-            //check for others
-            for (int j = 0; j < v[i].size() - 1; j++) {
-                switch (((Token) v[i].elementAt(j + 1)).tokenType) {
-                    case kBracket:
-                        if (((Token) v[i].elementAt(j + 1)).value == Token.kOpen && (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kConstant || /*5(*/ (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kBracket && /*)(*/ ((Token) v[i].elementAt(j)).value == Token.kClose))) {
-                            v[i].insertElementAt(new Token(TokenEnum.kOperator, Token.kMultiply), j + 1);
-                        }
-                        if (((Token) v[i].elementAt(j + 1)).value == Token.kOpen && ((((Token) v[i].elementAt(j + 2)).tokenType == TokenEnum.kOperator && ((Token) v[i].elementAt(j + 2)).value != Token.kMinus) || /*(**/ (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kBracket && /*)(*/ ((Token) v[i].elementAt(j)).value == Token.kClose))) {
-                            throw new IEException("Invalid token inside of open bracket.");
-                        }
-                        if (((Token) v[i].elementAt(j + 1)).value == Token.kClose && (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kOperator || /*-)*/ (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kBracket && /*()*/ ((Token) v[i].elementAt(j)).value == Token.kOpen))) {
-                            throw new IEException("Invalid token inside of close bracket.");
-                        }
-                        if (v[i].size() > j + 2) {
-                            if (((Token) v[i].elementAt(j + 1)).value == Token.kClose && (((Token) v[i].elementAt(j + 2)).tokenType == TokenEnum.kConstant || /*)5*/ (((Token) v[i].elementAt(j + 2)).tokenType == TokenEnum.kFunction && /*)sin*/ ((Token) v[i].elementAt(j + 2)).value != Token.kFactorial))) {
-                                throw new IEException("Invalid token outside of close bracket.");
-                            }
-                        }
-                        break;
+			//check for others
+			for( int j = 0;j < v[i].size() - 1;j++ ) {
+				switch( ( (Token)v[i].elementAt( j + 1 ) ).tokenType ) {
+				case kBracket:
+					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kOpen && ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant || /*5(*/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*)(*/ ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) ) {
+						v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
+					}
+					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kOpen && ( ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kOperator && ( (Token)v[i].elementAt( j + 2 ) ).value != Token.kMinus ) || /*(**/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*)(*/ ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) ) {
+						throw new IEException( "Invalid token inside of open bracket." );
+					}
+					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kClose && ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kOperator || /*-)*/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*()*/ ( (Token)v[i].elementAt( j ) ).value == Token.kOpen ) ) ) {
+						throw new IEException( "Invalid token inside of close bracket." );
+					}
+					if( v[i].size() > j + 2 ) {
+						if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kClose && ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kConstant || /*)5*/ ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kFunction && /*)sin*/ ( (Token)v[i].elementAt( j + 2 ) ).value != Token.kFactorial ) ) ) {
+							throw new IEException( "Invalid token outside of close bracket." );
+						}
+					}
+					break;
 
-                    case kConstant:
-                        if (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kConstant) {
-                            throw new IEException("Two adjacent numbers without operator.");
-                        }
-                        break;
+				case kConstant:
+					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant ) {
+						throw new IEException( "Two adjacent numbers without operator." );
+					}
+					break;
 
-                    case kOperator:
-                        if (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kOperator) {
-                            throw new IEException("Two Operators next to each other.");
-                        }
-                        if (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kFunction) {
-                            throw new IEException("Operator on inside of function.");
-                        }
+				case kOperator:
+					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kOperator ) {
+						throw new IEException( "Two Operators next to each other." );
+					}
+					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kFunction ) {
+						throw new IEException( "Operator on inside of function." );
+					}
 
-                        //If these conditions are true, then assume the "-" is negate, not minus
-                        if (((Token) v[i].elementAt(j + 1)).value == Token.kMinus) {
-                            if (((Token) v[i].elementAt(j)).tokenType != TokenEnum.kConstant && ((Token) v[i].elementAt(j)).tokenType != TokenEnum.kParameter && !(((Token) v[i].elementAt(j)).tokenType == TokenEnum.kBracket && ((Token) v[i].elementAt(j)).value == Token.kClose)) {
-                                v[i].removeElementAt(j + 1);
-                                v[i].insertElementAt(new Token(TokenEnum.kOperator, Token.kMultiply), j + 1);
-                                v[i].insertElementAt(new Token(TokenEnum.kConstant, -1), j + 1);
-                            }
-                        }
-                        break;
+					//If these conditions are true, then assume the "-" is negate, not minus
+					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kMinus ) {
+						if( ( (Token)v[i].elementAt( j ) ).tokenType != TokenEnum.kConstant && ( (Token)v[i].elementAt( j ) ).tokenType != TokenEnum.kParameter && !( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) {
+							v[i].removeElementAt( j + 1 );
+							v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
+							v[i].insertElementAt( new Token( TokenEnum.kConstant, -1 ), j + 1 );
+						}
+					}
+					break;
 
-                    case kFunction:
-                        if (((Token) v[i].elementAt(j + 1)).value == Token.kFactorial) {
-                            int k = j, l = 0;
-                            do {
-                                if (((Token) v[i].elementAt(k)).tokenType == TokenEnum.kBracket) {
-                                    if (((Token) v[i].elementAt(k)).value == Token.kOpen) {
-                                        l++;
-                                    } else {
-                                        l--;
-                                    }
-                                }
-                                k--;
-                            } while (l != 0);
-                            v[i].removeElementAt(j + 1);
-                            v[i].insertElementAt(new Token(TokenEnum.kFunction, Token.kFactorial), k + 1);
-                        }
-                        if (((Token) v[i].elementAt(j + 1)).tokenType == TokenEnum.kFunction) {
-                            if (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kConstant) {
-                                v[i].insertElementAt(new Token(TokenEnum.kOperator, Token.kMultiply), j + 1);
-                            }
-                        }
-                        break;
-                }
-            }
+				case kFunction:
+					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kFactorial ) {
+						int k = j, l = 0;
+						do {
+							if( ( (Token)v[i].elementAt( k ) ).tokenType == TokenEnum.kBracket ) {
+								if( ( (Token)v[i].elementAt( k ) ).value == Token.kOpen ) {
+									l++;
+								}
+								else {
+									l--;
+								}
+							}
+							k--;
+						}while( l != 0 );
+						v[i].removeElementAt( j + 1 );
+						v[i].insertElementAt( new Token( TokenEnum.kFunction, Token.kFactorial ), k + 1 );
+					}
+					if( ( (Token)v[i].elementAt( j + 1 ) ).tokenType == TokenEnum.kFunction ) {
+						if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant ) {
+							v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
+						}
+					}
+					break;
+				}
+			}
 
             //check first and last tokens for validity
             if (((Token) v[i].elementAt(0)).tokenType == TokenEnum.kOperator) {
@@ -948,20 +994,43 @@ public class EquationCalculator implements Serializable {
         }
     }
 
-    double PerformFunction(int sym, double op) {
-        return switch (sym) {
-            case Token.kSine -> Math.sin(op);
-            case Token.kCosine -> Math.cos(op);
-            case Token.kTangent -> Math.tan(op);
-            case Token.kArcSine -> Math.asin(op);
-            case Token.kArcCosine -> Math.acos(op);
-            case Token.kArcTangent -> Math.atan(op);
-            case Token.kLn -> Math.log(op);
-            case Token.kFactorial -> DoFactorial(Math.abs(op));
-            case Token.kAbsolute -> Math.abs(op);
-            case Token.kIntPart -> (int) op;
-            case Token.kFracPart -> op - (int) op;
-            default -> 0d;
-        };
-    }
+	double PerformFunction( int sym, double op ) {
+		switch( sym ) {
+		case Token.kSine:
+			return Math.sin( op );
+
+		case Token.kCosine:
+			return Math.cos( op );
+
+		case Token.kTangent:
+			return Math.tan( op );
+
+		case Token.kArcSine:
+			return Math.asin( op );
+
+		case Token.kArcCosine:
+			return Math.acos( op );
+
+		case Token.kArcTangent:
+			return Math.atan( op );
+
+		case Token.kLn:
+			return Math.log( op );
+
+		case Token.kFactorial:
+			return DoFactorial( Math.abs( op ) );
+
+		case Token.kAbsolute:
+			return Math.abs( op );
+
+		case Token.kIntPart:
+			return (int)op;
+
+		case Token.kFracPart:
+			return op - (int)op;
+
+		default:
+			return 0d;
+		}
+	}
 }
