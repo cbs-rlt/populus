@@ -33,7 +33,7 @@ public class IntegratorPreferences extends JDialog {
     static IntegratorPreferences keepOnlyOneOpen;
     final JTextField hSetting = new JTextField();
     final JLabel jLabel5 = new JLabel();
-    final JComboBox intMethodCB = new JComboBox();
+    final JComboBox<String> intMethodCB = new JComboBox<>();
     final JLabel jLabel6 = new JLabel();
 
     public IntegratorPreferences(Frame frame, String title, boolean b) {

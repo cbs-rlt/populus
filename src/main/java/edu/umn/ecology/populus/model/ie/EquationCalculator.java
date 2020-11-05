@@ -42,7 +42,7 @@ public class EquationCalculator implements Serializable {
     private Vector[] v;
     private Stack[] s;
     private double[] initial, calculated;
-    private Hashtable constants = null;
+    private Hashtable<String, Double> constants = null;
     private final boolean[] used;
     private int numEQ = 0;
     private boolean randomOK = true;
@@ -56,7 +56,7 @@ public class EquationCalculator implements Serializable {
      * (in constant name, constant value pairs)
      */
 
-    public EquationCalculator(String[] equations, Hashtable constants, boolean randomAllowed) throws IEException {
+    public EquationCalculator(String[] equations, Hashtable<String, Double> constants, boolean randomAllowed) throws IEException {
         used = new boolean[equations.length];
         for (int i = 0; i < equations.length; i++) {
             used[i] = true; //default is that all equations will be used
@@ -74,7 +74,7 @@ public class EquationCalculator implements Serializable {
      * some of the equations. This provides the easiest way to do this.
      */
 
-    public EquationCalculator(String[] equations, boolean[] isUsed, Hashtable constants, boolean randomAllowed) throws IEException {
+    public EquationCalculator(String[] equations, boolean[] isUsed, Hashtable<String, Double> constants, boolean randomAllowed) throws IEException {
         this.constants = constants;
         used = isUsed;
         randomOK = randomAllowed;

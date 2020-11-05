@@ -32,31 +32,31 @@ public class ColorChooser extends JDialog {
     private static final long serialVersionUID = 5763100029469797725L;
     final JPanel jPanel3 = new JPanel();
     final JPanel panel1 = new JPanel();
-    final JComboBox<String> jComboBox1 = new JComboBox();
+    final JComboBox<String> jComboBox1 = new JComboBox<>();
     final FlowLayout flowLayout1 = new FlowLayout();
     final JPanel mainpanel = new JPanel();
     final JLabel jLabel11 = new JLabel();
     final GridBagLayout gridBagLayout3 = new GridBagLayout();
     final JButton jButton3 = new JButton();
-    final JComboBox <String>jComboBox2 = new JComboBox();
+    final JComboBox <String>jComboBox2 = new JComboBox<>();
     final JLabel jLabel12 = new JLabel();
-    final JComboBox<String> jComboBox3 = new JComboBox();
+    final JComboBox<String> jComboBox3 = new JComboBox<>();
     GridBagLayout gridBagLayout2 = new GridBagLayout();
-    final JComboBox<String> jComboBox4 = new JComboBox();
+    final JComboBox<String> jComboBox4 = new JComboBox<>();
     final JButton jButton1 = new JButton();
-    final JComboBox<String> jComboBox5 = new JComboBox();
+    final JComboBox<String> jComboBox5 = new JComboBox<>();
     final JButton jButton5 = new JButton();
-    final JComboBox<String> jComboBox6 = new JComboBox();
+    final JComboBox<String> jComboBox6 = new JComboBox<>();
     final Color[] currentColor = ColorScheme.colors.clone();
-    final JComboBox<String> jComboBox7 = new JComboBox();
+    final JComboBox<String> jComboBox7 = new JComboBox<>();
     Color currentBackground = ColorScheme.bG;
-    final JComboBox<String> jComboBox8 = new JComboBox();
+    final JComboBox<String> jComboBox8 = new JComboBox<>();
     final JLabel jLabel10 = new JLabel();
-    final JComboBox<String> jComboBox9 = new JComboBox();
+    final JComboBox<String> jComboBox9 = new JComboBox<>();
     final GridBagLayout gridBagLayout1 = new GridBagLayout();
-    final JComboBox<String> jComboBox10 = new JComboBox();
+    final JComboBox<String> jComboBox10 = new JComboBox<>();
     final JLabel jTextArea1 = new JLabel();
-    final JComboBox<String> jComboBox11 = new JComboBox();
+    final JComboBox<String> jComboBox11 = new JComboBox<>();
     final JPanel jPanel1 = new JPanel();
     final JLabel jLabel1 = new JLabel();
     final JButton jButton2 = new JButton();
@@ -71,18 +71,11 @@ public class ColorChooser extends JDialog {
     final JLabel jLabel6 = new JLabel();
     Color keepBack = ColorScheme.bG;
     final JLabel jLabel7 = new JLabel();
-    final JComboBox<String> jComboBox12 = new JComboBox();
+    final JComboBox<String> jComboBox12 = new JComboBox<>();
     final JLabel jLabel8 = new JLabel();
     final JLabel jLabel9 = new JLabel();
     int[] keepIndex = ColorScheme.currentIndex.clone();
     static final ResourceBundle res = ResourceBundle.getBundle("edu.umn.ecology.populus.core.Res");
-
-    public void setSchemeIndex(int i) {
-        if (i <= jComboBox12.getItemCount()) {
-            ;
-        }
-        jComboBox12.setSelectedIndex(i);
-    }
 
     public ColorChooser(Frame frame, String title, boolean modal) {
         super(frame, title, modal);

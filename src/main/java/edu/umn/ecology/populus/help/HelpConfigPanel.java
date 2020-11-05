@@ -24,8 +24,8 @@ import java.util.Vector;
 public class HelpConfigPanel extends JPanel {
     private static final long serialVersionUID = 687468888728886427L;
     private final JTextField filePathField = new JTextField();
-    private final JComboBox fileOrURLBox = new JComboBox();
-    private final JComboBox languageBox = new JComboBox();
+    private final JComboBox<String> fileOrURLBox = new JComboBox<>();
+    private final JComboBox<String> languageBox = new JComboBox<>();
     private final JLabel fileStatusLabel = new JLabel("");
     private final JTextField txtCustomExecStr = new JTextField();
     private final String[] langStrings = new String[]{"English", "Spanish", "Portuguese"};
@@ -80,7 +80,7 @@ public class HelpConfigPanel extends JPanel {
         fileOrURLBox.addActionListener(arg0 -> filenameChanged());
 
         fileOrURLBox.setToolTipText("Select whether resource is local file or remote URI (e.g., http)");
-        fileOrURLBox.setModel(new DefaultComboBoxModel(new String[]{"file", "URI"}));
+        fileOrURLBox.setModel(new DefaultComboBoxModel<>(new String[]{"file", "URI"}));
         fileOrURLBox.setSelectedIndex(0);
         GridBagConstraints gbc_fileOrURLBox = new GridBagConstraints();
         gbc_fileOrURLBox.insets = new Insets(0, 0, 5, 5);

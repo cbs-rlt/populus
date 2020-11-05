@@ -115,14 +115,14 @@ public class IsoclineAnalysis {
         IsoPoint is;
         int numEqs = points.length;
         int numVars = points[0].length;
-        Vector[][] v = new Vector[numEqs][numVars];
+        Vector<IsoPoint>[][] v = new Vector[numEqs][numVars];
         for (int i = 0; i < numEqs; i++) {
             if (points[i][i].length < 2) {
                 edu.umn.ecology.populus.fileio.Logging.log("Not enough points to find isocline");
                 break;
             }
             for (int l = 0; l < numVars; l++) {
-                v[i][l] = new Vector();
+                v[i][l] = new Vector<>();
                 for (int j = 1; j < points[i][l].length - 1; j++) {
                     if ((points[i][l][j] > points[i][l][j - 1] && points[i][l][j] > points[i][l][j + 1]) || (points[i][l][j] < points[i][l][j - 1] && points[i][l][j] < points[i][l][j + 1])) {
                         is = new IsoPoint(numVars);
@@ -161,7 +161,7 @@ public class IsoclineAnalysis {
                 isocline = new double[numVars][v[i][j].size()];
                 for (int k = 0; k < v[i][j].size(); k++) {
                     for (int l = 0; l < numVars; l++) {
-                        isocline[l][k] = ((IsoPoint) v[i][j].elementAt(k)).getPoint(l);
+                        isocline[l][k] = v[i][j].elementAt(k).getPoint(l);
                     }
                 }
                 newPoints[i + j] = isocline;
@@ -277,11 +277,11 @@ public class IsoclineAnalysis {
         int numVars = points[0].length;
         int numPoints3D = (int) (Math.sqrt(numPointsToAdd) * 1.5);
         double maxValue1, maxValue2;
-        Vector[][] v = new Vector[numEqs][numVars];
+        Vector<IsoPoint>[][] v = new Vector[numEqs][numVars];
         if (numVars == 2) {
             for (int i = 0; i < numEqs; i++) {
                 for (int l = 0; l < numVars; l++) {
-                    v[i][l] = new Vector();
+                    v[i][l] = new Vector<>();
                     maxValue1 = Routines.getMaxValue(points[i][(l + 1) % 2]) * extendFactor;
                     for (double j = 0.001; j <= numPointsToAdd; j += 1.0d) {
                         is = new IsoPoint(numVars);
@@ -293,7 +293,7 @@ public class IsoclineAnalysis {
         } else {
             for (int i = 0; i < numEqs; i++) {
                 for (int l = 0; l < 3; l++) {
-                    v[i][l] = new Vector();
+                    v[i][l] = new Vector<>();
                     maxValue1 = Routines.getMaxValue(points[i][(l + 1) % 3]) * extendFactor;
                     maxValue2 = Routines.getMaxValue(points[i][(l + 2) % 3]) * extendFactor;
                     for (double j = 0.1; j <= numPoints3D; j += 1.0d) {
