@@ -239,29 +239,10 @@ public final class Routines {
 
     /**
      * Transforms {N0, N1, N2 ... NX}
-     * to {{N0, N1, ... N(X-1)}, {(N1-N0)/N0, (N2-N1)/N1, ... , (NX - N(X-1))/N(X-1)}}
-     * (nt+1 - nt)/nt
-     * was used in discrete density-dependent population growth, but has been replaced
-     * with process3
-     * <BR> Assumes parameter <code>out</code> is ready to use.
-     */
-
-    public static final void process2(double[] narr, double[][] out) {
-        int x = narr.length - 1;
-        int i;
-        for (i = 0; i < x; i++) {
-            out[0][i] = narr[i];
-            out[1][i] = (narr[i + 1] - narr[i]) / narr[i];
-        }
-    }
-
-    /**
-     * Transforms {N0, N1, N2 ... NX}
      * ln(nt+1/nt) vs nt
      * used in discrete density-dependent population growth
      * <BR> Assumes parameter <code>out</code> is ready to use.
      */
-
     public static final void process3(double[] narr, double[][] out) {
         int x = narr.length - 1;
         int i;
