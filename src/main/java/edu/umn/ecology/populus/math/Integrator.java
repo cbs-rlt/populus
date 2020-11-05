@@ -167,15 +167,23 @@ public class Integrator {
 		 */
         intLabel:
         for (k = 0; k < record.maxiter; k++) {
-            switch (record.mode) {
-                case RungeKuttaRec.EULER -> ytemp[k + 1] = doEulerStep(v, t);
-                case RungeKuttaRec.MIDPOINT -> ytemp[k + 1] = doMidpointStep(v, t);
-                case RungeKuttaRec.RK4 -> ytemp[k + 1] = doRK4Step(v, t);
-                case RungeKuttaRec.RK4QC -> ytemp[k + 1] = doRKQCStep(v, t);
-                case RungeKuttaRec.DISCRETE -> {
-                    discProc.v((long) (t + 0.5), v);
-                    ytemp[k + 1] = v;
-                }
+			switch (record.mode) {
+			case RungeKuttaRec.EULER:
+				ytemp[k+1] = doEulerStep( v, t );
+				break;
+			case RungeKuttaRec.MIDPOINT:
+				ytemp[k+1] = doMidpointStep( v, t );
+				break;
+			case RungeKuttaRec.RK4:
+				ytemp[k+1] = doRK4Step( v, t );
+				break;
+			case RungeKuttaRec.RK4QC:
+				ytemp[k+1] = doRKQCStep( v, t );
+				break;
+			case RungeKuttaRec.DISCRETE:
+				discProc.v( (long)(t+0.5), v );
+				ytemp[k+1] = v;
+				break;
             }
             for (double value : v)
                 if (Double.isInfinite(value)) {
