@@ -54,14 +54,14 @@ public class SSPGTable extends AbstractTableModel {
         temp[dimension - 1 + 3] = new Vector(dimension);
         table = temp;
 
-        table[0].add(new Integer(dimension));
+        table[0].add(Integer.valueOf(dimension));
         table[1].add(title);
-        table[2].add(new Double(initPop));
+        table[2].add(Double.valueOf(initPop));
 
         for (int i = 0; i < dimension - 1; i++)
-            table[3 + dimension - 1].add(new Double(0));
+            table[3 + dimension - 1].add(Double.valueOf(0));
         for (int i = 0; i < dimension; i++)
-            table[3 + i].add(new Double(0));
+            table[3 + i].add(Double.valueOf(0));
 
         this.fireTableStructureChanged();
     }
@@ -165,7 +165,7 @@ public class SSPGTable extends AbstractTableModel {
     synchronized double[] getPopulations() {
         double[] data = new double[dimension];
         for (int i = 0; i < data.length; i++)
-            data[i] = ((Double) getValueAt(i, 2)).doubleValue();
+            data[i] = (Double) getValueAt(i, 2);
         return data;
     }
 
@@ -185,10 +185,10 @@ public class SSPGTable extends AbstractTableModel {
         }
         for (int i = 0; i < mat.length; i++)
             for (int j = 0; j < mat.length; j++)
-                this.setValueAt(new Double(mat[i][j]), i, j + 3);
+                this.setValueAt(mat[i][j], i, j + 3);
 
         Vector p = new Vector();
-        for (double pop : pops) p.add(new Double(pop));
+        for (double pop : pops) p.add(Double.valueOf(pop));
         table[2] = p;
 
         p = new Vector();

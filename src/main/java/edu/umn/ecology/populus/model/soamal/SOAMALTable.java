@@ -60,23 +60,16 @@ public class SOAMALTable extends AbstractTableModel {
         temp[dimension - 1 + 4] = new Vector(dimension);
         table = temp;
 
-        //*
-        table[0].add(new Integer(dimension));
-        table[1].add(new Boolean(use));
-        table[2].add(new Boolean(plot));
-        table[3].add(new Double(initFreq));
-		/*/
-      table[0].add(new Boolean(use));
-      table[1].add(new Boolean(plot));
-      table[2].add(new Double(initFreq));
-      table[3].add(new Integer(dimension));
-		 */
+        table[0].add(Integer.valueOf(dimension));
+        table[1].add(Boolean.valueOf(use));
+        table[2].add(Boolean.valueOf(plot));
+        table[3].add( Double.valueOf(initFreq));
 
         for (int i = 0; i < dimension - 1; i++)
-            table[4 + dimension - 1].add(new Double(matrix[i]));
+            table[4 + dimension - 1].add(Double.valueOf(matrix[i]));
         //table[4+dimension-1].add("-");
         for (int i = 0; i < dimension; i++)
-            table[4 + i].add(new Double(matrix[i]));
+            table[4 + i].add(Double.valueOf(matrix[i]));
 
         this.fireTableStructureChanged();
         //      fireTableChanged(new TableModelEvent(this));
@@ -111,8 +104,8 @@ public class SOAMALTable extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         if (columnIndex == 0) return false;
-        if (columnIndex != 1 && !((Boolean) getValueAt(rowIndex, 1)).booleanValue()) return false;
-        if (columnIndex > 3 && !((Boolean) getValueAt(columnIndex - 4, 1)).booleanValue()) return false;
+        if (columnIndex != 1 && !(Boolean) getValueAt(rowIndex, 1)) return false;
+        if (columnIndex > 3 && !(Boolean) getValueAt(columnIndex - 4, 1)) return false;
         return true;
     }
 
@@ -125,8 +118,8 @@ public class SOAMALTable extends AbstractTableModel {
      */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        if (columnIndex == 1 && !((Boolean) aValue).booleanValue()) {
-            table[2].setElementAt(new Boolean(false), rowIndex);
+        if (columnIndex == 1 && !(Boolean) aValue) {
+            table[2].setElementAt(Boolean.valueOf(false), rowIndex);
             super.fireTableDataChanged();
         }
         if (columnIndex > 3) {
@@ -135,7 +128,7 @@ public class SOAMALTable extends AbstractTableModel {
         }
         if (columnIndex == 3) {
             double newFreq = ((Double) aValue).doubleValue();
-            if (newFreq > 1) aValue = new Double(1.0d);
+            if (newFreq > 1) aValue = Double.valueOf(1.0d);
         }
         fireTableDataChanged();
         table[columnIndex].setElementAt(aValue, rowIndex);
@@ -172,7 +165,7 @@ public class SOAMALTable extends AbstractTableModel {
         int[] used = this.getUsed();
         double[] freqs = new double[used.length];
         for (int k = 0; k < freqs.length; k++) {
-            freqs[k] = ((Double) getValueAt(used[k], 3)).doubleValue();
+            freqs[k] = (Double) getValueAt(used[k], 3);
             dF += freqs[k];
         }
         dF = 1.0 - dF;
@@ -194,7 +187,7 @@ public class SOAMALTable extends AbstractTableModel {
         }
         Double newValue;
         for (int k = 0; k < freqs.length; k++) {
-            newValue = new Double(NumberMath.roundSig(freqs[k], 10, 0));
+            newValue = Double.valueOf(NumberMath.roundSig(freqs[k], 10, 0));
             table[3].setElementAt(newValue, used[k]);
         }
         fireTableDataChanged();
@@ -258,8 +251,6 @@ public class SOAMALTable extends AbstractTableModel {
     /**
      * the matrix returned by this method "ignores" the positions on the input screen's table
      * and gives only the important data for the graph.
-     *
-     * @return
      */
     synchronized double[][] getMatrix() {
         int[] u = getUsed();
