@@ -19,8 +19,8 @@ class PopulationTest {
     void testSelfing() {
         Population ps = new Population(5, 0.5, true);
         Population pn = new Population(4, 0.3, false);
-        assertEquals(true, ps.getSelfing());
-        assertEquals(false, pn.getSelfing());
+        assertTrue(ps.getSelfing());
+        assertFalse(pn.getSelfing());
     }
 
     /**

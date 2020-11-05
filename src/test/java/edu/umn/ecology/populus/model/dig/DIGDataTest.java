@@ -20,8 +20,8 @@ class DIGDataTest {
         DIGData d = new DIGData(true, DIGPanel.GraphType.kNVST, nGens, 0.7384, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(false, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot);
+        assertFalse(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot);
         double[][] points = bpi.getPoints(0);
         assertEquals(2, points.length, "Expecting X and Y series");
         double[] xVals = points[0];
@@ -40,8 +40,8 @@ class DIGDataTest {
         DIGData d = new DIGData(false, DIGPanel.GraphType.kNVST, nGens, lambda, n0, 1.434);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(true, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot);
+        assertTrue(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot);
         assertEquals(1, bpi.getNumSeries());
         double[][] points = bpi.getPoints(0);
         assertEquals(2, points.length, "Expecting X and Y series");
@@ -61,8 +61,8 @@ class DIGDataTest {
         DIGData d = new DIGData(true, DIGPanel.GraphType.kLNNVST, nGens, 3.9143, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(false, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot); //The PLOT is not, but the values are
+        assertFalse(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot); //The PLOT is not, but the values are
         assertEquals(1, bpi.getNumSeries());
         double[][] points = bpi.getPoints(0);
         assertEquals(2, points.length, "Expecting X and Y series");
@@ -82,8 +82,8 @@ class DIGDataTest {
         DIGData d = new DIGData(true, DIGPanel.GraphType.kDNDTVSN, nGens, 77.24, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(false, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot);
+        assertFalse(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot);
         assertEquals(1, bpi.getNumSeries());
         double[][] points = bpi.getPoints(0);
         assertEquals(2, points.length, "Expecting X and Y series");
@@ -103,8 +103,8 @@ class DIGDataTest {
         DIGData d = new DIGData(true, DIGPanel.GraphType.kDNNDTVSN, nGens, -143.2, n0, r);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d}, 1);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(false, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot);
+        assertFalse(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot);
         assertEquals(1, bpi.getNumSeries());
         double[][] points = bpi.getPoints(0);
         assertEquals(2, points.length, "Expecting X and Y series");
@@ -127,8 +127,8 @@ class DIGDataTest {
         DIGData d3 = new DIGData(true, DIGPanel.GraphType.kNVST, nGens, 4.4, n03, r3);
         DIGParamInfo dpi = new DIGParamInfo(new DIGData[] {d1, null, d3, null}, 2);
         BasicPlotInfo bpi = dpi.getBasicPlotInfo();
-        assertEquals(false, bpi.isDiscrete());
-        assertEquals(false, bpi.isLogPlot);
+        assertFalse(bpi.isDiscrete());
+        assertFalse(bpi.isLogPlot);
         assertEquals(2, bpi.getNumSeries());
 
         //Test first series
