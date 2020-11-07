@@ -43,7 +43,7 @@ public class NumberComponent extends TextField {
 
     public double getDouble() {
         String s = getText().trim();
-        return Double.valueOf(s);
+        return Double.valueOf(s).doubleValue();
     }
 
     public NumberComponent(String def, int columns) {

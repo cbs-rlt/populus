@@ -268,7 +268,7 @@ public class LPGParamInfo implements BasicPlot {
             lagVector.addElement(y);
 
             if (kcounter >= lag) {
-                nx = lagVector.elementAt(0);
+                nx = lagVector.elementAt(0).doubleValue();
                 lagVector.removeElementAt(0);
             } else {
                 kcounter += dt;

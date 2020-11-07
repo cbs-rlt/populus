@@ -221,7 +221,7 @@ public class SOAMALPanel extends BasicPlotInputPanel {
             }
             setForeground(table.getForeground());
             setBackground(unselectedBackground);
-            setSelected((value != null && (Boolean) value));
+            setSelected((value != null && ((Boolean) value).booleanValue()));
             return this;
         }
     }

@@ -158,7 +158,7 @@ public class HelpConfigPanel extends JPanel {
         JLabel languageLabel = new JLabel("Language:");
         languagePanel.add(languageLabel);
 
-        languageBox.setModel(new DefaultComboBoxModel<>(langStrings));
+        languageBox.setModel(new DefaultComboBoxModel(langStrings));
         languagePanel.add(languageBox);
 
         JButton btnCopyHelpTo = new JButton("Copy help file to local disk now");
@@ -208,9 +208,9 @@ public class HelpConfigPanel extends JPanel {
         gbc_btnNewButton.gridx = 0;
         gbc_btnNewButton.gridy = 4;
         btnTestButton.addActionListener(arg0 -> {
-            Vector<String> results = new Vector<>();
+            Vector<String> results = new Vector<String>();
             boolean worked = HelpUtilities.displayHelpTrial(getOpenPDFMethod(), results);
-            StringBuilder sb = new StringBuilder();
+            StringBuffer sb = new StringBuffer();
             for (String s : results) {
                 sb.append(s);
                 sb.append("\n");

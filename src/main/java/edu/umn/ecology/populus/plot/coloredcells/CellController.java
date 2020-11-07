@@ -33,7 +33,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
     final JToggleButton pauseButton = new JToggleButton();
     final GridBagLayout gridBagLayout1 = new GridBagLayout();
     final JPanel jPanel1 = new JPanel();
-    final JComboBox<String> typeChangeCB = new JComboBox<>();
+    final JComboBox<String> typeChangeCB = new JComboBox<String>();
     final GridBagLayout gridBagLayout2 = new GridBagLayout();
     final JLabel gensL = new JLabel();
     int numRuns;

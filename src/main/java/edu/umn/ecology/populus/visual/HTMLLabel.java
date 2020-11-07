@@ -380,7 +380,7 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
 
     private void getNextTag() {
         char tempChar = 0;
-        StringBuilder tempBuffer = new StringBuilder();
+        StringBuffer tempBuffer = new StringBuffer();
         String tempString;
         if ((tempChar = text.charAt(nextChar++)) != TAG_BEGIN) {
             //ERROR!

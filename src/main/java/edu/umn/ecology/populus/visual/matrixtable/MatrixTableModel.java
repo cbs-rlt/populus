@@ -147,14 +147,14 @@ public class MatrixTableModel extends AbstractTableModel implements java.io.Exte
         double[][] data = new double[dimension][dimension];
         for (int i = 0; i < data.length; i++)
             for (int j = 0; j < data[i].length; j++)
-                data[i][j] = (Double) getValueAt(i, j);
+                data[i][j] = ((Double) getValueAt(i, j)).doubleValue();
         return data;
     }
 
     public synchronized double[] getPopulations() {
         double[] data = new double[dimension];
         for (int i = 0; i < data.length; i++)
-            data[i] = (Double) getValueAt(i, dimension);
+            data[i] = ((Double) getValueAt(i, dimension)).doubleValue();
         return data;
     }
 

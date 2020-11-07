@@ -96,18 +96,18 @@ public class BPParamInfo implements BasicPlot {
                 seasonalCond[2] = ylists[2][ylists[2].length - 1] * d;
                 seasonalCond[3] = w;
                 for (int j = 0; j < xlist.length; j++) {
-                    newlist.add(xlist[j] + num * tI);
+                    newlist.add(Double.valueOf(xlist[j] + num * tI));
                     for (int i = 0; i < 4; i++)
-                        newYlist.get(i).add(ylists[i][j]);
+                        newYlist.get(i).add(Double.valueOf(ylists[i][j]));
                 }
                 tlast = tlast + tI;
             }
             xlist = new double[newlist.size()];
             ylists = new double[4][xlist.length];
             for (int j = 0; j < newlist.size(); j++) {
-                xlist[j] = newlist.get(j);
+                xlist[j] = newlist.get(j).doubleValue();
                 for (int i = 0; i < 4; i++)
-                    ylists[i][j] = newYlist.get(i).get(j);
+                    ylists[i][j] = newYlist.get(i).get(j).doubleValue();
             }
 
         }

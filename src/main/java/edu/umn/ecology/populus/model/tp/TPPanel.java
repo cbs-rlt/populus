@@ -148,7 +148,7 @@ public class TPPanel extends BasicPlotInputPanel {
         paramBetav.setIncrementAmount(10.0);
         paramBetav.setMaxValue(10000.0);
         paramBetav.setParameterName("<i>\u03B2<sub>V</sub></i>");
-        paramBetav.setFont(new java.awt.Font("Dialog", Font.PLAIN, 11));
+        paramBetav.setFont(new java.awt.Font("Dialog", 0, 11));
         twoButton.setSelected(false);
         paramTau.setCurrentValue(0.0010);
         paramTau.setDefaultValue(0.0010);

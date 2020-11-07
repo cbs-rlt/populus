@@ -587,7 +587,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
 
     void tableModel_tableChanged(TableModelEvent e) {
         if (e.getColumn() == 1 && e.getLastRow() == 0 && getModelType() == kPREBREEDING) {
-            this.initialL1PPF.setCurrentValue((Double) tableModel.getValueAt(0, 1));
+            this.initialL1PPF.setCurrentValue(((Double) tableModel.getValueAt(0, 1)).doubleValue());
         }
     }
 

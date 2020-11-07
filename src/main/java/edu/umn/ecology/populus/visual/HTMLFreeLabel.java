@@ -150,7 +150,7 @@ public class HTMLFreeLabel {
     static public String getPlainText(String a, boolean stripSpaces) {
 
         //strip off the extraneous data
-        StringBuilder sb = new StringBuilder(a);
+        StringBuffer sb = new StringBuffer(a);
         int i = 0;
         while (i < sb.length()) {
             if (stripSpaces && sb.charAt(i) == ' ') {
