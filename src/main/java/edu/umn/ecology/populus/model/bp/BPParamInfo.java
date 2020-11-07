@@ -110,62 +110,62 @@ public class BPParamInfo implements BasicPlot {
                     ylists[i][j] = newYlist.get(i).get(j);
             }
 
-		}
-		size = xlist.length;
-		totalPop = new double[size];
-		f1 = new double[size];
-		f2 = new double[size];
-		for (int i=0; i<totalPop.length; i++){
-			for (int j=0; j < 3; j++)
-				totalPop[i] += ylists[j][i];
-			f1[i] += ylists[0][i] / totalPop[i];
-			f2[i] += ylists[1][i] / totalPop[i];
-		}
-		switch(plotType){
-		case vsT:
-			points = new double[4][2][];
-			points[0][0] = xlist;
-			points[0][1] = ylists[0];//N+
-			points[1][0] = xlist;
-			points[1][1] = ylists[1];//N*
-			points[2][0] = xlist;
-			points[2][1] = ylists[2];//N
-			points[3][0] = xlist;
-			points[3][1] = totalPop;//Ntotal
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, Caption );
-			bp.setYMin( 0.0 );
-			bp.vsTimeChars = new String[] {
-					"n+", "n*", "n", "n+ + n* + n"
-			};
-			break;
-		case nplusvsn:
-			points = new double[1][2][];
-			points[0][1] = ylists[0];//n+
-			points[0][0] = ylists[2];//n
-			bp = new BasicPlotInfo( points, mCapN2vsN1,  totCaption, yCap2 );
-			bp.setYMin( 0.0 );
-			PlotArrow.addArrow( bp, 0 );
-			//PlotArrow.addFletching( bp, 0 );
-			break;
-		case nstarvsn:
-			points = new double[1][2][];
-			points[0][1] = ylists[1];//n*
-			points[0][0] = ylists[2];//n
-			bp = new BasicPlotInfo( points, mCapN2vsN1,  totCaption, yCap3 );
-			bp.setYMin( 0.0 );
-			PlotArrow.addArrow( bp, 0 );
-			break;
-		case fvst:
-			points = new double[2][2][];
-			points[0][1] = f1;// N+/N
-			points[0][0] = xlist;//t
-			points[1][1] = f2;// N+/N
-			points[1][0] = xlist;//t
-			bp = new BasicPlotInfo( points, mCapN2vsN1,  xCap, fCaption );
-			break;
-		}
-		return bp;
-	}
+        }
+        size = xlist.length;
+        totalPop = new double[size];
+        f1 = new double[size];
+        f2 = new double[size];
+        for (int i = 0; i < totalPop.length; i++) {
+            for (int j = 0; j < 3; j++)
+                totalPop[i] += ylists[j][i];
+            f1[i] += ylists[0][i] / totalPop[i];
+            f2[i] += ylists[1][i] / totalPop[i];
+        }
+        //PlotArrow.addFletching( bp, 0 );
+        switch (plotType) {
+            case vsT -> {
+                points = new double[4][2][];
+                points[0][0] = xlist;
+                points[0][1] = ylists[0];//N+
+                points[1][0] = xlist;
+                points[1][1] = ylists[1];//N*
+                points[2][0] = xlist;
+                points[2][1] = ylists[2];//N
+                points[3][0] = xlist;
+                points[3][1] = totalPop;//Ntotal
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, Caption);
+                bp.setYMin(0.0);
+                bp.vsTimeChars = new String[]{
+                        "n+", "n*", "n", "n+ + n* + n"
+                };
+            }
+            case nplusvsn -> {
+                points = new double[1][2][];
+                points[0][1] = ylists[0];//n+
+                points[0][0] = ylists[2];//n
+                bp = new BasicPlotInfo(points, mCapN2vsN1, totCaption, yCap2);
+                bp.setYMin(0.0);
+                PlotArrow.addArrow(bp, 0);
+            }
+            case nstarvsn -> {
+                points = new double[1][2][];
+                points[0][1] = ylists[1];//n*
+                points[0][0] = ylists[2];//n
+                bp = new BasicPlotInfo(points, mCapN2vsN1, totCaption, yCap3);
+                bp.setYMin(0.0);
+                PlotArrow.addArrow(bp, 0);
+            }
+            case fvst -> {
+                points = new double[2][2][];
+                points[0][1] = f1;// N+/N
+                points[0][0] = xlist;//t
+                points[1][1] = f2;// N+/N
+                points[1][0] = xlist;//t
+                bp = new BasicPlotInfo(points, mCapN2vsN1, xCap, fCaption);
+            }
+        }
+        return bp;
+    }
 
     public BPParamInfo(int modelType, int plotType, int varType, double time, /*time < 0 for steady state*/
                        double X, double Y, double Z, double r, double alpha, double gamma, double tau, double rho,

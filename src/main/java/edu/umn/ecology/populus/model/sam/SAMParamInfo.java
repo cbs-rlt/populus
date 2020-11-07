@@ -45,47 +45,47 @@ public class SAMParamInfo implements BasicPlot {
                 p[0][i] = i * 1.0d / numFreqs;
         }
 
-		switch (plotType){
-		case PvsT:
-			points = new double[freqs.length][2][p.length];
-			xCap = "Generations ( <b><i>t</> )";
-			yCap = "Gene Frequency ( "+ColorScheme.getColorString( 0 )+"<b><i>p</> )    ";
-			for(int i=0; i<p.length; i++)
-				for(int j=0; j<p[i].length; j++){
-					points[j][0][i] = i;
-					points[j][1][i] = p[i][j];
-				}
-			break;
-		case GenovsT:
-			points = new double[3][2][p.length];
-			xCap = "Generations ( <b><i>t</> )";
-			yCap = ColorScheme.getColorString( 0 ) + "p<sup>2</>,   " + ColorScheme.getColorString( 1 ) + "2pq</>,   " + ColorScheme.getColorString( 2 ) + "q<sup>2</>    ";
-			for(int i=0; i<p.length; i++){
-				points[0][0][i] = i;
-				points[1][0][i] = i;
-				points[2][0][i] = i;
-				points[0][1][i] = p[i][0]*p[i][0];//p^2
-				points[1][1][i] = 2.0d*p[i][0]*(1.0d - p[i][0]);//2pq
-				points[2][1][i] = (1.0d - p[i][0])*(1.0d - p[i][0]);//q^2
-			}
-			break;
-		case dPvsP:
-			points = new double[1][2][p[0].length];
-			xCap = "Gene Frequency ( <b><i>p</> )";
-			yCap = ColorScheme.getColorString(0)+" <b><i>\u0394p</>     ";
-			points[0][0] = p[0];
-			for(int i=0; i<p[0].length; i++)
-				points[0][1][i] = pNext(p[0][i]) - p[0][i];
-			break;
-		case WBar:
-			points = new double[1][2][p[0].length];
-			xCap = "Gene Frequency ( <b><i>p</> )";
-			yCap = ColorScheme.getColorString(0)+"<b><i>w\u0305</>    ";
-			points[0][0] = p[0];
-			for(int i=0; i<p[0].length; i++)
-				points[0][1][i] = wBar(p[0][i]);
-			break;
-		}
+        switch (plotType) {
+            case PvsT -> {
+                points = new double[freqs.length][2][p.length];
+                xCap = "Generations ( <b><i>t</> )";
+                yCap = "Gene Frequency ( " + ColorScheme.getColorString(0) + "<b><i>p</> )    ";
+                for (int i = 0; i < p.length; i++)
+                    for (int j = 0; j < p[i].length; j++) {
+                        points[j][0][i] = i;
+                        points[j][1][i] = p[i][j];
+                    }
+            }
+            case GenovsT -> {
+                points = new double[3][2][p.length];
+                xCap = "Generations ( <b><i>t</> )";
+                yCap = ColorScheme.getColorString(0) + "p<sup>2</>,   " + ColorScheme.getColorString(1) + "2pq</>,   " + ColorScheme.getColorString(2) + "q<sup>2</>    ";
+                for (int i = 0; i < p.length; i++) {
+                    points[0][0][i] = i;
+                    points[1][0][i] = i;
+                    points[2][0][i] = i;
+                    points[0][1][i] = p[i][0] * p[i][0];//p^2
+                    points[1][1][i] = 2.0d * p[i][0] * (1.0d - p[i][0]);//2pq
+                    points[2][1][i] = (1.0d - p[i][0]) * (1.0d - p[i][0]);//q^2
+                }
+            }
+            case dPvsP -> {
+                points = new double[1][2][p[0].length];
+                xCap = "Gene Frequency ( <b><i>p</> )";
+                yCap = ColorScheme.getColorString(0) + " <b><i>\u0394p</>     ";
+                points[0][0] = p[0];
+                for (int i = 0; i < p[0].length; i++)
+                    points[0][1][i] = pNext(p[0][i]) - p[0][i];
+            }
+            case WBar -> {
+                points = new double[1][2][p[0].length];
+                xCap = "Gene Frequency ( <b><i>p</> )";
+                yCap = ColorScheme.getColorString(0) + "<b><i>w\u0305</>    ";
+                points[0][0] = p[0];
+                for (int i = 0; i < p[0].length; i++)
+                    points[0][1][i] = wBar(p[0][i]);
+            }
+        }
 
         if (s == 0.0d)
             qhat = 0.0d;

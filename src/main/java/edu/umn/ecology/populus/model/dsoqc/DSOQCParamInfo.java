@@ -36,14 +36,14 @@ public class DSOQCParamInfo implements BasicPlot {
         double[][] pheno = new double[2][popSize];
         double avg = 0;
 
-		for(int i=0; i<popSize; i++){
-			switch(parent[0][i] + parent[1][i]){
-			case 0: pheno[1][i] = Routines.nextGaussian(gaa,ve,rand);            break;
-			case 1: pheno[1][i] = Routines.nextGaussian(gAa,ve,rand); break;
-			case 2: pheno[1][i] = Routines.nextGaussian(gAA,ve,rand); break;
-			}
-			pheno[0][i] = i;
-		}
+        for (int i = 0; i < popSize; i++) {
+            switch (parent[0][i] + parent[1][i]) {
+                case 0 -> pheno[1][i] = Routines.nextGaussian(gaa, ve, rand);
+                case 1 -> pheno[1][i] = Routines.nextGaussian(gAa, ve, rand);
+                case 2 -> pheno[1][i] = Routines.nextGaussian(gAA, ve, rand);
+            }
+            pheno[0][i] = i;
+        }
 
         line = Routines.buildDistributionCurve(pheno[1], 10);
 

@@ -52,41 +52,41 @@ public class PAQGParamInfo implements BasicPlot {
             wbarA[i] = wbar;
         }
 
-		String mcap = "Population and Quantitative Genetics";
-		String xcap = "Generations ( <b><i>t</> )";
-		String ycap = "Mean Fitness ( "+ColorScheme.getColorString(0)+"<b><i>w\u0305</> )";
-		double[][][] points = null;
-		switch(plotType){
-		case Pvst:
-			points = new double[1][2][gens+1];
-			points[0][0] = tArray;
-			points[0][1] = freqs;
-			ycap = "Allelic Frequency (  "+ColorScheme.getColorString(0)+"<b><i>p</> )";
-			break;
-		case h2vst:
-			points = new double[1][2][gens+1];
-			points[0][0] = tArray;
-			points[0][1] = h2;
-			ycap = "Heritability ( "+ColorScheme.getColorString(0)+"<b><i>h<sup>2</> )";
-			break;
-		case WBARvsP:
-			points = new double[1][2][gens+1];
-			points[0][0] = freqs;
-			points[0][1] = wbarA;
-			xcap = "Allelic Frequency (<b><i>p</> )";
-			break;
-		case WBARvst:
-			points = new double[1][2][gens+1];
-			points[0][0] = tArray;
-			points[0][1] = wbarA;
-			break;
-		}
-		BasicPlotInfo bpi = new BasicPlotInfo(points,mcap,xcap,ycap);
-		bpi.setIsDiscrete(true);
-		if(plotType == Pvst || plotType == h2vst)
-			bpi.setIsFrequencies(true);
-		return bpi;
-	}
+        String mcap = "Population and Quantitative Genetics";
+        String xcap = "Generations ( <b><i>t</> )";
+        String ycap = "Mean Fitness ( " + ColorScheme.getColorString(0) + "<b><i>w\u0305</> )";
+        double[][][] points = null;
+        switch (plotType) {
+            case Pvst -> {
+                points = new double[1][2][gens + 1];
+                points[0][0] = tArray;
+                points[0][1] = freqs;
+                ycap = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<b><i>p</> )";
+            }
+            case h2vst -> {
+                points = new double[1][2][gens + 1];
+                points[0][0] = tArray;
+                points[0][1] = h2;
+                ycap = "Heritability ( " + ColorScheme.getColorString(0) + "<b><i>h<sup>2</> )";
+            }
+            case WBARvsP -> {
+                points = new double[1][2][gens + 1];
+                points[0][0] = freqs;
+                points[0][1] = wbarA;
+                xcap = "Allelic Frequency (<b><i>p</> )";
+            }
+            case WBARvst -> {
+                points = new double[1][2][gens + 1];
+                points[0][0] = tArray;
+                points[0][1] = wbarA;
+            }
+        }
+        BasicPlotInfo bpi = new BasicPlotInfo(points, mcap, xcap, ycap);
+        bpi.setIsDiscrete(true);
+        if (plotType == Pvst || plotType == h2vst)
+            bpi.setIsFrequencies(true);
+        return bpi;
+    }
 
     public PAQGParamInfo(double[] w, double p, double ve, int gens, int plotType) {
         this.w = w;

@@ -106,30 +106,19 @@ public class BasicPlotCanvas extends JPanel {
 			/*this is kind of a "hacked" way of bringing up the customizer screen because unfortunately, the
 	            JClass people didn't provide an easier way to do this. but this works, so whatever.*/
             switch (whatOption) {
-			case MenuOptions.kCoarserGrid:
-				coarserGrid();
-				break;
-
-			case MenuOptions.kFinerGrid:
-				finerGrid();
-				break;
-
-			case MenuOptions.kClearGrid:
-				h.setGridVisible( false );
-				v.setGridVisible( false );
-				break;
-
-			case MenuOptions.kOptionScreen:
-				chart.mousePressed(new MouseEvent(this,MouseEvent.MOUSE_PRESSED,System.currentTimeMillis(),InputEvent.SHIFT_DOWN_MASK,0,0,1,false));
-				break;
-
-			case MenuOptions.kReset:
-				h.setGridVisible( false );
-				v.setGridVisible( false );
-				chart.reset();
-				break;
-			}
-
+                case MenuOptions.kCoarserGrid -> coarserGrid();
+                case MenuOptions.kFinerGrid -> finerGrid();
+                case MenuOptions.kClearGrid -> {
+                    h.setGridVisible(false);
+                    v.setGridVisible(false);
+                }
+                case MenuOptions.kOptionScreen -> chart.mousePressed(new MouseEvent(this, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), InputEvent.SHIFT_DOWN_MASK, 0, 0, 1, false));
+                case MenuOptions.kReset -> {
+                    h.setGridVisible(false);
+                    v.setGridVisible(false);
+                    chart.reset();
+                }
+            }
         }
     }
 

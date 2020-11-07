@@ -34,37 +34,36 @@ public class SGFACParamInfo implements BasicPlot {
     void setUpW() {
         double temp;
 
-		for(int i=0; i<numDemes; i++){
-			temp = s*i/(numDemes-1);
-			switch(plotType){
-			case GRAD:
-				w[i][0] = 1.0 - temp;
-				w[i][1] = 1.0 - s/2.0;
-				w[i][2] = 1.0 - s + temp;
-				break;
-			case HETA:
-				w[i][0] = 1.0 - h1 - temp;
-				w[i][1] = 1.0;
-				w[i][2] = 1.0 - h1 - s + temp;
-				break;
-			case LOCH:
-				w[i][0] = 1.0 - h2 - temp;
-				w[i][2] = 1.0 - h2 - s + temp;
-				w[i][1] = Math.max(w[i][0],w[i][2]) + h2;
-				break;
-			case FREQ:
-				temp = 1.0 - i/(numDemes-1.0);
-				f[i][0] = temp*temp;
-				f[i][1] = 2.0*temp*(1.0 - temp);
-				f[i][2] = (1.0 - temp)*(1.0 - temp);
-
-				w[i][0] = 1.0 - s*(p[i]*p[i]                 - f[i][0]);
-				w[i][1] = 1.0 - s*(2.0*p[i]*(1.0 - p[i])     - f[i][1]);
-				w[i][2] = 1.0 - s*((1.0 - p[i])*(1.0 - p[i]) - f[i][2]);
-				break;
-			}
-		}
-	}
+        for (int i = 0; i < numDemes; i++) {
+            temp = s * i / (numDemes - 1);
+            switch (plotType) {
+                case GRAD -> {
+                    w[i][0] = 1.0 - temp;
+                    w[i][1] = 1.0 - s / 2.0;
+                    w[i][2] = 1.0 - s + temp;
+                }
+                case HETA -> {
+                    w[i][0] = 1.0 - h1 - temp;
+                    w[i][1] = 1.0;
+                    w[i][2] = 1.0 - h1 - s + temp;
+                }
+                case LOCH -> {
+                    w[i][0] = 1.0 - h2 - temp;
+                    w[i][2] = 1.0 - h2 - s + temp;
+                    w[i][1] = Math.max(w[i][0], w[i][2]) + h2;
+                }
+                case FREQ -> {
+                    temp = 1.0 - i / (numDemes - 1.0);
+                    f[i][0] = temp * temp;
+                    f[i][1] = 2.0 * temp * (1.0 - temp);
+                    f[i][2] = (1.0 - temp) * (1.0 - temp);
+                    w[i][0] = 1.0 - s * (p[i] * p[i] - f[i][0]);
+                    w[i][1] = 1.0 - s * (2.0 * p[i] * (1.0 - p[i]) - f[i][1]);
+                    w[i][2] = 1.0 - s * ((1.0 - p[i]) * (1.0 - p[i]) - f[i][2]);
+                }
+            }
+        }
+    }
 
     double getNextP(double[] wa, double p) {
         double q = 1.0 - p, denom;

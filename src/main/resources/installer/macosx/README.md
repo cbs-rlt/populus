@@ -25,7 +25,5 @@ preinstall - runs before application install
 
 postinstall - runs after application install
 
-# References
 
-Also see [OS X jpackage resource dir](https://github.com/openjdk/jdk/blob/master/src/jdk.jpackage/macosx/classes/jdk/jpackage/internal/resources)
 

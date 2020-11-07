@@ -265,20 +265,11 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
     public void keyTyped(KeyEvent ke) {
         char c = ke.getKeyChar();
 
-		switch(c){
-		case '=':
-		case '+':
-			zoomIn();
-			break;
-		case '-':
-		case '_':
-			zoomOut();
-			break;
-		case 'r':
-		case 'R':
-			reset();
-			break;
-		}
+        switch (c) {
+            case '=', '+' -> zoomIn();
+            case '-', '_' -> zoomOut();
+            case 'r', 'R' -> reset();
+        }
         ke.consume();
     }
 }

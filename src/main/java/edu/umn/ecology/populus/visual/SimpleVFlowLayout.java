@@ -66,22 +66,16 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
         synchronized (parent.getTreeLock()) {
             Dimension d = new Dimension();
 
-			//Add in components
-			for (Component c : parent.getComponents()) {
-				Dimension cd;
-				switch (sizeMethod) {
-				case MIN:
-					cd = c.getMinimumSize();
-					break;
-				case MAX:
-					cd = c.getMaximumSize();
-					break;
-				case PREF: default:
-					cd = c.getPreferredSize();
-				}
-				d.width = Math.max(d.width, cd.width);
-				d.height += cd.height + getVgap();
-			}
+            //Add in components
+            for (Component c : parent.getComponents()) {
+                Dimension cd = switch (sizeMethod) {
+                    case MIN -> c.getMinimumSize();
+                    case MAX -> c.getMaximumSize();
+                    default -> c.getPreferredSize();
+                };
+                d.width = Math.max(d.width, cd.width);
+                d.height += cd.height + getVgap();
+            }
 
             //Add in insets and gaps
             Insets insets = parent.getInsets();

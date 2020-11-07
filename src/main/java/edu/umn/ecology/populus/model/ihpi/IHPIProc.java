@@ -18,55 +18,48 @@ public class IHPIProc extends DiscreteProc implements edu.umn.ecology.populus.mo
     private final double Ip_;
     private final int type; //Type 1-4
 
-	@Override
-	public void v( long time, double[] y ) {
-		double N, P, den, f;
-		N = y[Ny];
-		P = y[Py];
-		switch( type ) {
-		case 1:
-			den = k * ( 1 + a * N * I * theta ); //assume that 'Theta' is the same as 'theta'
-			if( den != 0 ) {
-				f = func( 1 + a * P / den );
-			}
-			else {
-				f = 0;
-			}
-			y[Ny] = F_ * N * I * f;
-			y[Py] = N * I * ( 1 - f );
-			break;
-
-		case 2:
-		case 3:
-			den = k * ( 1 + a * N * Th );
-			if( den != 0 ) {
-				f = func( 1 + a * P / den );
-			}
-			else {
-				f = 0;
-			}
-			y[Ny] = F_ * N * I * f;
-			if( type == 2 ) {
-				y[Py] = N * ( 1 - f );
-			}
-			else {
-				y[Py] = N * ( 1 - f ) * I;
-			}
-			break;
-
-		case 4:
-			den = k * ( 1 + a * N * I );
-			if( den != 0 ) {
-				f = func( 1 + a * P * Ip_ / den );
-			}
-			else {
-				f = 0;
-			}
-			y[Ny] = F_ * N * I * f;
-			y[Py] = N * I * ( 1 - f );
-			break;
-		}
-	}
+    @Override
+    public void v(long time, double[] y) {
+        double N, P, den, f;
+        N = y[Ny];
+        P = y[Py];
+        switch (type) {
+            case 1 -> {
+                den = k * (1 + a * N * I * theta); //assume that 'Theta' is the same as 'theta'
+                if (den != 0) {
+                    f = func(1 + a * P / den);
+                } else {
+                    f = 0;
+                }
+                y[Ny] = F_ * N * I * f;
+                y[Py] = N * I * (1 - f);
+            }
+            case 2, 3 -> {
+                den = k * (1 + a * N * Th);
+                if (den != 0) {
+                    f = func(1 + a * P / den);
+                } else {
+                    f = 0;
+                }
+                y[Ny] = F_ * N * I * f;
+                if (type == 2) {
+                    y[Py] = N * (1 - f);
+                } else {
+                    y[Py] = N * (1 - f) * I;
+                }
+            }
+            case 4 -> {
+                den = k * (1 + a * N * I);
+                if (den != 0) {
+                    f = func(1 + a * P * Ip_ / den);
+                } else {
+                    f = 0;
+                }
+                y[Ny] = F_ * N * I * f;
+                y[Py] = N * I * (1 - f);
+            }
+        }
+    }
 
     public IHPIProc(int type, double F_, double I, double a, double k, double theta, double Th, double Ip_) {
         this.type = type;

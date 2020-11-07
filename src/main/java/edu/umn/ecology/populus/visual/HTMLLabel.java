@@ -257,30 +257,14 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
     }
 
     protected int getTurns() {
-		int turns = 0;
-		switch( direction ) {
-		case NORMAL:
-			turns = 0;
-			break;
-
-		case DOWN_TO_UP:
-			turns = 1;
-			break;
-
-		case UPSIDEDOWN:
-			turns = 2;
-			break;
-
-		case UP_TO_DOWN:
-			turns = 3;
-			break;
-
-		default:
-			//ERROR!!!
-			turns = -1;
-			break;
-        }
-        return turns;
+        //ERROR!!!
+        return switch (direction) {
+            case NORMAL -> 0;
+            case DOWN_TO_UP -> 1;
+            case UPSIDEDOWN -> 2;
+            case UP_TO_DOWN -> 3;
+            default -> -1;
+        };
     }
 
     protected void unstack() {
@@ -355,59 +339,34 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
                     tempText = new StringBuffer();
                 }
                 getNextTag();
-
-				switch( lastTag ) {
-				case BOLD_BEGIN:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() | Font.BOLD, currentFont.getSize() );
-					break;
-
-				case BOLD_END:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() & Font.ITALIC, currentFont.getSize() );
-					break;
-
-				case ITALIC_BEGIN:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() | Font.ITALIC, currentFont.getSize() );
-					break;
-
-				case ITALIC_END:
-					currentFont = new Font( currentFont.getName(), currentFont.getStyle() & Font.BOLD, currentFont.getSize() );
-					break;
-
-				case SUP_BEGIN:
-				case SUB_END:
-					supLevel++;
-					break;
-
-				case SUP_END:
-				case SUB_BEGIN:
-					supLevel--;
-					break;
-
-				case COLOR_BEGIN:
-					currentColor = (Color)tagExtra;
-					break;
-
-				case COLOR_END:
-					currentColor = defaultColor;
-					break;
-
-
-               case ALL_END:
-            	   currentColor = defaultColor;
-            	   currentFont = defaultFont;
-            	   supLevel = 0;
-            	   topBar = false;
-            	   break;
-
-               default:
-            	   System.err.println( "Unknown Tag #" + lastTag + " = " + tagExtra );
-				}
-			} else {
-				if( text.charAt( nextChar ) == '\\' ) {
-					nextChar++;
-				}
-				tempText.append( "" + text.charAt( nextChar++ ) ); //Lars - Adding "" to force to String.
-			}
+				/*
+               case NEW_LINE:
+                  currentRowPanel = null; //Lars - untested
+                  break;
+					 */
+                switch (lastTag) {
+                    case BOLD_BEGIN -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() | Font.BOLD, currentFont.getSize());
+                    case BOLD_END -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() & Font.ITALIC, currentFont.getSize());
+                    case ITALIC_BEGIN -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() | Font.ITALIC, currentFont.getSize());
+                    case ITALIC_END -> currentFont = new Font(currentFont.getName(), currentFont.getStyle() & Font.BOLD, currentFont.getSize());
+                    case SUP_BEGIN, SUB_END -> supLevel++;
+                    case SUP_END, SUB_BEGIN -> supLevel--;
+                    case COLOR_BEGIN -> currentColor = (Color) tagExtra;
+                    case COLOR_END -> currentColor = defaultColor;
+                    case ALL_END -> {
+                        currentColor = defaultColor;
+                        currentFont = defaultFont;
+                        supLevel = 0;
+                        topBar = false;
+                    }
+                    default -> System.err.println("Unknown Tag #" + lastTag + " = " + tagExtra);
+                }
+            } else {
+                if (text.charAt(nextChar) == '\\') {
+                    nextChar++;
+                }
+                tempText.append("" + text.charAt(nextChar++)); //Lars - Adding "" because JDK 1.5 is stupid.
+            }
         }
         if (tempText.length() > 0) {
             addSubLabel(new HTMLSubLabel(tempText.toString(), currentFont, currentColor, supLevel, topBar));

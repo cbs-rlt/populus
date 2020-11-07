@@ -53,27 +53,26 @@ public class BPDeriv extends Derivative {
 
 		/*note: these equations aren't exactly the same as in Populus 4.0b.
       so DON'T WORRY if the results don't match!! :-)*/
-		switch( modeltype ) {
-		case BPParamInfo.equable:
-			dN[kX] = n1 * ( psistar - rho - tau) + n2 * psistar;//n+:x
-			dN[kY] = ( n1 + n2) * gamma * n3  - n2 * ( rho + tau);//n*
-			dN[kZ] = (psi - rho) * n3 - ( n1 + n2)*(gamma * n3 -  tau);// n
-			dN[kR] = rho * ( c - r ) - estar * psistar * ( n1 + n2 ) - e * psi * n3;//r
-			break;
-
-		case BPParamInfo.seasonal:
-			dN[kX] = n1 * ( psistar - tau)+  n2 * psistar;//n+
-			dN[kY] = ( n1 + n2) * gamma * n3  - n2 * tau;//n*
-			dN[kZ] = psi * n3 - ( n1 + n2)*(gamma * n3 -  tau);// n
-			dN[kR] =  - estar * psistar * ( n1 + n2 ) - e * psi * n3;//r
-			break;
-		}
-		//      1{n+} : BPdf := n[1]*(psistar-rho-tau){+n[2]*psistar};
-		//      2{n*} : BPdf := (n[1]+n[2])*gamma*n[3]-n[2]*(rho+tau-psistar);
-		//      3{n } : BPdf := n[3]*(psi-rho)-(n[1]+n[2])*(gamma*n[3]-tau);
-		//      4{r } : BPdf := rho*(c-r)-estar*psistar*(n[1]+n[2])-e*psi*n[3];
-		return ;
-	}
+        switch (modeltype) {
+            case BPParamInfo.equable -> {
+                dN[kX] = n1 * (psistar - rho - tau) + n2 * psistar;//n+:x
+                dN[kY] = (n1 + n2) * gamma * n3 - n2 * (rho + tau);//n*
+                dN[kZ] = (psi - rho) * n3 - (n1 + n2) * (gamma * n3 - tau);// n
+                dN[kR] = rho * (c - r) - estar * psistar * (n1 + n2) - e * psi * n3;//r
+            }
+            case BPParamInfo.seasonal -> {
+                dN[kX] = n1 * (psistar - tau) + n2 * psistar;//n+
+                dN[kY] = (n1 + n2) * gamma * n3 - n2 * tau;//n*
+                dN[kZ] = psi * n3 - (n1 + n2) * (gamma * n3 - tau);// n
+                dN[kR] = -estar * psistar * (n1 + n2) - e * psi * n3;//r
+            }
+        }
+        //      1{n+} : BPdf := n[1]*(psistar-rho-tau){+n[2]*psistar};
+        //      2{n*} : BPdf := (n[1]+n[2])*gamma*n[3]-n[2]*(rho+tau-psistar);
+        //      3{n } : BPdf := n[3]*(psi-rho)-(n[1]+n[2])*(gamma*n[3]-tau);
+        //      4{r } : BPdf := rho*(c-r)-estar*psistar*(n[1]+n[2])-e*psi*n[3];
+        return;
+    }
 
     @Override
     public void reset() {

@@ -394,32 +394,32 @@ public class ColorChooser extends JDialog {
         updateColors();
     }
 
-	void jComboBox12_actionPerformed( ActionEvent e ) {
-		int selection = jComboBox12.getSelectedIndex();
-		switch( selection ) {
-		case 0: //default
-			setListsToDefault();
-			jComboBox12.setSelectedIndex( 0 );
-			break;
-
-		case 2:
-			final int start = 12; //where the old populus colors start
-			jComboBox1.setSelectedIndex( start );
-			jComboBox2.setSelectedIndex( start + 1 );
-			jComboBox3.setSelectedIndex( start + 2 );
-			jComboBox4.setSelectedIndex( start + 3 );
-			jComboBox5.setSelectedIndex( start + 4 );
-			jComboBox6.setSelectedIndex( start + 5 );
-			jComboBox11.setSelectedIndex( start + 6 );
-			for( int i = 0;i < 6;i++ ) {
-				currentColor[i] = ColorScheme.colors[i + start];
-			}
-			currentColor[10] = ColorScheme.colors[start + 6];
-			updateColors();
-			jComboBox12.setSelectedIndex( 2 );
-			break;
-		}
-	}
+    void jComboBox12_actionPerformed(ActionEvent e) {
+        int selection = jComboBox12.getSelectedIndex();
+        switch (selection) {
+//default
+            case 0 -> {
+                setListsToDefault();
+                jComboBox12.setSelectedIndex(0);
+            }
+            case 2 -> {
+                final int start = 12; //where the old populus colors start
+                jComboBox1.setSelectedIndex(start);
+                jComboBox2.setSelectedIndex(start + 1);
+                jComboBox3.setSelectedIndex(start + 2);
+                jComboBox4.setSelectedIndex(start + 3);
+                jComboBox5.setSelectedIndex(start + 4);
+                jComboBox6.setSelectedIndex(start + 5);
+                jComboBox11.setSelectedIndex(start + 6);
+                for (int i = 0; i < 6; i++) {
+                    currentColor[i] = ColorScheme.colors[i + start];
+                }
+                currentColor[10] = ColorScheme.colors[start + 6];
+                updateColors();
+                jComboBox12.setSelectedIndex(2);
+            }
+        }
+    }
 
     void jComboBox8_actionPerformed(ItemEvent e) {
         jComboBox12.setSelectedIndex(1);

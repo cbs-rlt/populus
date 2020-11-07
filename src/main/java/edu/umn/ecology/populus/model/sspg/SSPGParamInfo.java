@@ -61,81 +61,79 @@ public class SSPGParamInfo implements BasicPlot, TableInterface {
                 snx[i] += result[i][j];
         }
 
-		switch(type){
-		case SSPGPanel.kLambda:
-			points = new double[1][2][gens];
-			for(int i=1; i<result.length; i++){
-				points[0][0][i-1] = i;
-				points[0][1][i-1] = snx[i] == 0 || snx[i-1] == 0 ? 0 : snx[i]/snx[i-1];
-			}
-			returnValue = new BasicPlotInfo(points,"\u03bb vs <i>t</i>","Generations","\u03bb");
-			break;
-		case SSPGPanel.kSNX:
-			points = new double[1][2][gens+1];
-			for(int i=0; i<result.length; i++){
-				points[0][0][i] = i;
-				points[0][1][i] = snx[i];
-			}
-			returnValue = new BasicPlotInfo(points,"\u03a3<i>N<sub>x</> vs <i>t</i>","Generations","\u03a3<i>N<sub>x</>");
-			break;
-		case SSPGPanel.kNXSNXT:
-			points = new double[1][2][gens+1];
-			for(int i=0; i<result.length; i++){
-				points[0][0][i] = i;
-				points[0][1][i] = snx[i] == 0 || result[i][whichToView-1] == 0 ? 0 : result[i][whichToView-1]/snx[i];
-			}
-			String yCap = "<i>N<sub>x</>/\u03a3<i>N<sub>x</>";
-			yCap += " ( " + ColorScheme.getColorString(0) + whichToView + "</>)  ";
-			returnValue = new BasicPlotInfo(points,"<i>N<sub>x</>/\u03a3<i>N<sub>x</> vs <i>t</i>","Generations",yCap);
-			break;
-		case SSPGPanel.kNXSNXX:
-			points = new double[1][2][result[0].length];
-			for(int i=0; i<result[0].length; i++){
-				points[0][0][i] = i+1;
-				points[0][1][i] = result[gens][i]/snx[gens];
-			}
-			returnValue = new BasicPlotInfo(points,"<i>N<sub>x</>/\u03a3<i>N<sub>x</> vs x (<i>t</i> = "+gens+")","Stage","<i>N<sub>x</>/\u03a3<i>N<sub>x</>");
-			break;
-		case SSPGPanel.kXSNXT:
-			points = new double[gens+1][3][result[0].length];
-			for(int i=0; i<result.length; i++){
-				for(int j=0; j<result[0].length; j++){
-					points[i][0][j] = j+1;
-					points[i][1][j] = snx[i] == 0 || result[i][j] == 0 ? 0 : result[i][j]/snx[i];
-					points[i][2][j] = i;
-				}
-			}
-			returnValue = new BasicPlotInfo(points,"x vs <i>N<sub>x</sub></i>/\u03a3<i>N<sub>x</sub></i> vs <i>t</i>","Stage Index","<i>N<sub>x</>/\u03a3<i>N<sub>x</sub></i>");
-			returnValue.setZCaption("Generations");
-			returnValue.setGraphType(BasicPlotInfo.k3D);
-			returnValue.setLabelsT(false);
-			returnValue.set3DIsDiscrete(true,true);
-			returnValue.setIsFrequencies(true);
-			break;
-		case SSPGPanel.kXNXT:
-			points = new double[gens+1][3][result[0].length];
-			for(int i=0; i<result.length; i++){
-				for(int j=0; j<result[0].length; j++){
-					points[i][0][j] = j+1;
-					points[i][1][j] = result[i][j];
-					points[i][2][j] = i;
-				}
-			}
-			returnValue = new BasicPlotInfo(points,"x vs <i>N<sub>x</sub></i> vs t","Stage Index","<i>N<sub>x</sub></i>");
-			returnValue.setZCaption("Generations");
-			returnValue.setGraphType(BasicPlotInfo.k3D);
-			returnValue.setLabelsT(false);
-			returnValue.set3DIsDiscrete(true,true);
-			break;
-		case SSPGPanel.kEIGEN:
-			Matrix m = Matrix.constructWithCopy(mat);
-			EigenvalueDecomposition ed = m.eig();
-			returnValue = new BasicPlotInfo(ed);
-			break;
-		case SSPGPanel.kTABOUT:
-			returnValue = new BasicPlotInfo(this);
-			break;
-		}
+        switch (type) {
+            case SSPGPanel.kLambda -> {
+                points = new double[1][2][gens];
+                for (int i = 1; i < result.length; i++) {
+                    points[0][0][i - 1] = i;
+                    points[0][1][i - 1] = snx[i] == 0 || snx[i - 1] == 0 ? 0 : snx[i] / snx[i - 1];
+                }
+                returnValue = new BasicPlotInfo(points, "\u03bb vs <i>t</i>", "Generations", "\u03bb");
+            }
+            case SSPGPanel.kSNX -> {
+                points = new double[1][2][gens + 1];
+                for (int i = 0; i < result.length; i++) {
+                    points[0][0][i] = i;
+                    points[0][1][i] = snx[i];
+                }
+                returnValue = new BasicPlotInfo(points, "\u03a3<i>N<sub>x</> vs <i>t</i>", "Generations", "\u03a3<i>N<sub>x</>");
+            }
+            case SSPGPanel.kNXSNXT -> {
+                points = new double[1][2][gens + 1];
+                for (int i = 0; i < result.length; i++) {
+                    points[0][0][i] = i;
+                    points[0][1][i] = snx[i] == 0 || result[i][whichToView - 1] == 0 ? 0 : result[i][whichToView - 1] / snx[i];
+                }
+                String yCap = "<i>N<sub>x</>/\u03a3<i>N<sub>x</>";
+                yCap += " ( " + ColorScheme.getColorString(0) + whichToView + "</>)  ";
+                returnValue = new BasicPlotInfo(points, "<i>N<sub>x</>/\u03a3<i>N<sub>x</> vs <i>t</i>", "Generations", yCap);
+            }
+            case SSPGPanel.kNXSNXX -> {
+                points = new double[1][2][result[0].length];
+                for (int i = 0; i < result[0].length; i++) {
+                    points[0][0][i] = i + 1;
+                    points[0][1][i] = result[gens][i] / snx[gens];
+                }
+                returnValue = new BasicPlotInfo(points, "<i>N<sub>x</>/\u03a3<i>N<sub>x</> vs x (<i>t</i> = " + gens + ")", "Stage", "<i>N<sub>x</>/\u03a3<i>N<sub>x</>");
+            }
+            case SSPGPanel.kXSNXT -> {
+                points = new double[gens + 1][3][result[0].length];
+                for (int i = 0; i < result.length; i++) {
+                    for (int j = 0; j < result[0].length; j++) {
+                        points[i][0][j] = j + 1;
+                        points[i][1][j] = snx[i] == 0 || result[i][j] == 0 ? 0 : result[i][j] / snx[i];
+                        points[i][2][j] = i;
+                    }
+                }
+                returnValue = new BasicPlotInfo(points, "x vs <i>N<sub>x</sub></i>/\u03a3<i>N<sub>x</sub></i> vs <i>t</i>", "Stage Index", "<i>N<sub>x</>/\u03a3<i>N<sub>x</sub></i>");
+                returnValue.setZCaption("Generations");
+                returnValue.setGraphType(BasicPlotInfo.k3D);
+                returnValue.setLabelsT(false);
+                returnValue.set3DIsDiscrete(true, true);
+                returnValue.setIsFrequencies(true);
+            }
+            case SSPGPanel.kXNXT -> {
+                points = new double[gens + 1][3][result[0].length];
+                for (int i = 0; i < result.length; i++) {
+                    for (int j = 0; j < result[0].length; j++) {
+                        points[i][0][j] = j + 1;
+                        points[i][1][j] = result[i][j];
+                        points[i][2][j] = i;
+                    }
+                }
+                returnValue = new BasicPlotInfo(points, "x vs <i>N<sub>x</sub></i> vs t", "Stage Index", "<i>N<sub>x</sub></i>");
+                returnValue.setZCaption("Generations");
+                returnValue.setGraphType(BasicPlotInfo.k3D);
+                returnValue.setLabelsT(false);
+                returnValue.set3DIsDiscrete(true, true);
+            }
+            case SSPGPanel.kEIGEN -> {
+                Matrix m = Matrix.constructWithCopy(mat);
+                EigenvalueDecomposition ed = m.eig();
+                returnValue = new BasicPlotInfo(ed);
+            }
+            case SSPGPanel.kTABOUT -> returnValue = new BasicPlotInfo(this);
+        }
 
         if (type != SSPGPanel.kTABOUT) {
             returnValue.setLineStyle(BasicPlotInfo.DASHED);

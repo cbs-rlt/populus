@@ -55,44 +55,41 @@ public class AIDSBASICParamInfo implements BasicPlot {
          for(int j=0; j<ylists.length; j++)
             totalPop[i] += ylists[j][i];
 		 */
-		switch(plotType){
-		case vsT:
-			points = new double[3][2][];
-			points[0][0] = xlist;
-			points[0][1] = ylists[0];
-			points[1][0] = xlist;
-			points[1][1] = ylists[1];
-			points[2][0] = xlist;
-			points[2][1] = ylists[2];
-
-			String caption = "<b><i>" + ColorScheme.getColorString( 0 ) + "x </font></i></b>"+", "+"<b><i>" + ColorScheme.getColorString( 1 ) + "y</font></i></b>"+", "+"<b><i>" + ColorScheme.getColorString( 2 ) + "v</font></i></b>";
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, caption );
-			bp.vsTimeChars = new String[] {
-					"x", "y", "v"
-			};
-			bp.isLogPlot =true;
-			break;
-		case xyvsT:
-			points = new double[2][2][];
-			points[0][0] = xlist;
-			points[0][1] = ylists[0];
-			points[1][0] = xlist;
-			points[1][1] = ylists[1];
-			String caption2 = "<b><i>" + ColorScheme.getColorString( 0 ) + "x </font></i></b>"+", "+"<b><i>" + ColorScheme.getColorString( 1 ) + "y</font></i></b>";
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, caption2 );
-			break;
-		case vvsT:
-			points = new double[1][2][];
-			points[0][0] = xlist;
-			points[0][1] = ylists[2];
-			String caption3 = "v";
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, caption3 );
-			break;
-
-
-		}
-		return bp;
-	}
+        switch (plotType) {
+            case vsT -> {
+                points = new double[3][2][];
+                points[0][0] = xlist;
+                points[0][1] = ylists[0];
+                points[1][0] = xlist;
+                points[1][1] = ylists[1];
+                points[2][0] = xlist;
+                points[2][1] = ylists[2];
+                String caption = "<b><i>" + ColorScheme.getColorString(0) + "x </font></i></b>" + ", " + "<b><i>" + ColorScheme.getColorString(1) + "y</font></i></b>" + ", " + "<b><i>" + ColorScheme.getColorString(2) + "v</font></i></b>";
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, caption);
+                bp.vsTimeChars = new String[]{
+                        "x", "y", "v"
+                };
+                bp.isLogPlot = true;
+            }
+            case xyvsT -> {
+                points = new double[2][2][];
+                points[0][0] = xlist;
+                points[0][1] = ylists[0];
+                points[1][0] = xlist;
+                points[1][1] = ylists[1];
+                String caption2 = "<b><i>" + ColorScheme.getColorString(0) + "x </font></i></b>" + ", " + "<b><i>" + ColorScheme.getColorString(1) + "y</font></i></b>";
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, caption2);
+            }
+            case vvsT -> {
+                points = new double[1][2][];
+                points[0][0] = xlist;
+                points[0][1] = ylists[2];
+                String caption3 = "v";
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, caption3);
+            }
+        }
+        return bp;
+    }
 
     public AIDSBASICParamInfo(int plotType, double time, /*time < 0 for steady state*/ double X, double Y, double V, double lambda, double d, double k, double a, double beta, double u) {
         ig = new Integrator(new AIDSBASICDeriv(lambda, d, k, a, beta, u));

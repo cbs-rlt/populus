@@ -199,85 +199,82 @@ public class LVPPTLParamInfo implements BasicPlot {
             type 2 = CN/(1+hCN)
             type 3 = CN^2/(1+hCN^2)
 				 */
-				switch( thetaType ) {
-				case 1:
-					isocline1 = new double[][] {
-						{
-							D / C, D / C
-						},  {
-							0, maxY * exCoeff
-						}
-					};
-					isocline2 = new double[][] {
-						{
-							0, maxX * exCoeff
-						},  {
-							r1 / C, ( -maxX * exCoeff / K + 1 ) * r1 / C
-						}
-					};
-					break;
-
-				case 2:
-					isocline1 = new double[][] {
-						{
-							D / ( C * ( 1 - D * h ) ), D / ( C * ( 1 - D * h ) )
-						},  {
-							0, maxY * exCoeff
-						}
-					}; //P = r1/C-r1N/(CK)
-					isocline2 = new double[2][100];
-					for( int i = 0;i < 100;i++ ) {
-						N = ( maxX * exCoeff / 100 ) * i;
-						isocline2[0][i] = N;
-						isocline2[1][i] = -h * N * N * r1 / K + ( h * r1 - r1 / ( K * C ) ) * N + r1 / C;
-					}
-					break;
-
-				case 3:
-					isocline1 = new double[][] {
-						{
-							Math.sqrt( D / ( C * ( 1 - D * h ) ) ), Math.sqrt( D / ( C * ( 1 - D * h ) ) )
-						},  {
-							0, maxY * exCoeff
-						}
-					}; //P = r1/C-r1N/(CK)
-					isocline2 = new double[2][100];
-					for( double i = 0.4;i < 100;i++ ) {
-						N = ( maxX * exCoeff / 100 ) * i;
-						isocline2[0][(int)i] = N;
-						isocline2[1][(int)i] = r1 * ( 1 - N / K ) * ( 1 + h * C * N * N ) / ( C * N );
-					}
-					break;
-
-				default:
-					System.err.print( res.getString( "Not_a_valid_theta" ) );
-					isocline1 = new double[][] {
-						{
-							0, 0
-						},  {
-							0, 0
-						}
-					}; //P = r1/C-r1N/(CK)
-					isocline2 = new double[][] {
-						{
-							0, 0
-						},  {
-							0, 0
-						}
-					};
-					break;
-				}
-			}
-			points[0] = isocline1;
-			points[1] = isocline2;
-			points[2] = ylists;
-			bp = new BasicPlotInfo( points, mCapN2vsN1, n2Cap, n1Cap );
-			PlotArrow.addArrow( bp, 2 );
-			PlotArrow.addFletching( bp, 2 );
-		}
-		bp.setYMin( 0.0 );
-		return bp;
-	}
+                switch (thetaType) {
+                    case 1 -> {
+                        isocline1 = new double[][]{
+                                {
+                                        D / C, D / C
+                                }, {
+                                0, maxY * exCoeff
+                        }
+                        };
+                        isocline2 = new double[][]{
+                                {
+                                        0, maxX * exCoeff
+                                }, {
+                                r1 / C, (-maxX * exCoeff / K + 1) * r1 / C
+                        }
+                        };
+                    }
+                    case 2 -> {
+                        isocline1 = new double[][]{
+                                {
+                                        D / (C * (1 - D * h)), D / (C * (1 - D * h))
+                                }, {
+                                0, maxY * exCoeff
+                        }
+                        }; //P = r1/C-r1N/(CK)
+                        isocline2 = new double[2][100];
+                        for (int i = 0; i < 100; i++) {
+                            N = (maxX * exCoeff / 100) * i;
+                            isocline2[0][i] = N;
+                            isocline2[1][i] = -h * N * N * r1 / K + (h * r1 - r1 / (K * C)) * N + r1 / C;
+                        }
+                    }
+                    case 3 -> {
+                        isocline1 = new double[][]{
+                                {
+                                        Math.sqrt(D / (C * (1 - D * h))), Math.sqrt(D / (C * (1 - D * h)))
+                                }, {
+                                0, maxY * exCoeff
+                        }
+                        }; //P = r1/C-r1N/(CK)
+                        isocline2 = new double[2][100];
+                        for (double i = 0.4; i < 100; i++) {
+                            N = (maxX * exCoeff / 100) * i;
+                            isocline2[0][(int) i] = N;
+                            isocline2[1][(int) i] = r1 * (1 - N / K) * (1 + h * C * N * N) / (C * N);
+                        }
+                    }
+                    default -> {
+                        System.err.print(res.getString("Not_a_valid_theta"));
+                        isocline1 = new double[][]{
+                                {
+                                        0, 0
+                                }, {
+                                0, 0
+                        }
+                        }; //P = r1/C-r1N/(CK)
+                        isocline2 = new double[][]{
+                                {
+                                        0, 0
+                                }, {
+                                0, 0
+                        }
+                        };
+                    }
+                }
+            }
+            points[0] = isocline1;
+            points[1] = isocline2;
+            points[2] = ylists;
+            bp = new BasicPlotInfo(points, mCapN2vsN1, n2Cap, n1Cap);
+            PlotArrow.addArrow(bp, 2);
+            PlotArrow.addFletching(bp, 2);
+        }
+        bp.setYMin(0.0);
+        return bp;
+    }
 
     /**
      * Lotka-Volterra

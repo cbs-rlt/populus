@@ -124,28 +124,27 @@ public class INTERDGSParamInfo implements BasicPlot {
             JOptionPane.showMessageDialog(DesktopWindow.defaultWindow, message, "Message", JOptionPane.PLAIN_MESSAGE);
         }
 
-		switch (plotType){
-		case AvsT:
-			for(int i=0; i<=gens; i++){
-				points[0][0][i] = i;
-				for(int j=0; j<runs; j++)
-					points[0][1][i] += data[j][i];
-				points[0][1][i] /= runs;
-			}
-			bpi = new BasicPlotInfo(points,mCap1,xCap,yCap1);
-			bpi.setIsFrequencies(true);
-
-			break;
-		case SvsT:
-			for(int i=0; i<=gens; i++){
-				points[0][0][i] = i;
-				points[0][1][i] = variance[i]/runs;
-			}
-			bpi = new BasicPlotInfo(points,mCap2,xCap,yCap2);
-			break;
-		}
-		return bpi;
-	}
+        switch (plotType) {
+            case AvsT -> {
+                for (int i = 0; i <= gens; i++) {
+                    points[0][0][i] = i;
+                    for (int j = 0; j < runs; j++)
+                        points[0][1][i] += data[j][i];
+                    points[0][1][i] /= runs;
+                }
+                bpi = new BasicPlotInfo(points, mCap1, xCap, yCap1);
+                bpi.setIsFrequencies(true);
+            }
+            case SvsT -> {
+                for (int i = 0; i <= gens; i++) {
+                    points[0][0][i] = i;
+                    points[0][1][i] = variance[i] / runs;
+                }
+                bpi = new BasicPlotInfo(points, mCap2, xCap, yCap2);
+            }
+        }
+        return bpi;
+    }
 
     public INTERDGSParamInfo(double a, double b, double c, double sAA, double sAE, double sEE,
                              int demeN, double m, double[] freqs, int runs, int gens, int plotType) {

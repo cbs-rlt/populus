@@ -87,26 +87,14 @@ public final class NumberMath {
 
     public static double getLittleMod(double bigger) {
         int base = NumberMath.getNonExp(bigger);
-
-		switch( base ) {
-		case 2:
-			return 4.0; //was 2.0
-
-		case 3:
-		case 6:
-		case 9:
-			return 3.0;
-
-		case 1:
-		case 5:
-			return 5.0;
-
-		case 7:
-			return 1.0;
-
-		default:
-			return 4.0;
-		}
+        return switch (base) {
+//was 2.0
+            case 2 -> 4.0;
+            case 3, 6, 9 -> 3.0;
+            case 1, 5 -> 5.0;
+            case 7 -> 1.0;
+            default -> 4.0;
+        };
     }
 
     /**
@@ -119,19 +107,12 @@ public final class NumberMath {
 
     public static double roundTypeA(double a) {
         a = roundSig(a, 1, DOWN);
-		switch( NumberMath.getNonExp( a ) ) {
-		case 6:
-			return a * ( 5.0 / 6.0 );
-
-		case 7:
-			return a * ( 8.0 / 7.0 );
-
-		case 9:
-			return a * ( 10.0 / 9.0 );
-
-		default:
-			return a;
-        }
+        return switch (NumberMath.getNonExp(a)) {
+            case 6 -> a * (5.0 / 6.0);
+            case 7 -> a * (8.0 / 7.0);
+            case 9 -> a * (10.0 / 9.0);
+            default -> a;
+        };
     }
 
     /**

@@ -34,31 +34,28 @@ public class MDDeriv extends Derivative {
 
         BWH = beta * W * H;
 
-		switch( type ) {
-		case MDParamInfo.HPWDD:
-			dN[kH] = (b - d)*H - alpha*P;
-			dN[kP] = BWH - (alpha + d + muP)*P - alpha*(k + 1)*P*P/(k*H);
-			dN[kW] = lambda*P - gamma*W - BWH;
-			break;
-
-		case MDParamInfo.HPDD:
-			dN[kH] = (b - d)*H - alpha*P;
-			dN[kP] = lambda*H*P/(gamma/beta + H) - (muP + d + alpha)*P - alpha*(k + 1)*P*P/(k*H);
-			break;
-
-		case MDParamInfo.HPADD:
-			if(H <= 1e-100 || W <= 1e-100 || P <= 1e-100) {
-				dN[kH] = Double.NaN;
-				return;
-			}
-
-			dN[kH]/*H*/ = (b - d)*H - (alpha + sigma)*P;
-			dN[kW]/*A*/ = lambda*H*P/(gamma/beta + H) - (muA + d + theta)*W - alpha*P*W/H;
-			dN[kP]/*P*/ = theta*W - (muP + d + alpha)*P - alpha*(k + 1)*P*P/(k*H);
-			break;
-		}
-		return ;
-	}
+        switch (type) {
+            case MDParamInfo.HPWDD -> {
+                dN[kH] = (b - d) * H - alpha * P;
+                dN[kP] = BWH - (alpha + d + muP) * P - alpha * (k + 1) * P * P / (k * H);
+                dN[kW] = lambda * P - gamma * W - BWH;
+            }
+            case MDParamInfo.HPDD -> {
+                dN[kH] = (b - d) * H - alpha * P;
+                dN[kP] = lambda * H * P / (gamma / beta + H) - (muP + d + alpha) * P - alpha * (k + 1) * P * P / (k * H);
+            }
+            case MDParamInfo.HPADD -> {
+                if (H <= 1e-100 || W <= 1e-100 || P <= 1e-100) {
+                    dN[kH] = Double.NaN;
+                    return;
+                }
+                dN[kH]/*H*/ = (b - d) * H - (alpha + sigma) * P;
+                dN[kW]/*A*/ = lambda * H * P / (gamma / beta + H) - (muA + d + theta) * W - alpha * P * W / H;
+                dN[kP]/*P*/ = theta * W - (muP + d + alpha) * P - alpha * (k + 1) * P * P / (k * H);
+            }
+        }
+        return;
+    }
 
     public MDDeriv(int modelType, double a, double b, double alpha, double beta, double muA,
                    double muP, double lambda, double k, double gamma, double sigma, double theta) {

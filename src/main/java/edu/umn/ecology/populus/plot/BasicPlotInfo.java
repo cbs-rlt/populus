@@ -792,25 +792,19 @@ public class BasicPlotInfo extends ParamInfo
         plotTerminusList.add(term);
     }
 
-	public void setSymbolStyle(int whichLine, int style) {
-		if(style >= 0){
-			if(style>0){
-				edu.umn.ecology.populus.fileio.Logging.log("Why set symbolstyle to " + style, Logging.kWarn);
-			}
-			getChartStyle(whichLine).getSymbolStyle().setShape(style);
-		} else {
-			switch(style){
-			case DOTS:
-				getChartStyle(whichLine).getSymbolStyle().setCustomShape( new CircleTerminus(false).getJCShape() );
-				break;
-			case ARROW:
-			case FLETCHING:
-				edu.umn.ecology.populus.fileio.Logging.log("Should use setTerminus", Logging.kWarn);
-				break;
-			}
-		}
-	}
-
+    public void setSymbolStyle(int whichLine, int style) {
+        if (style >= 0) {
+            if (style > 0) {
+                edu.umn.ecology.populus.fileio.Logging.log("Why set symbolstyle to " + style, Logging.kWarn);
+            }
+            getChartStyle(whichLine).getSymbolStyle().setShape(style);
+        } else {
+            switch (style) {
+                case DOTS -> getChartStyle(whichLine).getSymbolStyle().setCustomShape(new CircleTerminus(false).getJCShape());
+                case ARROW, FLETCHING -> Logging.log("Should use setTerminus", Logging.kWarn);
+            }
+        }
+    }
 
     public void setSymbolStyle(int style) {
         for (int i = 0; i < getNumSeries(); i++) {

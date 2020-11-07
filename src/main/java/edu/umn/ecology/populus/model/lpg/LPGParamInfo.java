@@ -135,19 +135,13 @@ public class LPGParamInfo implements BasicPlot {
                 }
             }
         }
-		switch( modelType ) {
-		case CONTINUOUS:
-			ContinuousGraph();
-			break;
-		case DISCRETE:
-			DiscreteGraph();
-			break;
-		case LAGGED:
-			LaggedGraph();
-			break;
-		}
-		return returnValue;
-	}
+        switch (modelType) {
+            case CONTINUOUS -> ContinuousGraph();
+            case DISCRETE -> DiscreteGraph();
+            case LAGGED -> LaggedGraph();
+        }
+        return returnValue;
+    }
 
     public LPGParamInfo(LPGData[] myData, int numGraphs, int modelType, int plotType, int time) {
         BasicPlotInfo temp = null;

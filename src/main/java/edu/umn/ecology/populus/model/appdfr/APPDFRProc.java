@@ -15,45 +15,37 @@ public class APPDFRProc extends DiscreteProc implements edu.umn.ecology.populus.
     private final double t;
     private final double th;
     private final double b;
-    private final int type; //Type 1-3 TODO: Should be Enum
+    private final int type; //Type 1-3
 
     @Override
     public void v(long time, double[] y) {
         double f, N, P;
         N = y[Ny];
         P = y[Py];
-        switch( type ) {
-        case 1:
-			f = Math.exp( -ap * t * P );
-			break;
-
-		case 2:
-			f = 1 + ap * th * N;
-			if( f != 0 ) {
-				f = Math.exp( -ap * t * P / f );
-			}
-			else {
-				f = Double.POSITIVE_INFINITY;
-			}
-			break;
-
-		case 3:
-			f = 1 + c * N + b * th * N * N;
-			if( f != 0 ) {
-				f = Math.exp( -b * t * N * P / f );
-			}
-			else {
-				f = Double.POSITIVE_INFINITY;
-			}
-			break;
-
-		default:
-			//ERROR!
-			f = 0;
-		}
-		y[Ny] = lambda * N * f;
-		y[Py] = c * N * ( 1 - f );
-	}
+        //ERROR!
+        switch (type) {
+            case 1 -> f = Math.exp(-ap * t * P);
+            case 2 -> {
+                f = 1 + ap * th * N;
+                if (f != 0) {
+                    f = Math.exp(-ap * t * P / f);
+                } else {
+                    f = Double.POSITIVE_INFINITY;
+                }
+            }
+            case 3 -> {
+                f = 1 + c * N + b * th * N * N;
+                if (f != 0) {
+                    f = Math.exp(-b * t * N * P / f);
+                } else {
+                    f = Double.POSITIVE_INFINITY;
+                }
+            }
+            default -> f = 0;
+        }
+        y[Ny] = lambda * N * f;
+        y[Py] = c * N * (1 - f);
+    }
 
     public APPDFRProc(int type, double lambda, double ap, double c, double t, double th, double b) {
         this.type = type;

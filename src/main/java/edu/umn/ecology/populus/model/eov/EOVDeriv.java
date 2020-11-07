@@ -36,20 +36,18 @@ public class EOVDeriv extends Derivative {
         if (Math.abs(x) < 1e-6) {
         }
 
-		switch( type ) {
-		case EOVParamInfo.ALTER:
-			dN[kX] = ( a - d ) * x + a * p * y - b * x * y;//H
-			dN[kY] = ( b * x -  d - e ) * y;//I
-			break;
-
-		case EOVParamInfo.COUPLED:
-
-			dN[kX] = ( a - d ) * x + a * p * y - bop * x * y;
-			dN[kY] = (bop * x * y) - (d * y) - eop * y;
-			break;
-		}
-		return ;
-	}
+        switch (type) {
+            case EOVParamInfo.ALTER -> {
+                dN[kX] = (a - d) * x + a * p * y - b * x * y;//H
+                dN[kY] = (b * x - d - e) * y;//I
+            }
+            case EOVParamInfo.COUPLED -> {
+                dN[kX] = (a - d) * x + a * p * y - bop * x * y;
+                dN[kY] = (bop * x * y) - (d * y) - eop * y;
+            }
+        }
+        return;
+    }
 
     public EOVDeriv(int modelType, double a0, double a1, double b, double d, double p, double e, double c1, double c2, double c3) {
         this.type = modelType;

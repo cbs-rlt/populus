@@ -66,80 +66,78 @@ public class EOVParamInfo implements BasicPlot {
         ylists = ig.getY();
         size = xlist.length;
 
-		switch(plotType){
-		case hivsT:
-			points = new double[2][2][];
-			points[0][0] = xlist;
-			points[0][1] = ylists[0];
-			points[1][0] = xlist;
-			points[1][1] = ylists[1];
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, yCap2 );
-			//bp.setYMin( 0.0 );
-			/*bp.vsTimeChars = new String[] {
+        //bp.setYMin( 0.0 );
+		/*bp.vsTimeChars = new String[] {
                "H", "I"
             };*/
-			break;
-		case ebvsT:
-			eopt = new double [size];
-			bopt = new double [size];
-			for(int i=0; i<size; i++){
-				bopt[i] = (ylists[1][i] - c2)/ (2*c3);
-				eopt[i] = c1 + c2 * bopt[i] + c3 * bopt[i] * bopt[i];
-			}
-			points = new double[2][2][];
-			points[0][0] = xlist;
-			points[0][1] = eopt;
-			points[1][0] = xlist;
-			points[1][1] = bopt;
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap, yCap3 );
-			//bp.setYMin( 0.0 );
-			bp.vsTimeChars = new String[] {
-					"e", "b"
-			};
-
-			break;
-		case hiStar:
-			double es, hs, is, AA, BB, CC;
-			double bs = 0.005;
-			int j = 0;
-			bstar = new double [1246];
-			hstar = new double [1246];
-			istar = new double [1246];
-			histar = new double [1246];
-			while ( bs < 1.25 ){
-				bstar[j] = bs;
-				es = c1 + c2 * bs + c3 * bs * bs;
-				hs = (d+es)/bs;
-				hstar[j] = hs;
-				AA = hs * (a0 - a1*hs - d);
-				BB = hs * ( a1 * (1 + p)+bs) - p * a0;
-				CC = a1 * p;
-				if ( CC == 0)
-					is = 0;
-				else
-					is = (Math.sqrt(BB * BB + 4 * AA * CC)- BB) / (2 * CC);
-				istar[ j ] = is;
-				histar[j] = is + hs ;
-				bs = bs + 0.001;
-				j ++;
-			}
-			points = new double[3][2][];
-			points[0][0] = bstar;
-			points[0][1] = hstar;
-			points[1][0] = bstar;
-			points[1][1] = istar;
-			points[2][0] = bstar;
-			points[2][1] = histar;
-			bp = new BasicPlotInfo( points, mCapNvsT, xCap2, yCap4 );
-			//bp.setYMin( 0.0 );
-			bp.vsTimeChars = new String[] {
-					"e", "b"
-			};
-
-			break;
-		}
-		return bp;
-	}
+        //bp.setYMin( 0.0 );
+        //bp.setYMin( 0.0 );
+        switch (plotType) {
+            case hivsT -> {
+                points = new double[2][2][];
+                points[0][0] = xlist;
+                points[0][1] = ylists[0];
+                points[1][0] = xlist;
+                points[1][1] = ylists[1];
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap2);
+            }
+            case ebvsT -> {
+                eopt = new double[size];
+                bopt = new double[size];
+                for (int i = 0; i < size; i++) {
+                    bopt[i] = (ylists[1][i] - c2) / (2 * c3);
+                    eopt[i] = c1 + c2 * bopt[i] + c3 * bopt[i] * bopt[i];
+                }
+                points = new double[2][2][];
+                points[0][0] = xlist;
+                points[0][1] = eopt;
+                points[1][0] = xlist;
+                points[1][1] = bopt;
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap3);
+                bp.vsTimeChars = new String[]{
+                        "e", "b"
+                };
+            }
+            case hiStar -> {
+                double es, hs, is, AA, BB, CC;
+                double bs = 0.005;
+                int j = 0;
+                bstar = new double[1246];
+                hstar = new double[1246];
+                istar = new double[1246];
+                histar = new double[1246];
+                while (bs < 1.25) {
+                    bstar[j] = bs;
+                    es = c1 + c2 * bs + c3 * bs * bs;
+                    hs = (d + es) / bs;
+                    hstar[j] = hs;
+                    AA = hs * (a0 - a1 * hs - d);
+                    BB = hs * (a1 * (1 + p) + bs) - p * a0;
+                    CC = a1 * p;
+                    if (CC == 0)
+                        is = 0;
+                    else
+                        is = (Math.sqrt(BB * BB + 4 * AA * CC) - BB) / (2 * CC);
+                    istar[j] = is;
+                    histar[j] = is + hs;
+                    bs = bs + 0.001;
+                    j++;
+                }
+                points = new double[3][2][];
+                points[0][0] = bstar;
+                points[0][1] = hstar;
+                points[1][0] = bstar;
+                points[1][1] = istar;
+                points[2][0] = bstar;
+                points[2][1] = histar;
+                bp = new BasicPlotInfo(points, mCapNvsT, xCap2, yCap4);
+                bp.vsTimeChars = new String[]{
+                        "e", "b"
+                };
+            }
+        }
+        return bp;
+    }
 
     public EOVParamInfo(int modelType, int plotType, double time, /*time < 0 for steady state*/ double X, double Y, double a0, double a1, double b, double d, double p, double e, double c1, double c2, double c3) {
         ig = new Integrator(new EOVDeriv(modelType, a0, a1, b, d, p, e, c1, c2, c3));

@@ -65,23 +65,17 @@ public class MNPTable extends AbstractTableModel {
         this.fireTableStructureChanged();
     }
 
-	@Override
-	public String getColumnName(int column) {
-		switch (column) {
-		case 0:
-			return "Habitat";
-		case 1:
-			return "<i>c</i>";
-		case 2:
-			return "<i>w<sub>AA</sub></i>";
-		case 3:
-			return "<i>w<sub>Aa</sub></i>";
-		case 4:
-			return "<i>w<sub>aa</sub></i>";
-		default:
-			return null;
-		}
-	}
+    @Override
+    public String getColumnName(int column) {
+        return switch (column) {
+            case 0 -> "Habitat";
+            case 1 -> "<i>c</i>";
+            case 2 -> "<i>w<sub>AA</sub></i>";
+            case 3 -> "<i>w<sub>Aa</sub></i>";
+            case 4 -> "<i>w<sub>aa</sub></i>";
+            default -> null;
+        };
+    }
 
     @Override
     public Class<?> getColumnClass(int c) {

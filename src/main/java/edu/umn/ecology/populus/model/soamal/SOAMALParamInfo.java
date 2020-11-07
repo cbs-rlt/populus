@@ -54,55 +54,55 @@ public class SOAMALParamInfo implements BasicPlot {
                 freq[ii] *= wi[ii] / wbar;
         }
 
-		switch (plotType){
-		case PvsT:
-			points = new double[plotted.length][2][gens+1];
-			int[] a;
-			a = plottedTransform(plotted,used);
-			for(int j=0; j<plotted.length; j++){
-				for(int i=0; i<=gens; i++){
-					points[j][0][i] = i;
-					points[j][1][i] = data[i][a[j]];
-				}
-				yCap1 += ColorScheme.getColorString(j)+"<i>"+(plotted[j]+1)+"</>" + (j==plotted.length-1?"":", ");
-			}
-			yCap1 += " )";
-			bpi = new BasicPlotInfo(points,mCap1,xCap1,yCap1);
-			bpi.setIsFrequencies(true);
-			break;
-		case PvsP:
-			if(plotted.length > 3){
-				edu.umn.ecology.populus.fileio.Logging.log("Too many to graphs");
-				break;
-			}
-			points = new double[1][plotted.length][gens+1];
-			for(int i=0; i<=gens; i++){
-				for(int j=0; j<plotted.length; j++)
-					points[0][j][i] = data[i][plotted[j]];
-			}
-			bpi = new BasicPlotInfo(points,mCap2,xCap2,yCap2);
-			if(plotted.length == 3){
-				bpi.setZCaption(zCap2);
-				bpi.setGraphType(BasicPlotInfo.k3D);
-				bpi.setIsDiscrete(true);
-			}
-			//these additions don't seem to be much use, the ends are on the edge of the graph anyway...
-			//PlotArrow.addArrow( bpi, 0 );
-			//PlotArrow.addFletching( bpi, 0 );
-			break;
-		case DeFi:
-			points = new double[1][3][gens+1];
-			for(int i=0; i<=gens; i++){
-				for(int j=0; j<plotted.length; j++)
-					points[0][j][i] = data[i][plotted[j]];
-			}
-			bpi = new BasicPlotInfo(points,mCap1,xCap2,yCap2);
-			bpi.setZCaption(zCap2);
-			bpi.setGraphType(BasicPlotInfo.kDeFinetti);
-			break;
-		}
-		return bpi;
-	}
+        //these additions don't seem to be much use, the ends are on the edge of the graph anyway...
+        //PlotArrow.addArrow( bpi, 0 );
+        //PlotArrow.addFletching( bpi, 0 );
+        switch (plotType) {
+            case PvsT -> {
+                points = new double[plotted.length][2][gens + 1];
+                int[] a;
+                a = plottedTransform(plotted, used);
+                for (int j = 0; j < plotted.length; j++) {
+                    for (int i = 0; i <= gens; i++) {
+                        points[j][0][i] = i;
+                        points[j][1][i] = data[i][a[j]];
+                    }
+                    yCap1 += ColorScheme.getColorString(j) + "<i>" + (plotted[j] + 1) + "</>" + (j == plotted.length - 1 ? "" : ", ");
+                }
+                yCap1 += " )";
+                bpi = new BasicPlotInfo(points, mCap1, xCap1, yCap1);
+                bpi.setIsFrequencies(true);
+            }
+            case PvsP -> {
+                if (plotted.length > 3) {
+                    edu.umn.ecology.populus.fileio.Logging.log("Too many to graphs");
+                    break;
+                }
+                points = new double[1][plotted.length][gens + 1];
+                for (int i = 0; i <= gens; i++) {
+                    for (int j = 0; j < plotted.length; j++)
+                        points[0][j][i] = data[i][plotted[j]];
+                }
+                bpi = new BasicPlotInfo(points, mCap2, xCap2, yCap2);
+                if (plotted.length == 3) {
+                    bpi.setZCaption(zCap2);
+                    bpi.setGraphType(BasicPlotInfo.k3D);
+                    bpi.setIsDiscrete(true);
+                }
+            }
+            case DeFi -> {
+                points = new double[1][3][gens + 1];
+                for (int i = 0; i <= gens; i++) {
+                    for (int j = 0; j < plotted.length; j++)
+                        points[0][j][i] = data[i][plotted[j]];
+                }
+                bpi = new BasicPlotInfo(points, mCap1, xCap2, yCap2);
+                bpi.setZCaption(zCap2);
+                bpi.setGraphType(BasicPlotInfo.kDeFinetti);
+            }
+        }
+        return bpi;
+    }
 
     int[] plottedTransform(int[] p, int[] u) {
         int[] a = new int[p.length];

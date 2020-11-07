@@ -127,219 +127,110 @@ class Token implements Serializable {
         return 5;
     }
 
-	@Override
-	public String toString() {
-		String temp = "Type: ";
-		int switcher = (int)value;
-		switch( tokenType ) {
-		case kOperator:
-			temp += "operator\nValue: ";
-			switch( switcher ) {
-			case kPlus:
-				temp += "+";
-				break;
+    @Override
+    public String toString() {
+        String temp = "Type: ";
+        int switcher = (int) value;
+        switch (tokenType) {
+            case kOperator -> {
+                temp += "operator\nValue: ";
+                switch (switcher) {
+                    case kPlus -> temp += "+";
+                    case kMinus -> temp += "-";
+                    case kMultiply -> temp += "*";
+                    case kDivide -> temp += "/";
+                    case kExponent -> temp += "^";
+                }
+            }
+            case kConstant -> {
+                temp += "constant\nValue: ";
+                temp += value;
+            }
+            case kBracket -> {
+                temp += "bracket\nValue: ";
+                switch (switcher) {
+                    case kOpen -> temp += "(";
+                    case kClose -> temp += ")";
+                }
+            }
+            case kFunction -> {
+                temp += "function\nValue: ";
+                switch (switcher) {
+                    case kSine -> temp += "sin";
+                    case kCosine -> temp += "cos";
+                    case kTangent -> temp += "tan";
+                    case kLn -> temp += "ln";
+                    case kFactorial -> temp += "!";
+                    case kAbsolute -> temp += "|";
+                }
+            }
+            default -> temp += "n/a";
+        }
+        temp += "\n";
+        return temp;
+    }
 
-			case kMinus:
-				temp += "-";
-				break;
+    public String shortString() {
+        String temp = "";
+        int switcher = (int) value;
+        switch (tokenType) {
+            case kOperator:
+                switch (switcher) {
+                    case kMinimum -> temp += "min";
+                    case kMaximum -> temp += "max";
+                    case kSigFig -> temp += "sigfig";
+                    case kRandom -> temp += "random";
+                    case kPlus -> temp += "+";
+                    case kMinus -> temp += "-";
+                    case kMultiply -> temp += "*";
+                    case kModulo -> temp += "%";
+                    case kDivide -> temp += "/";
+                    case kExponent -> temp += "^";
+                }
+                break;
 
-			case kMultiply:
-				temp += "*";
-				break;
+            case kConstant:
+                temp += value;
+                break;
 
-			case kDivide:
-				temp += "/";
-				break;
+            case kBracket:
+                switch (switcher) {
+                    case kOpen -> temp += "(";
+                    case kClose -> temp += ")";
+                }
+                break;
 
-			case kExponent:
-				temp += "^";
-				break;
-			}
-			break;
+            case kFunction:
+                switch (switcher) {
+                    case kSine -> temp += "sin";
+                    case kCosine -> temp += "cos";
+                    case kTangent -> temp += "tan";
+                    case kLn -> temp += "ln";
+                    case kAbsolute -> temp += "|";
+                    case kFactorial -> temp += "!";
+                    case kArcSine -> temp += "asin";
+                    case kArcCosine -> temp += "acos";
+                    case kArcTangent -> temp += "atan";
+                    case kIntPart -> temp += "ipart";
+                    case kFracPart -> temp += "fpart";
+                }
+                break;
 
-		case kConstant:
-			temp += "constant\nValue: ";
-			temp += value;
-			break;
+            case kParameter:
+                if (value > 0) {
+                    temp += "N" + (int) value;
+                } else {
+                    temp += "t";
+                }
+                break;
 
-		case kBracket:
-			temp += "bracket\nValue: ";
-			switch( switcher ) {
-			case kOpen:
-				temp += "(";
-				break;
-
-			case kClose:
-				temp += ")";
-				break;
-			}
-			break;
-
-		case kFunction:
-			temp += "function\nValue: ";
-			switch( switcher ) {
-			case kSine:
-				temp += "sin";
-				break;
-
-			case kCosine:
-				temp += "cos";
-				break;
-
-			case kTangent:
-				temp += "tan";
-				break;
-
-			case kLn:
-				temp += "ln";
-				break;
-
-			case kFactorial:
-				temp += "!";
-				break;
-
-			case kAbsolute:
-				temp += "|";
-				break;
-			}
-			break;
-
-		default:
-			temp += "n/a";
-			break;
-		}
-		temp += "\n";
-		return temp;
-	}
-
-	public String shortString() {
-		String temp = "";
-		int switcher = (int)value;
-		switch( tokenType ) {
-		case kOperator:
-			switch( switcher ) {
-			case kMinimum:
-				temp += "min";
-				break;
-
-			case kMaximum:
-				temp += "max";
-				break;
-
-			case kSigFig:
-				temp += "sigfig";
-				break;
-
-			case kRandom:
-				temp += "random";
-				break;
-
-			case kPlus:
-				temp += "+";
-				break;
-
-			case kMinus:
-				temp += "-";
-				break;
-
-			case kMultiply:
-				temp += "*";
-				break;
-
-			case kModulo:
-				temp += "%";
-				break;
-
-			case kDivide:
-				temp += "/";
-				break;
-
-			case kExponent:
-				temp += "^";
-				break;
-			}
-			break;
-
-		case kConstant:
-			temp += value;
-			break;
-
-		case kBracket:
-			switch( switcher ) {
-			case kOpen:
-				temp += "(";
-				break;
-
-				case kClose:
-					temp += ")";
-					break;
-			}
-			break;
-
-		case kFunction:
-			switch( switcher ) {
-			case kSine:
-				temp += "sin";
-				break;
-
-			case kCosine:
-				temp += "cos";
-				break;
-
-			case kTangent:
-				temp += "tan";
-				break;
-
-			case kLn:
-				temp += "ln";
-				break;
-
-			case kAbsolute:
-				temp += "|";
-				break;
-
-			case kFactorial:
-				temp += "!";
-				break;
-
-			case kArcSine:
-				temp += "asin";
-				break;
-
-			case kArcCosine:
-				temp += "acos";
-				break;
-
-			case kArcTangent:
-				temp += "atan";
-				break;
-
-			case kIntPart:
-				temp += "ipart";
-				break;
-
-			case kFracPart:
-				temp += "fpart";
-				break;
-			}
-			break;
-
-		case kParameter:
-			if( value > 0 ) {
-				temp += "N" + (int)value;
-			}
-			else {
-				temp += "t";
-			}
-			break;
-
-		default:
-			temp += "n/a";
-			break;
-		}
-		temp += " ";
-		return temp;
-	}
+            default:
+                temp += "n/a";
+                break;
+        }
+        temp += " ";
+        return temp;
+    }
 
     @Override
     public Object clone() {

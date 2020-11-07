@@ -56,43 +56,43 @@ class SDCellParamInfo extends ParamInfo implements CellFunction {
         initialize(inittype, initfreq, patchsize, isEdge);
     }
 
-	void initialize(int inittype, double initfreq, int patchsize, boolean isEdge){
-		Random r = new Random(System.currentTimeMillis());
-		switch (inittype){
-		case SDPanel.kRandom:
-			for(int i=0; i<size; i++)
-				for(int j=0; j<size; j++)
-					if(r.nextDouble()<initfreq) olddata[i][j] = kC;
-					else olddata[i][j] = kD;
-			break;
-		case SDPanel.kOneCD:
-			for(int i=0; i<size; i++)
-				for(int j=0; j<size; j++)
-					olddata[i][j] = kD;
-			if(!isEdge)
-				for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
-					for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
-						olddata[i][j] = kC;
-			else
-				for(int i=0; i<patchsize; i++)
-					for(int j=0; j<patchsize; j++)
-						olddata[i][j] = kC;
-			break;
-		case SDPanel.kOneDH:
-			for(int i=0; i<size; i++)
-				for(int j=0; j<size; j++)
-					olddata[i][j] = kC;
-			if(!isEdge)
-				for(int i=(size/2-patchsize/2); i<(size/2+(patchsize/2+0.5)); i++)
-					for(int j=(size/2-patchsize/2); j<(size/2+(patchsize/2+0.5)); j++)
-						olddata[i][j] = kD;
-			else
-				for(int i=0; i<patchsize; i++)
-					for(int j=0; j<patchsize; j++)
-						olddata[i][j] = kD;
-			break;
-		}
-	}
+    void initialize(int inittype, double initfreq, int patchsize, boolean isEdge) {
+        Random r = new Random(System.currentTimeMillis());
+        switch (inittype) {
+            case SDPanel.kRandom:
+                for (int i = 0; i < size; i++)
+                    for (int j = 0; j < size; j++)
+                        if (r.nextDouble() < initfreq) olddata[i][j] = kC;
+                        else olddata[i][j] = kD;
+                break;
+            case SDPanel.kOneCD:
+                for (int i = 0; i < size; i++)
+                    for (int j = 0; j < size; j++)
+                        olddata[i][j] = kD;
+                if (!isEdge)
+                    for (int i = (size / 2 - patchsize / 2); i < (size / 2 + (patchsize / 2 + 0.5)); i++)
+                        for (int j = (size / 2 - patchsize / 2); j < (size / 2 + (patchsize / 2 + 0.5)); j++)
+                            olddata[i][j] = kC;
+                else
+                    for (int i = 0; i < patchsize; i++)
+                        for (int j = 0; j < patchsize; j++)
+                            olddata[i][j] = kC;
+                break;
+            case SDPanel.kOneDH:
+                for (int i = 0; i < size; i++)
+                    for (int j = 0; j < size; j++)
+                        olddata[i][j] = kC;
+                if (!isEdge)
+                    for (int i = (size / 2 - patchsize / 2); i < (size / 2 + (patchsize / 2 + 0.5)); i++)
+                        for (int j = (size / 2 - patchsize / 2); j < (size / 2 + (patchsize / 2 + 0.5)); j++)
+                            olddata[i][j] = kD;
+                else
+                    for (int i = 0; i < patchsize; i++)
+                        for (int j = 0; j < patchsize; j++)
+                            olddata[i][j] = kD;
+                break;
+        }
+    }
 
     /**
      * Get the values to start up the CellPanel
@@ -121,82 +121,79 @@ class SDCellParamInfo extends ParamInfo implements CellFunction {
                         int tM = m, tN = n;
                         double[] v;
                         switch (border) {
-                        case SDPanel.kAbsorbing:
-                            if (m < 0 || n < 0 || m >= values.length || n >= values[0].length) break;
-                            v = getResults(i, j, tM, tN);
-                            values[i][j] += v[0];
-                            values[tM][tN] += v[1];
-                            break;
-                        case SDPanel.kPeriodic:
-                            if (m < 0) tM = values.length - 1;
-                            if (m >= values.length) tM = 0;
-                            if (n < 0) tN = values[0].length - 1;
-                            if (n >= values[0].length) tN = 0;
-                            v = getResults(i, j, tM, tN);
-                            values[i][j] += v[0];
-                            values[tM][tN] += v[1];
-                            break;
-                        case SDPanel.kReflexive:
-                            if (m < 0) tM = 0;
-                            if (m >= values.length) tM = values.length - 1;
-                            if (n < 0) tN = 0;
-                            if (n >= values[0].length) tN = values[0].length - 1;
-                            v = getResults(i, j, tM, tN);
-                            values[i][j] += v[0];
-                            values[tM][tN] += v[1];
-                            break;
+                            case SDPanel.kAbsorbing -> {
+                                if (m < 0 || n < 0 || m >= values.length || n >= values[0].length) break;
+                                v = getResults(i, j, tM, tN);
+                                values[i][j] += v[0];
+                                values[tM][tN] += v[1];
+                            }
+                            case SDPanel.kPeriodic -> {
+                                if (m < 0) tM = values.length - 1;
+                                if (m >= values.length) tM = 0;
+                                if (n < 0) tN = values[0].length - 1;
+                                if (n >= values[0].length) tN = 0;
+                                v = getResults(i, j, tM, tN);
+                                values[i][j] += v[0];
+                                values[tM][tN] += v[1];
+                            }
+                            case SDPanel.kReflexive -> {
+                                if (m < 0) tM = 0;
+                                if (m >= values.length) tM = values.length - 1;
+                                if (n < 0) tN = 0;
+                                if (n >= values[0].length) tN = values[0].length - 1;
+                                v = getResults(i, j, tM, tN);
+                                values[i][j] += v[0];
+                                values[tM][tN] += v[1];
+                            }
                         }
                     }
 
-		double high=0;
-		double[][] newdata = new double[olddata.length][olddata[0].length];
-		int iind=-1, jind=-1;
-		for(int i=0; i<values.length; i++)
-			for(int j=0; j<values[0].length; j++){
-				high=0;
-				for(int m=i-1; m<=i+1; m++)
-					for(int n=j-1; n<= j+1; n++){
-						if(!intwself && m==i && n==j)
-							continue;
-						if(!is8 && m!=i && n!=j)
-							continue;
-						int tM=m, tN=n;
-						switch(border){
-						case SDPanel.kAbsorbing:
-							if(m<0 || n<0 || m>=values.length || n>=values[0].length) break;
-
-							if(values[tM][tN] >= high){
-								high = values[tM][tN];
-								iind = tM;
-								jind = tN;
-							}
-							break;
-						case SDPanel.kPeriodic:
-							if(m<0) 	tM = values.length-1;
-							if(m>=values.length) tM = 0;
-							if(n<0) 	tN = values[0].length-1;
-							if(n>=values[0].length) tN = 0;
-
-							if(values[tM][tN] >= high){
-								high = values[tM][tN];
-								iind = tM;
-								jind = tN;
-							}
-							break;
-						case SDPanel.kReflexive:
-							if(m<0) 	tM = 0;
-							if(m>=values.length) tM = values.length-1;
-							if(n<0) 	tN = 0;
-							if(n>=values[0].length) tN = values[0].length-1;
-
-							if(values[tM][tN] >= high){
-								high = values[tM][tN];
-								iind = tM;
-								jind = tN;
-							}
-							break;
-						}
-					}
+        double high = 0;
+        double[][] newdata = new double[olddata.length][olddata[0].length];
+        int iind = -1, jind = -1;
+        for (int i = 0; i < values.length; i++)
+            for (int j = 0; j < values[0].length; j++) {
+                high = 0;
+                for (int m = i - 1; m <= i + 1; m++)
+                    for (int n = j - 1; n <= j + 1; n++) {
+                        if (!intwself && m == i && n == j)
+                            continue;
+                        if (!is8 && m != i && n != j)
+                            continue;
+                        int tM = m, tN = n;
+                        switch (border) {
+                            case SDPanel.kAbsorbing -> {
+                                if (m < 0 || n < 0 || m >= values.length || n >= values[0].length) break;
+                                if (values[tM][tN] >= high) {
+                                    high = values[tM][tN];
+                                    iind = tM;
+                                    jind = tN;
+                                }
+                            }
+                            case SDPanel.kPeriodic -> {
+                                if (m < 0) tM = values.length - 1;
+                                if (m >= values.length) tM = 0;
+                                if (n < 0) tN = values[0].length - 1;
+                                if (n >= values[0].length) tN = 0;
+                                if (values[tM][tN] >= high) {
+                                    high = values[tM][tN];
+                                    iind = tM;
+                                    jind = tN;
+                                }
+                            }
+                            case SDPanel.kReflexive -> {
+                                if (m < 0) tM = 0;
+                                if (m >= values.length) tM = values.length - 1;
+                                if (n < 0) tN = 0;
+                                if (n >= values[0].length) tN = values[0].length - 1;
+                                if (values[tM][tN] >= high) {
+                                    high = values[tM][tN];
+                                    iind = tM;
+                                    jind = tN;
+                                }
+                            }
+                        }
+                    }
 
                 if (olddata[iind][jind] == kC || olddata[iind][jind] == kDC)
                     if (olddata[i][j] == kC || olddata[i][j] == kDC)

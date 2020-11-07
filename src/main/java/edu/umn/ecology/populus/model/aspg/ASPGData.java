@@ -56,37 +56,37 @@ public class ASPGData {
         matrix = lesMatrix;
     }
 
-	private double[][] calculateLeslieMatrix(double[][] lxmx) {
-		int n = getNumClasses();
-		double[][] m = new double[n][n];
-		int start = 1;
-		if(modelType == ASPGPanel.kPREBREEDING)    start = 0;
-		//Calculate fi's and pi's for the matrix
-		for (int i = start; i < n; i++) {
-			switch(modelType){
-			case ASPGPanel.kPOSTBREEDING:
-				//pi = li/l(i-1)
-				//fi = mi*pi
-				if (lxmx[kL][i] == 0) lxmx[kP][i] = 0;
-				else                  lxmx[kP][i] = lxmx[kL][i] / lxmx[kL][i-1];
-				lxmx[kF][i] =         lxmx[kM][i] * lxmx[kP][i];
-				break;
-			case ASPGPanel.kPREBREEDING:
-				//pi = l(i+1)/li
-				//fi = l1*mi
-				if(lxmx[kL][i] == 0)  lxmx[kP][i+1] = 0;
-				else                  lxmx[kP][i+1] = lxmx[kL][i+1] / lxmx[kL][i];
-				lxmx[kF][i+1] =       lxmx[kL][0] * lxmx[kM][i];
-				break;
-			case ASPGPanel.kCONTINUOUS:
-				//pi = (li + l(i+1))/(l(i-1) + li)
-				//fi = ((1 + l1) / 4) * (mi + pi * m(i+1))
-				if (lxmx[kL][i] + lxmx[kL][i+1] == 0) lxmx[kP][i] = 0;
-				else  lxmx[kP][i] = (lxmx[kL][i] + lxmx[kL][i+1]) / (lxmx[kL][i] + lxmx[kL][i-1]);
-				lxmx[kF][i] = (1.0 + lxmx[kL][1]) * (lxmx[kM][i] + lxmx[kP][i] * lxmx[kM][i+1]) / 4.0;
-				break;
-			}
-		}
+    private double[][] calculateLeslieMatrix(double[][] lxmx) {
+        int n = getNumClasses();
+        double[][] m = new double[n][n];
+        int start = 1;
+        if (modelType == ASPGPanel.kPREBREEDING) start = 0;
+        //Calculate fi's and pi's for the matrix
+        for (int i = start; i < n; i++) {
+            //pi = li/l(i-1)
+            //fi = mi*pi
+            //pi = l(i+1)/li
+            //fi = l1*mi
+            //pi = (li + l(i+1))/(l(i-1) + li)
+            //fi = ((1 + l1) / 4) * (mi + pi * m(i+1))
+            switch (modelType) {
+                case ASPGPanel.kPOSTBREEDING -> {
+                    if (lxmx[kL][i] == 0) lxmx[kP][i] = 0;
+                    else lxmx[kP][i] = lxmx[kL][i] / lxmx[kL][i - 1];
+                    lxmx[kF][i] = lxmx[kM][i] * lxmx[kP][i];
+                }
+                case ASPGPanel.kPREBREEDING -> {
+                    if (lxmx[kL][i] == 0) lxmx[kP][i + 1] = 0;
+                    else lxmx[kP][i + 1] = lxmx[kL][i + 1] / lxmx[kL][i];
+                    lxmx[kF][i + 1] = lxmx[kL][0] * lxmx[kM][i];
+                }
+                case ASPGPanel.kCONTINUOUS -> {
+                    if (lxmx[kL][i] + lxmx[kL][i + 1] == 0) lxmx[kP][i] = 0;
+                    else lxmx[kP][i] = (lxmx[kL][i] + lxmx[kL][i + 1]) / (lxmx[kL][i] + lxmx[kL][i - 1]);
+                    lxmx[kF][i] = (1.0 + lxmx[kL][1]) * (lxmx[kM][i] + lxmx[kP][i] * lxmx[kM][i + 1]) / 4.0;
+                }
+            }
+        }
 
         for (int i = 0; i < n; i++) {
             if ((i + 1) < n)
@@ -129,33 +129,33 @@ public class ASPGData {
             lxmx[kF][0] = getF0(lxmx[kP], lxmx[kF]);
         }
 
-		System.arraycopy(initPops,0,lxmx[kS],0,n);
-		//Calculate fi's and pi's for the matrix
-		for (int i = start; i < n; i++) {
-			switch(modelType){
-			case ASPGPanel.kPOSTBREEDING:
-				lxmx[kL][i] = lxmx[kP][i]*lxmx[kL][i-1];
-				if (lxmx[kP][i] == 0) lxmx[kM][i] = 0;
-				else                  lxmx[kM][i] = lxmx[kF][i] / lxmx[kP][i];
-				break;
-			case ASPGPanel.kPREBREEDING:
-				lxmx[kM][i] = lxmx[kF][i]/lxmx[kL][0];
-				lxmx[kL][i] = lxmx[kP][i-1]*lxmx[kL][i-1];
-				break;
-			case ASPGPanel.kCONTINUOUS:
-				lxmx[kL][i] = PIpi - lxmx[kL][i-1];
-				PIpi *= lxmx[kP][i];
-				lxmx[kM][i] = 4*lxmx[kF][i-1]/(lxmx[kP][0]*lxmx[kP][i-1]) - lxmx[kM][i-1]/lxmx[kP][i-1];
-				//lxmx[kM][i] = Math.abs(lxmx[kM][i]);
-				break;
-			}
-		}
-		if(modelType == ASPGPanel.kCONTINUOUS){
-			//NumberMath.printMatrix(lxmx,"LxMx table for type "+mapModel(modelType), false);
-			//NumberMath.printMatrix(calculateLeslieMatrix(lxmx),"do we get the same matrix back?",true);
-		}
-		return lxmx;
-	}
+        System.arraycopy(initPops, 0, lxmx[kS], 0, n);
+        //Calculate fi's and pi's for the matrix
+        for (int i = start; i < n; i++) {
+            //lxmx[kM][i] = Math.abs(lxmx[kM][i]);
+            switch (modelType) {
+                case ASPGPanel.kPOSTBREEDING -> {
+                    lxmx[kL][i] = lxmx[kP][i] * lxmx[kL][i - 1];
+                    if (lxmx[kP][i] == 0) lxmx[kM][i] = 0;
+                    else lxmx[kM][i] = lxmx[kF][i] / lxmx[kP][i];
+                }
+                case ASPGPanel.kPREBREEDING -> {
+                    lxmx[kM][i] = lxmx[kF][i] / lxmx[kL][0];
+                    lxmx[kL][i] = lxmx[kP][i - 1] * lxmx[kL][i - 1];
+                }
+                case ASPGPanel.kCONTINUOUS -> {
+                    lxmx[kL][i] = PIpi - lxmx[kL][i - 1];
+                    PIpi *= lxmx[kP][i];
+                    lxmx[kM][i] = 4 * lxmx[kF][i - 1] / (lxmx[kP][0] * lxmx[kP][i - 1]) - lxmx[kM][i - 1] / lxmx[kP][i - 1];
+                }
+            }
+        }
+        if (modelType == ASPGPanel.kCONTINUOUS) {
+            //NumberMath.printMatrix(lxmx,"LxMx table for type "+mapModel(modelType), false);
+            //NumberMath.printMatrix(calculateLeslieMatrix(lxmx),"do we get the same matrix back?",true);
+        }
+        return lxmx;
+    }
 
     /**
      * yay, this works! :-) i went from thinking this problem unsolvable to figuring it out. this math is probably hard
