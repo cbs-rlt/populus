@@ -155,7 +155,7 @@ public class InbreedingParamInfo implements BasicPlot {
             //initiate the LinkedList by filling it with the children
             for (int j = 0; j < N; j++)
                 for (int k = 0; k < 2; k++)
-                    population.add(Double.valueOf(offspring[k][j]));
+                    population.add(offspring[k][j]);
 
             //count the number of repeats of the first in the population
             //to count and remove them.

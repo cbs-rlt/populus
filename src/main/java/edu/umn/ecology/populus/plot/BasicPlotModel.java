@@ -148,7 +148,7 @@ public class BasicPlotModel extends Model {
     private String LabToStr(String a, int len, boolean stripSpaces) {
 
         //strip off the extraneous data
-        StringBuffer sb = new StringBuffer(a);
+        StringBuilder sb = new StringBuilder(a);
         int i = 0;
         while (i < sb.length()) {
             if (stripSpaces && sb.charAt(i) == ' ') {
@@ -183,7 +183,7 @@ public class BasicPlotModel extends Model {
         //Preconditions: replaceWith is the character that will be used to fill up length added
 
         //		to the string.
-        StringBuffer sb = new StringBuffer(a);
+        StringBuilder sb = new StringBuilder(a);
         if (len == 0) {
             len = sb.length();
         }

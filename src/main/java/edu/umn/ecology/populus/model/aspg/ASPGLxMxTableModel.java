@@ -90,7 +90,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
         setNumRows(n);
         for (int i = 0; i < ASPGData.kP; i++) {
             for (int j = 0; j < n; j++) {
-                setValueAt(Double.valueOf(newLxMx[i][j]), j, i + 1);
+                setValueAt(newLxMx[i][j], j, i + 1);
             }
         }
         setType(type, false, 0);
@@ -98,7 +98,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        if (aValue == null) aValue = Double.valueOf(0.0);
+        if (aValue == null) aValue = 0.0;
         data.get(columnIndex).set(rowIndex, (Number) aValue);
         if (rowIndex == 0 && columnIndex == 1) {
             fireTableChanged(new TableModelEvent(this, rowIndex, rowIndex, columnIndex));
@@ -181,7 +181,7 @@ public class ASPGLxMxTableModel extends AbstractTableModel {
             for (j = 1; j < kCOLUMNS - 1; j++) {
                 obj = data.get(j).get(i);
                 if (obj instanceof Double) {
-                    d[j - 1][i] = ((Double) obj).doubleValue();
+                    d[j - 1][i] = (Double) obj;
                 } else if (obj instanceof String) {
                     //TODO - does this really happen???
                     d[j - 1][i] = Double.parseDouble((String) obj);

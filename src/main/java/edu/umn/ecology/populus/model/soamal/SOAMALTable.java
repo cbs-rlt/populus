@@ -60,16 +60,16 @@ public class SOAMALTable extends AbstractTableModel {
         temp[dimension - 1 + 4] = new Vector(dimension);
         table = temp;
 
-        table[0].add(Integer.valueOf(dimension));
-        table[1].add(Boolean.valueOf(use));
-        table[2].add(Boolean.valueOf(plot));
-        table[3].add( Double.valueOf(initFreq));
+        table[0].add(dimension);
+        table[1].add(use);
+        table[2].add(plot);
+        table[3].add(initFreq);
 
         for (int i = 0; i < dimension - 1; i++)
-            table[4 + dimension - 1].add(Double.valueOf(matrix[i]));
+            table[4 + dimension - 1].add(matrix[i]);
         //table[4+dimension-1].add("-");
         for (int i = 0; i < dimension; i++)
-            table[4 + i].add(Double.valueOf(matrix[i]));
+            table[4 + i].add(matrix[i]);
 
         this.fireTableStructureChanged();
         //      fireTableChanged(new TableModelEvent(this));
@@ -119,7 +119,7 @@ public class SOAMALTable extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         if (columnIndex == 1 && !(Boolean) aValue) {
-            table[2].setElementAt(Boolean.valueOf(false), rowIndex);
+            table[2].setElementAt(Boolean.FALSE, rowIndex);
             super.fireTableDataChanged();
         }
         if (columnIndex > 3) {
@@ -127,8 +127,8 @@ public class SOAMALTable extends AbstractTableModel {
             super.fireTableDataChanged();
         }
         if (columnIndex == 3) {
-            double newFreq = ((Double) aValue).doubleValue();
-            if (newFreq > 1) aValue = Double.valueOf(1.0d);
+            double newFreq = (Double) aValue;
+            if (newFreq > 1) aValue = 1.0d;
         }
         fireTableDataChanged();
         table[columnIndex].setElementAt(aValue, rowIndex);
@@ -187,7 +187,7 @@ public class SOAMALTable extends AbstractTableModel {
         }
         Double newValue;
         for (int k = 0; k < freqs.length; k++) {
-            newValue = Double.valueOf(NumberMath.roundSig(freqs[k], 10, 0));
+            newValue = NumberMath.roundSig(freqs[k], 10, 0);
             table[3].setElementAt(newValue, used[k]);
         }
         fireTableDataChanged();
@@ -204,11 +204,11 @@ public class SOAMALTable extends AbstractTableModel {
         int count = 0;
 
         for (int i = 0; i < dimension; i++)
-            if (((Boolean) getValueAt(i, 1)).booleanValue()) count++;
+            if ((Boolean) getValueAt(i, 1)) count++;
         used = new int[count];
         count = 0;
         for (int i = 0; count < used.length; i++)
-            if (((Boolean) getValueAt(i, 1)).booleanValue()) {
+            if ((Boolean) getValueAt(i, 1)) {
                 used[count] = i;
                 count++;
             }
@@ -228,12 +228,12 @@ public class SOAMALTable extends AbstractTableModel {
         int count = 0;
 
         for (int j : u)
-            if (((Boolean) getValueAt(j, 2)).booleanValue())
+            if ((Boolean) getValueAt(j, 2))
                 count++;
         plotted = new int[count];
         count = 0;
         for (int i = 0; count < plotted.length; i++)
-            if (((Boolean) getValueAt(i, 2)).booleanValue()) {
+            if ((Boolean) getValueAt(i, 2)) {
                 plotted[count] = i;
                 count++;
             }
@@ -244,7 +244,7 @@ public class SOAMALTable extends AbstractTableModel {
         int[] u = getUsed();
         double[] ifreq = new double[u.length];
         for (int i = 0; i < ifreq.length; i++)
-            ifreq[i] = ((Double) getValueAt(u[i], 3)).doubleValue();
+            ifreq[i] = (Double) getValueAt(u[i], 3);
         return ifreq;
     }
 
@@ -257,7 +257,7 @@ public class SOAMALTable extends AbstractTableModel {
         double[][] data = new double[u.length][u.length];
         for (int i = 0; i < data.length; i++)
             for (int j = 0; j < data[i].length; j++)
-                data[i][j] = ((Double) getValueAt(u[i], u[j] + 4)).doubleValue();
+                data[i][j] = (Double) getValueAt(u[i], u[j] + 4);
         return data;
     }
 }

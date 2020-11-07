@@ -58,11 +58,11 @@ public class ConstantPanel extends JPanel {
     }
 
     public Hashtable<String, Double> getConstantHashTable() {
-        Hashtable<String, Double> h = new Hashtable();
+        Hashtable<String, Double> h = new Hashtable<>();
         Constant c;
         for (int i = conHolder.getComponentCount() - 1; i >= 0; i--) {
             c = (Constant) conHolder.getComponent(i);
-            h.put(c.getName(), Double.valueOf(c.getValue()));
+            h.put(c.getName(), c.getValue());
         }
         return h;
     }

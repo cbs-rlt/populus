@@ -147,7 +147,7 @@ public final class NumberMath {
     public static final String formatExpNotation(double number) {
         int exp = getExponent(number);
         number += 0.005 * Math.pow(10, exp);
-        StringBuffer buffer = new StringBuffer(Double.toString(number / Math.pow(10, exp)));
+        StringBuilder buffer = new StringBuilder(Double.toString(number / Math.pow(10, exp)));
         if (buffer.length() > 3) {
             buffer.setLength(3);
         }
@@ -293,7 +293,7 @@ public final class NumberMath {
             return s;
         }
         char c;
-        StringBuffer buffer = new StringBuffer(s);
+        StringBuilder buffer = new StringBuilder(s);
         buffer.setLength(size);
         c = buffer.charAt(--size);
         while (c == '0') {

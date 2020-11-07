@@ -168,7 +168,7 @@ public class WoozleWindow extends OutputPanel implements Runnable, ActionListene
     }
 
     private void jbInit() throws Exception {
-        generations.setFont(new java.awt.Font("Monospaced", 0, 12));
+        generations.setFont(new java.awt.Font("Monospaced", Font.PLAIN, 12));
         generations.setText("0");
         generationLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         generationLabel.setText(res.getString("Generations_"));
@@ -176,12 +176,12 @@ public class WoozleWindow extends OutputPanel implements Runnable, ActionListene
         currentPhrasePanel.setLayout(gridLayout2);
         currentPhraseLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         currentPhraseLabel.setText(res.getString("Current_Phrase_"));
-        currentPhrase.setFont(new java.awt.Font("Monospaced", 0, 12));
+        currentPhrase.setFont(new java.awt.Font("Monospaced", Font.PLAIN, 12));
         currentPhrase.setText(res.getString("methinks_it_is_like_a"));
         targetPhrasePanel.setLayout(gridLayout3);
         targetPhraseLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         targetPhraseLabel.setText(res.getString("Target_Phrase_"));
-        targetPhrase.setFont(new java.awt.Font("Monospaced", 0, 12));
+        targetPhrase.setFont(new java.awt.Font("Monospaced", Font.PLAIN, 12));
         targetPhrase.setText(res.getString("methinks_it_is_like_a"));
         this.setLayout(gridBagLayout1);
         generationPanel.setBorder(BorderFactory.createLineBorder(Color.black));

@@ -116,7 +116,7 @@ public class WoozlePanel extends ModelPanel {
         border1 = BorderFactory.createLineBorder(SystemColor.controlText, 1);
         titledBorder1 = new TitledBorder(border1, res.getString("Target_Phrase"));
         this.setLayout(gridBagLayout1);
-        targetPhraseField.setFont(new java.awt.Font("Monospaced", 0, 12));
+        targetPhraseField.setFont(new java.awt.Font("Monospaced", Font.PLAIN, 12));
         targetPhraseField.setText(res.getString("METHINKS_IT_IS_LIKE_A"));
         targetPhraseField.setColumns(40);
         targetPhrasePanel.setBorder(titledBorder1);
@@ -150,7 +150,7 @@ public class WoozlePanel extends ModelPanel {
         crossoverRate.setMaxValue(0.5);
         crossoverRate.setParameterName(res.getString("Crossover_Rate"));
         crossoverRate.setHelpText("Determines whether transcription shifts from one parental phrase to the other, and is tested for each position in the offspring phrases");
-        titledBorder1.setTitleJustification(2);
+        titledBorder1.setTitleJustification(TitledBorder.CENTER);
         this.add(broodSize, new GridBagConstraints(0, 0, 1, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(5, 0, 5, 10), 0, 0));
         this.add(mutationRate, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(5, 0, 5, 10), 0, 0));
         this.add(targetPhrasePanel, new GridBagConstraints(0, 3, 2, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(15, 0, 1, 0), 0, 0));
