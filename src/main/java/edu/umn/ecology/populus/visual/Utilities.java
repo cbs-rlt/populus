@@ -156,51 +156,62 @@ public class Utilities {
             if (tag) {
                 //f = defaultFont;
                 switch (HTMLTag.getTag(s).type) {
-                    case HTMLConstants.BOLD_BEGIN -> {
-                        style |= Font.BOLD;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.BOLD_END -> {
-                        style &= Font.ITALIC;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.ITALIC_BEGIN -> {
-                        style |= Font.ITALIC;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.ITALIC_END -> {
-                        style &= Font.BOLD;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.SUP_BEGIN, HTMLConstants.SUB_END -> {
-                        supLevel++;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.SUP_END, HTMLConstants.SUB_BEGIN -> {
-                        supLevel--;
-                        updateFont = true;
-                    }
-                    case HTMLConstants.BAR_BEGIN -> topBar = true;
-                    case HTMLConstants.BAR_END -> topBar = false;
-                    case HTMLConstants.COLOR_BEGIN -> g.setColor((Color) tempTag.extra);
-                    case HTMLConstants.COLOR_END -> g.setColor(defaultColor);
-                    case HTMLConstants.LESS_THAN -> {
-                        g.drawString("<", x, y + dy);
-                        x += fm.stringWidth("<");
-                    }
-                    case HTMLConstants.GREATER_THAN -> {
-                        g.drawString(">", x, y + dy);
-                        x += fm.stringWidth(">");
-                    }
-                    case HTMLConstants.ALL_END -> {
-                        g.setColor(defaultColor);
-                        style = Font.PLAIN;
-                        supLevel = 0;
-                        dy = 0;
-                        topBar = false;
-                        g.setFont(new Font(f.getFontName(), style, f.getSize()));
-                    }
-                    default -> System.err.println("Unknown Tag #" + tempTag.type + " = " + tempTag.extra);
+                case HTMLConstants.BOLD_BEGIN:
+                    style |= Font.BOLD;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.BOLD_END:
+                    style &= Font.ITALIC;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.ITALIC_BEGIN:
+                    style |= Font.ITALIC;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.ITALIC_END:
+                    style &= Font.BOLD;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.SUP_BEGIN:
+                case HTMLConstants.SUB_END:
+                    supLevel++;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.SUP_END:
+                case HTMLConstants.SUB_BEGIN:
+                    supLevel--;
+                    updateFont = true;
+                    break;
+                case HTMLConstants.BAR_BEGIN:
+                    topBar = true;
+                    break;
+                case HTMLConstants.BAR_END:
+                    topBar = false;
+                    break;
+                case HTMLConstants.COLOR_BEGIN:
+                    g.setColor((Color) tempTag.extra);
+                    break;
+                case HTMLConstants.COLOR_END:
+                    g.setColor(defaultColor);
+                    break;
+                case HTMLConstants.LESS_THAN:
+                    g.drawString("<", x, y + dy);
+                    x += fm.stringWidth("<");
+                    break;
+                case HTMLConstants.GREATER_THAN:
+                    g.drawString(">", x, y + dy);
+                    x += fm.stringWidth(">");
+                    break;
+                case HTMLConstants.ALL_END:
+                    g.setColor(defaultColor);
+                    style = Font.PLAIN;
+                    supLevel = 0;
+                    dy = 0;
+                    topBar = false;
+                    g.setFont(new Font(f.getFontName(), style, f.getSize()));
+                    break;
+                default:
+                    System.err.println("Unknown Tag #" + tempTag.type + " = " + tempTag.extra);
                 }
             } else {
                 if (s.length() == 0) {

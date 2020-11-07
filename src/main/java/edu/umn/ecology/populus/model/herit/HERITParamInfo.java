@@ -63,13 +63,13 @@ public class HERITParamInfo implements BasicPlot {
         geno1 = Routines.getFrequencyArray(popSize, p, rand);
         geno2 = Routines.getFrequencyArray(popSize, p, rand);
 
-        for (int i = 0; i < popSize; i++) {
-            switch (geno1[i] + geno2[i]) {
-                case 0 -> pPheno[i] = Routines.nextGaussian(g3, ve, rand);
-                case 1 -> pPheno[i] = Routines.nextGaussian(g2, ve, rand);
-                case 2 -> pPheno[i] = Routines.nextGaussian(g1, ve, rand);
-            }
-        }
+		for(int i=0; i<popSize; i++){
+			switch(geno1[i] + geno2[i]){
+			case 0: pPheno[i] = Routines.nextGaussian(g3, ve, rand); break;
+			case 1: pPheno[i] = Routines.nextGaussian(g2, ve, rand); break;
+			case 2: pPheno[i] = Routines.nextGaussian(g1, ve, rand); break;
+			}
+		}
 
         for (int i = 0; i < popSize; i++) {
             do {
@@ -85,11 +85,11 @@ public class HERITParamInfo implements BasicPlot {
                 geno2t = geno1[parent2];
             }
 
-            switch (geno1t + geno2t) {
-                case 0 -> oPheno[i] = Routines.nextGaussian(g3, ve, rand);
-                case 1 -> oPheno[i] = Routines.nextGaussian(g2, ve, rand);
-                case 2 -> oPheno[i] = Routines.nextGaussian(g1, ve, rand);
-            }
+			switch(geno1t + geno2t){
+			case 0: oPheno[i] = Routines.nextGaussian(g3, ve, rand); break;
+			case 1: oPheno[i] = Routines.nextGaussian(g2, ve, rand); break;
+			case 2: oPheno[i] = Routines.nextGaussian(g1, ve, rand); break;
+			}
 
             mPheno[i] = (pPheno[parent1] + pPheno[parent2]) / 2.0;
             mPhenoAvg += mPheno[i];

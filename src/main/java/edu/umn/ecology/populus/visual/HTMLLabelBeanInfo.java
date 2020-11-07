@@ -60,16 +60,23 @@ public class HTMLLabelBeanInfo extends SimpleBeanInfo {
         }
     }
 
-    @Override
-    public java.awt.Image getIcon(int iconKind) {
-        return switch (iconKind) {
-            case BeanInfo.ICON_COLOR_16x16 -> iconColor16x16Filename != null ? loadImage(iconColor16x16Filename) : null;
-            case BeanInfo.ICON_COLOR_32x32 -> iconColor32x32Filename != null ? loadImage(iconColor32x32Filename) : null;
-            case BeanInfo.ICON_MONO_16x16 -> iconMono16x16Filename != null ? loadImage(iconMono16x16Filename) : null;
-            case BeanInfo.ICON_MONO_32x32 -> iconMono32x32Filename != null ? loadImage(iconMono32x32Filename) : null;
-            default -> null;
-        };
-    }
+	@Override
+	public java.awt.Image getIcon( int iconKind ) {
+		switch( iconKind ) {
+		case BeanInfo.ICON_COLOR_16x16:
+			return iconColor16x16Filename != null ? loadImage( iconColor16x16Filename ) : null;
+
+		case BeanInfo.ICON_COLOR_32x32:
+			return iconColor32x32Filename != null ? loadImage( iconColor32x32Filename ) : null;
+
+		case BeanInfo.ICON_MONO_16x16:
+			return iconMono16x16Filename != null ? loadImage( iconMono16x16Filename ) : null;
+
+		case BeanInfo.ICON_MONO_32x32:
+			return iconMono32x32Filename != null ? loadImage( iconMono32x32Filename ) : null;
+		}
+		return null;
+	}
 
     public HTMLLabelBeanInfo() {
 

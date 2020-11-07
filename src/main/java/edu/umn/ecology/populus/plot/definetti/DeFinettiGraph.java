@@ -507,29 +507,24 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
             factor = 1;
         else
             factor = 10;
-
-        switch (i) {
-            /*left*/
-            case 37 -> {
-                xshift -= factor;
-                repaint();
-            }
-            /*right*/
-            case 39 -> {
-                xshift += factor;
-                repaint();
-            }
-            /*up*/
-            case 38 -> {
-                yshift -= factor;
-                repaint();
-            }
-            /*down*/
-            case 40 -> {
-                yshift += factor;
-                repaint();
-            }
-        }
+		switch(i){
+		case 37:/*left*/
+            xshift -= factor;
+            repaint();
+            break;
+		case 39:/*right*/
+			xshift += factor;
+			repaint();
+			break;
+		case 38:/*up*/
+			yshift -= factor;
+			repaint();
+			break;
+		case 40:/*down*/
+			yshift += factor;
+			repaint();
+			break;
+		}
         chartChanged = true;
         repaint();
         ke.consume();
@@ -550,11 +545,20 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
         else
             factor = 1.1f;
 
-        switch (c) {
-            case '=', '+' -> setZoomFactor(getZoomFactor() * factor);
-            case '-', '_' -> setZoomFactor(getZoomFactor() / factor);
-            case 'r', 'R' -> resetGraph();
-        }
+		switch(c){
+		case '=':
+		case '+':
+			setZoomFactor(getZoomFactor()*factor);
+			break;
+		case '-':
+		case '_':
+			setZoomFactor(getZoomFactor()/factor);
+			break;
+		case 'r':
+		case 'R':
+			resetGraph();
+			break;
+		}
         chartChanged = true;
         repaint();
         ke.consume();

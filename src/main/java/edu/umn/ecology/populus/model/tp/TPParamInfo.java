@@ -78,81 +78,82 @@ public class TPParamInfo implements BasicPlot {
 
 
 
-		/*bp.vsTimeChars = new String[] {
+		switch( modelType ) {
+		case ONE:
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];//L
+			points[1][0] = xlist;
+			points[1][1] = ylists[2];//T
+			bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap1);
+			bp.setYMin(0.0);
+			/*bp.vsTimeChars = new String[] {
               "L", "T"
             };*/
-        switch (modelType) {
-            case ONE -> {
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];//L
-                points[1][0] = xlist;
-                points[1][1] = ylists[2];//T
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap1);
-                bp.setYMin(0.0);
-            }
-            case TWO -> {
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];//L
-                points[1][0] = xlist;
-                points[1][1] = ylists[2];//T
-                points[2][0] = xlist;
-                points[2][1] = ylists[3];//S
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap2);
-                bp.setYMin(0.0);
-                bp.vsTimeChars = new String[]{
-                        "T", "S", "L"
-                };
-            }
-            case THREE -> {
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];//L
-                points[1][0] = xlist;
-                points[1][1] = ylists[2];//T
-                points[2][0] = xlist;
-                points[2][1] = ylists[3];//S
-                points[3][0] = xlist;
-                points[3][1] = ylists[4]; //R
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap3);
-                bp.setYMin(0.0);
-                bp.vsTimeChars = new String[]{
-                        "T", "S", "L", "R"
-                };
-            }
-            case TPParamInfo.FOUR -> {
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];//L
-                points[1][0] = xlist;
-                points[1][1] = ylists[2];//T
-                points[2][0] = xlist;
-                points[2][1] = ylists[3];//S
-                points[3][0] = xlist;
-                points[3][1] = ylists[4]; //
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap4);
-                bp.setYMin(0.0);
-                bp.vsTimeChars = new String[]{
-                        "T", "V", "S", "L"
-                };
-            }
-            case FIVE -> {
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];//L
-                points[1][0] = xlist;
-                points[1][1] = ylists[2];//T
-                points[2][0] = xlist;
-                points[2][1] = ylists[3];//S
-                points[3][0] = xlist;
-                points[3][1] = ylists[4]; //R
-                points[4][0] = xlist;
-                points[4][1] = ylists[5]; //V
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap5);
-                bp.setYMin(0.0);
-                bp.vsTimeChars = new String[]{
-                        "T", "V", "S", "L", "R"
-                };
-            }
-        }
-        return bp;
-    }
+			break;
+		case TWO:
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];//L
+			points[1][0] = xlist;
+			points[1][1] = ylists[2];//T
+			points[2][0] = xlist;
+			points[2][1] = ylists[3];//S
+			bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap2);
+			bp.setYMin(0.0);
+			bp.vsTimeChars = new String[] {
+					"T", "S", "L"
+			};
+			break;
+		case THREE:
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];//L
+			points[1][0] = xlist;
+			points[1][1] = ylists[2];//T
+			points[2][0] = xlist;
+			points[2][1] = ylists[3];//S
+			points[3][0] = xlist;
+			points[3][1] = ylists[4]; //R
+			bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap3);
+			bp.setYMin(0.0);
+			bp.vsTimeChars = new String[] {
+					"T", "S", "L", "R"
+			};
+			break;
+		case TPParamInfo.FOUR:
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];//L
+			points[1][0] = xlist;
+			points[1][1] = ylists[2];//T
+
+			points[2][0] = xlist;
+			points[2][1] = ylists[3];//S
+			points[3][0] = xlist;
+			points[3][1] = ylists[4]; //
+			bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap4);
+			bp.setYMin(0.0);
+			bp.vsTimeChars = new String[] {
+					"T", "V", "S", "L"
+			};
+			break;
+		case FIVE:
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];//L
+			points[1][0] = xlist;
+			points[1][1] = ylists[2];//T
+			points[2][0] = xlist;
+			points[2][1] = ylists[3];//S
+			points[3][0] = xlist;
+			points[3][1] = ylists[4]; //R
+			points[4][0] = xlist;
+			points[4][1] = ylists[5]; //V
+			bp = new BasicPlotInfo(points, mCapNvsT, xCap, yCap5);
+			bp.setYMin(0.0);
+			bp.vsTimeChars = new String[] {
+					"T", "V", "S", "L", "R"
+			};
+			break;
+		}
+		return bp;
+	}
 
     public TPParamInfo(int modelType, double time, /*time < 0 for steady state*/
                        double T, double V, double S, double L, double R, double r,

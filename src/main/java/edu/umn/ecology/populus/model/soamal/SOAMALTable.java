@@ -71,24 +71,28 @@ public class SOAMALTable extends AbstractTableModel {
         for (int i = 0; i < dimension; i++)
             table[4 + i].add(matrix[i]);
 
-        this.fireTableStructureChanged();
-        //      fireTableChanged(new TableModelEvent(this));
-    }
-
-    /**
-     * Return the name for the column
-     */
-    @Override
-    public String getColumnName(int column) {
-        if (column > 3) return "" + (column - 3);
-        return switch (column) {
-            case 0 -> "Allele";
-            case 1 -> "Use";
-            case 2 -> "Plot";
-            case 3 -> "Initial p";
-            default -> null;
-        };
-    }
+		this.fireTableStructureChanged();
+		//      fireTableChanged(new TableModelEvent(this));
+	}
+	/**
+	 *  Return the name for the column
+	 */
+	@Override
+	public String getColumnName(int column) {
+		if(column>3) return ""+(column-3);
+		switch (column) {
+		case 0:
+			return "Allele";
+		case 1:
+			return "Use";
+		case 2:
+			return "Plot";
+		case 3:
+			return "Initial p";
+		default:
+			return null;
+		}
+	}
 
     /**
      * Returns Object.class by default

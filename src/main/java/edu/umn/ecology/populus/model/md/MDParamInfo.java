@@ -68,49 +68,50 @@ public class MDParamInfo implements BasicPlot {
          for(int j=0; j<ylists.length; j++)
             totalPop[i] += ylists[j][i];
 		 */
-        String caption;
-        //bp.setYMin( 0.0 );
-        //PlotArrow.addFletching( bp, 0 );
-        //PlotArrow.addFletching( bp, 0 );
-        switch (plotType) {
-            case vsT -> {
-                points = new double[numVars][2][];
-                points[0][0] = xlist;
-                points[0][1] = ylists[0];//H
-                points[1][0] = xlist;
-                points[1][1] = ylists[1];//P
-                if (numVars == 3) {
-                    points[2][0] = xlist;
-                    points[2][1] = ylists[2];//W
-                }
-                if (numVars == 3) {
-                    if (aorW == 3)
-                        caption = yCap3;
-                    else
-                        caption = yCap4;
-                } else caption = yCap2;
-                bp = new BasicPlotInfo(points, mCapNvsT, xCap, caption);
-                bp.vsTimeChars = new String[]{
-                        "H", "P", "W"
-                };
-                bp.isLogPlot = true;
-            }
-            case nvsp -> {
-                points = new double[1][2][];
-                points[0][1] = ylists[1];
-                points[0][0] = ylists[0];
-                bp = new BasicPlotInfo(points, mCapN2vsN1, nCaption, pCaption);
-                PlotArrow.addArrow(bp, 0);
-            }
-            case phase -> {
-                points = new double[1][][];
-                points[0] = ylists;
-                bp = new BasicPlotInfo(points, mCapN2vsN1, nCaption, pCaption);
-                PlotArrow.addArrow(bp, 0);
-            }
-        }
-        return bp;
-    }
+		String caption;
+		switch(plotType){
+		case vsT:
+			points = new double[numVars][2][];
+			points[0][0] = xlist;
+			points[0][1] = ylists[0];//H
+			points[1][0] = xlist;
+			points[1][1] = ylists[1];//P
+			if( numVars == 3 ) {
+				points[2][0] = xlist;
+				points[2][1] = ylists[2];//W
+			}
+			if (numVars == 3){
+				if (aorW == 3)
+					caption = yCap3;
+				else
+					caption = yCap4;
+			}
+			else caption = yCap2;
+			bp = new BasicPlotInfo( points, mCapNvsT, xCap, caption );
+			//bp.setYMin( 0.0 );
+			bp.vsTimeChars = new String[] {
+					"H", "P", "W"
+			};
+			bp.isLogPlot = true;
+			break;
+		case nvsp:
+			points = new double[1][2][];
+			points[0][1] = ylists[1];
+			points[0][0] = ylists[0];
+			bp = new BasicPlotInfo( points, mCapN2vsN1,  nCaption, pCaption );
+			PlotArrow.addArrow( bp, 0 );
+			//PlotArrow.addFletching( bp, 0 );
+			break;
+		case phase:
+			points = new double[1][][];
+			points[0] = ylists;
+			bp = new BasicPlotInfo( points, mCapN2vsN1, nCaption, pCaption );
+			PlotArrow.addArrow( bp, 0 );
+			//PlotArrow.addFletching( bp, 0 );
+			break;
+		}
+		return bp;
+	}
 
     public MDParamInfo(int modelType, int plotType, double time, double X, double Y, double Z,
                        double a, double b, double alpha, double beta, double muA, double muP,

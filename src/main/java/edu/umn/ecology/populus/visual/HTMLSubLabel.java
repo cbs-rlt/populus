@@ -61,24 +61,34 @@ public class HTMLSubLabel extends JLabel implements Serializable {
         return bar;
     }
 
-    public void setSupLevel(int newSupLevel) {
-        if (supLevel == newSupLevel) {
-            return;
-        }
-        supLevel = newSupLevel;
-        //this.setVerticalAlignment( JLabel.BOTTOM );
-        //this.setVerticalTextPosition( JLabel.BOTTOM );
-        //this.setVerticalAlignment( JLabel.TOP );
-        //this.setVerticalAlignment( JLabel.CENTER );
-        //ERROR
-        switch (supLevel) {
-            case -1 -> this.setFont(shrinkFont(getFont()));
-            case 1 -> this.setFont(shrinkFont(getFont()));
-            case 0 -> this.setFont(defaultFont);
-            default -> System.err.println("Unknown supLevel: " + newSupLevel);
-        }
-        repaint();
-    }
+	public void setSupLevel( int newSupLevel ) {
+		if( supLevel == newSupLevel ) {
+			return ;
+		}
+		supLevel = newSupLevel;
+		switch( supLevel ) {
+		case -1:
+			this.setFont( shrinkFont( getFont() ) );
+			//this.setVerticalAlignment( JLabel.BOTTOM );
+			//this.setVerticalTextPosition( JLabel.BOTTOM );
+			break;
+
+		case 1:
+			this.setFont( shrinkFont( getFont() ) );
+			//this.setVerticalAlignment( JLabel.TOP );
+			break;
+
+		case 0:
+			this.setFont( defaultFont );
+			//this.setVerticalAlignment( JLabel.CENTER );
+			break;
+
+		default:
+			//ERROR
+			System.err.println( "Unknown supLevel: " + newSupLevel );
+		}
+		repaint();
+	}
 
     /**
      * This method paints the HTMLSubLabel
@@ -109,8 +119,12 @@ public class HTMLSubLabel extends JLabel implements Serializable {
         }
         /*setting the amount of vertical shift super and sup scripts are given*/
         switch (supLevel) {
-            case -1 -> shift = a / 2.0d;
-            case 1 -> shift = -a / 2.0d;
+            case -1:
+                shift = a / 2.0d;
+                break;
+            case 1:
+                shift = -a / 2.0d;
+                break;
         }
 
         /*drawing the text proper*/

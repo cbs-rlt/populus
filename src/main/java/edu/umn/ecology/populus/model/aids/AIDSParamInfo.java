@@ -105,85 +105,86 @@ public class AIDSParamInfo implements BasicPlot {
         BasicPlotInfo bp;
         int size, factor;
 
-        size = xlist.length;
-        factor = (int) (xlist.length / xlist[size - 1]);
-        bp = new BasicPlotInfo();
-        //ylists[population][time]
-		/*the difficulty here is that there are so many points to graph
+		size = xlist.length;
+		factor = (int)(xlist.length/xlist[size-1]);
+		bp = new BasicPlotInfo();
+		switch (plotType) {
+		case YVvsT:
+			points = new double[2][2][];
+			points[0][0] = xlist;
+			points[1][0] = xlist;
+			points[0][1] = ylists[AIDSDeriv.kY];
+			points[1][1] = vt;
+			vsTimeChars = new String[] {"Y","V"};
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,yCapPopDensity);
+			break;
+		case RvsT:
+			points = new double[1][2][];
+			points[0][0] = xlist;
+			points[0][1] = R;
+			vsTimeChars = new String[] {"R"};
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,yCapAveR);
+			break;
+		case DvsT:
+			points = new double[1][2][];
+			points[0][0] = xlist;
+			points[0][1] = D;
+			vsTimeChars = new String[] {"D"};
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,yCapViralDiversityIdx);
+			break;
+		case VIvsT:
+			//ylists[population][time]
+			points = new double[(ylists.length-2)/2][2][];
+			for(int i=2; i<ylists.length; i+=2){
+				points[(i-2)/2][0] = xlist.clone();
+				points[(i-2)/2][1] = ylists[i].clone();
+				if(i>40){
+					points[(i-2)/2] = Routines.pruneArray(points[(i-2)/2], factor/2,false);
+				}else if(i>10){
+					points[(i-2)/2] = Routines.pruneArray(points[(i-2)/2], factor/3,false);
+				} else {
+					points[(i-2)/2] = Routines.pruneArray(points[(i-2)/2], 3, false);
+				}
+			}
+			vsTimeChars = new String[points.length];
+			for(int i=0; i<vsTimeChars.length; i++)
+				vsTimeChars[i] = "v"+i;
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,yCapViralStrainAbundance);
+			break;
+		case ZXIvsT:
+			/*the difficulty here is that there are so many points to graph
             that the graphing utility slows down substantially. to avoid this,
             i've added a pruning utility that will only send the BasicPlotInfo
             some of the calculated points. it is assumed that later strains don't
             look as interesting, so they don't get as many points*/
-        switch (plotType) {
-            case YVvsT -> {
-                points = new double[2][2][];
-                points[0][0] = xlist;
-                points[1][0] = xlist;
-                points[0][1] = ylists[AIDSDeriv.kY];
-                points[1][1] = vt;
-                vsTimeChars = new String[]{"Y", "V"};
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, yCapPopDensity);
-            }
-            case RvsT -> {
-                points = new double[1][2][];
-                points[0][0] = xlist;
-                points[0][1] = R;
-                vsTimeChars = new String[]{"R"};
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, yCapAveR);
-            }
-            case DvsT -> {
-                points = new double[1][2][];
-                points[0][0] = xlist;
-                points[0][1] = D;
-                vsTimeChars = new String[]{"D"};
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, yCapViralDiversityIdx);
-            }
-            case VIvsT -> {
-                points = new double[(ylists.length - 2) / 2][2][];
-                for (int i = 2; i < ylists.length; i += 2) {
-                    points[(i - 2) / 2][0] = xlist.clone();
-                    points[(i - 2) / 2][1] = ylists[i].clone();
-                    if (i > 40) {
-                        points[(i - 2) / 2] = Routines.pruneArray(points[(i - 2) / 2], factor / 2, false);
-                    } else if (i > 10) {
-                        points[(i - 2) / 2] = Routines.pruneArray(points[(i - 2) / 2], factor / 3, false);
-                    } else {
-                        points[(i - 2) / 2] = Routines.pruneArray(points[(i - 2) / 2], 3, false);
-                    }
-                }
-                vsTimeChars = new String[points.length];
-                for (int i = 0; i < vsTimeChars.length; i++)
-                    vsTimeChars[i] = "v" + i;
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, yCapViralStrainAbundance);
-            }
-            case ZXIvsT -> {
-                points = new double[ylists.length / 2][2][];
-                for (int i = 1; i < ylists.length; i += 2) {
-                    points[i / 2][0] = xlist.clone();
-                    points[i / 2][1] = ylists[i].clone();
-                    if (i > 40) {
-                        points[i / 2] = Routines.pruneArray(points[i / 2], factor / 2, true);
-                    } else if (i > 10) {
-                        points[i / 2] = Routines.pruneArray(points[i / 2], factor / 3, true);
-                    } else {
-                        points[i / 2] = Routines.pruneArray(points[i / 2], 3, true);
-                    }
-                }
-                vsTimeChars = new String[points.length];
-                vsTimeChars[0] = "Z";
-                for (int i = 1; i < vsTimeChars.length; i++)
-                    vsTimeChars[i] = "x" + i;
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, yCap5);
-            }
-            case VvsT -> {
-                points = new double[1][2][];
-                points[0][0] = xlist;
-                points[0][1] = vt;
-                bp = new BasicPlotInfo(points, mainCaption, xCapTime, capTotalVirusDensity);
-            }
-            default -> edu.umn.ecology.populus.fileio.Logging.log("Invalid plot option: " + plotType);
-        }
-        ;
+			points = new double[ylists.length/2][2][];
+			for(int i=1; i<ylists.length; i+=2){
+				points[i/2][0] = xlist.clone();
+				points[i/2][1] = ylists[i].clone();
+				if(i>40){
+					points[i/2] = Routines.pruneArray(points[i/2], factor/2, true);
+				}else if(i>10){
+					points[i/2] = Routines.pruneArray(points[i/2], factor/3, true);
+				} else {
+					points[i/2] = Routines.pruneArray(points[i/2], 3, true);
+				}
+			}
+			vsTimeChars = new String[points.length];
+			vsTimeChars[0] = "Z";
+			for(int i=1; i<vsTimeChars.length; i++)
+				vsTimeChars[i] = "x"+i;
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,yCap5);
+			break;
+		case VvsT:
+			points = new double[1][2][];
+			points[0][0] = xlist;
+			points[0][1] = vt;
+			bp = new BasicPlotInfo(points,mainCaption,xCapTime,capTotalVirusDensity);
+			break;
+		default:
+			edu.umn.ecology.populus.fileio.Logging.log("Invalid plot option: " + plotType);
+			break;
+		};
 
         bp.clearInnerCaptions();
         AIDSDeriv d = (AIDSDeriv) der;

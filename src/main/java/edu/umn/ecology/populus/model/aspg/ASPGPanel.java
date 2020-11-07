@@ -503,20 +503,22 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         modelTypeChanged();
     }
 
-    /*if the model type was changed, then we need to make some small adjustments to the tabs*/
-    void modelTypeChanged() {
-        switch (mapComponent(inputPane.getSelectedComponent())) {
-            case kLXMX -> tableModel.setType(getModelType(), true, initialL1PPF.getDouble());
-            case kStage -> {
-                data.setModelType(getModelType());
-                sp.setData(data.getLeslieMatrix(), data.getInitPops(), null, getShift(), getModelType() == kPREBREEDING);
-            }
-            case kProjection -> {
-                data.setModelType(getModelType());
-                projectionModel.setData(data.getLeslieMatrix(), data.getInitPops(), getShift(), getModelType() == kPREBREEDING);
-            }
-        }
-    }
+	/*if the model type was changed, then we need to make some small adjustments to the tabs*/
+	void modelTypeChanged(){
+		switch(mapComponent(inputPane.getSelectedComponent())){
+		case kLXMX:
+			tableModel.setType(getModelType(),true,initialL1PPF.getDouble());
+			break;
+		case kStage:
+			data.setModelType(getModelType());
+			sp.setData(data.getLeslieMatrix(),data.getInitPops(),null,getShift(),getModelType()==kPREBREEDING);
+			break;
+		case kProjection:
+			data.setModelType(getModelType());
+			projectionModel.setData(data.getLeslieMatrix(),data.getInitPops(),getShift(),getModelType()==kPREBREEDING);
+			break;
+		}
+	}
 
     /*this method determines which input type is represented by Component c*/
     int mapComponent(Component c) {
@@ -530,51 +532,54 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         return kStage;
     }
 
-    /*this method ensures that all the tabs have the same data*/
-    void updateOtherInputs(Component old) {
-        data.setPrebreedingParameter(initialL1PPF.getDouble());
-        switch (mapComponent(old)) {
-            case kLXMX -> {
-                data.setLxMxTable(tableModel.getData(), getModelType(), runTimePPF.getInt());
-                sp.setData(data.getLeslieMatrix(), data.getInitPops(), null, getShift(), getModelType() == kPREBREEDING);
-                projectionModel.setData(data.getLeslieMatrix(), data.getInitPops(), getShift(), getModelType() == kPREBREEDING);
-            }
-            case kStage -> {
-                data.setLeslieMatrix(sp.getMatrix(), sp.getPopulations(), getModelType(), runTimePPF.getInt());
-                numStages = sp.getPopulations().length;
-                numClassesPPF.setCurrentValue(numStages);
-                tableModel.setTable(data.getLxMxTable(), data.getModelType());
-                projectionModel.setData(data.getLeslieMatrix(), data.getInitPops(), getShift(), getModelType() == kPREBREEDING);
-            }
-            case kProjection -> {
-                data.setLeslieMatrix(projectionModel.getMatrix(), projectionModel.getPopulations(), getModelType(), runTimePPF.getInt());
-                tableModel.setTable(data.getLxMxTable(), data.getModelType());
-                sp.setData(data.getLeslieMatrix(), data.getInitPops(), null, getShift(), getModelType() == kPREBREEDING);
-            }
-        }
-        projectionScroller.getViewport().setExtentSize(new Dimension(1000, 1000));
-        for (int i = 0; i < projectionTable.getColumnCount(); i++) {
-            projectionTable.getColumnModel().getColumn(i).setMinWidth(40);
-            projectionTable.getColumnModel().getColumn(i).setPreferredWidth(50);
-        }
-    }
+	/*this method ensures that all the tabs have the same data*/
+	void updateOtherInputs(Component old){
+		data.setPrebreedingParameter(initialL1PPF.getDouble());
+		switch(mapComponent(old)){
+		case kLXMX:
+			data.setLxMxTable(tableModel.getData(),getModelType(),runTimePPF.getInt());
 
-    /*this method is called when the tabbed pane changes tabs*/
-    void inputPane_stateChanged(ChangeEvent e) {
-        switch (mapComponent(inputPane.getSelectedComponent())) {
-            case kLXMX -> {
-                numClassesPPF.setEnabled(true);
-                initialL1PPF.setEnabled(false);
-            }
-            case kStage -> {
-                numClassesPPF.setEnabled(false);
-                initialL1PPF.setEnabled(true);
-            }
-            case kProjection -> {
-                numClassesPPF.setEnabled(true);
-                initialL1PPF.setEnabled(true);
-            }
-        }
+			sp.setData(data.getLeslieMatrix(),data.getInitPops(),null,getShift(),getModelType()==kPREBREEDING);
+			projectionModel.setData(data.getLeslieMatrix(),data.getInitPops(),getShift(),getModelType()==kPREBREEDING);
+			break;
+		case kStage:
+			data.setLeslieMatrix(sp.getMatrix(),sp.getPopulations(),getModelType(),runTimePPF.getInt());
+			numStages = sp.getPopulations().length;
+			numClassesPPF.setCurrentValue(numStages);
+
+			tableModel.setTable(data.getLxMxTable(),data.getModelType());
+			projectionModel.setData(data.getLeslieMatrix(),data.getInitPops(),getShift(),getModelType()==kPREBREEDING);
+			break;
+		case kProjection:
+			data.setLeslieMatrix(projectionModel.getMatrix(),projectionModel.getPopulations(),getModelType(),runTimePPF.getInt());
+
+			tableModel.setTable(data.getLxMxTable(),data.getModelType());
+			sp.setData(data.getLeslieMatrix(),data.getInitPops(),null,getShift(),getModelType()==kPREBREEDING);
+			break;
+		}
+		projectionScroller.getViewport().setExtentSize(new Dimension(1000,1000));
+		for(int i=0; i<projectionTable.getColumnCount(); i++){
+			projectionTable.getColumnModel().getColumn(i).setMinWidth(40);
+			projectionTable.getColumnModel().getColumn(i).setPreferredWidth(50);
+		}
+	}
+
+	/*this method is called when the tabbed pane changes tabs*/
+	void inputPane_stateChanged(ChangeEvent e) {
+		switch(mapComponent(inputPane.getSelectedComponent())){
+		case kLXMX:
+			numClassesPPF.setEnabled(true);
+			initialL1PPF.setEnabled(false);
+			break;
+		case kStage:
+			numClassesPPF.setEnabled(false);
+			initialL1PPF.setEnabled(true);
+			break;
+		case kProjection:
+			numClassesPPF.setEnabled(true);
+			initialL1PPF.setEnabled(true);
+			break;
+		}
 
         if (comp == null) {
             comp = inputPane.getSelectedComponent();

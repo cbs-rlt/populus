@@ -117,40 +117,43 @@ class NBSSCellParamInfo extends ParamInfo implements CellFunction {
                     fP = (int) fP;
                 }
 
-                for (int k = i - 1; k <= i + 1; k++) {
-                    for (int l = j - 1; l <= j + 1; l++) {
-                        if (l == j && k == i)
-                            continue;
-                        int tK = k, tL = l;
-                        switch (border) {
-                            case NBSSPanel.kAbsorbing -> {
-                                if (l < 0 || k < 0 || l >= h1 || k >= h2) break;
-                                values[0][tK][tL] += fN;
-                                values[1][tK][tL] += fP;
-                            }
-                            case NBSSPanel.kPeriodic -> {
-                                if (l < 0) tL = h1 - 1;
-                                if (l >= h1) tL = 0;
-                                if (k < 0) tK = h2 - 1;
-                                if (k >= h2) tK = 0;
-                                values[0][tK][tL] += fN;
-                                values[1][tK][tL] += fP;
-                            }
-                            case NBSSPanel.kReflexive -> {
-                                if (l < 0) tL = 0;
-                                if (l >= h1) tL = h1 - 1;
-                                if (k < 0) tK = 0;
-                                if (k >= h2) tK = h2 - 1;
-                                values[0][tK][tL] += fN;
-                                values[1][tK][tL] += fP;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        oldData = cloneArray(values);
-    }
+				for(int k=i-1; k<=i+1; k++){
+					for(int l=j-1; l<=j+1; l++){
+						if(l==j && k==i)
+							continue;
+						int tK=k, tL=l;
+						switch(border){
+						case NBSSPanel.kAbsorbing:
+							if(l<0 || k<0 || l>=h1 || k>=h2) break;
+
+							values[0][tK][tL] += fN;
+							values[1][tK][tL] += fP;
+							break;
+						case NBSSPanel.kPeriodic:
+							if(l<0) 	tL = h1-1;
+							if(l>=h1) tL = 0;
+							if(k<0) 	tK = h2-1;
+							if(k>=h2) tK = 0;
+
+							values[0][tK][tL] += fN;
+							values[1][tK][tL] += fP;
+							break;
+						case NBSSPanel.kReflexive:
+							if(l<0) 	tL = 0;
+							if(l>=h1) tL = h1-1;
+							if(k<0) 	tK = 0;
+							if(k>=h2) tK = h2-1;
+
+							values[0][tK][tL] += fN;
+							values[1][tK][tL] += fP;
+							break;
+						}
+					}
+				}
+			}
+		}
+		oldData = cloneArray(values);
+	}
 
     double[][][] cloneArray(double[][][] d) {
         double[][][] r = new double[d.length][d[0].length][d[0][0].length];

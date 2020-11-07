@@ -171,15 +171,25 @@ public class PopPreferencesDialog
              break;
 		 */
         switch (buttonTypeComboBox.getSelectedIndex()) {
-            case 0 -> PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES);
-            case 1 -> PopPreferencesStorage.setButtonType(PopPreferencesStorage.TEXT);
-            default -> PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES +
+        case 0:
+            PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES);
+            break;
+        case 1:
+            PopPreferencesStorage.setButtonType(PopPreferencesStorage.TEXT);
+            break;
+        default:
+            PopPreferencesStorage.setButtonType(PopPreferencesStorage.IMAGES +
                     PopPreferencesStorage.TEXT);
         }
         switch (this.triggerComboBox.getSelectedIndex()) {
-            case 0 -> PopPreferencesStorage.setTriggerType(PopPreferencesStorage.NO_TRIGGER);
-            case 1 -> PopPreferencesStorage.setTriggerType(PopPreferencesStorage.DEFAULT_TRIGGER);
-            default -> PopPreferencesStorage.setButtonType(PopPreferencesStorage.ALL_TRIGGER);
+        case 0:
+            PopPreferencesStorage.setTriggerType(PopPreferencesStorage.NO_TRIGGER);
+            break;
+        case 1:
+            PopPreferencesStorage.setTriggerType(PopPreferencesStorage.DEFAULT_TRIGGER);
+            break;
+        default:
+            PopPreferencesStorage.setButtonType(PopPreferencesStorage.ALL_TRIGGER);
         }
         if (terminusType.getSelectedItem().equals("Arrow")) {
             PopPreferencesStorage.setTerminusType(PopPreferencesStorage.kARROWTERMINI);
@@ -209,10 +219,14 @@ public class PopPreferencesDialog
              break;
 		 */
         switch (PopPreferencesStorage.getButtonType()) {
-            case PopPreferencesStorage.IMAGES -> typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(0));
-            case PopPreferencesStorage.TEXT -> typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(1));
-//(IMAGES + TEXT)
-            default -> typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(2));
+        case PopPreferencesStorage.IMAGES:
+            typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(0));
+            break;
+        case PopPreferencesStorage.TEXT:
+            typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(1));
+            break;
+        default:  //(IMAGES + TEXT)
+            typeComboBoxModel.setSelectedItem(typeComboBoxModel.getElementAt(2));
         }
         if (PopPreferencesStorage.getTerminusType() == PopPreferencesStorage.kARROWTERMINI) {
             terminusType.setSelectedItem("Arrow");

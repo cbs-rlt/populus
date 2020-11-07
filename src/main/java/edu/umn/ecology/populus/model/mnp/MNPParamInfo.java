@@ -60,55 +60,56 @@ public class MNPParamInfo implements BasicPlot {
             return fLevene(p);
     }
 
-    @Override
-    public BasicPlotInfo getBasicPlotInfo() {
-        int numPoints = 100;
-        double[][][] points = null;
-        String mc = "", xc = "", yc = "";
-        switch (plotType) {
-            case GFvsT, PvsT -> {
-                points = new double[(plotType == PvsT) ? freqs.length : 3][2][gens + 1];
-                for (int i = 0; i <= gens; i++) {
-                    for (int j = 0; j < freqs.length; j++) {
-                        points[j][0][i] = i;
-                        points[j][1][i] = freqs[j];
-                        freqs[j] = getNextP(freqs[j]);
-                    }
-                }
-                xc = "Generations ( <b><i>t</> )";
-                yc = "Allelic Frequency (  " + ColorScheme.getColorString(0) + "<i><b>p</> )";
-                if (plotType == PvsT)
-                    break;
-                for (int i = 0; i <= gens; i++) {
-                    points[1][0][i] = i;
-                    points[2][0][i] = i;
-                    points[1][1][i] = 2.0 * points[0][1][i] * (1.0 - points[0][1][i]);
-                    points[2][1][i] = (1.0 - points[0][1][i]) * (1.0 - points[0][1][i]);
-                }
-                xc = "Generations ( <b><i>t</> )";
-                yc = "Genotypic Frequencies (  " + ColorScheme.getColorString(0) + "p<sup>2</>, " + ColorScheme.getColorString(1) + "2pq</>, " + ColorScheme.getColorString(2) + "q<sup>2</> )";
-            }
-            case WBARvsP -> {
-                points = new double[1][2][numPoints + 1];
-                for (double i = 0; i <= numPoints; i++) {
-                    points[0][0][(int) i] = i / numPoints;
-                    getNextP(i / numPoints);
-                    points[0][1][(int) i] = wbar;
-                }
-                xc = "Allelic Frequency ( <i><b>p</> )";
-                yc = "Mean Fitness ( " + ColorScheme.getColorString(0) + "<b><i>w\u0305</i></b> )";
-            }
-            case dPvsP -> {
-                points = new double[1][2][numPoints];
-                for (double i = 0; i < numPoints; i++) {
-                    points[0][0][(int) i] = i / numPoints;
-                    if (i > 0)
-                        points[0][1][(int) i] = getNextP(i / numPoints) - i / numPoints;
-                }
-                xc = "Allelic Frequency ( <i><b>p</> )";
-                yc = ColorScheme.getColorString(0) + "<i><b>\u0394p</> per Generation";
-            }
-        }
+	@Override
+	public BasicPlotInfo getBasicPlotInfo() {
+		int numPoints = 100;
+		double[][][] points = null;
+		String mc="", xc="", yc="";
+		switch(plotType){
+		case GFvsT:
+		case PvsT:
+			points = new double[(plotType==PvsT)?freqs.length:3][2][gens+1];
+			for(int i=0; i<=gens; i++){
+				for(int j=0; j<freqs.length; j++){
+					points[j][0][i] = i;
+					points[j][1][i] = freqs[j];
+					freqs[j] = getNextP(freqs[j]);
+				}
+			}
+			xc = "Generations ( <b><i>t</> )";
+			yc = "Allelic Frequency (  "+ ColorScheme.getColorString( 0 ) + "<i><b>p</> )";
+			if(plotType == PvsT)
+				break;
+			for(int i=0; i<=gens; i++){
+				points[1][0][i] = i;
+				points[2][0][i] = i;
+				points[1][1][i] = 2.0*points[0][1][i]*(1.0 - points[0][1][i]);
+				points[2][1][i] = (1.0 - points[0][1][i])*(1.0 - points[0][1][i]);
+			}
+			xc = "Generations ( <b><i>t</> )";
+			yc = "Genotypic Frequencies (  "+ColorScheme.getColorString( 0 ) + "p<sup>2</>, " + ColorScheme.getColorString( 1 ) + "2pq</>, " + ColorScheme.getColorString( 2 ) + "q<sup>2</> )";
+			break;
+		case WBARvsP:
+			points = new double[1][2][numPoints+1];
+			for(double i=0; i<=numPoints; i++){
+				points[0][0][(int)i] = i/numPoints;
+				getNextP(i/numPoints);
+				points[0][1][(int)i] = wbar;
+			}
+			xc = "Allelic Frequency ( <i><b>p</> )";
+			yc = "Mean Fitness ( "+ColorScheme.getColorString( 0 ) + "<b><i>w\u0305</i></b> )";
+			break;
+		case dPvsP:
+			points = new double[1][2][numPoints];
+			for(double i=0; i<numPoints; i++){
+				points[0][0][(int)i] = i/numPoints;
+				if(i>0)
+					points[0][1][(int)i] = getNextP(i/numPoints) - i/numPoints;
+			}
+			xc = "Allelic Frequency ( <i><b>p</> )";
+			yc = ColorScheme.getColorString( 0 ) + "<i><b>\u0394p</> per Generation";
+			break;
+		}
         if (isDemp) {
             mc = "Multiple-Niche Polymorphism: Dempster";
         } else {
