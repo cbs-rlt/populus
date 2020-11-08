@@ -57,7 +57,7 @@ class CellEditPanel extends JFrame {
         curvalL.setText(curval);
         locvalL.setText(loc);
         newvalTF.setPreferredSize(new Dimension(70, 21));
-        newvalTF.addActionListener(e -> newvalTF_actionPerformed(e));
+        newvalTF.addActionListener(this::newvalTF_actionPerformed);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
 
             @Override

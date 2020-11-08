@@ -167,7 +167,7 @@ public class EquationPanel extends JPanel {
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroller.setBorder(BorderFactory.createLineBorder(Color.black));
         eqHolder.setLayout(simpleVFlowLayout2);
-        jsb.addAdjustmentListener(e -> jsb_adjustmentValueChanged(e));
+        jsb.addAdjustmentListener(this::jsb_adjustmentValueChanged);
         jsb.setUnitIncrement(10);
         this.add(labelHolder, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 0, 5, 0), 0, 0));
         GridBagLayout gbl_labelHolder = new GridBagLayout();
@@ -212,12 +212,12 @@ public class EquationPanel extends JPanel {
         gbc_numEqL.gridy = 0;
         labelHolder.add(numEqL, gbc_numEqL);
         renameB.setText("Rename");
-        renameB.addActionListener(e -> renameB_actionPerformed(e));
+        renameB.addActionListener(this::renameB_actionPerformed);
         numEQTF.setMaximumSize(new Dimension(30, 30));
         numEQTF.setPreferredSize(new Dimension(25, 21));
         numEQTF.setToolTipText("Enter the number of equations you want in the table.");
         numEQTF.setHorizontalAlignment(SwingConstants.RIGHT);
-        numEQTF.addActionListener(e -> numEQTF_actionPerformed(e));
+        numEQTF.addActionListener(this::numEQTF_actionPerformed);
         GridBagConstraints gbc_numEQTF = new GridBagConstraints();
         gbc_numEQTF.insets = new Insets(5, 5, 0, 5);
         gbc_numEQTF.fill = GridBagConstraints.HORIZONTAL;

@@ -155,13 +155,13 @@ public class RunningTimePanel extends JPanel implements Serializable {
         fixedTimeButton.setSelected(true);
         fixedTimeButton.setText("Run until time:");
         fixedTimeButton.setFocusPainted(false);
-        fixedTimeButton.addActionListener(e -> fixedTimeButton_actionPerformed(e));
+        fixedTimeButton.addActionListener(this::fixedTimeButton_actionPerformed);
         titledBorder1.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBorder(titledBorder1);
         this.setLayout(simpleVFlowLayout1);
         steadyStateButton.setText("Run until steady state");
         steadyStateButton.setFocusPainted(false);
-        steadyStateButton.addActionListener(e -> steadyStateButton_actionPerformed(e));
+        steadyStateButton.addActionListener(this::steadyStateButton_actionPerformed);
         paramTime.setColumns(8);
         paramTime.setMinValue(minTime);
         paramTime.setMaxValue(maxTime);

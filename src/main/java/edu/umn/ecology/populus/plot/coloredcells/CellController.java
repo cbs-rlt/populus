@@ -125,12 +125,12 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
             }
             typeChangeCB.setSelectedItem(cf.getCurrentType());
         }
-        pauseButton.addActionListener(e -> pauseButtonChange(e));
+        pauseButton.addActionListener(this::pauseButtonChange);
         setLayout(gridBagLayout1);
         pauseButton.setPreferredSize(new Dimension(90, 25));
         pauseButton.setText("Pause");
         jPanel1.setLayout(gridBagLayout2);
-        typeChangeCB.addActionListener(e -> typeChangeCB_actionPerformed(e));
+        typeChangeCB.addActionListener(this::typeChangeCB_actionPerformed);
         gensL.setText("" + cf.getGeneration());
         gensL.setBackground(Color.black);
         gensL.setForeground(Color.white);

@@ -158,7 +158,7 @@ public class PSPanel extends BasicPlotInputPanel {
         singleFrequencyButton.setFocusPainted(false);
         singleFrequencyButton.setSelected(true);
         singleFrequencyButton.setText("Set Frequencies Collectively");
-        singleFrequencyButton.addChangeListener(e -> singleFrequencyButton_stateChanged(e));
+        singleFrequencyButton.addChangeListener(this::singleFrequencyButton_stateChanged);
         paramNumDemes.setCurrentValue(6.0);
         paramNumDemes.setDefaultValue(6.0);
         paramNumDemes.setMaxValue(10.0);

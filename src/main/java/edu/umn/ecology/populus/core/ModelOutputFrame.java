@@ -58,9 +58,9 @@ public class ModelOutputFrame extends PopInternalFrame {
         this.getContentPane().setLayout(mainBorderLayout);
         saveButton.addActionListener(e -> save());
         closeButton.addActionListener(e -> closeRequested());
-        printButton.addActionListener(e -> printButton_actionPerformed(e));
-        iterateButton.addActionListener(e -> outputButton_actionPerformed(e));
-        switchButton.addActionListener(e -> switchOutput(e));
+        printButton.addActionListener(this::printButton_actionPerformed);
+        iterateButton.addActionListener(this::outputButton_actionPerformed);
+        switchButton.addActionListener(this::switchOutput);
 
 		/*
       ContainerListener cl;
@@ -68,10 +68,10 @@ public class ModelOutputFrame extends PopInternalFrame {
       //addComponentListener(null);
 		 */
         //optionsButton.setText( res.getString( "Options" ) );
-        optionsButton.addActionListener(e -> optionsButton_actionPerformed(e));
+        optionsButton.addActionListener(this::optionsButton_actionPerformed);
         saveButton.setText(res.getString("File"));
         toolBar.setFloatable(false);
-        jb.addActionListener(e -> jb_actionPerformed(e));
+        jb.addActionListener(this::jb_actionPerformed);
         this.getContentPane().add(toolBar, BorderLayout.NORTH);
         toolBar.add(optionsButton, null);
         toolBar.add(saveButton, null);

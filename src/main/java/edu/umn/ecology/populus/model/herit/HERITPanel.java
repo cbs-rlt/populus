@@ -62,7 +62,7 @@ public class HERITPanel extends BasicPlotInputPanel {
         titledBorder2 = new TitledBorder("");
         titledBorder3 = new TitledBorder("");
         mcRB.setText("Monte Carlo");
-        mcRB.addChangeListener(e -> mcRB_stateChanged(e));
+        mcRB.addChangeListener(this::mcRB_stateChanged);
         theoreticalRB.setSelected(true);
         theoreticalRB.setText("Theoretical");
         plotTypeP.setLayout(gridBagLayout1);

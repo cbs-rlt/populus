@@ -96,12 +96,12 @@ public class HMSSPanel extends BasicPlotInputPanel {
         bPPF.setIncrementAmount(0.05);
         bPPF.setMaxValue(1.0);
         bPPF.setParameterName("<i>\u03B2</i>");
-        bPPF.addParameterFieldListener(e -> bPPF_parameterFieldChanged(e));
+        bPPF.addParameterFieldListener(this::bPPF_parameterFieldChanged);
         bPPF.setHelpText("Added fitness for being cryptic");
         rqDBCRB.setText("<i>r</> vs <i>q</>, <i>D<sub>BC</>");
         pqDABRB.setText("<i>p</> vs <i>q</>, <i>D<sub>AB</>");
         ePPF.setParameterName("<i>\u03B5</i>");
-        ePPF.addParameterFieldListener(e -> ePPF_parameterFieldChanged(e));
+        ePPF.addParameterFieldListener(this::ePPF_parameterFieldChanged);
         ePPF.setMaxValue(1.0);
         ePPF.setCurrentValue(0.0020);
         ePPF.setDefaultValue(0.2);
@@ -145,7 +145,7 @@ public class HMSSPanel extends BasicPlotInputPanel {
         aPPF.setMaxValue(1.0);
         aPPF.setParameterName("<i>\u03B1</i>");
         aPPF.setHelpText("Baseline fitness");
-        aPPF.addParameterFieldListener(e -> aPPF_parameterFieldChanged(e));
+        aPPF.addParameterFieldListener(this::aPPF_parameterFieldChanged);
         pqrvstRB.setSelected(true);
         pqrvstRB.setText("<i>p</>, <i>q</>, <i>r</> vs <i>t</>");
         monoRB.setSelected(true);
@@ -154,7 +154,7 @@ public class HMSSPanel extends BasicPlotInputPanel {
         polyRB.setText("Polygamous");
         andersonRB.setSelected(true);
         andersonRB.setText("Andersson");
-        andersonRB.addChangeListener(e -> andersonRB_stateChanged(e));
+        andersonRB.addChangeListener(this::andersonRB_stateChanged);
         bellRB.setText("Maynard Smith/Bell");
         modelTypeP.setLayout(gridBagLayout2);
         modelTypeP.setBorder(titledBorder1);

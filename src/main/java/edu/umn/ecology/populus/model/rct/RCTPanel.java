@@ -241,14 +241,14 @@ public class RCTPanel extends BasicPlotInputPanel {
         switchingModelButton.setActionCommand("Switching");
         switchingModelButton.setText("Switching");
         switchingModelButton.setFocusPainted(false);
-        switchingModelButton.addActionListener(e -> switchingModelButton_actionPerformed(e));
+        switchingModelButton.addActionListener(this::switchingModelButton_actionPerformed);
         modelTypePanel.setLayout(gridBagLayout13);
         modelTypePanel.setBorder(titledBorder8);
         essentialModelButton.setToolTipText("Essential");
         essentialModelButton.setActionCommand("Essential");
         essentialModelButton.setText("Essential");
         essentialModelButton.setSelected(true);
-        essentialModelButton.addActionListener(e -> essentialModelButton_actionPerformed(e));
+        essentialModelButton.addActionListener(this::essentialModelButton_actionPerformed);
         rvstButton.setText("<i>R </i>vs <i>t</i>");
         rvstButton.setToolTipText("");
         nvsnButton.setFocusPainted(false);

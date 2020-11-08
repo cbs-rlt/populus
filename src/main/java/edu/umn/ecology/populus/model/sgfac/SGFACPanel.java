@@ -121,9 +121,9 @@ public class SGFACPanel extends BasicPlotInputPanel {
         gensPPF.setParameterName("Generations");
         freqRB.setText("Frequency Dependent");
         locHetRB.setText("Local Heterozygote");
-        locHetRB.addChangeListener(e -> locHetRB_stateChanged(e));
+        locHetRB.addChangeListener(this::locHetRB_stateChanged);
         hetAdRB.setText("Heterozygote Advantage");
-        hetAdRB.addChangeListener(e -> hetAdRB_stateChanged(e));
+        hetAdRB.addChangeListener(this::hetAdRB_stateChanged);
         gradRB.setSelected(true);
         gradRB.setText("Gradient");
         this.add(fitnessesP, new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0

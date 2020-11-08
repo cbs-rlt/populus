@@ -168,13 +168,13 @@ public class IHPIPanel extends BasicPlotInputPanel {
         n0PF.setParameterName(res.getString("Prey_Size_i_N_i_sub_0"));
         type3Button.setText(res.getString("Type_III"));
         type3Button.setFocusPainted(false);
-        type3Button.addChangeListener(e -> type3Button_stateChanged(e));
+        type3Button.addChangeListener(this::type3Button_stateChanged);
 
         //type3Button.setActionCommand("continuous");
         type1Button.setSelected(true);
         type1Button.setText(res.getString("Type_I"));
         type1Button.setFocusPainted(false);
-        type1Button.addChangeListener(e -> type1Button_stateChanged(e));
+        type1Button.addChangeListener(this::type1Button_stateChanged);
 
         //type1Button.setActionCommand("discrete");
         IPF.setCurrentValue(0.8);
@@ -230,7 +230,7 @@ public class IHPIPanel extends BasicPlotInputPanel {
         //type2Button.setActionCommand("continuous");
         type2Button.setText(res.getString("Type_II"));
         type2Button.setFocusPainted(false);
-        type2Button.addChangeListener(e -> type2Button_stateChanged(e));
+        type2Button.addChangeListener(this::type2Button_stateChanged);
         plotTypePanel.setBorder(titledBorder4);
         pvsnButton.setText("<i>P</i>  vs <i>N</i>");
         pvsnButton.setFocusPainted(false);
@@ -243,7 +243,7 @@ public class IHPIPanel extends BasicPlotInputPanel {
         //type4Button.setActionCommand("continuous");
         type4Button.setText("Type IV");
         type4Button.setFocusPainted(false);
-        type4Button.addChangeListener(e -> type4Button_stateChanged(e));
+        type4Button.addChangeListener(this::type4Button_stateChanged);
         IPPF.setParameterName("<i>I</i>\'");
         IPPF.setHelpText("The probability that adult parasitoids will survive the insecticide, taking values from 0 to 1.");
         IPPF.setMaxValue(1.0);

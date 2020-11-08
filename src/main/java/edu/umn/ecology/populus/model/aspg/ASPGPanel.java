@@ -207,7 +207,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         numClassesPPF.setMaxValue(25.0);
         numClassesPPF.setMinValue(2.0);
         numClassesPPF.setParameterName(res.getString("_i_classes_i_"));
-        numClassesPPF.addParameterFieldListener(e -> numClassesPPF_parameterFieldChanged(e));
+        numClassesPPF.addParameterFieldListener(this::numClassesPPF_parameterFieldChanged);
         outputTypePanel.setBorder(titledBorder1);
         outputTypePanel.setLayout(gridBagLayout4);
 
@@ -266,7 +266,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         viewAllAgesBox.setEnabled(false);
         viewAllAgesBox.setText(res.getString("View_All_Age_Classes"));
         viewAllAgesBox.setFocusPainted(false);
-        viewAllAgesBox.addItemListener(e -> viewAllAgesBox_itemStateChanged(e));
+        viewAllAgesBox.addItemListener(this::viewAllAgesBox_itemStateChanged);
         ageClassToViewPanel.setLayout(simpleVFlowLayout2);
         simpleVFlowLayout2.setHgap(0);
         birthFlowButton.setText(res.getString("Birth_Flow"));
@@ -274,11 +274,11 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         birthPulseButton.setSelected(true);
         birthPulseButton.setText(res.getString("Birth_Pulse"));
         birthPulseButton.setFocusPainted(false);
-        birthPulseButton.addItemListener(e -> birthTypeChanged(e));
+        birthPulseButton.addItemListener(this::birthTypeChanged);
         birthPanel.setLayout(gridBagLayout3);
         preBreedingButton.setText(res.getString("Prebreeding"));
         preBreedingButton.setFocusPainted(false);
-        preBreedingButton.addItemListener(e -> preBreedingButton_itemStateChanged(e));
+        preBreedingButton.addItemListener(this::preBreedingButton_itemStateChanged);
         gridLayout3.setColumns(2);
         postBreedingButton.setSelected(true);
         postBreedingButton.setText(res.getString("Postbreeding"));
@@ -316,7 +316,7 @@ public class ASPGPanel extends BasicPlotInputPanel implements java.io.Externaliz
         l1P.setLayout(gridBagLayout6);
         titledBorder7.setTitle("Prebreeding");
         titledBorder7.setBorder(BorderFactory.createLineBorder(Color.black));
-        tableModel.addTableModelListener(e -> tableModel_tableChanged(e));
+        tableModel.addTableModelListener(this::tableModel_tableChanged);
         jsbh.addAdjustmentListener(e -> projectionScroller.repaint());
         jsbv.addAdjustmentListener(e -> projectionScroller.repaint());
         bgOutputType.add(lambdaVsTButton);

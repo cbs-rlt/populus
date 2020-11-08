@@ -132,7 +132,7 @@ public class SDPanel extends ModelPanel {
         periodicRB.setText("Periodic");
         periodicRB.setToolTipText("Populations wrap to other side");
         pdRB.setSelected(true);
-        pdRB.addChangeListener(e -> pdRB_stateChanged(e));
+        pdRB.addChangeListener(this::pdRB_stateChanged);
         latticeRB.setSelected(true);
         onedRB.setSelected(true);
         middleRB.setSelected(true);
@@ -145,7 +145,7 @@ public class SDPanel extends ModelPanel {
         initfreqPPF.setEnabled(false);
         initfreqPPF.setIncrementAmount(0.1);
         initfreqPPF.setMaxValue(1.0);
-        randomRB.addChangeListener(e -> randomRB_stateChanged(e));
+        randomRB.addChangeListener(this::randomRB_stateChanged);
         hhhL.setToolTipText("Hawk payoff in a Hawk-Hawk Encounter");
         hhhL.setText("(V-C)/2 = ");
         hhdL.setToolTipText("Hawk payoff in a Dove-Hawk Encounter");
@@ -155,13 +155,13 @@ public class SDPanel extends ModelPanel {
         dddL.setToolTipText("Dove payoff in a Dove-Dove Encounter");
         dddL.setText("V/2 = ");
         dhparamP.setLayout(gridBagLayout3);
-        injuryPPF.addParameterFieldListener(e -> injuryPPF_parameterFieldChanged(e));
+        injuryPPF.addParameterFieldListener(this::injuryPPF_parameterFieldChanged);
         injuryPPF.setCurrentValue(1.0);
         injuryPPF.setDefaultValue(1.0);
         injuryPPF.setMaxValue(10000.0);
         injuryPPF.setParameterName("C");
         injuryPPF.setHelpText("Loss of Injury");
-        winnerPPF.addParameterFieldListener(e -> winnerPPF_parameterFieldChanged(e));
+        winnerPPF.addParameterFieldListener(this::winnerPPF_parameterFieldChanged);
         winnerPPF.setCurrentValue(2.0);
         winnerPPF.setDefaultValue(2.0);
         winnerPPF.setMaxValue(10000.0);

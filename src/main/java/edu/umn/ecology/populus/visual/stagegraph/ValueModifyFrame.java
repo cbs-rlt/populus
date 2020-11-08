@@ -88,7 +88,7 @@ public class ValueModifyFrame extends JDialog {
         });
         this.getContentPane().setLayout(gridBagLayout1);
         okB.setText("OK");
-        okB.addActionListener(e -> okB_actionPerformed(e));
+        okB.addActionListener(this::okB_actionPerformed);
         if (type != StageStructuredPane.kASPG)
             this.getContentPane().add(nameL, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
                     , GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 10, 0, 10), 0, 0));

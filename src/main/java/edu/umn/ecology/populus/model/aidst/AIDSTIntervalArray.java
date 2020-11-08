@@ -55,10 +55,10 @@ public class AIDSTIntervalArray extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBorder(titledBorder1);
         delButton.setText("delete");
-        delButton.addActionListener(e -> delButton_actionPerformed(e));
+        delButton.addActionListener(this::delButton_actionPerformed);
         mainPanel.setLayout(gridBagLayout1);
         addButton.setText("add");
-        addButton.addActionListener(e -> addButton_actionPerformed(e));
+        addButton.addActionListener(this::addButton_actionPerformed);
         intervalsPane.setLayout(simpleVFlowLayout1);
         this.setLayout(gridLayout2);
         gridLayout2.setColumns(1);

@@ -204,7 +204,7 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
         lambdavstRB.setText("\u03bb vs <i>t</i>");
         snxRB.setText("\u03a3<i>Nx</i> vs <i>t</i>");
         nxsnxvstRB.setText("<i>Nx/</i>\u03a3<i>Nx</i> vs <i>t</i>");
-        nxsnxvstRB.addChangeListener(e -> nxsnxvstRB_stateChanged(e));
+        nxsnxvstRB.addChangeListener(this::nxsnxvstRB_stateChanged);
         nxsnxvsxRB.setText("<i>Nx/</i>\u03a3<i>Nx</i> vs <i>x</i>");
         xvsnxsnxtRB.setText("<i>x</i> vs <i>Nx/</i>\u03a3<i>Nx</i>, <i>t</i>");
         xvsnxtRB.setText("<i>x</i> vs <i>Nx</i>, <i>t</i>");
@@ -212,14 +212,14 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
         numStagesPPF.setCurrentValue(sp.getPopulations().length);
         numStagesPPF.setMaxValue(20.0);
         numStagesPPF.setMinValue(1.0);
-        numStagesPPF.addParameterFieldListener(e -> numStagesPPF_parameterFieldChanged(e));
+        numStagesPPF.addParameterFieldListener(this::numStagesPPF_parameterFieldChanged);
         intervalsPPF.setCurrentValue(6.0);
         intervalsPPF.setMaxValue(1000.0);
         intervalsPPF.setMinValue(1.0);
         whichStagePPF.setEnabled(false);
         whichStagePPF.setMaxValue(sp.getPopulations().length);
         whichStagePPF.setMinValue(1.0);
-        inputPane.addChangeListener(e -> inputPane_stateChanged(e));
+        inputPane.addChangeListener(this::inputPane_stateChanged);
         eigenRB.setText("Eigen System");
         bg.add(lambdavstRB);
         bg.add(snxRB);

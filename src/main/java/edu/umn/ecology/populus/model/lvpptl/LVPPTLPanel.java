@@ -278,10 +278,10 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
         lotkaVolterraButton.setSelected(true);
         lotkaVolterraButton.setText(res.getString("Lotka_Volterra"));
         lotkaVolterraButton.setFocusPainted(false);
-        lotkaVolterraButton.addActionListener(e -> lotkaVolterraButton_actionPerformed(e));
+        lotkaVolterraButton.addActionListener(this::lotkaVolterraButton_actionPerformed);
         thetaLogisticButton.setText("\u0398 - Logistic");
         thetaLogisticButton.setFocusPainted(false);
-        thetaLogisticButton.addActionListener(e -> thetaLogisticButton_actionPerformed(e));
+        thetaLogisticButton.addActionListener(this::thetaLogisticButton_actionPerformed);
         typeComboBox.setModel(typeComboBoxModel);
         preyGrowthPanel.setBorder(titledBorder5);
         preyGrowthPanel.setToolTipText(res.getString("Prey_Growth"));
@@ -404,10 +404,10 @@ public class LVPPTLPanel extends BasicPlotInputPanel {
         ddPreyBox.setToolTipText(res.getString("Density_Dependent"));
         ddPreyBox.setText(res.getString("DD_Prey"));
         ddPreyBox.setFocusPainted(false);
-        ddPreyBox.addActionListener(e -> ddPreyBox_actionPerformed(e));
+        ddPreyBox.addActionListener(this::ddPreyBox_actionPerformed);
         type2Box.setToolTipText("Type II");
         type2Box.setText("Type II");
-        type2Box.addActionListener(e -> type2Box_actionPerformed(e));
+        type2Box.addActionListener(this::type2Box_actionPerformed);
         gridLayout3.setColumns(1);
         gridLayout3.setRows(2);
         lvParamsPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));

@@ -97,7 +97,7 @@ public class IntegratorPreferences extends JDialog {
         //      intMethodCB.addItem("Discrete");
         jLabel6.setToolTipText("Select the integration algorithm to use");
         jLabel6.setText("Integration Method:");
-        intMethodCB.addActionListener(e -> intMethodCB_actionPerformed(e));
+        intMethodCB.addActionListener(this::intMethodCB_actionPerformed);
         mainPanel.add(epsSetting, new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0
                 , GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(10, 0, 5, 10), 0, 0));
         mainPanel.add(maxPointsSetting, new GridBagConstraints(1, 1, 1, 1, 1.0, 1.0

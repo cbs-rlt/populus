@@ -211,17 +211,17 @@ public class EOVPanel extends BasicPlotInputPanel {
         paramP.setMaxValue(1.0);
         paramP.setParameterName("<i>p</i>");
         ebvstButton.setText("<i>e, b vs t</i>");
-        ebvstButton.addActionListener(e -> ebvstButton_actionPerformed(e));
+        ebvstButton.addActionListener(this::ebvstButton_actionPerformed);
         ebvstButton.setEnabled(false);
         ebvstButton.setActionCommand("<i>e, b vs t</i>");
         ebvstButton.setFocusPainted(false);
         HIStarButton.setFocusPainted(false);
         HIStarButton.setActionCommand("<i>H*, I*, H*+I* vs b</i>");
-        HIStarButton.addActionListener(e -> HIStarButton_actionPerformed(e));
+        HIStarButton.addActionListener(this::HIStarButton_actionPerformed);
         HIStarButton.setText("<i>H*, I*, H*+I* vs b</i>");
         hivstButton.setActionCommand("<i>H, I vs t </i>");
         hivstButton.setFocusPainted(false);
-        hivstButton.addActionListener(e -> hivstButton_actionPerformed(e));
+        hivstButton.addActionListener(this::hivstButton_actionPerformed);
         hivstButton.setSelected(true);
         hivstButton.setText("<i>H, I vs t </i>");
         constantsPanel1.setToolTipText("Constants");
@@ -253,12 +253,12 @@ public class EOVPanel extends BasicPlotInputPanel {
         coupledModelButton.setToolTipText("Coupled");
         coupledModelButton.setText("Coupled");
         coupledModelButton.setFocusPainted(false);
-        coupledModelButton.addActionListener(e -> coupledModelButton_actionPerformed(e));
+        coupledModelButton.addActionListener(this::coupledModelButton_actionPerformed);
         alternatingModelButton.setToolTipText("Alternating");
         alternatingModelButton.setSelected(true);
         alternatingModelButton.setText("Alternating");
         alternatingModelButton.setFocusPainted(false);
-        alternatingModelButton.addActionListener(e -> alternatingModelButton_actionPerformed(e));
+        alternatingModelButton.addActionListener(this::alternatingModelButton_actionPerformed);
         modelTypePanel.setLayout(gridBagLayout4);
         modelTypePanel.setBorder(titledBorder8);
         hostDensitiesPanel.add(paramH, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0

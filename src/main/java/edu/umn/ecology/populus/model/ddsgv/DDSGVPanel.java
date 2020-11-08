@@ -115,7 +115,7 @@ public class DDSGVPanel extends BasicPlotInputPanel {
         rAAPPF.setHelpText("Intrinsic rate of increase for the \"AA\" genotype");
         singleRB.setSelected(true);
         singleRB.setText("Single Frequency");
-        singleRB.addChangeListener(e -> singleRB_stateChanged(e));
+        singleRB.addChangeListener(this::singleRB_stateChanged);
         nineRB.setText("Nine-Frequency");
         freqPPF.setParameterName("Frequency");
         freqPPF.setMaxValue(1.0);

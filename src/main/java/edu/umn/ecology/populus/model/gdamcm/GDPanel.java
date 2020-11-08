@@ -227,7 +227,7 @@ public class GDPanel extends BasicPlotInputPanel {
         popSizePPF.setDefaultValue(6.0);
         viewGens3DCB.setToolTipText("Several generations plotted on a 3D graph.");
         viewGens3DCB.setActionCommand("View Generations 3D");
-        viewGens3DCB.addActionListener(e -> viewGens3DCB_actionPerformed(e));
+        viewGens3DCB.addActionListener(this::viewGens3DCB_actionPerformed);
         gensToViewPPF.setEnabled(false);
         gensToViewPPF.setIncrementAmount(5.0);
         goBG.add(otherButton);
@@ -300,7 +300,7 @@ public class GDPanel extends BasicPlotInputPanel {
         popSizePPF.setMinValue(1.0);
         popSizePPF.setParameterName("Population Size:");
         popSizePPF.setToolTipText("");
-        popSizePPF.addParameterFieldListener(e -> popSizePPF_parameterFieldChanged(e));
+        popSizePPF.addParameterFieldListener(this::popSizePPF_parameterFieldChanged);
         gensToViewPPF.setParameterName("Generations to View in 3D");
         gensToViewPPF.setMaxValue(100.0);//this number can't be too big b/c 10*this will be the number of grid lines
         gensToViewPPF.setDefaultValue(10.0);

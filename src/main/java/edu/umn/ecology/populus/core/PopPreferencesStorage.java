@@ -712,7 +712,7 @@ public final class PopPreferencesStorage {
      * even when their model is long gone.
      */
     private void notifyButtons() {
-        buttons.stream().forEach(button -> button.setLook());
+        buttons.stream().forEach(PopulusToolButton::setLook);
 
 		/*
 		PopulusToolButton button;

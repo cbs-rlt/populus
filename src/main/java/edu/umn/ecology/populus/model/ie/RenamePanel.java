@@ -86,14 +86,14 @@ public class RenamePanel extends JDialog {
 
     private void jbInit() throws Exception {
         okB.setText("OK");
-        okB.addActionListener(e -> finalizeB_actionPerformed(e));
+        okB.addActionListener(this::finalizeB_actionPerformed);
         this.getContentPane().setLayout(gridBagLayout1);
         int i = 0;
         for (; i < cpA.length; i++)
             this.getContentPane().add(cpA[i], new GridBagConstraints(0, i, 2, 1, 1.0, 1.0
                     , GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 5, 5, 0), 0, 0));
         cancelB.setText("Cancel");
-        cancelB.addActionListener(e -> cancelB_actionPerformed(e));
+        cancelB.addActionListener(this::cancelB_actionPerformed);
         this.getContentPane().add(okB, new GridBagConstraints(0, ++i, 1, 1, 1.0, 1.0
                 , GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(5, 5, 5, 0), 0, 0));
         this.getContentPane().add(cancelB, new GridBagConstraints(1, i, 1, 1, 1.0, 1.0

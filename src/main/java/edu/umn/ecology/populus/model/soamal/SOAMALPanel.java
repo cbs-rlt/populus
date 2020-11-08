@@ -110,7 +110,7 @@ public class SOAMALPanel extends BasicPlotInputPanel {
         gensPPF.setCurrentValue(100.0);
         miscP.setLayout(gridBagLayout3);
         addDimB.setText("Add Allele");
-        addDimB.addActionListener(e -> addDimB_actionPerformed(e));
+        addDimB.addActionListener(this::addDimB_actionPerformed);
         bg.add(PvsTRB);
         bg.add(PvsPRB);
         bg.add(deFinettiRB);

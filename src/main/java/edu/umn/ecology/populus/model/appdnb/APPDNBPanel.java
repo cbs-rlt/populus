@@ -155,12 +155,12 @@ public class APPDNBPanel extends BasicPlotInputPanel {
         densityDependentButton.setText(res.getString("Density_Dependent"));
         densityDependentButton.setFocusPainted(false);
         densityDependentButton.setActionCommand(res.getString("continuous"));
-        densityDependentButton.addActionListener(e -> densityDependentButton_actionPerformed(e));
+        densityDependentButton.addActionListener(this::densityDependentButton_actionPerformed);
         densityIndependentButton.setSelected(true);
         densityIndependentButton.setText(res.getString("Density_Independent"));
         densityIndependentButton.setFocusPainted(false);
         densityIndependentButton.setActionCommand(res.getString("discrete"));
-        densityIndependentButton.addActionListener(e -> densityIndependentButton_actionPerformed(e));
+        densityIndependentButton.addActionListener(this::densityIndependentButton_actionPerformed);
         lambdaPF.setCurrentValue(2.0);
         lambdaPF.setDefaultValue(2.0);
         lambdaPF.setIncrementAmount(0.1);

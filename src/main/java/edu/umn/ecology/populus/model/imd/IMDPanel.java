@@ -243,22 +243,22 @@ public class IMDPanel extends BasicPlotInputPanel {
         sirFDModelButton.setToolTipText("SIR Model with Frequency-Dependent Transmission");
         sirFDModelButton.setText("SIR Model, FD Transmission");
         sirFDModelButton.setFocusPainted(false);
-        sirFDModelButton.addActionListener(e -> sirFDModelButton_actionPerformed(e));
+        sirFDModelButton.addActionListener(this::sirFDModelButton_actionPerformed);
         siFDModelButton.setToolTipText("SI Model with Frequency-Dependent Transmission");
         siFDModelButton.setText("SI Model, FD Transmission");
         siFDModelButton.setFocusPainted(false);
-        siFDModelButton.addActionListener(e -> siFDModelButton_actionPerformed(e));
+        siFDModelButton.addActionListener(this::siFDModelButton_actionPerformed);
         modelTypePanel.setLayout(gridBagLayout4);
         modelTypePanel.setBorder(titledBorder8);
         siDDModelButton.setToolTipText("SI Model with Density-Dependent Transmission");
         siDDModelButton.setSelected(true);
         siDDModelButton.setText("SI Model, DD Transmission");
         siDDModelButton.setFocusPainted(false);
-        siDDModelButton.addActionListener(e -> siDDModelButton_actionPerformed(e));
+        siDDModelButton.addActionListener(this::siDDModelButton_actionPerformed);
         sirDDModelButton.setToolTipText("SIR Model with Density-Dependent Transmission");
         sirDDModelButton.setText("SIR Model, DD Transmission");
         sirDDModelButton.setFocusPainted(false);
-        sirDDModelButton.addActionListener(e -> sirDDModelButton_actionPerformed(e));
+        sirDDModelButton.addActionListener(this::sirDDModelButton_actionPerformed);
         titledBorder9.setTitle("Host Densities");
         runningTimePanel1.setDefaultTime(20.0);
         this.add(modelParametersPanel, new GridBagConstraints(0, 0, 3, 1, 1.0, 1.0

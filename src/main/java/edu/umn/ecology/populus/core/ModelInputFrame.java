@@ -43,9 +43,9 @@ public class ModelInputFrame extends PopInternalFrame {
         this.setResizable(true);
         this.getContentPane().setLayout(mainBorderLayout);
         saveButton.addActionListener(e -> save());
-        outputButton.addActionListener(e -> outputButton_actionPerformed(e));
-        closeButton.addActionListener(e -> closeButton_actionPerformed(e));
-        printButton.addActionListener(e -> printButton_actionPerformed(e));
+        outputButton.addActionListener(this::outputButton_actionPerformed);
+        closeButton.addActionListener(this::closeButton_actionPerformed);
+        printButton.addActionListener(this::printButton_actionPerformed);
         saveButton.setText(res.getString("File"));
         toolBar.setFloatable(false);
         this.getContentPane().add(toolBar, BorderLayout.NORTH);

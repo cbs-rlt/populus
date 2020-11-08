@@ -94,7 +94,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
         quitButton = PopulusToolButton.createQuitButton();
         quitButton.addActionListener(exitAction);
         newButton.addActionListener(newModelAction);
-        optionsButton.addActionListener(e -> optionsButton_actionPerformed(e));
+        optionsButton.addActionListener(this::optionsButton_actionPerformed);
         System.err.print(".");
 
         backgroundPanel.setLayout(gridBagLayout1);

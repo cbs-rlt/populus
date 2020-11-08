@@ -115,7 +115,7 @@ public class Equation extends JPanel {
     private void jbInit() throws Exception {
         this.setLayout(flowLayout1);
         equationTF.setPreferredSize(new Dimension(200, 21));
-        isPlottedCB.addChangeListener(e -> isPlottedCB_stateChanged(e));
+        isPlottedCB.addChangeListener(this::isPlottedCB_stateChanged);
         initialValue.setPreferredSize(new Dimension(30, 21));
         initialValue.setToolTipText("Enter the number of equations in the table");
         initialValue.setHorizontalAlignment(SwingConstants.CENTER);

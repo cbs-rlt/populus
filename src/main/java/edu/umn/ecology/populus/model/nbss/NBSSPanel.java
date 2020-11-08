@@ -165,10 +165,10 @@ public class NBSSPanel extends ModelPanel {
         avgB.setSelected(true);
         avgB.setEnabled(true);
         avgB.setText("Average");
-        avgB.addItemListener(e -> avgB_itemStateChanged(e));
+        avgB.addItemListener(this::avgB_itemStateChanged);
         totB.setEnabled(true);
         totB.setText("Total");
-        npvstRB.addChangeListener(e -> npvstRB_stateChanged(e));
+        npvstRB.addChangeListener(this::npvstRB_stateChanged);
         cartBG.add(avgB);
         cartBG.add(totB);
         borderBG.add(reflexiveRB);

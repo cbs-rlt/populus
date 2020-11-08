@@ -136,7 +136,7 @@ public class WoozlePanel extends ModelPanel {
         mutationRate.setHelpText("Determines whether the child recieves a new, randomly chosen letter, or a faithful copy from the parental phrase");
         diploidBox.setText(res.getString("Model_a_diploid"));
         diploidBox.setHorizontalAlignment(SwingConstants.CENTER);
-        diploidBox.addActionListener(e -> diploidBox_actionPerformed(e));
+        diploidBox.addActionListener(this::diploidBox_actionPerformed);
         showEvolveBox.setSelected(true);
         showEvolveBox.setText(res.getString("Show_phrase_evolving"));
         showEvolveBox.setHorizontalAlignment(SwingConstants.CENTER);

@@ -230,10 +230,10 @@ public class PRMPanel extends BasicPlotInputPanel {
         CominsButton.setText("Comins two-patch pesticide model");
         CominsButton.setActionCommand("Comins two-patch pesticide model");
         CominsButton.setFocusPainted(false);
-        CominsButton.addActionListener(e -> CominsButton_actionPerformed(e));
+        CominsButton.addActionListener(this::CominsButton_actionPerformed);
         AlstadAndowButton.setText("Alstad & Andow <i>Bt</i> maize model");
         AlstadAndowButton.setFocusPainted(false);
-        AlstadAndowButton.addActionListener(e -> AlstadAndowButton_actionPerformed(e));
+        AlstadAndowButton.addActionListener(this::AlstadAndowButton_actionPerformed);
 
         alstadAndowParams.setLayout(gridBagLayout2);
         alstadAndowParams.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -288,11 +288,11 @@ public class PRMPanel extends BasicPlotInputPanel {
 
         threevstButton.setActionCommand("<i>x, y/G, p, w vs t</i>");
         threevstButton.setFocusPainted(false);
-        threevstButton.addActionListener(e -> threevstButton_actionPerformed(e));
+        threevstButton.addActionListener(this::threevstButton_actionPerformed);
         threevstButton.setText("<i>(x + y ) vs t</i>");
         fourvstButton.setActionCommand("<i>( x * p ) + ( y * w ) vs t</i>");
         fourvstButton.setFocusPainted(false);
-        fourvstButton.addActionListener(e -> fourvstButton_actionPerformed(e));
+        fourvstButton.addActionListener(this::fourvstButton_actionPerformed);
         fourvstButton.setText("<i>( x*p + y* w ) vs t</i>");
 
         alstadAndowParams.setBorder(titledBorder2);
@@ -423,12 +423,12 @@ public class PRMPanel extends BasicPlotInputPanel {
         paramS3.setMaxValue(10000.0);
 
         twovstButton.setText("<i>x * p, w * y/G vs t</i>");
-        twovstButton.addActionListener(e -> twovstButton_actionPerformed(e));
+        twovstButton.addActionListener(this::twovstButton_actionPerformed);
         twovstButton.setActionCommand("<i>x * p, y/G * w </i> vs <i>t</i>");
         twovstButton.setFocusPainted(false);
         onevstButton.setText("<i>x, y/G, p, w vs t</i>");
         onevstButton.setSelected(true);
-        onevstButton.addActionListener(e -> onevstButton_actionPerformed(e));
+        onevstButton.addActionListener(this::onevstButton_actionPerformed);
         onevstButton.setFocusPainted(false);
         onevstButton.setActionCommand("<i>x, y/G, p, w vs t</i>");
         paramTime1.setParameterName("Generations");

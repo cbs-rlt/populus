@@ -93,7 +93,7 @@ public class INTRADGSPanel extends BasicPlotInputPanel {
         AfreqPPF.setParameterName("\"<i>A</i>\" starting frequency");
         AfreqPPF.setHelpText("Starting frequency of \"A\" genes.");
         singleMutationCB.setText("Single Mutation?");
-        singleMutationCB.addActionListener(e -> singleMutationCB_actionPerformed(e));
+        singleMutationCB.addActionListener(this::singleMutationCB_actionPerformed);
         numGroupsPPF.setIntegersOnly(true);
         numGroupsPPF.setDefaultValue(100.0);
         numGroupsPPF.setIncrementAmount(5.0);

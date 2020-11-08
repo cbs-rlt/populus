@@ -518,14 +518,14 @@ public class ColorChooser extends JDialog {
         jTextArea1.setText(res.getString("Edit_the_color_scheme"));
         mainpanel.setLayout(gridBagLayout3);
         jButton1.setText(res.getString("OK"));
-        jButton1.addActionListener(e -> jButton1_actionPerformed(e));
+        jButton1.addActionListener(this::jButton1_actionPerformed);
         jButton2.setText(res.getString("Cancel"));
-        jButton2.addActionListener(e -> jButton2_actionPerformed(e));
+        jButton2.addActionListener(this::jButton2_actionPerformed);
         jButton3.setText(res.getString("Set_Defaults"));
-        jButton3.addActionListener(e -> jButton3_actionPerformed(e));
-        jButton4.addActionListener(e -> jButton4_actionPerformed(e));
+        jButton3.addActionListener(this::jButton3_actionPerformed);
+        jButton4.addActionListener(this::jButton4_actionPerformed);
         jButton4.setText(res.getString("Apply"));
-        jButton5.addActionListener(e -> jButton5_actionPerformed(e));
+        jButton5.addActionListener(this::jButton5_actionPerformed);
         jButton5.setText(res.getString("Revert"));
         makeLists();
         getCurrentIndex();
@@ -590,7 +590,7 @@ public class ColorChooser extends JDialog {
         jComboBox12.addItem(res.getString("Default"));
         jComboBox12.addItem(res.getString("Custom"));
         jComboBox12.addItem(res.getString("Old_Populus"));
-        jComboBox12.addActionListener(e -> jComboBox12_actionPerformed(e));
+        jComboBox12.addActionListener(this::jComboBox12_actionPerformed);
         jComboBox12.setSelectedIndex(ColorScheme.schemeIndex);
         panel1.add(jComboBox1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 0, 0, 0), 0, 0));
         panel1.add(jLabel1, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 5, 0, 0), 0, 0));

@@ -118,11 +118,11 @@ public class ConstantPanel extends JPanel {
         addConstant.setToolTipText("Add the constant to the table");
         addConstant.setMargin(new Insets(2, 2, 2, 2));
         addConstant.setText("Add Constant");
-        addConstant.addActionListener(e -> addConstant_actionPerformed(e));
+        addConstant.addActionListener(this::addConstant_actionPerformed);
         newConstantName.setPreferredSize(new Dimension(30, 21));
         newConstantName.setToolTipText("Name for new constant");
         conHolder.setLayout(simpleVFlowLayout2);
-        jsb.addAdjustmentListener(e -> jsb_adjustmentValueChanged(e));
+        jsb.addAdjustmentListener(this::jsb_adjustmentValueChanged);
         this.add(addConstantPanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
         addConstantPanel.add(newConstantName, null);
         addConstantPanel.add(addConstant, null);

@@ -106,7 +106,7 @@ public class IEPanel extends BasicPlotInputPanel {
         continuousB.setFocusPainted(false);
         discreteB.setText("Discrete");
         discreteB.setFocusPainted(false);
-        discreteB.addItemListener(e -> discreteB_itemStateChanged(e));
+        discreteB.addItemListener(this::discreteB_itemStateChanged);
         ep = new EquationPanel(3, discreteB.isSelected());
         integrationType.setLayout(simpleVFlowLayout3);
         integrationType.setBorder(titledBorder2);

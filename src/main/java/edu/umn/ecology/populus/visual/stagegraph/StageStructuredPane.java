@@ -47,13 +47,13 @@ public class StageStructuredPane extends JPanel implements Serializable {
         setPreferredSize(new Dimension((int) (600 * scale), (int) (600 * scale)));
         drawingPanel = new DrawingPane(type, scale);
         addStage.setText("Add Stage");
-        addStage.addActionListener(e -> addStage_actionPerformed(e));
+        addStage.addActionListener(this::addStage_actionPerformed);
         drawingPanel.setToggleButtons(addStage, addTransition, removeElement);
         controlPanel.setLayout(gridBagLayout2);
         addTransition.setText("Add Transition");
-        addTransition.addActionListener(e -> addTransition_actionPerformed(e));
+        addTransition.addActionListener(this::addTransition_actionPerformed);
         removeElement.setText("Remove Element");
-        removeElement.addActionListener(e -> removeElement_actionPerformed(e));
+        removeElement.addActionListener(this::removeElement_actionPerformed);
         add(drawingPanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
                 , GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
         add(controlPanel, new GridBagConstraints(0, 1, 1, 1, 1.0, 0.0

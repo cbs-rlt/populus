@@ -161,7 +161,7 @@ public class INTERDGSPanel extends BasicPlotInputPanel {
         mPPF.setParameterName("Migration Rate");
         mPPF.setHelpText("Migration rate");
         singleMutationCB.setText("Single Mutation?");
-        singleMutationCB.addActionListener(e -> singleMutationCB_actionPerformed(e));
+        singleMutationCB.addActionListener(this::singleMutationCB_actionPerformed);
         demeSizePPF.setParameterName("Deme Size");
         demeSizePPF.setMaxValue(100.0);
         demeSizePPF.setIncrementAmount(5.0);

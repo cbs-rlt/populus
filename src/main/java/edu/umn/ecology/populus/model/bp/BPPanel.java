@@ -233,17 +233,17 @@ public class BPPanel extends BasicPlotInputPanel {
         paramGamma.setMinValue(1.0E-15);
         paramGamma.setParameterName("<i>\u03B3</i>");
         nstarvsnButton.setText("<i>N* vs N</i>");
-        nstarvsnButton.addActionListener(e -> nstarvsnButton_actionPerformed(e));
+        nstarvsnButton.addActionListener(this::nstarvsnButton_actionPerformed);
         nstarvsnButton.setActionCommand("<i>e, b vs t</i>");
         nstarvsnButton.setFocusPainted(false);
         fvstButton.setFocusPainted(false);
         fvstButton.setActionCommand("<i>H*, I*, H*+I* vs b</i>");
-        fvstButton.addActionListener(e -> fvstButton_actionPerformed(e));
+        fvstButton.addActionListener(this::fvstButton_actionPerformed);
         fvstButton.setText("<i>F vs t</i>");
         npvsnButton.setToolTipText("");
         npvsnButton.setActionCommand("<i>H, I vs t </i>");
         npvsnButton.setFocusPainted(false);
-        npvsnButton.addActionListener(e -> npvsnButton_actionPerformed(e));
+        npvsnButton.addActionListener(this::npvsnButton_actionPerformed);
         npvsnButton.setText("<i>N<sup>+</sup> vs N </i>");
         plasmidPanel.setToolTipText("Plasmid_Free Cells");
         plasmidPanel.setBorder(titledBorder11);
@@ -273,17 +273,17 @@ public class BPPanel extends BasicPlotInputPanel {
         variabletaugammaButton.setToolTipText("Variable");
         variabletaugammaButton.setText("Variable");
         variabletaugammaButton.setFocusPainted(false);
-        variabletaugammaButton.addActionListener(e -> variabletaugammaButton_actionPerformed(e));
+        variabletaugammaButton.addActionListener(this::variabletaugammaButton_actionPerformed);
         constantaugammaButton.setToolTipText("Constant");
         constantaugammaButton.setSelected(true);
         constantaugammaButton.setText("Constant");
         constantaugammaButton.setFocusPainted(false);
-        constantaugammaButton.addActionListener(e -> constantaugammaButton_actionPerformed(e));
+        constantaugammaButton.addActionListener(this::constantaugammaButton_actionPerformed);
         varTypePanel.setLayout(gridBagLayout4);
         varTypePanel.setBorder(titledBorder12);
         NvstButton.setText("<i>N vs t </i>");
         NvstButton.setSelected(true);
-        NvstButton.addActionListener(e -> NvstButton_actionPerformed(e));
+        NvstButton.addActionListener(this::NvstButton_actionPerformed);
         NvstButton.setFocusPainted(false);
         NvstButton.setActionCommand("<i>H, I vs t </i>");
         NvstButton.setToolTipText("");
@@ -314,7 +314,7 @@ public class BPPanel extends BasicPlotInputPanel {
         resourcePanel.setLayout(gridBagLayout11);
         resourcePanel.setBorder(titledBorder10);
         resourcePanel.setToolTipText("Constants");
-        seasonalModelButton.addActionListener(e -> seasonalModelButton_actionPerformed(e));
+        seasonalModelButton.addActionListener(this::seasonalModelButton_actionPerformed);
         seasonalModelButton.setFocusPainted(false);
         seasonalModelButton.setText("Seasonal");
         seasonalModelButton.setToolTipText("Seasonal");
@@ -324,7 +324,7 @@ public class BPPanel extends BasicPlotInputPanel {
         equableModelButton.setSelected(true);
         equableModelButton.setText("Equable");
         equableModelButton.setFocusPainted(false);
-        equableModelButton.addActionListener(e -> equableModelButton_actionPerformed(e));
+        equableModelButton.addActionListener(this::equableModelButton_actionPerformed);
         initialDensitiesPanel.add(paramnp, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0
                 , GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(3, 3, 3, 3), 0, 0));
         initialDensitiesPanel.add(paramnstar, new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0

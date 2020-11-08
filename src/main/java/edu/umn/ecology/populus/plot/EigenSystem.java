@@ -78,7 +78,7 @@ public class EigenSystem extends OutputPanel {
     private void jbInit() throws Exception {
         this.setLayout(gridBagLayout1);
 
-        eigenValueList.addListSelectionListener(e -> eigenValueList_valueChanged(e));
+        eigenValueList.addListSelectionListener(this::eigenValueList_valueChanged);
 
         valueTL.setText("Eigenvalue: ");
         vectorTL.setText("Eigenvector: ");

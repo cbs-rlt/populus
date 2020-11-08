@@ -151,7 +151,7 @@ public class SDALPanel extends BasicPlotInputPanel {
         initialConditionsPanel.setLayout(simpleVFlowLayout4);
         oneInitialFrequencyButton.setSelected(true);
         oneInitialFrequencyButton.setText(res.getString("One_Initial_Frequency"));
-        oneInitialFrequencyButton.addActionListener(e -> oneInitialFrequencyButton_actionPerformed(e));
+        oneInitialFrequencyButton.addActionListener(this::oneInitialFrequencyButton_actionPerformed);
         paramInitialFrequency.setCurrentValue(0.1);
         paramInitialFrequency.setDefaultValue(0.1);
         paramInitialFrequency.setIncrementAmount(0.05);
@@ -159,7 +159,7 @@ public class SDALPanel extends BasicPlotInputPanel {
         paramInitialFrequency.setParameterName(res.getString("Initial_Frequency"));
         paramInitialFrequency.setHelpText("Starting Frequency");
         sixInitialFrequenciesButton.setText(res.getString("Six_Initial"));
-        sixInitialFrequenciesButton.addActionListener(e -> sixInitialFrequenciesButton_actionPerformed(e));
+        sixInitialFrequenciesButton.addActionListener(this::sixInitialFrequenciesButton_actionPerformed);
         plotOptionsPanel.setBorder(titledBorder1);
         plotOptionsPanel.setLayout(simpleVFlowLayout1);
         pvstButton.setSelected(true);
@@ -244,7 +244,7 @@ public class SDALPanel extends BasicPlotInputPanel {
         selectionPanel.add(paramh, null);
         selectionPanel.add(params, null);
         jTabbedPane1.add(selectionPanel, res.getString("Selection"));
-        jTabbedPane1.addChangeListener(e -> jTabbedPane1_stateChanged(e));
+        jTabbedPane1.addChangeListener(this::jTabbedPane1_stateChanged);
         paramGens.setCurrentValue(130.0);
         paramGens.setDefaultValue(130.0);
         paramGens.setIncrementAmount(10.0);

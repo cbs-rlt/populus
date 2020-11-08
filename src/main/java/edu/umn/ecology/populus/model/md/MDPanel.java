@@ -221,7 +221,7 @@ public class MDPanel extends BasicPlotInputPanel {
         border11 = BorderFactory.createLineBorder(SystemColor.controlText, 1);
         titledBorder11 = new TitledBorder(border11, res.getString("Init_Population"));
         HvsPvsWButton.setText("<i>H vs P vs W </i>");
-        HvsPvsWButton.addActionListener(e -> HvsPvsWButton_actionPerformed(e));
+        HvsPvsWButton.addActionListener(this::HvsPvsWButton_actionPerformed);
         HvsPvsWButton.setActionCommand("<i>H vs P vs W </i>");
         HvsPvsWButton.setFocusPainted(false);//<i>P</i>, <i>N</i> vs <i>T</i>
         graphTypePanel.setLayout(gridLayout1);
@@ -271,10 +271,10 @@ public class MDPanel extends BasicPlotInputPanel {
         AndersonMayButton.setText(res.getString("Anderson_May"));
         AndersonMayButton.setActionCommand("Anderson & May");
         AndersonMayButton.setFocusPainted(false);
-        AndersonMayButton.addActionListener(e -> AndersonMayButton_actionPerformed(e));
+        AndersonMayButton.addActionListener(this::AndersonMayButton_actionPerformed);
         DobsonHudsonButton.setText("Dobson & Hudson");
         DobsonHudsonButton.setFocusPainted(false);
-        DobsonHudsonButton.addActionListener(e -> DobsonHudsonButton_actionPerformed(e));
+        DobsonHudsonButton.addActionListener(this::DobsonHudsonButton_actionPerformed);
         parasiteGrowthPanel.setBorder(titledBorder5);
         parasiteGrowthPanel.setToolTipText(res.getString("Parasite_Growth"));
         parasiteGrowthPanel.setLayout(gridBagLayout8);
@@ -321,7 +321,7 @@ public class MDPanel extends BasicPlotInputPanel {
         dAMBox.setText(res.getString("DAM_parasite"));
         dAMBox.setFocusPainted(false);
         dAMBox.setHorizontalAlignment(SwingConstants.CENTER);
-        dAMBox.addActionListener(e -> dAMBox_actionPerformed(e));
+        dAMBox.addActionListener(this::dAMBox_actionPerformed);
         paramlambda.setCurrentValue(11.0);
         paramlambda.setDefaultValue(11.0);
         paramlambda.setMaxValue(10000.0);
@@ -432,12 +432,12 @@ public class MDPanel extends BasicPlotInputPanel {
 
         HPWvstButton.setActionCommand("<i>H, P, W vs t</i>");
         HPWvstButton.setFocusPainted(false);
-        HPWvstButton.addActionListener(e -> HPWvstButton_actionPerformed(e));
+        HPWvstButton.addActionListener(this::HPWvstButton_actionPerformed);
         HPWvstButton.setSelected(true);
         HPWvstButton.setText("<i>H, P, W vs t</i>");
         PvsHButton.setFocusPainted(false);
         PvsHButton.setActionCommand("<i>P </i> vs <i>H</i>");
-        PvsHButton.addActionListener(e -> PvsHButton_actionPerformed(e));
+        PvsHButton.addActionListener(this::PvsHButton_actionPerformed);
         PvsHButton.setText("<i>P vs H</i>");
 
         dobsonHudsonParams.setBorder(titledBorder2);

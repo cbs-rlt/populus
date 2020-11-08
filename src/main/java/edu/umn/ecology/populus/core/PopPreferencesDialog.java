@@ -335,10 +335,10 @@ public class PopPreferencesDialog
         colorChooserButton.setToolTipText(
                 "Edit the color scheme used in Populus");
         colorChooserButton.setText(res.getString("Color_Scheme"));
-        colorChooserButton.addActionListener(e -> colorChooserButton_actionPerformed(e));
+        colorChooserButton.addActionListener(this::colorChooserButton_actionPerformed);
         terminusType.addItem("Arrow");
         terminusType.addItem("Dot");
-        aboutPopButton.addActionListener(e -> aboutButton_actionPerformed(e));
+        aboutPopButton.addActionListener(this::aboutButton_actionPerformed);
         integratorPreferencesB.setText("Integrator Settings");
         integratorPreferencesB.addActionListener(new
                 PreferencesDialog_integratorPreferencesB_actionAdapter(this));

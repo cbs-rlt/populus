@@ -498,17 +498,17 @@ public class PopulusParameterField extends JPanel implements Externalizable {
         });
         cancelMenuItem.setText("Cancel");
         setToDefaultMenuItem.setText("Set to Default");
-        setToDefaultMenuItem.addActionListener(e -> setToDefaultMenuItem_actionPerformed(e));
+        setToDefaultMenuItem.addActionListener(this::setToDefaultMenuItem_actionPerformed);
         setToMinimumMenuItem.setText("Set to Minimum");
-        setToMinimumMenuItem.addActionListener(e -> setToMinimumMenuItem_actionPerformed(e));
+        setToMinimumMenuItem.addActionListener(this::setToMinimumMenuItem_actionPerformed);
         setToMaximumMenuItem.setText("Set to Maximum");
-        setToMaximumMenuItem.addActionListener(e -> setToMaximumMenuItem_actionPerformed(e));
+        setToMaximumMenuItem.addActionListener(this::setToMaximumMenuItem_actionPerformed);
         aboutParameterMenuItem.setText("About Parameter");
-        aboutParameterMenuItem.addActionListener(e -> aboutParameterMenuItem_actionPerformed(e));
+        aboutParameterMenuItem.addActionListener(this::aboutParameterMenuItem_actionPerformed);
         numberField.addKeyListener(new EnterListener());
         this.setEnabled(true);
         this.setDoubleBuffered(false);
-        setIncrementAmount.addActionListener(e -> setIncrementAmount_actionPerformed(e));
+        setIncrementAmount.addActionListener(this::setIncrementAmount_actionPerformed);
         setIncrementAmount.setText("Set Increment Amount");
         this.add(fancyLabel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0
                 , GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));

@@ -141,12 +141,12 @@ public class APPDFRPanel extends BasicPlotInputPanel {
         type3Button.setText(res.getString("Type_III"));
         type3Button.setFocusPainted(false);
         type3Button.setActionCommand(res.getString("continuous"));
-        type3Button.addActionListener(e -> type3Button_actionPerformed(e));
+        type3Button.addActionListener(this::type3Button_actionPerformed);
         type1Button.setSelected(true);
         type1Button.setText(res.getString("Type_I"));
         type1Button.setFocusPainted(false);
         type1Button.setActionCommand(res.getString("discrete"));
-        type1Button.addActionListener(e -> type1Button_actionPerformed(e));
+        type1Button.addActionListener(this::type1Button_actionPerformed);
         lambdaPF.setCurrentValue(2.0);
         lambdaPF.setDefaultValue(2.0);
 
@@ -212,7 +212,7 @@ public class APPDFRPanel extends BasicPlotInputPanel {
         apPF.setVisible(true);
         thPF.setVisible(false);
         bPF.setVisible(false);
-        type2Button.addActionListener(e -> type2Button_actionPerformed(e));
+        type2Button.addActionListener(this::type2Button_actionPerformed);
         type2Button.setActionCommand(res.getString("continuous"));
         type2Button.setText(res.getString("Type_II"));
         type2Button.setFocusPainted(false);

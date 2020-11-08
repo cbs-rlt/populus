@@ -111,7 +111,7 @@ public class HHAPPanel extends BasicPlotInputPanel {
         ThreeAlleleRB.setSelected(true);
         ThreeAlleleRB.setText("3-Allele");
         TwoAlleleRB.setText("2-Allele");
-        TwoAlleleRB.addChangeListener(e -> TwoAlleleRB_stateChanged(e));
+        TwoAlleleRB.addChangeListener(this::TwoAlleleRB_stateChanged);
         mhPPF.setIncrementAmount(0.05);
         mhPPF.setMaxValue(1.0);
         mhPPF.setParameterName("<i>m<sub>h</sub></i>");

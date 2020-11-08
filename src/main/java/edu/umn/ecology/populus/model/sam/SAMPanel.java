@@ -119,7 +119,7 @@ public class SAMPanel extends BasicPlotInputPanel {
         sixFreqRB.setText("Six Frequency");
         singFreqRB.setSelected(true);
         singFreqRB.setText("Single Frequency");
-        singFreqRB.addChangeListener(e -> singFreqRB_stateChanged(e));
+        singFreqRB.addChangeListener(this::singFreqRB_stateChanged);
         freqP.setLayout(gridBagLayout2);
         this.setLayout(gridBagLayout1);
         this.add(initialConditionsPanel, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0

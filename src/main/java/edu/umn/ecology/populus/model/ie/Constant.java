@@ -57,12 +57,12 @@ public class Constant extends JPanel {
         constantPPF.setMaxValue(1000.0);
         constantPPF.setMinValue(-1000.0);
         constantPPF.setParameterName("a");
-        closeButton.setFont(new java.awt.Font("Dialog", 1, 12));
+        closeButton.setFont(new java.awt.Font("Dialog", Font.BOLD, 12));
         closeButton.setPreferredSize(new Dimension(14, 15));
         closeButton.setToolTipText("Remove this constant");
         closeButton.setMargin(new Insets(0, 0, 0, 0));
         closeButton.setText("X");
-        closeButton.addActionListener(e -> closeButton_actionPerformed(e));
+        closeButton.addActionListener(this::closeButton_actionPerformed);
         this.add(constantPPF, null);
         this.add(closeButton, null);
     }
