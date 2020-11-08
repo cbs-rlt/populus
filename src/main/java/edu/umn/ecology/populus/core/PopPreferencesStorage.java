@@ -86,38 +86,38 @@ public final class PopPreferencesStorage {
     private static final boolean DEFAULT_USE_JFREECHART = true;
     private static final boolean DEFAULT_POST_MESSAGE = true;
 
-    private static final Integer BUTTON_TYPE = Integer.valueOf(100);
-    private static final Integer DIRECTORY = Integer.valueOf(101);
-    private static final Integer DELAY_TIME = Integer.valueOf(102);
-    private static final Integer TRIGGER_TYPE = Integer.valueOf(103);
-    private static final Integer USE_AWT_FILEDIALOG = Integer.valueOf(104);
-    private static final Integer COLOR_SAVER = Integer.valueOf(105);
-    private static final Integer VALUE_SAVER = Integer.valueOf(106);
-    private static final Integer BORDER_THICKNESS = Integer.valueOf(107);
-    private static final Integer TERMINUS_TYPE = Integer.valueOf(108);
-    private static final Integer TABLE_EDIT_COLOR = Integer.valueOf(109);
-    private static final Integer TABLE_UNEDIT_COLOR = Integer.valueOf(110);
-    private static final Integer HELP_FILE_LOCATION = Integer.valueOf(111);
-    private static final Integer HELP_FILE_LANGUAGE = Integer.valueOf(112);
-    private static final Integer OPEN_PDF_METHOD = Integer.valueOf(113);
-    private static final Integer OPEN_PDF_COMMAND = Integer.valueOf(114);
-    private static final Integer RESTORE_DESKTOP = Integer.valueOf(115);
-    private static final Integer DESKTOP_SIZE = Integer.valueOf(116);
-    private static final Integer DESKTOP_LOCATION = Integer.valueOf(117);
-    private static final Integer USE_JFREECHART = Integer.valueOf(118);
-    private static final Integer POST_MESSAGE = Integer.valueOf(119);
+    private static final Integer BUTTON_TYPE = 100;
+    private static final Integer DIRECTORY = 101;
+    private static final Integer DELAY_TIME = 102;
+    private static final Integer TRIGGER_TYPE = 103;
+    private static final Integer USE_AWT_FILEDIALOG = 104;
+    private static final Integer COLOR_SAVER = 105;
+    private static final Integer VALUE_SAVER = 106;
+    private static final Integer BORDER_THICKNESS = 107;
+    private static final Integer TERMINUS_TYPE = 108;
+    private static final Integer TABLE_EDIT_COLOR = 109;
+    private static final Integer TABLE_UNEDIT_COLOR = 110;
+    private static final Integer HELP_FILE_LOCATION = 111;
+    private static final Integer HELP_FILE_LANGUAGE = 112;
+    private static final Integer OPEN_PDF_METHOD = 113;
+    private static final Integer OPEN_PDF_COMMAND = 114;
+    private static final Integer RESTORE_DESKTOP = 115;
+    private static final Integer DESKTOP_SIZE = 116;
+    private static final Integer DESKTOP_LOCATION = 117;
+    private static final Integer USE_JFREECHART = 118;
+    private static final Integer POST_MESSAGE = 119;
 
-    public static final Integer TOP_PACKETS = Integer.valueOf(7);
-    public static final Integer SINGLE_PACKETS = Integer.valueOf(8);
-    public static final Integer MULTI_PACKETS = Integer.valueOf(9);
-    public static final Integer DISCRETE_PACKETS = Integer.valueOf(10);
-    public static final Integer MENDEL_PACKETS = Integer.valueOf(11);
-    public static final Integer SELECTION_PACKETS = Integer.valueOf(12);
-    public static final Integer SPATIAL_PACKETS = Integer.valueOf(13);
-    public static final Integer HOST_PACKETS = Integer.valueOf(14);
-    public static final Integer RC_PACKETS = Integer.valueOf(15);
-    public static final Integer QUANT_PACKETS = Integer.valueOf(16);
-    public static final Integer AIDS_PACKETS = Integer.valueOf(17);
+    public static final Integer TOP_PACKETS = 7;
+    public static final Integer SINGLE_PACKETS = 8;
+    public static final Integer MULTI_PACKETS = 9;
+    public static final Integer DISCRETE_PACKETS = 10;
+    public static final Integer MENDEL_PACKETS = 11;
+    public static final Integer SELECTION_PACKETS = 12;
+    public static final Integer SPATIAL_PACKETS = 13;
+    public static final Integer HOST_PACKETS = 14;
+    public static final Integer RC_PACKETS = 15;
+    public static final Integer QUANT_PACKETS = 16;
+    public static final Integer AIDS_PACKETS = 17;
 
     //Reference to singleton
     private static PopPreferencesStorage singleton = null;
@@ -259,15 +259,15 @@ public final class PopPreferencesStorage {
     }
 
     public static boolean isUseAWTFileDialog() {
-        return ((Boolean) getSingleton().table.get(USE_AWT_FILEDIALOG)).booleanValue();
+        return (Boolean) getSingleton().table.get(USE_AWT_FILEDIALOG);
     }
 
     public static boolean isRestoreDesktop() {
-        return ((Boolean) getSingleton().table.get(RESTORE_DESKTOP)).booleanValue();
+        return (Boolean) getSingleton().table.get(RESTORE_DESKTOP);
     }
 
     public static boolean isPostMessage() {
-        return ((Boolean) getSingleton().table.get(POST_MESSAGE)).booleanValue();
+        return (Boolean) getSingleton().table.get(POST_MESSAGE);
     }
 
     public static Dimension getDesktopScreenSize(JFrame frame) {
@@ -348,18 +348,18 @@ public final class PopPreferencesStorage {
 
     //SETTERS
     public static void setButtonType(int newType) {
-        getSingleton().table.put(BUTTON_TYPE, Integer.valueOf(newType));
+        getSingleton().table.put(BUTTON_TYPE, newType);
 
         //tell buttons to update look.
         getSingleton().notifyButtons();
     }
 
     public static void setDelayTime(long newTime) {
-        getSingleton().table.put(DELAY_TIME, Long.valueOf(newTime));
+        getSingleton().table.put(DELAY_TIME, newTime);
     }
 
     public static void setUseAWTFileDialog(boolean newVal) {
-        getSingleton().table.put(USE_AWT_FILEDIALOG, Boolean.valueOf(newVal));
+        getSingleton().table.put(USE_AWT_FILEDIALOG, newVal);
     }
 
     public static void setDirectory(String newFile) {
@@ -368,15 +368,15 @@ public final class PopPreferencesStorage {
     }
 
     public static void setOwnershipBorderThickness(int newThickness) {
-        getSingleton().table.put(BORDER_THICKNESS, Integer.valueOf(newThickness));
+        getSingleton().table.put(BORDER_THICKNESS, newThickness);
     }
 
     public static void setTriggerType(int newVal) {
-        getSingleton().table.put(TRIGGER_TYPE, Integer.valueOf(newVal));
+        getSingleton().table.put(TRIGGER_TYPE, newVal);
     }
 
     public static void setTerminusType(int newVal) {
-        getSingleton().table.put(TERMINUS_TYPE, Integer.valueOf(newVal));
+        getSingleton().table.put(TERMINUS_TYPE, newVal);
     }
 
     public static void setHelpFileLocation(String newVal) {
@@ -406,15 +406,15 @@ public final class PopPreferencesStorage {
     }
 
     public static void setUseJFreeClass(boolean newVal) {
-        getSingleton().table.put(USE_JFREECHART, Boolean.valueOf(newVal));
+        getSingleton().table.put(USE_JFREECHART, newVal);
     }
 
     public static void setRestoreDesktop(boolean newVal) {
-        getSingleton().table.put(RESTORE_DESKTOP, Boolean.valueOf(newVal));
+        getSingleton().table.put(RESTORE_DESKTOP, newVal);
     }
 
     public static void setPostMessage(boolean newVal) {
-        getSingleton().table.put(POST_MESSAGE, Boolean.valueOf(newVal));
+        getSingleton().table.put(POST_MESSAGE, newVal);
     }
 
     /**
@@ -673,16 +673,16 @@ public final class PopPreferencesStorage {
         int oldButtonType, newButtonType;
         oldButtonType = (table != null && !isInit) ? getButtonType() : INVALID;
         table = new Hashtable<>();
-        table.put(BUTTON_TYPE, Integer.valueOf(DEFAULT_BUTTON_TYPE));
+        table.put(BUTTON_TYPE, DEFAULT_BUTTON_TYPE);
         table.put(DIRECTORY, DEFAULT_DIRECTORY);
-        table.put(DELAY_TIME, Long.valueOf(DEFAULT_DELAY));
-        table.put(TRIGGER_TYPE, Integer.valueOf(DEFAULT_TRIGGER));
+        table.put(DELAY_TIME, DEFAULT_DELAY);
+        table.put(TRIGGER_TYPE, DEFAULT_TRIGGER);
         table.put(USE_AWT_FILEDIALOG, Boolean.FALSE);
         ValuesToSave.setDefaults();
         ColorSaver.setDefaults();
         table.put(COLOR_SAVER, new ColorSaver());
         table.put(VALUE_SAVER, new ValuesToSave());
-        table.put(BORDER_THICKNESS, Integer.valueOf(5));
+        table.put(BORDER_THICKNESS, 5);
         table.put(TABLE_EDIT_COLOR, Color.yellow);
         table.put(TABLE_UNEDIT_COLOR, Color.white);
         table.put(TERMINUS_TYPE, kDEFAULTTERMINI);

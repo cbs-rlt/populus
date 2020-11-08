@@ -98,7 +98,7 @@ public class NumberField extends JTextField {
     }
 
     public double getDouble() throws NumberFormatException {
-        return Double.valueOf(getText()).doubleValue();
+        return Double.valueOf(getText());
     }
 
     public class NumbersOnly extends KeyAdapter {

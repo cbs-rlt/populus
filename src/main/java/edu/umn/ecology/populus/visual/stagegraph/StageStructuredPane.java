@@ -266,7 +266,7 @@ public class StageStructuredPane extends JPanel implements Serializable {
         }
 
         public Stage getStage(int index) {
-            return index <= stages.size() ? (Stage) stages.get(index - 1) : (Stage) queue.get(index - stages.size() - 1);
+            return index <= stages.size() ? stages.get(index - 1) : queue.get(index - stages.size() - 1);
         }
 
         public int getStageIndex(Stage s) {

@@ -29,7 +29,7 @@ public class UpDownArrowSetBeanInfo extends SimpleBeanInfo {
     final String iconColor32x32Filename = "updown.gif";
     String iconMono16x16Filename;
     String iconMono32x32Filename;
-    Class beanClass = UpDownArrowSet.class;
+    Class<UpDownArrowSet> beanClass = UpDownArrowSet.class;
 
     @Override
     public PropertyDescriptor[] getPropertyDescriptors() {

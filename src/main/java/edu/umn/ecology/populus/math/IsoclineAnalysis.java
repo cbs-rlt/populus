@@ -314,7 +314,7 @@ public class IsoclineAnalysis {
                 isocline = new double[numVars][v[i][j].size()];
                 for (int k = 0; k < v[i][j].size(); k++) {
                     for (int l = 0; l < numVars; l++) {
-                        isocline[l][k] = ((IsoPoint) v[i][j].elementAt(k)).getPoint(l);
+                        isocline[l][k] = v[i][j].elementAt(k).getPoint(l);
                     }
                 }
                 newPoints[i + j] = isocline;

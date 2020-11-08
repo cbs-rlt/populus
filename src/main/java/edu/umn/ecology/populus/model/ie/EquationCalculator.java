@@ -161,10 +161,10 @@ public class EquationCalculator implements Serializable {
 						}
 					}
 					if( tokenIdentified ) {
-						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf( temp ).doubleValue() ) );
+						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf(temp)) );
 					}
 					else {
-						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf( temp.substring( 0, k - 1 ) ).doubleValue() ) );
+						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf(temp.substring(0, k - 1))) );
 						temp = temp.substring( k - 1, temp.length() );
 					}
 				}
@@ -312,7 +312,7 @@ public class EquationCalculator implements Serializable {
                                         if (constants != null) {
                                             if (constants.containsKey(temp)) {
                                                 try {
-                                                    value = ((Double) constants.get(temp)).doubleValue();
+                                                    value = constants.get(temp);
                                                 } catch (NumberFormatException nfe) {
                                                     throw new IEException("Hashtable didn't give a number.");
                                                 }
@@ -689,11 +689,11 @@ public class EquationCalculator implements Serializable {
 
         //send the 2 halves back to this function.
         if (!foundSymbol) {
-            cs.push(Integer.valueOf(right));
+            cs.push(right);
         } else {
             InfixToPrefix(cs, index, op2, right);
             InfixToPrefix(cs, index, left, op1);
-            cs.push(Integer.valueOf(symbol));
+            cs.push(symbol);
         }
     }
 
@@ -869,13 +869,13 @@ public class EquationCalculator implements Serializable {
             }
             Vector a = GetVector(i);
             bf = new Stack();
-            while (((Token) a.elementAt(((Integer) ix.peek()).intValue())).tokenType != TokenEnum.kConstant || !bf.empty()) {
-                while (((Token) a.elementAt(((Integer) ix.peek()).intValue())).tokenType != TokenEnum.kConstant) {
+            while (((Token) a.elementAt((Integer) ix.peek())).tokenType != TokenEnum.kConstant || !bf.empty()) {
+                while (((Token) a.elementAt((Integer) ix.peek())).tokenType != TokenEnum.kConstant) {
                     bf.push(ix.pop());
                 }
-                if (((Token) a.elementAt(((Integer) bf.peek()).intValue())).tokenType == TokenEnum.kFunction) {
-                    sym = ((Integer) bf.pop()).intValue();
-                    op1 = ((Integer) ix.peek()).intValue();
+                if (((Token) a.elementAt((Integer) bf.peek())).tokenType == TokenEnum.kFunction) {
+                    sym = (Integer) bf.pop();
+                    op1 = (Integer) ix.peek();
                     ((Token) a.elementAt(op1)).value = PerformFunction((int) ((Token) a.elementAt(sym)).value, ((Token) a.elementAt(op1)).value);
                     while (!bf.empty()) {
                         ix.push(bf.pop());
@@ -883,10 +883,10 @@ public class EquationCalculator implements Serializable {
                     continue;
                 }
                 bf.push(ix.pop());
-                if (((Token) a.elementAt(((Integer) ix.peek()).intValue())).tokenType == TokenEnum.kConstant) {
-                    op1 = ((Integer) bf.pop()).intValue();
-                    sym = ((Integer) bf.pop()).intValue();
-                    op2 = ((Integer) ix.peek()).intValue();
+                if (((Token) a.elementAt((Integer) ix.peek())).tokenType == TokenEnum.kConstant) {
+                    op1 = (Integer) bf.pop();
+                    sym = (Integer) bf.pop();
+                    op2 = (Integer) ix.peek();
                     ((Token) a.elementAt(op2)).value = PerformOperator((int) ((Token) a.elementAt(sym)).value, ((Token) a.elementAt(op1)).value, ((Token) a.elementAt(op2)).value);
                     while (!bf.empty()) {
                         ix.push(bf.pop());
@@ -896,7 +896,7 @@ public class EquationCalculator implements Serializable {
                 }
             } //end while
             if (a.size() > 0 && used[i]) {
-                calculated[i] = ((Token) a.elementAt(((Integer) ix.peek()).intValue())).value;
+                calculated[i] = ((Token) a.elementAt((Integer) ix.peek())).value;
             }
         } //end for
     }
@@ -914,7 +914,7 @@ public class EquationCalculator implements Serializable {
             System.out.print("\n" + i + ").\t");
             System.out.print(l + "\t");
             for (int j = 0; j < l; j++) {
-                k = ((Integer) temp.pop()).intValue();
+                k = (Integer) temp.pop();
                 System.out.print(((Token) v[i].elementAt(k)).shortString());
             }
         }

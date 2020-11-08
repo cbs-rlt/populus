@@ -47,7 +47,7 @@ public class PopPreferencesDialog
     final JButton okButton = new JButton();
     final JLabel TriggerLabel = new JLabel();
     final JButton colorChooserButton = new JButton();
-    final ComboBoxModel typeComboBoxModel = new DefaultComboBoxModel(new String[]{
+    final ComboBoxModel<String> typeComboBoxModel = new DefaultComboBoxModel<>(new String[]{
             /* res.getString( "None" ), - Let's not allow blank buttons */
             res.getString("Images"),
             res.getString("Text"), res.getString("Text_and_Images")
@@ -59,19 +59,19 @@ public class PopPreferencesDialog
 
     final JButton cancelButton = new JButton();
     Border border1;
-    final ComboBoxModel triggerComboBoxModel = new DefaultComboBoxModel(new String[]{
+    final ComboBoxModel<String> triggerComboBoxModel = new DefaultComboBoxModel<>(new String[]{
             res.getString("None"), res.getString("Default"),
             res.getString("Always")
     });
     final JPanel okPanel = new JPanel();
     final GridBagLayout gridBagLayout1 = new GridBagLayout();
     final JPanel actionsPanel = new JPanel();
-    final JComboBox triggerComboBox = new JComboBox();
+    final JComboBox<String> triggerComboBox = new JComboBox<>();
     final GridBagLayout gridBagLayout2 = new GridBagLayout();
     final JPanel panel1 = new JPanel();
     final JLabel buttonTypeLabel = new JLabel();
     final JButton integratorPreferencesB = new JButton();
-    final JComboBox buttonTypeComboBox = new JComboBox();
+    final JComboBox<String> buttonTypeComboBox = new JComboBox<>();
     static final ResourceBundle res = ResourceBundle.getBundle(
             "edu.umn.ecology.populus.core.Res");
     final GridBagLayout gridBagLayout3 = new GridBagLayout();
@@ -86,7 +86,7 @@ public class PopPreferencesDialog
     final JLabel dirLabel = new JLabel();
     final GridBagLayout gridBagLayout5 = new GridBagLayout();
     final JButton trickButton = new JButton();
-    final JComboBox terminusType = new JComboBox();
+    final JComboBox<String> terminusType = new JComboBox<>();
     private final JButton btnHelp = new JButton("Help Settings");
     private final JPanel newFeaturesPanel = new JPanel();
     private final JCheckBox chckbxUseNewChart = new JCheckBox("Use JFreeChart library");
