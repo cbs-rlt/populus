@@ -38,26 +38,30 @@ public class IMDDeriv extends Derivative {
             bsi = beta * x * y;
         } else {
 
-            //Worry about |n| < 10^-6 ?
-            if (Math.abs(n) < 1e-6) {
-                bsi = 0;
-            } else {
-                bsi = beta * x * y / n;
-            }
-        }
-        switch (type) {
-            case IMDParamInfo.SIRDD, IMDParamInfo.SIRFD -> {
-                dN[kX] = a * (x + y + z) - b * x - bsi + gamma * z;
-                dN[kY] = bsi - (alpha + b + nu) * y;
-                dN[kZ] = nu * y - (b + gamma) * z;
-            }
-            case IMDParamInfo.SIDD, IMDParamInfo.SIFD -> {
-                dN[kX] = a * (x + y) + nu * y - b * x - bsi;
-                dN[kY] = bsi - (alpha + b + nu) * y;
-            }
-        }
-        return;
-    }
+			//Worry about |n| < 10^-6 ?
+			if( Math.abs( n ) < 1e-6 ) {
+				bsi = 0;
+			}
+			else {
+				bsi = beta * x * y / n;
+			}
+		}
+		switch( type ) {
+		case IMDParamInfo.SIRDD:
+		case IMDParamInfo.SIRFD:
+			dN[kX] = a * ( x + y + z ) - b * x - bsi + gamma * z;
+			dN[kY] = bsi - ( alpha + b + nu ) * y;
+			dN[kZ] = nu * y - ( b + gamma ) * z;
+			break;
+
+		case IMDParamInfo.SIDD:
+		case IMDParamInfo.SIFD:
+			dN[kX] = a * ( x + y ) + nu * y - b * x - bsi;
+			dN[kY] = bsi - ( alpha + b + nu ) * y;
+			break;
+		}
+		return ;
+	}
 
     public IMDDeriv(int modelType, double a, double b, double alpha, double beta, double nu, double gamma) {
         this.type = modelType;

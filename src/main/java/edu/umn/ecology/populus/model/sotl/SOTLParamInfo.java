@@ -54,51 +54,52 @@ public class SOTLParamInfo implements BasicPlot {
                 x[j] /= wbar[i];
         }
 
-        switch (plotType) {
-            case Pvst -> {
-                points = new double[4][2][gens + 1];
-                for (int i = 0; i <= gens; i++)
-                    for (int j = 0; j < 4; j++) {
-                        points[j][0][i] = i;
-                        points[j][1][i] = data[i][j];
-                    }
-                bpi = new BasicPlotInfo(points, "Two-Locus Selection: Gametic Frequencies", "Generations<b>( <i>t</i> )</b>", "Gamete Frequency " + yCap1);
-                bpi.setIsFrequencies(true);
-            }
-            case pvst -> {
-                points = new double[4][2][gens + 1];
-                for (int i = 0; i <= gens; i++) {
-                    for (int j = 0; j < 4; j++)
-                        points[j][0][i] = i;
-                    points[0][1][i] = data[i][0] + data[i][1];//A
-                    points[1][1][i] = data[i][0] + data[i][2];//B
-                    points[2][1][i] = data[i][2] + data[i][3];//a
-                    points[3][1][i] = data[i][1] + data[i][3];//b
-                }
-                bpi = new BasicPlotInfo(points, "Two-Locus Selection: Allelic Frequencies", "Generations<b>( <i>t</i> )</>", "Allelic Frequency " + " ( " + yCap2);
-            }
-            case Dvst -> {
-                points = new double[1][2][gens + 1];
-                for (int i = 0; i <= gens; i++) {
-                    points[0][0][i] = i;
-                    points[0][1][i] = D[i];
-                }
-                String ycap = " Gametic Disequilibium  (  " + ColorScheme.getColorString(0) + "<i><b>D</> ) ";
-                bpi = new BasicPlotInfo(points, "Two-Locus Selection: Gametic Disequilibria", "Generations<b>( <i>t</i> )</>", ycap);
-            }
-            case WBARvst -> {
-                points = new double[1][2][gens + 1];
-                for (int i = 0; i <= gens; i++) {
-                    points[0][0][i] = i;
-                    points[0][1][i] = wbar[i];
-                }
-                String ycap2 = "Mean Fitness ( " + ColorScheme.getColorString(0) + "<i><b>w\u0305</b></i></font> )";
-                bpi = new BasicPlotInfo(points, "Two-Locus Selection: Mean Fitness", "Generations<b>( <i>t</i> )</>", ycap2);
-                bpi.setYMin(0.0d);
-            }
-        }
-        return bpi;
-    }
+		switch (plotType) {
+		case Pvst:
+			points = new double[4][2][gens+1];
+			for(int i=0; i<=gens; i++)
+				for(int j=0; j<4; j++){
+					points[j][0][i] = i;
+					points[j][1][i] = data[i][j];
+				}
+
+			bpi = new BasicPlotInfo(points,"Two-Locus Selection: Gametic Frequencies","Generations<b>( <i>t</i> )</b>","Gamete Frequency "+ yCap1);
+			bpi.setIsFrequencies(true);
+			break;
+		case pvst:
+			points = new double[4][2][gens+1];
+			for(int i=0; i<=gens; i++){
+				for(int j=0; j<4; j++)
+					points[j][0][i] = i;
+				points[0][1][i] = data[i][0]+data[i][1];//A
+				points[1][1][i] = data[i][0]+data[i][2];//B
+				points[2][1][i] = data[i][2]+data[i][3];//a
+				points[3][1][i] = data[i][1]+data[i][3];//b
+			}
+			bpi = new BasicPlotInfo(points,"Two-Locus Selection: Allelic Frequencies","Generations<b>( <i>t</i> )</>","Allelic Frequency "+ " ( "+ yCap2);
+			break;
+		case Dvst:
+			points = new double[1][2][gens+1];
+			for(int i=0; i<=gens; i++){
+				points[0][0][i] = i;
+				points[0][1][i] = D[i];
+			}
+			String ycap = " Gametic Disequilibium  (  "+ColorScheme.getColorString(0)+"<i><b>D</> ) ";
+			bpi = new BasicPlotInfo(points,"Two-Locus Selection: Gametic Disequilibria","Generations<b>( <i>t</i> )</>", ycap);
+			break;
+		case WBARvst:
+			points = new double[1][2][gens+1];
+			for(int i=0; i<=gens; i++){
+				points[0][0][i] = i;
+				points[0][1][i] = wbar[i];
+			}
+			String ycap2 = "Mean Fitness ( "+ColorScheme.getColorString(0)+"<i><b>w\u0305</b></i></font> )";
+			bpi = new BasicPlotInfo(points,"Two-Locus Selection: Mean Fitness","Generations<b>( <i>t</i> )</>",ycap2);
+			bpi.setYMin(0.0d);
+			break;
+		}
+		return bpi;
+	}
 
     public SOTLParamInfo(double[][] fitnesses, double[] freqs, double R, int plotType, int gens) {
         this.wij = fitnesses;

@@ -70,38 +70,41 @@ public class Plane3D {
             for (int i = grid.length - 1; i >= 0; i--) {//descending so that the last is ensured to be drawn
                 //this little if statement causes the axis labels to be integers (instead of doubles) for discrete
                 switch (special) {
-                    case isXY -> {
-                        if (Math.abs(grid[i][numLines].ty() - yi) < dy &&
-                                Math.abs(grid[i][numLines].tx() - xi) < dx) {
-                            if (dontSqueezeNumbers) continue;
-                        }
-                        if (!xIsDiscrete)
-                            s = dToS(grid[i][0].x());
-                        else
-                            s = "" + (int) (grid[i][0].x() + 0.5);
-                        g.drawString(s, grid[i][numLines].tx(), grid[i][numLines].ty() - 3);
-                    }
-                    case isXZ -> {
-                        if (Math.abs(grid[numLines][i].ty() - yi) < dy &&
-                                Math.abs(grid[numLines][i].tx() - xi) < dx) {
-                            if (dontSqueezeNumbers) continue;
-                        }
-                        if (!zIsDiscrete)
-                            s = dToS(grid[0][i].z());
-                        else
-                            s = "" + (int) (grid[0][i].z() + 0.5);
-                        g.drawString(s, grid[numLines][i].tx() + 5, grid[numLines][i].ty() + 10);
-                    }
-                    case isYZ -> {
-                        if (Math.abs(grid[i][numLines].ty() - yi) < dy &&
-                                Math.abs(grid[i][numLines].tx() - xi) < dx) {
-                            if (dontSqueezeNumbers) continue;
-                        }
-                        s = dToS(grid[i][0].y());
-                        dx = fm.charsWidth(s.toCharArray(), 0, s.length());
-                        g.drawString(s, grid[i][numLines].tx() - dx - 5, grid[i][numLines].ty() + 5);
-                    }
-                }
+				case isXY:
+					if( Math.abs(grid[i][numLines].ty() - yi) < dy &&
+							Math.abs(grid[i][numLines].tx() - xi) < dx){
+						if(dontSqueezeNumbers) continue;
+					}
+
+					if(!xIsDiscrete)
+						s = dToS(grid[i][0].x());
+					else
+						s = ""+(int)(grid[i][0].x()+0.5);
+					g.drawString(s,grid[i][numLines].tx(),grid[i][numLines].ty()-3);
+					break;
+				case isXZ:
+					if( Math.abs(grid[numLines][i].ty() - yi) < dy &&
+							Math.abs(grid[numLines][i].tx() - xi) < dx){
+						if(dontSqueezeNumbers) continue;
+					}
+
+					//this little if statement causes the axis labels to be integers (instead of doubles) for discrete
+					if(!zIsDiscrete)
+						s = dToS(grid[0][i].z());
+					else
+						s = ""+(int)(grid[0][i].z()+0.5);
+					g.drawString(s,grid[numLines][i].tx()+5,grid[numLines][i].ty()+10);
+					break;
+				case isYZ:
+					if( Math.abs(grid[i][numLines].ty() - yi) < dy &&
+							Math.abs(grid[i][numLines].tx() - xi) < dx){
+						if(dontSqueezeNumbers) continue;
+					}
+					s = dToS(grid[i][0].y());
+					dx = fm.charsWidth(s.toCharArray(),0,s.length());
+					g.drawString(s,grid[i][numLines].tx()-dx-5,grid[i][numLines].ty()+5);
+					break;
+				}
 
                 if (special != isXZ) {
                     yi = grid[i][numLines].ty();

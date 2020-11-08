@@ -157,18 +157,35 @@ public class SSPGPanel extends BasicPlotInputPanel implements Externalizable {
         return type;
     }
 
-    private void setPlotType(int type) {
-        switch (type) {
-            case kLambda -> this.lambdavstRB.setSelected(true);
-            case kSNX -> this.snxRB.setSelected(true);
-            case kNXSNXT -> this.nxsnxvstRB.setSelected(true);
-            case kNXSNXX -> this.nxsnxvsxRB.setSelected(true);
-            case kXSNXT -> this.xvsnxsnxtRB.setSelected(true);
-            case kXNXT -> this.xvsnxtRB.setSelected(true);
-            case kEIGEN -> this.eigenRB.setSelected(true);
-            default -> this.taboutRB.setSelected(true);
-        }
-    }
+		private void setPlotType(int type) {
+			switch (type) {
+			case kLambda:
+				this.lambdavstRB.setSelected(true);
+				break;
+			case kSNX:
+				this.snxRB.setSelected(true);
+				break;
+			case kNXSNXT:
+				this.nxsnxvstRB.setSelected(true);
+				break;
+			case kNXSNXX:
+				this.nxsnxvsxRB.setSelected(true);
+				break;
+			case kXSNXT:
+				this.xvsnxsnxtRB.setSelected(true);
+				break;
+			case kXNXT:
+				this.xvsnxtRB.setSelected(true);
+				break;
+			case kEIGEN:
+				this.eigenRB.setSelected(true);
+				break;
+			case kTABOUT:
+			default:
+				this.taboutRB.setSelected(true);
+				break;
+			}
+		}
 
     @Override
     public String getOutputGraphName() {

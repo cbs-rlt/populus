@@ -437,25 +437,25 @@ class ControlPointsStroke implements Stroke {
         GeneralPath strokedShape =
                 new GeneralPath(new BasicStroke(1.0f).createStrokedShape(shape));
 
-        // Use a PathIterator object to iterate through each of the line and
-        // curve segments of the shape.  For each one, mark the endpoint and
-        // control points (if any) by adding a rectangle to the GeneralPath
-        float[] coords = new float[6];
-        for (PathIterator i = shape.getPathIterator(null); !i.isDone(); i.next()) {
-            int type = i.currentSegment(coords);
-            switch (type) {
-                case PathIterator.SEG_CUBICTO:
-                    markPoint(strokedShape, coords[4], coords[5]); // falls through
-                    edu.umn.ecology.populus.fileio.Logging.log("cubicto " + coords[4] + ", " + coords[5]);
-                case PathIterator.SEG_QUADTO:
-                    markPoint(strokedShape, coords[2], coords[3]); // falls through
-                case PathIterator.SEG_MOVETO:
-                case PathIterator.SEG_LINETO:
-                    markPoint(strokedShape, coords[0], coords[1]); // falls through
-                case PathIterator.SEG_CLOSE:
-                    break;
-            }
-        }
+		// Use a PathIterator object to iterate through each of the line and
+		// curve segments of the shape.  For each one, mark the endpoint and
+		// control points (if any) by adding a rectangle to the GeneralPath
+		float[] coords = new float[6];
+		for(PathIterator i=shape.getPathIterator(null); !i.isDone();i.next()) {
+			int type = i.currentSegment(coords);
+			switch(type) {
+			case PathIterator.SEG_CUBICTO:
+				markPoint(strokedShape, coords[4], coords[5]); // falls through
+				edu.umn.ecology.populus.fileio.Logging.log("cubicto "+coords[4]+", "+coords[5]);
+			case PathIterator.SEG_QUADTO:
+				markPoint(strokedShape, coords[2], coords[3]); // falls through
+			case PathIterator.SEG_MOVETO:
+			case PathIterator.SEG_LINETO:
+				markPoint(strokedShape, coords[0], coords[1]); // falls through
+			case PathIterator.SEG_CLOSE:
+				break;
+			}
+		}
 
         return strokedShape;
     }
@@ -492,32 +492,34 @@ class SloppyStroke implements Stroke {
     public Shape createStrokedShape(Shape shape) {
         GeneralPath newshape = new GeneralPath();  // Start with an empty shape
 
-        // Iterate through the specified shape, perturb its coordinates, and
-        // use them to build up the new shape.
-        float[] coords = new float[6];
-        for (PathIterator i = shape.getPathIterator(null); !i.isDone(); i.next()) {
-            int type = i.currentSegment(coords);
-            switch (type) {
-                case PathIterator.SEG_MOVETO -> {
-                    perturb(coords, 2);
-                    newshape.moveTo(coords[0], coords[1]);
-                }
-                case PathIterator.SEG_LINETO -> {
-                    perturb(coords, 2);
-                    newshape.lineTo(coords[0], coords[1]);
-                }
-                case PathIterator.SEG_QUADTO -> {
-                    perturb(coords, 4);
-                    newshape.quadTo(coords[0], coords[1], coords[2], coords[3]);
-                }
-                case PathIterator.SEG_CUBICTO -> {
-                    perturb(coords, 6);
-                    newshape.curveTo(coords[0], coords[1], coords[2], coords[3],
-                            coords[4], coords[5]);
-                }
-                case PathIterator.SEG_CLOSE -> newshape.closePath();
-            }
-        }
+		// Iterate through the specified shape, perturb its coordinates, and
+		// use them to build up the new shape.
+		float[] coords = new float[6];
+		for(PathIterator i=shape.getPathIterator(null); !i.isDone();i.next()) {
+			int type = i.currentSegment(coords);
+			switch(type) {
+			case PathIterator.SEG_MOVETO:
+				perturb(coords, 2);
+				newshape.moveTo(coords[0], coords[1]);
+				break;
+			case PathIterator.SEG_LINETO:
+				perturb(coords, 2);
+				newshape.lineTo(coords[0], coords[1]);
+				break;
+			case PathIterator.SEG_QUADTO:
+				perturb(coords, 4);
+				newshape.quadTo(coords[0], coords[1], coords[2], coords[3]);
+				break;
+			case PathIterator.SEG_CUBICTO:
+				perturb(coords, 6);
+				newshape.curveTo(coords[0], coords[1], coords[2], coords[3],
+						coords[4], coords[5]);
+				break;
+			case PathIterator.SEG_CLOSE:
+				newshape.closePath();
+				break;
+			}
+		}
 
         // Finally, stroke the perturbed shape and return the result
         return stroke.createStrokedShape(newshape);

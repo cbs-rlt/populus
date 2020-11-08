@@ -257,31 +257,27 @@ public class ThreeD extends JPanel implements Stepper, MouseListener, MouseMotio
         else
             factor = 10;
 
-        switch (i) {
-            /*left*/
-            case 37 -> {
-                xtranslate -= factor;
-                repaint();
-            }
-            /*right*/
-            case 39 -> {
-                xtranslate += factor;
-                repaint();
-            }
-            /*up*/
-            case 38 -> {
-                ytranslate -= factor;
-                repaint();
-            }
-            /*down*/
-            case 40 -> {
-                ytranslate += factor;
-                repaint();
-            }
-        }
-        needsRefresh = true;
-        ke.consume();
-    }
+		switch(i){
+		case 37:/*left*/
+		xtranslate -= factor;
+		repaint();
+		break;
+		case 39:/*right*/
+			xtranslate += factor;
+			repaint();
+			break;
+		case 38:/*up*/
+			ytranslate -= factor;
+			repaint();
+			break;
+		case 40:/*down*/
+			ytranslate += factor;
+			repaint();
+			break;
+		}
+		needsRefresh = true;
+		ke.consume();
+	}
 
     /**
      * this method picks up the zoom keys, which are set to be the buttons with + or - on them.
@@ -298,13 +294,19 @@ public class ThreeD extends JPanel implements Stepper, MouseListener, MouseMotio
         else
             factor = 1.1f;
 
-        switch (c) {
-            case '=', '+' -> setScaleFudge(getScaleFudge() * factor);
-            case '-', '_' -> setScaleFudge(getScaleFudge() / factor);
-        }
-        needsRefresh = true;
-        ke.consume();
-    }
+		switch(c){
+		case '=':
+		case '+':
+			setScaleFudge(getScaleFudge()*factor);
+			break;
+		case '-':
+		case '_':
+			setScaleFudge(getScaleFudge()/factor);
+			break;
+		}
+		needsRefresh = true;
+		ke.consume();
+	}
 
 
     @Override

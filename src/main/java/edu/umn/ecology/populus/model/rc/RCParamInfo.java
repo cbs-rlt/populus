@@ -171,127 +171,134 @@ public class RCParamInfo implements BasicPlot {
             }
         }
 
-        switch (plotType) {
-            case phivsR -> {
-                // phi vs r1
-                int sizish = (int) (r1 * 100) + 1;
+		switch(plotType){
+		case phivsR:
+		{
+			// phi vs r1
+			int sizish = (int) (r1 * 100) +1;
 
-                rlist = new double[sizish];
+			rlist = new double[sizish];
 
-                for (int i = 0; i <= sizish - 1; i++) {
-                    rlist[i] = (double) i / 100;
-                }
+			for (int i=0; i<= sizish - 1; i++){
+				rlist[i] = (double)i/100;
+			}
 
-                sizeR1 = rlist.length;
+			sizeR1 = rlist.length;
 
-                phi11 = new double[sizeR1];
-                phi21 = new double[sizeR1];
-                for (int i = 0; i < sizeR1; i++) {
-                    phi11[i] = rlist[i] * a11 / (b11 + rlist[i]);
-                    phi21[i] = rlist[i] * a21 / (b21 + rlist[i]);
-                }
+			phi11 = new double[sizeR1];
+			phi21 = new double[sizeR1];
+			for (int i = 0; i<sizeR1; i++) {
+				phi11[i] = rlist[i] * a11 / (b11 + rlist[i]);
+				phi21[i] = rlist[i] * a21 / (b21 + rlist[i]);
+			}
 
 
-                if ((modelType == RCParamInfo.equable_11) || (modelType == RCParamInfo.seasonal_11)) {
-                    points = new double[1][2][];
-                    yCaption = res.getString("Rate_of_Uptake1");
-                } else {
-                    points = new double[2][2][];
-                    yCaption = res.getString("Rate_of_Uptake2");
-                }
+			if ((modelType ==RCParamInfo.equable_11) || (modelType == RCParamInfo.seasonal_11)){
+				points = new double[1][2][];
+				yCaption = res.getString( "Rate_of_Uptake1" );
+			}
+			else {
+				points = new double[2][2][];
+				yCaption = res.getString( "Rate_of_Uptake2" );
+			}
 
-                points[0][0] = rlist;
-                points[0][1] = phi11;
-                if (numVars >= 3) {
-                    points[1][0] = rlist;
-                    points[1][1] = phi21;
+			points[0][0] = rlist;
+			points[0][1] = phi11;
+			if (numVars >= 3){
+				points[1][0] = rlist;
+				points[1][1] = phi21;
 
-                }
-                bp = new BasicPlotInfo(points, mCap, capR1P, yCaption);
-                bp.setYMin(0.0);
-            }
-            case phivsR2 -> {
-                points = new double[2][2][];
-                int sizish2 = (int) r2 * 100 + 1;
-                r2list = new double[sizish2];
-                for (int i = 0; i <= r2 * 100; i++) {
-                    r2list[i] = (double) i / 100;
-                }
-                sizeR2 = r2list.length;
-                phi12 = new double[sizeR2];
-                phi22 = new double[sizeR2];
-                for (int i = 0; i < sizeR2; i++) {
-                    phi12[i] = r2list[i] * a12 / (b12 + r2list[i]);
-                    phi22[i] = r2list[i] * a22 / (b22 + r2list[i]);
-                }
+			}
+			bp = new BasicPlotInfo( points, mCap, capR1P, yCaption);
+			bp.setYMin( 0.0 );
+		}
+		break;
+		case phivsR2:
+		{
+			points = new double[2][2][];
+			int sizish2 = (int) r2 * 100 +1;
+			r2list = new double[sizish2];
+			for (int i=0; i<=r2*100; i++){
+				r2list[i] = (double)i/100;
+			}
+			sizeR2 = r2list.length;
+			phi12 = new double [sizeR2];
+			phi22 = new double [sizeR2];
+			for (int i = 0; i<sizeR2; i++) {
+				phi12[i] = r2list[i] * a12 / (b12 + r2list[i]);
+				phi22[i] = r2list[i] * a22 / (b22 + r2list[i]);
+			}
 
-                points[0][0] = r2list;
-                points[0][1] = phi12;
-                points[1][0] = r2list;
-                points[1][1] = phi22;
-                yCaption = res.getString("Rate_of_Uptake3");
-                bp = new BasicPlotInfo(points, mCap, capR2P, yCaption);
-                bp.setYMin(0.0);
-            }
-            case nvst -> {
-                int i, n;
-                n = (numVars < 3) ? 1 : 2;
-                points = new double[n][2][];
-                for (i = 0; i < n; i++) {
-                    points[i][0] = xlist;
-                    points[i][1] = ylists[2 * i];
-                }
-                bp = new BasicPlotInfo(points, mCap, capTime,
-                        (n == 1) ? capN1 : capNBoth);
-                bp.setYMin(0.0);
-            }
-            case rvst -> {
-                int i, n;
-                n = (numVars < 4) ? 1 : 2;
-                points = new double[n][2][];
-                for (i = 0; i < n; i++) {
-                    points[i][0] = xlist;
-                    points[i][1] = ylists[2 * i + 1];
-                }
-                points[0][0] = xlist;
-                points[0][1] = ylists[1];
-                bp = new BasicPlotInfo(points, mCap, capTime,
-                        (n == 1) ? capR1 : capRBoth);
-                bp.setYMin(0.0);
-            }
-            case nandrvst -> {
-                int i;
-                points = new double[numVars][2][];
-                for (i = 0; i < numVars; i++) {
-                    points[i][0] = xlist;
-                    points[i][1] = ylists[i];
-                }
-                switch (numVars) {
-                    default:
-                        edu.umn.ecology.populus.fileio.Logging.log("Bad numvars");
-                    case 2:
-                        yCaption = capConc2;
-                        break;
-                    case 3:
-                        yCaption = capConc3;
-                        break;
-                    case 4:
-                        yCaption = capConc4;
-                        break;
-                }
-                bp = new BasicPlotInfo(points, mCap, capTime, yCaption);
-                bp.setYMin(0.0);
-            }
-            case n2vsn1 -> {
-                points = new double[1][2][];
-                points[0][0] = ylists[0];
-                points[0][1] = ylists[2];
-                bp = new BasicPlotInfo(points, mCap, capN1, capN2);
-                bp.setYMin(0.0);
-            }
-        }
-        return bp;
-    }
+			points[0][0] = r2list;
+			points[0][1] = phi12;
+			points[1][0] = r2list;
+			points[1][1] = phi22;
+			yCaption = res.getString("Rate_of_Uptake3");
+			bp = new BasicPlotInfo( points, mCap, capR2P, yCaption);
+			bp.setYMin( 0.0 );
+		}
+		break;
+		case nvst:
+		{
+			int i, n;
+			n = (numVars<3) ? 1 : 2;
+			points = new double[n][2][];
+			for (i = 0; i < n; i++) {
+				points[i][0] = xlist;
+				points[i][1] = ylists[2*i];
+			}
+			bp = new BasicPlotInfo( points, mCap, capTime,
+					(n==1)?capN1:capNBoth);
+			bp.setYMin(0.0);
+		}
+		break;
+		case rvst:
+		{
+			int i, n;
+			n = (numVars<4) ? 1 : 2;
+			points = new double[n][2][];
+			for (i = 0; i < n; i++) {
+				points[i][0] = xlist;
+				points[i][1] = ylists[2*i+1];
+			}
+			points[0][0] = xlist;
+			points[0][1] = ylists[1];
+			bp = new BasicPlotInfo( points, mCap, capTime,
+					(n==1)?capR1:capRBoth);
+			bp.setYMin( 0.0 );
+		}
+		break;
+		case nandrvst:
+		{
+			int i;
+			points = new double[numVars][2][];
+			for (i = 0; i < numVars; i++) {
+				points[i][0] = xlist;
+				points[i][1] = ylists[i];
+			}
+			switch (numVars) {
+			default:
+				edu.umn.ecology.populus.fileio.Logging.log("Bad numvars");
+			case 2: yCaption = capConc2; break;
+			case 3: yCaption = capConc3; break;
+			case 4: yCaption = capConc4; break;
+			}
+			bp = new BasicPlotInfo( points, mCap, capTime, yCaption);
+			bp.setYMin(0.0);
+		}
+		break;
+		case n2vsn1:
+		{
+			points = new double[1][2][];
+			points[0][0] = ylists[0];
+			points[0][1] = ylists[2];
+			bp = new BasicPlotInfo( points, mCap, capN1, capN2);
+			bp.setYMin(0.0);
+		}
+		break;
+		}
+		return bp;
+	}
 
     public RCParamInfo(int modelType, int plotType, double time, /*time < 0 for steady state*/ double N1, double N2, double v, double w, double c1, double c2, double e11, double e12, double e21, double e22, double a11, double a12, double a21, double a22, double b11, double b12, double b21, double b22, double d, int tI) {
         this.n1 = N1;

@@ -282,16 +282,16 @@ public class NBSSPanel extends ModelPanel {
         //totB.setEnabled(b);
     }
 
-    void switchOutputType() {
-        boolean isfreq = npvstRB.isSelected();
-        switchTrigger = true;
-        npvstRB.setSelected(!isfreq);
-        switch (pi.getType()) {
-            case kN -> nRB.setSelected(isfreq);
-            case kP -> pRB.setSelected(isfreq);
-            case kNdivP -> ndivpRB.setSelected(isfreq);
-        }
-    }
+	void switchOutputType(){
+		boolean isfreq = npvstRB.isSelected();
+		switchTrigger = true;
+		npvstRB.setSelected(!isfreq);
+		switch(pi.getType()){
+		case kN:			nRB.setSelected(isfreq);			break;
+		case kP:			pRB.setSelected(isfreq);			break;
+		case kNdivP:	ndivpRB.setSelected(isfreq);	break;
+		}
+	}
 
     void avgB_itemStateChanged(ItemEvent e) {
 
