@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class StageStructuredPane extends JPanel implements Serializable {
@@ -127,7 +128,7 @@ public class StageStructuredPane extends JPanel implements Serializable {
         int newDim = pops.length;
         if (titles == null) {
             titles = new String[newDim];
-            for (int i = 0; i < titles.length; i++) titles[i] = "";
+            Arrays.fill(titles, "");
         }
         if (mat.length != newDim || mat[0].length != newDim || titles.length != newDim) {
             edu.umn.ecology.populus.fileio.Logging.log("New stages dimensions don't match");

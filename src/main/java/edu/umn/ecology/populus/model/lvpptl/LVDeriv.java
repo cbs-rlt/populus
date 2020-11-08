@@ -40,7 +40,6 @@ public class LVDeriv extends Derivative {
         dN[0] = r1 * N[0] * ddCorrection - type2Correction * N[0] * N[1];
         //dN[1] is P'
         dN[1] = -d2 * N[1] + g * type2Correction * N[0] * N[1];
-        return;
     }
 
 }

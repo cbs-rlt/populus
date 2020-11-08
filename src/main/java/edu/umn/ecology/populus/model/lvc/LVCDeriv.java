@@ -16,7 +16,6 @@ public class LVCDeriv extends Derivative {
     public void doDerivative(double t, double[] N, double[] dN) {
         dN[0] = r1 * N[0] * (K1 - N[0] - alpha * N[1]) / K1;
         dN[1] = r2 * N[1] * (K2 - N[1] - beta * N[0]) / K2;
-        return;
     }
 
     public LVCDeriv(double r1, double K1, double alpha, double r2, double K2, double beta) {

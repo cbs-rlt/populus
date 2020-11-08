@@ -57,8 +57,7 @@ public class MDDeriv extends Derivative {
 			dN[kP]/*P*/ = theta*W - (muP + d + alpha)*P - alpha*(k + 1)*P*P/(k*H);
 			break;
 		}
-		return ;
-	}
+    }
 
     public MDDeriv(int modelType, double a, double b, double alpha, double beta, double muA,
                    double muP, double lambda, double k, double gamma, double sigma, double theta) {

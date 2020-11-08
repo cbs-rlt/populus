@@ -16,7 +16,6 @@ public class TLDeriv extends Derivative {
     public void doDerivative(double t, double[] N, double[] dN) {
         dN[0] = r * N[0] * (1 - Math.pow((N[0] / k), theta)) - getfn(N[0]) * N[1];
         dN[1] = s * N[1] * (getfn(N[0]) - d);
-        return;
     }
 
     public TLDeriv(int type, double r, double k, double theta, double c, double h, double d, double s, double n, double p) {

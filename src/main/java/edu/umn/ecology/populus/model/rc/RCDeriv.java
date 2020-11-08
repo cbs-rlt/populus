@@ -110,8 +110,7 @@ public class RCDeriv extends Derivative {
 			break;
 
 		}
-		return ;
-	}
+    }
 
 
     public RCDeriv(int modelType, double time, double v, double w, double c1, double c2, double e11, double e12, double e21, double e22, double a11, double a12, double a21, double a22, double b11, double b12, double b21, double b22, double d, int tI) {

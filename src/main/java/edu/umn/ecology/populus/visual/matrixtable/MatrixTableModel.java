@@ -135,11 +135,9 @@ public class MatrixTableModel extends AbstractTableModel implements java.io.Exte
         if (newSize < oldSize) {
             while (newSize != getRowCount()) removeDimension();
             fireTableStructureChanged();
-            return;
         } else {
             while (newSize != getRowCount()) addDimension(0);
             fireTableStructureChanged();
-            return;
         }
     }
 

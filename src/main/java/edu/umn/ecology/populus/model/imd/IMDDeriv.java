@@ -60,8 +60,7 @@ public class IMDDeriv extends Derivative {
 			dN[kY] = bsi - ( alpha + b + nu ) * y;
 			break;
 		}
-		return ;
-	}
+    }
 
     public IMDDeriv(int modelType, double a, double b, double alpha, double beta, double nu, double gamma) {
         this.type = modelType;

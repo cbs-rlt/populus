@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
 
 public class SOAMALPanel extends BasicPlotInputPanel {
     /**
@@ -228,8 +229,7 @@ public class SOAMALPanel extends BasicPlotInputPanel {
 
     void addDimB_actionPerformed(ActionEvent e) {
         double[] mat = new double[st.getDataDimension() + 1];
-        for (int i = 0; i < mat.length; i++)
-            mat[i] = 1.0d;
+        Arrays.fill(mat, 1.0d);
         st.addDimension(false, false, 0.0d, mat);
         table.moveColumn(0, 3);
     }

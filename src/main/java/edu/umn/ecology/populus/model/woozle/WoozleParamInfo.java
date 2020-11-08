@@ -422,7 +422,6 @@ public class WoozleParamInfo extends ParamInfo {
             this.totalGenerations += generation;
             this.averageGeneration = ((double) totalGenerations) / ((double) iterationCount);
         }
-        return;
     }
 
     private char getRandomChar() {

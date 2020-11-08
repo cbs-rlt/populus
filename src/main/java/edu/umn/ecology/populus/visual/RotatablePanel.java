@@ -86,7 +86,6 @@ public class RotatablePanel extends JComponent {
             g = rotateGraphics(g);
         }
         getContent().paint(g);
-        return;
     }
 
 	/*

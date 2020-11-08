@@ -156,7 +156,6 @@ public class PopPreferencesDialog
      * Should not be called
      */
     void useKLGPlotterBox_actionPerformed(ActionEvent e) {
-        return;
         //Preferences.setUseDefaultPlotter(!useKLGPlotterBox.isSelected());
     }
 

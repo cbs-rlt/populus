@@ -11,6 +11,7 @@ import edu.umn.ecology.populus.plot.BasicPlot;
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 import edu.umn.ecology.populus.poproutines.Population;
 
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
@@ -141,8 +142,7 @@ public class GDParamInfo implements BasicPlot {
                 if (i != 0)
                     freqs = Routines.multiplyMatricies(freqs, matrix);
                 zValues = new double[xValues.length];
-                for (int j = 0; j < zValues.length; j++)
-                    zValues[j] = i;
+                Arrays.fill(zValues, i);
                 points[i][0] = xValues;
                 points[i][1] = freqs;
                 points[i][2] = zValues;

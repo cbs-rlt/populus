@@ -55,7 +55,6 @@ public class TextOutput {
             osw.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(DesktopWindow.defaultWindow, "Could not write file", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
         }
     }
 

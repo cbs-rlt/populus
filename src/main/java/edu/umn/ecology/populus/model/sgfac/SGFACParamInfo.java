@@ -10,6 +10,8 @@ import edu.umn.ecology.populus.constants.ColorScheme;
 import edu.umn.ecology.populus.plot.BasicPlot;
 import edu.umn.ecology.populus.plot.BasicPlotInfo;
 
+import java.util.Arrays;
+
 public class SGFACParamInfo implements BasicPlot {
     public static final int GRAD = 0;
     public static final int HETA = 1;
@@ -151,8 +153,7 @@ public class SGFACParamInfo implements BasicPlot {
         this.h2 = h2;
         this.plotType = plotType;
         p = new double[numDemes];
-        for (int i = 0; i < p.length; i++)
-            p[i] = p0;
+        Arrays.fill(p, p0);
         setUpW();
     }
 }

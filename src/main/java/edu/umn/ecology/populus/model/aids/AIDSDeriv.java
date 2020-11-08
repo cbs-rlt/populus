@@ -86,7 +86,6 @@ public class AIDSDeriv extends Derivative {
                 dN[i] = k * N[i - 1] * y - u * v * N[i];
             }
         }
-        return;
     }
 
     @Override

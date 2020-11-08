@@ -72,8 +72,7 @@ public class BPDeriv extends Derivative {
 		//      2{n*} : BPdf := (n[1]+n[2])*gamma*n[3]-n[2]*(rho+tau-psistar);
 		//      3{n } : BPdf := n[3]*(psi-rho)-(n[1]+n[2])*(gamma*n[3]-tau);
 		//      4{r } : BPdf := rho*(c-r)-estar*psistar*(n[1]+n[2])-e*psi*n[3];
-		return ;
-	}
+    }
 
     @Override
     public void reset() {

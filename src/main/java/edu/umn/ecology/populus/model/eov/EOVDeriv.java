@@ -48,8 +48,7 @@ public class EOVDeriv extends Derivative {
 			dN[kY] = (bop * x * y) - (d * y) - eop * y;
 			break;
 		}
-		return ;
-	}
+    }
 
     public EOVDeriv(int modelType, double a0, double a1, double b, double d, double p, double e, double c1, double c2, double c3) {
         this.type = modelType;

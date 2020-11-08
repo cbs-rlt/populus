@@ -75,8 +75,7 @@ public class TPDeriv extends Derivative {
 			dN[kV] = V*((S + L)*betaV*sigmaV - rho);
 			break;
 		}
-		return ;
-	}
+    }
 
     public TPDeriv(int modelType, double e, double sigmaV, double sigmaT, double betaV, double betaT, double lambda,
                    double induction, double tau, double c, double rho, double p, double q, double alphaS, double alphaR) {
