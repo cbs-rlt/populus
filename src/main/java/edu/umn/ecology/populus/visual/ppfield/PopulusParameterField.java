@@ -56,7 +56,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     //private double currentValue;
     private String helpText;
     private String parameterName;
-    private transient Vector parameterFieldListeners;
+    private transient Vector<ParameterFieldListener> parameterFieldListeners;
     private double incrementAmount = 1.0;
 
     //for willAutoUpdate
@@ -305,7 +305,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
 
     public synchronized void removeParameterFieldListener(ParameterFieldListener l) {
         if (parameterFieldListeners != null && parameterFieldListeners.contains(l)) {
-            Vector v = (Vector) parameterFieldListeners.clone();
+            Vector<ParameterFieldListener> v = (Vector) parameterFieldListeners.clone();
             v.removeElement(l);
             parameterFieldListeners = v;
         }
@@ -326,7 +326,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     }
 
     public synchronized void addParameterFieldListener(ParameterFieldListener l) {
-        Vector v = parameterFieldListeners == null ? new Vector(2) : (Vector) parameterFieldListeners.clone();
+        Vector<ParameterFieldListener> v = parameterFieldListeners == null ? new Vector(2) : (Vector) parameterFieldListeners.clone();
         if (!v.contains(l)) {
             v.addElement(l);
             parameterFieldListeners = v;

@@ -39,7 +39,7 @@ import java.util.*;
 public class EquationCalculator implements Serializable {
     private static final long serialVersionUID = -1638244995998903324L;
     private String[] eqs;
-    private Vector[] v;
+    private Vector<Token>[] v;
     private Stack[] s;
     private double[] initial, calculated;
     private Hashtable<String, Double> constants = null;
@@ -143,7 +143,7 @@ public class EquationCalculator implements Serializable {
 		String temp = "";
 		boolean tokenIdentified, lastTokenWasParam = false;
 		for( int i = 0;i < numEQ;i++ ) {
-			v[i] = new Vector();
+			v[i] = new Vector<>();
 			if( !used[i] ) {
 				continue;
 			}
