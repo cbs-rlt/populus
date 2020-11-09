@@ -1162,8 +1162,8 @@ public class BasicPlotInfo extends ParamInfo
     public void dump(PrintWriter pw) {
         java.util.Enumeration<JCChartStyle> e;
         int inc = 1;
-        pw.println(res.getString("Output_of") + mainCaption);
-        pw.println(xCaption + res.getString("vs_") + yCaption);
+        pw.println(res.getString("Output_of") + String.join(";", mainCaption));
+        pw.println(String.join(";", xCaption) + res.getString("vs_") + String.join(";", yCaption));
         e = lines.elements();
         while (e.hasMoreElements()) {
             pw.println(res.getString("Line_") + inc++);

@@ -490,7 +490,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     private void jbInit() throws Exception {
         this.setLayout(gridBagLayout1);
         arrowButtonSet.addActionListener(e -> {
-            if (e.getActionCommand() == UpDownArrowSet.UP) {
+            if (e.getActionCommand().equals(UpDownArrowSet.UP)) {
                 increment(true);
             } else {
                 increment(false);

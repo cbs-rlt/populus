@@ -400,7 +400,7 @@ public class EquationCalculator implements Serializable {
 						throw new IEException( "Unknown token: '" + temp + "'." );
 					} //end switch
 				}
-				if( lastTokenWasParam && temp != "" ) {
+				if(lastTokenWasParam && !temp.equals("")) {
 					lastTokenWasParam = false;
 
                     //we will insert a * if it doesn't already have an operator and it is not the

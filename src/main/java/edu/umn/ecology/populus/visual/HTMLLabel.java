@@ -104,7 +104,7 @@ public class HTMLLabel extends JPanel implements Serializable, HTMLConstants {
         if (newText == null) {
             newText = "";
         } else {
-            if (newText == text) {
+            if (newText.equals(text)) {
                 return;
             }
         }
