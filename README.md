@@ -29,10 +29,10 @@ The images and installers will be in the `build` directory.
 Note that for Windows, you'll need to run `gradlew.bat` instead, and need to install [WiX](https://wixtoolset.org) to package.
 
 # Feedback
-If you find bugs, irregularities, places for improvement, or have other comments, please send an email to populus@umn.edu.
+If you find bugs, irregularities, places for improvement, or have other comments, please email populus@umn.edu.
 
 # Language Support
-Spanish translations of some of the more basic models are provided. We would be interested in corresponding with people who would be able to help with other translations.  Please send an email to populus@umn.edu.
+Spanish translations of some of the more basic models are provided. We would be interested in corresponding with people who would be able to help with other translations.  If interested, please email populus@umn.edu.
 
 # Programming Credits 
 Java versions: Amos Anderson, Lars Roe, Sharareh Noorbaloochi \
