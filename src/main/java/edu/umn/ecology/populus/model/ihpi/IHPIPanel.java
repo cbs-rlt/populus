@@ -244,7 +244,7 @@ public class IHPIPanel extends BasicPlotInputPanel {
         type4Button.setText("Type IV");
         type4Button.setFocusPainted(false);
         type4Button.addChangeListener(this::type4Button_stateChanged);
-        IPPF.setParameterName("<i>I</i>\'");
+        IPPF.setParameterName("<i>I</i>'");
         IPPF.setHelpText("The probability that adult parasitoids will survive the insecticide, taking values from 0 to 1.");
         IPPF.setMaxValue(1.0);
         IPPF.setIncrementAmount(0.1);

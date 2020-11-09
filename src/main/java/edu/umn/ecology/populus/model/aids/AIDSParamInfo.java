@@ -184,7 +184,7 @@ public class AIDSParamInfo implements BasicPlot {
 		default:
 			edu.umn.ecology.populus.fileio.Logging.log("Invalid plot option: " + plotType);
 			break;
-		};
+		}
 
         bp.clearInnerCaptions();
         AIDSDeriv d = (AIDSDeriv) der;

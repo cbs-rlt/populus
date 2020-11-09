@@ -167,7 +167,7 @@ public class APPDIPanel extends BasicPlotInputPanel {
         aPF.setDefaultValue(0.068);
         aPF.setIncrementAmount(0.05);
         aPF.setMaxValue(1.0);
-        aPF.setParameterName("<i>a\'</i>");
+        aPF.setParameterName("<i>a'</i>");
         aPF.setHelpText("The instantaneous search rate of the parasitoid during te available search time, T.");
         gensPF.setCurrentValue(25.0);
         gensPF.setDefaultValue(25.0);

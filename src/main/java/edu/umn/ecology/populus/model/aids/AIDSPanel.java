@@ -224,12 +224,12 @@ public class AIDSPanel extends BasicPlotInputPanel {
         vi0PPF.setParameterName("<i>v<sub>i0</>");
         uPPF.setParameterName("<i>u</i>");
         riPPF.setParameterName("\\<<i>r<sub>i</sub></i>\\>");
-        ripPPF.setParameterName("<i>r<sub>i</>\'/<i>r<sub>i</>");
+        ripPPF.setParameterName("<i>r<sub>i</>'/<i>r<sub>i</>");
         QPPF.setParameterName("<i>Q</i>");
         dPPF.setParameterName("<i>d</i>");
         y0PPF.setParameterName("<i>y<sub>0</>");
         kPPF.setParameterName("<i>k</i>");
-        kpPPF.setParameterName("<i>k</i>\'");
+        kpPPF.setParameterName("<i>k</i>'");
         KPPF.setParameterName("<i>K</i>");
         siPPF.setParameterName("<i>s<sub>i</>/<i>r<sub>i</>");
         piPPF.setParameterName("<i>p<sub>i</>/<i>r<sub>i</>");

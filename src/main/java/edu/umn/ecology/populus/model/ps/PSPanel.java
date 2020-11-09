@@ -176,7 +176,7 @@ public class PSPanel extends BasicPlotInputPanel {
             demicPPFArray[i].setCurrentValue(0.5);
             demicPPFArray[i].setUseHTML(true);
             demicPPFArray[i].getLabel().setDefaultColor(ColorScheme.colors[i]);
-            demicPPFArray[i].setParameterName("Deme #" + Integer.toString(i + 1));
+            demicPPFArray[i].setParameterName("Deme #" + (i + 1));
             demicPanel.add(demicPPFArray[i], null);
         }
         setPFGEnabled();//this number can't be too big b/c 10*this will be the number of grid lines

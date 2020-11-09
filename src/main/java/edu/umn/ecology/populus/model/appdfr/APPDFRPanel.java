@@ -181,7 +181,7 @@ public class APPDFRPanel extends BasicPlotInputPanel {
         apPF.setCurrentValue(0.1);
         apPF.setDefaultValue(0.1);
         apPF.setMaxValue(1.0);
-        apPF.setParameterName("<i>a\' </i>");
+        apPF.setParameterName("<i>a' </i>");
         apPF.setHelpText("The parasitoid's instantaneous search rate, with permissible values ranging from 0 to 1.");
         cPF.setCurrentValue(1.0);
         cPF.setDefaultValue(1.0);

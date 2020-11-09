@@ -46,7 +46,6 @@ public class DeFinettiGraph extends JPanel implements Stepper, MouseListener, Mo
     int numberPoints, counter, increment;
     int lastCounter = 1;
     double gridFactor = 1.0, zoomFactor = 1.0;
-    ;
     BufferedImage bi;
     Graphics2D big;
     boolean imageStarted = false;

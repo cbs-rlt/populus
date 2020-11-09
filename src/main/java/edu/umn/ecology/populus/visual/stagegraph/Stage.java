@@ -125,10 +125,10 @@ public class Stage extends Ellipse2D implements StageShape, Serializable {
      * @return
      */
     String transformName(String s) {
-        int i = s.indexOf("%n", 0);
+        int i = s.indexOf("%n");
         while (i != -1) {
-            s = s.substring(0, i) + getShiftedIndex() + s.substring(i + 2, s.length());
-            i = s.indexOf("%n", 0);
+            s = s.substring(0, i) + getShiftedIndex() + s.substring(i + 2);
+            i = s.indexOf("%n");
         }
         return s;
     }

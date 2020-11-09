@@ -21,8 +21,6 @@ public class SimpleVFlowLayout implements LayoutManager, java.io.Serializable {
 
     private enum SizeMethod {MIN, PREF, MAX}
 
-    ;
-
     private int hgap, vgap;
     private final boolean hfill;
 

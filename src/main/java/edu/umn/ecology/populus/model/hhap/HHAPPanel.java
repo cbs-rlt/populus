@@ -42,7 +42,6 @@ public class HHAPPanel extends BasicPlotInputPanel {
     private final JPanel parasideFreqsP = new JPanel();
     private final TitledBorder titledBorder1 = new TitledBorder("");
     private final TitledBorder titledBorder4 = new TitledBorder("");
-    ;
     private final PopulusParameterField h3PPF = new PopulusParameterField();
     private final PopulusParameterField h2PPF = new PopulusParameterField();
     private final PopulusParameterField h1PPF = new PopulusParameterField();

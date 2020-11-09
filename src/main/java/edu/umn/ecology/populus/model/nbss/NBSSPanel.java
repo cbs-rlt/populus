@@ -99,7 +99,7 @@ public class NBSSPanel extends ModelPanel {
         titledBorder3 = new TitledBorder(border1, "Specifications");
         border4 = BorderFactory.createLineBorder(SystemColor.controlText, 1);
         titledBorder4 = new TitledBorder(border1, "Initial Conditions");
-        absorbingRB.setToolTipText("Acts like borders aren\'t there");
+        absorbingRB.setToolTipText("Acts like borders aren't there");
         absorbingRB.setSelected(true);
         reflexiveRB.setToolTipText("Populations bounce into closest tile");
         reflexiveRB.setText("Reflexive");

@@ -170,7 +170,7 @@ public final class NumberMath {
         if (buffer.length() > 3) {
             buffer.setLength(3);
         }
-        return buffer.toString() + "E" + Integer.toString(exp);
+        return buffer.toString() + "E" + exp;
     }
 
     /**
@@ -332,7 +332,7 @@ public final class NumberMath {
     static final String formatExpNotation3(double number, int numDigits) {
         int exp = getExponent(number);
         number += 0.0005 * Math.pow(10, exp);
-        return trimDown(Double.toString(number / Math.pow(10, exp)), exp > 9 ? numDigits : numDigits + 1) + "E" + Integer.toString(exp);
+        return trimDown(Double.toString(number / Math.pow(10, exp)), exp > 9 ? numDigits : numDigits + 1) + "E" + exp;
     }
 
     public static void printMatrix(double[][] a, String name, boolean reverse) {

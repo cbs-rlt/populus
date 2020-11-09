@@ -165,14 +165,14 @@ public class EquationCalculator implements Serializable {
 					}
 					else {
 						v[i].addElement( new Token( TokenEnum.kConstant, Double.valueOf(temp.substring(0, k - 1))) );
-						temp = temp.substring( k - 1, temp.length() );
+						temp = temp.substring( k - 1);
 					}
 				}
 				if( tokenIdentified == false && temp.charAt( 0 ) == '.' ) {
 					tokenIdentified = true;
 					temp = "0" + temp;
-					if( v[i].size() > 0 && ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kConstant ) {
-						( (Token)v[i].elementAt( v[i].size() - 1 ) ).value += Double.parseDouble( temp );
+					if( v[i].size() > 0 && v[i].elementAt( v[i].size() - 1 ).tokenType == TokenEnum.kConstant ) {
+						v[i].elementAt( v[i].size() - 1 ).value += Double.parseDouble( temp );
 					}
 					else {
 						throw new IEException( "Invalid decimal" );
@@ -250,7 +250,7 @@ public class EquationCalculator implements Serializable {
                                                                                 try {
                                                                                     value = Integer.parseInt(temp.substring(1)); //i.e. N1, N2, N3, etc ("N0" is reserved for time)
                                                                                 } catch (NumberFormatException nfe) {
-                                                                                    throw new IEException("Invalid index for N: \'" + temp.substring(1) + "\'.");
+                                                                                    throw new IEException("Invalid index for N: '" + temp.substring(1) + "'.");
                                                                                 }
                                                                                 if (value > numEQ || value < 1) {
                                                                                     throw new IEException("Parameter N index " + (int) value + " not defined.");
@@ -286,7 +286,7 @@ public class EquationCalculator implements Serializable {
 
                         //if appropriate, insert multiplication before the constant
                         if (v[i].size() > 0 && type != TokenEnum.kOperator) {
-                            if (((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kConstant || (((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kBracket && ((Token) v[i].elementAt(v[i].size() - 1)).value == Token.kClose)) {
+                            if (v[i].elementAt(v[i].size() - 1).tokenType == TokenEnum.kConstant || (v[i].elementAt(v[i].size() - 1).tokenType == TokenEnum.kBracket && v[i].elementAt(v[i].size() - 1).value == Token.kClose)) {
                                 v[i].addElement(new Token(TokenEnum.kOperator, Token.kMultiply));
                             }
                         }
@@ -317,7 +317,7 @@ public class EquationCalculator implements Serializable {
                                                     throw new IEException("Hashtable didn't give a number.");
                                                 }
                                             } else {
-                                                throw new IEException("Constant \'" + temp + "\' is not defined.");
+                                                throw new IEException("Constant '" + temp + "' is not defined.");
                                             }
                                         } else {
                                             throw new IEException("Constants not provided.");
@@ -329,7 +329,7 @@ public class EquationCalculator implements Serializable {
 
 						//if appropriate, insert multiplication before the constant
 						if( v[i].size() > 0 ) {
-							if( ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kConstant || ( ( (Token)v[i].elementAt( v[i].size() - 1 ) ).tokenType == TokenEnum.kBracket && ( (Token)v[i].elementAt( v[i].size() - 1 ) ).value == Token.kClose ) ) {
+							if( v[i].elementAt( v[i].size() - 1 ).tokenType == TokenEnum.kConstant || ( v[i].elementAt( v[i].size() - 1 ).tokenType == TokenEnum.kBracket && v[i].elementAt( v[i].size() - 1 ).value == Token.kClose ) ) {
 								v[i].addElement( new Token( TokenEnum.kOperator, Token.kMultiply ) );
 							}
 						}
@@ -406,7 +406,7 @@ public class EquationCalculator implements Serializable {
                     //we will insert a * if it doesn't already have an operator and it is not the
 
                     //end of a parenthetical statement
-                    if (((Token) v[i].elementAt(v[i].size() - 1)).tokenType != TokenEnum.kOperator && !(((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kBracket && ((Token) v[i].elementAt(v[i].size() - 1)).value == Token.kClose)) {
+                    if (v[i].elementAt(v[i].size() - 1).tokenType != TokenEnum.kOperator && !(v[i].elementAt(v[i].size() - 1).tokenType == TokenEnum.kBracket && v[i].elementAt(v[i].size() - 1).value == Token.kClose)) {
                         v[i].insertElementAt(new Token(TokenEnum.kOperator, Token.kMultiply), v[i].size() - 1);
                     }
                 }
@@ -477,7 +477,7 @@ public class EquationCalculator implements Serializable {
 
             //needed because switch starts at 1.
             if (!v[i].isEmpty()) {
-                if (((Token) v[i].elementAt(0)).tokenType == TokenEnum.kOperator && ((Token) v[i].elementAt(0)).value == Token.kMinus) {
+                if (v[i].elementAt(0).tokenType == TokenEnum.kOperator && v[i].elementAt(0).value == Token.kMinus) {
                     v[i].removeElementAt(0);
                     v[i].insertElementAt(new Token(TokenEnum.kOperator, Token.kMultiply), 0);
                     v[i].insertElementAt(new Token(TokenEnum.kConstant, -1), 0);
@@ -486,8 +486,8 @@ public class EquationCalculator implements Serializable {
 
             //check for too many close brackets
             for (int j = 0; j < v[i].size(); j++) {
-                if (((Token) v[i].elementAt(j)).tokenType == TokenEnum.kBracket) {
-                    if (((Token) v[i].elementAt(j)).value == Token.kOpen) {
+                if (v[i].elementAt(j).tokenType == TokenEnum.kBracket) {
+                    if (v[i].elementAt(j).value == Token.kOpen) {
                         bracketcount++;
                     } else {
                         bracketcount--;
@@ -505,41 +505,41 @@ public class EquationCalculator implements Serializable {
 
 			//check for others
 			for( int j = 0;j < v[i].size() - 1;j++ ) {
-				switch( ( (Token)v[i].elementAt( j + 1 ) ).tokenType ) {
+				switch( v[i].elementAt( j + 1 ).tokenType ) {
 				case kBracket:
-					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kOpen && ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant || /*5(*/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*)(*/ ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) ) {
+					if( v[i].elementAt( j + 1 ).value == Token.kOpen && ( v[i].elementAt( j ).tokenType == TokenEnum.kConstant || /*5(*/ ( v[i].elementAt( j ).tokenType == TokenEnum.kBracket && /*)(*/ v[i].elementAt( j ).value == Token.kClose ) ) ) {
 						v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
 					}
-					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kOpen && ( ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kOperator && ( (Token)v[i].elementAt( j + 2 ) ).value != Token.kMinus ) || /*(**/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*)(*/ ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) ) {
+					if( v[i].elementAt( j + 1 ).value == Token.kOpen && ( ( v[i].elementAt( j + 2 ).tokenType == TokenEnum.kOperator && v[i].elementAt( j + 2 ).value != Token.kMinus ) || /*(**/ ( v[i].elementAt( j ).tokenType == TokenEnum.kBracket && /*)(*/ v[i].elementAt( j ).value == Token.kClose ) ) ) {
 						throw new IEException( "Invalid token inside of open bracket." );
 					}
-					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kClose && ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kOperator || /*-)*/ ( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && /*()*/ ( (Token)v[i].elementAt( j ) ).value == Token.kOpen ) ) ) {
+					if( v[i].elementAt( j + 1 ).value == Token.kClose && ( v[i].elementAt( j ).tokenType == TokenEnum.kOperator || /*-)*/ ( v[i].elementAt( j ).tokenType == TokenEnum.kBracket && /*()*/ v[i].elementAt( j ).value == Token.kOpen ) ) ) {
 						throw new IEException( "Invalid token inside of close bracket." );
 					}
 					if( v[i].size() > j + 2 ) {
-						if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kClose && ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kConstant || /*)5*/ ( ( (Token)v[i].elementAt( j + 2 ) ).tokenType == TokenEnum.kFunction && /*)sin*/ ( (Token)v[i].elementAt( j + 2 ) ).value != Token.kFactorial ) ) ) {
+						if( v[i].elementAt( j + 1 ).value == Token.kClose && ( v[i].elementAt( j + 2 ).tokenType == TokenEnum.kConstant || /*)5*/ ( v[i].elementAt( j + 2 ).tokenType == TokenEnum.kFunction && /*)sin*/ v[i].elementAt( j + 2 ).value != Token.kFactorial ) ) ) {
 							throw new IEException( "Invalid token outside of close bracket." );
 						}
 					}
 					break;
 
 				case kConstant:
-					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant ) {
+					if( v[i].elementAt( j ).tokenType == TokenEnum.kConstant ) {
 						throw new IEException( "Two adjacent numbers without operator." );
 					}
 					break;
 
 				case kOperator:
-					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kOperator ) {
+					if( v[i].elementAt( j ).tokenType == TokenEnum.kOperator ) {
 						throw new IEException( "Two Operators next to each other." );
 					}
-					if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kFunction ) {
+					if( v[i].elementAt( j ).tokenType == TokenEnum.kFunction ) {
 						throw new IEException( "Operator on inside of function." );
 					}
 
 					//If these conditions are true, then assume the "-" is negate, not minus
-					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kMinus ) {
-						if( ( (Token)v[i].elementAt( j ) ).tokenType != TokenEnum.kConstant && ( (Token)v[i].elementAt( j ) ).tokenType != TokenEnum.kParameter && !( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kBracket && ( (Token)v[i].elementAt( j ) ).value == Token.kClose ) ) {
+					if( v[i].elementAt( j + 1 ).value == Token.kMinus ) {
+						if( v[i].elementAt( j ).tokenType != TokenEnum.kConstant && v[i].elementAt( j ).tokenType != TokenEnum.kParameter && !( v[i].elementAt( j ).tokenType == TokenEnum.kBracket && v[i].elementAt( j ).value == Token.kClose ) ) {
 							v[i].removeElementAt( j + 1 );
 							v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
 							v[i].insertElementAt( new Token( TokenEnum.kConstant, -1 ), j + 1 );
@@ -548,11 +548,11 @@ public class EquationCalculator implements Serializable {
 					break;
 
 				case kFunction:
-					if( ( (Token)v[i].elementAt( j + 1 ) ).value == Token.kFactorial ) {
+					if( v[i].elementAt( j + 1 ).value == Token.kFactorial ) {
 						int k = j, l = 0;
 						do {
-							if( ( (Token)v[i].elementAt( k ) ).tokenType == TokenEnum.kBracket ) {
-								if( ( (Token)v[i].elementAt( k ) ).value == Token.kOpen ) {
+							if( v[i].elementAt( k ).tokenType == TokenEnum.kBracket ) {
+								if( v[i].elementAt( k ).value == Token.kOpen ) {
 									l++;
 								}
 								else {
@@ -564,8 +564,8 @@ public class EquationCalculator implements Serializable {
 						v[i].removeElementAt( j + 1 );
 						v[i].insertElementAt( new Token( TokenEnum.kFunction, Token.kFactorial ), k + 1 );
 					}
-					if( ( (Token)v[i].elementAt( j + 1 ) ).tokenType == TokenEnum.kFunction ) {
-						if( ( (Token)v[i].elementAt( j ) ).tokenType == TokenEnum.kConstant ) {
+					if( v[i].elementAt( j + 1 ).tokenType == TokenEnum.kFunction ) {
+						if( v[i].elementAt( j ).tokenType == TokenEnum.kConstant ) {
 							v[i].insertElementAt( new Token( TokenEnum.kOperator, Token.kMultiply ), j + 1 );
 						}
 					}
@@ -574,10 +574,10 @@ public class EquationCalculator implements Serializable {
 			}
 
             //check first and last tokens for validity
-            if (((Token) v[i].elementAt(0)).tokenType == TokenEnum.kOperator) {
+            if (v[i].elementAt(0).tokenType == TokenEnum.kOperator) {
                 throw new IEException("Invalid first token.");
             }
-            if ((((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kOperator) || (((Token) v[i].elementAt(v[i].size() - 1)).tokenType == TokenEnum.kFunction)) {
+            if ((v[i].elementAt(v[i].size() - 1).tokenType == TokenEnum.kOperator) || (v[i].elementAt(v[i].size() - 1).tokenType == TokenEnum.kFunction)) {
                 throw new IEException("Invalid last token.");
             }
         }
@@ -616,13 +616,13 @@ public class EquationCalculator implements Serializable {
         }
 
         //strip off outermost parenthesis
-        while (!checked && ((Token) v[index].elementAt(left)).tokenType == TokenEnum.kBracket && ((Token) v[index].elementAt(right)).tokenType == TokenEnum.kBracket) {
+        while (!checked && v[index].elementAt(left).tokenType == TokenEnum.kBracket && v[index].elementAt(right).tokenType == TokenEnum.kBracket) {
             checked = true;
 
             //we need to check if first parenthesis has a pair other than the very last
             for (int j = left; j < right; j++) {
-                if (((Token) v[index].elementAt(j)).tokenType == TokenEnum.kBracket) {
-                    if (((Token) v[index].elementAt(j)).value == Token.kOpen) {
+                if (v[index].elementAt(j).tokenType == TokenEnum.kBracket) {
+                    if (v[index].elementAt(j).value == Token.kOpen) {
                         bracketcount++;
                     } else {
                         bracketcount--;
@@ -662,10 +662,10 @@ public class EquationCalculator implements Serializable {
         breakthenestedforloop:
         for (int j = 4; j >= 1; j--) {
             for (int i = right; i >= left; i--) {
-                if (((Token) v[index].elementAt(i)).tokenType == TokenEnum.kBracket) {
+                if (v[index].elementAt(i).tokenType == TokenEnum.kBracket) {
                     do {
-                        if (((Token) v[index].elementAt(i)).tokenType == TokenEnum.kBracket) {
-                            if (((Token) v[index].elementAt(i)).value == Token.kOpen) {
+                        if (v[index].elementAt(i).tokenType == TokenEnum.kBracket) {
+                            if (v[index].elementAt(i).value == Token.kOpen) {
                                 bracketcount++;
                             } else {
                                 bracketcount--;
@@ -675,7 +675,7 @@ public class EquationCalculator implements Serializable {
                     } while (bracketcount != 0);
                     i++;
                 }
-                if (((Token) v[index].elementAt(i)).getPrecedence() == j) {
+                if (v[index].elementAt(i).getPrecedence() == j) {
                     symbol = i;
                     op1 = i - 1;
                     op2 = i + 1;
@@ -719,7 +719,7 @@ public class EquationCalculator implements Serializable {
             if (v[i] != null) {
                 System.out.print(i + ").\t");
                 for (int j = 0; j < v[i].size(); j++) {
-                    System.out.print(((Token) v[i].elementAt(j)).shortString());
+                    System.out.print(v[i].elementAt(j).shortString());
                 }
             }
             edu.umn.ecology.populus.fileio.Logging.log();
@@ -915,7 +915,7 @@ public class EquationCalculator implements Serializable {
             System.out.print(l + "\t");
             for (int j = 0; j < l; j++) {
                 k = (Integer) temp.pop();
-                System.out.print(((Token) v[i].elementAt(k)).shortString());
+                System.out.print(v[i].elementAt(k).shortString());
             }
         }
         edu.umn.ecology.populus.fileio.Logging.log();
@@ -928,7 +928,7 @@ public class EquationCalculator implements Serializable {
     Vector GetVector(int whichVector) {
         Vector a = new Vector();
         for (int i = 0; i < v[whichVector].size(); i++) {
-            a.addElement(((Token) v[whichVector].elementAt(i)).clone());
+            a.addElement(v[whichVector].elementAt(i).clone());
             if (((Token) a.elementAt(i)).tokenType == TokenEnum.kParameter) {
                 ((Token) a.elementAt(i)).setToken(TokenEnum.kConstant, initial[(int) ((Token) a.elementAt(i)).value]);
             }
@@ -947,7 +947,7 @@ public class EquationCalculator implements Serializable {
                     break;
                 }
                 for (int j = left; j <= right; j++) {
-                    System.out.print(((Token) v[i].elementAt(j)).shortString());
+                    System.out.print(v[i].elementAt(j).shortString());
                 }
             }
             edu.umn.ecology.populus.fileio.Logging.log();

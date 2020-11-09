@@ -178,7 +178,7 @@ public class APPDNRSPanel extends BasicPlotInputPanel {
         //aDDPF.setHelpText("");
         aPF.setIncrementAmount(0.05);
         aPF.setMaxValue(1.0);
-        aPF.setParameterName("<i>a\'</i>");
+        aPF.setParameterName("<i>a'</i>");
         aPF.setHelpText("The \"area of discovery\" of the parasitoids.");
         gensPF.setCurrentValue(25.0);
         gensPF.setDefaultValue(50.0);

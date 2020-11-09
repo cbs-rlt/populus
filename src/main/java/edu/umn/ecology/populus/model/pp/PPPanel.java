@@ -205,7 +205,7 @@ public class PPPanel extends BasicPlotInputPanel {
         xypvstButton.setText("<i>X</i>, <i>Y</i>, <i>P</i>  vs <i>t</i>");
         xypvstButton.setFocusPainted(false);
         plotTypePanel.setBorder(titledBorder4);
-        gPPF.setParameterName("<i>g\'</i>");
+        gPPF.setParameterName("<i>g'</i>");
         gPPF.setMinValue(0.0);
         gPPF.setMaxValue(1.0);
         gPPF.setIncrementAmount(0.1);
