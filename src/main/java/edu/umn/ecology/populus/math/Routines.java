@@ -366,20 +366,6 @@ public final class Routines {
         return sumy2 / n - (sumy * sumy) / (n * n);
     }
 
-    /**
-     * Returns aCb (combinatorial)
-     */
-    public static final double comb(long n, long k) {
-        double temp = 1.0;
-        int i;
-        for (i = 1; i <= k; i++) {
-            temp *= n / k;
-            n--;
-            k--;
-        }
-        return temp;
-    }
-
     public static final double[] shrinkDoubleArray(double[] array, int finalSize) {
         double[] temp;
         temp = new double[finalSize];
