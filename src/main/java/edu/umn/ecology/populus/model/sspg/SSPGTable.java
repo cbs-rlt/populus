@@ -104,8 +104,7 @@ public class SSPGTable extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if (columnIndex == 0) return false;
-        return true;
+        return columnIndex != 0;
     }
 
     @Override
@@ -139,10 +138,10 @@ public class SSPGTable extends AbstractTableModel {
     }
 
     String transformName(String s, int index) {
-        int i = s.indexOf("%n", 0);
+        int i = s.indexOf("%n");
         while (i != -1) {
-            s = s.substring(0, i) + index + s.substring(i + 2, s.length());
-            i = s.indexOf("%n", 0);
+            s = s.substring(0, i) + index + s.substring(i + 2);
+            i = s.indexOf("%n");
         }
         return s;
     }

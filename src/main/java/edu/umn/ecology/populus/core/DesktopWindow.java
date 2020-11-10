@@ -366,7 +366,7 @@ public class DesktopWindow extends JFrame implements ModelListener {
 
     private void loadModel(Class<? extends Model> model) {
         try {
-            Model m = model.getConstructor(new Class[]{}).newInstance(new Object[]{});
+            Model m = model.getConstructor(new Class[]{}).newInstance();
             ColorScheme.addModel(m);
             newModelFromModelChooser(m);
         } catch (Exception e) {

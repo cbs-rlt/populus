@@ -149,16 +149,8 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     }
 
     public void setAutoIncrement(boolean yesAuto, boolean yesKeepInteger) {
-        if (yesAuto) {
-            autoIncrement = true;
-        } else {
-            autoIncrement = false;
-        }
-        if (yesKeepInteger) {
-            keepValueAnInteger = true;
-        } else {
-            keepValueAnInteger = false;
-        }
+        autoIncrement = yesAuto;
+        keepValueAnInteger = yesKeepInteger;
     }
 
     @Override
@@ -341,11 +333,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     }
 
     public boolean getAutoUpdate() {
-        if (numberField.getDouble() > maxAutoUpdateValue) {
-            willAutoUpdate = false;
-        } else {
-            willAutoUpdate = true;
-        }
+        willAutoUpdate = !(numberField.getDouble() > maxAutoUpdateValue);
         return willAutoUpdate;
     }
 
@@ -490,11 +478,7 @@ public class PopulusParameterField extends JPanel implements Externalizable {
     private void jbInit() throws Exception {
         this.setLayout(gridBagLayout1);
         arrowButtonSet.addActionListener(e -> {
-            if (e.getActionCommand().equals(UpDownArrowSet.UP)) {
-                increment(true);
-            } else {
-                increment(false);
-            }
+            increment(e.getActionCommand().equals(UpDownArrowSet.UP));
         });
         cancelMenuItem.setText("Cancel");
         setToDefaultMenuItem.setText("Set to Default");

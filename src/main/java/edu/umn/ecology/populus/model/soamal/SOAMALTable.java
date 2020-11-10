@@ -109,8 +109,7 @@ public class SOAMALTable extends AbstractTableModel {
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         if (columnIndex == 0) return false;
         if (columnIndex != 1 && !(Boolean) getValueAt(rowIndex, 1)) return false;
-        if (columnIndex > 3 && !(Boolean) getValueAt(columnIndex - 4, 1)) return false;
-        return true;
+        return columnIndex <= 3 || (Boolean) getValueAt(columnIndex - 4, 1);
     }
 
     /**

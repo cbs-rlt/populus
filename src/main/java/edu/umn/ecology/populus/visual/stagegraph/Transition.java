@@ -379,8 +379,7 @@ public class Transition extends CubicCurve2D implements StageShape, Serializable
         at.setToIdentity();
         at.rotate(-angle);
         at.transform(new double[]{p.getX(), p.getY(), x1, y1, x2, y2}, 0, t, 0, 3);
-        if (t[0] < t[2] && t[0] > t[4] && Math.abs(t[3] - t[1]) < 7) return true;
-        return false;
+        return t[0] < t[2] && t[0] > t[4] && Math.abs(t[3] - t[1]) < 7;
     }
 }
 

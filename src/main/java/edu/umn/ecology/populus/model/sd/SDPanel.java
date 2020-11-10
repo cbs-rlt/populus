@@ -126,7 +126,7 @@ public class SDPanel extends ModelPanel {
         bordertypeP.setLayout(simpleVFlowLayout1);
         absorbingRB.setText("Absorbing");
         absorbingRB.setSelected(true);
-        absorbingRB.setToolTipText("Acts like borders aren\'t there");
+        absorbingRB.setToolTipText("Acts like borders aren't there");
         reflexiveRB.setText("Reflexive");
         reflexiveRB.setToolTipText("Populations bounce into closest tile");
         periodicRB.setText("Periodic");
@@ -189,7 +189,7 @@ public class SDPanel extends ModelPanel {
         this.setLayout(gridBagLayout1);
         bordertypeP.setBorder(titledBorder1);
         hdRB.setText("Hawk-Dove");
-        pdRB.setText("Prisoner\'s Dilemma");
+        pdRB.setText("Prisoner's Dilemma");
         gameBG.add(hdRB);
         gameBG.add(pdRB);
         gametypeP.setLayout(simpleVFlowLayout2);

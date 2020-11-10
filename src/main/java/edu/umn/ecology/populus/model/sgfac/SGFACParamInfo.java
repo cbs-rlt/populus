@@ -23,7 +23,6 @@ public class SGFACParamInfo implements BasicPlot {
     final int numDemes = 50;
     int gen = 0;
     final double[][] w = new double[numDemes][3];
-    ;
     final double[][] f = new double[numDemes][3];
     final double[] p;
 

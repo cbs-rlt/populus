@@ -68,8 +68,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
         isSuspended = isDone = false;
         numRuns = evaluator.getGeneration();
         gensL.setText("" + numRuns);
-        if (cf.getBreakInterval() == 1) setPaused(true);
-        else setPaused(false);
+        setPaused(cf.getBreakInterval() == 1);
         updateUI();
     }
 
@@ -179,7 +178,7 @@ public class CellController extends OutputPanel implements Runnable, KeyListener
         try {
             cf.changeType(typeChangeCB.getItemAt(typeChangeCB.getSelectedIndex()));
         } catch (Exception ex) {
-            ;//TODO
+            //TODO
         }
         if (v == null) return;
         cellPanel.setValues(v, cf.getStrings(), cf.getDemarcations());

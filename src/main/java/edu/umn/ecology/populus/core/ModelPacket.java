@@ -31,7 +31,7 @@ public final class ModelPacket implements java.io.Serializable {
 
         //Extract model name using class
         try {
-            Method m = modelClass.getMethod("getModelName", new Class[0]);
+            Method m = modelClass.getMethod("getModelName");
             modelName = (String) m.invoke(null, new Object[]{});
         } catch (Exception e) {
             this.modelName = "Error Finding Model Name";

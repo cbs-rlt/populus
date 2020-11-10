@@ -202,7 +202,7 @@ public class RCPanel extends BasicPlotInputPanel {
         paramb12.setCurrentValue(4.0);
         paramb12.setDefaultValue(4.0);
         paramb12.setEnabled(false);
-        paramb12.setHelpText("Half saturation constant of 2nd consumer for this model\'s u");
+        paramb12.setHelpText("Half saturation constant of 2nd consumer for this model's u");
         paramb12.setIncrementAmount(0.1);
         paramb12.setMaxValue(100.0);
         paramb12.setParameterName("<i>b</i><sub>12</sub>");
@@ -215,7 +215,7 @@ public class RCPanel extends BasicPlotInputPanel {
         parame22.setCurrentValue(1.0);
         paramb11.setCurrentValue(5.5);
         paramb11.setDefaultValue(5.5);
-        paramb11.setHelpText("Half saturation constant of 2nd consumer for this model\'s u");
+        paramb11.setHelpText("Half saturation constant of 2nd consumer for this model's u");
         paramb11.setIncrementAmount(0.1);
         paramb11.setMaxValue(100.0);
         paramb11.setParameterName("<i>b</i><sub>11</sub>");
@@ -229,7 +229,7 @@ public class RCPanel extends BasicPlotInputPanel {
         paramb22.setCurrentValue(12.0);
         paramb22.setDefaultValue(12.0);
         paramb22.setEnabled(false);
-        paramb22.setHelpText("Half saturation constant of 2nd consumer for this model\'s u");
+        paramb22.setHelpText("Half saturation constant of 2nd consumer for this model's u");
         paramb22.setIncrementAmount(0.1);
         paramb22.setMaxValue(100.0);
         paramb22.setParameterName("<i>b</i><sub>22</sub>");
@@ -242,7 +242,7 @@ public class RCPanel extends BasicPlotInputPanel {
         paramC2.setHelpText("Rate of turnover");
         paramb21.setCurrentValue(0.2);
         paramb21.setDefaultValue(0.2);
-        paramb21.setHelpText("Half saturation constant of 2nd consumer for this model\'s u");
+        paramb21.setHelpText("Half saturation constant of 2nd consumer for this model's u");
         paramb21.setIncrementAmount(0.1);
         paramb21.setMaxValue(100.0);
         paramb21.setParameterName("<i>b</i><sub>21</sub>");
@@ -418,11 +418,7 @@ public class RCPanel extends BasicPlotInputPanel {
      */
     private void modelChangedActionPerformed(ActionEvent e) {
         //update stuff related to equal/seasonal
-        if (equableModelButton.isSelected()) {
-            paramD.setEnabled(false);
-        } else {
-            paramD.setEnabled(true);
-        }
+        paramD.setEnabled(!equableModelButton.isSelected());
 
         //update stuff related to number of populations
         if (this.c1r1Button.isSelected()) {

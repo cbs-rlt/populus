@@ -98,8 +98,7 @@ public class MatrixTableModel extends AbstractTableModel implements java.io.Exte
         if (!isASPG) return true;
         if (!lastCanHaveStarts && columnIndex == dimension - 1) return false;
         if (rowIndex == 0 || columnIndex == dimension) return true;
-        if (rowIndex - 1 == columnIndex) return true;
-        return false;
+        return rowIndex - 1 == columnIndex;
     }
 
     @Override

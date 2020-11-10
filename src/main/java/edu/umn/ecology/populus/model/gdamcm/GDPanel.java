@@ -285,7 +285,7 @@ public class GDPanel extends BasicPlotInputPanel {
             lociFrequencies[i].setCurrentValue(0.5);
             lociFrequencies[i].setUseHTML(true);
             lociFrequencies[i].getLabel().setDefaultColor(ColorScheme.colors[i]);
-            lociFrequencies[i].setParameterName(res.getString("Locus_") + Integer.toString(i + 1));
+            lociFrequencies[i].setParameterName(res.getString("Locus_") + (i + 1));
             lociFrequencies[i].addParameterFieldListener(new IncrementChecker());
         }
         setPFGEnabled(true);
