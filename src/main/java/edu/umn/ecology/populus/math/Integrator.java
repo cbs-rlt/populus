@@ -9,12 +9,13 @@ package edu.umn.ecology.populus.math;
 import edu.umn.ecology.populus.constants.RungeKuttaDefaults;
 
 /**
- * This is used to all of the math stuff for Populus. Most is taken from Chris's old code, as well as
+ * Integration routines for Populus.<BR>
+ *
+ * Most is taken from Chris's old code, as well as
  * 'Numerical Recipes' chapter 15. I would possibly consider using native methods if it is needed. <BR>
- * Call:
- * <UL><LI>integrate(double x1, double y1) to integrate.
- * <LI>RKQC and RK4 - single step functions
- * <BR> Should we make methods final?
+ * Call: {@code integrate(double x1, double y1) } to integrate.<br>
+ * RKQC and RK4 are single step functions.
+ * <BR> TODO: Should we make methods final?
  */
 
 public class Integrator {

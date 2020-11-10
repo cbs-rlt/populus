@@ -93,9 +93,6 @@ public class PopPreferencesDialog
     private final JCheckBox chckbxSaveWindowPosition = new JCheckBox("Save window position");
     private final JCheckBox chckbxPostMessage = new JCheckBox("Show Plot Message Dialogs");
 
-    /**
-     * @wbp.parser.constructor
-     */
     public PopPreferencesDialog(Frame frame, String title) {
         this(frame, title, false);
     }

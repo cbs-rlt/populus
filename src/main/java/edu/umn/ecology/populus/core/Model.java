@@ -502,10 +502,9 @@ public abstract class Model implements ParameterFieldListener, ModelPanelListene
 
     /**
      * This attempts to delete the model.<br>
-     * Call this to <em>request<em> (not guarantee) a delete, because it will notify its listeners,
+     * Call this to <em>request</em> (not guarantee) a delete, because it will notify its listeners,
      * who may throw an exception to prevent the deletion.
      */
-
     protected void delete() {
         try {
             this.fireModelEvent(new ModelEvent(this, ModelEvent.KILL));

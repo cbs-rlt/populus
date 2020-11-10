@@ -174,19 +174,21 @@ public final class NumberMath {
     }
 
     /**
-     * Formats a number to two-digit accuracy, except for (n>100 && n<1000)
+     * Formats a number to two-digit accuracy, except for (n&gt;100 and n&lt;1000)
      * A more complicated explanation is:
-     * 1) if n>=1000 or n<0.01 use exp'l notation
-     * 2) if n>= 10 round to an integer
-     * I replaced step 3 for now, since we only need two decimal accuracy.
-     * 3) if needed, truncate string to 6 chars, then (if truncated):
+     * <OL>
+     * <LI> if n &GreaterEqual; 1000 or n &lt; 0.01 use exponential notation</LI>
+     * <LI> if n &GreaterEqual; 10, round to an integer.</LI>
+     * <LI> if needed, truncate string to 6 chars, then (if truncated):
      * if there is a decimal point, make 3 loops, until right side is not ., 9, or 0:
-     * i) while 0 at right, delete all right hand zeros, then proceed to check '.', skipping 9 check
-     * ii) if there is a 9, check which is closer to the original number:
-     * a) what it is now,
-     * or b) that plus 0.0001 (that would round it up if truncated to 6 chars)
-     * Take which is better
-     * iii) if there is a . at end, delete it,
+     *   <OL>
+     *   <LI>while 0 at right, delete all right hand zeros, then proceed to check '.', skipping 9 check</LI>
+     *   <LI>if there is a 9, use which is closer to the original number:
+     *     a) what it is now,
+     *     or b) that plus 0.0001 (that would round it up if truncated to 6 chars)</LI>
+     *   <LI>if there is a . at end, delete it,</LI>
+     *   </OL>
+     * </OL>
      */
 
     //I may want something for three digit accuracy.

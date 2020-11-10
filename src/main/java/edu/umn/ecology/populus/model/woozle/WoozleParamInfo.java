@@ -94,7 +94,7 @@ public class WoozleParamInfo extends ParamInfo {
     }
 
     /**
-     * For multiple (>2) parents -- this is never used!
+     * For multiple (more than two) parents -- this is never used!
      */
 
     public WoozleParamInfo(int broodSize, double mutationRate, double crossoverRate, String targetPhrase, boolean showCross,

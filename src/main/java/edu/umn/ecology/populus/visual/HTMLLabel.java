@@ -30,25 +30,32 @@ import java.util.Stack;
 
 /**
  * Homemade class to imitate html-like formatting commands. The following tags
- * are acceptable (case insensitive): <P>
- * private static String SUP_BEGIN = "<SUP>"; <br>
- * private static String SUP_END = "</SUP>"; <br>
- * private static String SUB_BEGIN = "<SUB>"; <br>
- * private static String SUB_END = "</SUB>"; <br>
- * private static String COLOR_BEGIN = "<FONT COLOR=...>"; <br>
- * &nbsp;&nbsp; Note: '...' is either name of color of 6*hex rgb number <br>
- * &nbsp;&nbsp; @see edu.umn.ecology.populus.visual.Utilities.getColor() <br>
- * private static String COLOR_END = "</FONT>"; <br>
- * private static String ITALICS_BEGIN = "<i>"; <br>
- * private static String ITALICS_END = "</i>"; <br>
- * private static String BOLD_BEGIN = "<b>"; <br>
- * private static String BOLD_END = "</b>"; <br>
- * Deprecate BAR tag:  Use \u0305 instead of bar!!
- * private static String ALL_END = "</>"; <p>
- * KNOWN ISSUES:
- * <OL><LI>subscript bars appear as high as other bars
- * </OL>
- *
+ * are acceptable (case insensitive):
+ <P>
+ <PRE>
+ {@code
+  private static String SUP_BEGIN = "<SUP>";<br/>
+  private static String SUP_END = "</SUP>";<br/>
+  private static String SUB_BEGIN = "<SUB>";
+  private static String SUB_END = "</SUB>";
+  private static String COLOR_BEGIN = "<FONT COLOR=...>";
+  private static String COLOR_END = "</FONT>";
+  private static String ITALICS_BEGIN = "<i>";
+  private static String ITALICS_END = "</i>";
+  private static String BOLD_BEGIN = "<b>";
+  private static String BOLD_END = "</b>";
+  Deprecate BAR tag:  Use \u0305 instead of bar!!
+  private static String ALL_END = "</>";
+  }
+ </PRE>
+  Note: In COLOR_BEGIN, '...' is either name of color or a hex RGB number.
+
+ <BR>KNOWN ISSUES:
+  <UL><LI>subscript bars appear as high as other bars
+  </UL>
+ @see edu.umn.ecology.populus.visual.Utilities#getColor(int)
+ @see edu.umn.ecology.populus.visual.Utilities#getColor(String)
+
  * @author Lars Roe
  **/
 

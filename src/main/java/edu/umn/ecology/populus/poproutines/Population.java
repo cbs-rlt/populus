@@ -29,22 +29,22 @@ public class Population implements Serializable {
 
     /**
      * Assumes each person has two alleles.
-     * <p>
+     *
      * Here is Chris's code (lines 883-898 of SIMEXTRA.PAS): <CODE><BR>
      * Dom := trunc(DemeSize*FreqA*FreqA);<BR>
      * Rec := trunc(DemeSize*sqr(1-FreqA));<BR>
      * Het := DemeSize-Dom-Rec;<BR>
-     * <p>
+     *
      * {Indicate whether an allele is present (1) or not (0) in a parent}<BR>
      * FillChar(Parent,ParentiSize,0);<BR>
      * For i := 1 to Demesize do<BR>
-     * if i <= Dom then<BR>
+     * if i &lt;= Dom then<BR>
      * begin<BR>
      * Parent[i,1] := 1;<BR>
      * Parent[i,2] := 1<BR>
      * end<BR>
      * else<BR>
-     * if i<=(Dom+Het) then Parent[i,1] := 1;<BR>
+     * if i&lt;=(Dom+Het) then Parent[i,1] := 1;<BR>
      * <BR>
      * FreqA := (Dom + Het/2) / DemeSize;<BR>
      * </CODE>

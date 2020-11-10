@@ -259,7 +259,7 @@ public class Utilities {
 
     /**
      * Java has added HTML formatting after I hacked in HTML-like strings.
-     * For now, just surround with "<html>" and "</html>"
+     * For now, this code simply surrounds with html tags.
      */
     public static String PopHTMLToSwingHTML(String s) {
         return "<html>" + s + "</html>";

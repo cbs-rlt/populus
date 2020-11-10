@@ -20,5 +20,6 @@ build
 .metadata/**
 doc/developers/popdevg.log
 doc/developers/popdevg.synctex.gz
+**/*.swp
 
 
