@@ -12,7 +12,12 @@ plugins {
 
     id 'org.openjfx.javafxplugin' version '0.0.9'
     id 'org.beryx.jlink' version '2.22.1'
+
+    //Uncomment this and the apply below to see task dependencies.
+    //id "com.dorongold.task-tree" version "1.5"
 }
+
+//apply plugin: "com.dorongold.task-tree"
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -65,22 +70,29 @@ task copyResources {
         into "${buildDir}/classes/java/main"
     }
 }
+processResources.finalizedBy copyResources
 
 //TODO: There's probably a better (standard) way of doing this.
 //This is read at the beginning of startup and just spit into log/stdout.
+//If this isn't run, it will not show up in logs, but will still run.
 task createTimestampFile {
     dependsOn compileJava
 
-    TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
-    def now = new Date()
-    def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
-    def timestampFile = new File("${buildDir}/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
-    if (timestampFile.exists()) {
-        timestampFile.delete()
+    doLast {
+        logger.info("Creating timestamp file")
+
+        TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
+        def now = new Date()
+        def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
+        def timestampFile = new File("${buildDir}/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
+        if (timestampFile.exists()) {
+            timestampFile.delete()
+        }
+        timestampFile.createNewFile()
+        timestampFile.text=formattedDate
     }
-    timestampFile.createNewFile()
-    timestampFile.text=formattedDate
 }
+processResources.finalizedBy copyResources
 
 jar {
     manifest {
