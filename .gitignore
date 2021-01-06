@@ -11,6 +11,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+.idea/uiDesigner.xml
+
 
 # Ignore Gradle build output directory
 build
