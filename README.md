@@ -2,7 +2,7 @@ This is the official University of Minnesota Populus Git Repository.
 
 # About
 Populus is a package of educational software allowing students to manipulate ecological and evolutionary models, producing graphical representations of their dynamics.  It also contains an integrated help system discussing each of the models.
-Please go to https://www.cbs.umn.edu/populus/ for more information about Populus.
+Please go to https://cbs.umn.edu/populus/ for more information about Populus.
 
 # Copyright
 Don Alstad \
@@ -12,7 +12,7 @@ University of Minnesota \
 St. Paul, MN 55108-6097
 
 # How to run
-Installers will be available on the main Populus page, https://www.cbs.umn.edu/populus/.
+Installers will be available on the main Populus page, https://cbs.umn.edu/populus/.
 
 To build and run from source, use the gradle wrapper in the top directory:
 
