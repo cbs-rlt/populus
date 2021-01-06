@@ -16,11 +16,10 @@ Installers will be available on the main Populus page, https://www.cbs.umn.edu/p
 
 To build and run from source, use the gradle wrapper in the top directory:
 
-`$ ./gradlew build`
+`$ ./gradlew bootRun`
 
-`$ ./gradlew run`
-
-If you are using JDK 14 or later, you can also create installer/packager:
+If you are using JDK 14 or later, you can also create installer/packager for the
+operating system type you are running on:
 
 `$ ./gradlew jpackage`
 

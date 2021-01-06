@@ -722,7 +722,7 @@ public class EquationCalculator implements Serializable {
                     System.out.print(v[i].elementAt(j).shortString());
                 }
             }
-            edu.umn.ecology.populus.fileio.Logging.log();
+            edu.umn.ecology.populus.fileio.Logging.log("/End printing vectors");
         }
     }
 
@@ -918,7 +918,7 @@ public class EquationCalculator implements Serializable {
                 System.out.print(v[i].elementAt(k).shortString());
             }
         }
-        edu.umn.ecology.populus.fileio.Logging.log();
+        edu.umn.ecology.populus.fileio.Logging.log("/Done printing stacks");
     }
 
     /*************************************************
@@ -950,9 +950,9 @@ public class EquationCalculator implements Serializable {
                     System.out.print(v[i].elementAt(j).shortString());
                 }
             }
-            edu.umn.ecology.populus.fileio.Logging.log();
+            edu.umn.ecology.populus.fileio.Logging.log("");
         }
-        edu.umn.ecology.populus.fileio.Logging.log();
+        edu.umn.ecology.populus.fileio.Logging.log("");
     }
 
     double PerformOperator(int sym, double op1, double op2) {

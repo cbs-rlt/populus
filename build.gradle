@@ -7,17 +7,19 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application.
+    id 'org.springframework.boot' version '2.4.0'
+    id "io.spring.dependency-management" version "1.0.10.RELEASE"
     id 'application'
 
     id 'org.openjfx.javafxplugin' version '0.0.9'
-    id 'org.beryx.jlink' version '2.22.1'
+    id 'org.beryx.runtime' version '1.11.4'
 
     //Uncomment this and the apply below to see task dependencies.
     //id "com.dorongold.task-tree" version "1.5"
 }
 
 //apply plugin: "com.dorongold.task-tree"
+//sourceCompatibility = '11'
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -26,35 +28,25 @@ repositories {
 }
 
 dependencies {
-    //JAR files for application
-    implementation files('libs/jcommon-1.0.21.jar')
-    implementation files('libs/jfreechart-1.0.17.jar')
+    //Local JAR files for application
     implementation files('libs/jcchart401K.jar')
     implementation files('libs/acrobat.jar')
 
-	//It would be nice to include the org.jree libraries
-	//from repo, but they are not "module ready"
-    //implementation 'org.jfree:jcommon:1.0.24'
     //Todo: Try out latest version 1.5.0
-    //implementation 'org.jfree:jfreechart:1.0.17'
-
+    implementation 'org.jfree:jcommon:1.0.21'
+    implementation 'org.jfree:jfreechart:1.0.17'
     //acrobat file has a top-level sample class that breaks modules.
     //implementation 'com.adobe.acrobat:acrobat:1.1'
 
     implementation 'gov.nist.math:jama:1.0.3'
 
-    implementation 'com.google.guava:guava:29.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // Use JUnit Jupiter API for testing.
-    //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-    //JUnit 5.5 can't handle modules, so reverting to 5.4 until
-    //the issue is resolved
-    //https://github.com/java9-modularity/gradle-modules-plugin/issues/129
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
-
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
     // Use JUnit Jupiter Engine for testing.
-    //testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
 //TODO: The resources shouldn't be in the src directory initially,
@@ -96,20 +88,20 @@ processResources.finalizedBy copyResources
 
 jar {
     manifest {
-        attributes 'Main-Class': 'edu.umn.ecology.populus.core.PopRun'
+        attributes 'Main-Class': 'edu.umn.ecology.populus.PopRun'
     }
 }
 
 application {
     // Define the main class for the application.
-    mainModule = 'edu.umn.ecology.populus' // name defined in module-info.java
-    mainClass = 'edu.umn.ecology.populus.core.PopRun'
+    mainClass = 'edu.umn.ecology.populus.PopRun'
 }
 
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
 }
+
 
 allprojects {
     gradle.projectsEvaluated {
@@ -119,34 +111,34 @@ allprojects {
     }
 }
 
-jlink {
+runtime {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher{
-        name = 'Populus'
-    }
+
+    additive = true
+    modules = ['java.logging', 'java.desktop', 'java.naming', 'java.xml']
 
     jpackage {
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         appVersion = '6.1.0'
+        mainClass = 'org.springframework.boot.loader.JarLauncher'
+
         installerOptions += [
                 '--vendor', 'University of Minnesota',
                 '--license-file', 'LICENSE',
         ]
         if (currentOs.macOsX) {
+            jvmArgs = ["-Duser.dir=/tmp"]
             imageOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
             installerOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
-            icon = "src/main/resources/installer/macosx/picon.icns"
         } else if (currentOs.windows) {
             imageOptions = ['--resource-dir', 'src/main/resources/installer/windows']
             installerOptions = ['--resource-dir', 'src/main/resources/installer/windows']
-            icon = "src/main/resources/installer/windows/picon.ico"
             installerOptions += [
                     '--win-dir-chooser',
             ]
         } else { //Linux
             imageOptions = ['--resource-dir', 'src/main/resources/installer/linux']
             installerOptions = ['--resource-dir', 'src/main/resources/installer/linux']
-            icon = "src/main/resources/installer/linux/picon.png"
             installerOptions += [
                     '--linux-menu-group', 'Education',
                     '--linux-shortcut',
