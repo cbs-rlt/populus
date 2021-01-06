@@ -147,8 +147,8 @@ public class TextOutput {
                 edu.umn.ecology.populus.fileio.Logging.log("  N" + j + ":\t" + init[j]);
             }
             init = ss.calculateValues(init, rt);
-            edu.umn.ecology.populus.fileio.Logging.log();
+            edu.umn.ecology.populus.fileio.Logging.log("");
         }
-        edu.umn.ecology.populus.fileio.Logging.log();
+        edu.umn.ecology.populus.fileio.Logging.log("");
     }
 }

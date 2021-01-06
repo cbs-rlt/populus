@@ -235,7 +235,6 @@ public class DesktopWindow extends JFrame implements ModelListener {
         //TODO - this should be cleaner...
         Logging.log("CLOSING POPULUS WINDOW " + this.getSize() + " & " + this.getLocation());
         PopPreferencesStorage.getSingleton().save();
-        Logging.cleanup();
         System.exit(0);
     }
 
@@ -258,6 +257,8 @@ public class DesktopWindow extends JFrame implements ModelListener {
         //backgroundPanel.setBackground(new Color(0,0,152));
         backgroundPanel.setBackground(new Color(0, 0, 206));
         //backgroundPanel.setBackground(Color.black);
+
+        //TODO: Is this the correct image for the icon?
         imagePanel.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(DesktopWindow.class.getResource(BACKGROUND_IMAGE_FILE))));
     }
 

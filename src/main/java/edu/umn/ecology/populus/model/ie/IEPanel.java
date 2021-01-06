@@ -81,9 +81,9 @@ public class IEPanel extends BasicPlotInputPanel {
                 edu.umn.ecology.populus.fileio.Logging.log("  N" + j + ":\t" + init[j]);
             }
             init = ss.calculateValues(init, rt);
-            edu.umn.ecology.populus.fileio.Logging.log();
+            edu.umn.ecology.populus.fileio.Logging.log("");
         }
-        edu.umn.ecology.populus.fileio.Logging.log();
+        edu.umn.ecology.populus.fileio.Logging.log("");
     }
 
     void discreteB_itemStateChanged(ItemEvent e) {

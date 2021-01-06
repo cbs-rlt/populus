@@ -332,6 +332,7 @@ public final class PopPreferencesStorage {
 
     //TODO: Use javax.jnlp.FileSaveService:
     // http://docs.oracle.com/javase/1.5.0/docs/guide/javaws/jnlp/javax/jnlp/FileSaveService.html
+    //Or at least expose this variable in Spring. Some properties aren't loading correctly on OS X anyway.
     public static String getPreferencesFile() {
         if (null == preferencesFile) {
             try {

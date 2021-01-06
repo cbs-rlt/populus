@@ -7,17 +7,15 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
-
     id 'org.springframework.boot' version '2.4.0'
     id "io.spring.dependency-management" version "1.0.10.RELEASE"
+    id 'application'
 
     id 'org.openjfx.javafxplugin' version '0.0.9'
     id 'org.beryx.runtime' version '1.11.4'
 }
 
-apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'io.spring.dependency-management'
 
 //sourceCompatibility = '11'
 
@@ -41,6 +39,7 @@ dependencies {
     implementation 'gov.nist.math:jama:1.0.3'
 
     implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
@@ -70,7 +69,7 @@ task createTimestampFile {
     TimeZone.setDefault(TimeZone.getTimeZone('UTC'))
     def now = new Date()
     def formattedDate = now.format("yyyy-MM-dd HH:mm:ss.SSS'Z'")
-    def timestampFile = new File("${buildDir}/classes/java/main/edu/umn/ecology/populus/core/timestamp.txt")
+    def timestampFile = new File("${buildDir}/classes/java/main/edu/umn/ecology/populus/timestamp.txt")
     if (timestampFile.exists()) {
         timestampFile.delete()
     }
@@ -80,13 +79,13 @@ task createTimestampFile {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'edu.umn.ecology.populus.core.PopRun'
+        attributes 'Main-Class': 'edu.umn.ecology.populus.PopRun'
     }
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'edu.umn.ecology.populus.core.PopRun'
+    mainClass = 'edu.umn.ecology.populus.PopRun'
 }
 
 test {
@@ -106,14 +105,20 @@ allprojects {
 runtime {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
 
+    additive = true
+    modules = ['java.logging', 'java.desktop', 'java.naming', 'java.xml']
+
     jpackage {
         def currentOs = org.gradle.internal.os.OperatingSystem.current()
         appVersion = '6.1.0'
+        mainClass = 'org.springframework.boot.loader.JarLauncher'
+
         installerOptions += [
                 '--vendor', 'University of Minnesota',
                 '--license-file', 'LICENSE',
         ]
         if (currentOs.macOsX) {
+            jvmArgs = ["-Duser.dir=/tmp"]
             imageOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
             installerOptions = ['--resource-dir', 'src/main/resources/installer/macosx']
         } else if (currentOs.windows) {

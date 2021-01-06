@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Class-Path: .
-Main-Class: edu.umn.ecology.populus.core.PopRun
+Main-Class: edu.umn.ecology.populus.PopRun
 
 Name: com/klg/jclass/chart/beans/SimpleChart.class
 Java-Bean: True

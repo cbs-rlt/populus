@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 Created-By: 1.4.2 (Sun Microsystems Inc.)
-Main-Class: edu.umn.ecology.populus.core.PopRun
+Main-Class: edu.umn.ecology.populus.PopRun
 

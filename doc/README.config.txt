@@ -9,8 +9,8 @@
 A file used to keep configuration information for Populus is loaded at startup.  If not found, 
 Populus will use the default configuration.
 
-By default, the file is named userpref.po in the user's home directory.  To use a different file, 
-specify the command-line argument "-p" followed by the file name to be used.
+By default, the file is named userpref.po in the user's home directory. Customization will likely change
+in a newer version.
 
 Populus will attempt to update the preferences file when setting the preferences from the menu or 
 when closing the application.

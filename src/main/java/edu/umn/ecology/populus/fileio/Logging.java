@@ -1,5 +1,9 @@
 package edu.umn.ecology.populus.fileio;
 
+import edu.umn.ecology.populus.PopRun;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.PrintStream;
 import java.util.Vector;
 
@@ -17,92 +21,36 @@ import java.util.Vector;
  */
 
 public class Logging {
-    /* Normal log */
-    public static final int kInfo = 0;
-    /* Not clear why this happened, but should be recoverable */
-    public static final int kWarn = 10;
-    /* Potentially very serious */
-    public static final int kErr = 20;
+    private static Logger LOG = LoggerFactory.getLogger(PopRun.class);
 
-    private static Logging singleLog;
+    //TODO: Turn these into enum. OR, just use the external Logger definitions.
+    public static final int kInfo = 0; //Normal log
+    public static final int kWarn = 10; //Strange, but recoverable
+    public static final int kErr = 20; //Generally fatal-ish
 
-    private Vector<PrintStream> ps;
-
-    private static PrintStream getLogFileAsStream(String filename) {
-        try {
-            return new PrintStream(filename);
-        } catch (Exception e) {
-            Logging.log(e, "Could not get log file:");
-        }
-        return null;
-    }
-
-    private Logging() {
-        ps = new Vector<>();
-        ps.add(System.err);
-    }
-
-    private void log1(String msg, int severity) {
-        for (PrintStream s : ps) {
-            s.println(msg);
-        }
-    }
-
-    private void log1(Exception e) {
-        for (PrintStream s : ps) {
-            e.printStackTrace(s);
-        }
-    }
-
-    /**
-     * Returns true if able to add to it
-     */
-    public static synchronized boolean addFileLog(String filename) {
-        PrintStream fstrm = getLogFileAsStream(filename);
-        if (fstrm != null) {
-            singleLog.ps.add(fstrm);
-            return true;
-        }
-        return false;
-    }
-
-    public static String getDefaultLogFile() {
-        String fileout = "";
-        fileout = System.getProperty("user.home") + System.getProperty("file.separator");
-        fileout += "populus.log.txt";
-        return fileout;
-    }
-
-    static {
-        if (null == singleLog) {
-            singleLog = new Logging();
-        } else {
-            Logging.log(new Exception("Stack trace"), "Why init logging twice?");
-        }
-    }
-
-    public static void cleanup() {
-        //We really should do this explicitly...
-    }
-
-    public static void log() {
-        log("");
-    }
 
     public static void log(String msg) {
         log(msg, kInfo);
     }
 
     public static void log(String msg, int severity) {
-        singleLog.log1(msg, severity);
+        switch(severity) {
+            case kErr:
+                LOG.error(msg);
+                break;
+            case kInfo:
+                LOG.info(msg);
+                break;
+            case kWarn:
+                LOG.warn(msg);
+        }
     }
 
     public static void log(Exception e) {
-        singleLog.log1(e);
+        log(e, "Exception thrown");
     }
 
     public static void log(Exception e, String msg) {
-        singleLog.log1("Got exception: " + msg, kErr);
-        singleLog.log1(e);
+        LOG.error(msg, e);
     }
 }

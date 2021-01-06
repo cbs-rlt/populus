@@ -23,5 +23,5 @@
     <extension href="installer.jnlp"/>
     <jar href="PopulusAll.jar"/>
   </resources>
-  <application-desc main-class="edu.umn.ecology.populus.core.PopRun"/>
+  <application-desc main-class="edu.umn.ecology.populus.PopRun"/>
 </jnlp> 
