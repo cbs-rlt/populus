@@ -1,0 +1,16 @@
+authors:
+  - family-names: "Alstad"
+    given-names: "Donald"
+cff-version: 1.2.0
+title: "Populus"
+message: "If you use this software, please cite it using the metadata from this file."
+preferred-citation:
+  authors:
+    - family-names: "Alstad"
+      given-names: "Donald"
+  title: "Basic Populus Models of Ecology"
+  type: book
+  publisher:
+    name: "Prentice Hall, Inc."
+  isbn: "978-0130212894"
+  date-published: "2000-11-03"
